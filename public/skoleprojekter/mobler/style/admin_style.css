@@ -1,0 +1,185 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: #FFFFFF;
+}
+
+#top {
+	background-color: #717171;
+	width: 100%;
+	height: 54px;
+	border-bottom: 1px solid #FF7200;
+}
+
+#menu {
+	position: absolute;
+	top: 54px;
+	width: 930px;
+	height: 52px;
+	margin-top: -26px;
+}
+
+#menu2 {
+	position: absolute;
+	top: 80px;
+	width: 813px;
+	height: 52px;
+	margin-top: -26px;
+}
+
+#menu a, #menu2 a {
+	display: block;
+	width: 115px;
+	height: 19px;
+	float: left;
+	margin-bottom: 1px;
+	padding-top: 5px;
+	border-right: 1px solid #FF7200;
+	text-align: center;
+	text-decoration: none;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #FF7200;
+}
+
+#menu #forside_link, #menu2 #forside_link {
+	border-left: 1px solid #ff7200;
+}
+
+#menu .menu_link, #menu2 .menu_link {
+	border-bottom: 2px solid #FF7200;
+}
+
+#menu a:hover, #menu2 a:hover {
+	border-bottom: 2px solid #FF7200;
+}
+
+#container {
+	width: 890px;
+	height: 30px;
+	margin-top: 40px;
+	margin-bottom: 10px;
+	padding-left: 10px;
+}
+
+#content {
+	width: 890px;
+	padding-top: 10px;
+	padding-left: 10px;
+	border-top: 1px dotted #FF7200;
+}
+
+h1 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 28px;
+	color: #FF7200;
+}
+
+h2 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	color: #000000;
+}
+
+p {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	line-height: 18px;
+	color: #000000;
+}
+
+a {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	line-height: 18px;
+	color: #000000;
+}
+
+.textfield {
+	display: block;
+	width: 250px;
+	height: 18px;
+	margin-bottom: 10px;
+	border: 1px solid #717171;
+}
+
+.select {
+	display: block;
+	width: 250px;
+	height: 21px;
+	margin-bottom: 10px;
+	border: 1px solid #717171;
+}
+
+.textarea {
+	display: block;
+	width: 250px;
+	height: 150px;
+	margin-bottom: 10px;
+	border: 1px solid #717171;
+}
+
+.knapper {
+	background-color: #FFFFFF;
+	width: 60px;
+	height: 18px;
+	border: 1px solid #717171;
+}
+
+.edit_cell {
+	width: 180px;
+	padding-right: 20px;
+}
+
+/* style login */
+
+#login {
+	width: 900px;
+	height: 400px;
+	margin-top: -40px;
+	margin-left: auto;
+	margin-right: auto;
+	border: 1px solid #FF7200;
+	text-align: center;
+}
+
+#login h1 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 48px;
+	color: #717171;
+}
+
+#login h2 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 30px;
+	color: #D6D6D6;
+	margin-top: 18px;
+}
+
+#login_form {
+	width: 890px;
+	height: 60px;
+	margin-bottom: 120px;
+	padding-top: 6px;
+	padding-right: 10px;
+	text-align: right;
+}
+
+#login_form p {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #717171;
+	margin-top: 12px;
+}
+
+#knap {
+	background-color: #FFFFFF;
+	width: 60px;
+	height: 22px;
+	border: 1px solid #717171;
+}
+
+/* slut style login */

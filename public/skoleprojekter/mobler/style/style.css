@@ -1,0 +1,418 @@
+* {
+	margin: 0;
+	padding: 0;
+	vertical-align: top;
+}
+
+body {
+	background-color: #FFFFFF;
+}
+
+#top {
+	background-color: #717171;
+	width: 100%;
+	height: 54px;
+	border-bottom: 1px solid #FF7200;
+}
+
+#menu {
+	width: 638px;
+	height: 26px;
+}
+
+#menu a {
+	display: block;
+	width: 115px;
+	height: 19px;
+	float: left;
+	padding-top: 5px;
+	border-right: 1px solid #FF7200;
+	text-align: center;
+	text-decoration: none;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #FF7200;
+}
+
+#menu #forside_link {
+	border-left: 1px solid #ff7200;
+}
+
+#menu .menu_link {
+	border-bottom: 2px solid #FF7200;
+}
+
+#menu a:hover {
+	border-bottom: 2px solid #FF7200;
+}
+
+#wrap {
+	width: 667px;
+	margin-top: 40px;
+}
+
+#venstre {
+	width: 160px;
+	float: left;
+	margin-right: 28px;
+}
+
+#venstre .overskrift {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #FF7200;
+	font-weight: normal;
+	margin-bottom: 13px;
+	padding-left: 15px;
+	padding-bottom: 3px;
+	border-bottom: 1px dotted #FF7200;
+}
+
+#venstre p {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	line-height: 14px;
+	color: #464646;
+	margin-left: 15px;
+}
+
+#venstre .fejl {
+	margin-top: -35px;
+	margin-bottom: 20px;
+}
+
+#venstre #nyhedsbrev {
+	margin-top: 32px;
+}
+
+#venstre a {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	line-height: 14px;
+	color: #FF7200;
+	margin-left: 96px;
+}
+
+#venstre img {
+	display: block;
+	max-width: 145px;
+	max-height: 100px;
+	margin-left: 15px;
+	margin-bottom: 15px;
+	border: none;
+}
+
+#venstre #telefon {
+	margin-top: 18px;
+}
+
+#venstre #mail_form {
+	margin-bottom: 34px;
+}
+
+#venstre #email {
+	background-color: #FFFFFF;
+	width: 115px;
+	height: 13px;
+	margin-left: 15px;
+	margin-bottom: 8px;
+	padding-top: 2px;
+	padding-left: 4px;
+	border: 1px solid #959494;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 8px;
+	color: #000000;
+}
+
+#venstre .email_knap {
+	background-color: #FFFFFF;
+	width: 89px;
+	height: 15px;
+	margin-left: 15px;
+	margin-bottom: 8px;
+	border: 1px solid #959494;
+	text-align: center;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 8px;
+	color: #000000;
+}
+
+#content {
+	width: 464px;
+	float: left;
+	margin-top: 16px;
+	padding-top: 21px;
+	border-top: 1px dotted #FF7200;
+}
+
+#content .nyheder {
+	margin-bottom: 35px;
+}
+
+#content h1 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	color: #FF7200;
+	margin-bottom: 35px;
+}
+
+#content p {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	line-height: 14px;
+	color: #464646;
+	margin-bottom: 20px;
+}
+
+#content .fejl {
+	float: right;
+	text-align: right;
+	margin-right: 125px;
+}
+
+/* style nyheder */
+#content .nyheds_arkiv {
+	width: 464px;
+	padding-top: 10px;
+	padding-bottom: 5px;
+	border-bottom: 1px dotted #FF7200;
+}
+
+#content .overskrift_celle {
+	width: 350px;
+}
+
+#content .dato_celle {
+	width: 114px;
+	text-align: right;
+}
+
+#content .nyhed_tekst {
+	margin-bottom: 5px;	
+}
+
+#content .navn_celle {
+	text-align: right;
+}
+
+#content .navn {
+	color: #CECECE;
+}
+
+/* slut style nyheder */
+
+/* style s�g */
+
+#content .soeg_celle {
+	width: 130px;
+}
+
+#content #soeg_felt {
+	width: 114px;
+	height: 14px;
+	border: 1px solid #464646;
+}
+
+#content #avanceret_soeg {
+	padding-left: 5px;
+}
+
+#content .soeg_check {
+	margin-right: 2px;
+	float: left;
+}
+
+#content .soeg_check2 {
+	margin-left: 53px;
+	margin-right: 2px;
+	float: left;
+}
+
+#content .soeg_check3 {
+	margin-left: 29px;
+	margin-right: 2px;
+	float: left;
+}
+
+#content .soeg_tekst {
+	float: left;
+	vertical-align: bottom;
+}
+
+#content #designer {
+	width: 137px;
+	height: 17px;
+	border: 1px solid #464646;
+}
+
+#content .min {
+	float: left;
+	margin-right: 5px;
+}
+
+#content .tal {
+	width: 39px;
+	height: 14px;
+	float: left;
+	margin-bottom: 20px;
+	border: 1px solid #464646;
+}
+
+#content #soeg_knap {
+	background-color: #FFFFFF;
+	width: 57px;
+	height: 15px;
+	margin-left: 25px;
+	border: 1px solid #464646;
+	font-size: 8px;
+}
+
+#content #soeg_knap2 {
+	background-color: #FFFFFF;
+	width: 57px;
+	height: 15px;
+	margin-left: 275px;
+	border: 1px solid #464646;
+	font-size: 8px;
+}
+
+#content #ingen_resultater {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #FF7200;
+	font-style: italic;
+}
+
+#content .resultat_soeg {
+	width: 458px;
+	height: 81px;
+	padding-top: 4px;
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-bottom: 4px;
+	border-bottom: 1px dotted #FF7200;
+}
+
+#content .resultat_soeg a {
+	display: block;
+	width: 456px;
+	height: 79px;
+	border: 1px solid #FFFFFF;
+	text-decoration: none;
+}
+
+#content .resultat_soeg a:hover {
+	display: block;
+	border: 1px solid #CECECE;
+}
+
+#content .resultat_celle {
+	width: 137px;
+}
+
+#content .resultat_soeg img {
+	max-width: 122px;
+	max-height: 77px;
+	float: left;
+	border: none; 
+}
+
+#content .resultat_overskrift {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #FF7200;
+	margin-bottom: 4px;
+}
+
+/* slut style s�g */
+
+/* style kontakt */
+
+#content #kontakt_form {
+	margin-top: 46px;
+}
+
+#kontakt_form p {
+	margin-bottom: 0px;
+}
+
+#content .kontakt_celle {
+	width: 128px;
+	margin-bottom: 6px;
+}
+
+#content .kontakt_tekst {
+	float: left;
+}
+
+#content .kontakt_felt {
+	width: 204px;
+	height: 14px;
+	float: right;
+	margin-bottom: 6px;
+	border: 1px solid #464646;
+}
+
+#content #kontakt_kommentar {
+	width: 204px;
+	height: 102px;
+	border: 1px solid #464646;
+}
+
+#content #kontakt_knap {
+	background-color: #FFFFFF;
+	width: 68px;
+	height: 15px;
+	float: right;
+	margin-top: 5px;
+	border: 1px solid #464646;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #464646;
+}
+
+/* slut style kontakt */
+
+/* style beskrivelse */
+
+#beskrivelse {
+	width: 464px;
+	margin-top: -12px;
+}
+
+#beskrivelse #beskrivelse_rakke {
+	width: 450px;
+	height: 225px;
+}
+
+#beskrivelse_rakke img {
+	max-width: 300px;
+	max-height: 225px;
+	margin-bottom: 10px;
+}
+
+#beskrivelse .beskrivelse_overskrift {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #FF7200;
+	font-weight: normal;
+}
+
+#beskrivelse #beskrivelse_rakke2 {
+	width: 464px;
+}
+
+#beskrivelse_rakke2 img {
+	max-width: 50px;
+	max-height: 50px;
+	float: left;
+	margin-top: -16px;
+	margin-right: 48px;
+	border: none;
+}
+
+/* slut style beskrivelse */
+
+#clear {
+	clear: both;
+}

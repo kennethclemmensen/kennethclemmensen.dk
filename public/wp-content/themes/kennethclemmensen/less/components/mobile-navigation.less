@@ -1,0 +1,42 @@
+.mobile-nav {
+  background: @color-blue--dark;
+  width: 100%;
+  padding-top: 20px;
+  position: absolute;
+  top: @header-height;
+  bottom: 0;
+  z-index: 1;
+  transform: translateX(-100%);
+  transition: all .4s ease 0s;
+  @media @sm {
+    display: none;
+  }
+  &--active {
+    transform: translateX(0);
+  }
+}
+
+.mobile-nav__content {
+  overflow-y: auto;
+  ul {
+    margin-left: 0;
+    list-style: none;
+    li {
+      &.current-menu-item, &.current-page-ancestor {
+        a {
+          background: @color-blue;
+          font-weight: 600;
+        }
+      }
+      a {
+        display: block;
+        height: 40px;
+        padding: 5px 15px;
+        text-decoration: none;
+        &:hover {
+          background: @color-blue;
+        }
+      }
+    }
+  }
+}

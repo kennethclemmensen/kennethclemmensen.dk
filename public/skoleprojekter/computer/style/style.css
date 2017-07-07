@@ -1,0 +1,159 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-image: url(../images/bg.jpg);
+	background-repeat: repeat;
+}
+
+#wrap {
+	width: 780px;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 20px;
+}
+
+#menu {
+	background-color: #FFFFFF;
+	width: 778px;
+	height: 28px;
+	float: left;
+	padding-top: 10px;
+	border: 1px solid #000000;
+	text-align: center;	
+}
+
+#menu a {
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: .80em;
+	text-decoration: underline;
+	color: #000000;
+	margin-right: 20px;	
+}
+
+#menu a:hover {
+	text-decoration: none;
+}
+
+#content {
+	background-color: #FFFFFF;
+	width: 758px;
+	float: left;
+	padding: 10px;
+	border-left: 1px solid #000000;
+	border-right: 1px solid #000000;
+}
+
+#bund {
+	background-color: #FFFFFF;
+	width: 778px;
+	height: 28px;
+	float: left;
+	padding-top: 10px;
+	border: 1px solid #000000;
+	text-align: center;	
+}
+
+#bund p {
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: .95em;
+	font-weight: bold;
+	color: #000000;
+}
+
+h1 {
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: 1.10em;
+	font-weight: normal;
+	color: #000000;
+	display: block;
+	margin-bottom: 2px;
+}
+
+p {
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: .75em;
+	line-height: 1.30em;
+	color: #000000;
+}
+
+.opret {
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: .75em;
+	line-height: 1.30em;
+	color: #000000;
+	display: block;
+	float: none;
+	margin-top: 30px; 
+}
+
+a {
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: .75em;
+	line-height: 1.30em;
+	color: #000000;
+}
+
+#formular {
+	width: 120px;
+	float: left;
+	margin-top: 10px;
+}
+
+#felt {
+	width: 168px;
+	margin-bottom: 5px;
+	border: 1px solid #000000;
+}
+
+#rulle_menu {
+	width: 100px;
+	border: 1px solid #000000;
+	margin-bottom: 10px;
+}
+
+#knap {
+	background-color: #CCCCCC;
+	width: 68px;
+	float: left;
+	border: 1px solid #000000;
+}
+	
+#login_felt {
+	width: 118px;
+	float: left;
+	margin-bottom: 10px;
+	border: 1px solid #000000;
+}
+
+#login_button {
+	background-color: #CCCCCC;
+	width: 48px;
+	float: left;
+	border: 1px solid #000000;
+}
+
+table {
+	margin-top: 5px;
+	margin-bottom: 20px;
+	border: 1px solid #000000;
+}
+
+td {
+	height: 20px;
+	padding-left: 4px;
+	padding-right: 4px;
+}
+
+.bruger_tr {
+	display: block;
+	border-bottom: 1px solid #000000;
+}
+
+.bruger_td {
+	width: 100px;
+	text-align: center;
+}

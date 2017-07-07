@@ -1,0 +1,275 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	vertical-align: top;
+}
+
+body {
+	background-image: url(../billeder/css/standard_bg.jpg);
+	background-repeat: repeat;
+}
+
+#wrap {
+	background-color: #C2C2D6;
+	width: 900px;
+	margin-left: auto;
+	margin-right: auto;
+	border-left: 1px solid #000000;
+	border-right: 1px solid #000000;
+	border-bottom: 1px solid #000000;
+}
+
+#top {
+	background-color: #666699;
+	width: 900px;
+	height: 82px;
+	padding-top: 18px;
+	text-align: center;
+}
+
+#top h1 {
+	font-size: 50px;
+	color: #FFFFFF;
+}
+
+#menu {
+	background-color: #666699;
+	width: 890px;
+	height: 25px;
+	padding-left: 10px;
+	border-bottom: 1px solid #000000;
+}
+
+#menu ul li {
+	list-style-type: none;
+	float: left;
+	margin-right: 10px;
+}
+
+#menu a {
+	font-size: 16px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+#menu a:hover, #menu .menu_link {
+	color: #FF0000;
+}
+
+#samle {
+	width: 900px;
+	min-height: 600px;
+}
+
+#samle h1 {
+	display: block;
+	clear: both;
+	font-size: 24px;
+	color: #000000;
+	margin-bottom: 10px;
+}
+
+#samle h2 {
+	font-size: 18px;
+	color: #000000;
+}
+
+#samle h3 {
+	font-size: 14px;
+	color: #000000;
+}
+
+#samle p {
+	font-size: 12px;
+	line-height: 18px;
+	color: #000000;
+	margin-bottom: 10px;
+}
+
+#samle .fejl {
+	font-size: 14px;
+	line-height: 21px;
+	color: #FF0000;
+}
+
+#samle a {
+	font-size: 12px;
+	line-height: 18px;
+	color: #000000;
+}
+
+#samle a:hover {
+	color: #FF0000;
+	text-decoration: none;
+}
+
+#samle .laes_mere_link {
+	display: block;
+	float: left;
+	clear: both;
+	margin-bottom: 10px;
+}
+
+#samle img {
+	display: block;
+	max-width: 450px;
+	max-height: 250px;
+	margin-bottom: 4px;
+	border: 1px solid #000000;
+}
+
+#content {
+	width: 580px;
+	float: left;
+	padding: 10px;
+}
+
+#content .info_celle {
+	width: 170px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+}
+
+#content .info_celle img {
+	display: block;
+	max-width: 150px;
+	max-height: 150px;
+	border: 1px solid #000000;
+}
+
+#hojre {
+	width: 290px;
+	float: left;
+	padding-top: 10px;
+	padding-right: 10px;
+}
+
+#hojre fieldset {
+	width: 220px;
+	height: 145px;
+	float: right;
+	margin-top: 20px;
+	padding-top: 5px;
+	padding-left: 15px;
+	padding-right: 15px;
+	border: 1px solid #000000;
+}
+
+#hojre fieldset legend {
+	margin-left: -5px;
+	font-size: 18px;
+}
+
+#hojre .info {
+	margin-bottom: 0px;
+}
+
+#bund {
+	background-color: #666699;
+	width: 900px;
+	height: 24px;
+	padding-top: 6px;
+	border-top: 1px solid #000000;
+	clear: both;
+	text-align: center;
+}
+
+#bund p {
+	font-size: 15px;
+	color: #FFFFFF;
+}
+
+#luft {
+	height: 30px;
+}
+
+/* admin */
+
+#admin_menu {
+	background-color: #666699;
+	width: 890px;
+	height: 50px;
+	padding-left: 10px;
+	border-bottom: 1px solid #000000;
+}
+
+#admin_menu ul li {
+	list-style-type: none;
+	float: left;
+	margin-right: 10px;
+}
+
+#admin_menu a {
+	font-size: 16px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+#admin_menu a:hover, #admin_menu .menu_link {
+	color: #FF0000;
+}
+
+#login {
+	width: 300px;
+	height: 300px;
+	margin-top: 150px;
+	margin-left: 350px;
+}
+
+label {
+	display: block;
+	font-size: 14px;
+	color: #000000;
+	clear: both;
+}
+
+.textfield {
+	display: block;
+	width: 200px;
+	height: 18px;
+	margin-bottom: 8px;
+	border: 1px solid #000000;
+}
+
+.textarea {
+	display: block;
+	width: 450px;
+	height: 150px;
+	margin-bottom: 8px;
+	border: 1px solid #000000;
+}
+
+.select {
+	display: block;
+	width: 200px;
+	height: 20px;
+	margin-bottom: 8px;
+	border: 1px solid #000000;
+}
+
+.knapper {
+	background-color: #666699;
+	display: block;
+	width: 60px;
+	height: 25px;
+	margin-bottom: 10px;
+	border: 1px solid #FFFFFF;
+	color: #FFFFFF;
+	cursor: pointer;
+}
+
+.celle {
+	width: 200px;
+	padding-right: 10px;
+}
+
+.bekraeft_link {
+	display: block;
+	float: left;
+	clear: both;
+	font-size: 14px;
+	color: red;
+}

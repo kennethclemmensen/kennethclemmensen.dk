@@ -1,0 +1,293 @@
+* {
+	margin: 0;
+	padding: 0;
+	vertical-align: top;
+}
+
+body {
+	background-color: #558F1D;
+}
+
+#top {
+	background-color: #203d4d;
+	height: 70px;
+	padding-top: 30px;
+	border-bottom: 1px solid #000000;
+	text-align: center;
+}
+
+#top h1 {
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: 62px;
+	color: #FFFFFF;
+}
+
+#wrap {
+	width: 900px;
+	margin-top: -1px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#menu {
+	width: 900px;
+	height: 40px;
+	clear: both;
+}
+
+#admin_menu {
+	width: 900px;
+	height: 80px;
+	clear: both;
+}
+
+#admin_menu a, #menu a {
+	display: block;
+	width: 100px;
+	height: 23px;
+	float: left;
+	margin-left: 5px;
+	margin-right: 5px;
+	padding-top: 7px;
+	border-left: 1px solid #000000;
+	border-right: 1px solid #000000;
+	border-bottom: 1px solid #000000;
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: 14px;
+	color: #FFFFFF;
+	text-align: center;
+	text-decoration: none;
+}
+
+#admin_menu a:hover, #menu a:hover {
+	background-color: #1F3D4C;
+}
+
+#admin_menu #menu_link, #menu #menu_link {
+	background-color: #1F3D4C;
+}
+
+#samle {
+	width: 900px;
+	margin-top: 10px;
+}
+
+#samle h1 {
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: 22px;
+	color: #FFFFFF;
+}
+
+#samle h2 {
+	display: block;
+	clear: both;
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: 16px;
+	color: #FFFFFF;
+}
+
+#samle p {
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: 12px;
+	line-height: 18px;
+	color: #FFFFFF;
+	margin-bottom: 10px;
+}
+
+#samle .indlaeg_tekst {
+	font-size: 14px;
+	font-weight: bold;
+	margin-top: 12px;
+	margin-bottom: 12px;
+}
+
+#samle a {
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: 12px;
+	line-height: 18px;
+	color: #FFFFFF;
+}
+
+#content {
+	width: 646px;
+	height: 100px;
+	float: left;
+	padding-left: 4px;
+}
+
+#content .profilbillede {
+	max-width: 50px;
+	max-height: 50px;
+	float: left;
+	margin-top: 12px;
+	margin-right: 6px;
+	margin-bottom: 6px;
+	border: 1px solid #000000; 
+}
+
+#content #kommentar {
+	background-color: #203d4d;
+	width: 540px;
+	margin-top: 30px;
+	padding: 8px;
+}
+
+#content #kommentar p {
+	margin-top: 8px;
+}
+
+#content .textfield {
+	display: block;
+	width: 200px;
+	margin-top: -10px;
+}
+
+#content .select {
+	display: block;
+	width: 200px;
+	margin-top: -10px;
+}
+
+#content .textarea {
+	display: block;
+	width: 440px;
+	height: 105px;
+	margin-top: -10px;
+}
+
+#content .knapper {
+	display: block;
+	background-color: #203d4d;
+	width: 65px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border: none;
+	color: #FFFFFF;
+}
+
+#content .liste_celle {
+	width: 200px;
+	padding-right: 10px;
+}
+
+#hojre {
+	width: 250px;
+	height: 100px;
+	float: left;
+}
+
+#hojre .login_felter {
+	display: block;
+	width: 150px;
+	margin-top: -10px;
+}
+
+#hojre #login_button {
+	display: block;
+	background-color: #203d4d;
+	width: 65px;
+	float: left;
+	margin-top: 10px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	border: none;
+	color: #FFFFFF;
+}
+
+#hojre #opret_link {
+	display: block;
+	float: left;
+	margin-top: 8px;
+}
+
+#hojre .indlaeg_link {
+	display: block;
+	float: left;
+	clear: both;
+	font-size: 14px;
+	margin-bottom: 6px;
+}
+
+#hojre #email {
+	display: block;
+	width: 150px;
+	margin-top: -10px;
+}
+
+#hojre .nyhedsbrev_knap {
+	display: block;
+	background-color: #203d4d;
+	width: 65px;
+	float: left;
+	margin-top: 10px;
+	margin-right: 10px;
+	border: none;
+	color: #FFFFFF;
+}
+
+#hojre #nyhedsbrev {
+	display: block;
+	clear: both;
+}
+
+/* admin login style */
+
+#login_div {
+	width: 150px;
+	height: 130px;
+	margin-top: 170px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 20px;
+	padding-left: 20px;
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: 14px;
+	color: #FFFFFF;
+}
+
+#login_div .login_felter {
+	display: block;
+	width: 150px;
+	margin-bottom: 10px;
+}
+
+#login_div #knap {
+	background-color: #203d4d;
+	width: 50px;
+	color: #FFFFFF;
+	border: none;
+}
+
+/* admin style */
+
+.textfield {
+	display: block;
+	width: 200px;
+	margin-top: -10px;
+}
+
+.textarea {
+	display: block;
+	width: 300px;
+	height: 125px;
+	margin-top: -10px;
+}
+
+.knapper {
+	background-color: #203d4d;
+	width: 50px;
+	margin-top: 10px;
+	border: none;
+	color: #FFFFFF;
+}
+
+.edit_cell {
+	padding-right: 10px;
+	vertical-align: center;
+}
+
+.edit_cell a {
+	display: block;
+	float: left;
+	clear: right;
+}

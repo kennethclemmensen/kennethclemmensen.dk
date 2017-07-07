@@ -1,0 +1,267 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: #333333;
+}
+
+#wrap {
+	background-color: #FFFFFF;
+	width: 796px;
+	margin-left: auto;
+	margin-right: auto;
+	border-left: 2px solid #000000;
+	border-right: 2px solid #000000;
+	border-bottom: 2px solid #000000;
+}
+
+#top {
+	width: 796px;
+	height: 99px;
+	padding-top: 25px;
+	border-bottom: 1px solid #000000;
+	text-align: center;
+}
+
+#top h1 {
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: 52px;
+	color: #000000;
+}
+
+#menu {
+	width: 796px;
+	height: 22px;
+	padding-top: 3px;
+	border-bottom: 1px solid #000000;
+	text-align: center;
+}
+
+#menu a {
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: 14px;
+	color: #000000;
+	text-decoration: none;
+	margin-right: 10px;
+}
+
+#menu a:hover {
+	color: #CCCCCC;
+}
+
+#content {
+	width: 776px;
+	padding: 10px;
+}
+
+#content .nyhed_felt {
+	width: 300px;
+	margin-bottom: 8px;
+	border: 1px solid #000000;
+}
+
+#content .nyhed_tekst {
+	width: 300px;
+	height: 175px;
+	margin-bottom: 8px;
+	border: 1px solid #000000;
+}
+
+#content .dato {
+	width: 40px;
+	margin-bottom: 8px;
+	border: 1px solid #000000;
+}
+
+#content .maaned {
+	width: 90px;
+	margin-bottom: 8px;
+	border: 1px solid #000000;
+}
+
+#content .aar {
+	width: 65px;
+	margin-bottom: 8px;
+	border: 1px solid #000000;
+}
+
+#content .dato_celle {
+	display: block;
+	float: left;
+	margin-right: 10px;
+}
+
+#content #kategori {
+	width: 300px;
+	margin-bottom: 8px;
+	border: 1px solid #000000;
+}
+	
+#content .nyhed_knap {
+	display: block;
+	width: 55px;
+	border: 1px solid #000000;
+	margin-bottom: 8px;	
+}
+
+#content h1 {
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: 16px;
+	color: #000000;
+	margin-bottom: 10px;
+}
+
+#content p {
+	display: block;
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: 12px;
+	color: #000000;
+}
+
+#content .slet_nyhed_link {
+	display: block;
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: 14px;
+	color: #000000;
+	font-weight: bold;
+	margin-bottom: 10px;
+	width: 27px;
+}
+
+#content a {
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: 12px;
+	color: #000000;
+	text-decoration: underline;
+}
+
+#content .slet_link {
+	display: block;
+	margin-top: 0px;
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: 12px;
+	color: #000000;
+	text-decoration: underline;
+}
+
+#content ul {
+	margin-left: 10px;
+	padding-left: 7px;
+	list-style-type: circle;
+}
+
+#content img {
+	display: block;
+	width: 80px;
+	height: 50px;
+	margin-top: 20px;
+}
+
+#content #nyhed_valg {
+	width: 300px;
+	margin-bottom: 8px;
+	border: 1px solid #000000;
+}
+
+#content #galleri_beskrivelse {
+	width: 300px;
+	height: 60px;
+	margin-bottom: 8px;
+	border: 1px solid #000000;
+}
+
+#content #galleri_felt {
+	width: 170px;
+	margin-bottom: 10px;
+	border: 1px solid #000000;
+}
+
+#content #galleri_valg {
+	display: none;
+	width: 300px;
+	margin-bottom: 8px;
+	border: 1px solid #000000;
+}
+
+#content #billede_titel {
+	display: block;
+	width: 200px;
+}
+
+#clear {
+	clear: both;
+}
+
+/* login */
+#login {
+	background-color: #FFFFFF;
+	width: 335px;
+	height: 150px;
+	margin-top: 150px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 10px;
+	padding-left: 10px;
+	border: 1px solid #000000;
+}
+
+#login h1 {
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: 16px;
+	color: #000000;
+	margin-bottom: 10px;
+}
+
+#login p {
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: 12px;
+	color: #000000;
+}
+
+#login .felt {
+	width: 150px;
+	margin-bottom: 5px;
+	border: 1px solid #000000;
+}
+
+#login .login_td {
+	display: block;
+	margin-right: 10px;
+}
+
+#login .valg {
+	display: block;
+	width: 150px;
+	margin-bottom: 5px;
+	border: 1px solid #000000;
+}
+
+#login #knap {
+	width: 55px;
+	margin-top: 8px;
+	margin-left: 2px;
+	border: 1px solid #000000;
+}
+
+/* redakt�r */
+.input {
+	width: 180px;
+	margin-bottom: 5px;
+	border: 1px solid #000000;
+}
+
+.redaktor_knap {
+	display: block;
+	background-color: #FFFFFF;
+	width: 55px;
+	border: 1px solid #000000;
+}
+
+.slet_celle {
+	width: 115px;
+	float: left;
+	margin-right: 15px;
+	margin-bottom: 4px;
+}

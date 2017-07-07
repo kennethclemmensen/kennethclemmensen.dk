@@ -1,0 +1,561 @@
+* {
+	margin: 0;
+	padding: 0;	
+}
+
+td {
+	vertical-align: top;	
+}
+
+body {
+	background-color: #FFFFFF;
+}
+
+#wrap {
+	background-image: url(../billeder/extra/bg.jpg);
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	width: 760px;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#top {
+	background-image: url(../billeder/extra/top.jpg);
+	width: 758px;
+	height: 59px;
+	border: 1px solid #d7d7d7;
+}
+
+#samle {
+	width: 758px;
+	border-left: 1px solid #d7d7d7;
+	border-right: 1px solid #d7d7d7;
+}
+
+#samle_menu {
+	width: 129px;
+	float: left;
+	padding-bottom: 12px;
+}
+
+#samle_menu h1 {
+	display: block;
+	background-color: #d7d7d7;
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: .75em;
+	color: #FFFFFF;
+	width: 119px;
+	height: 17px;
+	margin-top: 10px;
+	margin-bottom: 4px;
+	padding-top: 4px;
+	padding-left: 10px;
+}
+
+#samle_menu ul {
+	margin-bottom: 70px;
+}
+
+#samle_menu li {
+	list-style-type: disc;
+	color: #b2b2b2;
+	line-height: 1em;
+	margin-left: 22px;
+}
+
+#samle_menu a {
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: .65em;
+	color: #b2b2b2;
+	text-decoration: none;
+}
+
+#samle_menu p {
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: .70em;
+	line-height: 1.15em;
+	color: #6d6d6d;
+	margin-left: 6px;
+	margin-right: 3px;
+}
+
+#samle_menu .undermenu {
+	margin-left: 45px;
+}
+
+.dage {
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: .70em;
+	line-height: 1.15em;
+	color: #6d6d6d;
+	padding-left: 5px;
+}
+
+.tid {
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: .70em;
+	line-height: 1.15em;
+	color: #6d6d6d;
+	padding-right: 48px;
+	margin-bottom: 10px;
+	text-align: right;
+}
+
+#content {
+	width: 478px;
+	min-height: 525px;
+	float: left;
+	padding: 10px;
+	border-left: 1px solid #d7d7d7;
+	border-right: 1px solid #d7d7d7;
+}
+
+#content h1, #admin_indhold h1 {
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: .80em;
+	color: #616161;
+}
+
+#content p {
+	display: block;
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: .75em;
+	line-height: 1.10em;
+	color: #616161;
+	margin-top: 6px;
+	margin-bottom: 6px;
+}
+
+#content a {
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: .70em;
+	color: #616161;
+	text-decoration: none;
+	float: right;	
+}
+
+#omtale_indhold {
+	width: 463px;
+	min-height: 550px;
+	float: left;
+	padding-top: 10px;
+	padding-left: 10px;
+	padding-right: 25px;
+	border-left: 1px solid #d7d7d7;
+	border-right: 1px solid #d7d7d7;
+}
+
+#omtale_indhold h2 {
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: 1.50em;
+}
+
+#omtale_indhold h3 {
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: .85em;
+	color: #d0a767;
+	float: left;
+	margin-top: 24px;
+	margin-right: 57px;
+}
+
+#omtale_indhold p {
+	display: block;
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: .75em;
+	line-height: 1.10em;
+	color: #616161;
+	margin-top: 6px;
+	margin-bottom: 6px;
+}
+
+#omtale_indhold .textarea {
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: .70em;
+	line-height: 1.05em;
+	color: #616161;
+	margin-top: 17px;
+}
+
+#omtale_indhold .kommentar {
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: .70em;
+	line-height: 1.05em;
+	float: none;
+	margin-bottom: -12px;
+}
+
+.tekst_celle_venstre {
+	width: 309px;
+	padding-right: 38px;
+}
+
+.tekst_celle_hojre {
+	width: 309px;
+	padding-left: 38px;
+}
+
+.tabel {
+	width: 100%;
+}
+
+.kontakt {
+	margin-top: 10px;
+}
+
+#content .kontakt p {
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: .70em;
+	line-height: 1.05em;
+	color: #616161;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+.nummer {
+	text-align: right;
+}
+
+.kort {
+	width: 213px;
+	text-align: right;
+	margin-left: 110px;
+}
+
+#kontakt_formular {
+	margin-top: -50px;
+	margin-left: 160px;
+}
+
+.tekst_celle {
+	text-align: right;
+}
+
+.kontakt_tekst {
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: .70em;
+	line-height: 1.05em;
+	color: #616161;
+	float: right;
+}
+
+.kontakt_felt {
+	width: 211px;
+	height: 18px;
+	float: right;
+	margin-left: 4px;
+	margin-bottom: 6px;
+	border: 1px solid #d7d7d7;
+}
+
+.besked_celle {
+	display: block;
+	margin-top: -10px;
+}
+
+.besked_tekst {
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: .70em;
+	line-height: 1.05em;
+	color: #616161;
+}
+
+#besked {
+	width: 311px;
+	height: 88px;
+	margin-top: -3px;
+	margin-bottom: 10px;
+	border: 1px solid #d7d7d7;
+	overflow: hidden;
+}
+
+.kontakt_knap {
+	background-color: #FFFFFF;
+	width: 88px;
+	height: 18px;
+	float: right;
+	margin-left: 25px;
+	border: 1px solid #d7d7d7;
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: .70em;
+	color: #616161;
+}
+
+.soeg_tekst {
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: .70em;
+	line-height: 1.05em;
+	color: #616161;
+	margin-top: -3px;
+}
+
+.soeg_felt {
+	width: 135px;
+	float: left;
+	border: 1px solid #d7d7d7;
+}
+
+.soeg_rullemenu {
+	width: 135px;
+	float: left;
+	border: 1px solid #d7d7d7;
+}
+
+.soeg_knap {
+	background-color: #FFFFFF;
+	width: 38px;
+	height: 18px;
+	float: left;
+	margin-left: 3px;
+	border: 1px solid #d7d7d7;
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: .70em;
+	color: #616161;
+}
+
+.soeg_link {
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: .70em;
+	color: #616161;
+	float: left;
+	margin-top: 27px;
+	margin-left: 10px;
+	text-decoration: underline;
+}
+
+.soeg_celle {
+	float: left;
+	margin-right: 7px;
+	padding-left: 1px;
+}
+
+.omtale_formular {
+	float: none;
+	margin-top: 24px;
+}
+
+.stjerne_tekst {
+	width: 90px;
+	text-align: left;
+}
+
+.stjerne {
+	display: block;
+	float: left;
+	margin-right: 16px;
+	text-align: center;
+}
+
+.knap_celle {
+	padding-top: 15px;
+	padding-left: 5px;
+}
+
+.karakter_celle {
+	display: block;
+	margin-top: -25px;
+}
+
+#content .karakter_celle p {
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: .80em;
+	color: #616161;
+	float: left;
+	margin-left: 3px;
+	margin-right: 10px;
+}
+
+.karakter_celle_hojre {
+	display: block;
+	margin-top: -25px;
+}
+
+#content .karakter_celle_hojre p {
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: .80em;
+	color: #616161;
+	float: left;
+	margin-left: 40px;
+	margin-right: 10px;
+}
+
+#omtale_knap {
+	background-color: #FFFFFF;
+	width: 41px;
+	height: 18px;
+	float: left;
+	margin-left: 3px;
+	border: 1px solid #d7d7d7;
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: .65em;
+	font-weight: bold;
+}
+
+#omtale_knap2 {
+	background-color: #FFFFFF;
+	width: 41px;
+	height: 18px;
+	float: left;
+	margin-top: 8px;
+	border: 1px solid #d7d7d7;
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: .65em;
+	font-weight: bold;
+	
+}
+
+#kommentar_navn {
+	width: 140px;
+	margin-left: 13px;
+	border: 1px solid #d7d7d7;
+}
+
+#kommentar {
+	width: 290px;
+	height: 53px;
+	float: left;
+	margin-top: 8px;
+	margin-left: 14px;
+	margin-right: 7px;
+	border: 1px solid #d7d7d7;
+}
+
+#content img {
+	float: left;
+	border: 1px solid #d6d6d6;
+}
+
+#content .afstemning {
+	margin-top: 2px;
+	border: none;
+}
+
+#content hr {
+	border: 1px solid #d7d7d7;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+#samle_hojre {
+	width: 118px;
+	float: left;
+	padding-top: 10px;
+	padding-left: 10px;
+	padding-bottom: 10px;
+}
+
+.clear {
+	clear: both;
+}
+
+#bund {
+	width: 758px;
+	height: 18px;
+	padding-top: 4px;
+	border: 1px solid #d7d7d7;
+	text-align: center;
+}
+
+#bund p {
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: .70em;
+	color: #616161;
+}
+
+/* admin */
+#admin_login {
+	width: 250px;
+	height: 135px;
+	margin-top: 75px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 15px;
+	padding-left: 50px;
+	border: 1px solid #d7d7d7;
+}
+
+#admin_login p {
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: .80em;
+	color: #000000;
+}
+
+#admin_felt {
+	width: 170px;
+	height: 21px;
+	margin-bottom: 8px;
+	border: 1px solid #d7d7d7;
+}
+
+#admin_knap {
+	display: block;
+	background-color: #FFFFFF;
+	width: 50px;
+	height: 21px;
+	border: 1px solid #d7d7d7;
+}
+
+#admin_indhold {
+	width: 478px;
+	min-height: 640px;
+	float: left;
+	padding: 10px;
+	border-left: 1px solid #d7d7d7;
+	border-right: 1px solid #d7d7d7;
+}
+
+#admin_indhold p {
+	display: block;
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: .75em;
+	line-height: 1.10em;
+	color: #616161;
+	margin-top: 6px;
+	margin-bottom: 6px;
+}
+
+.ret_felt {
+	display: block;
+	width: 225px;
+	height: 18px;
+	float: none;
+	margin-left: -2px;
+	padding-top: 2px;
+	border: 1px solid #d7d7d7;
+}
+
+.ret_boks {
+	display: block;
+	width: 225px;
+	height: 85px;
+	border: 1px solid #d7d7d7;
+}
+
+.ret_knap {
+	background-color: #FFFFFF;
+	display: block;
+	width: 50px;
+	height: 20px;
+	margin-top: 10px;
+	border: 1px solid #d7d7d7;
+}
+
+.edit_cell {
+	padding-right: 10px; 
+}
+
+#upload {
+	display: block;
+	margin-top: 10px;
+}
+
+#upload_knap {
+	background-color: #FFFFFF;
+	display: block;
+	width: 60px;
+	height: 20px;
+	margin-top: 10px;
+	border: 1px solid #d7d7d7;
+}

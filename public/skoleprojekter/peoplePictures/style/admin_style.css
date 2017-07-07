@@ -1,0 +1,201 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: #7C7C7C;
+}
+
+#wrap {
+	width: 900px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#top {
+	background-image: url(../images/admin/admin_design_01.jpg);
+	width: 900px;
+	height: 156px;
+	float: left;
+}
+
+#samle {
+	background-image: url(../images/admin/admin_design_02.jpg);
+	background-repeat: repeat-y;
+	width: 900px;
+	float: left;
+}
+
+#menu {
+	width: 100px;
+	float: left;
+	padding-left: 15px;
+	padding-right: 15px;	
+	text-align: center;
+}
+
+#menu ul li {
+	list-style-type: none;
+}
+
+#menu a {
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: .85em;
+	line-height: 1.35em;
+	text-decoration: underline;
+	color: #000000;
+}
+
+#menu a:hover {
+	text-decoration: none;
+}
+
+#content {
+	width: 750px;
+	float: left;
+	padding-left: 20px;	
+	padding-bottom: 20px;
+}
+
+#bund {
+	background-image: url(../images/admin/admin_design_04.jpg);
+	width: 900px;
+	height: 39px;
+	float: left;
+}
+
+h1 {
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: 1.55em;
+	color: #FFFFFF;
+	margin-bottom: 10px;
+}
+
+p {
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: .85em;
+	line-height: 1.15em;
+	color: #FFFFFF;
+}
+
+a {
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: .85em;
+	line-height: 1.15em;
+	color: #FFFFFF;
+	text-decoration: underline;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #CCCCCC;
+}
+
+#kendis_felt {
+	display: block;
+	background-color: #FFFFFF;
+	width: 300px;
+	height: 16px;
+	margin-bottom: 10px;
+	border: 1px solid #000000;
+}
+
+#kendis_biografi {
+	display: block;
+	background-color: #FFFFFF;
+	width: 300px;
+	height: 120px;
+	margin-bottom: 10px;
+	border: 1px solid #000000;
+}
+
+.kendis_celle {
+	width: 150px;
+}
+
+#nyhed_overskrift {
+	background-color: #FFFFFF;
+	width: 300px;
+	height: 20px;
+	margin-bottom: 10px;
+	border: 1px solid #000000;
+}
+
+#nyhed_tekst {
+	background-color: #FFFFFF;
+	width: 300px;
+	height: 100px;
+	margin-bottom: 10px;
+	border: 1px solid #000000;
+}
+
+.nyhed_overskrift {
+	width: 75px;
+}
+
+.nyhed_dato {
+	width: 100px;
+}
+
+.nyhed_tekst {
+	width: 250px;
+}
+
+.navn_celle {
+	display: block;
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
+#rullemenu {
+	baclground-color: #FFFFFF;
+	display: block;
+	float: none;
+	margin-bottom: 10px;
+	border: 1px solid #000000;
+}
+
+#upload_formluar {
+	margin-bottom: 20px;
+}
+/* admin_login */
+
+#admin_login {
+	background-color: #7C7C7C;
+	width: 187px;
+	height: 125px;
+	margin-top: 300px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 25px;
+	padding-left: 13px;
+	border: 1px solid #000000;
+}
+
+#admin_login p {
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: .75em;
+	color: #FFFFFF;
+}
+
+#login_felt {
+	background-color: #FFFFFF;
+	width: 168px;
+	height: 18px;
+	float: left;
+	margin-bottom: 5px;
+	border: 1px solid #000000;
+}
+
+#login_button {
+	background-color: #FFFFFF;
+	width: 48px;
+	height: 18px;
+	float: none;
+	margin-bottom: 5px;
+	border: 1px solid #000000;
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: .70em;
+	color: #000000;
+}

@@ -1,0 +1,26 @@
+.footer {
+  background-color: @color-blue--dark;
+  padding: 8px;
+  border-top: 1px solid @color-gray;
+  text-align: center;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  @media @sm {
+    width: @page-width-sm;
+    border-left: 1px solid @color-gray;
+    border-right: 1px solid @color-gray;
+    border-radius: 8px 8px 0 0;
+    left: 50%;
+    right: initial;
+    transform: translateX(-50%);
+  }
+  @media @md {
+    width: @page-width-md;
+  }
+}
+
+.footer__text {
+  margin-bottom: 0;
+}
