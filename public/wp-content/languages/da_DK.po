@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.8.x package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-06-09 08:06:46+0000\n"
+"PO-Revision-Date: 2017-08-14 21:22:21+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -36,6 +36,50 @@ msgstr ","
 msgid "number_format_thousands_sep"
 msgstr "."
 
+#: wp-includes/widgets/class-wp-widget-text.php:366
+msgid "This widget may have contained code that may work better in the new &#8220;Custom HTML&#8221; widget. If you haven&#8217;t yet, how about trying that widget instead?"
+msgstr "Denne widget kan have indeholdt kode, der vil virke bedre i den nye HTML-widget. Hvis du ikke har prøvet den endnu, så tag at prøv den."
+
+#: wp-includes/widgets/class-wp-widget-text.php:419
+msgid "Hey there, looks like you just pasted HTML into the &#8220;Visual&#8221; tab of the Text widget. You may want to paste your code into the &#8220;Text&#8221; tab instead. Alternately, try out the new &#8220;Custom HTML&#8221; widget!"
+msgstr "Det ser ud som om, du lige har sat HTML ind i &#8220;Visuel&#8221;-fanen i en Tekst-widget\". Det er nok bedre at indsætte din kode i &#8220;Tekst&#8221;-fanen i stedet for. Alternativt kan du afprøve vores nye &#8220;Brugerdefineret HTML&#8221;-widget!"
+
+#: wp-includes/widgets/class-wp-widget-text.php:418
+msgid "Did you just paste HTML?"
+msgstr "Har du lige indsat HTML?"
+
+#: wp-includes/widgets/class-wp-widget-text.php:403
+msgid "Hey, did you hear we have a &#8220;Custom HTML&#8221; widget now? You can find it by scanning the list of available widgets on this screen. Check it out to add some custom code to your site!"
+msgstr "Har du hørt, at vi nu har en &#8220;Brugerdefineret HTML&#8221;-widget? Du finder den ved at gennemse listen med tilgængelige widgets på denne skærm. Prøv den, hvis du vil tilføje brugerdefinerede koder til dit websted!"
+
+#: wp-includes/widgets/class-wp-widget-text.php:401
+msgid "Hey, did you hear we have a &#8220;Custom HTML&#8221; widget now? You can find it by pressing the &#8220;<a class=\"add-widget\" href=\"#\">Add a Widget</a>&#8221; button and searching for &#8220;HTML&#8221;. Check it out to add some custom code to your site!"
+msgstr "Har du hørt, at vi nu har en &#8220;Brugerdefineret HTML&#8221;-widget? Du kan finde den ved at trykke på &#8220;<a class=\"add-widget\" href=\"#\">Tilføj en widget</a>&#8221;-knappen og søg efter &#8220;HTML&#8221;. Prøv den, hvis du vil tilføje brugerdefineret kode til dit websted!"
+
+#: wp-includes/widgets/class-wp-widget-text.php:36
+msgid "Arbitrary text."
+msgstr "Vilkårlig tekst."
+
+#: wp-includes/widgets/class-wp-widget-text.php:399
+msgid "New Custom HTML Widget"
+msgstr "Ny Brugerdefineret HTML-widget"
+
+#: wp-includes/widgets/class-wp-widget-text.php:364
+msgid "This widget may contain code that may work better in the new &#8220;Custom HTML&#8221; widget. How about trying that widget instead?"
+msgstr "Denne widget indeholder kode, som sandsynligvis vil virke bedre med den nye &#8220;Brugerdefineret HTML&#8221;-widget. Hvad med at prøve den widget i stedet for?"
+
+#: wp-includes/default-widgets.php:103
+msgid "Custom HTML"
+msgstr "Brugerdefineret HTML"
+
+#: wp-includes/default-widgets.php:96
+msgid "Arbitrary HTML code."
+msgstr "Vilkårlig HTML kode."
+
+#: wp-includes/default-widgets.php:207
+msgid "Some HTML tags are not permitted, including:"
+msgstr "Nogle HTML-tags er ikke tilladt, heriblandt:"
+
 #: wp-includes/category-template.php:806 wp-includes/category-template.php:815
 msgid "%s item"
 msgid_plural "%s items"
@@ -46,7 +90,7 @@ msgstr[1] "%s elementer"
 msgid "Show tag counts"
 msgstr "Vis antallet af tags"
 
-#: wp-includes/widgets/class-wp-widget-media.php:60
+#: wp-includes/widgets/class-wp-widget-media.php:68
 msgctxt "label for button in the media widget"
 msgid "Add Media"
 msgstr "Tilføj medie"
@@ -66,7 +110,7 @@ msgctxt "label for button in the audio widget"
 msgid "Add Audio"
 msgstr "Tilføj lydklip"
 
-#: wp-includes/media.php:3118
+#: wp-includes/media.php:3122
 msgid "(no author)"
 msgstr "(ingen forfatter)"
 
@@ -107,35 +151,35 @@ msgstr "Indtast din nærmeste by for at finde nærliggende arrangementer."
 msgid "The network currently allows user registrations."
 msgstr "Netværket tillader i øjeblikket brugerregistreringer."
 
-#: wp-includes/widgets/class-wp-widget-media.php:131
+#: wp-includes/widgets/class-wp-widget-media.php:145
 msgid "URL to the media file"
 msgstr "URL til mediefilen"
 
-#: wp-includes/widgets/class-wp-widget-media.php:137
+#: wp-includes/widgets/class-wp-widget-media.php:151
 msgid "Title for the widget"
 msgstr "Titel til widget"
 
-#: wp-includes/widgets/class-wp-widget-media.php:63
+#: wp-includes/widgets/class-wp-widget-media.php:71
 msgid "Add to Widget"
 msgstr "Tilføj til widget"
 
-#: wp-includes/widgets/class-wp-widget-media.php:62
+#: wp-includes/widgets/class-wp-widget-media.php:70
 msgctxt "label for button in the media widget; should preferably not be longer than ~13 characters long"
 msgid "Edit Media"
 msgstr "Rediger medie"
 
-#: wp-includes/widgets/class-wp-widget-media.php:71
+#: wp-includes/widgets/class-wp-widget-media.php:79
 msgid "Media Widget"
 msgstr "Medie-widget"
 
 #. translators: %d is widget count
-#: wp-includes/widgets/class-wp-widget-media.php:70
+#: wp-includes/widgets/class-wp-widget-media.php:78
 msgid "Media Widget (%d)"
 msgid_plural "Media Widget (%d)"
 msgstr[0] "Medie-widget (%d)"
 msgstr[1] "Medie-widget (%d)"
 
-#: wp-includes/widgets/class-wp-widget-media.php:51
+#: wp-includes/widgets/class-wp-widget-media.php:59
 msgid "A media item."
 msgstr "Et medie-element."
 
@@ -154,7 +198,7 @@ msgstr[1] "Video-widget (%d)"
 msgid "Greetings Network Administrator!"
 msgstr "Hej netværksadministrator!"
 
-#: wp-includes/widgets/class-wp-widget-media.php:59
+#: wp-includes/widgets/class-wp-widget-media.php:67
 msgid "No media selected"
 msgstr "Intet medie valgt"
 
@@ -176,20 +220,20 @@ msgid "The network currently disallows registrations."
 msgstr "Netværket tillader på nuværende tidspunkt ikke registering af sider."
 
 #. translators: placeholder is URL to media library
-#: wp-includes/widgets/class-wp-widget-media.php:66
+#: wp-includes/widgets/class-wp-widget-media.php:74
 msgid "We can&#8217;t find that file. Check your <a href=\"%s\">media library</a> and make sure it wasn&#8217;t deleted."
 msgstr "Vi kan ikke finde den fil. Tjek venligst dit <a href=\"%s\">mediebibliotek</a> og verificer den ikke er blevet slettet."
 
-#: wp-includes/widgets/class-wp-widget-media.php:61
+#: wp-includes/widgets/class-wp-widget-media.php:69
 msgctxt "label for button in the media widget; should preferably not be longer than ~13 characters long"
 msgid "Replace Media"
 msgstr "Erstat medie"
 
-#: wp-includes/widgets/class-wp-widget-media.php:124
+#: wp-includes/widgets/class-wp-widget-media.php:138
 msgid "Attachment post ID"
 msgstr "Vedhæftet indlægs ID"
 
-#: wp-includes/widgets/class-wp-widget-media.php:72
+#: wp-includes/widgets/class-wp-widget-media.php:80
 msgid "Looks like this isn&#8217;t the correct kind of file. Please link to an appropriate file instead."
 msgstr "Det ser ud som om dette ikke er den korrekte filtype. Link venligst til en passende fil i stedet."
 
@@ -251,7 +295,7 @@ msgstr "Opdateret!"
 
 #: wp-includes/widgets/class-wp-widget-media-audio.php:198
 #: wp-includes/widgets/class-wp-widget-media-image.php:325
-#: wp-includes/widgets/class-wp-widget-media-video.php:241
+#: wp-includes/widgets/class-wp-widget-media-video.php:237
 msgid "Unable to preview media due to an unknown error."
 msgstr "Kan ikke forhåndsvise medie på grund af en ukendt fejl."
 
@@ -371,22 +415,22 @@ msgid "Limit result set to users with one or more specific slugs."
 msgstr "Begræns antallet af svar til brugere med en eller flere specifikke korttitler."
 
 #. translators: 1: parameter, 2: maximum number
-#: wp-includes/rest-api.php:1119
+#: wp-includes/rest-api.php:1124
 msgid "%1$s must be less than %2$d"
 msgstr "%1$s skal være mindre end %2$d"
 
 #. translators: 1: parameter, 2: minimum number
-#: wp-includes/rest-api.php:1114
+#: wp-includes/rest-api.php:1119
 msgid "%1$s must be greater than or equal to %2$d"
 msgstr "%1$s skal være lig med eller større end %2$d"
 
 #. translators: 1: parameter, 2: minimum number
-#: wp-includes/rest-api.php:1111
+#: wp-includes/rest-api.php:1116
 msgid "%1$s must be greater than %2$d"
 msgstr "%1$s skal være større end %2$d"
 
 #. translators: 1: parameter, 2: maximum number
-#: wp-includes/rest-api.php:1122
+#: wp-includes/rest-api.php:1127
 msgid "%1$s must be less than or equal to %2$d"
 msgstr "%1$s skal være mindre end eller lig med %2$d"
 
@@ -460,7 +504,7 @@ msgstr "Kodeordet for hovedindlægget for kommentaren (hvis indlægget er kodeor
 msgid "Sorry, this file type is not permitted for security reasons."
 msgstr "Beklager, denne filtype er ikke tilladt af sikkerhedsmæssige årsager."
 
-#: wp-includes/media.php:3518
+#: wp-includes/media.php:3522
 msgid ""
 "You are about to permanently delete this item from your site.\n"
 "This action cannot be undone.\n"
@@ -470,7 +514,7 @@ msgstr ""
 "Denne handling kan ikke fortrydes.\n"
 "'Annuller' for at stoppe, 'OK' for at slette."
 
-#: wp-includes/media.php:3519 wp-includes/script-loader.php:80
+#: wp-includes/media.php:3523 wp-includes/script-loader.php:80
 msgid ""
 "You are about to permanently delete these items from your site.\n"
 "This action cannot be undone.\n"
@@ -481,7 +525,7 @@ msgstr ""
 "'Annuller' for at stoppe, 'OK' for at slette."
 
 #. translators: 1: suggested width number, 2: suggested height number.
-#: wp-includes/media-template.php:240 wp-includes/media.php:3568
+#: wp-includes/media-template.php:240 wp-includes/media.php:3572
 msgid "Suggested image dimensions: %1$s by %2$s pixels."
 msgstr "Foreslåede billeddimensioner: %1$s x %2$s pixels."
 
@@ -529,17 +573,17 @@ msgstr "Dine parenteser %1$s er ubalancerede. Kontroller at der er en afsluttend
 msgid "Sorry, comments are not allowed for this item."
 msgstr "Beklager, kommentarer er ikke tilladt for dette element."
 
-#: wp-includes/class-wp-editor.php:1126
+#: wp-includes/class-wp-editor.php:1143
 msgctxt "Short for blue in RGB"
 msgid "B"
 msgstr "B"
 
-#: wp-includes/class-wp-editor.php:1125
+#: wp-includes/class-wp-editor.php:1142
 msgctxt "Short for green in RGB"
 msgid "G"
 msgstr "G"
 
-#: wp-includes/class-wp-editor.php:1124
+#: wp-includes/class-wp-editor.php:1141
 msgctxt "Short for red in RGB"
 msgid "R"
 msgstr "R"
@@ -560,50 +604,50 @@ msgstr "Maksimumbredden for den indlejrede frame i pixels."
 msgid "The maximum height of the embed frame in pixels."
 msgstr "Maksimumhøjden for den indlejrede frame i pixels."
 
-#: wp-includes/class-wp-editor.php:1078
+#: wp-includes/class-wp-editor.php:1095
 msgid "Table of Contents"
 msgstr "Indholdsfortegnelse"
 
-#: wp-includes/class-wp-editor.php:1076
+#: wp-includes/class-wp-editor.php:1093
 msgid "Date/time"
 msgstr "Dato/tid"
 
-#: wp-includes/class-wp-editor.php:1082
+#: wp-includes/class-wp-editor.php:1099
 msgid "Insert/edit media"
 msgstr "Indsæt/rediger medie"
 
-#: wp-includes/class-wp-editor.php:1079
+#: wp-includes/class-wp-editor.php:1096
 msgid "Insert/edit code sample"
 msgstr "Indsæt/rediger kode-eksempel"
 
-#: wp-includes/class-wp-editor.php:1052
+#: wp-includes/class-wp-editor.php:1069
 msgctxt "Id for link anchor (TinyMCE)"
 msgid "Id"
 msgstr "Id"
 
-#: wp-includes/class-wp-customize-widgets.php:777
+#: wp-includes/class-wp-customize-widgets.php:791
 msgid "You can navigate to other pages on your site while using the Customizer to view and edit the widgets displayed on those pages."
 msgstr "Du kan navigere til andre sider på dit websted, mens du bruger Tilpasseren til at se og redigere de widgets, der er vist på disse sider."
 
 #. translators: placeholder is the total number of widget areas registered
-#: wp-includes/class-wp-customize-widgets.php:756
+#: wp-includes/class-wp-customize-widgets.php:770
 msgid "Your theme has %s widget area, but this particular page doesn&#8217;t display it."
 msgid_plural "Your theme has %s widget areas, but this particular page doesn&#8217;t display them."
 msgstr[0] "Dit tema har %s widgetområde, men denne særlige side viser det ikke."
 msgstr[1] "Dit tema har %s widgetområder, men denne særlige side viser dem ikke."
 
-#: wp-includes/class-wp-editor.php:1051
+#: wp-includes/class-wp-editor.php:1068
 msgid "Id should start with a letter, followed only by letters, numbers, dashes, dots, colons or underscores."
 msgstr "ID skal starte med et bogstav, kun efterfulgt af bogstaver, tal, bindestreger, punktummer, koloner og understregninger."
 
 #. translators: placeholder is the total number of widget areas registered
-#: wp-includes/class-wp-customize-widgets.php:751
+#: wp-includes/class-wp-customize-widgets.php:765
 msgid "Your theme has 1 widget area, but this particular page doesn&#8217;t display it."
 msgstr "Dit tema har 1 widgetområde, men denne særllige side viser det ikke."
 
 #. translators: placeholder is the number of other widget areas registered but
 #. not rendered
-#: wp-includes/class-wp-customize-widgets.php:739
+#: wp-includes/class-wp-customize-widgets.php:753
 msgid "Your theme has %s other widget area, but this particular page doesn&#8217;t display it."
 msgid_plural "Your theme has %s other widget areas, but this particular page doesn&#8217;t display them."
 msgstr[0] "Dit tema har %s andet widgetområde, men denne særlige side viser det ikke."
@@ -611,7 +655,7 @@ msgstr[1] "Dit tema har %s andre widgetområder, men denne særlige side viser d
 
 #. translators: placeholder is the number of other widget areas registered but
 #. not rendered
-#: wp-includes/class-wp-customize-widgets.php:731
+#: wp-includes/class-wp-customize-widgets.php:745
 msgid "Your theme has 1 other widget area, but this particular page doesn&#8217;t display it."
 msgstr "Dit tema har 1 widgetområde, men denne side viser det ikke."
 
@@ -751,7 +795,7 @@ msgstr "Kan ikke sætte overordnet term, taksonomi er ikke hierarkisk."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:305
 msgid "Term does not exist."
-msgstr "Term eksisterer ikke."
+msgstr "Termen findes ikke."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-taxonomies-controller.php:268
 msgid "The title for the taxonomy."
@@ -780,7 +824,7 @@ msgstr "Kan ikke vise status."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-post-statuses-controller.php:257
 msgid "The title for the status."
-msgstr "Statusens titel."
+msgstr "Titlen af statussen."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:468
 msgid "URL to the original attachment file."
@@ -842,12 +886,12 @@ msgstr "En kommentar kan ikke oprettes med denne type."
 msgid "Invalid JSONP callback function."
 msgstr "Ugyldig JSONP callback funktion."
 
-#: wp-includes/post.php:3136 wp-includes/rest-api.php:1089
+#: wp-includes/post.php:3136 wp-includes/rest-api.php:1094
 msgid "Invalid date."
 msgstr "Ugyldig dato."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-users-controller.php:606
-#: wp-includes/rest-api.php:1095
+#: wp-includes/rest-api.php:1100
 msgid "Invalid email address."
 msgstr "Ugyldig e-mailadresse."
 
@@ -872,52 +916,52 @@ msgstr "Video afspilles."
 msgid "Video is paused."
 msgstr "Video er sat på pause."
 
-#: wp-includes/theme.php:1962
+#: wp-includes/theme.php:1966
 msgctxt "Theme starter content"
 msgid "Archives"
 msgstr "Arkiver"
 
-#: wp-includes/theme.php:2084
+#: wp-includes/theme.php:2088
 msgctxt "Theme starter content"
 msgid "This is an example of a homepage section. Homepage sections can be any page other than the homepage itself, including the page that shows your latest blog posts."
-msgstr "Dette er et eksempel for en rubrik/sektion på forsiden. Forsidesektioner kan være enhver anden side end forsiden selv, inklusive siden der viser dine seneste blogindlæg."
+msgstr "Dette er et eksempel for en forsidesektion. Forsidesektioner kan være enhver anden side end forsiden selv, inklusive siden der viser dine seneste blogindlæg."
 
-#: wp-includes/theme.php:2078
+#: wp-includes/theme.php:2082
 msgctxt "Theme starter content"
 msgid "News"
 msgstr "Nyheder"
 
-#: wp-includes/theme.php:2070
+#: wp-includes/theme.php:2074
 msgctxt "Theme starter content"
 msgid "This is a page with some basic contact information, such as an address and phone number. You might also try a plugin to add a contact form."
 msgstr "Dette er en side med basale kontaktinformationer, såsom adresse og telefonnummer. Du kan også prøve at tilføje en kontaktformular her med et plugin."
 
-#: wp-includes/theme.php:2065
+#: wp-includes/theme.php:2069
 msgctxt "Theme starter content"
 msgid "You might be an artist who would like to introduce yourself and your work here or maybe you&rsquo;re a business with a mission to describe."
 msgstr "Du er måske en kunstner, der gerne vil introducere dig selv og dine værker her - eller måske har du en virksomhed med en mission, der skal beskrives."
 
-#: wp-includes/theme.php:1977
+#: wp-includes/theme.php:1981
 msgctxt "Theme starter content"
 msgid "Recent Posts"
 msgstr "Seneste indlæg"
 
-#: wp-includes/theme.php:1974
+#: wp-includes/theme.php:1978
 msgctxt "Theme starter content"
 msgid "Recent Comments"
 msgstr "Seneste kommentarer"
 
-#: wp-includes/theme.php:2060
+#: wp-includes/theme.php:2064
 msgctxt "Theme starter content"
 msgid "Welcome to your site! This is your homepage, which is what most visitors will see when they come to your site for the first time."
 msgstr "Velkommen til dit websted! Dette er din forside, som de fleste besøgende vil se, når de kommer til dit websted for første gang."
 
-#: wp-includes/theme.php:1965
+#: wp-includes/theme.php:1969
 msgctxt "Theme starter content"
 msgid "Calendar"
 msgstr "Kalender"
 
-#: wp-includes/theme.php:1971
+#: wp-includes/theme.php:1975
 msgctxt "Theme starter content"
 msgid "Meta"
 msgstr "Meta"
@@ -982,37 +1026,37 @@ msgstr "Beklager, men du har ikke rettigheder til at læse denne kommentar."
 msgid "Sorry, you are not allowed to read comments without a post."
 msgstr "Beklager, men du har ikke rettigheder til at læse kommentarer uden indlæg."
 
-#: wp-includes/theme.php:2052
+#: wp-includes/theme.php:2056
 msgctxt "Theme starter content"
 msgid "YouTube"
 msgstr "YouTube"
 
-#: wp-includes/theme.php:2040
+#: wp-includes/theme.php:2044
 msgctxt "Theme starter content"
 msgid "Pinterest"
 msgstr "Pinterest"
 
-#: wp-includes/theme.php:2036
+#: wp-includes/theme.php:2040
 msgctxt "Theme starter content"
 msgid "LinkedIn"
 msgstr "LinkedIn"
 
-#: wp-includes/theme.php:2028
+#: wp-includes/theme.php:2032
 msgctxt "Theme starter content"
 msgid "GitHub"
 msgstr "GitHub"
 
-#: wp-includes/theme.php:2024
+#: wp-includes/theme.php:2028
 msgctxt "Theme starter content"
 msgid "Foursquare"
 msgstr "Foursquare"
 
-#: wp-includes/theme.php:1958
+#: wp-includes/theme.php:1960
 msgctxt "Theme starter content"
 msgid "About This Site"
 msgstr "Om dette websted"
 
-#: wp-includes/theme.php:1959
+#: wp-includes/theme.php:1961
 msgctxt "Theme starter content"
 msgid "This may be a good place to introduce yourself and your site or include some credits."
 msgstr "Dette er måske et godt sted at introducere dig selv og dit websted eller at inkludere nogle kildeangivelser."
@@ -1062,52 +1106,52 @@ msgstr "Skift video"
 msgid "Choose Video"
 msgstr "Vælg video"
 
-#: wp-includes/theme.php:2083
+#: wp-includes/theme.php:2087
 msgctxt "Theme starter content"
 msgid "A homepage section"
 msgstr "En forsidesektion"
 
-#: wp-includes/theme.php:2032
+#: wp-includes/theme.php:2036
 msgctxt "Theme starter content"
 msgid "Instagram"
 msgstr "Instagram"
 
-#: wp-includes/theme.php:2074
+#: wp-includes/theme.php:2078
 msgctxt "Theme starter content"
 msgid "Blog"
 msgstr "Blog"
 
-#: wp-includes/theme.php:2069
+#: wp-includes/theme.php:2073
 msgctxt "Theme starter content"
 msgid "Contact"
 msgstr "Kontakt"
 
-#: wp-includes/theme.php:2064
+#: wp-includes/theme.php:2068
 msgctxt "Theme starter content"
 msgid "About"
 msgstr "Om"
 
-#: wp-includes/theme.php:1986 wp-includes/theme.php:2059
+#: wp-includes/theme.php:1990 wp-includes/theme.php:2063
 msgctxt "Theme starter content"
 msgid "Home"
 msgstr "Hjem"
 
-#: wp-includes/theme.php:2016
+#: wp-includes/theme.php:2020
 msgctxt "Theme starter content"
 msgid "Email"
 msgstr "E-mail"
 
-#: wp-includes/theme.php:2044
+#: wp-includes/theme.php:2048
 msgctxt "Theme starter content"
 msgid "Twitter"
 msgstr "Twitter"
 
-#: wp-includes/theme.php:2020
+#: wp-includes/theme.php:2024
 msgctxt "Theme starter content"
 msgid "Facebook"
 msgstr "Facebook"
 
-#: wp-includes/theme.php:2048
+#: wp-includes/theme.php:2052
 msgctxt "Theme starter content"
 msgid "Yelp"
 msgstr "Yelp"
@@ -1122,12 +1166,12 @@ msgctxt "Theme starter content"
 msgid "New York, NY 10001"
 msgstr "1000 København K"
 
-#: wp-includes/theme.php:1968
+#: wp-includes/theme.php:1972
 msgctxt "Theme starter content"
 msgid "Categories"
 msgstr "Kategorier"
 
-#: wp-includes/theme.php:1980
+#: wp-includes/theme.php:1984
 msgctxt "Theme starter content"
 msgid "Search"
 msgstr "Søg"
@@ -1337,39 +1381,39 @@ msgid "Item selected."
 msgstr "Element valgt."
 
 #. translators: 1: parameter, 2: minimum number, 3: maximum number
-#: wp-includes/rest-api.php:1138
+#: wp-includes/rest-api.php:1143
 msgid "%1$s must be between %2$d (exclusive) and %3$d (inclusive)"
 msgstr "%1$s skal være mellem %2$d (eksklusiv) og %3$d (inklusive)"
 
 #. translators: 1: parameter, 2: minimum number, 3: maximum number
-#: wp-includes/rest-api.php:1143
+#: wp-includes/rest-api.php:1148
 msgid "%1$s must be between %2$d (inclusive) and %3$d (inclusive)"
 msgstr "%1$s skal være mellem %2$d (inklusiv) og %3$d (inklusiv)"
 
 #. translators: 1: parameter, 2: minimum number, 3: maximum number
-#: wp-includes/rest-api.php:1133
+#: wp-includes/rest-api.php:1138
 msgid "%1$s must be between %2$d (inclusive) and %3$d (exclusive)"
 msgstr "%1$s skal være mellem %2$d (inklusiv) og %3$d (eksklusiv)"
 
 #. translators: 1: parameter, 2: minimum number, 3: maximum number
-#: wp-includes/rest-api.php:1128
+#: wp-includes/rest-api.php:1133
 msgid "%1$s must be between %2$d (exclusive) and %3$d (exclusive)"
 msgstr "%1$s skal være mellem %2$d (eksklusiv) og %3$d (eksklusiv)"
 
 #. translators: %s: IP address
-#: wp-includes/rest-api.php:1101
+#: wp-includes/rest-api.php:1106
 msgid "%s is not a valid IP address."
 msgstr "%s er ikke en gyldig IP-adresse."
 
 #. translators: 1: parameter, 2: type name
-#: wp-includes/rest-api.php:1049 wp-includes/rest-api.php:1067
-#: wp-includes/rest-api.php:1072 wp-includes/rest-api.php:1077
-#: wp-includes/rest-api.php:1082
+#: wp-includes/rest-api.php:1054 wp-includes/rest-api.php:1072
+#: wp-includes/rest-api.php:1077 wp-includes/rest-api.php:1082
+#: wp-includes/rest-api.php:1087
 msgid "%1$s is not of type %2$s."
 msgstr "%1$s er ikke af typen %2$s."
 
 #. translators: 1: parameter, 2: list of valid values
-#: wp-includes/rest-api.php:1061
+#: wp-includes/rest-api.php:1066
 msgid "%1$s is not one of %2$s."
 msgstr "%1$s er ikke en af %2$s."
 
@@ -2187,7 +2231,7 @@ msgstr "En by i samme tidszone som dig."
 msgid "Site title."
 msgstr "Webstedstitel."
 
-#: wp-includes/media.php:3531
+#: wp-includes/media.php:3535
 msgid "Search media items..."
 msgstr "Søg medieelementer..."
 
@@ -2275,13 +2319,13 @@ msgstr "Beklager, du har ikke rettigheder til at redigere denne term."
 msgid "Post"
 msgstr "Indlæg"
 
-#: wp-includes/class-wp-customize-widgets.php:785
-#: wp-includes/class-wp-customize-widgets.php:840
+#: wp-includes/class-wp-customize-widgets.php:799
+#: wp-includes/class-wp-customize-widgets.php:854
 msgid "No widgets found."
 msgstr "Ingen widgets fundet."
 
 #. translators: placeholder is the count for the number of widgets found
-#: wp-includes/class-wp-customize-widgets.php:784
+#: wp-includes/class-wp-customize-widgets.php:798
 msgid "Number of widgets found: %d"
 msgstr "Antal widgets fundet: %d"
 
@@ -2466,7 +2510,7 @@ msgstr "PHPs XML-udvidelse er ikke tilgængelig. Kontakt venligst din webudbyder
 msgid "Edit selected menu"
 msgstr "Rediger valgte menu"
 
-#: wp-includes/class-wp-editor.php:1259
+#: wp-includes/class-wp-editor.php:1276
 msgid "Warning: the link has been inserted but may have errors. Please test it."
 msgstr "Advarsel: linket er blevet indsat, men indenholder måske fejl. Test det venligst."
 
@@ -2474,7 +2518,7 @@ msgstr "Advarsel: linket er blevet indsat, men indenholder måske fejl. Test det
 msgid "Search Results"
 msgstr "Søgeresultater"
 
-#: wp-includes/class-wp-editor.php:1214
+#: wp-includes/class-wp-editor.php:1231
 msgid "Rich Text Area. Press Control-Option-H for help."
 msgstr "Formateret tekst-område. Tryk Ctrl+Alt+H eller Cmd+Option+H for hjælp."
 
@@ -2515,7 +2559,7 @@ msgstr "Tidskyder"
 msgid "Use Up/Down Arrow keys to increase or decrease volume."
 msgstr "Brug op/ned piletasterne for at skrue op eller ned for lyden."
 
-#: wp-includes/taxonomy.php:1967 wp-includes/taxonomy.php:2593
+#: wp-includes/taxonomy.php:1970 wp-includes/taxonomy.php:2596
 msgid "A name is required for this term."
 msgstr "Et navn er krævet for denne term."
 
@@ -2758,7 +2802,7 @@ msgstr "Vælg venligst et element, som der kan udføres en handling på."
 msgid "Sorry, you are not allowed to preview drafts."
 msgstr "Du har desværre ikke tilladelse til at forhåndsvise kladder."
 
-#: wp-includes/rest-api/class-wp-rest-server.php:908
+#: wp-includes/rest-api/class-wp-rest-server.php:922
 #: wp-includes/script-loader.php:132 wp-includes/script-loader.php:517
 msgid "Sorry, you are not allowed to do that."
 msgstr "Du har desværre ikke tilladelse til at gøre dette."
@@ -2844,7 +2888,7 @@ msgstr "Du har desværre ikke tilladelse til at tilpasse dette websted."
 msgid "Do not pass %1$s tags to %2$s."
 msgstr "Send ikke %1$s tags til %2$s."
 
-#: wp-includes/class-wp-editor.php:1240
+#: wp-includes/class-wp-editor.php:1257
 msgid "Link options"
 msgstr "Link-indstillinger"
 
@@ -2866,7 +2910,7 @@ msgstr "%s er påkrævet for at fjerne metadata fra billede."
 msgid "Plugin details"
 msgstr "Plugin-detaljer"
 
-#: wp-includes/media.php:3532
+#: wp-includes/media.php:3536
 msgid "No media files found."
 msgstr "Ingen mediefiler fundet."
 
@@ -2908,7 +2952,7 @@ msgstr "Konstanten %1$s <strong>er forældet</strong>. Brug den booleske konstan
 msgid "Removing %1$s manually will cause PHP warnings. Use the %2$s filter instead."
 msgstr "At fjerne %1$s manuelt vil udløse PHP-advarsler. Brug i stedet %2$s filteret."
 
-#: wp-includes/class-wp-editor.php:1267
+#: wp-includes/class-wp-editor.php:1284
 msgid "The next group of formatting shortcuts are applied as you type or when you insert them around plain text in the same paragraph. Press Escape or the Undo button to undo."
 msgstr "Den næste gruppe af formateringsgenveje anvendes, mens du skriver, eller når du indsætter dem rundt om almindelig tekst i samme afsnit. Tryk Escape eller på knappen Fortryd for at fortryde."
 
@@ -3038,7 +3082,7 @@ msgstr "Skift logo"
 
 #: wp-includes/customize/class-wp-customize-partial.php:221
 msgid "Partial render must echo the content or return the content string (or array), but not both."
-msgstr "Delvis gengivelse skal udskrive (echo) indholdet eller returnere indholdet som streng (eller array), men ikke begge dele."
+msgstr "Delvis gengivelse skal udskrive (echo) indholdet eller returnere indholdet som string (eller array), men ikke begge dele."
 
 #: wp-includes/comment.php:242
 msgctxt "comment status"
@@ -3084,7 +3128,7 @@ msgstr "https://codex.wordpress.org/Child_Themes"
 msgid "Logo"
 msgstr "Logo"
 
-#: wp-includes/class-wp-editor.php:1238
+#: wp-includes/class-wp-editor.php:1255
 msgid "Paste URL or type to search"
 msgstr "Indsæt URL eller skriv for at søge"
 
@@ -3463,16 +3507,16 @@ msgid "<strong>ERROR</strong>: Invalid username."
 msgstr "<strong>FEJL</strong>: Ugyldigt brugernavn."
 
 #. translators: 1: function name, 2: WordPress version number
-#: wp-includes/rest-api.php:500 wp-includes/rest-api.php:524
+#: wp-includes/rest-api.php:505 wp-includes/rest-api.php:529
 msgid "%1$s (since %2$s; no alternative available)"
 msgstr "%1$s (siden %2$s; intet alternativ)"
 
 #. translators: 1: function name, 2: WordPress version number, 3: error message
-#: wp-includes/rest-api.php:521
+#: wp-includes/rest-api.php:526
 msgid "%1$s (since %2$s; %3$s)"
 msgstr "%1$s (siden %2$s; %3$s)"
 
-#: wp-includes/rest-api.php:744
+#: wp-includes/rest-api.php:749
 msgid "Cookie nonce is invalid"
 msgstr "Cookie-nonce er ugyldig"
 
@@ -3488,23 +3532,23 @@ msgstr "Ugyldigt navn på kortkode: Navnet er tomt."
 #. characters
 #: wp-includes/shortcodes.php:100
 msgid "Invalid shortcode name: %1$s. Do not use spaces or reserved characters: %2$s"
-msgstr "Ugyldigt navn til kortkode: %1$s. Brug ikke mellemrum eller reserverede tegn: %2$s"
+msgstr "Ugyldigt navn til shortcode: %1$s. Brug ikke mellemrum eller reserverede tegn: %2$s"
 
 #. translators: 1: function name, 2: WordPress version number, 3: new function
 #. name
-#: wp-includes/rest-api.php:497
+#: wp-includes/rest-api.php:502
 msgid "%1$s (since %2$s; use %3$s instead)"
 msgstr "%1$s (siden %2$s; brug %3$s i stedet)"
 
-#: wp-includes/rest-api/class-wp-rest-server.php:1062
+#: wp-includes/rest-api/class-wp-rest-server.php:1076
 msgid "The specified namespace could not be found."
 msgstr "Det specificerede navneområde kunne ikke findes."
 
-#: wp-includes/rest-api/class-wp-rest-server.php:972
+#: wp-includes/rest-api/class-wp-rest-server.php:986
 msgid "No route was found matching the URL and request method"
 msgstr "Ingen rute blev fundet der matchede URL og anmodningen"
 
-#: wp-includes/rest-api/class-wp-rest-server.php:851
+#: wp-includes/rest-api/class-wp-rest-server.php:865
 msgid "The handler for the route is invalid"
 msgstr "Firmaet for ruten er ugyldig"
 
@@ -3766,10 +3810,10 @@ msgstr "Du har desværre brugt den allokerede plads."
 msgid "Sorry, you are not allowed to moderate or edit this comment."
 msgstr "Du har desværre ikke tilladelse til at moderere eller redigere denne kommentar."
 
-#: wp-includes/class-wp-customize-widgets.php:782
+#: wp-includes/class-wp-customize-widgets.php:796
 #: wp-includes/customize/class-wp-widget-area-customize-control.php:63
 msgid "Reorder widgets"
-msgstr "Omarrangér widgets"
+msgstr "Omorganiser widgets"
 
 #: wp-includes/class-wp-customize-section.php:362
 msgid "Press return or enter to open this section"
@@ -3779,6 +3823,12 @@ msgstr "Tryk Retur eller Enter for at åbne denne sektion"
 #: wp-includes/class-wp-customize-manager.php:3372
 msgid "Live Preview: %s"
 msgstr "Live forhåndsvisning: %s"
+
+#. translators: 1: post type, 2: capability name
+#: wp-includes/capabilities.php:83 wp-includes/capabilities.php:144
+#: wp-includes/capabilities.php:203 wp-includes/capabilities.php:240
+msgid "The post type %1$s is not registered, so it may not be reliable to check the capability \"%2$s\" against a post of that type."
+msgstr "Indholdstypen %1$s er ikke registreret, så det er ikke pålideligt at tjekke kapabiliteten \"%2$s\" for indhold af den type."
 
 #: wp-includes/class-wp-customize-manager.php:532
 msgid "Sorry, you are not allowed to edit theme options on this site."
@@ -3791,22 +3841,16 @@ msgstr "Du har desværre ikke tilladelse til at redigere temaindstillinger på d
 msgid "%1$s is deprecated. Use %2$s instead."
 msgstr "%1$s er forældet. Brug %2$s i stedet for."
 
-#. translators: 1: post type, 2: capability name
-#: wp-includes/capabilities.php:83 wp-includes/capabilities.php:144
-#: wp-includes/capabilities.php:203 wp-includes/capabilities.php:240
-msgid "The post type %1$s is not registered, so it may not be reliable to check the capability \"%2$s\" against a post of that type."
-msgstr "Indholdstypen %1$s er ikke registreret, så det er ikke pålideligt at tjekke egenskaben \"%2$s\" for indhold af den type."
-
 #: wp-includes/class-wp-customize-manager.php:542
 msgid "The requested theme does not exist."
 msgstr "Det ønskede tema eksisterer ikke."
 
 #: wp-includes/class-wp-customize-nav-menus.php:972
-#: wp-includes/class-wp-customize-widgets.php:831
+#: wp-includes/class-wp-customize-widgets.php:845
 msgid "Clear Results"
 msgstr "Nulstil resultater"
 
-#: wp-includes/class-wp-editor.php:1265
+#: wp-includes/class-wp-editor.php:1282
 msgid "The following formatting shortcuts are replaced when pressing Enter. Press Escape or the Undo button to undo."
 msgstr "De følgende formateringsgenveje bliver udskiftet, når du trykker Enter. Tryk Escape eller Fortryd-knappen for at fortryde."
 
@@ -3942,7 +3986,7 @@ msgstr "Webstedsidentitet"
 msgid "Add to menu: %1$s (%2$s)"
 msgstr "Tilføj til menu: %1$s (%2$s)"
 
-#: wp-includes/class-wp-editor.php:1263
+#: wp-includes/class-wp-editor.php:1280
 msgid "When starting a new paragraph with one of these formatting shortcuts followed by a space, the formatting will be applied automatically. Press Backspace or Escape to undo."
 msgstr "Når du starter et nyt afsnit med en af disse formateringsgenveje efterfulgt af et mellemrum, så vil formateringen tilføjet automatisk. Tryk Backspace eller Escape for at fortryde."
 
@@ -3991,25 +4035,7 @@ msgstr "Aktivt tema"
 msgid "Previewing theme"
 msgstr "Forhåndsviser tema"
 
-#: wp-includes/class-wp-customize-nav-menus.php:439
-msgid "Close reorder mode"
-msgstr "Luk sorteringstilstand"
-
-#: wp-includes/customize/class-wp-customize-nav-menu-control.php:58
-msgid "When in reorder mode, additional controls to reorder menu items will be available in the items list above."
-msgstr "Når du er i sorteringstilstand, vil yderligere værktøjer til at sortere menuelementerne blive gjort tilgængelige i listen foroven."
-
-#: wp-includes/class-wp-customize-nav-menus.php:436
-#: wp-includes/class-wp-customize-widgets.php:780
-msgid "Reorder mode enabled"
-msgstr "Sorteringstilstand aktiveret"
-
-#: wp-includes/class-wp-customize-nav-menus.php:437
-#: wp-includes/class-wp-customize-widgets.php:781
-msgid "Reorder mode closed"
-msgstr "Sorteringstilstand lukket"
-
-#: wp-includes/class-wp-editor.php:999
+#: wp-includes/class-wp-editor.php:1016
 msgctxt "HTML tag"
 msgid "Preformatted"
 msgstr "Præformateret"
@@ -4023,11 +4049,6 @@ msgstr "Menuer kan blive vist ved placeringer defineret af dit tema."
 msgid "Menus can be displayed in locations defined by your theme or in <a href=\"%s\">widget areas</a> by adding a &#8220;Custom Menu&#8221; widget."
 msgstr "Menuer kan vises ved placeringer defineret af dit tema eller i <a href=\"%s\">widget-områder</a> ved at tilføje en &#8220;Brugerdefineret menu&#8221; widget."
 
-#: wp-includes/class-wp-customize-nav-menus.php:438
-#: wp-includes/customize/class-wp-customize-nav-menu-control.php:54
-msgid "Reorder menu items"
-msgstr "Sorter menuelementerne"
-
 #. translators: %s: Name of the directory (build)
 #: wp-includes/class-wp-locale.php:247
 msgid "The %s directory of the develop repository must be used for RTL."
@@ -4037,6 +4058,29 @@ msgstr "Mappen %s af develop-repository'en skal bruges til RTL."
 #: wp-includes/functions.php:3897
 msgid "The called constructor method for %1$s is <strong>deprecated</strong> since version %2$s! Use %3$s instead."
 msgstr "Den kaldte constructor-metode for %1$s er <strong>forældet</strong> siden version %2$s! Benyt %3$s i stedet."
+
+#: wp-includes/class-wp-customize-nav-menus.php:437
+#: wp-includes/class-wp-customize-widgets.php:795
+msgid "Reorder mode closed"
+msgstr "Omorganiseringstilstand lukket"
+
+#: wp-includes/class-wp-customize-nav-menus.php:436
+#: wp-includes/class-wp-customize-widgets.php:794
+msgid "Reorder mode enabled"
+msgstr "Omorganiseringstilstand aktiveret"
+
+#: wp-includes/class-wp-customize-nav-menus.php:439
+msgid "Close reorder mode"
+msgstr "Luk omorganiseringstilstand"
+
+#: wp-includes/customize/class-wp-customize-nav-menu-control.php:58
+msgid "When in reorder mode, additional controls to reorder menu items will be available in the items list above."
+msgstr "Når du er i omorganiseringsstilstand, vil yderligere værktøjer til at sortere menuelementerne blive gjort tilgængelige i listen foroven."
+
+#: wp-includes/class-wp-customize-nav-menus.php:438
+#: wp-includes/customize/class-wp-customize-nav-menu-control.php:54
+msgid "Reorder menu items"
+msgstr "Omorganiser menuelementerne"
 
 #. translators: User email change notification email subject. 1: Site name
 #: wp-includes/user.php:1893
@@ -4209,35 +4253,37 @@ msgctxt "Comma-separated list of words to texturize in your language"
 msgid "'tain't,'twere,'twas,'tis,'twill,'til,'bout,'nuff,'round,'cause,'em"
 msgstr "'s"
 
-#: wp-includes/class-wp-editor.php:1255
+#: wp-includes/class-wp-editor.php:1272
 msgid "Cmd + letter:"
 msgstr "Cmd + bogstav:"
 
-#: wp-includes/class-wp-editor.php:1253
+#: wp-includes/class-wp-editor.php:1270
 msgid "Ctrl + Alt + letter:"
 msgstr "Ctrl + Alt + bogstav:"
 
-#: wp-includes/class-wp-editor.php:1254
+#: wp-includes/class-wp-editor.php:1271
 msgid "Shift + Alt + letter:"
 msgstr "Skift + Alt + bogstav:"
 
-#: wp-includes/class-wp-editor.php:1256
+#: wp-includes/class-wp-editor.php:1273
 msgid "Ctrl + letter:"
 msgstr "Ctrl + bogstav:"
 
-#: wp-includes/class-wp-editor.php:1246
+#: wp-includes/class-wp-editor.php:1263
 msgid "Default shortcuts,"
 msgstr "Standardgenveje,"
 
-#: wp-includes/class-wp-editor.php:1247
+#: wp-includes/class-wp-editor.php:1264
 msgid "Additional shortcuts,"
 msgstr "Yderligere genveje,"
 
-#: wp-includes/widgets/class-wp-widget-text.php:198
+#: wp-includes/default-widgets.php:195
+#: wp-includes/widgets/class-wp-widget-text.php:370
+#: wp-includes/widgets/class-wp-widget-text.php:431
 msgid "Content:"
 msgstr "Indhold:"
 
-#: wp-includes/class-wp-editor.php:1249
+#: wp-includes/class-wp-editor.php:1266
 msgid "Inline toolbar (when an image, link or preview is selected)"
 msgstr "Indlejret værktøjslinje (når et billede, link eller eksempel er valgt)"
 
@@ -4268,7 +4314,7 @@ msgid "Custom Links"
 msgstr "Brugerdefinerede links"
 
 #: wp-includes/class-wp-customize-nav-menus.php:968
-#: wp-includes/class-wp-customize-widgets.php:832
+#: wp-includes/class-wp-customize-widgets.php:846
 msgid "The search results will be updated as you type."
 msgstr "Søgeresultaterne vil blive opdateret, mens du skriver."
 
@@ -4301,7 +4347,7 @@ msgstr "Flyt et niveau ned"
 #: wp-includes/class-wp-customize-nav-menus.php:428
 #: wp-includes/class-wp-customize-nav-menus.php:958
 #: wp-includes/class-wp-customize-section.php:246
-#: wp-includes/class-wp-customize-widgets.php:822
+#: wp-includes/class-wp-customize-widgets.php:836
 msgid "Customizing &#9656; %s"
 msgstr "Tilpasser &#9656; %s"
 
@@ -4439,7 +4485,7 @@ msgstr "CSS klasser"
 msgid "Title Attribute"
 msgstr "Titel-attribut"
 
-#: wp-includes/class-wp-editor.php:1684
+#: wp-includes/class-wp-editor.php:1701
 #: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:105
 #: wp-includes/media-template.php:1008
 #: wp-includes/widgets/class-wp-widget-media-image.php:138
@@ -4557,7 +4603,7 @@ msgstr "Foreslået indlejring #%d"
 msgid "Taxonomy names must be between 1 and 32 characters in length."
 msgstr "Navne til taksonomier skal være på mellem 1 og 32 tegn."
 
-#: wp-includes/taxonomy.php:3486
+#: wp-includes/taxonomy.php:3489
 msgid "Could not split shared term."
 msgstr "Kunne ikke opdele den delte term."
 
@@ -4565,7 +4611,7 @@ msgstr "Kunne ikke opdele den delte term."
 msgid "Site Preview"
 msgstr "Forhåndsvis websted"
 
-#: wp-includes/theme.php:2971
+#: wp-includes/theme.php:2975
 msgid "Customizer"
 msgstr "Tilpasser"
 
@@ -4607,10 +4653,6 @@ msgstr "Forfatter: %1$s (IP: %2$s, %3$s)"
 #: wp-includes/pluggable.php:1628 wp-includes/pluggable.php:1638
 msgid "Website: %1$s (IP: %2$s, %3$s)"
 msgstr "Websted: %1$s (IP: %2$s, %3$s)"
-
-#: wp-includes/media.php:3498
-msgid "Drag and drop to reorder media files."
-msgstr "Træk og slip for at sortere mediefiler."
 
 #. translators: 1: site url, 2: table name, 3: database name
 #: wp-includes/ms-load.php:477
@@ -4703,6 +4745,10 @@ msgstr "<strong>Databasetabeller mangler.</strong> Dette betyder, at MySQL ikke 
 msgid "Custom Link"
 msgstr "Tilpasset link"
 
+#: wp-includes/media.php:3502
+msgid "Drag and drop to reorder media files."
+msgstr "Træk og slip for at omorganisere mediefiler."
+
 #: wp-includes/widgets/class-wp-widget-archives.php:85
 msgid "Select Day"
 msgstr "Vælg dag"
@@ -4712,7 +4758,7 @@ msgid "Select Year"
 msgstr "Vælg år"
 
 #: wp-includes/class-wp-customize-nav-menus.php:1067
-#: wp-includes/class-wp-editor.php:1679 wp-includes/media-template.php:820
+#: wp-includes/class-wp-editor.php:1696 wp-includes/media-template.php:820
 msgid "Link Text"
 msgstr "Link-tekst"
 
@@ -4772,44 +4818,44 @@ msgstr "Tema-detaljer"
 msgid "No categories found."
 msgstr "Ingen kategorier fundet."
 
-#: wp-includes/class-wp-editor.php:1234 wp-includes/script-loader.php:99
+#: wp-includes/class-wp-editor.php:1251 wp-includes/script-loader.php:99
 msgid "Distraction-free writing mode"
 msgstr "Distraktionsfri skrivetilstand"
 
 #. translators: 1: Theme support 2: hook name
-#: wp-includes/theme.php:2419
+#: wp-includes/theme.php:2423
 msgid "Theme support for %1$s should be registered before the %2$s hook."
 msgstr "Tema support til %1$s bør være registreret før %2$s hook."
 
-#: wp-includes/class-wp-customize-widgets.php:776
+#: wp-includes/class-wp-customize-widgets.php:790
 msgid "Widget moved down"
 msgstr "Widget flyttet ned"
 
-#: wp-includes/class-wp-customize-widgets.php:775
+#: wp-includes/class-wp-customize-widgets.php:789
 msgid "Widget moved up"
 msgstr "Widget flyttet op"
 
-#: wp-includes/class-wp-editor.php:1261
+#: wp-includes/class-wp-editor.php:1278
 msgid "To move focus to other buttons use Tab or the arrow keys. To return focus to the editor press Escape or use one of the buttons."
 msgstr "For at flytte fokus til en anden knap, så brug tabulatortasten eller piletasterne. For at flytte fokus tilbage til editoren, så tryk på Escape eller brug en af knapperne."
 
-#: wp-includes/class-wp-editor.php:1252
+#: wp-includes/class-wp-editor.php:1269
 msgid "Elements path"
 msgstr "Sti til elementer"
 
-#: wp-includes/class-wp-editor.php:1251
+#: wp-includes/class-wp-editor.php:1268
 msgid "Editor toolbar"
 msgstr "Editor værktøjslinje"
 
-#: wp-includes/class-wp-editor.php:1250
+#: wp-includes/class-wp-editor.php:1267
 msgid "Editor menu (when enabled)"
 msgstr "Editor menu (når den er aktiveret)"
 
-#: wp-includes/class-wp-editor.php:1248
+#: wp-includes/class-wp-editor.php:1265
 msgid "Focus shortcuts:"
 msgstr "Fokusgenveje:"
 
-#: wp-includes/class-wp-editor.php:1213
+#: wp-includes/class-wp-editor.php:1230
 msgid "Rich Text Area. Press Alt-Shift-H for help."
 msgstr "Formateret tekst-område. Tryk Alt-Skift-H for hjælp."
 
@@ -4818,11 +4864,11 @@ msgstr "Formateret tekst-område. Tryk Alt-Skift-H for hjælp."
 msgid "The following values do not describe a valid date: month %1$s, day %2$s."
 msgstr "Disse værdier beskriver ikke en tilladt dato: måned %1$s, dag %2$s."
 
-#: wp-includes/theme.php:2263
+#: wp-includes/theme.php:2267
 msgid "You need to pass an array of types."
 msgstr "Du skal sende en række af typer."
 
-#: wp-includes/taxonomy.php:2056
+#: wp-includes/taxonomy.php:2059
 msgid "A term with the name provided already exists in this taxonomy."
 msgstr "En term med navnet og korttitlen findes allerede i denne taksonomi."
 
@@ -4839,7 +4885,7 @@ msgstr "%s skal opsætte en databaseforbindelse for at bruge undvigning."
 msgid "URL: %s"
 msgstr "URL: %s"
 
-#: wp-includes/media.php:3516
+#: wp-includes/media.php:3520
 msgctxt "noun"
 msgid "Trash"
 msgstr "Papirkurv"
@@ -4979,7 +5025,7 @@ msgstr "Kategori: %s"
 msgid "Reply to %s"
 msgstr "Besvar %s"
 
-#: wp-includes/class-wp-editor.php:1144
+#: wp-includes/class-wp-editor.php:1161
 msgid "Add to Dictionary"
 msgstr "Tilføj til ordbog"
 
@@ -4988,17 +5034,17 @@ msgctxt "post format archive title"
 msgid "Statuses"
 msgstr "Statusser"
 
-#: wp-includes/class-wp-editor.php:1186
+#: wp-includes/class-wp-editor.php:1203
 msgctxt "vertical table cell alignment"
 msgid "V Align"
 msgstr "Lodret justering"
 
-#: wp-includes/class-wp-editor.php:1181
+#: wp-includes/class-wp-editor.php:1198
 msgctxt "horizontal table cell alignment"
 msgid "H Align"
 msgstr "Vandret justering"
 
-#: wp-includes/class-wp-editor.php:1152
+#: wp-includes/class-wp-editor.php:1169
 msgid "Border color"
 msgstr "Kantfarve"
 
@@ -5013,7 +5059,7 @@ msgstr "Ugyldig værdi %1$s for %2$s. Værdien skal være mellem %3$s og %4$s."
 msgid "The following values do not describe a valid date: year %1$s, month %2$s, day %3$s."
 msgstr "De følgende værdier beskriver ikke en gyldig dato: år %1$s, måned %2$s, dag %3$s."
 
-#: wp-includes/class-wp-editor.php:1235
+#: wp-includes/class-wp-editor.php:1252
 msgid "No alignment"
 msgstr "Ingen justering"
 
@@ -5027,20 +5073,20 @@ msgctxt "post format archive title"
 msgid "Asides"
 msgstr "Sidebemærkninger"
 
-#: wp-includes/class-wp-editor.php:1123
+#: wp-includes/class-wp-editor.php:1140
 msgid "No color"
 msgstr "Ingen farve"
 
-#: wp-includes/class-wp-editor.php:1122
+#: wp-includes/class-wp-editor.php:1139
 msgctxt "label for custom color"
 msgid "Custom..."
 msgstr "Brugerdefineret..."
 
-#: wp-includes/class-wp-editor.php:1120
+#: wp-includes/class-wp-editor.php:1137
 msgid "Color"
 msgstr "Farve"
 
-#: wp-includes/class-wp-editor.php:1121
+#: wp-includes/class-wp-editor.php:1138
 msgid "Custom color"
 msgstr "Brugerdefineret farve"
 
@@ -5076,7 +5122,7 @@ msgctxt "post type general name"
 msgid "Media"
 msgstr "Medie"
 
-#: wp-includes/class-wp-editor.php:1227
+#: wp-includes/class-wp-editor.php:1244
 msgctxt "TinyMCE menu"
 msgid "Format"
 msgstr "Format"
@@ -5096,7 +5142,7 @@ msgctxt "add new from admin bar"
 msgid "Link"
 msgstr "Link"
 
-#: wp-includes/class-wp-editor.php:1037
+#: wp-includes/class-wp-editor.php:1054
 msgctxt "list style"
 msgid "Default"
 msgstr "Standard"
@@ -5105,11 +5151,11 @@ msgstr "Standard"
 msgid "<strong>You have successfully updated WordPress!</strong> Please log back in to see what&#8217;s new."
 msgstr "<strong>Du har nu opdateret WordPress!</strong> Log venligst ind igen for at se hvad der er nyt."
 
-#: wp-includes/media.php:3523
+#: wp-includes/media.php:3527
 msgid "Trash Selected"
 msgstr "Slet valgte"
 
-#: wp-includes/media.php:3524
+#: wp-includes/media.php:3528
 msgid "Untrash Selected"
 msgstr "Fortryd slet af valgte"
 
@@ -5117,7 +5163,7 @@ msgstr "Fortryd slet af valgte"
 msgid "Untrash"
 msgstr "Fortryd sletning"
 
-#: wp-includes/media.php:3520
+#: wp-includes/media.php:3524
 msgid ""
 "You are about to trash these items.\n"
 "  'Cancel' to stop, 'OK' to delete."
@@ -5129,21 +5175,21 @@ msgstr ""
 msgid "Press return or enter to open this panel"
 msgstr "Tryk på Return eller Enter for at åbne dette panel"
 
-#: wp-includes/media.php:3525
+#: wp-includes/media.php:3529
 msgid "Delete Selected"
 msgstr "Slet valgte"
 
-#: wp-includes/media.php:3522
+#: wp-includes/media.php:3526
 msgid "Cancel Selection"
 msgstr "Annuller valg"
 
-#: wp-includes/media.php:3521
+#: wp-includes/media.php:3525
 msgid "Bulk Select"
 msgstr "Vælg flere"
 
 #. translators: %s: taxonomy label, %l: list of terms formatted as per
 #. $term_template
-#: wp-includes/taxonomy.php:3971
+#: wp-includes/taxonomy.php:3974
 msgid "%s: %l."
 msgstr "%s: %l."
 
@@ -5193,11 +5239,11 @@ msgstr "Dette websted er ikke længere tilgængeligt."
 msgid "Bitrate"
 msgstr "Bitrate"
 
-#: wp-includes/class-wp-editor.php:1233
+#: wp-includes/class-wp-editor.php:1250
 msgid "Read more..."
 msgstr "Læs mere..."
 
-#: wp-includes/class-wp-editor.php:1705
+#: wp-includes/class-wp-editor.php:1722
 msgid "Search or use up and down arrow keys to select an item."
 msgstr "Søg eller benyt piletasterne op og ned til at vælge et element."
 
@@ -5237,19 +5283,19 @@ msgstr "Bitrate:"
 msgid "Edit more details"
 msgstr "Rediger flere detaljer"
 
-#: wp-includes/media.php:3512
+#: wp-includes/media.php:3516
 msgid "All dates"
 msgstr "Alle datoer"
 
-#: wp-includes/media.php:3515
+#: wp-includes/media.php:3519
 msgid "Unattached"
 msgstr "Uhæftede"
 
-#: wp-includes/media.php:3530
+#: wp-includes/media.php:3534
 msgid "Search Media"
 msgstr "Søg medier"
 
-#: wp-includes/class-wp-editor.php:1218
+#: wp-includes/class-wp-editor.php:1235
 msgid "Your browser does not support direct access to the clipboard. Please use keyboard shortcuts or your browser&#8217;s edit menu instead."
 msgstr "Din browser understøtter ikke direkte adgang til udklipsholderen. Benyt venligst tastaturgenveje eller din browsers redigeringsmenu i stedet."
 
@@ -5261,11 +5307,11 @@ msgstr "Bitrate-tilstand"
 msgid "No plugins found. Try a different search."
 msgstr "Ingen plugins fundet. Prøv med en anden søgning."
 
-#: wp-includes/media.php:3528
+#: wp-includes/media.php:3532
 msgid "Filter by date"
 msgstr "Filtrer efter dato"
 
-#: wp-includes/media.php:3529
+#: wp-includes/media.php:3533
 msgid "Filter by type"
 msgstr "Filtrer efter type"
 
@@ -5279,7 +5325,7 @@ msgstr "<strong>FEJL</strong>: Kommentaren kunne ikke gemmes. Prøv venligst ige
 msgid "You are customizing %s"
 msgstr "Du tilpasser %s"
 
-#: wp-includes/class-wp-customize-widgets.php:422
+#: wp-includes/class-wp-customize-widgets.php:436
 msgid "Widgets are independent sections of content that can be placed into widgetized areas provided by your theme (commonly called sidebars)."
 msgstr "Widgets er uafhængige sektioner af indhold, der kan placeres i widget-områder fastsat af dit tema (normalt kaldet sidebars)."
 
@@ -5298,16 +5344,16 @@ msgstr "Selvom du kan beskære billeder i en hvilken som helst ønsket størrels
 msgid "(WordPress could not establish a secure connection to WordPress.org. Please contact your server administrator.)"
 msgstr "(WordPress kunne ikke etablere en sikker forbindelse til WordPress.org. Kontakt venligst den serveransvarlige.)"
 
-#: wp-includes/class-wp-customize-widgets.php:1172
+#: wp-includes/class-wp-customize-widgets.php:1186
 msgid "Shift-click to edit this widget."
 msgstr "Skift-klik for at redigere denne widget."
 
-#: wp-includes/class-wp-editor.php:1000
+#: wp-includes/class-wp-editor.php:1017
 msgctxt "HTML tag"
 msgid "Address"
 msgstr "Adresse"
 
-#: wp-includes/class-wp-editor.php:1211
+#: wp-includes/class-wp-editor.php:1228
 msgid "If you&#8217;re looking to paste rich content from Microsoft Word, try turning this option off. The editor will clean up text pasted from Word automatically."
 msgstr "Hvis du vil indsætte indhold fra Microsoft Word, kan du slå denne mulighed fra. Editoren vil automatisk formatere kopieret tekst fra Word."
 
@@ -5316,7 +5362,7 @@ msgstr "Hvis du vil indsætte indhold fra Microsoft Word, kan du slå denne muli
 msgid "While you can crop images to your liking after clicking <strong>Add new image</strong>, your theme recommends a header size of %s pixels."
 msgstr "Selvom du kan beskære billeder som du vil, efter du har klikket<strong>Tilføj nyt billede</strong>, så anbefaler dit tema, at størrelsen af din plakat er %spx."
 
-#: wp-includes/class-wp-editor.php:1245
+#: wp-includes/class-wp-editor.php:1262
 msgid "Keyboard Shortcuts"
 msgstr "Tastaturgenveje"
 
@@ -5347,20 +5393,20 @@ msgstr "Visningsindstillinger"
 msgid "Edit Original"
 msgstr "Rediger original"
 
-#: wp-includes/class-wp-editor.php:1185
+#: wp-includes/class-wp-editor.php:1202
 msgctxt "table cell alignment attribute"
 msgid "None"
 msgstr "Ingen"
 
-#: wp-includes/class-wp-editor.php:1012
+#: wp-includes/class-wp-editor.php:1029
 msgid "Font Family"
 msgstr "Skrifttype"
 
-#: wp-includes/class-wp-editor.php:1013
+#: wp-includes/class-wp-editor.php:1030
 msgid "Font Sizes"
 msgstr "Skriftstørrelser"
 
-#: wp-includes/class-wp-editor.php:1175
+#: wp-includes/class-wp-editor.php:1192
 msgid "Split table cell"
 msgstr "Opdel tabelcelle"
 
@@ -5391,7 +5437,7 @@ msgctxt "video or audio"
 msgid "Length"
 msgstr "Længde"
 
-#: wp-includes/media.php:3569
+#: wp-includes/media.php:3573
 msgid "There has been an error cropping your image."
 msgstr "Der opstod en fejl under beskæringen af dit billede."
 
@@ -5409,31 +5455,31 @@ msgstr "Billede titel attribut"
 msgid "Image CSS Class"
 msgstr "Billede CSS klasse"
 
-#: wp-includes/media.php:3593
+#: wp-includes/media.php:3597
 msgid "Add to Audio Playlist"
 msgstr "Tilføj til lydafspilningsliste"
 
-#: wp-includes/media.php:3592
+#: wp-includes/media.php:3596
 msgid "Add to audio playlist"
 msgstr "Tilføj til lydafspilningsliste"
 
-#: wp-includes/media.php:3591
+#: wp-includes/media.php:3595
 msgid "Update audio playlist"
 msgstr "Opdater lydafspilningsliste"
 
-#: wp-includes/media.php:3590
+#: wp-includes/media.php:3594
 msgid "Insert audio playlist"
 msgstr "Indsæt lydafspilningsliste"
 
-#: wp-includes/media.php:3588
+#: wp-includes/media.php:3592
 msgid "Edit Audio Playlist"
 msgstr "Rediger lydafspilningsliste"
 
-#: wp-includes/media.php:3589
+#: wp-includes/media.php:3593
 msgid "&#8592; Cancel Audio Playlist"
 msgstr "&#8592; Annuller lydafspilningsliste"
 
-#: wp-includes/class-wp-customize-widgets.php:709
+#: wp-includes/class-wp-customize-widgets.php:723
 msgctxt "Move widget"
 msgid "Move"
 msgstr "Flyt"
@@ -5442,37 +5488,37 @@ msgstr "Flyt"
 msgid "Set image"
 msgstr "Indstil billede"
 
-#: wp-includes/class-wp-customize-widgets.php:771
+#: wp-includes/class-wp-customize-widgets.php:785
 msgid "Save and preview changes before publishing them."
 msgstr "Gem og forhåndsvis ændringer før udgivelse."
 
-#: wp-includes/class-wp-customize-widgets.php:828
+#: wp-includes/class-wp-customize-widgets.php:842
 msgid "Search Widgets"
 msgstr "Søg widgets"
 
-#: wp-includes/class-wp-editor.php:985
+#: wp-includes/class-wp-editor.php:1002
 msgctxt "TinyMCE"
 msgid "Headings"
 msgstr "Overskrifter"
 
-#: wp-includes/class-wp-customize-widgets.php:773
-msgid "Trash widget by moving it to the inactive widgets sidebar."
-msgstr "Fjern widget ved at flytte den ned til Inaktive widgets."
-
-#: wp-includes/class-wp-customize-widgets.php:829
+#: wp-includes/class-wp-customize-widgets.php:843
 msgid "Search widgets&hellip;"
 msgstr "Søg widgets&hellip;"
+
+#: wp-includes/class-wp-customize-widgets.php:787
+msgid "Trash widget by moving it to the inactive widgets sidebar."
+msgstr "Fjern widget ved at flytte den til Inaktive Widgets."
 
 #: wp-includes/media-template.php:1084 wp-includes/media-template.php:1173
 msgctxt "auto preload"
 msgid "Auto"
 msgstr "Automatisk"
 
-#: wp-includes/class-wp-customize-widgets.php:700
+#: wp-includes/class-wp-customize-widgets.php:714
 msgid "Move to another area&hellip;"
 msgstr "Flyt til et andet område&hellip;"
 
-#: wp-includes/media.php:3566
+#: wp-includes/media.php:3570
 msgid "Cropping&hellip;"
 msgstr "Beskærer&hellip;"
 
@@ -5481,233 +5527,233 @@ msgstr "Beskærer&hellip;"
 msgid "Tracks (subtitles, captions, descriptions, chapters, or metadata)"
 msgstr "Numre (undertekster, billedtekster, beskrivelser kapitler, eller metadata)"
 
-#: wp-includes/class-wp-editor.php:1034 wp-includes/script-loader.php:112
+#: wp-includes/class-wp-editor.php:1051 wp-includes/script-loader.php:112
 msgid "Bulleted list"
 msgstr "Punktopstilling"
 
 #. translators: word count
-#: wp-includes/class-wp-editor.php:1208
+#: wp-includes/class-wp-editor.php:1225
 msgid "Words: %s"
 msgstr "Ord: %s"
 
-#: wp-includes/class-wp-editor.php:1142
+#: wp-includes/class-wp-editor.php:1159
 msgctxt "spellcheck"
 msgid "Ignore all"
 msgstr "Ignorer alt"
 
-#: wp-includes/class-wp-editor.php:1222
+#: wp-includes/class-wp-editor.php:1239
 msgctxt "TinyMCE menu"
 msgid "File"
 msgstr "Fil"
 
-#: wp-includes/class-wp-editor.php:1038
+#: wp-includes/class-wp-editor.php:1055
 msgctxt "list style"
 msgid "Circle"
 msgstr "Punkt"
 
-#: wp-includes/class-wp-editor.php:1158
+#: wp-includes/class-wp-editor.php:1175
 msgctxt "table cell"
 msgid "Cell"
 msgstr "Celle"
 
-#: wp-includes/class-wp-editor.php:1161
+#: wp-includes/class-wp-editor.php:1178
 msgctxt "table body"
 msgid "Body"
 msgstr "Body"
 
-#: wp-includes/class-wp-editor.php:1199
+#: wp-includes/class-wp-editor.php:1216
 msgctxt "TinyMCE"
 msgid "Insert template"
 msgstr "Indsæt skabelon"
 
-#: wp-includes/class-wp-editor.php:1200
+#: wp-includes/class-wp-editor.php:1217
 msgctxt "TinyMCE"
 msgid "Templates"
 msgstr "Skabeloner"
 
-#: wp-includes/class-wp-editor.php:1141
+#: wp-includes/class-wp-editor.php:1158
 msgctxt "spellcheck"
 msgid "Finish"
 msgstr "Afslut"
 
-#: wp-includes/class-wp-editor.php:1047
+#: wp-includes/class-wp-editor.php:1064
 msgctxt "Name of link anchor (TinyMCE)"
 msgid "Name"
 msgstr "Navn"
 
-#: wp-includes/class-wp-editor.php:1143
+#: wp-includes/class-wp-editor.php:1160
 msgctxt "spellcheck"
 msgid "Ignore"
 msgstr "Ignorer"
 
-#: wp-includes/class-wp-editor.php:1223
+#: wp-includes/class-wp-editor.php:1240
 msgctxt "TinyMCE menu"
 msgid "Edit"
 msgstr "Rediger"
 
-#: wp-includes/class-wp-editor.php:1225
+#: wp-includes/class-wp-editor.php:1242
 msgctxt "TinyMCE menu"
 msgid "View"
 msgstr "Vis"
 
-#: wp-includes/class-wp-editor.php:1226
+#: wp-includes/class-wp-editor.php:1243
 msgctxt "TinyMCE menu"
 msgid "Table"
 msgstr "Tabel"
 
-#: wp-includes/class-wp-editor.php:1048
+#: wp-includes/class-wp-editor.php:1065
 msgctxt "Link anchor (TinyMCE)"
 msgid "Anchor"
 msgstr "Anker"
 
-#: wp-includes/class-wp-editor.php:1049
+#: wp-includes/class-wp-editor.php:1066
 msgctxt "Link anchors (TinyMCE)"
 msgid "Anchors"
 msgstr "Ankre"
 
-#: wp-includes/class-wp-editor.php:1157
+#: wp-includes/class-wp-editor.php:1174
 msgctxt "table columns"
 msgid "Cols"
 msgstr "Kolonner"
 
-#: wp-includes/class-wp-editor.php:1039
+#: wp-includes/class-wp-editor.php:1056
 msgctxt "list style"
 msgid "Disc"
 msgstr "Cirkel"
 
-#: wp-includes/class-wp-editor.php:1036
+#: wp-includes/class-wp-editor.php:1053
 msgctxt "list style"
 msgid "Square"
 msgstr "Firkant"
 
-#: wp-includes/class-wp-editor.php:1160
+#: wp-includes/class-wp-editor.php:1177
 msgctxt "table header"
 msgid "Header"
 msgstr "Header"
 
-#: wp-includes/class-wp-editor.php:1197
+#: wp-includes/class-wp-editor.php:1214
 msgctxt "table cell scope attribute"
 msgid "Scope"
 msgstr "Omfang"
 
-#: wp-includes/class-wp-editor.php:1204
+#: wp-includes/class-wp-editor.php:1221
 msgctxt "editor button"
 msgid "Show blocks"
 msgstr "Vis blokke"
 
 #. translators: block tags
-#: wp-includes/class-wp-editor.php:994
+#: wp-includes/class-wp-editor.php:1011
 msgctxt "TinyMCE"
 msgid "Blocks"
 msgstr "Blokke"
 
-#: wp-includes/class-wp-editor.php:983
+#: wp-includes/class-wp-editor.php:1000
 msgctxt "TinyMCE"
 msgid "Formats"
 msgstr "Formater"
 
-#: wp-includes/class-wp-editor.php:1156
+#: wp-includes/class-wp-editor.php:1173
 msgctxt "table column"
 msgid "Column"
 msgstr "Kolonne"
 
-#: wp-includes/class-wp-editor.php:1130
+#: wp-includes/class-wp-editor.php:1147
 msgctxt "find/replace"
 msgid "Replace"
 msgstr "Erstat"
 
-#: wp-includes/class-wp-editor.php:1131
+#: wp-includes/class-wp-editor.php:1148
 msgctxt "find/replace"
 msgid "Next"
 msgstr "Næste"
 
 #. translators: previous
-#: wp-includes/class-wp-editor.php:1133
+#: wp-includes/class-wp-editor.php:1150
 msgctxt "find/replace"
 msgid "Prev"
 msgstr "Forrige"
 
-#: wp-includes/class-wp-editor.php:1134
+#: wp-includes/class-wp-editor.php:1151
 msgctxt "find/replace"
 msgid "Whole words"
 msgstr "Hele ord"
 
-#: wp-includes/class-wp-editor.php:1136
+#: wp-includes/class-wp-editor.php:1153
 msgctxt "find/replace"
 msgid "Replace with"
 msgstr "Erstat med"
 
-#: wp-includes/class-wp-editor.php:1137
+#: wp-includes/class-wp-editor.php:1154
 msgctxt "find/replace"
 msgid "Find"
 msgstr "Find"
 
-#: wp-includes/class-wp-editor.php:1138
+#: wp-includes/class-wp-editor.php:1155
 msgctxt "find/replace"
 msgid "Replace all"
 msgstr "Erstat alle"
 
-#: wp-includes/class-wp-editor.php:1092
+#: wp-includes/class-wp-editor.php:1109
 msgctxt "editor button"
 msgid "Left to right"
 msgstr "Venstre mod højre"
 
-#: wp-includes/class-wp-editor.php:1091
+#: wp-includes/class-wp-editor.php:1108
 msgctxt "editor button"
 msgid "Right to left"
 msgstr "Højre mod venstre"
 
-#: wp-includes/class-wp-editor.php:997
+#: wp-includes/class-wp-editor.php:1014
 msgctxt "HTML tag"
 msgid "Div"
 msgstr "Div"
 
-#: wp-includes/class-wp-editor.php:998
+#: wp-includes/class-wp-editor.php:1015
 msgctxt "HTML tag"
 msgid "Pre"
 msgstr "Pre"
 
-#: wp-includes/class-wp-editor.php:1002
+#: wp-includes/class-wp-editor.php:1019
 msgctxt "HTML elements"
 msgid "Inline"
 msgstr "Inline"
 
-#: wp-includes/class-wp-editor.php:1043
+#: wp-includes/class-wp-editor.php:1060
 msgctxt "list style"
 msgid "Upper Roman"
 msgstr "Store romertal"
 
-#: wp-includes/class-wp-editor.php:1044
+#: wp-includes/class-wp-editor.php:1061
 msgctxt "list style"
 msgid "Lower Roman"
 msgstr "Små romertal"
 
-#: wp-includes/class-wp-editor.php:1040
+#: wp-includes/class-wp-editor.php:1057
 msgctxt "list style"
 msgid "Lower Greek"
 msgstr "Små græske symboler"
 
-#: wp-includes/class-wp-editor.php:1041
+#: wp-includes/class-wp-editor.php:1058
 msgctxt "list style"
 msgid "Lower Alpha"
 msgstr "Små bogstaver"
 
-#: wp-includes/class-wp-editor.php:1042
+#: wp-includes/class-wp-editor.php:1059
 msgctxt "list style"
 msgid "Upper Alpha"
 msgstr "Store bogstaver"
 
-#: wp-includes/class-wp-editor.php:1221
+#: wp-includes/class-wp-editor.php:1238
 msgctxt "TinyMCE menu"
 msgid "Insert"
 msgstr "Indsæt"
 
-#: wp-includes/class-wp-editor.php:1224
+#: wp-includes/class-wp-editor.php:1241
 msgctxt "TinyMCE menu"
 msgid "Tools"
 msgstr "Værktøjer"
 
-#: wp-includes/class-wp-editor.php:1162
+#: wp-includes/class-wp-editor.php:1179
 msgctxt "table footer"
 msgid "Footer"
 msgstr "Sidefod"
@@ -5729,43 +5775,43 @@ msgstr "%s og %s"
 msgid "Show Artist Name in Tracklist"
 msgstr "Vis kunstnernavn i afspilningslisten"
 
-#: wp-includes/media.php:3509
+#: wp-includes/media.php:3513
 msgid "Create a new video playlist"
 msgstr "Opret en ny videoafspilningsliste"
 
-#: wp-includes/media.php:3508
+#: wp-includes/media.php:3512
 msgid "Create a new playlist"
 msgstr "Opret en ny afspilningsliste"
 
-#: wp-includes/media.php:3587
+#: wp-includes/media.php:3591
 msgid "Create Audio Playlist"
 msgstr "Opret en lydafspilningsliste"
 
-#: wp-includes/media.php:3598
+#: wp-includes/media.php:3602
 msgid "Edit Video Playlist"
 msgstr "Rediger videoafspilningsliste"
 
-#: wp-includes/media.php:3599
+#: wp-includes/media.php:3603
 msgid "&#8592; Cancel Video Playlist"
 msgstr "&#8592; Annuller videoafspilningsliste"
 
-#: wp-includes/media.php:3600
+#: wp-includes/media.php:3604
 msgid "Insert video playlist"
 msgstr "Indsæt videoafspilningsliste"
 
-#: wp-includes/media.php:3601
+#: wp-includes/media.php:3605
 msgid "Update video playlist"
 msgstr "Opdater videoafspilningsliste"
 
-#: wp-includes/media.php:3602
+#: wp-includes/media.php:3606
 msgid "Add to video playlist"
 msgstr "Tilføj til videoafspilningsliste"
 
-#: wp-includes/media.php:3597
+#: wp-includes/media.php:3601
 msgid "Create Video Playlist"
 msgstr "Opret videoafspilningsliste"
 
-#: wp-includes/media.php:3583
+#: wp-includes/media.php:3587
 msgid "Add Subtitles"
 msgstr "Tilføj undertekst"
 
@@ -5774,69 +5820,61 @@ msgctxt "Search widget"
 msgid "Search"
 msgstr "Søg"
 
-#: wp-includes/media.php:3586
-msgid "Drag and drop to reorder tracks."
-msgstr "Træk og slip for at sortere numre."
-
-#: wp-includes/media.php:3596
-msgid "Drag and drop to reorder videos."
-msgstr "Træk og slip for at sortere videoer."
-
 #: wp-includes/wp-db.php:1297
 msgid "The query argument of %s must have a placeholder."
 msgstr "Forespørgslen %s skal have en pladsholder."
 
-#: wp-includes/media.php:3556
+#: wp-includes/media.php:3560
 msgid "Replace Image"
 msgstr "Erstat billede"
 
-#: wp-includes/media.php:3557 wp-includes/media.php:3575
-#: wp-includes/media.php:3581
+#: wp-includes/media.php:3561 wp-includes/media.php:3579
+#: wp-includes/media.php:3585
 msgid "Cancel Edit"
 msgstr "Fortryd redigering"
 
 #: wp-includes/customize/class-wp-customize-image-control.php:41
-#: wp-includes/media.php:3561
+#: wp-includes/media.php:3565
 msgid "Choose Image"
 msgstr "Vælg billede"
 
-#: wp-includes/media.php:3562
+#: wp-includes/media.php:3566
 msgid "Select and Crop"
 msgstr "Vælg og beskær"
 
-#: wp-includes/media.php:3563
+#: wp-includes/media.php:3567
 msgid "Skip Cropping"
 msgstr "Drop beskæring"
 
-#: wp-includes/media.php:3564
+#: wp-includes/media.php:3568
 msgid "Crop Image"
 msgstr "Beskær billede"
 
-#: wp-includes/media.php:3565
+#: wp-includes/media.php:3569
 msgid "Crop your image"
 msgstr "Beskær dit billede"
 
-#: wp-includes/media.php:3572
+#: wp-includes/media.php:3576
 msgid "Audio Details"
 msgstr "Lyddetaljer"
 
-#: wp-includes/media.php:3573
+#: wp-includes/media.php:3577
 msgid "Replace Audio"
 msgstr "Erstat lyd"
 
-#: wp-includes/media.php:3574
+#: wp-includes/media.php:3578
 msgid "Add Audio Source"
 msgstr "Tilføj lydkilde"
 
-#: wp-includes/media.php:3579
+#: wp-includes/media.php:3583
 msgid "Replace Video"
 msgstr "Erstat video"
 
-#: wp-includes/media.php:3580
+#: wp-includes/media.php:3584
 msgid "Add Video Source"
 msgstr "Tilføj videokilde"
 
-#: wp-includes/media.php:3578
+#: wp-includes/media.php:3582
 msgid "Video Details"
 msgstr "Videodetaljer"
 
@@ -5857,9 +5895,9 @@ msgstr "%s, %s"
 #: wp-includes/class-wp-customize-nav-menus.php:952
 #: wp-includes/class-wp-customize-panel.php:378
 #: wp-includes/class-wp-customize-section.php:368
-#: wp-includes/class-wp-customize-widgets.php:817
+#: wp-includes/class-wp-customize-widgets.php:831
 #: wp-includes/customize/class-wp-customize-nav-menus-panel.php:75
-#: wp-includes/media.php:3492
+#: wp-includes/media.php:3496
 msgid "Back"
 msgstr "Tilbage"
 
@@ -5875,7 +5913,7 @@ msgstr "Afspil automatisk"
 msgid "Poster Image"
 msgstr "Plakat"
 
-#: wp-includes/media.php:3582
+#: wp-includes/media.php:3586
 msgid "Select Poster Image"
 msgstr "Vælg plakat"
 
@@ -5887,7 +5925,7 @@ msgstr "Ugyldigt menu-ID."
 msgid "There are no associated subtitles."
 msgstr "Der er ingen tilknyttede undertekster."
 
-#: wp-includes/media.php:3555
+#: wp-includes/media.php:3559
 msgid "Image Details"
 msgstr "Billeddetaljer"
 
@@ -5895,7 +5933,7 @@ msgstr "Billeddetaljer"
 msgid "Hint: The password should be at least twelve characters long. To make it stronger, use upper and lower case letters, numbers, and symbols like ! \" ? $ % ^ &amp; )."
 msgstr "Tip: Denne adgangskode bør være på mindst tolv tegn. For at gøre den stærkere kan du bruge store og små bogstaver, tal og symboler såsom !, \", ?, $, %, ^ og )."
 
-#: wp-includes/media.php:3603
+#: wp-includes/media.php:3607
 msgid "Add to Video Playlist"
 msgstr "Tilføj til videoafspilningsliste"
 
@@ -5903,79 +5941,87 @@ msgstr "Tilføj til videoafspilningsliste"
 msgid "Playlist Settings"
 msgstr "Indstillinger for afspilningsliste"
 
-#: wp-includes/class-wp-editor.php:1035 wp-includes/script-loader.php:114
+#: wp-includes/media.php:3600
+msgid "Drag and drop to reorder videos."
+msgstr "Træk og slip for at omorganisere videoer."
+
+#: wp-includes/media.php:3590
+msgid "Drag and drop to reorder tracks."
+msgstr "Træk og slip for at omorganisere spor."
+
+#: wp-includes/class-wp-editor.php:1052 wp-includes/script-loader.php:114
 msgid "Numbered list"
 msgstr "Nummereret liste"
 
-#: wp-includes/class-wp-editor.php:1015
+#: wp-includes/class-wp-editor.php:1032
 msgid "Align center"
 msgstr "Centrer"
 
-#: wp-includes/class-wp-editor.php:1017
+#: wp-includes/class-wp-editor.php:1034
 msgid "Align left"
 msgstr "Venstrestil"
 
-#: wp-includes/class-wp-editor.php:1203
+#: wp-includes/class-wp-editor.php:1220
 msgid "Text color"
 msgstr "Tekstfarve"
 
-#: wp-includes/class-wp-editor.php:1205
+#: wp-includes/class-wp-editor.php:1222
 msgid "Show invisible characters"
 msgstr "Vis usynlige tegn"
 
-#: wp-includes/class-wp-editor.php:1171
+#: wp-includes/class-wp-editor.php:1188
 msgid "Delete column"
 msgstr "Slet kolonne"
 
-#: wp-includes/class-wp-editor.php:1147
+#: wp-includes/class-wp-editor.php:1164
 msgid "Insert table"
 msgstr "Indsæt tabel"
 
-#: wp-includes/class-wp-editor.php:1194
+#: wp-includes/class-wp-editor.php:1211
 msgid "Cell type"
 msgstr "Celletype"
 
-#: wp-includes/media-template.php:892 wp-includes/media.php:3490
+#: wp-includes/media-template.php:892 wp-includes/media.php:3494
 msgid "Replace"
 msgstr "Erstat"
 
-#: wp-includes/class-wp-editor.php:1135
+#: wp-includes/class-wp-editor.php:1152
 msgid "Find and replace"
 msgstr "Søg og erstat"
 
-#: wp-includes/class-wp-editor.php:1155
+#: wp-includes/class-wp-editor.php:1172
 msgid "Rows"
 msgstr "Rækker"
 
-#: wp-includes/class-wp-editor.php:1195
+#: wp-includes/class-wp-editor.php:1212
 msgid "Cell padding"
 msgstr "Cellefyld"
 
-#: wp-includes/class-wp-editor.php:1196
+#: wp-includes/class-wp-editor.php:1213
 msgid "Cell spacing"
 msgstr "Cellemellemrum"
 
-#: wp-includes/class-wp-editor.php:1193
+#: wp-includes/class-wp-editor.php:1210
 msgid "Row type"
 msgstr "Rækketype"
 
-#: wp-includes/class-wp-editor.php:1007
+#: wp-includes/class-wp-editor.php:1024
 msgid "Clear formatting"
 msgstr "Ryd formattering"
 
-#: wp-includes/class-wp-editor.php:1011
+#: wp-includes/class-wp-editor.php:1028
 msgid "Source code"
 msgstr "Kildekode"
 
-#: wp-includes/class-wp-editor.php:1191
+#: wp-includes/class-wp-editor.php:1208
 msgid "Row group"
 msgstr "Rækkegruppe"
 
-#: wp-includes/class-wp-editor.php:1090
+#: wp-includes/class-wp-editor.php:1107
 msgid "Special character"
 msgstr "Symbol"
 
-#: wp-includes/class-wp-editor.php:1058
+#: wp-includes/class-wp-editor.php:1075
 msgid "Keywords"
 msgstr "Nøgleord"
 
@@ -5997,15 +6043,15 @@ msgctxt "custom headers"
 msgid "Suggested"
 msgstr "Foreslået"
 
-#: wp-includes/class-wp-editor.php:1019
+#: wp-includes/class-wp-editor.php:1036
 msgid "Increase indent"
 msgstr "Forøg indrykning"
 
-#: wp-includes/class-wp-editor.php:1020
+#: wp-includes/class-wp-editor.php:1037
 msgid "Decrease indent"
 msgstr "Formindsk indrykning"
 
-#: wp-includes/class-wp-editor.php:1077
+#: wp-includes/class-wp-editor.php:1094
 msgid "Insert date/time"
 msgstr "Indsæt dato/tid"
 
@@ -6016,27 +6062,27 @@ msgstr "Indsæt dato/tid"
 msgid "https://wordpress.org/support/"
 msgstr "https://wordpress.org/support/"
 
-#: wp-includes/class-wp-editor.php:1084
+#: wp-includes/class-wp-editor.php:1101
 msgid "Alternative source"
 msgstr "Alternativ kilde"
 
-#: wp-includes/class-wp-editor.php:1192
+#: wp-includes/class-wp-editor.php:1209
 msgid "Column group"
 msgstr "Kolonnegruppe"
 
-#: wp-includes/class-wp-editor.php:1086
+#: wp-includes/class-wp-editor.php:1103
 msgid "Insert video"
 msgstr "Indsæt video"
 
-#: wp-includes/class-wp-editor.php:1129
+#: wp-includes/class-wp-editor.php:1146
 msgid "Could not find the specified string."
 msgstr "Kunne ikke finde den angivne streng."
 
-#: wp-includes/class-wp-editor.php:1075 wp-includes/script-loader.php:111
+#: wp-includes/class-wp-editor.php:1092 wp-includes/script-loader.php:111
 msgid "Insert image"
 msgstr "Indsæt billede"
 
-#: wp-includes/class-wp-editor.php:1073
+#: wp-includes/class-wp-editor.php:1090
 msgid "Style"
 msgstr "Style"
 
@@ -6049,86 +6095,86 @@ msgstr "https://wordpress.org/"
 msgid "https://wordpress.org/support/forum/requests-and-feedback"
 msgstr "https://wordpress.org/support/forum/requests-and-feedback"
 
-#: wp-includes/class-wp-editor.php:1231 wp-includes/script-loader.php:120
+#: wp-includes/class-wp-editor.php:1248 wp-includes/script-loader.php:120
 msgid "Insert Read More tag"
 msgstr "Indsæt Læs mere tag"
 
-#: wp-includes/class-wp-editor.php:1093
+#: wp-includes/class-wp-editor.php:1110
 msgid "Emoticons"
 msgstr "Emoticons"
 
-#: wp-includes/class-wp-editor.php:1096
+#: wp-includes/class-wp-editor.php:1113
 msgid "Paste as text"
 msgstr "Indsæt som tekst"
 
-#: wp-includes/class-wp-editor.php:1087
+#: wp-includes/class-wp-editor.php:1104
 msgid "Embed"
 msgstr "Indlejr"
 
-#: wp-includes/class-wp-editor.php:1202
+#: wp-includes/class-wp-editor.php:1219
 msgid "Background color"
 msgstr "Baggrundsfarve"
 
-#: wp-includes/class-wp-customize-widgets.php:824
+#: wp-includes/class-wp-customize-widgets.php:838
 #: wp-includes/customize/class-wp-widget-area-customize-control.php:61
 msgid "Add a Widget"
 msgstr "Tilføj en Widget"
 
-#: wp-includes/class-wp-editor.php:1103
+#: wp-includes/class-wp-editor.php:1120
 msgid "Restore last draft"
 msgstr "Gendan seneste kladde"
 
 #: wp-includes/class-wp-customize-nav-menus.php:930
-#: wp-includes/class-wp-customize-widgets.php:702
+#: wp-includes/class-wp-customize-widgets.php:716
 msgid "Move up"
 msgstr "Flyt op"
 
-#: wp-includes/class-wp-customize-widgets.php:708
+#: wp-includes/class-wp-customize-widgets.php:722
 msgid "Select an area to move this widget into:"
 msgstr "Vælg et område at flytte denne widget ind i:"
 
-#: wp-includes/class-wp-customize-widgets.php:774
+#: wp-includes/class-wp-customize-widgets.php:788
 #: wp-includes/script-loader.php:718 wp-includes/script-loader.php:742
 msgid "An error has occurred. Please reload the page and try again."
 msgstr "Der er opstået en fejl. Genindlæs venligst siden og prøv igen."
 
-#: wp-includes/class-wp-editor.php:1016
+#: wp-includes/class-wp-editor.php:1033
 msgid "Align right"
 msgstr "Højrestil"
 
-#: wp-includes/class-wp-editor.php:1210
+#: wp-includes/class-wp-editor.php:1227
 msgid "Paste is now in plain text mode. Contents will now be pasted as plain text until you toggle this option off."
 msgstr "Indsæt er nu i ren tekst tilstand. Indhold vil nu blive indsat som ren tekst, indtil du slår denne indstilling fra."
 
-#: wp-includes/class-wp-editor.php:1032
+#: wp-includes/class-wp-editor.php:1049
 msgid "Visual aids"
 msgstr "Visuelle hjælpemidler"
 
-#: wp-includes/class-wp-editor.php:1101
+#: wp-includes/class-wp-editor.php:1118
 msgid "Horizontal line"
 msgstr "Vandret linje"
 
-#: wp-includes/class-wp-editor.php:1085
+#: wp-includes/class-wp-editor.php:1102
 msgid "Paste your embed code below:"
 msgstr "Indsæt din indlejrede kode nedenfor:"
 
-#: wp-includes/class-wp-editor.php:1094
+#: wp-includes/class-wp-editor.php:1111
 msgid "Nonbreaking space"
 msgstr "Hårdt mellemrum"
 
-#: wp-includes/class-wp-editor.php:1095
+#: wp-includes/class-wp-editor.php:1112
 msgid "Page break"
 msgstr "Sideskift"
 
-#: wp-includes/class-wp-editor.php:1230
+#: wp-includes/class-wp-editor.php:1247
 msgid "Toolbar Toggle"
 msgstr "Vis/skjul værktøjslinje"
 
-#: wp-includes/class-wp-editor.php:1139
+#: wp-includes/class-wp-editor.php:1156
 msgid "Match case"
 msgstr "Forskel på store og små bogstaver"
 
-#: wp-includes/class-wp-editor.php:1018
+#: wp-includes/class-wp-editor.php:1035
 msgid "Justify"
 msgstr "Lige margener"
 
@@ -6141,11 +6187,11 @@ msgid "Randomizing suggested headers"
 msgstr "Blander foreslåede headere"
 
 #: wp-includes/class-wp-customize-nav-menus.php:931
-#: wp-includes/class-wp-customize-widgets.php:701
+#: wp-includes/class-wp-customize-widgets.php:715
 msgid "Move down"
 msgstr "Flyt ned"
 
-#: wp-includes/class-wp-editor.php:1059
+#: wp-includes/class-wp-editor.php:1076
 msgid "Encoding"
 msgstr "Kodning"
 
@@ -6157,26 +6203,26 @@ msgstr "Bland foreslåede headere"
 msgid "Randomize uploaded headers"
 msgstr "Bland uploadede headere"
 
-#: wp-includes/class-wp-editor.php:1056
+#: wp-includes/class-wp-editor.php:1073
 msgid "Robots"
 msgstr "Robotter"
 
-#: wp-includes/class-wp-editor.php:1159
+#: wp-includes/class-wp-editor.php:1176
 msgid "Header cell"
 msgstr "Header-celle"
 
-#: wp-includes/class-wp-editor.php:1112
+#: wp-includes/class-wp-editor.php:1129
 msgid "New window"
 msgstr "Nyt vindue"
 
-#: wp-includes/class-wp-editor.php:1113
+#: wp-includes/class-wp-editor.php:1130
 msgid "Text to display"
 msgstr "Tekst der skal vises"
 
 #: wp-includes/customize/class-wp-customize-nav-menu-control.php:55
 #: wp-includes/customize/class-wp-widget-area-customize-control.php:64
 msgid "Reorder"
-msgstr "Omarranger"
+msgstr "Omorganiser"
 
 #: wp-includes/general-template.php:3488
 msgctxt "admin color scheme"
@@ -6237,10 +6283,6 @@ msgstr "De seneste kommentarer på dit websted."
 #: wp-includes/widgets/class-wp-nav-menu-widget.php:27
 msgid "Add a custom menu to your sidebar."
 msgstr "Tilføj en brugerdefineret menu til dit widget-område."
-
-#: wp-includes/widgets/class-wp-widget-text.php:28
-msgid "Arbitrary text or HTML."
-msgstr "Vilkårlig tekst eller HTML."
 
 #: wp-includes/widgets/class-wp-widget-tag-cloud.php:27
 msgid "A cloud of your most used tags."
@@ -6421,7 +6463,7 @@ msgid "g:i a"
 msgstr "G:i"
 
 #. translators: localized date format, see https://secure.php.net/date
-#: wp-includes/class-wp-locale.php:398 wp-includes/media.php:3104
+#: wp-includes/class-wp-locale.php:398 wp-includes/media.php:3108
 msgid "F j, Y"
 msgstr "j. F Y"
 
@@ -6544,11 +6586,11 @@ msgstr "Billedtekst til dette billede&hellip;"
 #. If there is not a word you can use in your language to avoid issues with
 #. the 		   lack of plural support here, turn it into "selected: %d" then
 #. translate it.
-#: wp-includes/media.php:3497
+#: wp-includes/media.php:3501
 msgid "%d selected"
 msgstr "%d valgt"
 
-#: wp-includes/media.php:3538
+#: wp-includes/media.php:3542
 msgid "Insert from URL"
 msgstr "Indsæt fra URL"
 
@@ -6557,15 +6599,15 @@ msgctxt "Links widget"
 msgid "Random"
 msgstr "Tilfældig"
 
-#: wp-includes/media.php:3551
+#: wp-includes/media.php:3555
 msgid "Add to Gallery"
 msgstr "Tilføj til Galleri"
 
-#: wp-includes/media-template.php:1236 wp-includes/media.php:3513
+#: wp-includes/media-template.php:1236 wp-includes/media.php:3517
 msgid "No items found."
 msgstr "Ingen emner fundet."
 
-#: wp-includes/media.php:3552
+#: wp-includes/media.php:3556
 msgid "Reverse order"
 msgstr "Omvendt rækkefølge"
 
@@ -6579,7 +6621,7 @@ msgid "Sorry, that file cannot be edited."
 msgstr "Filen kan desværre ikke redigeres."
 
 #: wp-includes/media-template.php:441 wp-includes/media-template.php:544
-#: wp-includes/media.php:3526
+#: wp-includes/media.php:3530
 msgid "Delete Permanently"
 msgstr "Slet permanent"
 
@@ -6595,7 +6637,7 @@ msgstr "Afvis fejl"
 msgid "Uploading"
 msgstr "Uploader"
 
-#: wp-includes/media.php:2917
+#: wp-includes/media.php:2921
 msgid "No editor could be selected."
 msgstr "Editor kunne ikke vælges."
 
@@ -6642,7 +6684,7 @@ msgstr "Indsæt på siden"
 msgid "Uploaded to this page"
 msgstr "Uploaded til denne side"
 
-#: wp-includes/media.php:3511
+#: wp-includes/media.php:3515
 msgid "All media items"
 msgstr "Alle medier"
 
@@ -6655,7 +6697,7 @@ msgstr "Uploadet til dette indlæg"
 msgid "Audio"
 msgstr "Lyd"
 
-#: wp-includes/media.php:3510
+#: wp-includes/media.php:3514
 msgid "&#8592; Return to library"
 msgstr "&#8592; Tilbage til biblioteket"
 
@@ -6668,7 +6710,7 @@ msgstr "Tilpasset URL"
 msgid "Columns"
 msgstr "Kolonner"
 
-#: wp-includes/media-template.php:501 wp-includes/media.php:3535
+#: wp-includes/media-template.php:501 wp-includes/media.php:3539
 msgid "Attachment Details"
 msgstr "Detaljer for vedhæftning"
 
@@ -6678,7 +6720,7 @@ msgid "Alt Text"
 msgstr "Alt Tekst"
 
 #: wp-includes/media-template.php:696 wp-includes/media-template.php:771
-#: wp-includes/media-template.php:945 wp-includes/media.php:3170
+#: wp-includes/media-template.php:945 wp-includes/media.php:3174
 msgid "Large"
 msgstr "Stor"
 
@@ -6690,11 +6732,11 @@ msgstr "Indstillinger for visning af vedhæftning"
 msgid "Gallery Settings"
 msgstr "Indstillinger for galleri"
 
-#: wp-includes/media.php:3502
+#: wp-includes/media.php:3506
 msgid "Upload Images"
 msgstr "Upload billeder"
 
-#: wp-includes/media.php:3547
+#: wp-includes/media.php:3551
 msgid "&#8592; Cancel Gallery"
 msgstr "&#8592; Fortryd galleri"
 
@@ -6706,11 +6748,11 @@ msgstr "WordPress &rsaquo; Succes"
 msgid "Drop files anywhere to upload"
 msgstr "Træk filer hertil for at uploade"
 
-#: wp-includes/media.php:3501
+#: wp-includes/media.php:3505
 msgid "Upload Files"
 msgstr "Upload filer"
 
-#: wp-includes/media.php:3548
+#: wp-includes/media.php:3552
 msgid "Insert gallery"
 msgstr "Indsæt galleri"
 
@@ -6718,11 +6760,11 @@ msgstr "Indsæt galleri"
 msgid "Drop files to upload"
 msgstr "Træk filer for at uploade"
 
-#: wp-includes/media.php:3545
+#: wp-includes/media.php:3549
 msgid "Create Gallery"
 msgstr "Opret galleri"
 
-#: wp-includes/media.php:3505
+#: wp-includes/media.php:3509
 msgid "Media Library"
 msgstr "Mediebibliotek"
 
@@ -6806,7 +6848,7 @@ msgstr "Beskriv denne lydfil&hellip;"
 msgid "Describe this media file&hellip;"
 msgstr "Beskriv denne mediefil&hellip;"
 
-#: wp-includes/media.php:3549
+#: wp-includes/media.php:3553
 msgid "Update gallery"
 msgstr "Opdater galleri"
 
@@ -6869,11 +6911,11 @@ msgstr "Vælg farve"
 msgid "Current Color"
 msgstr "Aktuel farve"
 
-#: wp-includes/media.php:3550
+#: wp-includes/media.php:3554
 msgid "Add to gallery"
 msgstr "Tilføj til galleri"
 
-#: wp-includes/media.php:3507
+#: wp-includes/media.php:3511
 msgid "Create a new gallery"
 msgstr "Opret nyt galleri"
 
@@ -6881,7 +6923,7 @@ msgstr "Opret nyt galleri"
 msgid "Insert into post"
 msgstr "Indsæt i indlæg"
 
-#: wp-includes/media.php:3506
+#: wp-includes/media.php:3510
 msgid "Insert Media"
 msgstr "Indsæt medier"
 
@@ -6895,7 +6937,7 @@ msgctxt "Display name based on first name and last name"
 msgid "%1$s %2$s"
 msgstr "%1$s %2$s"
 
-#: wp-includes/taxonomy.php:2301
+#: wp-includes/taxonomy.php:2304
 msgid "Could not insert term relationship into the database"
 msgstr "Kunne ikke indsætte termforhold i databasen"
 
@@ -7088,12 +7130,12 @@ msgid "Posts page"
 msgstr "Indlægsside"
 
 #: wp-includes/class-wp-customize-manager.php:3871
-#: wp-includes/class-wp-customize-widgets.php:772
-#: wp-includes/class-wp-editor.php:1236
+#: wp-includes/class-wp-customize-widgets.php:786
+#: wp-includes/class-wp-editor.php:1253
 #: wp-includes/customize/class-wp-customize-image-control.php:37
 #: wp-includes/customize/class-wp-customize-media-control.php:63
 #: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:144
-#: wp-includes/media-template.php:474 wp-includes/media.php:3491
+#: wp-includes/media-template.php:474 wp-includes/media.php:3495
 msgid "Remove"
 msgstr "Fjern"
 
@@ -7113,8 +7155,8 @@ msgstr "Tilladte filer"
 #: wp-includes/taxonomy.php:419 wp-includes/taxonomy.php:639
 #: wp-includes/taxonomy.php:730 wp-includes/taxonomy.php:910
 #: wp-includes/taxonomy.php:1074 wp-includes/taxonomy.php:1835
-#: wp-includes/taxonomy.php:1949 wp-includes/taxonomy.php:2212
-#: wp-includes/taxonomy.php:2355 wp-includes/taxonomy.php:2556
+#: wp-includes/taxonomy.php:1952 wp-includes/taxonomy.php:2215
+#: wp-includes/taxonomy.php:2358 wp-includes/taxonomy.php:2559
 msgid "Invalid taxonomy."
 msgstr "Ugyldig taksonomi."
 
@@ -7126,7 +7168,7 @@ msgstr "Denne taksonomi er ikke hierarkisk."
 #: wp-includes/class-wp-xmlrpc-server.php:2026
 #: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:405
 #: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:511
-#: wp-includes/taxonomy.php:1973 wp-includes/taxonomy.php:2597
+#: wp-includes/taxonomy.php:1976 wp-includes/taxonomy.php:2600
 msgid "Parent term does not exist."
 msgstr "Forældretermen eksisterer ikke."
 
@@ -7168,7 +7210,7 @@ msgstr "Du har desværre ikke tilladelse til at håndtere termer i denne taksono
 #: wp-includes/class-wp-xmlrpc-server.php:1455
 #: wp-includes/class-wp-xmlrpc-server.php:2002
 #: wp-includes/class-wp-xmlrpc-server.php:2093
-#: wp-includes/class-wp-xmlrpc-server.php:2165 wp-includes/taxonomy.php:1964
+#: wp-includes/class-wp-xmlrpc-server.php:2165 wp-includes/taxonomy.php:1967
 msgid "Invalid term ID."
 msgstr "Ugyldigt term ID."
 
@@ -7643,7 +7685,7 @@ msgstr "Alle sider"
 msgid "Approve and Reply"
 msgstr "Godkend og svar"
 
-#: wp-includes/class-wp-editor.php:1108
+#: wp-includes/class-wp-editor.php:1125
 msgid "Link"
 msgstr "Link"
 
@@ -7659,7 +7701,7 @@ msgstr "Indlægsnavigation"
 msgid "Comments navigation"
 msgstr "Kommentarnavigation"
 
-#: wp-includes/class-wp-editor.php:1083
+#: wp-includes/class-wp-editor.php:1100
 msgid "Poster"
 msgstr "Plakat"
 
@@ -7686,11 +7728,11 @@ msgctxt "post format"
 msgid "Format"
 msgstr "Format"
 
-#: wp-includes/class-wp-editor.php:1673
+#: wp-includes/class-wp-editor.php:1690
 msgid "Enter the destination URL"
 msgstr "Indtast URL'en på destinationen"
 
-#: wp-includes/class-wp-editor.php:1687
+#: wp-includes/class-wp-editor.php:1704
 msgid "Or link to existing content"
 msgstr "Eller link til eksisterende indhold"
 
@@ -7753,7 +7795,7 @@ msgstr "Lyd"
 msgid "Invalid post format."
 msgstr "Ugyldigt indlægsformat."
 
-#: wp-includes/class-wp-editor.php:1704
+#: wp-includes/class-wp-editor.php:1721
 msgid "No search term specified. Showing recent items."
 msgstr "Ingen søgeterm angivet. Viser seneste emner."
 
@@ -8270,7 +8312,7 @@ msgstr "Den webstedsadresse, du indtastede, er ikke en gyldig URL. Indtast venli
 msgid "The email address entered did not appear to be a valid email address. Please enter a valid email address."
 msgstr "Den indtastede e-mailadresse lader ikke til at være en gyldig e-mailadresse. Indtast venligst en gyldig e-mailadresse."
 
-#: wp-includes/taxonomy.php:2053
+#: wp-includes/taxonomy.php:2056
 msgid "A term with the name provided already exists with this parent."
 msgstr "En term med det angivne navn findes allerede med denne forælder."
 
@@ -8739,7 +8781,7 @@ msgid_plural "Trash <span class=\"count\">(%s)</span>"
 msgstr[0] "Papirkurv <span class=\"count\">(%s)</span>"
 msgstr[1] "Papirkurv <span class=\"count\">(%s)</span>"
 
-#: wp-includes/class-wp-editor.php:1066
+#: wp-includes/class-wp-editor.php:1083
 msgid "General"
 msgstr "Generelt"
 
@@ -8813,8 +8855,8 @@ msgstr "Vis link-rating"
 msgid "Calendar"
 msgstr "Kalender"
 
-#: wp-includes/class-wp-editor.php:1242
-#: wp-includes/widgets/class-wp-widget-text.php:35
+#: wp-includes/class-wp-editor.php:1259
+#: wp-includes/widgets/class-wp-widget-text.php:43
 msgid "Text"
 msgstr "Tekst"
 
@@ -8942,7 +8984,7 @@ msgid "Page not found"
 msgstr "Side ikke fundet"
 
 #. translators: 1: month name, 2: 4-digit year
-#: wp-includes/general-template.php:1758 wp-includes/media.php:3424
+#: wp-includes/general-template.php:1758 wp-includes/media.php:3428
 msgid "%1$s %2$d"
 msgstr "%1$s %2$d"
 
@@ -9115,187 +9157,187 @@ msgstr "fre"
 msgid "Sat"
 msgstr "lør"
 
-#: wp-includes/class-wp-editor.php:1098
+#: wp-includes/class-wp-editor.php:1115
 msgid "Print"
 msgstr "Print"
 
-#: wp-includes/class-wp-editor.php:1065
+#: wp-includes/class-wp-editor.php:1082
 msgid "Insert/edit image"
 msgstr "Indsæt/rediger billede"
 
-#: wp-includes/class-wp-editor.php:1164
+#: wp-includes/class-wp-editor.php:1181
 msgid "Insert row before"
 msgstr "Indsæt række før"
 
-#: wp-includes/class-wp-editor.php:1165
+#: wp-includes/class-wp-editor.php:1182
 msgid "Insert row after"
 msgstr "Indsæt række efter"
 
-#: wp-includes/class-wp-editor.php:1170
+#: wp-includes/class-wp-editor.php:1187
 msgid "Delete row"
 msgstr "Slet række"
 
-#: wp-includes/class-wp-editor.php:1166
+#: wp-includes/class-wp-editor.php:1183
 msgid "Insert column before"
 msgstr "Indsæt kolonne før"
 
-#: wp-includes/class-wp-editor.php:1167
+#: wp-includes/class-wp-editor.php:1184
 msgid "Insert column after"
 msgstr "Indsæt kolonne efter"
 
-#: wp-includes/class-wp-editor.php:1174
+#: wp-includes/class-wp-editor.php:1191
 msgid "Merge table cells"
 msgstr "Flet tabelceller"
 
-#: wp-includes/class-wp-editor.php:1150
+#: wp-includes/class-wp-editor.php:1167
 msgid "Table row properties"
 msgstr "Egenskaber for tabelrække"
 
-#: wp-includes/class-wp-editor.php:1151
+#: wp-includes/class-wp-editor.php:1168
 msgid "Table cell properties"
 msgstr "Egenskaber for tabelcelle"
 
-#: wp-includes/class-wp-editor.php:1149
+#: wp-includes/class-wp-editor.php:1166
 msgid "Table properties"
 msgstr "Tabelegenskaber"
 
-#: wp-includes/class-wp-editor.php:1172
+#: wp-includes/class-wp-editor.php:1189
 msgid "Cut table row"
 msgstr "Klip tabelrække"
 
-#: wp-includes/class-wp-editor.php:1148
+#: wp-includes/class-wp-editor.php:1165
 msgid "Delete table"
 msgstr "Slet tabel"
 
-#: wp-includes/class-wp-editor.php:1154
+#: wp-includes/class-wp-editor.php:1171
 msgid "Row"
 msgstr "Række"
 
-#: wp-includes/class-wp-editor.php:1216 wp-includes/script-loader.php:463
+#: wp-includes/class-wp-editor.php:1233 wp-includes/script-loader.php:463
 #: wp-includes/script-loader.php:574 wp-includes/script-loader.php:583
-#: wp-includes/script-loader.php:763 wp-includes/theme.php:2970
+#: wp-includes/script-loader.php:763 wp-includes/theme.php:2974
 msgid "The changes you made will be lost if you navigate away from this page."
 msgstr "Dine ændringer vil gå tabt, hvis du går væk fra denne side."
 
-#: wp-includes/class-wp-editor.php:1055
+#: wp-includes/class-wp-editor.php:1072
 msgid "Document properties"
 msgstr "Dokumentegenskaber"
 
-#: wp-includes/class-wp-editor.php:1080
+#: wp-includes/class-wp-editor.php:1097
 msgid "Language"
 msgstr "Sprog"
 
-#: wp-includes/class-wp-editor.php:995
+#: wp-includes/class-wp-editor.php:1012
 msgid "Paragraph"
 msgstr "Afsnit"
 
-#: wp-includes/class-wp-editor.php:986
+#: wp-includes/class-wp-editor.php:1003
 msgid "Heading 1"
 msgstr "Overskrift 1"
 
-#: wp-includes/class-wp-editor.php:987
+#: wp-includes/class-wp-editor.php:1004
 msgid "Heading 2"
 msgstr "Overskrift 2"
 
-#: wp-includes/class-wp-editor.php:988
+#: wp-includes/class-wp-editor.php:1005
 msgid "Heading 3"
 msgstr "Overskrift 3"
 
-#: wp-includes/class-wp-editor.php:989
+#: wp-includes/class-wp-editor.php:1006
 msgid "Heading 4"
 msgstr "Overskrift 4"
 
-#: wp-includes/class-wp-editor.php:990
+#: wp-includes/class-wp-editor.php:1007
 msgid "Heading 5"
 msgstr "Overskrift 5"
 
-#: wp-includes/class-wp-editor.php:991
+#: wp-includes/class-wp-editor.php:1008
 msgid "Heading 6"
 msgstr "Overskrift 6"
 
-#: wp-includes/class-wp-editor.php:996 wp-includes/script-loader.php:105
+#: wp-includes/class-wp-editor.php:1013 wp-includes/script-loader.php:105
 msgid "Blockquote"
 msgstr "Blockquote"
 
-#: wp-includes/class-wp-editor.php:1010 wp-includes/script-loader.php:118
+#: wp-includes/class-wp-editor.php:1027 wp-includes/script-loader.php:118
 msgid "Code"
 msgstr "Kode"
 
-#: wp-includes/class-wp-editor.php:1008 wp-includes/script-loader.php:100
+#: wp-includes/class-wp-editor.php:1025 wp-includes/script-loader.php:100
 msgid "Bold"
 msgstr "Fed"
 
-#: wp-includes/class-wp-editor.php:1009 wp-includes/script-loader.php:102
+#: wp-includes/class-wp-editor.php:1026 wp-includes/script-loader.php:102
 msgid "Italic"
 msgstr "Kursiv"
 
-#: wp-includes/class-wp-editor.php:1003
+#: wp-includes/class-wp-editor.php:1020
 msgid "Underline"
 msgstr "Understreget"
 
-#: wp-includes/class-wp-editor.php:1004
+#: wp-includes/class-wp-editor.php:1021
 msgid "Strikethrough"
 msgstr "Gennemstreg"
 
-#: wp-includes/class-wp-editor.php:1005
+#: wp-includes/class-wp-editor.php:1022
 msgid "Subscript"
 msgstr "Sænket skrift"
 
-#: wp-includes/class-wp-editor.php:1006
+#: wp-includes/class-wp-editor.php:1023
 msgid "Superscript"
 msgstr "Hævet tekst"
 
-#: wp-includes/class-wp-editor.php:1022
+#: wp-includes/class-wp-editor.php:1039
 msgid "Cut"
 msgstr "Klip"
 
-#: wp-includes/class-wp-editor.php:1023
+#: wp-includes/class-wp-editor.php:1040
 msgid "Copy"
 msgstr "Kopier"
 
-#: wp-includes/class-wp-editor.php:1024
+#: wp-includes/class-wp-editor.php:1041
 msgid "Paste"
 msgstr "Sæt ind"
 
-#: wp-includes/class-wp-editor.php:982
+#: wp-includes/class-wp-editor.php:999
 msgid "New document"
 msgstr "Nyt dokument"
 
-#: wp-includes/class-wp-editor.php:1072
+#: wp-includes/class-wp-editor.php:1089
 msgid "Image description"
 msgstr "Billedbeskrivelse"
 
-#: wp-includes/class-wp-editor.php:1069
+#: wp-includes/class-wp-editor.php:1086
 msgid "Border"
 msgstr "Ramme"
 
-#: wp-includes/class-wp-editor.php:1074
+#: wp-includes/class-wp-editor.php:1091
 msgid "Dimensions"
 msgstr "Dimensioner"
 
-#: wp-includes/class-wp-editor.php:1071
+#: wp-includes/class-wp-editor.php:1088
 msgid "Vertical space"
 msgstr "Vertikal afstand"
 
-#: wp-includes/class-wp-editor.php:1102
+#: wp-includes/class-wp-editor.php:1119
 msgid "Horizontal space"
 msgstr "Horisontal afstand"
 
-#: wp-includes/class-wp-editor.php:1187
+#: wp-includes/class-wp-editor.php:1204
 #: wp-includes/customize/class-wp-customize-background-position-control.php:46
 msgid "Top"
 msgstr "Top"
 
-#: wp-includes/class-wp-editor.php:1188
+#: wp-includes/class-wp-editor.php:1205
 msgid "Middle"
 msgstr "Midten"
 
-#: wp-includes/class-wp-editor.php:1189
+#: wp-includes/class-wp-editor.php:1206
 #: wp-includes/customize/class-wp-customize-background-position-control.php:56
 msgid "Bottom"
 msgstr "Bund"
 
-#: wp-includes/class-wp-editor.php:1070
+#: wp-includes/class-wp-editor.php:1087
 msgid "Constrain proportions"
 msgstr "Lås proportioner"
 
@@ -9333,11 +9375,11 @@ msgstr "Nederst til venstre"
 msgid "Bottom Right"
 msgstr "Nederst til højre"
 
-#: wp-includes/media.php:3546
+#: wp-includes/media.php:3550
 msgid "Edit Gallery"
 msgstr "Rediger galleri"
 
-#: wp-includes/class-wp-editor.php:1068
+#: wp-includes/class-wp-editor.php:1085
 msgid "Source"
 msgstr "Kilde"
 
@@ -9346,19 +9388,19 @@ msgstr "Kilde"
 msgid "Link Rel"
 msgstr "Link-rel"
 
-#: wp-includes/class-wp-editor.php:1257
+#: wp-includes/class-wp-editor.php:1274
 msgid "Letter"
 msgstr "Bogstav"
 
-#: wp-includes/class-wp-editor.php:1258
+#: wp-includes/class-wp-editor.php:1275
 msgid "Action"
 msgstr "Handling"
 
-#: wp-includes/class-wp-editor.php:1140
+#: wp-includes/class-wp-editor.php:1157
 msgid "Check Spelling"
 msgstr "Stavekontrol"
 
-#: wp-includes/class-wp-editor.php:1105
+#: wp-includes/class-wp-editor.php:1122
 msgid "Remove link"
 msgstr "Fjern link"
 
@@ -9421,13 +9463,6 @@ msgstr "Spam den: %s"
 msgid "Approve it: %s"
 msgstr "Godkend den: %s"
 
-#. translators: Comment moderation. 1: Number of comments awaiting approval
-#: wp-includes/pluggable.php:1673
-msgid "Currently %s comment is waiting for approval. Please visit the moderation panel:"
-msgid_plural "Currently %s comments are waiting for approval. Please visit the moderation panel:"
-msgstr[0] "Der er i øjeblikket %s kommentar, der venter på godkendelse. Gå til bedømmelsessiden:"
-msgstr[1] "Der er i øjeblikket %s kommentarer, der venter på godkendelse. Gå til bedømmelsessiden:"
-
 #. translators: Comment moderation notification email subject. 1: Site name, 2:
 #. Post title
 #: wp-includes/pluggable.php:1678
@@ -9483,7 +9518,7 @@ msgstr "Skriv URL til billedet"
 msgid "Enter a description of the image"
 msgstr "Lav en beskrivelse af billedet"
 
-#: wp-includes/class-wp-editor.php:1064 wp-includes/script-loader.php:267
+#: wp-includes/class-wp-editor.php:1081 wp-includes/script-loader.php:267
 #: wp-includes/widgets/class-wp-widget-media-image.php:26
 msgid "Image"
 msgstr "Billede"
@@ -9549,12 +9584,12 @@ msgstr "Gemmer..."
 msgid "Saving Draft&#8230;"
 msgstr "Gemmer kladde&#8230;"
 
-#: wp-includes/taxonomy.php:726 wp-includes/taxonomy.php:2569
-#: wp-includes/taxonomy.php:3840
+#: wp-includes/taxonomy.php:726 wp-includes/taxonomy.php:2572
+#: wp-includes/taxonomy.php:3843
 msgid "Empty Term"
 msgstr "Tom term"
 
-#: wp-includes/taxonomy.php:4042
+#: wp-includes/taxonomy.php:4045
 msgid "Invalid object ID"
 msgstr "Ugyldigt objekt-ID"
 
@@ -9602,6 +9637,10 @@ msgstr "Ups: %s"
 #: wp-includes/comment-template.php:2250
 msgid "Post Comment"
 msgstr "Skriv kommentar"
+
+#: wp-includes/widgets/class-wp-widget-text.php:374
+msgid "Automatically add paragraphs"
+msgstr "Tilføj afsnit automatisk"
 
 #. translators: 1: WordPress version number, 2: Minimum required MySQL version
 #. number
@@ -9703,8 +9742,8 @@ msgstr "Ny %1$s bruger: %2$s"
 msgid "Privacy:"
 msgstr "Privatliv:"
 
-#: wp-includes/class-wp-editor.php:1104 wp-includes/class-wp-editor.php:1110
-#: wp-includes/class-wp-editor.php:1669 wp-includes/script-loader.php:428
+#: wp-includes/class-wp-editor.php:1121 wp-includes/class-wp-editor.php:1127
+#: wp-includes/class-wp-editor.php:1686 wp-includes/script-loader.php:428
 msgid "Insert/edit link"
 msgstr "Indsæt/rediger link"
 
@@ -9712,19 +9751,15 @@ msgstr "Indsæt/rediger link"
 msgid "Cancel reply"
 msgstr "Annuller svar"
 
-#: wp-includes/class-wp-editor.php:1168
+#: wp-includes/class-wp-editor.php:1185
 msgid "Paste table row before"
 msgstr "Indsæt tabelrække før"
 
-#: wp-includes/class-wp-editor.php:1169
+#: wp-includes/class-wp-editor.php:1186
 msgid "Paste table row after"
 msgstr "Indsæt tabelrække efter"
 
-#: wp-includes/post-template.php:1335
-msgid "Home"
-msgstr "Forside"
-
-#: wp-includes/class-wp-editor.php:1100 wp-includes/script-loader.php:352
+#: wp-includes/class-wp-editor.php:1117 wp-includes/script-loader.php:352
 msgid "Fullscreen"
 msgstr "Fuldskærm"
 
@@ -9824,7 +9859,7 @@ msgstr "Vælg en by"
 msgid "Previous Post"
 msgstr "Forrige indlæg"
 
-#: wp-includes/class-wp-editor.php:1025
+#: wp-includes/class-wp-editor.php:1042
 msgid "Select all"
 msgstr "Vælg alle"
 
@@ -9953,11 +9988,11 @@ msgstr "%1$s har været <strong>forældet</strong> siden version %2$s, og der er
 msgid "%1$s %2$s Posts by %3$s Feed"
 msgstr "%1$s %2$s feed for indlæg af %3$s"
 
-#: wp-includes/class-wp-editor.php:1109 wp-includes/script-loader.php:104
+#: wp-includes/class-wp-editor.php:1126 wp-includes/script-loader.php:104
 msgid "Insert link"
 msgstr "Indsæt link"
 
-#: wp-includes/class-wp-editor.php:1232
+#: wp-includes/class-wp-editor.php:1249
 msgid "Insert Page Break tag"
 msgstr "Indsæt tag til sideskift"
 
@@ -9981,7 +10016,7 @@ msgstr "Du har forsøgt at sætte for mange filer i kø."
 msgid "Error while saving the changes."
 msgstr "Ændringerne kunne ikke gemmes."
 
-#: wp-includes/taxonomy.php:2077
+#: wp-includes/taxonomy.php:2080
 msgid "Could not insert term into the database"
 msgstr "Kunne ikke indsætte termen i databasen"
 
@@ -10116,7 +10151,7 @@ msgid "[%s] Password Reset"
 msgstr "[%s] Nulstilling af adgangskode"
 
 #. translators: 1: Taxonomy term slug
-#: wp-includes/taxonomy.php:2655
+#: wp-includes/taxonomy.php:2658
 msgid "The slug &#8220;%s&#8221; is already in use by another term"
 msgstr "Korttitlen &#8220;%s&#8221; bruges allerede af en anden term"
 
@@ -10199,17 +10234,28 @@ msgstr "Seneste indlæg"
 msgid "Entries <abbr title=\"Really Simple Syndication\">RSS</abbr>"
 msgstr "Indlæg-<abbr title=\"Really Simple Syndication\">RSS</abbr>"
 
-#: wp-includes/class-wp-editor.php:1173
+#: wp-includes/class-wp-editor.php:1190
 msgid "Copy table row"
 msgstr "Kopier tabelrække"
 
-#: wp-includes/class-wp-editor.php:1116
+#: wp-includes/class-wp-editor.php:1133
 msgid "The URL you entered seems to be an email address. Do you want to add the required mailto: prefix?"
 msgstr "Den URL, du har indtastet, lader til at være en e-mailadresse. Vil du tilføje det påkrævede mailto: præfiks?"
 
-#: wp-includes/class-wp-editor.php:1118
+#: wp-includes/class-wp-editor.php:1135
 msgid "The URL you entered seems to be an external link. Do you want to add the required http:// prefix?"
 msgstr "Den URL, du har indtastet, lader til at være et eksternt link. Vil du tilføje det påkrævede http:// præfiks?"
+
+#. translators: Comment moderation. 1: Number of comments awaiting approval
+#: wp-includes/pluggable.php:1673
+msgid "Currently %s comment is waiting for approval. Please visit the moderation panel:"
+msgid_plural "Currently %s comments are waiting for approval. Please visit the moderation panel:"
+msgstr[0] "Der er i øjeblikket %s kommentar, der venter på godkendelse. Besøg venligst bedømmelsessiden:"
+msgstr[1] "Der er i øjeblikket %s kommentarer, der venter på godkendelse. Besøg venligst bedømmelsessiden:"
+
+#: wp-includes/post-template.php:1335
+msgid "Home"
+msgstr "Forside"
 
 #: wp-includes/taxonomy.php:502
 msgid "Edit Category"
@@ -10259,7 +10305,7 @@ msgstr "Gul"
 msgid "Light"
 msgstr "Lys"
 
-#: wp-includes/class-wp-editor.php:1178 wp-includes/media-template.php:965
+#: wp-includes/class-wp-editor.php:1195 wp-includes/media-template.php:965
 #: wp-includes/widgets/class-wp-widget-media-image.php:72
 msgid "Width"
 msgstr "Bredde"
@@ -10303,22 +10349,24 @@ msgstr "Datoformat"
 msgid "Default"
 msgstr "Standard"
 
-#: wp-includes/class-wp-editor.php:182 wp-includes/class-wp-editor.php:1241
+#: wp-includes/class-wp-editor.php:182 wp-includes/class-wp-editor.php:1258
 msgid "Visual"
 msgstr "Visuel"
 
+#: wp-includes/default-widgets.php:190
 #: wp-includes/widgets/class-wp-nav-menu-widget.php:137
 #: wp-includes/widgets/class-wp-widget-archives.php:157
 #: wp-includes/widgets/class-wp-widget-calendar.php:104
 #: wp-includes/widgets/class-wp-widget-categories.php:160
-#: wp-includes/widgets/class-wp-widget-media.php:387
+#: wp-includes/widgets/class-wp-widget-media.php:401
 #: wp-includes/widgets/class-wp-widget-meta.php:111
 #: wp-includes/widgets/class-wp-widget-pages.php:131
 #: wp-includes/widgets/class-wp-widget-recent-comments.php:159
 #: wp-includes/widgets/class-wp-widget-recent-posts.php:132
 #: wp-includes/widgets/class-wp-widget-search.php:71
 #: wp-includes/widgets/class-wp-widget-tag-cloud.php:127
-#: wp-includes/widgets/class-wp-widget-text.php:194
+#: wp-includes/widgets/class-wp-widget-text.php:359
+#: wp-includes/widgets/class-wp-widget-text.php:392
 msgid "Title:"
 msgstr "Titel:"
 
@@ -10330,7 +10378,7 @@ msgstr "Adskil flere tags med kommaer"
 msgid "Strength indicator"
 msgstr "Styrkeindikator"
 
-#: wp-includes/admin-bar.php:801 wp-includes/class-wp-customize-widgets.php:421
+#: wp-includes/admin-bar.php:801 wp-includes/class-wp-customize-widgets.php:435
 #: wp-includes/functions.php:3707
 msgid "Widgets"
 msgstr "Widgets"
@@ -10444,7 +10492,7 @@ msgstr "Din kommentar afventer godkendelse."
 msgid "Enter your password to view comments."
 msgstr "Indtast din adgangskode for at læse kommentarer."
 
-#: wp-includes/class-wp-editor.php:1177 wp-includes/media-template.php:965
+#: wp-includes/class-wp-editor.php:1194 wp-includes/media-template.php:965
 #: wp-includes/widgets/class-wp-widget-media-image.php:78
 msgid "Height"
 msgstr "Højde"
@@ -10557,8 +10605,8 @@ msgstr "Klokkeslætformat"
 msgid "Categories"
 msgstr "Kategorier"
 
-#: wp-includes/class-wp-customize-widgets.php:770
-#: wp-includes/class-wp-editor.php:1239 wp-includes/media.php:3527
+#: wp-includes/class-wp-customize-widgets.php:784
+#: wp-includes/class-wp-editor.php:1256 wp-includes/media.php:3531
 msgid "Apply"
 msgstr "Anvend"
 
@@ -10570,21 +10618,21 @@ msgstr "Anvend"
 msgid "None"
 msgstr "Ingen"
 
-#: wp-includes/class-wp-editor.php:1060
+#: wp-includes/class-wp-editor.php:1077
 #: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:128
 #: wp-includes/media-template.php:408 wp-includes/media-template.php:589
 msgid "Description"
 msgstr "Beskrivelse"
 
-#: wp-includes/class-wp-editor.php:1061 wp-includes/theme-compat/sidebar.php:27
+#: wp-includes/class-wp-editor.php:1078 wp-includes/theme-compat/sidebar.php:27
 msgid "Author"
 msgstr "Forfatter"
 
 #: wp-includes/class-wp-customize-nav-menus.php:1063
-#: wp-includes/class-wp-editor.php:1114 wp-includes/class-wp-editor.php:1675
+#: wp-includes/class-wp-editor.php:1131 wp-includes/class-wp-editor.php:1692
 #: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:91
 #: wp-includes/media-template.php:376 wp-includes/media-template.php:557
-#: wp-includes/media.php:3484
+#: wp-includes/media.php:3488
 #: wp-includes/widgets/class-wp-widget-media-image.php:107
 msgid "URL"
 msgstr "URL"
@@ -10600,7 +10648,7 @@ msgstr "Nej"
 
 #: wp-includes/class-walker-comment.php:244
 #: wp-includes/class-walker-comment.php:350
-#: wp-includes/class-wp-editor.php:1237
+#: wp-includes/class-wp-editor.php:1254
 msgid "Edit"
 msgstr "Rediger"
 
@@ -10608,7 +10656,7 @@ msgstr "Rediger"
 msgid "Update Category"
 msgstr "Opdater kategori"
 
-#: wp-includes/class-wp-editor.php:1026
+#: wp-includes/class-wp-editor.php:1043
 msgid "Undo"
 msgstr "Fortryd"
 
@@ -10628,15 +10676,15 @@ msgstr "Uddrag"
 msgid "Link Categories"
 msgstr "Linkkategorier"
 
-#: wp-includes/class-wp-editor.php:1099
+#: wp-includes/class-wp-editor.php:1116
 msgid "Save"
 msgstr "Gem"
 
-#: wp-includes/class-wp-editor.php:1111
+#: wp-includes/class-wp-editor.php:1128
 msgid "Target"
 msgstr "Target"
 
-#: wp-includes/class-wp-editor.php:1067
+#: wp-includes/class-wp-editor.php:1084
 msgid "Advanced"
 msgstr "Avanceret"
 
@@ -10674,8 +10722,8 @@ msgstr "RSS"
 msgid "Plugins"
 msgstr "Plugins"
 
-#: wp-includes/class-wp-editor.php:1030 wp-includes/class-wp-editor.php:1716
-#: wp-includes/media.php:3488 wp-includes/script-loader.php:415
+#: wp-includes/class-wp-editor.php:1047 wp-includes/class-wp-editor.php:1733
+#: wp-includes/media.php:3492 wp-includes/script-loader.php:415
 #: wp-includes/script-loader.php:465 wp-includes/script-loader.php:555
 msgid "Cancel"
 msgstr "Annuller"
@@ -10719,7 +10767,7 @@ msgstr "Arkiver"
 msgid "Username"
 msgstr "Brugernavn"
 
-#: wp-includes/class-wp-editor.php:1027
+#: wp-includes/class-wp-editor.php:1044
 msgid "Redo"
 msgstr "Annuller fortryd"
 
@@ -10737,14 +10785,14 @@ msgstr "Filen &#8220;%s&#8221; er ikke et billede."
 msgid "Saved."
 msgstr "Gemt."
 
-#: wp-includes/class-wp-editor.php:1182
+#: wp-includes/class-wp-editor.php:1199
 #: wp-includes/customize/class-wp-customize-background-position-control.php:50
 #: wp-includes/media-template.php:620 wp-includes/media-template.php:851
 #: wp-includes/media-template.php:917
 msgid "Left"
 msgstr "Venstre"
 
-#: wp-includes/class-wp-editor.php:1183
+#: wp-includes/class-wp-editor.php:1200
 #: wp-includes/customize/class-wp-customize-background-position-control.php:51
 #: wp-includes/media-template.php:623 wp-includes/media-template.php:854
 #: wp-includes/media-template.php:920
@@ -10752,22 +10800,22 @@ msgid "Center"
 msgstr "Center"
 
 #: wp-includes/media-template.php:695 wp-includes/media-template.php:770
-#: wp-includes/media-template.php:944 wp-includes/media.php:3169
+#: wp-includes/media-template.php:944 wp-includes/media.php:3173
 msgid "Medium"
 msgstr "Medium"
 
-#: wp-includes/class-wp-editor.php:1180 wp-includes/media-template.php:612
+#: wp-includes/class-wp-editor.php:1197 wp-includes/media-template.php:612
 msgid "Alignment"
 msgstr "Justering"
 
-#: wp-includes/class-wp-editor.php:1179 wp-includes/media-template.php:398
+#: wp-includes/class-wp-editor.php:1196 wp-includes/media-template.php:398
 #: wp-includes/media-template.php:579 wp-includes/media-template.php:837
 #: wp-includes/media-template.php:902
 #: wp-includes/widgets/class-wp-widget-media-image.php:85
 msgid "Caption"
 msgstr "Billedtekst"
 
-#: wp-includes/class-wp-editor.php:1081
+#: wp-includes/class-wp-editor.php:1098
 msgid "Media"
 msgstr "Medier"
 
@@ -10783,7 +10831,7 @@ msgstr "Gem som afventer"
 msgid "Privately Published"
 msgstr "Udgivet privat"
 
-#: wp-includes/class-wp-editor.php:1029 wp-includes/script-loader.php:554
+#: wp-includes/class-wp-editor.php:1046 wp-includes/script-loader.php:554
 msgid "OK"
 msgstr "OK"
 
@@ -10796,7 +10844,7 @@ msgstr "Privat"
 msgid "Public"
 msgstr "Offentlig"
 
-#: wp-includes/media.php:3489 wp-includes/script-loader.php:429
+#: wp-includes/media.php:3493 wp-includes/script-loader.php:429
 #: wp-includes/script-loader.php:565 wp-includes/script-loader.php:650
 msgid "Update"
 msgstr "Opdater"
@@ -10821,7 +10869,7 @@ msgstr "Links"
 msgid "Uncategorized"
 msgstr "Ikke kategoriseret"
 
-#: wp-includes/class-wp-editor.php:1031 wp-includes/class-wp-editor.php:1670
+#: wp-includes/class-wp-editor.php:1048 wp-includes/class-wp-editor.php:1687
 #: wp-includes/script-loader.php:269 wp-includes/script-loader.php:351
 #: wp-includes/script-loader.php:466 wp-includes/script-loader.php:986
 msgid "Close"
@@ -10831,7 +10879,7 @@ msgstr "Luk"
 msgid "New Page"
 msgstr "Ny side"
 
-#: wp-includes/media.php:3135 wp-includes/script-loader.php:431
+#: wp-includes/media.php:3139 wp-includes/script-loader.php:431
 #: wp-includes/script-loader.php:620
 msgid "(no title)"
 msgstr "(ingen titel)"
@@ -10841,12 +10889,12 @@ msgid "Number of comments to show:"
 msgstr "Antal kommentarer der skal vises:"
 
 #: wp-includes/media-template.php:330 wp-includes/media-template.php:528
-#: wp-includes/media.php:3558
+#: wp-includes/media.php:3562
 msgid "Edit Image"
 msgstr "Rediger billede"
 
 #: wp-includes/media-template.php:697 wp-includes/media-template.php:772
-#: wp-includes/media-template.php:946 wp-includes/media.php:3171
+#: wp-includes/media-template.php:946 wp-includes/media.php:3175
 msgid "Full Size"
 msgstr "Fuld størrelse"
 
@@ -10857,6 +10905,8 @@ msgid "Email: %s"
 msgstr "E-mail: %s"
 
 #: wp-includes/script-loader.php:138 wp-includes/script-loader.php:299
+#: wp-includes/widgets/class-wp-widget-text.php:406
+#: wp-includes/widgets/class-wp-widget-text.php:421
 msgid "Dismiss"
 msgstr "Afvis"
 
@@ -10885,7 +10935,7 @@ msgid "Password"
 msgstr "Adgangskode"
 
 #: wp-includes/admin-bar.php:875 wp-includes/admin-bar.php:876
-#: wp-includes/class-wp-editor.php:1691 wp-includes/media.php:3486
+#: wp-includes/class-wp-editor.php:1708 wp-includes/media.php:3490
 msgid "Search"
 msgstr "Søg"
 
@@ -10903,14 +10953,14 @@ msgstr "Søg kategorier"
 msgid "Size"
 msgstr "Størrelse"
 
-#: wp-includes/class-wp-editor.php:1184
+#: wp-includes/class-wp-editor.php:1201
 #: wp-includes/customize/class-wp-customize-background-position-control.php:52
 #: wp-includes/media-template.php:626 wp-includes/media-template.php:857
 #: wp-includes/media-template.php:923
 msgid "Right"
 msgstr "Højre"
 
-#: wp-includes/media.php:3485
+#: wp-includes/media.php:3489
 msgid "Add Media"
 msgstr "Tilføj medier"
 
@@ -10919,7 +10969,7 @@ msgctxt "post"
 msgid "Add New"
 msgstr "Tilføj nyt"
 
-#: wp-includes/class-wp-editor.php:1719 wp-includes/script-loader.php:430
+#: wp-includes/class-wp-editor.php:1736 wp-includes/script-loader.php:430
 msgid "Add Link"
 msgstr "Tilføj link"
 
@@ -10931,7 +10981,7 @@ msgstr "Rediger indlæg"
 msgid "View Post"
 msgstr "Vis indlæg"
 
-#: wp-includes/media.php:3487
+#: wp-includes/media.php:3491
 msgid "Select"
 msgstr "Vælg"
 
@@ -10949,7 +10999,7 @@ msgstr "Færdig"
 msgid "New Post"
 msgstr "Nyt indlæg"
 
-#: wp-includes/class-wp-editor.php:1097 wp-includes/media-template.php:1247
+#: wp-includes/class-wp-editor.php:1114 wp-includes/media-template.php:1247
 msgid "Preview"
 msgstr "Forhåndsvis"
 
@@ -10968,7 +11018,7 @@ msgid "Add"
 msgstr "Tilføj"
 
 #: wp-includes/media-template.php:694 wp-includes/media-template.php:769
-#: wp-includes/media-template.php:943 wp-includes/media.php:3168
+#: wp-includes/media-template.php:943 wp-includes/media.php:3172
 msgid "Thumbnail"
 msgstr "Miniature"
 
@@ -10987,7 +11037,7 @@ msgstr "Seneste kommentarer"
 msgid "Cheatin&#8217; uh?"
 msgstr "Hey! Snyder du?"
 
-#: wp-includes/class-wp-editor.php:1057 wp-includes/media-template.php:382
+#: wp-includes/class-wp-editor.php:1074 wp-includes/media-template.php:382
 #: wp-includes/media-template.php:563 wp-includes/revision.php:34
 #: wp-includes/script-loader.php:581
 msgid "Title"
@@ -11031,7 +11081,7 @@ msgstr "Brugernavn:"
 msgid "Password:"
 msgstr "Adgangskode:"
 
-#: wp-includes/class-wp-editor.php:1611
+#: wp-includes/class-wp-editor.php:1628
 msgid "Y/m/d"
 msgstr "d.m.Y"
 

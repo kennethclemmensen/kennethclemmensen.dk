@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.8.x - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-06-14 23:24:44+0000\n"
+"PO-Revision-Date: 2017-08-14 21:32:06+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -26,39 +26,39 @@ msgctxt "start of week"
 msgid "1"
 msgstr "1"
 
-#: wp-admin/about.php:196
+#: wp-admin/about.php:218
 msgid "New capabilities have been introduced to 4.8 with an eye towards removing calls to <code>is_super_admin()</code>. Additionally, new hooks and tweaks to more granularly control site and user counts per network have been added."
 msgstr "Nye muligheder er blevet introduceret til 4.8 med henblik på at fjerne kald til <code>is_super_admin()</code>. Derudover nye hooks og tweaks for mere detaljeret kontrol af webstedet, og brugertællinger pr. netværk er blevet tilføjet."
 
-#: wp-admin/about.php:151
+#: wp-admin/about.php:173
 msgid "Being part of the community can help you improve your WordPress skills and network with people you wouldn&#8217;t otherwise meet. Now you can easily find your local events just by logging in to your dashboard and looking at the new Events and News dashboard widget."
 msgstr "At være en del af fællesskabet kan hjælpe dig med at forbedre dine WordPress-kompetencer og netværke med personer, du ellers ikke ville møde. Nu kan du nemt finde dine lokale arrangementer bare ved at logge ind på dit kontrolpanel og se på den nye arrangements- og nyhedswidget."
 
-#: wp-admin/about.php:149
+#: wp-admin/about.php:171
 msgid "This is quickly becoming one of our favorite features. While you are in the dashboard (because you&#8217;re running updates and writing posts, right?) all upcoming WordCamps and WordPress Meetups &mdash; local to you &mdash; will be displayed."
 msgstr "Dette bliver hurtigt en af ​​vores yndlingsfeatures. Mens du er i kontrolpanelet (fordi du foretager opdateringer og skriver indlæg, ik?) bliver alle kommende WordCamps og WordPress Meetups &mdash; i dit lokalområde &mdash; vist."
 
-#: wp-admin/about.php:147
+#: wp-admin/about.php:169
 msgid "Did you know that WordPress has a thriving offline community with groups meeting regularly in more than 400 cities around the world? WordPress now draws your attention to the events that help you continue improving your WordPress skills, meet friends, and, of course, publish!"
 msgstr "Vidste du at WordPress har et blomstrende offline-fællesskab med grupper, der regelmæssigt mødes i mere end 400 byer rundt om i verden? WordPress gør nu opmærksom på de begivenheder, der hjælper dig med at forbedre dine WordPress-færdigheder, møde venner og, selvfølgelig, udgive!"
 
-#: wp-admin/about.php:126
+#: wp-admin/about.php:148
 msgid "Have you ever tried updating a link, or the text around a link, and found you can&#8217;t seem to edit it correctly? When you edit the text after the link, your new text also ends up linked. Or you edit the text in the link, but your text ends up outside of it. This can be frustrating! With link boundaries, a great new feature, the process is streamlined and your links will work well. You’ll be happier. We promise."
 msgstr "Har du nogensinde prøvet at opdatere et link eller teksten omkring et link, og fundet ud af at du ikke kan redigere det korrekt? Når du redigerer teksten efter linket, ender din nye tekst også med at være en del af linket. Eller du redigerer teksten i linket, men din tekst slutter uden for den. Dette kan være frustrerende! Med linkgrænser, en fantastisk ny funktion, er processen strømlinet og dine links fungerer godt. Du bliver gladere. Det lover vi."
 
-#: wp-admin/about.php:117
+#: wp-admin/about.php:139
 msgid "This feature deserves a parade down the center of town! Rich-text editing capabilities are now native for Text widgets. Add a widget anywhere and format away. Create lists, add emphasis, and quickly and easily insert links. Have fun with your newfound formatting powers, and watch what you can accomplish in a short amount of time."
 msgstr "Denne funktion fortjener et optog ned gennem centrum af byen! Rich-text redigering er nu indbygget i tekstwidgets. Tilføj en widget hvor som helst og formater teksten på livet løs. Opret lister, fremhæv, og indsæt links hurtigt og nemt. Hav det sjovt med dine nyfundne formateringskræfter, og se hvad du kan opnå på kort tid."
 
-#: wp-admin/about.php:109
+#: wp-admin/about.php:131
 msgid "A welcome video is a great way to humanize the branding of your website. You can now add any video from the Media Library to a sidebar on your site with the new Video widget. Use this to showcase a welcome video to introduce visitors to your site or promote your latest and greatest content."
-msgstr "En velkomstvideo er en fantastisk måde at menneskeliggøre brandingen af dit websted. Du kan nu føje enhver video fra mediebiblioteket til en sidebar på dit websted med den nye videowidget. Brug den til at fremvise en velkomstvideo for at introducere besøgende til dit websted eller promovere dit nyeste og bedste indhold."
+msgstr "En velkomstvideo er en fantastisk måde til at menneskeliggøre markedsføringen af dit websted. Du kan nu føje enhver video fra mediebiblioteket til en sidebar på dit websted med den nye video-widget. Brug den til at fremvise en velkomstvideo for at præsentere besøgende for dit websted eller fremhæve dit nyeste og bedste indhold."
 
-#: wp-admin/about.php:105
+#: wp-admin/about.php:127
 msgid "Adding an image to a widget is now a simple task that is achievable for any WordPress user without needing to know code. Simply insert your image right within the widget settings. Try adding something like a headshot or a photo of your latest weekend adventure &mdash; and see it appear automatically."
 msgstr "Tilføjelse af et billede til en widget er nu en simpel opgave, der kan opnås for enhver WordPress-bruger uden at du behøver at kende til koder. Indsæt dit billede lige inden for widgetindstillingerne. Prøv at tilføje noget som fx et portrætbillede eller et billede af dit seneste weekendeventyr &mdash; og se det bliver vist automatisk."
 
-#: wp-admin/about.php:50
+#: wp-admin/about.php:72
 msgid "Though some updates seem minor, they&#8217;ve been built by hundreds of contributors with <em>you</em> in mind. Get ready for new features you&#8217;ll welcome like an old friend: link improvements, <em>three</em> new media widgets covering images, audio, and video, an updated text widget that supports visual editing, and an upgraded news section in your dashboard which brings in nearby and upcoming WordPress events."
 msgstr "Selv om nogle opdateringer synes mindre, er de blevet udviklet af hundredvis af bidragsydere med <em>dig</em> i tankerne. Gør dig klar til nye funktioner, som du vil byde velkommen som en gammel ven: linkforbedringer, <em>tre</em> nye mediewidgets, der omfatter billeder, lyd og video, en opdateret tekstwidget, der understøtter visuel redigering og en opgraderet nyhedssektion i dit kontrolpanel, der viser lokale og kommende WordPress-arrangementer."
 
@@ -66,59 +66,59 @@ msgstr "Selv om nogle opdateringer synes mindre, er de blevet udviklet af hundre
 msgid "Thank you for updating to the latest version! WordPress %s adds more ways for you to express yourself and represent your brand."
 msgstr "Tak fordi du har opdateret til den nyeste version! WordPress %s tilføjer flere måder for dig til at udtrykke dig selv og repræsentere dit brand på."
 
-#: wp-admin/about.php:204
+#: wp-admin/about.php:226
 msgid "The introduction of a new base media widget REST API schema to 4.8 opens up possibilities for even more media widgets (like galleries or playlists) in the future. The three new media widgets are powered by a shared base class that covers most of the interactions with the media modal. That class also makes it easier to create new media widgets and paves the way for more to come."
 msgstr "Indførelsen af en ny basis mediewidget REST API skema til 4.8 åbner mulighed for endnu flere mediewidgets (som gallerier eller playlister) i fremtiden. De tre nye mediewidgets er drevet af en delt baseklasse, der dækker de fleste interaktioner med media modal. Denne klasse gør det også lettere at oprette nye mediewidgets og baner vejen for mere fremover."
 
-#: wp-admin/about.php:203
+#: wp-admin/about.php:225
 msgid "Media Widgets API"
 msgstr "Media Widgets API"
 
-#: wp-admin/about.php:208
+#: wp-admin/about.php:230
 msgid "Rejoice! New responsive breakpoints have been added to the customizer sidebar to make it wider on high-resolution screens. Customizer controls should use percentage-based widths instead of pixels."
 msgstr "Glæd dig! Nye responsive breakpoints er blevet tilføjet til sidebaren i Tilpasseren for at gøre den bredere på skærme med høj opløsning. Tilpasserkontroller bør bruge procentvisbaserede bredder i stedet for pixels."
 
-#: wp-admin/about.php:207
+#: wp-admin/about.php:229
 msgid "Customizer Width Variable"
 msgstr "Variabel bredde på Tilpasseren"
 
-#: wp-admin/about.php:200
+#: wp-admin/about.php:222
 msgid "With the addition of TinyMCE to the text widget in 4.8 comes a new JavaScript API for instantiating the editor after page load. This can be used to add an editor instance to any text area, and customize it with buttons and functions. Great for plugin authors!"
 msgstr "Med tilføjelsen af TinyMCE til tekstwidget i 4.8 kommer en ny JavaScript API til at instantiere editoren efter sideindlæsning. Dette kan bruges til at tilføje en editorinstans til ethvert tekstområde, og tilpasse det med knapper og funktioner. Fantastisk for pluginforfattere!"
 
-#: wp-admin/about.php:199
+#: wp-admin/about.php:221
 msgid "Text-Editor JavaScript API"
 msgstr "Text-Editor JavaScript API"
 
-#: wp-admin/about.php:195
+#: wp-admin/about.php:217
 msgid "Multisite Updates"
 msgstr "Multisite opdateringer"
 
-#: wp-admin/about.php:192
+#: wp-admin/about.php:214
 msgid "As fewer and fewer browsers support Silverlight, file formats which require the presence of the Silverlight plugin are being removed from core support. Files will still display as a download link, but will no longer be embedded automatically."
 msgstr "Da færre og færre browsere understøtter Silverlight, bliver filformater, der kræver tilstedeværelsen af ​​Silverlight-pluginnet, fjernet fra kerneunderstøttelse. Filer bliver stadig vist som et downloadlink, men bliver ikke længere indlejret automatisk."
 
-#: wp-admin/about.php:191
+#: wp-admin/about.php:213
 msgid "Removal of Core Support for WMV and WMA Files"
 msgstr "Fjernelse af kerneunderstøttelse af WMV- og WMA-filer"
 
-#: wp-admin/about.php:188
+#: wp-admin/about.php:210
 msgid "New CSS rules mean extraneous content (like &ldquo;Add New&rdquo; links) no longer need to be included in admin-area headings. These panel headings improve the experience for people using assistive technologies."
 msgstr "Nye CSS-regler betyder at fremmed indhold (som &ldquo;Tilføj nye&rdquo; links) ikke længere behøver at blive inkluderet i admin-område overskrifter. Disse paneloverskrifter forbedrer oplevelsen for personer, der bruger hjælpemidler."
 
-#: wp-admin/about.php:187
+#: wp-admin/about.php:209
 msgid "More Accessible Admin Panel Headings"
 msgstr "Mere tilgængelige overskrifter i Adminpanel"
 
-#: wp-admin/about.php:56
+#: wp-admin/about.php:78
 msgid "Exciting Widget Updates"
 msgstr "Spændende opdateringer af widgets"
 
-#: wp-admin/about.php:49
+#: wp-admin/about.php:71
 msgid "WordPress 4.8 adds some great new features. Gear up for a more intuitive WordPress!"
 msgstr "WordPress 4.8 tilføjer nogle fantastiske nye funktioner. Gear op til et mere intuitivt WordPress!"
 
-#: wp-admin/about.php:48
+#: wp-admin/about.php:70
 msgid "An Update with You in Mind"
 msgstr "En opdatering med dig i tankerne"
 
@@ -127,19 +127,19 @@ msgstr "En opdatering med dig i tankerne"
 msgid "There aren&#8217;t any events scheduled near you at the moment. Would you like to <a href=\"%s\">organize one</a>?"
 msgstr "Der er ikke nogen planlagte arrangementer i nærheden af ​​dig i øjeblikket. Vil du <a href=\"%s\">organisere en</a>?"
 
-#: wp-admin/about.php:145
+#: wp-admin/about.php:167
 msgid "Nearby WordPress Events"
 msgstr "Lokale WordPress-arrangementer"
 
-#: wp-admin/about.php:116
+#: wp-admin/about.php:138
 msgid "Rich Text Widget"
 msgstr "Rich Text Widget"
 
-#: wp-admin/about.php:113
+#: wp-admin/about.php:135
 msgid "Are you a podcaster, musician, or avid blogger? Adding a widget with your audio file has never been easier. Upload your audio file to the Media Library, go to the widget settings, select your file, and you&#8217;re ready for listeners. This would be a easy way to add a more personal welcome message, too!"
 msgstr "Er du podcaster, musiker eller ivrig blogger? Tilføjelse af en widget med din lydfil har aldrig været nemmere. Upload din lydfil til mediebiblioteket, gå til widgetindstillingerne, vælg din fil, og du er klar til lyttere. Det er også en nem måde at tilføje en mere personlig velkomstbesked på!"
 
-#: wp-admin/about.php:125
+#: wp-admin/about.php:147
 msgid "Link Boundaries"
 msgstr "Linkgrænser"
 
@@ -218,13 +218,17 @@ msgid "Assign a parent term to create a hierarchy. The term Jazz, for example, w
 msgstr "Tildel et overordnet begreb for at oprette et hierarki. Begrebet jazz for eksempel ville være overbegrebet til Bebop og Big Band."
 
 #. translators: %s: smiling face with smiling eyes emoji
-#: wp-admin/about.php:180
+#: wp-admin/about.php:202
 msgid "Even More Developer Happiness %s"
 msgstr "Endnu mere udviklerglæde %s"
 
 #: wp-admin/users.php:167 wp-admin/users.php:207
 msgid "Sorry, you are not allowed to delete users."
 msgstr "Du har desværre ikke tilladelse til at slette brugere."
+
+#: wp-admin/user-new.php:23 wp-admin/user-new.php:117
+msgid "Sorry, you are not allowed to create users."
+msgstr "Beklager, du har ikke tilladelse til at oprette brugere."
 
 #: wp-admin/customize.php:163
 msgid "The Customizer allows you to preview changes to your site before publishing them. You can navigate to different pages on your site within the preview. Edit shortcuts are shown for some editable elements."
@@ -237,7 +241,7 @@ msgstr "Skjul knapper"
 
 #: wp-admin/theme-install.php:64
 msgid "Expand Sidebar"
-msgstr "Udvid sidebar"
+msgstr "Udfold sidebar"
 
 #: wp-admin/nav-menus.php:814
 msgid "Display location"
@@ -466,9 +470,9 @@ msgstr "Søgningen efter installerede plugins vil søge efter udtryk i deres nav
 msgid "Custom Logo"
 msgstr "Eget logo"
 
-#: wp-admin/user-new.php:23 wp-admin/user-new.php:117
-msgid "Sorry, you are not allowed to create users."
-msgstr "Du har desværre ikke tilladelse til at oprette brugere."
+#: wp-admin/users.php:317 wp-admin/users.php:348
+msgid "Sorry, you are not allowed to remove users."
+msgstr "Du har desværre ikke tilladelse til at fjerne brugere."
 
 #: wp-admin/user-new.php:16 wp-admin/user-new.php:56
 msgid "Sorry, you are not allowed to add users to this network."
@@ -660,10 +664,6 @@ msgstr "Dette vil erstatte det nuværende indhold i editoren med seneste sikkerh
 #: wp-admin/includes/template.php:1523
 msgid "Close media attachment panel"
 msgstr "Luk panelet for vedhæftede medier"
-
-#: wp-admin/users.php:317 wp-admin/users.php:348
-msgid "Sorry, you are not allowed to remove users."
-msgstr "Du har desværre ikke tilladelse til at fjerne brugere."
 
 #: wp-admin/includes/ms.php:1096
 msgid "Info"
@@ -1197,16 +1197,16 @@ msgstr "Papirkurv"
 msgid "The ssh2 PHP extension is available, however, we require the PHP5 function %s"
 msgstr "PHP-udvidelsen ssh2 er tilgængelig, men vi påkræver PHP5-funktionen %s"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:588
+#: wp-admin/includes/class-wp-comments-list-table.php:593
 msgid "Quick edit this comment inline"
 msgstr "Lynrediger denne kommentar inline"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:584
+#: wp-admin/includes/class-wp-comments-list-table.php:589
 #: wp-admin/includes/dashboard.php:634
 msgid "Edit this comment"
 msgstr "Rediger denne kommentar"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:570
+#: wp-admin/includes/class-wp-comments-list-table.php:575
 msgid "Restore this comment from the spam"
 msgstr "Genskab denne kommentar fra spam"
 
@@ -1275,7 +1275,7 @@ msgid "Welcome to %s. This is your first post. Edit or delete it, then start blo
 msgstr "Velkommen til %s. Dette er dit første indlæg. Rediger eller slet det, og begynd så at blogge!"
 
 #. translators: %s: WordPress version number
-#: wp-admin/about.php:242
+#: wp-admin/about.php:264
 msgid "<strong>Version %s</strong> addressed one security issue."
 msgstr "<strong>Version %s</strong> tog hånd om ét sikkerhedsproblem."
 
@@ -1292,15 +1292,15 @@ msgstr "Du kan ændre dit profilbillede på <a href=\"%s\">Gravatar</a>."
 msgid "Profile Picture"
 msgstr "Profilbillede"
 
-#: wp-admin/about.php:239
+#: wp-admin/about.php:261
 msgid "Maintenance and Security Releases"
 msgstr "Vedligeholdelses- og sikkerhedsudgivelser"
 
-#: wp-admin/about.php:236
+#: wp-admin/about.php:258
 msgid "Security Releases"
 msgstr "Sikkerhedsudgivelser"
 
-#: wp-admin/about.php:233
+#: wp-admin/about.php:255
 msgid "Maintenance Releases"
 msgstr "Vedligeholdelsesudgivelser"
 
@@ -1716,7 +1716,7 @@ msgstr "Ingen afventende kommentarer"
 msgid "Failed to initialize a SFTP subsystem session with the SSH2 Server %s"
 msgstr "Det lykkedes ikke at initialisere en SFTP undersystemssession med SSH2 serveren %s"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:405
+#: wp-admin/includes/class-wp-comments-list-table.php:410
 msgctxt "column name"
 msgid "Submitted On"
 msgstr "Indsendt den"
@@ -1872,7 +1872,7 @@ msgstr "Det nuværende tema understøtter ikke upload af brugerdefineret header-
 
 #. translators: %s: comment link
 #: wp-admin/comment.php:187
-#: wp-admin/includes/class-wp-comments-list-table.php:648
+#: wp-admin/includes/class-wp-comments-list-table.php:653
 msgid "In reply to %s."
 msgstr "Svar på %s."
 
@@ -1967,7 +1967,7 @@ msgstr "Bekræft adgangskode"
 msgid "While you are editing your %1$s file, take a moment to make sure you have all 8 keys and that they are unique. You can generate these using the <a href=\"%2$s\">WordPress.org secret key service</a>."
 msgstr "Mens du ændrer filen %1$s, så brug et øjeblik på at sørge for, at du har sat alle 8 nøgler, og at de er unikke. Du kan generere dem ved at bruge <a href=\"%2$s\">WordPress.org hemmelig nøgle-service</a>."
 
-#: wp-admin/includes/class-wp-comments-list-table.php:616
+#: wp-admin/includes/class-wp-comments-list-table.php:621
 #: wp-admin/includes/class-wp-list-table.php:523
 #: wp-admin/includes/class-wp-list-table.php:1324
 #: wp-admin/includes/update.php:687
@@ -2756,7 +2756,7 @@ msgstr "Y/m/d h:i:s"
 
 #. translators: column name or table row header
 #: wp-admin/comment.php:169
-#: wp-admin/includes/class-wp-comments-list-table.php:402
+#: wp-admin/includes/class-wp-comments-list-table.php:407
 msgid "In Response To"
 msgstr "Som svar til"
 
@@ -2877,7 +2877,7 @@ msgstr "%s er blevet logget ud."
 msgid "You are now logged out everywhere else."
 msgstr "Du er nu logget ud ved alle andre placeringer."
 
-#: wp-admin/includes/class-wp-comments-list-table.php:327
+#: wp-admin/includes/class-wp-comments-list-table.php:332
 msgid "Filter by comment type"
 msgstr "Filtrer efter kommentartype"
 
@@ -3159,7 +3159,7 @@ msgstr "Du kan skalere det originale billede proportionelt. Det bedste resultat 
 msgid "To crop the image, click on it and drag to make your selection."
 msgstr "For at beskære billedet, tryk på det og træk for at lave din markering."
 
-#: wp-admin/includes/class-wp-comments-list-table.php:329
+#: wp-admin/includes/class-wp-comments-list-table.php:334
 msgid "All comment types"
 msgstr "Alle kommentartyper"
 
@@ -4698,7 +4698,7 @@ msgstr "Tags kan efter ønske konverteres til kategorier ved at bruge <a href=\"
 msgid "Select %s"
 msgstr "Vælg %s"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:627
+#: wp-admin/includes/class-wp-comments-list-table.php:632
 msgid "Select comment"
 msgstr "Vælg kommentar"
 
@@ -4900,7 +4900,7 @@ msgstr "Version:"
 #: wp-admin/includes/class-wp-theme-install-list-table.php:342
 #: wp-admin/theme-install.php:63 wp-admin/theme-install.php:341
 msgid "Collapse Sidebar"
-msgstr "Minimer sidemenu"
+msgstr "Sammenfold sidebar"
 
 #: wp-admin/includes/class-wp-plugins-list-table.php:386
 msgid "Plugin"
@@ -4920,7 +4920,7 @@ msgid "%s ago"
 msgstr "%s siden"
 
 #: wp-admin/includes/class-wp-comments-list-table.php:300
-#: wp-admin/includes/class-wp-comments-list-table.php:574
+#: wp-admin/includes/class-wp-comments-list-table.php:579
 #: wp-admin/includes/class-wp-media-list-table.php:144
 #: wp-admin/includes/class-wp-media-list-table.php:715
 #: wp-admin/includes/class-wp-posts-list-table.php:397
@@ -5299,7 +5299,7 @@ msgstr "Du bør opdatere din web.config nu."
 
 #: wp-admin/includes/plugin-install.php:602
 msgid "Plugin Homepage &#187;"
-msgstr "Plugin forside &#187;"
+msgstr "Plugin-forside &#187;"
 
 #. translators: 1: table name, 2: error message,
 #: wp-admin/maint/repair.php:117
@@ -5389,7 +5389,7 @@ msgid "Contributing Developers"
 msgstr "Bidragende udviklere"
 
 #. translators: 1: WordPress version number, 2: plural number of bugs.
-#: wp-admin/about.php:247
+#: wp-admin/about.php:52 wp-admin/about.php:269
 msgid "<strong>Version %1$s</strong> addressed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed %2$s bugs."
 msgstr[0] "<strong>Version %1$s</strong> rettede %2$s fejl."
@@ -5397,20 +5397,20 @@ msgstr[1] "<strong>Version %1$s</strong> rettede %2$s fejl."
 
 #. translators: 1: WordPress version number, 2: plural number of bugs. More
 #. than one security issue.
-#: wp-admin/about.php:255
+#: wp-admin/about.php:277
 msgid "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bugs."
 msgstr[0] "<strong>Version %1$s</strong> lukkede nogle sikkerhedshuller og rettede %2$s fejl."
 msgstr[1] "<strong>Version %1$s</strong> lukkede nogle sikkerhedshuller og rettede %2$s fejl."
 
 #. translators: %s: Codex URL
-#: wp-admin/about.php:259
+#: wp-admin/about.php:63 wp-admin/about.php:281
 msgid "For more information, see <a href=\"%s\">the release notes</a>."
 msgstr "Hvis du vil vide mere, så læs <a href=\"%s\">udgivelsesnoterne</a>."
 
 #. translators: 1: WordPress version number, 2: plural number of bugs. Singular
 #. security issue.
-#: wp-admin/about.php:251
+#: wp-admin/about.php:273
 msgid "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bugs."
 msgstr[0] "<strong>Version %1$s</strong> lukkede et sikkerhedshul og rettede %2$s fejl."
@@ -5421,15 +5421,15 @@ msgid "Welcome to your WordPress Dashboard! This is the screen you will see when
 msgstr "Velkommen til dit WordPress kontrolpanel! Det her er det skærmbillede, du vil se, når du logger ind på dit websted, og det giver dig adgang til alle administationsmulighederne i WordPress. Du kan få hjælp til alle skærmbilleder ved at klikke på Hjælp-fanebladet ovenover skærmbilledets titel."
 
 #. translators: %s: WordPress version number
-#: wp-admin/about.php:244
+#: wp-admin/about.php:266
 msgid "<strong>Version %s</strong> addressed some security issues."
 msgstr "<strong>Version %s</strong> tog sig af nogle sikkerhedsproblemer."
 
-#: wp-admin/about.php:232
+#: wp-admin/about.php:47 wp-admin/about.php:254
 msgid "Maintenance Release"
 msgstr "Vedligeholdelsesudgivelse"
 
-#: wp-admin/about.php:235
+#: wp-admin/about.php:257
 msgid "Security Release"
 msgstr "Sikkerhedsudgivelse"
 
@@ -5437,7 +5437,7 @@ msgstr "Sikkerhedsudgivelse"
 msgid "What&#8217;s New"
 msgstr "Hvad er nyt"
 
-#: wp-admin/about.php:238
+#: wp-admin/about.php:260
 msgid "Maintenance and Security Release"
 msgstr "Vedligeholdelse- og sikkerhedsudgivelse"
 
@@ -5449,7 +5449,7 @@ msgstr "På dette skærmbillede kan du vælge din permalinkstruktur. Du kan væl
 msgid "Welcome to WordPress %1$s. <a href=\"%2$s\">Learn more</a>."
 msgstr "Velkommen til WordPress %1$s <a href=\"%2$s\">Læs mere</a>."
 
-#: wp-admin/about.php:218
+#: wp-admin/about.php:240
 msgid "Return to Updates"
 msgstr "Tilbage til opdateringer"
 
@@ -5599,7 +5599,7 @@ msgstr "Du kan ændre din adgangskode, slå tastaturgenveje til, ændre farveske
 
 #: wp-admin/widgets.php:100
 msgid "This sidebar is no longer available and does not show anywhere on your site. Remove each of the widgets below to fully remove this inactive sidebar."
-msgstr "Denne sidebar er ikke længere tilgængelig, og vises ikke nogen steder på dit websted. Fjern hvert af de forskellige widgets nedenfor for helt at fjerne denne inaktive sidebar."
+msgstr "Denne sidebar er ikke længere tilgængelig, og vises ikke nogen steder på dit websted. Fjern hvert af de forskellige widgets nedenfor for helt at fjerne denne inaktive sidebjælke."
 
 #: wp-admin/widgets.php:97
 msgid "Inactive Sidebar (not used)"
@@ -5729,11 +5729,11 @@ msgstr "Den sandsynlige direkte indkludering af wp-admin/includes/template.php f
 msgid "Welcome to WordPress %s"
 msgstr "Velkommen til WordPress %s"
 
-#: wp-admin/about.php:218
+#: wp-admin/about.php:240
 msgid "Return to Dashboard &rarr; Updates"
 msgstr "Tilbage til Kontrolpanel &rarr; Opdateringer"
 
-#: wp-admin/about.php:221
+#: wp-admin/about.php:243
 msgid "Go to Dashboard &rarr; Home"
 msgstr "Gå til Kontrolpanel &rarr; Forside"
 
@@ -6785,7 +6785,7 @@ msgstr "FTP-adgangskode"
 
 #: wp-admin/widgets.php:70
 msgid "Many themes show some sidebar widgets by default until you edit your sidebars, but they are not automatically displayed in your sidebar management tool. After you make your first widget change, you can re-add the default widgets by adding them from the Available Widgets area."
-msgstr "Mange temaer viser visse sidebar-elementer som standard, indtil du ændrer på sidebarens indhold, men disse bliver ikke automatisk vist i din sidebars administrationsdel. Når du har lavet din første widget-ændring kan du genindsætte disse elementer fra Tilgængelige widgets."
+msgstr "Mange temaer viser visse sidebjælke-widgets som standard, indtil du ændrer på sidebarens indhold, men disse bliver ikke automatisk vist i din sidebjælke administrationsdel. Når du har lavet din første widget-ændring kan du genindsætte disse elementer fra Tilgængelige widgets."
 
 #: wp-admin/options-permalink.php:30
 msgid "If you pick an option other than Plain, your general URL path with structure tags (terms surrounded by <code>%</code>) will also appear in the custom structure field and your path can be further modified there."
@@ -6797,11 +6797,11 @@ msgstr "Når du tilføjer flere kategorier eller tags til et indlæg, vil kun é
 
 #: wp-admin/options-permalink.php:38
 msgid "The Optional fields let you customize the &#8220;category&#8221; and &#8220;tag&#8221; base names that will appear in archive URLs. For example, the page listing all posts in the &#8220;Uncategorized&#8221; category could be <code>/topics/uncategorized</code> instead of <code>/category/uncategorized</code>."
-msgstr "De valgfrie felter lader dig tilpasse de &#8220;kategori&#8221;- og &#8220;tag&#8221;-navne, der vises i starten af et arkivs URL. For eksempel vil en side med alle indlæg i &#8220;Ikke kategoriseret&#8221; kategorien kunne være <code>/emner/ikke-kategoriseret</code> i stedet for <code>/kategori/ikke-kategoriseret</code>."
+msgstr "De valgfrie felter lader dig tilpasse basisnavnene &#8220;kategori&#8221; og &#8220;tag&#8221;, der vises i starten af et arkivs URL. F.eks. vil en side med alle indlæg i kategorien &#8220;Ikke kategoriseret&#8221; kunne være <code>/emner/ikke-kategoriseret</code> i stedet for <code>/kategori/ikke-kategoriseret</code>."
 
 #: wp-admin/options-reading.php:24
 msgid "You can choose what&#8217;s displayed on the front page of your site. It can be posts in reverse chronological order (classic blog), or a fixed/static page. To set a static home page, you first need to create two <a href=\"%s\">Pages</a>. One will become the front page, and the other will be where your posts are displayed."
-msgstr "Du kan vælge, hvad der vises på forsiden af din side. Det kan være indlæg i omvendt kronologisk rækkefølge (klassisk blog) eller en fast/statisk side. Før du kan vælge en statisk side, er du nødt til at oprette to <a href=\"%s\">sider</a>. Den ene vil blive forside og den anden vil blive den side, hvor dine indlæg vises."
+msgstr "Du kan vælge, hvad der vises på forsiden af dit websted. Det kan være indlæg i omvendt kronologisk rækkefølge (klassisk blog) eller en fast/statisk side. Før du kan vælge en statisk forside, er du nødt til at oprette to <a href=\"%s\">sider</a>. Den ene vil blive forsiden og den anden vil blive den side, hvor dine indlæg vises."
 
 #: wp-admin/users.php:33
 msgid "To add a new user for your site, click the Add New button at the top of the screen or Add New in the Users menu section."
@@ -7116,12 +7116,12 @@ msgstr "Beskær header-billede"
 msgid "Default Images"
 msgstr "Standardbilleder"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:578
+#: wp-admin/includes/class-wp-comments-list-table.php:583
 #: wp-admin/includes/dashboard.php:639
 msgid "Delete this comment permanently"
 msgstr "Slet denne kommentar permanent"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:574
+#: wp-admin/includes/class-wp-comments-list-table.php:579
 msgid "Restore this comment from the Trash"
 msgstr "Gendan denne kommentar fra papirkurven"
 
@@ -7146,7 +7146,7 @@ msgstr "<strong>Titel</strong> ‒ Skriv en titel til dit indlæg. Efter du har 
 #. translators: %s: Featured Image
 #: wp-admin/edit-form-advanced.php:441
 msgid "<strong>%s</strong> &mdash; This allows you to associate an image with your post without inserting it. This is usually useful only if your theme makes use of the image as a post thumbnail on the home page, a custom header, etc."
-msgstr "<strong>%s</strong> ‒ Dette gør det muligt at tilknytte et billede til dit indlæg uden at indsætte det. Dette er normalt kun nyttigt, hvis dit tema gør brug af det udvalgte billede som miniature på webstedet, i en brugerdefineret header osv."
+msgstr "<strong>%s</strong> ‒ Dette gør det muligt at tilknytte et billede til dit indlæg uden at indsætte det. Dette er normalt kun nyttigt, hvis dit tema gør brug af det udvalgte billede som miniature på startsiden, i en brugerdefineret header osv."
 
 #: wp-admin/edit.php:210
 msgid "Hovering over a row in the posts list will display action links that allow you to manage your post. You can perform the following actions:"
@@ -7232,7 +7232,7 @@ msgid "You have version %1$s installed. Update to %2$s."
 msgstr "Du har version %1$s installeret. Opdater til %2$s."
 
 #: wp-admin/includes/class-wp-comments-list-table.php:302
-#: wp-admin/includes/class-wp-comments-list-table.php:570
+#: wp-admin/includes/class-wp-comments-list-table.php:575
 msgctxt "comment"
 msgid "Not Spam"
 msgstr "Ikke spam"
@@ -7607,7 +7607,7 @@ msgstr "Vis alle"
 msgid "Please enter a valid menu name."
 msgstr "Indtast venligst navnet på en eksisterende menu."
 
-#: wp-admin/about.php:221
+#: wp-admin/about.php:243
 msgid "Go to Dashboard"
 msgstr "Gå til kontrolpanelet"
 
@@ -7745,7 +7745,7 @@ msgstr "Placering"
 
 #: wp-admin/widgets.php:282
 msgid "Select both the sidebar for this widget and the position of the widget in that sidebar."
-msgstr "Vælg både sidebaren til denne widget og widgetens position i den sidebar."
+msgstr "Vælg både en sidebar til denne widget og dens position i den valgte sidebar."
 
 #: wp-admin/widgets.php:271
 msgid "Widget %s"
@@ -9120,7 +9120,7 @@ msgstr "Synlig"
 msgid "Relationship"
 msgstr "Relation"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:398
+#: wp-admin/includes/class-wp-comments-list-table.php:403
 #: wp-admin/includes/class-wp-post-comments-list-table.php:28
 msgctxt "column name"
 msgid "Comment"
@@ -9144,7 +9144,7 @@ msgctxt "column name"
 msgid "Title"
 msgstr "Titel"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:588
+#: wp-admin/includes/class-wp-comments-list-table.php:593
 #: wp-admin/includes/class-wp-posts-list-table.php:1253
 #: wp-admin/includes/class-wp-terms-list-table.php:449
 msgid "Quick&nbsp;Edit"
@@ -9525,7 +9525,7 @@ msgstr "Standardskabelon"
 
 #: wp-admin/includes/class-wp-posts-list-table.php:1525
 msgid "Main Page (no parent)"
-msgstr "Forside (ingen forælder)"
+msgstr "Overside (ingen forælder)"
 
 #: wp-admin/includes/class-wp-posts-list-table.php:1519
 #: wp-admin/includes/meta-boxes.php:830
@@ -10072,36 +10072,36 @@ msgstr "[Afventer]"
 msgid "From %1$s on %2$s %3$s"
 msgstr "Fra %1$s til %2$s %3$s"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:580
+#: wp-admin/includes/class-wp-comments-list-table.php:585
 #: wp-admin/includes/dashboard.php:641
 msgid "Move this comment to the Trash"
 msgstr "Flyt denne kommentar til papirkurven"
 
 #. translators: mark as spam link
-#: wp-admin/includes/class-wp-comments-list-table.php:568
+#: wp-admin/includes/class-wp-comments-list-table.php:573
 #: wp-admin/includes/dashboard.php:636
 msgctxt "verb"
 msgid "Spam"
 msgstr "Spam"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:568
+#: wp-admin/includes/class-wp-comments-list-table.php:573
 #: wp-admin/includes/dashboard.php:636
 msgid "Mark this comment as spam"
 msgstr "Marker kommentar som spam"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:590
+#: wp-admin/includes/class-wp-comments-list-table.php:595
 #: wp-admin/includes/dashboard.php:635
 msgid "Reply to this comment"
 msgstr "Besvar denne kommentar"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:558
-#: wp-admin/includes/class-wp-comments-list-table.php:564
+#: wp-admin/includes/class-wp-comments-list-table.php:563
+#: wp-admin/includes/class-wp-comments-list-table.php:569
 #: wp-admin/includes/dashboard.php:633
 msgid "Unapprove this comment"
 msgstr "Godkend ikke"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:560
-#: wp-admin/includes/class-wp-comments-list-table.php:563
+#: wp-admin/includes/class-wp-comments-list-table.php:565
+#: wp-admin/includes/class-wp-comments-list-table.php:568
 #: wp-admin/includes/dashboard.php:632
 msgid "Approve this comment"
 msgstr "Godkend kommentar"
@@ -10655,24 +10655,24 @@ msgstr "Tilpasset felt opdateret."
 msgid "No comments found."
 msgstr "Ingen kommentarer fundet."
 
-#: wp-admin/includes/class-wp-comments-list-table.php:359
+#: wp-admin/includes/class-wp-comments-list-table.php:364
 #: wp-admin/includes/class-wp-media-list-table.php:181
 #: wp-admin/includes/class-wp-posts-list-table.php:493
 msgid "Empty Trash"
 msgstr "Tøm papirkurv"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:359
+#: wp-admin/includes/class-wp-comments-list-table.php:364
 msgid "Empty Spam"
 msgstr "Tøm spam"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:354
+#: wp-admin/includes/class-wp-comments-list-table.php:359
 #: wp-admin/includes/class-wp-links-list-table.php:115
 #: wp-admin/includes/class-wp-media-list-table.php:177
 #: wp-admin/includes/class-wp-posts-list-table.php:488
 msgid "Filter"
 msgstr "Filtrer"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:340
+#: wp-admin/includes/class-wp-comments-list-table.php:345
 #: wp-admin/includes/class-wp-posts-list-table.php:1612
 msgid "Pings"
 msgstr "Pings"
@@ -10685,15 +10685,15 @@ msgid "Move to Trash"
 msgstr "Flyt til papirkurv"
 
 #: wp-admin/includes/class-wp-comments-list-table.php:295
-#: wp-admin/includes/class-wp-comments-list-table.php:560
-#: wp-admin/includes/class-wp-comments-list-table.php:563
+#: wp-admin/includes/class-wp-comments-list-table.php:565
+#: wp-admin/includes/class-wp-comments-list-table.php:568
 #: wp-admin/includes/dashboard.php:632
 msgid "Approve"
 msgstr "Godkend"
 
 #: wp-admin/includes/class-wp-comments-list-table.php:293
-#: wp-admin/includes/class-wp-comments-list-table.php:558
-#: wp-admin/includes/class-wp-comments-list-table.php:564
+#: wp-admin/includes/class-wp-comments-list-table.php:563
+#: wp-admin/includes/class-wp-comments-list-table.php:569
 #: wp-admin/includes/dashboard.php:633
 msgid "Unapprove"
 msgstr "Godkend ikke"
