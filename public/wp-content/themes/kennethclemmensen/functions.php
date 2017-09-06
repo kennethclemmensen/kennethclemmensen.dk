@@ -15,13 +15,13 @@ add_action('wp_enqueue_scripts', function() {
 	wp_enqueue_script($script, get_template_directory_uri().$script_file, [$jquery], $version, true);
 });
 
-add_filter('style_loader_tag', function($tag) {
+/*add_filter('style_loader_tag', function($tag) {
 	return str_replace(' href', 'async href', $tag);
 });
 
 add_filter('script_loader_tag', function($tag) {
 	return str_replace(' src', 'async src', $tag);
-});
+});*/
 
 add_action('init', function() {
 	register_nav_menus([
