@@ -1,5 +1,6 @@
 .footer {
   background-color: @color-blue--darker;
+  height: @footer-height;
   padding: 8px;
   border-top: 1px solid @color-gray;
   text-align: center;
@@ -9,6 +10,7 @@
   bottom: 0;
   @media @sm {
     width: @page-width-sm;
+    height: @footer-height-sm;
     border-left: 1px solid @color-gray;
     border-right: 1px solid @color-gray;
     border-radius: 8px 8px 0 0;
@@ -23,4 +25,27 @@
 
 .footer__text {
   margin-bottom: 0;
+}
+
+.footer__link {
+  margin: 0 6px;
+  &:before {
+    .font-awesome-styles;
+    display: inline-block;
+  }
+  &--email {
+    &:before {
+      content: "\f003";
+    }
+  }
+  &--linkedin {
+    &:before {
+      content: "\f0e1";
+    }
+  }
+  &--github {
+    &:before {
+      content: "\f09b";
+    }
+  }
 }

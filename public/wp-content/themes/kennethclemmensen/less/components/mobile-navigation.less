@@ -4,10 +4,11 @@
   padding-top: 20px;
   position: fixed;
   top: @header-height;
-  bottom: 0;
+  bottom: @footer-height;
   z-index: 1;
   transform: translateX(-100%);
   transition: all .4s ease 0s;
+  overflow-y: auto;
   @media @sm {
     display: none;
   }
