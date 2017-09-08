@@ -21,8 +21,8 @@
 		<?php wp_nav_menu(['theme_location' => 'main-menu']); ?>
     </nav>
 </header>
-<div class="mobile-nav">
+<nav class="mobile-nav">
     <div class="mobile-nav__content">
 		<?php wp_nav_menu(['theme_location' => 'mobile-menu']); ?>
     </div>
-</div>
+</nav>
