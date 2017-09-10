@@ -5,6 +5,7 @@ jQuery.noConflict();
             event.preventDefault();
             $(this).toggleClass('header__nav-trigger--active');
             $('.mobile-nav').toggleClass('mobile-nav--active');
+            $('html, body').toggleClass('show-mobile-nav');
         });
         function Slider(delay, duration) {
             var sliderImages = $('.slider__image');

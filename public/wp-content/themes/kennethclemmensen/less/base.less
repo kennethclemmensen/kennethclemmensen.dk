@@ -7,6 +7,17 @@
   }
 }
 
+html, body {
+  &.show-mobile-nav {
+    height: 100%;
+    overflow: hidden;
+    @media @sm {
+      height: initial;
+      overflow: initial;
+    }
+  }
+}
+
 body {
   background: @color-blue--dark;
   min-width: 320px;
