@@ -1,4 +1,6 @@
 <?php
+namespace KCSlider\Includes;
+
 class KC_Slider {
 
 	private $_field_slide_image;

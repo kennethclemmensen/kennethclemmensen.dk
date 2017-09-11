@@ -1,5 +1,6 @@
 <div id="slider" class="slider">
 	<?php
+    use KCSlider\Includes\KC_Slider;
 	$kc_slider = new KC_Slider();
 	$args = [
 		'post_type' => KC_Slider::SLIDES,

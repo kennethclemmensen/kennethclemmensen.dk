@@ -8,6 +8,6 @@ Author URI: https://www.kennethclemmensen.dk
 */
 if(!defined('ABSPATH')) die();
 require_once 'includes/class-kc-slider.php';
-$plugin = new KC_Slider();
+$plugin = new \KCSlider\Includes\KC_Slider();
 $plugin->activate(__FILE__);
 $plugin->execute();
