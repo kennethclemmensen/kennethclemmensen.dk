@@ -2,7 +2,7 @@
 get_header();
 ?>
     <div class="page">
-		<?php get_template_part('partials/content', 'slider'); ?>
+	    <?php get_template_part('partials/slider'); ?>
         <section class="page__content">
             <h1>Søg</h1>
 			<?php
