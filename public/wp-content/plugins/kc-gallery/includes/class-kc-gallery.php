@@ -1,4 +1,6 @@
 <?php
+namespace KCGallery\Includes;
+
 class KC_Gallery {
 
 	private $_field_gallery_page;
@@ -120,7 +122,7 @@ class KC_Gallery {
 			$galleries = $this->get_galleries();
 			foreach($galleries as $key => $gallery) {
 				$html .= '<div class="kc-galleries__gallery">';
-				$html .= '<a href="'.$this->get_gallery_page($key).'"><img src="'.$this->get_gallery_photo($key).'" alt="'.get_the_title().'"></a>';
+				$html .= '<a href="'.$this->get_gallery_page($key).'"><img src="'.$this->get_gallery_photo($key).'" alt="'.get_the_title($key).'"></a>';
 				$html .= '</div>';
 			}
 			$html .= '</div>';
@@ -138,7 +140,7 @@ class KC_Gallery {
 				'meta_value' => $gallery_id,
 				'paged' => $paged
 			];
-			$wp_query = new WP_Query($args);
+			$wp_query = new \WP_Query($args);
 			while($wp_query->have_posts()) {
 				$wp_query->the_post();
 				$html .= '<a href="'.$this->get_photo(get_the_ID()).'" data-title="'.get_the_title().'" data-lightbox="'.$gallery_id.'">';
@@ -199,7 +201,7 @@ class KC_Gallery {
 	}
 
 	private function pre_get_posts() {
-		add_action('pre_get_posts', function(WP_Query $query) {
+		add_action('pre_get_posts', function(\WP_Query $query) {
 			if(!is_admin()) {
 				return;
 			}
@@ -218,7 +220,7 @@ class KC_Gallery {
 			'order' => 'ASC',
 			'orderby' => 'menu_order'
 		];
-		$wp_query = new WP_Query($args);
+		$wp_query = new \WP_Query($args);
 		while($wp_query->have_posts()) {
 			$wp_query->the_post();
 			$pages[get_the_ID()] = get_the_title();
@@ -233,7 +235,7 @@ class KC_Gallery {
 			'posts_per_page' => -1,
 			'order' => 'ASC'
 		];
-		$wp_query = new WP_Query($args);
+		$wp_query = new \WP_Query($args);
 		while($wp_query->have_posts()) {
 			$wp_query->the_post();
 			$galleries[get_the_ID()] = get_the_title();
@@ -269,7 +271,7 @@ class KC_Gallery {
 			'meta_key' => $this->_field_photo_gallery,
 			'meta_value' => $gallery_id
 		];
-		$wp_query = new WP_Query($args);
+		$wp_query = new \WP_Query($args);
 		return $wp_query->found_posts;
 	}
 }

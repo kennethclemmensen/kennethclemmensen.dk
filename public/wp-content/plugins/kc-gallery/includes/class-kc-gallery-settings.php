@@ -1,4 +1,6 @@
 <?php
+namespace KCGallery\Includes;
+
 class KC_Gallery_Settings {
 
 	private $_photo_key;

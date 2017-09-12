@@ -1,4 +1,6 @@
 <?php
+namespace KCGallery\Includes;
+
 class KC_Gallery_Loader {
 
 	public function load_styles_and_scripts() {
