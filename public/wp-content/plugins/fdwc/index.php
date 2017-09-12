@@ -8,6 +8,6 @@ Author URI: https://www.kennethclemmensen.dk
 */
 if(!defined('ABSPATH')) die();
 require_once 'includes/class-fdwc.php';
-$plugin = new FDWC();
+$plugin = new \FDWC\Includes\FDWC();
 $plugin->activate(__FILE__);
 $plugin->execute();

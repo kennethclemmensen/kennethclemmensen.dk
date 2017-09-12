@@ -1,4 +1,6 @@
 <?php
+namespace FDWC\Includes;
+
 class FDWC {
 
 	private $_field_description;
@@ -139,7 +141,7 @@ class FDWC {
 				],
 				'paged' => $paged
 			];
-			$wp_query = new WP_Query($args);
+			$wp_query = new \WP_Query($args);
 			while($wp_query->have_posts()) {
 				$wp_query->the_post();
 				$html .= '<div class="fdwc__section">';

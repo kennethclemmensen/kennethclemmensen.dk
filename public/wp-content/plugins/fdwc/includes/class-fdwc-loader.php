@@ -1,4 +1,6 @@
 <?php
+namespace FDWC\Includes;
+
 class FDWC_Loader {
 
 	public function load_scripts() {
