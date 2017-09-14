@@ -6,8 +6,9 @@ Version: 1.0
 Author: Kenneth Clemmensen
 Author URI: https://www.kennethclemmensen.dk
 */
+namespace KCGallery;
 if(!defined('ABSPATH')) die();
 require_once 'includes/class-kc-gallery.php';
-$plugin = new \KCGallery\Includes\KC_Gallery();
+$plugin = new Includes\KC_Gallery();
 $plugin->activate(__FILE__);
 $plugin->execute();
