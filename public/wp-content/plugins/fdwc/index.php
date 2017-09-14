@@ -6,8 +6,9 @@ Version: 1.0
 Author: Kenneth Clemmensen
 Author URI: https://www.kennethclemmensen.dk
 */
+namespace FDWC;
 if(!defined('ABSPATH')) die();
 require_once 'includes/class-fdwc.php';
-$plugin = new \FDWC\Includes\FDWC();
+$plugin = new Includes\FDWC();
 $plugin->activate(__FILE__);
 $plugin->execute();
