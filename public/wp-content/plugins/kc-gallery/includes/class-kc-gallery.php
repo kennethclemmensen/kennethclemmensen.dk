@@ -176,7 +176,7 @@ class KC_Gallery {
 				$gallery_id = rwmb_meta($this->_field_photo_gallery);
 				echo get_post($gallery_id)->post_title;
 			} else if($column_name === $column_photo_key) {
-				echo '<img src="'.$this->get_photo_thumbnail().'">';
+				echo '<img src="'.$this->get_photo_thumbnail().'" alt="'.get_the_title().'">';
 			}
 		});
 		add_filter('manage_edit-'.self::PHOTO.'_sortable_columns', function(array $columns) use ($column_gallery_key, $column_gallery_value) : array {
