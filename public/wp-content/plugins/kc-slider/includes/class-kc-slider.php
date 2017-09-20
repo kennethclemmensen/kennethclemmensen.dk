@@ -23,6 +23,7 @@ class KC_Slider {
 	public function execute() {
 		$this->init();
 		$this->rwmb_meta_boxes();
+		$this->admin_columns();
 	}
 
 	private function init() {
@@ -56,6 +57,19 @@ class KC_Slider {
 				]
 			];
 			return $meta_boxes;
+		});
+	}
+
+	private function admin_columns() {
+		$image_column_key = 'image';
+		add_filter('manage_'.self::SLIDES.'_posts_columns', function(array $columns) use($image_column_key) : array {
+			$columns[$image_column_key] = 'Image';
+			return $columns;
+		});
+		add_filter('manage_'.self::SLIDES.'_posts_custom_column', function(string $column_name) use($image_column_key) {
+			if($column_name === $image_column_key) {
+				echo '<img src="'.$this->get_slide_image().'" alt="'.get_the_title().'" style="height: 60px">';
+			}
 		});
 	}
 
