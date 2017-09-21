@@ -1,8 +1,14 @@
-<div id="slider" class="slider">
+<?php
+use KCSlider\Includes\KC_Slider;
+use KCSlider\Includes\KC_Slider_Settings;
+$kc_slider = new KC_Slider();
+$kc_slider_settings = new KC_Slider_Settings();
+$delay = $kc_slider_settings->get_delay();
+$duration = $kc_slider_settings->get_duration();
+?>
+<div id="slider" class="slider" data-delay="<?php echo $delay; ?>" data-duration="<?php echo $duration; ?>">
 	<?php
-    use KCSlider\Includes\KC_Slider;
-	$kc_slider = new KC_Slider();
-	$args = [
+    $args = [
 		'post_type' => KC_Slider::SLIDES,
 		'posts_per_page' => -1
 	];

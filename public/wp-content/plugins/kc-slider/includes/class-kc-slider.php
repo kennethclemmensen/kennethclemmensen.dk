@@ -21,9 +21,15 @@ class KC_Slider {
 	}
 
 	public function execute() {
+		$this->load_dependencies();
+		new KC_Slider_Settings();
 		$this->init();
 		$this->rwmb_meta_boxes();
 		$this->admin_columns();
+	}
+
+	private function load_dependencies() {
+		require_once 'class-kc-slider-settings.php';
 	}
 
 	private function init() {

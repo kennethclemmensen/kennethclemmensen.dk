@@ -25,8 +25,9 @@ jQuery.noConflict();
             }
         }
 
-        var delay = 8000;
-        var duration = 500;
+        var $slider = $('#slider');
+        var delay = $slider.data('delay');
+        var duration = $slider.data('duration');
         var slider = new Slider(delay, duration);
         slider.show();
     });
