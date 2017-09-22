@@ -40,7 +40,7 @@ class KC_Slider_Settings {
 
 	private function admin_init() {
 		add_action('admin_init', function() {
-			$section_id = 'kc-gallery-section';
+			$section_id = 'kc-slider-section';
 			add_settings_section($section_id, '', function() {
 				echo '<h2>KC Slider Settings</h2>';
 			}, $this->_page_slug);
@@ -58,9 +58,10 @@ class KC_Slider_Settings {
 
 	private function validate_input(array $input) : array {
 		$output = [];
+		$default_value = 1000;
 		foreach($input as $key => $value) {
 			if(isset($input[$key])) {
-				$output[$key] = strip_tags(stripslashes($input[$key]));
+				$output[$key] = ($input[$key] <= 0) ? $default_value : strip_tags(stripslashes($input[$key]));
 			}
 		}
 		return apply_filters(__FUNCTION__, $output, $input);
