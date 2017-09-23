@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.8.x package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-08-27 19:10:04+0000\n"
+"PO-Revision-Date: 2017-09-23 01:58:28+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -386,7 +386,7 @@ msgstr "Opdatering af %s mislykkedes"
 #: wp-includes/script-loader.php:660
 msgctxt "plugin"
 msgid "%s updated!"
-msgstr "%s  opdateret!"
+msgstr "%s opdateret!"
 
 #. translators: %s: Plugin name and version
 #: wp-includes/script-loader.php:658
