@@ -10,7 +10,9 @@ $duration = $kc_slider_settings->get_duration();
 	<?php
     $args = [
 		'post_type' => KC_Slider::SLIDES,
-		'posts_per_page' => -1
+		'posts_per_page' => -1,
+        'order' => 'ASC',
+        'orderby' => 'menu_order'
 	];
 	$wp_query = new WP_Query($args);
 	while($wp_query->have_posts()) {
