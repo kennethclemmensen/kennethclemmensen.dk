@@ -1,6 +1,10 @@
 <?php
 namespace KCSlider\Includes;
 
+/**
+ * Class KC_Slider_Settings contains methods to handle the settings for the plugin
+ * @package KCSlider\Includes
+ */
 class KC_Slider_Settings {
 
 	private $_page_slug;
@@ -9,6 +13,9 @@ class KC_Slider_Settings {
 	private $_delay;
 	private $_duration;
 
+	/**
+	 * KC_Slider_Settings constructor
+	 */
 	public function __construct() {
 		$this->_page_slug = 'kc-slider-settings';
 		$this->_option_group = $this->_page_slug.'-group';
@@ -20,6 +27,9 @@ class KC_Slider_Settings {
 		$this->admin_init();
 	}
 
+	/**
+	 * Use the admin_menu action to create a settings page
+	 */
 	private function admin_menu() {
 		add_action('admin_menu', function() {
 			$title = 'Settings';
@@ -38,6 +48,9 @@ class KC_Slider_Settings {
 		});
 	}
 
+	/**
+	 * Use the admin_init action to create and register the setting inputs
+	 */
 	private function admin_init() {
 		add_action('admin_init', function() {
 			$section_id = 'kc-slider-section';
@@ -56,6 +69,13 @@ class KC_Slider_Settings {
 		});
 	}
 
+	/**
+	 * Validate the setting inputs
+	 *
+	 * @param array $input the input to validate
+	 *
+	 * @return array the validated input
+	 */
 	private function validate_input(array $input) : array {
 		$output = [];
 		$default_value = 1000;
@@ -67,10 +87,20 @@ class KC_Slider_Settings {
 		return apply_filters(__FUNCTION__, $output, $input);
 	}
 
+	/**
+	 * Get the delay
+	 *
+	 * @return int the delay
+	 */
 	public function get_delay() : int {
 		return $this->_option[$this->_delay];
 	}
 
+	/**
+	 * Get the duration
+	 *
+	 * @return int the duration
+	 */
 	public function get_duration() : int {
 		return $this->_option[$this->_duration];
 	}
