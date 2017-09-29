@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  &:focus {
+    outline: 0;
+  }
+}
+
+html, body {
+  &.show-mobile-nav {
+    height: 100%;
+    overflow: hidden;
+    @media #{$sm} {
+      height: initial;
+      overflow: initial;
+    }
+  }
+}
+
+body {
+  background: $color-blue--dark;
+  min-width: 320px;
+  max-width: 1920px;
+}

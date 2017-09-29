@@ -1,0 +1,13 @@
+img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+}
+
+video {
+  width: 100%;
+  border: 2px solid $color-gray;
+  @media #{$ssm} {
+    width: 450px;
+  }
+}

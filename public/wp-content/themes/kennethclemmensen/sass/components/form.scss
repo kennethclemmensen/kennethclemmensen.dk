@@ -1,0 +1,27 @@
+form {
+
+}
+
+label {
+  display: none;
+}
+
+input[type='text'] {
+  width: 250px;
+  height: 30px;
+  margin: 0 15px 15px 0;
+  border: 2px inset $color-gray;
+  color: $color-black;
+}
+
+input[type='submit'] {
+  background: $color-blue;
+  padding: 6px 15px;
+  border: 2px outset $color-gray;
+  border-radius: 4px;
+  color: $color-white;
+  cursor: pointer;
+  &:hover {
+    background: darken($color-blue, 10%);
+  }
+}

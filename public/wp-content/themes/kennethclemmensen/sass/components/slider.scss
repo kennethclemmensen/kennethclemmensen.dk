@@ -1,0 +1,17 @@
+.slider {
+  display: none;
+  @media #{$sm} {
+    display: block;
+    height: 129px;
+    margin: 25px 0;
+    border: 2px solid $color-gray;
+    box-shadow: 4px 4px 6px $color-black;
+  }
+  @media #{$md} {
+    height: 160px;
+  }
+}
+
+.slider__image {
+  display: none;
+}
