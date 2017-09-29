@@ -26,8 +26,8 @@ module.exports = function(grunt) {
                 }
             },
             styles: {
-                files: ['public/wp-content/themes/<%= pkg.name %>/less/**/*.less'], //the files to watch
-                tasks: ['less'], //the task to do
+                files: ['public/wp-content/themes/<%= pkg.name %>/sass/**/*.scss'], //the files to watch
+                tasks: ['sass'], //the task to do
                 options: {
                     spawn: false
                 }
@@ -42,6 +42,13 @@ module.exports = function(grunt) {
                     dest: 'public/wp-content/themes/<%= pkg.name %>/js/minified',
                     ext: '.min.js'
                 }]
+            }
+        },
+        sass: {
+            dist: {
+                files: {
+                    'public/wp-content/themes/<%= pkg.name %>/css/style.css': 'public/wp-content/themes/<%= pkg.name %>/sass/style.scss' //dest : src
+                }
             }
         },
         browserSync: {
@@ -62,6 +69,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-contrib-sassjs');
     grunt.loadNpmTasks('grunt-browser-sync');
 
     grunt.registerTask('default', ['browserSync', 'watch']);

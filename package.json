@@ -6,6 +6,7 @@
 		"grunt-contrib-watch": "*",
 		"grunt-contrib-uglify": "*",
 		"grunt-contrib-less": "*",
-        "grunt-browser-sync": "*"
+		"grunt-contrib-sassjs": "*",
+		"grunt-browser-sync": "*"
 	}
 }
