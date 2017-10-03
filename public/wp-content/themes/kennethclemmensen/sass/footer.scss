@@ -13,10 +13,10 @@
     height: $footer-height-sm;
     border-left: 1px solid $color-gray;
     border-right: 1px solid $color-gray;
-    border-radius: 8px 8px 0 0;
+    @include border-radiuses(8px, 8px, 0, 0);
     left: 50%;
     right: initial;
-    transform: translateX(-50%);
+    @include translateX(-50%);
   }
   @media #{$md} {
     width: $page-width-md;

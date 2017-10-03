@@ -6,14 +6,14 @@
   top: $header-height;
   bottom: $footer-height;
   z-index: 1;
-  transform: translateX(-100%);
-  transition: all .4s ease 0s;
+  @include translateX(-100%);
+  @include transition(all, .4s, ease, 0s);
   overflow-y: auto;
   @media #{$sm} {
     display: none;
   }
   &--active {
-    transform: translateX(0);
+    @include translateX(0);
   }
 }
 
