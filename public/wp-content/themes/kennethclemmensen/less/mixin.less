@@ -1,0 +1,41 @@
+.translateX(@value) {
+  -webkit-transform: translateX(@value);
+  -moz-transform: translateX(@value);
+  -o-transform: translateX(@value);
+  -ms-transform: translateX(@value);
+  transform: translateX(@value);
+}
+
+.transition(@property: all; @duration: .4s; @timing-function: ease; @delay: 0s) {
+  -webkit-transition: @arguments;
+  -moz-transition: @arguments;
+  -o-transition: @arguments;
+  transition: @arguments;
+}
+
+.box-shadow(@x; @y; @blur; @color) {
+  -webkit-box-shadow: @arguments;
+  -moz-box-shadow: @arguments;
+  -o-box-shadow: @arguments;
+  box-shadow: @arguments;
+}
+
+.border-radius(@value) {
+  -webkit-border-radius: @value;
+  -moz-border-radius: @value;
+  border-radius: @value;
+}
+
+.border-radius(@topLeft; @topRight; @bottomRight; @bottomLeft) {
+  -webkit-border-radius: @arguments;
+  -moz-border-radius: @arguments;
+  border-radius: @arguments;
+}
+
+.rotate(@deg) {
+  -webkit-transform: @deg;
+  -moz-transform: @deg;
+  -o-transform: @deg;
+  -ms-transform: @deg;
+  transform: @deg;
+}
