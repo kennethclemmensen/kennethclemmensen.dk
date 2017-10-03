@@ -28,7 +28,7 @@
   height: 44px;
   padding: 5px 8px 8px 8px;
   border: 1px solid @color-white;
-  border-radius: 6px;
+  .border-radius(6px);
   position: absolute;
   top: 10px;
   right: 10px;
@@ -40,11 +40,11 @@
       background: transparent;
       &:before {
         margin-top: 0;
-        transform: rotate(45deg);
+        .rotate(45deg);
       }
       &:after {
         margin-top: 0;
-        transform: rotate(-45deg);
+        .rotate(-45deg);
       }
     }
   }
@@ -56,7 +56,7 @@
   width: 30px;
   height: 5px;
   position: relative;
-  transition: background .2s ease 0s;
+  .transition(background, .2s, ease, 0s);
   &:before, &:after {
     display: block;
     background: @color-white;
@@ -65,7 +65,7 @@
     height: 5px;
     margin-top: -10px;
     position: absolute;
-    transition: all .4s ease 0s;
+    .transition();
   }
   &:after {
     margin-top: 10px;
