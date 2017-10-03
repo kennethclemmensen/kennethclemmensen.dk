@@ -26,8 +26,8 @@ module.exports = function(grunt) {
                 }
             },
             styles: {
-                files: ['public/wp-content/themes/<%= pkg.name %>/sass/**/*.scss'], //the files to watch
-                tasks: ['sass'], //the task to do
+                files: ['public/wp-content/themes/<%= pkg.name %>/less/**/*.less'], //the files to watch
+                tasks: ['less'], //the task to do
                 options: {
                     spawn: false
                 }
