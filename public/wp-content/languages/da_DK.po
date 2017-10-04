@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.8.x package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-09-27 18:26:57+0000\n"
+"PO-Revision-Date: 2017-10-03 23:25:51+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -282,6 +282,12 @@ msgctxt "plugin"
 msgid "Install %s now"
 msgstr "Installer %s nu"
 
+#. translators: %s: Plugin name and version
+#: wp-includes/script-loader.php:660
+msgctxt "plugin"
+msgid "%s updated!"
+msgstr "%s  opdateret!"
+
 #: wp-includes/script-loader.php:649
 msgctxt "theme"
 msgid "Updated!"
@@ -398,12 +404,6 @@ msgstr "URL til %s lydfilen"
 #: wp-includes/widgets/class-wp-widget-media-video.php:27
 msgid "Displays a video from the media library or from YouTube, Vimeo, or another provider."
 msgstr "Vis en video fra mediebiblioteket eller fra YouTube, Vimeo eller en anden udbyder."
-
-#. translators: %s: Plugin name and version
-#: wp-includes/script-loader.php:660
-msgctxt "plugin"
-msgid "%s updated!"
-msgstr "%s opdateret!"
 
 #: wp-includes/script-loader.php:648
 msgctxt "plugin"
@@ -4659,31 +4659,35 @@ msgstr "Websted: %1$s (IP: %2$s, %3$s)"
 msgid "<strong>Could not find site %1$s.</strong> Searched for table %2$s in database %3$s. Is that right?"
 msgstr "<strong>Kunne ikke finde webstedet %1$s.</strong> Søgte efter tabellen %2$s i databasen %3$s. Er dette korrekt?"
 
-#: wp-includes/post.php:1116 wp-includes/post.php:1117
-msgid "Post type names must be between 1 and 20 characters in length."
-msgstr "Navne til indholdstyper skal være på mellem 1 og 20 tegn."
-
-#. translators: revision date format, see https://secure.php.net/date
-#: wp-includes/post-template.php:1701 wp-includes/post-template.php:1737
-msgctxt "revision date format"
-msgid "F j, Y @ H:i:s"
-msgstr "j. F Y @ H:i:s"
-
-#. translators: %s: table name
-#: wp-includes/ms-load.php:471
-msgid "<strong>Database tables are missing.</strong> This means that MySQL is not running, WordPress was not installed properly, or someone deleted %s. You really should look at your database now."
-msgstr "<strong>Databasetabeller mangler.</strong> Dette betyder, at MySQL ikke kører, at WordPress ikke blev installeret korrekt, eller at %s er blevet slettet. Du bør tilse din database omgående."
-
-#: wp-includes/class-wp-customize-nav-menus.php:161
-#: wp-includes/class-wp-customize-nav-menus.php:414
-#: wp-includes/customize/class-wp-customize-nav-menu-item-setting.php:337
-#: wp-includes/nav-menu.php:769
-msgid "Custom Link"
-msgstr "Tilpasset link"
-
-#: wp-includes/media.php:3502
-msgid "Drag and drop to reorder media files."
-msgstr "Træk og slip for at omorganisere mediefiler."
+#. translators: Do not translate USERNAME, PASSWORD, LOGINLINK, SITE_NAME:
+#. those are placeholders.
+#: wp-includes/ms-functions.php:2211
+msgid ""
+"Howdy USERNAME,\n"
+"\n"
+"Your new account is set up.\n"
+"\n"
+"You can log in with the following information:\n"
+"Username: USERNAME\n"
+"Password: PASSWORD\n"
+"LOGINLINK\n"
+"\n"
+"Thanks!\n"
+"\n"
+"--The Team @ SITE_NAME"
+msgstr ""
+"Hejsa USERNAME,\n"
+"\n"
+"Din nye konto er blevet opsat.\n"
+"\n"
+"Du kan logge ind med følgende informationer:\n"
+"Brugernavn: USERNAME\n"
+"Adgangskode: PASSWORD\n"
+"LOGINLINK\n"
+"\n"
+"Tak!\n"
+"\n"
+"--Holdet @ SITE_NAME"
 
 #. translators: Do not translate USERNAME, SITE_NAME, BLOG_URL, PASSWORD: those
 #. are placeholders.
@@ -4717,37 +4721,33 @@ msgstr ""
 "\n"
 "Vi håber, du får glæde af dit nye websted. Tak!\n"
 "\n"
-"--Holdet hos SITE_NAME"
+"--Holdet @ SITE_NAME"
 
-#. translators: Do not translate USERNAME, PASSWORD, LOGINLINK, SITE_NAME:
-#. those are placeholders.
-#: wp-includes/ms-functions.php:2211
-msgid ""
-"Howdy USERNAME,\n"
-"\n"
-"Your new account is set up.\n"
-"\n"
-"You can log in with the following information:\n"
-"Username: USERNAME\n"
-"Password: PASSWORD\n"
-"LOGINLINK\n"
-"\n"
-"Thanks!\n"
-"\n"
-"--The Team @ SITE_NAME"
-msgstr ""
-"Hejsa USERNAME,\n"
-"\n"
-"Din nye konto er blevet opsat.\n"
-"\n"
-"Du kan logge ind med følgende informationer:\n"
-"Brugernavn: USERNAME\n"
-"Adgangskode: PASSWORD\n"
-"LOGINLINK\n"
-"\n"
-"Tak!\n"
-"\n"
-"--Holdet hos SITE_NAME"
+#: wp-includes/post.php:1116 wp-includes/post.php:1117
+msgid "Post type names must be between 1 and 20 characters in length."
+msgstr "Navne til indholdstyper skal være på mellem 1 og 20 tegn."
+
+#. translators: revision date format, see https://secure.php.net/date
+#: wp-includes/post-template.php:1701 wp-includes/post-template.php:1737
+msgctxt "revision date format"
+msgid "F j, Y @ H:i:s"
+msgstr "j. F Y @ H:i:s"
+
+#. translators: %s: table name
+#: wp-includes/ms-load.php:471
+msgid "<strong>Database tables are missing.</strong> This means that MySQL is not running, WordPress was not installed properly, or someone deleted %s. You really should look at your database now."
+msgstr "<strong>Databasetabeller mangler.</strong> Dette betyder, at MySQL ikke kører, at WordPress ikke blev installeret korrekt, eller at %s er blevet slettet. Du bør tilse din database omgående."
+
+#: wp-includes/class-wp-customize-nav-menus.php:161
+#: wp-includes/class-wp-customize-nav-menus.php:414
+#: wp-includes/customize/class-wp-customize-nav-menu-item-setting.php:337
+#: wp-includes/nav-menu.php:769
+msgid "Custom Link"
+msgstr "Tilpasset link"
+
+#: wp-includes/media.php:3502
+msgid "Drag and drop to reorder media files."
+msgstr "Træk og slip for at omorganisere mediefiler."
 
 #: wp-includes/widgets/class-wp-widget-archives.php:85
 msgid "Select Day"
