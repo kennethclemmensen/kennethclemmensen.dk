@@ -108,7 +108,7 @@ class KC_Slider {
 	}
 
 	/**
-	 * Get the side image
+	 * Get the slide image
 	 *
 	 * @param int|null $post_id the post id of the slide image
 	 * @param array $args an array of arguments

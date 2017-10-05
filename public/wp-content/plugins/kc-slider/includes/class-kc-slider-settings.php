@@ -63,7 +63,7 @@ class KC_Slider_Settings {
 			add_settings_field('kc-slider-duration', 'Duration', function() {
 				echo '<input type="number" name="'.$this->_option_group.'['.$this->_duration.']" value="'.$this->get_duration().'">';
 			}, $this->_page_slug, $section_id);
-			register_setting($this->_option_group, $this->_option_group, function($input) : array {
+			register_setting($this->_option_group, $this->_option_group, function(array $input) : array {
 				return $this->validate_input($input);
 			});
 		});
