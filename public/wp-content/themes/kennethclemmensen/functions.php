@@ -13,6 +13,9 @@ add_action('wp_enqueue_scripts', function() {
 	wp_deregister_script($jquery);
 	wp_enqueue_script($jquery, '//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js', [], false, true);
 
+	$vue_js = 'vue-js';
+	wp_enqueue_script($vue_js, '//cdnjs.cloudflare.com/ajax/libs/vue/2.4.4/vue.min.js', [], false, true);
+
 	$script = 'theme-js';
 	$script_file = '/js/minified/script.min.js';
 	$version = filemtime(get_template_directory().$script_file);
@@ -57,7 +60,3 @@ add_filter('excerpt_more', function() {
 });
 
 remove_action('wp_head', 'wp_generator');
-
-add_filter('get_search_form', function(string $form) {
-	return str_replace('value="Search"', 'value="Søg"', $form);
-});

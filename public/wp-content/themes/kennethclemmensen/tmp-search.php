@@ -10,8 +10,12 @@ while(have_posts()) {
             <h1><?php the_title(); ?></h1>
 			<?php
 			the_content();
-			get_search_form();
 			?>
+            <form method="post" action="/">
+                <div>
+                    <input type="search" name="search">
+                    <input type="submit" value="Search">
+                </div>
         </section>
     </div>
 	<?php
