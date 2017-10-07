@@ -57,3 +57,7 @@ add_filter('excerpt_more', function() {
 });
 
 remove_action('wp_head', 'wp_generator');
+
+add_filter('get_search_form', function(string $form) {
+	return str_replace('value="Search"', 'value="Søg"', $form);
+});
