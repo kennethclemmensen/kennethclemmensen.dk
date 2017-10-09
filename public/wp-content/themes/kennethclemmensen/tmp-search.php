@@ -11,11 +11,10 @@ while(have_posts()) {
 			<?php
 			the_content();
 			?>
-            <form method="post" action="/">
-                <div>
-                    <input type="search" name="search">
-                    <input type="submit" value="Search">
-                </div>
+            <form method="post" action="/" id="search-form" @submit="search($event)">
+                <input type="search" name="search" v-model="searchString">
+                <input type="submit" value="Search" @click="search($event)">
+            </form>
         </section>
     </div>
 	<?php

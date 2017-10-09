@@ -36,3 +36,20 @@ jQuery.noConflict();
 lightbox.option({
     'albumLabel': 'Billede %1 af %2'
 });
+
+var app = new Vue({
+    el: '#search-form',
+    data: {
+        searchString: ''
+    },
+    watch: {
+        searchString: function() {
+            this.search(null);
+        }
+    },
+    methods: {
+        search: function(event) {
+            if(event !== null) event.preventDefault();
+        }
+    }
+});
