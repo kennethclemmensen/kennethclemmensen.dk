@@ -7,6 +7,7 @@ jQuery.noConflict();
             $('.mobile-nav').toggleClass('mobile-nav--active');
             $('html, body').toggleClass('show-mobile-nav');
         });
+
         function Slider(delay, duration) {
             var sliderImages = $('.slider__image');
             var getRandomNumber = function() {
@@ -38,9 +39,10 @@ lightbox.option({
 });
 
 var app = new Vue({
-    el: '#search-form',
+    el: '#search-app',
     data: {
-        searchString: ''
+        searchString: '',
+        results: []
     },
     watch: {
         searchString: function() {
@@ -50,6 +52,11 @@ var app = new Vue({
     methods: {
         search: function(event) {
             if(event !== null) event.preventDefault();
+            this.$http.post('/wp-json/kcapi/v1/search', {title: this.searchString}).then(function(response) {
+                this.results = response.body;
+            }, function() {
+                this.results = [];
+            });
         }
     }
 });
