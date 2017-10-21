@@ -7,6 +7,7 @@ jQuery.noConflict();
             $('.mobile-nav').toggleClass('mobile-nav--active');
             $('html, body').toggleClass('show-mobile-nav');
         });
+
         function Slider(delay, duration) {
             var sliderImages = $('.slider__image');
             var getRandomNumber = function() {
@@ -35,4 +36,27 @@ jQuery.noConflict();
 
 lightbox.option({
     'albumLabel': 'Billede %1 af %2'
+});
+
+var app = new Vue({
+    el: '#search-app',
+    data: {
+        searchString: '',
+        results: []
+    },
+    watch: {
+        searchString: function() {
+            this.search(null);
+        }
+    },
+    methods: {
+        search: function(event) {
+            if(event !== null) event.preventDefault();
+            this.$http.post('/wp-json/kcapi/v1/search', {title: this.searchString}).then(function(response) {
+                this.results = response.body;
+            }, function() {
+                this.results = [];
+            });
+        }
+    }
 });
