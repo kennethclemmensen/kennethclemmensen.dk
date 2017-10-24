@@ -1,6 +1,12 @@
 <?php
 namespace FDWC\Includes;
 
+use \WP_Query;
+
+/**
+ * Class FDWC contains methods to handle the functionality of the plugin
+ * @package FDWC\Includes
+ */
 class FDWC {
 
 	private $_field_description;
@@ -11,6 +17,9 @@ class FDWC {
 
 	const FDWC_FILE = 'fdwc_file';
 
+    /**
+     * FDWC constructor
+     */
 	public function __construct() {
 		$prefix = 'fdwc_field_';
 		$this->_field_description = $prefix.'description';
@@ -21,6 +30,11 @@ class FDWC {
 		$this->_tax_file_type = $prefix.'file_type';
 	}
 
+    /**
+     * Activate the plugin
+     *
+     * @param string $main_plugin_file the path to the main plugin file
+     */
 	public function activate(string $main_plugin_file) {
 		register_activation_hook($main_plugin_file, function() {
 			if(!class_exists('RW_Meta_Box')) {
@@ -29,6 +43,9 @@ class FDWC {
 		});
 	}
 
+    /**
+     * Execute the plugin
+     */
 	public function execute() {
 		$this->load_depedencies();
 		$loader = new FDWC_Loader();
@@ -41,10 +58,17 @@ class FDWC {
 		$this->wp_ajax();
 	}
 
+    /**
+     * Load the dependencies files
+     */
 	private function load_depedencies() {
 		require_once 'class-fdwc-loader.php';
 	}
 
+    /**
+     * Use the init action to register the fdwc file custom post type
+     * and the file types taxonomy
+     */
 	private function init() {
 		add_action('init', function() {
 			register_post_type(self::FDWC_FILE, [
@@ -68,12 +92,18 @@ class FDWC {
 		});
 	}
 
+    /**
+     * Use the admin_menu action to remove the File types meta box
+     */
 	private function admin_menu() {
 		add_action('admin_menu', function() {
 			remove_meta_box('tagsdiv-'.$this->_tax_file_type, self::FDWC_FILE, 'normal');
 		});
 	}
 
+    /**
+     * Use the rwmb_meta_boxes filter to add meta boxes to the fdwc file custom post type
+     */
 	private function rwmb_meta_boxes() {
 		add_filter('rwmb_meta_boxes', function(array $meta_boxes) : array {
 			$meta_boxes[] = [
@@ -125,6 +155,9 @@ class FDWC {
 		});
 	}
 
+    /**
+     * Add the fdwc_files shortcode to show a list of files
+     */
 	private function add_shortcode() {
 		add_shortcode('fdwc_files', function(array $atts) : string {
 			$html = '<div class="fdwc">';
@@ -141,7 +174,7 @@ class FDWC {
 				],
 				'paged' => $paged
 			];
-			$wp_query = new \WP_Query($args);
+			$wp_query = new WP_Query($args);
 			while($wp_query->have_posts()) {
 				$wp_query->the_post();
 				$html .= '<div class="fdwc__section">';
@@ -166,6 +199,9 @@ class FDWC {
 		});
 	}
 
+    /**
+     * Use the upload_mimes filter to allow java files upload
+     */
 	private function upload_mimes() {
 		$priority = 1;
 		add_filter('upload_mimes', function(array $mime_types) : array {
@@ -174,6 +210,9 @@ class FDWC {
 		}, $priority);
 	}
 
+    /**
+     * Use the wp_ajax wp_ajax_nopriv actions to update the counter
+     */
 	private function wp_ajax() {
 		$action = 'fdwc_download';
 		add_action('wp_ajax_nopriv_'.$action, function() {
@@ -186,6 +225,9 @@ class FDWC {
 		});
 	}
 
+    /**
+     * Update the counter for a file
+     */
 	private function update_counter() {
 		$id = $_POST['post_id'];
 		$downloads = $this->get_file_downloads($id);
@@ -193,26 +235,61 @@ class FDWC {
 		update_post_meta($id, $this->_field_download_counter, $downloads);
 	}
 
+    /**
+     * Get the file url
+     *
+     * @param int|null $post_id the id of the post
+     * @param array $args an array of arguments
+     * @return string the file url
+     */
 	private function get_file_url(int $post_id = null, array $args = []) : string {
 		$file = rwmb_meta($this->_field_file, $args, $post_id);
 		$file = array_shift($file);
 		return $file['url'];
 	}
 
+    /**
+     * Get the file path
+     *
+     * @param int|null $post_id the id of the post
+     * @param array $args an array of arguments
+     * @return string the file path
+     */
 	private function get_file_path(int $post_id = null, array $args = []) : string {
 		$file = rwmb_meta($this->_field_file, $args, $post_id);
 		$file = array_shift($file);
 		return $file['path'];
 	}
 
+    /**
+     * Get the file name
+     *
+     * @param int|null $post_id the id of the post
+     * @param array $args an array of arguments
+     * @return string the file name
+     */
 	private function get_file_name(int $post_id = null, array $args = []) : string {
 		return basename($this->get_file_path($post_id, $args));
 	}
 
+    /**
+     * Get the file description
+     *
+     * @param int|null $post_id the id of the post
+     * @param array $args an array of arguments
+     * @return string the file description
+     */
 	private function get_file_description(int $post_id = null, array $args = []) : string {
 		return rwmb_meta($this->_field_description, $args, $post_id);
 	}
 
+    /**
+     * Get the number of file downloads
+     *
+     * @param int|null $post_id the id of the post
+     * @param array $args an array of arguments
+     * @return int the number of file downloads
+     */
 	private function get_file_downloads(int $post_id = null, array $args = []) : int {
 		return rwmb_meta($this->_field_download_counter, $args, $post_id);
 	}

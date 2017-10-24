@@ -1,8 +1,15 @@
 <?php
 namespace FDWC\Includes;
 
+/**
+ * Class FDWC_Loader contains a method to load JavaScript files
+ * @package FDWC\Includes
+ */
 class FDWC_Loader {
 
+    /**
+     * Load a JavaScript file
+     */
 	public function load_scripts() {
 		add_action('wp_enqueue_scripts', function() {
 			$script = 'fdwc-js';
