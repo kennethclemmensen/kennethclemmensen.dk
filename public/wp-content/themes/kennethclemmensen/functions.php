@@ -7,14 +7,14 @@ add_action('wp_enqueue_scripts', function() {
 	$style = 'theme-css';
 	$style_file = '/css/style.css';
 	$version = filemtime(get_template_directory().$style_file);
-	wp_enqueue_style($style, get_template_directory_uri().$style_file, [], $version);
+	wp_enqueue_style($style, get_template_directory_uri().$style_file, [$font_awesome], $version);
 
 	$jquery = 'jquery';
 	wp_deregister_script($jquery);
 	wp_enqueue_script($jquery, '//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js', [], false, true);
 
 	$vue_js = 'vue-js';
-	wp_enqueue_script($vue_js, '//cdnjs.cloudflare.com/ajax/libs/vue/2.4.4/vue.min.js', [], false, true);
+	wp_enqueue_script($vue_js, '//cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.min.js', [], false, true);
 
 	$vue_resource = 'vue-resource';
 	wp_enqueue_script($vue_resource, '//cdnjs.cloudflare.com/ajax/libs/vue-resource/1.3.4/vue-resource.min.js', [$vue_js], false, true);
