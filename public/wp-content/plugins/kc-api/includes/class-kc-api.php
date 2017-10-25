@@ -6,16 +6,29 @@ use \WP_REST_Response;
 use \WP_REST_Server;
 use \WP_Query;
 
+/**
+ * Class KC_API contains methods to handle the functionality of the plugin
+ * @package KCAPI\Includes
+ */
 class KC_API {
 
+    /**
+     * KC_API constructor
+     */
     public function __construct() {
 
     }
 
+    /**
+     * Execute the plugin
+     */
     public function execute() {
         $this->rest_api_init();
     }
 
+    /**
+     * Use the rest_api_init to register a route
+     */
     private function rest_api_init() {
         add_action('rest_api_init', function() {
             register_rest_route('kcapi/v1', '/search', [
@@ -29,6 +42,12 @@ class KC_API {
         });
     }
 
+    /**
+     * Get the pages by title
+     *
+     * @param string $title the title to get the pages from
+     * @return array the pages
+     */
     private function get_pages_by_title(string $title) : array {
         $pages = [];
         $args = [
