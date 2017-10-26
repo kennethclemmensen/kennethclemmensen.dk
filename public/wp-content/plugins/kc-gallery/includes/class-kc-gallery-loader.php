@@ -1,8 +1,15 @@
 <?php
 namespace KCGallery\Includes;
 
+/**
+ * Class KC_Gallery_Loader contains a method to load CSS and JavaScript files
+ * @package KCGallery\Includes
+ */
 class KC_Gallery_Loader {
 
+    /**
+     * Load lightbox files
+     */
 	public function load_styles_and_scripts() {
 		add_action('wp_enqueue_scripts', function() {
 			$lightbox = 'lightbox';

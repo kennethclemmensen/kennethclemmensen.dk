@@ -3,6 +3,10 @@ namespace KCGallery\Includes;
 
 use \WP_Query;
 
+/**
+ * Class KC_Gallery contains methods to handle the functionality of the plugin
+ * @package KCGallery\Includes
+ */
 class KC_Gallery {
 
 	private $_field_gallery_page;
@@ -14,6 +18,9 @@ class KC_Gallery {
 	const GALLERY = 'gallery';
 	const PHOTO = 'photo';
 
+    /**
+     * KC_Gallery constructor
+     */
 	public function __construct() {
 		$prefix = 'gallery_';
 		$this->_field_gallery_page = $prefix.'page';
@@ -24,6 +31,11 @@ class KC_Gallery {
 		$this->_gallery_settings = null;
 	}
 
+    /**
+     * Activate the plugin
+     *
+     * @param string $main_plugin_file the path to the main plugin file
+     */
 	public function activate(string $main_plugin_file) {
 		register_activation_hook($main_plugin_file, function() {
 			if(!class_exists('RW_Meta_Box')) {
@@ -32,6 +44,9 @@ class KC_Gallery {
 		});
 	}
 
+    /**
+     * Execute the plugin
+     */
 	public function execute() {
 		$this->load_dependencies();
 		$loader = new KC_Gallery_Loader();
@@ -43,11 +58,17 @@ class KC_Gallery {
 		$this->admin_columns();
 	}
 
+    /**
+     * Load the dependencies files
+     */
 	private function load_dependencies() {
 		require_once 'class-kc-gallery-loader.php';
 		require_once 'class-kc-gallery-settings.php';
 	}
 
+    /**
+     * Use the init action to register the gallery and photo custom post types
+     */
 	private function init() {
 		add_action('init', function() {
 			register_post_type(self::GALLERY, [
@@ -73,6 +94,9 @@ class KC_Gallery {
 		});
 	}
 
+    /**
+     * Use the rwmb_meta_boxes filter to add meta boxes to the gallery and photo custom post types
+     */
 	private function rwmb_meta_boxes() {
 		add_filter('rwmb_meta_boxes', function(array $meta_boxes) : array {
 			$meta_boxes[] = [
@@ -117,6 +141,9 @@ class KC_Gallery {
 		});
 	}
 
+    /**
+     * Add the galleries and gallery shortcodes to show a list of galleries and a single gallery
+     */
 	private function shortcodes() {
 		add_shortcode('galleries', function() : string {
 			$html = '<div class="kc-galleries">';
@@ -163,6 +190,9 @@ class KC_Gallery {
 		});
 	}
 
+    /**
+     * Add admin columns to the gallery and photo custom post types
+     */
 	private function admin_columns() {
 		$column_gallery_key = 'gallery';
 		$column_gallery_value = 'Gallery';
@@ -201,6 +231,11 @@ class KC_Gallery {
 		});
 	}
 
+    /**
+     * Get the pages
+     *
+     * @return array the pages
+     */
 	private function get_pages() : array {
 		$pages = [];
 		$args = [
@@ -217,6 +252,11 @@ class KC_Gallery {
 		return $pages;
 	}
 
+    /**
+     * Get the galleries
+     *
+     * @return array the galleries
+     */
 	private function get_galleries() : array {
 		$galleries = [];
 		$args = [
@@ -232,27 +272,61 @@ class KC_Gallery {
 		return $galleries;
 	}
 
+    /**
+     * Get the gallery page url
+     *
+     * @param int|null $post_id the id of the post
+     * @param array $args an array of arguments
+     * @return string the gallery page url
+     */
 	private function get_gallery_page(int $post_id = null, array $args = []) : string {
 		return get_permalink(rwmb_meta($this->_field_gallery_page, $args, $post_id));
 	}
 
+    /**
+     * Get the gallery photo url
+     *
+     * @param int|null $post_id the id of the post
+     * @param array $args an array of arguments
+     * @return string the gallery photo url
+     */
 	private function get_gallery_photo(int $post_id = null, array $args = []) : string {
 		$photo = rwmb_meta($this->_field_gallery_photo, $args, $post_id);
 		return array_shift($photo)['full_url'];
 	}
 
+    /**
+     * Get the photo
+     *
+     * @param int|null $post_id the id of the post
+     * @param array $args an array of arguments
+     * @return string the photo
+     */
 	private function get_photo(int $post_id = null, array $args = []) : string {
 		$photo = rwmb_meta($this->_field_photo, $args, $post_id);
 		$photo_id = array_shift($photo)['ID'];
 		return wp_get_attachment_image_src($photo_id, $this->_gallery_settings->get_photo_key())[0];
 	}
 
+    /**
+     * Get the photo thumbnail
+     *
+     * @param int|null $post_id the id of the post
+     * @param array $args an array of arguments
+     * @return string the photo thumbnail
+     */
 	private function get_photo_thumbnail(int $post_id = null, array $args = []) : string {
 		$photo = rwmb_meta($this->_field_photo, $args, $post_id);
 		$photo_id = array_shift($photo)['ID'];
 		return wp_get_attachment_image_src($photo_id, $this->_gallery_settings->get_photo_thumbnail_key())[0];
 	}
 
+    /**
+     * Get the number of photos in a gallery
+     *
+     * @param int $gallery_id the id of the gallery
+     * @return int the number of photos in a gallery
+     */
 	private function get_number_of_photos_in_gallery(int $gallery_id) : int {
 		$args = [
 			'post_type' => self::PHOTO,
