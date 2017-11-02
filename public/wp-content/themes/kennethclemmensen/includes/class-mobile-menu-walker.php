@@ -13,7 +13,7 @@ class Mobile_Menu_Walker extends Walker_Nav_Menu {
         $output .= '</a></li>';
     }
 
-    private function has_children($page_id) {
+    private function has_children(int $page_id) : bool {
         $children = get_pages(['child_of' => $page_id]);
         return count($children) !== 0;
     }
