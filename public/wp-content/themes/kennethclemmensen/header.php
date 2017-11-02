@@ -23,6 +23,11 @@
 </header>
 <nav class="mobile-nav">
     <div class="mobile-nav__content">
-		<?php wp_nav_menu(['theme_location' => 'mobile-menu']); ?>
+		<?php
+        wp_nav_menu([
+            'theme_location' => 'mobile-menu',
+            'walker' => new Mobile_Menu_Walker()
+        ]);
+        ?>
     </div>
 </nav>

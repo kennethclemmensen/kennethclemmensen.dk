@@ -22,13 +22,11 @@
   ul {
     margin-left: 0;
     list-style: none;
+    &.sub-menu {
+      display: none;
+      margin-left: 20px;
+    }
     li {
-      &.current-menu-item, &.current-page-ancestor {
-        a {
-          background: $color-blue--dark;
-          font-weight: 600;
-        }
-      }
       a {
         display: block;
         height: 40px;
@@ -38,6 +36,34 @@
           background: $color-blue--dark;
         }
       }
+    }
+  }
+}
+
+.mobile-nav__link {
+  position: relative;
+  &--current {
+    background: $color-blue--dark;
+    font-weight: 600;
+  }
+}
+
+.mobile-nav__arrow {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  &:after {
+    display: inline-block;
+    @extend .font-awesome-styles;
+    content: "\f107";
+    width: 35px;
+    height: 25px;
+    text-align: center;
+    @include transition();
+  }
+  &--rotated {
+    &:after {
+      @include rotate(-180deg);
     }
   }
 }

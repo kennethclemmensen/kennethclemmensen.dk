@@ -7,6 +7,11 @@ jQuery.noConflict();
             $('.mobile-nav').toggleClass('mobile-nav--active');
             $('html, body').toggleClass('show-mobile-nav');
         });
+        $('.mobile-nav__arrow').on('click', function(event) {
+            event.preventDefault();
+            $(this).toggleClass('mobile-nav__arrow--rotated');
+            $(this).parent().parent().next('.sub-menu').toggle();
+        });
 
         function Slider(delay, duration) {
             var sliderImages = $('.slider__image');

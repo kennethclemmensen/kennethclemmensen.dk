@@ -1,4 +1,6 @@
 <?php
+require_once 'includes/class-mobile-menu-walker.php';
+
 add_action('wp_enqueue_scripts', function() {
 	$font_awesome = 'font-awesome';
 	wp_register_style($font_awesome, '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
