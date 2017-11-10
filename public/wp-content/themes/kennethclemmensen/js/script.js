@@ -32,9 +32,7 @@ jQuery.noConflict();
         }
 
         var $slider = $('#slider');
-        var delay = $slider.data('delay');
-        var duration = $slider.data('duration');
-        var slider = new Slider(delay, duration);
+        var slider = new Slider($slider.data('delay'), $slider.data('duration'));
         slider.show();
     });
 })(jQuery);
