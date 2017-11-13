@@ -65,3 +65,15 @@ add_filter('excerpt_more', function() {
 });
 
 remove_action('wp_head', 'wp_generator');
+
+function remove_version_query_string($src) {
+    $parts = explode('?ver', $src);
+    return $parts[0];
+}
+
+add_filter('script_loader_src', function($src) {
+    return remove_version_query_string($src);
+});
+add_filter('style_loader_src', function($src) {
+    return remove_version_query_string($src);
+});
