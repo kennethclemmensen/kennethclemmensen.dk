@@ -1,5 +1,6 @@
 <?php
 require_once 'includes/class-mobile-menu-walker.php';
+require_once 'includes/polylang-translation-strings.php';
 
 add_action('wp_enqueue_scripts', function() {
 	$font_awesome = 'font-awesome';
@@ -74,6 +75,33 @@ function remove_version_query_string($src) {
 add_filter('script_loader_src', function($src) {
     return remove_version_query_string($src);
 });
+
 add_filter('style_loader_src', function($src) {
     return remove_version_query_string($src);
 });
+
+function get_breadcrumb() {
+    global $post;
+    $title = 'title';
+    $link = 'link';
+    if(!is_front_page()) {
+        $pages[] = [
+            $title => $post->post_title,
+            $link => get_permalink($post->ID)
+        ];
+        $parent = $post->post_parent;
+        while($parent !== 0) {
+            $page = get_post($parent);
+            $pages[] = [
+                $title => get_the_title($page->ID),
+                $link => get_permalink($page->ID)
+            ];
+            $parent = $page->post_parent;
+        }
+    }
+    $pages[] = [
+        $title => pll__('Front page'),
+        $link => '/'
+    ];
+    return array_reverse($pages);
+}

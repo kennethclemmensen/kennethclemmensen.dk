@@ -1,0 +1,32 @@
+.breadcrumb {
+  display: none;
+  @media @sm {
+    display: block;
+    margin: -20px 0 25px 0;
+  }
+}
+
+.breadcrumb__title {
+  font-size: 0.8em;
+}
+
+.breadcrumb__list {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.breadcrumb__list-item {
+  display: inline-block;
+  font-size: 0.8em;
+  &:after {
+    display: inline-block;
+    .font-awesome-styles;
+    content: "\f105";
+    margin: 0 7px;
+  }
+  &:last-child {
+    &:after {
+      display: none;
+    }
+  }
+}
