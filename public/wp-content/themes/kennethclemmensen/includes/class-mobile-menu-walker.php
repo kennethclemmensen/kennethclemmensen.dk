@@ -10,7 +10,7 @@ class Mobile_Menu_Walker extends Walker_Nav_Menu {
         $link = get_permalink($item->object_id);
         $output .= '<li><a href="'.$link.'" class="mobile-nav__link '.$current_class.'">'.$item->title;
         if($this->has_children($item->object_id)) $output .= '<span class="mobile-nav__arrow"></span>';
-        $output .= '</a></li>';
+        $output .= '</a>';
     }
 
     private function has_children(int $page_id) : bool {
