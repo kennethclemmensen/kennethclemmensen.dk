@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-11-16 22:58:49+0000\n"
+"PO-Revision-Date: 2017-11-18 19:23:14+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -5390,7 +5390,7 @@ msgstr "Databasenavn"
 
 #: wp-admin/setup-config.php:153
 msgid "Welcome to WordPress. Before getting started, we need some information on the database. You will need to know the following items before proceeding."
-msgstr "Velkommen til WordPress. For at komme igang skal vi bruge information om databasen. Du skal vide følgende for at komme videre."
+msgstr "Velkommen til WordPress. For at komme i gang skal vi bruge information om databasen. Du skal vide følgende for at komme videre."
 
 #: wp-admin/setup-config.php:106
 msgid "WordPress &rsaquo; Setup Configuration File"
