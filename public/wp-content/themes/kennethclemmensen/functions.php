@@ -17,7 +17,7 @@ add_action('wp_enqueue_scripts', function() {
 	wp_enqueue_script($jquery, '//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js', [], false, true);
 
 	$vue_js = 'vue-js';
-	wp_enqueue_script($vue_js, '//cdnjs.cloudflare.com/ajax/libs/vue/2.5.3/vue.min.js', [], false, true);
+	wp_enqueue_script($vue_js, '//cdnjs.cloudflare.com/ajax/libs/vue/2.5.6/vue.min.js', [], false, true);
 
 	$vue_resource = 'vue-resource';
 	wp_enqueue_script($vue_resource, '//cdnjs.cloudflare.com/ajax/libs/vue-resource/1.3.4/vue-resource.min.js', [$vue_js], false, true);
