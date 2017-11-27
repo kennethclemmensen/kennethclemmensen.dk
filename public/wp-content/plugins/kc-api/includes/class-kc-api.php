@@ -7,13 +7,13 @@ use \WP_REST_Server;
 use \WP_Query;
 
 /**
- * Class KC_API contains methods to handle the functionality of the plugin
+ * Class KCAPI contains methods to handle the functionality of the plugin
  * @package KCAPI\Includes
  */
 class KCAPI {
 
     /**
-     * KC_API constructor
+     * KCAPI constructor
      */
     public function __construct() {
 
