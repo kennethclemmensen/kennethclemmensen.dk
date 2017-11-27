@@ -4,40 +4,40 @@ namespace KCGallery\Includes;
 use \WP_Query;
 
 /**
- * Class KC_Gallery contains methods to handle the functionality of the plugin
+ * Class KCGallery contains methods to handle the functionality of the plugin
  * @package KCGallery\Includes
  */
-class KC_Gallery {
+class KCGallery {
 
-    private $_field_gallery_page;
-    private $_field_gallery_photo;
-    private $_field_photo;
-    private $_field_photo_gallery;
-    private $_gallery_settings;
+    private $fieldGalleryPage;
+    private $fieldGalleryPhoto;
+    private $fieldPhoto;
+    private $fieldPhotoGallery;
+    private $gallerySettings;
 
     const GALLERY = 'gallery';
     const PHOTO = 'photo';
 
     /**
-     * KC_Gallery constructor
+     * KCGallery constructor
      */
     public function __construct() {
         $prefix = 'gallery_';
-        $this->_field_gallery_page = $prefix.'page';
-        $this->_field_gallery_photo = $prefix.'photo';
+        $this->fieldGalleryPage = $prefix.'page';
+        $this->fieldGalleryPhoto = $prefix.'photo';
         $prefix = 'photo_';
-        $this->_field_photo = $prefix.'photo';
-        $this->_field_photo_gallery = $prefix.'gallery';
-        $this->_gallery_settings = null;
+        $this->fieldPhoto = $prefix.'photo';
+        $this->fieldPhotoGallery = $prefix.'gallery';
+        $this->gallerySettings = null;
     }
 
     /**
      * Activate the plugin
      *
-     * @param string $main_plugin_file the path to the main plugin file
+     * @param string $mainPluginFile the path to the main plugin file
      */
-    public function activate(string $main_plugin_file) {
-        register_activation_hook($main_plugin_file, function() {
+    public function activate(string $mainPluginFile) {
+        register_activation_hook($mainPluginFile, function() {
             if(!class_exists('RW_Meta_Box')) {
                 die('Meta Box is not activated');
             }
@@ -48,20 +48,20 @@ class KC_Gallery {
      * Execute the plugin
      */
     public function execute() {
-        $this->load_dependencies();
-        $loader = new KC_Gallery_Loader();
-        $loader->load_styles_and_scripts();
-        $this->_gallery_settings = new KC_Gallery_Settings();
+        $this->loadDependencies();
+        $loader = new KCGalleryLoader();
+        $loader->loadStylesAndScripts();
+        $this->gallerySettings = new KCGallerySettings();
         $this->init();
-        $this->rwmb_meta_boxes();
-        $this->shortcodes();
+        $this->addMetaBoxes();
+        $this->addShortcodes();
         $this->admin_columns();
     }
 
     /**
      * Load the dependencies files
      */
-    private function load_dependencies() {
+    private function loadDependencies() {
         require_once 'class-kc-gallery-loader.php';
         require_once 'class-kc-gallery-settings.php';
     }
@@ -97,60 +97,60 @@ class KC_Gallery {
     /**
      * Use the rwmb_meta_boxes filter to add meta boxes to the gallery and photo custom post types
      */
-    private function rwmb_meta_boxes() {
-        add_filter('rwmb_meta_boxes', function(array $meta_boxes) : array {
-            $meta_boxes[] = [
+    private function addMetaBoxes() {
+        add_filter('rwmb_meta_boxes', function(array $metaBoxes) : array {
+            $metaBoxes[] = [
                 'id' => 'gallery_informations',
                 'title' => 'Gallery informations',
                 'post_types' => [self::GALLERY],
                 'fields' => [
                     [
                         'name' => 'Page',
-                        'id' => $this->_field_gallery_page,
+                        'id' => $this->fieldGalleryPage,
                         'type' => 'select',
-                        'options' => $this->get_pages()
+                        'options' => $this->getPages()
                     ],
                     [
                         'name' => 'Photo',
-                        'id' => $this->_field_gallery_photo,
+                        'id' => $this->fieldGalleryPhoto,
                         'type' => 'image_advanced',
                         'max_file_uploads' => 1
                     ]
                 ]
             ];
-            $meta_boxes[] = [
+            $metaBoxes[] = [
                 'id' => 'photo_informations',
                 'title' => 'Photo informations',
                 'post_types' => [self::PHOTO],
                 'fields' => [
                     [
                         'name' => 'Photo',
-                        'id' => $this->_field_photo,
+                        'id' => $this->fieldPhoto,
                         'type' => 'image_advanced',
                         'max_file_uploads' => 1
                     ],
                     [
                         'name' => 'Gallery',
-                        'id' => $this->_field_photo_gallery,
+                        'id' => $this->fieldPhotoGallery,
                         'type' => 'select',
-                        'options' => $this->get_galleries()
+                        'options' => $this->getGalleries()
                     ]
                 ]
             ];
-            return $meta_boxes;
+            return $metaBoxes;
         });
     }
 
     /**
      * Add the galleries and gallery shortcodes to show a list of galleries and a single gallery
      */
-    private function shortcodes() {
+    private function addShortcodes() {
         add_shortcode('galleries', function() : string {
             $html = '<div class="kc-galleries">';
-            $galleries = $this->get_galleries();
+            $galleries = $this->getGalleries();
             foreach($galleries as $key => $gallery) {
                 $html .= '<div class="kc-galleries__gallery">';
-                $html .= '<a href="'.$this->get_gallery_page($key).'"><img src="'.$this->get_gallery_photo($key).'" alt="'.get_the_title($key).'"></a>';
+                $html .= '<a href="'.$this->getGalleryPage($key).'"><img src="'.$this->getGalleryPhoto($key).'" alt="'.get_the_title($key).'"></a>';
                 $html .= '</div>';
             }
             $html .= '</div>';
@@ -158,21 +158,21 @@ class KC_Gallery {
         });
         add_shortcode('gallery', function(array $atts) : string {
             $html = '<div class="kc-gallery">';
-            $gallery_id = addslashes($atts['id']);
+            $galleryID = addslashes($atts['id']);
             $paged = (get_query_var('paged')) ? absint(get_query_var('paged')) : 1;
             $args = [
                 'post_type' => self::PHOTO,
                 'posts_per_page' => 39,
                 'order' => 'ASC',
-                'meta_key' => $this->_field_photo_gallery,
-                'meta_value' => $gallery_id,
+                'meta_key' => $this->fieldPhotoGallery,
+                'meta_value' => $galleryID,
                 'paged' => $paged
             ];
-            $wp_query = new WP_Query($args);
-            while($wp_query->have_posts()) {
-                $wp_query->the_post();
-                $html .= '<a href="'.$this->get_photo(get_the_ID()).'" data-title="'.get_the_title().'" data-lightbox="'.$gallery_id.'">';
-                $html .= '<img src="'.$this->get_photo_thumbnail(get_the_ID()).'" class="kc-gallery__photo" alt="'.get_the_title().'"></a>';
+            $wpQuery = new WP_Query($args);
+            while($wpQuery->have_posts()) {
+                $wpQuery->the_post();
+                $html .= '<a href="'.$this->getPhoto(get_the_ID()).'" data-title="'.get_the_title().'" data-lightbox="'.$galleryID.'">';
+                $html .= '<img src="'.$this->getPhotoThumbnail(get_the_ID()).'" class="kc-gallery__photo" alt="'.get_the_title().'"></a>';
             }
             $html .= '<div class="kc-gallery__pagination">';
             $big = 999999999; // need an unlikely integer
@@ -181,7 +181,7 @@ class KC_Gallery {
                 'base' => str_replace($big, $replace, esc_url(get_pagenum_link($big))),
                 'format' => '?paged='.$replace,
                 'current' => max(1, $paged),
-                'total' => $wp_query->max_num_pages,
+                'total' => $wpQuery->max_num_pages,
                 'prev_text' => 'Forrige',
                 'next_text' => 'Næste'
             ]);
@@ -194,34 +194,34 @@ class KC_Gallery {
      * Add admin columns to the gallery and photo custom post types
      */
     private function admin_columns() {
-        $column_gallery_key = 'gallery';
-        $column_gallery_value = 'Gallery';
-        $column_photo_key = 'photo';
-        add_filter('manage_'.self::PHOTO.'_posts_columns', function(array $columns) use ($column_gallery_key, $column_gallery_value, $column_photo_key) : array {
-            $columns[$column_gallery_key] = $column_gallery_value;
-            $columns[$column_photo_key] = 'Photo';
+        $columnGalleryKey = 'gallery';
+        $columnGalleryValue = 'Gallery';
+        $columnPhotoKey = 'photo';
+        add_filter('manage_'.self::PHOTO.'_posts_columns', function(array $columns) use ($columnGalleryKey, $columnGalleryValue, $columnPhotoKey) : array {
+            $columns[$columnGalleryKey] = $columnGalleryValue;
+            $columns[$columnPhotoKey] = 'Photo';
             return $columns;
         });
-        add_action('manage_'.self::PHOTO.'_posts_custom_column', function(string $column_name) use ($column_gallery_key, $column_photo_key) {
-            if($column_name === $column_gallery_key) {
-                $gallery_id = rwmb_meta($this->_field_photo_gallery);
-                echo get_post($gallery_id)->post_title;
-            } else if($column_name === $column_photo_key) {
-                echo '<img src="'.$this->get_photo_thumbnail().'" alt="'.get_the_title().'">';
+        add_action('manage_'.self::PHOTO.'_posts_custom_column', function(string $columnName) use ($columnGalleryKey, $columnPhotoKey) {
+            if($columnName === $columnGalleryKey) {
+                $galleryID = rwmb_meta($this->fieldPhotoGallery);
+                echo get_post($galleryID)->post_title;
+            } else if($columnName === $columnPhotoKey) {
+                echo '<img src="'.$this->getPhotoThumbnail().'" alt="'.get_the_title().'">';
             }
         });
-        add_filter('manage_edit-'.self::PHOTO.'_sortable_columns', function(array $columns) use ($column_gallery_key, $column_gallery_value) : array {
-            $columns[$column_gallery_key] = $column_gallery_value;
+        add_filter('manage_edit-'.self::PHOTO.'_sortable_columns', function(array $columns) use ($columnGalleryKey, $columnGalleryValue) : array {
+            $columns[$columnGalleryKey] = $columnGalleryValue;
             return $columns;
         });
-        $column_number_of_photos_key = 'number_of_photos';
-        $column_number_of_photos_value = 'Photos';
-        add_filter('manage_'.self::GALLERY.'_posts_columns', function(array $columns) use ($column_number_of_photos_key, $column_number_of_photos_value) : array {
-            $columns[$column_number_of_photos_key] = $column_number_of_photos_value;
+        $columnNumberOfPhotosKey = 'number_of_photos';
+        $columnNumberOfPhotosValue = 'Photos';
+        add_filter('manage_'.self::GALLERY.'_posts_columns', function(array $columns) use ($columnNumberOfPhotosKey, $columnNumberOfPhotosValue) : array {
+            $columns[$columnNumberOfPhotosKey] = $columnNumberOfPhotosValue;
             return $columns;
         });
-        add_action('manage_'.self::GALLERY.'_posts_custom_column', function(string $column_name) use ($column_number_of_photos_key) {
-            if($column_name === $column_number_of_photos_key) echo $this->get_number_of_photos_in_gallery(get_the_ID());
+        add_action('manage_'.self::GALLERY.'_posts_custom_column', function(string $columnName) use ($columnNumberOfPhotosKey) {
+            if($columnName === $columnNumberOfPhotosKey) echo $this->getNumberOfPhotosInGallery(get_the_ID());
         });
     }
 
@@ -230,7 +230,7 @@ class KC_Gallery {
      *
      * @return array the pages
      */
-    private function get_pages() : array {
+    private function getPages() : array {
         $pages = [];
         $args = [
             'post_type' => 'page',
@@ -238,9 +238,9 @@ class KC_Gallery {
             'order' => 'ASC',
             'orderby' => 'menu_order'
         ];
-        $wp_query = new WP_Query($args);
-        while($wp_query->have_posts()) {
-            $wp_query->the_post();
+        $wpQuery = new WP_Query($args);
+        while($wpQuery->have_posts()) {
+            $wpQuery->the_post();
             $pages[get_the_ID()] = get_the_title();
         }
         return $pages;
@@ -251,16 +251,16 @@ class KC_Gallery {
      *
      * @return array the galleries
      */
-    private function get_galleries() : array {
+    private function getGalleries() : array {
         $galleries = [];
         $args = [
             'post_type' => self::GALLERY,
             'posts_per_page' => -1,
             'order' => 'ASC'
         ];
-        $wp_query = new WP_Query($args);
-        while($wp_query->have_posts()) {
-            $wp_query->the_post();
+        $wpQuery = new WP_Query($args);
+        while($wpQuery->have_posts()) {
+            $wpQuery->the_post();
             $galleries[get_the_ID()] = get_the_title();
         }
         return $galleries;
@@ -269,66 +269,66 @@ class KC_Gallery {
     /**
      * Get the gallery page url
      *
-     * @param int|null $post_id the id of the post
+     * @param int|null $postID the id of the post
      * @param array $args an array of arguments
      * @return string the gallery page url
      */
-    private function get_gallery_page(int $post_id = null, array $args = []) : string {
-        return get_permalink(rwmb_meta($this->_field_gallery_page, $args, $post_id));
+    private function getGalleryPage(int $postID = null, array $args = []) : string {
+        return get_permalink(rwmb_meta($this->fieldGalleryPage, $args, $postID));
     }
 
     /**
      * Get the gallery photo url
      *
-     * @param int|null $post_id the id of the post
+     * @param int|null $postID the id of the post
      * @param array $args an array of arguments
      * @return string the gallery photo url
      */
-    private function get_gallery_photo(int $post_id = null, array $args = []) : string {
-        $photo = rwmb_meta($this->_field_gallery_photo, $args, $post_id);
+    private function getGalleryPhoto(int $postID = null, array $args = []) : string {
+        $photo = rwmb_meta($this->fieldGalleryPhoto, $args, $postID);
         return array_shift($photo)['full_url'];
     }
 
     /**
      * Get the photo
      *
-     * @param int|null $post_id the id of the post
+     * @param int|null $postID the id of the post
      * @param array $args an array of arguments
      * @return string the photo
      */
-    private function get_photo(int $post_id = null, array $args = []) : string {
-        $photo = rwmb_meta($this->_field_photo, $args, $post_id);
-        $photo_id = array_shift($photo)['ID'];
-        return wp_get_attachment_image_src($photo_id, $this->_gallery_settings->get_photo_key())[0];
+    private function getPhoto(int $postID = null, array $args = []) : string {
+        $photo = rwmb_meta($this->fieldPhoto, $args, $postID);
+        $photoID = array_shift($photo)['ID'];
+        return wp_get_attachment_image_src($photoID, $this->gallerySettings->getPhotoKey())[0];
     }
 
     /**
      * Get the photo thumbnail
      *
-     * @param int|null $post_id the id of the post
+     * @param int|null $postID the id of the post
      * @param array $args an array of arguments
      * @return string the photo thumbnail
      */
-    private function get_photo_thumbnail(int $post_id = null, array $args = []) : string {
-        $photo = rwmb_meta($this->_field_photo, $args, $post_id);
-        $photo_id = array_shift($photo)['ID'];
-        return wp_get_attachment_image_src($photo_id, $this->_gallery_settings->get_photo_thumbnail_key())[0];
+    private function getPhotoThumbnail(int $postID = null, array $args = []) : string {
+        $photo = rwmb_meta($this->fieldPhoto, $args, $postID);
+        $photoID = array_shift($photo)['ID'];
+        return wp_get_attachment_image_src($photoID, $this->gallerySettings->getPhotoThumbnailKey())[0];
     }
 
     /**
      * Get the number of photos in a gallery
      *
-     * @param int $gallery_id the id of the gallery
+     * @param int $galleryID the id of the gallery
      * @return int the number of photos in a gallery
      */
-    private function get_number_of_photos_in_gallery(int $gallery_id) : int {
+    private function getNumberOfPhotosInGallery(int $galleryID) : int {
         $args = [
             'post_type' => self::PHOTO,
             'posts_per_page' => -1,
-            'meta_key' => $this->_field_photo_gallery,
-            'meta_value' => $gallery_id
+            'meta_key' => $this->fieldPhotoGallery,
+            'meta_value' => $galleryID
         ];
-        $wp_query = new WP_Query($args);
-        return $wp_query->found_posts;
+        $wpQuery = new WP_Query($args);
+        return $wpQuery->found_posts;
     }
 }

@@ -2,53 +2,53 @@
 namespace KCGallery\Includes;
 
 /**
- * Class KC_Gallery_Settings contains methods to handle the settings for the plugin
+ * Class KCGallerySettings contains methods to handle the settings for the plugin
  * @package KCGallery\Includes
  */
-class KC_Gallery_Settings {
+class KCGallerySettings {
 
-    private $_photo_key;
-    private $_photo_thumbnail_key;
-    private $_page_slug;
-    private $_option_group;
-    private $_option;
-    private $_photo_width;
-    private $_photo_height;
-    private $_thumbnail_width;
-    private $_thumbnail_height;
+    private $photoKey;
+    private $photoThumbnailKey;
+    private $pageSlug;
+    private $optionGroup;
+    private $option;
+    private $photoWidth;
+    private $photoHeight;
+    private $thumbnailWidth;
+    private $thumbnailHeight;
 
     /**
-     * KC_Gallery_Settings constructor
+     * KCGallerySettings constructor
      */
     public function __construct() {
-        $this->_photo_key = 'kc-photo';
-        $this->_photo_thumbnail_key = 'kc-photo-thumbnail';
-        add_image_size($this->_photo_key, $this->get_photo_width(), $this->get_photo_height(), true);
-        add_image_size($this->_photo_thumbnail_key, $this->get_thumbnail_width(), $this->get_thumbnail_height(), true);
-        $this->_page_slug = 'kc-gallery-settings';
-        $this->_option_group = $this->_page_slug.'-group';
-        $this->_option = get_option($this->_option_group);
-        $this->_photo_width = 'kc_photo_width';
-        $this->_photo_height = 'kc_photo_height';
-        $this->_thumbnail_width = 'kc_thumbnail_width';
-        $this->_thumbnail_height = 'kc_thumbnail_height';
-        //$this->admin_menu();
-        //$this->admin_init();
+        $this->photoKey = 'kc-photo';
+        $this->photoThumbnailKey = 'kc-photo-thumbnail';
+        add_image_size($this->photoKey, $this->getPhotoWidth(), $this->getPhotoHeight(), true);
+        add_image_size($this->photoThumbnailKey, $this->getThumbnailWidth(), $this->getThumbnailHeight(), true);
+        $this->pageSlug = 'kc-gallery-settings';
+        $this->optionGroup = $this->pageSlug.'-group';
+        $this->option = get_option($this->optionGroup);
+        $this->photoWidth = 'kc_photo_width';
+        $this->photoHeight = 'kc_photo_height';
+        $this->thumbnailWidth = 'kc_thumbnail_width';
+        $this->thumbnailHeight = 'kc_thumbnail_height';
+        //$this->adminMenu();
+        //$this->adminInit();
     }
 
     /**
      * Use the admin_menu action to create a settings page
      */
-    private function admin_menu() {
+    private function adminMenu() {
         add_action('admin_menu', function() {
             $title = 'KC Gallery';
-            add_menu_page($title, $title, 'administrator', $this->_page_slug, function() {
+            add_menu_page($title, $title, 'administrator', $this->pageSlug, function() {
                 settings_errors();
                 ?>
                 <form action="options.php" method="post">
                     <?php
-                    settings_fields($this->_option_group);
-                    do_settings_sections($this->_page_slug);
+                    settings_fields($this->optionGroup);
+                    do_settings_sections($this->pageSlug);
                     submit_button();
                     ?>
                 </form>
@@ -60,26 +60,26 @@ class KC_Gallery_Settings {
     /**
      * Use the admin_init action to create and register the setting inputs
      */
-    private function admin_init() {
+    private function adminInit() {
         add_action('admin_init', function() {
-            $section_id = 'kc-gallery-section';
-            add_settings_section($section_id, '', function() {
+            $sectionID = 'kc-gallery-section';
+            add_settings_section($sectionID, '', function() {
                 echo '<h2>KC Gallery Settings</h2>';
-            }, $this->_page_slug);
+            }, $this->pageSlug);
             add_settings_field('kc-photo-width', 'Width', function() {
-                echo '<input type="number" name="'.$this->_option_group.'['.$this->_photo_width.']" value="'.$this->get_photo_width().'">';
-            }, $this->_page_slug, $section_id);
+                echo '<input type="number" name="'.$this->optionGroup.'['.$this->photoWidth.']" value="'.$this->getPhotoWidth().'">';
+            }, $this->pageSlug, $sectionID);
             add_settings_field('kc-photo-height', 'Height', function() {
-                echo '<input type="number" name="'.$this->_option_group.'['.$this->_photo_height.']" value="'.$this->get_photo_height().'">';
-            }, $this->_page_slug, $section_id);
+                echo '<input type="number" name="'.$this->optionGroup.'['.$this->photoHeight.']" value="'.$this->getPhotoHeight().'">';
+            }, $this->pageSlug, $sectionID);
             add_settings_field('kc-thumbnail-width', 'Thumbnail width', function() {
-                echo '<input type="number" name="'.$this->_option_group.'['.$this->_thumbnail_width.']" value="'.$this->get_thumbnail_width().'">';
-            }, $this->_page_slug, $section_id);
+                echo '<input type="number" name="'.$this->optionGroup.'['.$this->thumbnailWidth.']" value="'.$this->getThumbnailWidth().'">';
+            }, $this->pageSlug, $sectionID);
             add_settings_field('kc-thumbnail-height', 'Thumbnail height', function() {
-                echo '<input type="number" name="'.$this->_option_group.'['.$this->_thumbnail_height.']" value="'.$this->get_thumbnail_height().'">';
-            }, $this->_page_slug, $section_id);
-            register_setting($this->_option_group, $this->_option_group, function($input) : array {
-                return $this->validate_input($input);
+                echo '<input type="number" name="'.$this->optionGroup.'['.$this->thumbnailHeight.']" value="'.$this->getThumbnailHeight().'">';
+            }, $this->pageSlug, $sectionID);
+            register_setting($this->optionGroup, $this->optionGroup, function($input) : array {
+                return $this->validateInput($input);
             });
         });
     }
@@ -90,15 +90,15 @@ class KC_Gallery_Settings {
      * @param array $input the input to validate
      * @return array the validated input
      */
-    private function validate_input(array $input) : array {
+    private function validateInput(array $input) : array {
         $output = [];
         foreach($input as $key => $value) {
             if(isset($input[$key])) {
                 $output[$key] = strip_tags(stripslashes($input[$key]));
             }
         }
-        add_image_size($this->_photo_key, $this->get_photo_width(), $this->get_photo_height(), true);
-        add_image_size($this->_photo_thumbnail_key, $this->get_thumbnail_width(), $this->get_thumbnail_height(), true);
+        add_image_size($this->photoKey, $this->getPhotoWidth(), $this->getPhotoHeight(), true);
+        add_image_size($this->photoThumbnailKey, $this->getThumbnailWidth(), $this->getThumbnailHeight(), true);
         return apply_filters(__FUNCTION__, $output, $input);
     }
 
@@ -107,9 +107,9 @@ class KC_Gallery_Settings {
      *
      * @return int the photo width
      */
-    private function get_photo_width() : int {
+    private function getPhotoWidth() : int {
         $default_value = 550;
-        return (isset($this->_option[$this->_photo_width])) ? $this->_option[$this->_photo_width] : $default_value;
+        return (isset($this->option[$this->photoWidth])) ? $this->option[$this->photoWidth] : $default_value;
     }
 
     /**
@@ -117,9 +117,9 @@ class KC_Gallery_Settings {
      *
      * @return int the photo height
      */
-    private function get_photo_height() : int {
+    private function getPhotoHeight() : int {
         $default_value = 350;
-        return (isset($this->_option[$this->_photo_height])) ? $this->_option[$this->_photo_height] : $default_value;
+        return (isset($this->option[$this->photoHeight])) ? $this->option[$this->photoHeight] : $default_value;
     }
 
     /**
@@ -127,9 +127,9 @@ class KC_Gallery_Settings {
      *
      * @return int the thumbnail width
      */
-    private function get_thumbnail_width() : int {
+    private function getThumbnailWidth() : int {
         $default_value = 55;
-        return (isset($this->_option[$this->_thumbnail_width])) ? $this->_option[$this->_thumbnail_width] : $default_value;
+        return (isset($this->option[$this->thumbnailWidth])) ? $this->option[$this->thumbnailWidth] : $default_value;
     }
 
     /**
@@ -137,9 +137,9 @@ class KC_Gallery_Settings {
      *
      * @return int the thumbnail height
      */
-    private function get_thumbnail_height() : int {
+    private function getThumbnailHeight() : int {
         $default_value = 35;
-        return (isset($this->_option[$this->_thumbnail_height])) ? $this->_option[$this->_thumbnail_height] : $default_value;
+        return (isset($this->option[$this->thumbnailHeight])) ? $this->option[$this->thumbnailHeight] : $default_value;
     }
 
     /**
@@ -147,8 +147,8 @@ class KC_Gallery_Settings {
      *
      * @return string the photo key
      */
-    public function get_photo_key() : string {
-        return $this->_photo_key;
+    public function getPhotoKey() : string {
+        return $this->photoKey;
     }
 
     /**
@@ -156,7 +156,7 @@ class KC_Gallery_Settings {
      *
      * @return string the thumbnail key
      */
-    public function get_photo_thumbnail_key() : string {
-        return $this->_photo_thumbnail_key;
+    public function getPhotoThumbnailKey() : string {
+        return $this->photoThumbnailKey;
     }
 }
