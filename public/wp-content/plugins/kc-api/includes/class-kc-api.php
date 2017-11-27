@@ -10,7 +10,7 @@ use \WP_Query;
  * Class KC_API contains methods to handle the functionality of the plugin
  * @package KCAPI\Includes
  */
-class KC_API {
+class KCAPI {
 
     /**
      * KC_API constructor
@@ -23,20 +23,20 @@ class KC_API {
      * Execute the plugin
      */
     public function execute() {
-        $this->rest_api_init();
+        $this->restApiInit();
     }
 
     /**
      * Use the rest_api_init to register a route
      */
-    private function rest_api_init() {
+    private function restApiInit() {
         add_action('rest_api_init', function() {
             register_rest_route('kcapi/v1', '/search', [
                 'methods' => [WP_REST_Server::CREATABLE],
                 'callback' => function(WP_REST_Request $request) : WP_REST_Response {
                     $data = json_decode($request->get_body(), true);
-                    $status_code = 200;
-                    return new WP_REST_Response($this->get_pages_by_title($data['title']), $status_code);
+                    $statusCode = 200;
+                    return new WP_REST_Response($this->getPagesByTitle($data['title']), $statusCode);
                 }
             ]);
         });
@@ -48,16 +48,16 @@ class KC_API {
      * @param string $title the title to get the pages from
      * @return array the pages
      */
-    private function get_pages_by_title(string $title) : array {
+    private function getPagesByTitle(string $title) : array {
         $pages = [];
         $args = [
             'post_type' => ['page'],
             'posts_per_page' => -1,
             's' => $title
         ];
-        $wp_query = new WP_Query($args);
-        while($wp_query->have_posts()) {
-            $wp_query->the_post();
+        $wpQuery = new WP_Query($args);
+        while($wpQuery->have_posts()) {
+            $wpQuery->the_post();
             $pages[] = [
                 'title' => get_the_title(),
                 'link' => get_permalink(get_the_ID()),

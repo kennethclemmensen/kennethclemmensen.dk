@@ -9,5 +9,5 @@ Author URI: https://www.kennethclemmensen.dk
 namespace KCAPI;
 if(!defined('ABSPATH')) die();
 require_once 'includes/class-kc-api.php';
-$plugin = new Includes\KC_API();
+$plugin = new Includes\KCAPI();
 $plugin->execute();
