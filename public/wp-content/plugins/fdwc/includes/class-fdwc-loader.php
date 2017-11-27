@@ -2,7 +2,7 @@
 namespace FDWC\Includes;
 
 /**
- * Class FDWC_Loader contains a method to load JavaScript files
+ * Class FDWCLoader contains a method to load JavaScript files
  * @package FDWC\Includes
  */
 class FDWCLoader {
