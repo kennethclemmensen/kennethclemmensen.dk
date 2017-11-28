@@ -62,8 +62,8 @@ class KCGallery {
      * Load the dependencies files
      */
     private function loadDependencies() {
-        require_once 'class-kc-gallery-loader.php';
-        require_once 'class-kc-gallery-settings.php';
+        require_once 'KCGalleryLoader.php';
+        require_once 'KCGallerySettings.php';
     }
 
     /**

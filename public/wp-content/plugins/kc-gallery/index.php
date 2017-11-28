@@ -8,7 +8,7 @@ Author URI: https://www.kennethclemmensen.dk
 */
 namespace KCGallery;
 if(!defined('ABSPATH')) die();
-require_once 'includes/class-kc-gallery.php';
+require_once 'includes/KCGallery.php';
 $plugin = new Includes\KCGallery();
 $plugin->activate(__FILE__);
 $plugin->execute();
