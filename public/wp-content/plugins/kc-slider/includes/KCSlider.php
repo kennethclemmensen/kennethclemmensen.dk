@@ -47,7 +47,7 @@ class KCSlider {
      * Load the dependencies files
      */
     private function loadDependencies() {
-        require_once 'class-kc-slider-settings.php';
+        require_once 'KCSliderSettings.php';
     }
 
     /**
