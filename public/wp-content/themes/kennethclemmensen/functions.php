@@ -82,26 +82,15 @@ add_filter('style_loader_src', function($src) {
 
 function get_breadcrumb() {
     global $post;
-    $title = 'title';
-    $link = 'link';
     if(!is_front_page()) {
-        $pages[] = [
-            $title => $post->post_title,
-            $link => get_permalink($post->ID)
-        ];
+        $pages[] = $post->ID;
         $parent = $post->post_parent;
         while($parent !== 0) {
             $page = get_post($parent);
-            $pages[] = [
-                $title => get_the_title($page->ID),
-                $link => get_permalink($page->ID)
-            ];
+            $pages[] = $page->ID;
             $parent = $page->post_parent;
         }
     }
-    $pages[] = [
-        $title => pll__('Front page'),
-        $link => '/'
-    ];
+    $pages[] = get_option('page_on_front');
     return array_reverse($pages);
 }
