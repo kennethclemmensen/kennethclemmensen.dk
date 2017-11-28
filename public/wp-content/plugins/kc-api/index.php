@@ -8,6 +8,6 @@ Author URI: https://www.kennethclemmensen.dk
 */
 namespace KCAPI;
 if(!defined('ABSPATH')) die();
-require_once 'includes/class-kc-api.php';
+require_once 'includes/KCAPI.php';
 $plugin = new Includes\KCAPI();
 $plugin->execute();
