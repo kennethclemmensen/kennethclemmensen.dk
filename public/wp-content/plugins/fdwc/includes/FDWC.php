@@ -62,7 +62,7 @@ class FDWC {
      * Load the dependencies files
      */
     private function loadDepedencies() {
-        require_once 'class-fdwc-loader.php';
+        require_once 'FDWCLoader.php';
     }
 
     /**
