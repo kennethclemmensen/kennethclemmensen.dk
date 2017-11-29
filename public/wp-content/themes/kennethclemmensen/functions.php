@@ -1,6 +1,6 @@
 <?php
 require_once 'includes/MobileMenuWalker.php';
-require_once 'includes/polylang-translation-strings.php';
+require_once 'includes/TranslationStrings.php';
 
 add_action('wp_enqueue_scripts', function() {
 	$font_awesome = 'font-awesome';
