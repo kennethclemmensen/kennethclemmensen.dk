@@ -1,5 +1,5 @@
 <?php
-require_once 'includes/class-mobile-menu-walker.php';
+require_once 'includes/MobileMenuWalker.php';
 require_once 'includes/polylang-translation-strings.php';
 
 add_action('wp_enqueue_scripts', function() {

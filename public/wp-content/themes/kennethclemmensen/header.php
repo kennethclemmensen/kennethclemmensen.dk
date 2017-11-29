@@ -26,7 +26,7 @@
 		<?php
         wp_nav_menu([
             'theme_location' => 'mobile-menu',
-            'walker' => new Mobile_Menu_Walker()
+            'walker' => new MobileMenuWalker()
         ]);
         ?>
     </div>
