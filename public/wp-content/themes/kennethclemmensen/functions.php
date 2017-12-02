@@ -37,6 +37,7 @@ add_filter('script_loader_tag', function($tag) {
 });*/
 
 add_action('init', function() {
+    new TranslationStrings();
 	register_nav_menus([
 		'mobile-menu' => 'Mobile menu',
 		'main-menu' => 'Main menu'

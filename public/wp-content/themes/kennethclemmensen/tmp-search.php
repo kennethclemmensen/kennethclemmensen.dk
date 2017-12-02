@@ -17,7 +17,7 @@ while(have_posts()) {
             <div id="search-app">
                 <form method="post" action="/" @submit="search($event)">
                     <input type="search" name="search" v-model="searchString">
-                    <input type="submit" value="Søg" @click="search($event)">
+                    <input type="submit" value="<?php pll_e(TranslationStrings::SEARCH); ?>" @click="search($event)">
                 </form>
                 <h2 v-if="results.length === 0 && searchString !== ''">Din søgning gav ingen resultater</h2>
                 <div v-else-if="results.length > 0">
