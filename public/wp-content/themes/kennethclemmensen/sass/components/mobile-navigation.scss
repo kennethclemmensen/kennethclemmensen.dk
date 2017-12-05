@@ -7,7 +7,7 @@
   bottom: $footer-height;
   z-index: 1;
   @include translateX(-100%);
-  @include transition(all, .4s, ease, 0s);
+  @include transition();
   overflow-y: auto;
   @media #{$sm} {
     display: none;
