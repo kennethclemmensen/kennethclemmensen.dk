@@ -1,41 +1,23 @@
 @mixin translateX($value) {
-  -webkit-transform: translateX($value);
-  -moz-transform: translateX($value);
-  -o-transform: translateX($value);
-  -ms-transform: translateX($value);
   transform: translateX($value);
 }
 
 @mixin transition($property: all, $duration: .4s, $timing-function: ease, $delay: 0s) {
-  -webkit-transition: $property $duration $timing-function $delay;
-  -moz-transition: $property $duration $timing-function $delay;
-  -o-transition: $property $duration $timing-function $delay;
   transition: $property $duration $timing-function $delay;
 }
 
 @mixin box-shadow($x, $y, $blur, $color) {
-  -webkit-box-shadow: $x $y $blur $color;
-  -moz-box-shadow: $x $y $blur $color;
-  -o-box-shadow: $x $y $blur $color;
   box-shadow: $x $y $blur $color;
 }
 
 @mixin border-radius($value) {
-  -webkit-border-radius: $value;
-  -moz-border-radius: $value;
   border-radius: $value;
 }
 
 @mixin border-radiuses($topLeft, $topRight, $bottomRight, $bottomLeft) {
-  -webkit-border-radius: $topLeft $topRight $bottomRight $bottomLeft;
-  -moz-border-radius: $topLeft $topRight $bottomRight $bottomLeft;
   border-radius: $topLeft $topRight $bottomRight $bottomLeft;
 }
 
 @mixin rotate($deg) {
-  -webkit-transform: rotate($deg);
-  -moz-transform: rotate($deg);
-  -o-transform: rotate($deg);
-  -ms-transform: rotate($deg);
   transform: rotate($deg);
 }
