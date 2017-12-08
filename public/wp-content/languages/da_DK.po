@@ -787,7 +787,7 @@ msgstr "Scrape af nonce-tjek fejlede. Prøv venligst igen."
 
 #. translators: Do not translate OLD_EMAIL, NEW_EMAIL, SITENAME, SITEURL: those
 #. are placeholders.
-#: wp-includes/functions.php:5755
+#: wp-includes/functions.php:5756
 msgid ""
 "Hi,\n"
 "\n"
@@ -815,11 +815,11 @@ msgstr ""
 
 #. translators: Site admin email change notification email subject. %s: Site
 #. title
-#: wp-includes/functions.php:5770
+#: wp-includes/functions.php:5771
 msgid "[%s] Notice of Admin Email Change"
 msgstr "[%s] Besked om ændring af administrators e-mail"
 
-#: wp-includes/functions.php:5698
+#: wp-includes/functions.php:5699
 msgid "Only UUID V4 is supported at this time."
 msgstr "Kun UUID V4 er understøttet på nuværende tidspunkt."
 
@@ -1918,7 +1918,7 @@ msgctxt "New site notification email subject"
 msgid "[%1$s] Activate %2$s"
 msgstr "[%1$s] Aktiver %2$s"
 
-#: wp-includes/widgets.php:1395 wp-includes/widgets.php:1504
+#: wp-includes/widgets.php:1398 wp-includes/widgets.php:1507
 msgid "RSS Error:"
 msgstr "RSS-fejl:"
 
@@ -3858,7 +3858,7 @@ msgstr "Forsigtig: Disse temaer kan være aktive på andre websteder i netværke
 msgid "Deletion failed: %s"
 msgstr "Sletning mislykkedes: %s"
 
-#: wp-includes/wp-db.php:1849 wp-includes/wp-db.php:1855
+#: wp-includes/wp-db.php:1856 wp-includes/wp-db.php:1862
 msgid "Unable to retrieve the error message from MySQL"
 msgstr "Ikke i stand til at modtage fejlmeddelelser fra MySQL"
 
@@ -4145,13 +4145,13 @@ msgstr "Intet logo valgt"
 msgid "Choose logo"
 msgstr "Vælg logo"
 
-#: wp-includes/functions.php:5311
+#: wp-includes/functions.php:5312
 msgid "Close dialog"
 msgstr "Luk dialog"
 
 #. translators: 1: PHP class name, 2: PHP parent class name, 3: version number,
 #. 4: __construct() method
-#: wp-includes/functions.php:3899
+#: wp-includes/functions.php:3900
 msgid "The called constructor method for %1$s in %2$s is <strong>deprecated</strong> since version %3$s! Use %4$s instead."
 msgstr "Den kaldte constructor-metode for %1$s i %2$s er <strong>forældet</strong> siden version %3$s! Brug i stedet %4$s."
 
@@ -4282,11 +4282,11 @@ msgid "Read the <a href=\"%s\" target=\"_blank\">bug report</a> page. Some of th
 msgstr "Læs <a href=\"%s\" target=\"_blank\">fejlrapporteringssiden</a>.Nogle af retningslinjerne der kan måske hjælpe dig med at finde ud, hvad der er galt."
 
 #. translators: %s: Codex URL
-#: wp-includes/functions.php:4141
+#: wp-includes/functions.php:4142
 msgid "Please see <a href=\"%s\">Debugging in WordPress</a> for more information."
 msgstr "Se venligst <a href=\"%s\">Fejlfinding i WordPress</a> for mere information."
 
-#: wp-includes/functions.php:4142
+#: wp-includes/functions.php:4143
 msgid "https://codex.wordpress.org/Debugging_in_WordPress"
 msgstr "https://codex.wordpress.org/Debugging_in_WordPress"
 
@@ -4495,25 +4495,25 @@ msgstr "Webstedssprog:"
 msgid "Author:"
 msgstr "Forfatter:"
 
-#: wp-includes/wp-db.php:1596 wp-includes/wp-db.php:1746
+#: wp-includes/wp-db.php:1596 wp-includes/wp-db.php:1753
 msgid "Are you sure that the database server is running?"
 msgstr "Er du sikker på, at databaseserveren kører?"
 
-#: wp-includes/wp-db.php:1737
+#: wp-includes/wp-db.php:1744
 msgid "Error reconnecting to the database"
 msgstr "Fejl i forsøg på at genoprette forbindelse til databasen"
 
-#: wp-includes/wp-db.php:1747
+#: wp-includes/wp-db.php:1754
 msgid "Are you sure that the database server is not under particularly heavy load?"
 msgstr "Er du sikker på, at databaseserveren ikke er ekstraordinært hårdt belastet?"
 
 #. translators: %s: database host
-#: wp-includes/wp-db.php:1741
+#: wp-includes/wp-db.php:1748
 msgid "This means that we lost contact with the database server at %s. This could mean your host&#8217;s database server is down."
 msgstr "Dette betyder, at vi har mistet forbindelsen til databaseserveren på %s. Det kunne betyde, at din udbyders databaseserver er nede."
 
 #. translators: %s: support forums URL
-#: wp-includes/wp-db.php:1601 wp-includes/wp-db.php:1752
+#: wp-includes/wp-db.php:1601 wp-includes/wp-db.php:1759
 msgid "If you&#8217;re unsure what these terms mean you should probably contact your host. If you still need help you can always visit the <a href=\"%s\">WordPress Support Forums</a>."
 msgstr "Hvis du er usikker på, hvad disse ting betyder, bør du nok kontakte din udbyder. Hvis du stadigvæk har brug for hjælp, kan du altid besøge <a href=\"%s\">WordPress' supportfora</a> (eller <a href=\"http://wp-danmark.dk/forum/\">WordPress DK Forum</a> hvor vi kan hjælpe på dansk)."
 
@@ -5154,7 +5154,7 @@ msgid "Reorder menu items"
 msgstr "Omorganiser menuelementerne"
 
 #. translators: 1: PHP class name, 2: version number, 3: __construct() method
-#: wp-includes/functions.php:3903
+#: wp-includes/functions.php:3904
 msgid "The called constructor method for %1$s is <strong>deprecated</strong> since version %2$s! Use %3$s instead."
 msgstr "Den kaldte constructor-metode for %1$s er <strong>forældet</strong> siden version %2$s! Brug %3$s."
 
@@ -7093,7 +7093,7 @@ msgstr "Indsæt dato/tid"
 #: wp-includes/admin-bar.php:164 wp-includes/update.php:153
 #: wp-includes/update.php:345 wp-includes/update.php:523
 #: wp-includes/wp-db.php:1069 wp-includes/wp-db.php:1602
-#: wp-includes/wp-db.php:1753 wp-login.php:882
+#: wp-includes/wp-db.php:1760 wp-login.php:882
 msgid "https://wordpress.org/support/"
 msgstr "https://wordpress.org/support/"
 
@@ -7263,22 +7263,22 @@ msgstr "Omorganiser"
 msgid "Finnish"
 msgstr "Finsk"
 
-#: wp-includes/general-template.php:3908
+#: wp-includes/general-template.php:3910
 msgctxt "admin color scheme"
 msgid "Sunrise"
 msgstr "Solopgang"
 
-#: wp-includes/general-template.php:3914
+#: wp-includes/general-template.php:3916
 msgctxt "admin color scheme"
 msgid "Ectoplasm"
 msgstr "Ektoplasma"
 
-#: wp-includes/general-template.php:3920
+#: wp-includes/general-template.php:3922
 msgctxt "admin color scheme"
 msgid "Ocean"
 msgstr "Hav"
 
-#: wp-includes/general-template.php:3926
+#: wp-includes/general-template.php:3928
 msgctxt "admin color scheme"
 msgid "Coffee"
 msgstr "Kaffe"
@@ -7335,17 +7335,17 @@ msgctxt "Open Sans font: on or off"
 msgid "on"
 msgstr "on"
 
-#: wp-includes/general-template.php:3879
+#: wp-includes/general-template.php:3881
 msgctxt "admin color scheme"
 msgid "Default"
 msgstr "Standard"
 
-#: wp-includes/general-template.php:3890
+#: wp-includes/general-template.php:3892
 msgctxt "admin color scheme"
 msgid "Light"
 msgstr "Lys"
 
-#: wp-includes/general-template.php:3902
+#: wp-includes/general-template.php:3904
 msgctxt "admin color scheme"
 msgid "Midnight"
 msgstr "Midnat"
@@ -7550,7 +7550,7 @@ msgstr "Webstedet, du ledte efter, %s, eksisterer ikke, men du kan oprette det n
 msgid "Your session has expired. You can log in again from this page or go to the login page."
 msgstr "Din session er udløbet. Du kan logge ind igen fra denne side eller gå til login-siden."
 
-#: wp-includes/functions.php:5328
+#: wp-includes/functions.php:5329
 msgid "The login page will open in a new window. After logging in you can close it and return to this page."
 msgstr "Login-siden vil åbne i et nyt vindue. Når du er logget ind, kan du lukke det og gå tilbage til denne side."
 
@@ -7575,7 +7575,7 @@ msgctxt "placeholder"
 msgid "Search &hellip;"
 msgstr "Søg &hellip;"
 
-#: wp-includes/functions.php:5326 wp-includes/script-loader.php:568
+#: wp-includes/functions.php:5327 wp-includes/script-loader.php:568
 msgid "Session expired"
 msgstr "Session udløbet"
 
@@ -8574,15 +8574,15 @@ msgstr "Dokumentation"
 msgid "Support Forums"
 msgstr "Supportfora"
 
-#: wp-includes/formatting.php:3361 wp-includes/general-template.php:3798
+#: wp-includes/formatting.php:3361 wp-includes/general-template.php:3800
 msgid "&hellip;"
 msgstr "&hellip;"
 
-#: wp-includes/functions.php:3772
+#: wp-includes/functions.php:3773
 msgid "Database Error"
 msgstr "Databasefejl"
 
-#: wp-includes/functions.php:3776 wp-includes/ms-load.php:455
+#: wp-includes/functions.php:3777 wp-includes/ms-load.php:455
 #: wp-includes/wp-db.php:1584
 msgid "Error establishing a database connection"
 msgstr "Fejl ved etablering af databaseforbindelse"
@@ -8635,7 +8635,7 @@ msgstr "Dette er større end den maksimale størrelse. Prøv venligst en anden."
 msgid "This file is not an image. Please try another."
 msgstr "Denne fil er ikke et billede. Prøv venligst en anden."
 
-#: wp-includes/general-template.php:3896
+#: wp-includes/general-template.php:3898
 msgctxt "admin color scheme"
 msgid "Blue"
 msgstr "Blå"
@@ -8761,12 +8761,12 @@ msgstr "Brugeren er allerede aktiv."
 
 #. translators: Developer debugging message. 1: PHP function name, 2:
 #. Explanatory message, 3: Version information message
-#: wp-includes/functions.php:4145
+#: wp-includes/functions.php:4146
 msgid "%1$s was called <strong>incorrectly</strong>. %2$s %3$s"
 msgstr "%1$s er kaldt <strong>forkert</strong>. %2$s %3$s"
 
 #. translators: %s: version number
-#: wp-includes/functions.php:4138
+#: wp-includes/functions.php:4139
 msgid "(This message was added in version %s.)"
 msgstr "(denne meddelelse blev tilføjet i version %s)."
 
@@ -9871,23 +9871,23 @@ msgctxt "widgets"
 msgid "%1$s on %2$s"
 msgstr "%1$s til %2$s"
 
-#: wp-includes/widgets.php:1426
+#: wp-includes/widgets.php:1429
 msgid "Untitled"
 msgstr "Ingen titel"
 
-#: wp-includes/widgets.php:1510
+#: wp-includes/widgets.php:1513
 msgid "Enter the RSS feed URL here:"
 msgstr "Skriv URL til RSS- eller ATOM-feed her:"
 
-#: wp-includes/widgets.php:1516
+#: wp-includes/widgets.php:1519
 msgid "How many items would you like to display?"
 msgstr "Hvor mange enheder vil du vise?"
 
-#: wp-includes/widgets.php:1526
+#: wp-includes/widgets.php:1529
 msgid "Display item content?"
 msgstr "Vis indhold?"
 
-#: wp-includes/widgets.php:1532
+#: wp-includes/widgets.php:1535
 msgid "Display item date?"
 msgstr "Vis dato?"
 
@@ -9950,19 +9950,19 @@ msgstr "Intet filnavn"
 msgid "Could not write file %s"
 msgstr "Kunne ikke gemme filen %s"
 
-#: wp-includes/functions.php:2615
+#: wp-includes/functions.php:2616
 msgid "WordPress Failure Notice"
 msgstr "WordPress fejlbesked"
 
-#: wp-includes/functions.php:2735
+#: wp-includes/functions.php:2736
 msgid "&laquo; Back"
 msgstr "&laquo; Tilbage"
 
-#: wp-includes/functions.php:2747 wp-load.php:92
+#: wp-includes/functions.php:2748 wp-load.php:92
 msgid "WordPress &rsaquo; Error"
 msgstr "WordPress &rsaquo; Fejl"
 
-#: wp-includes/functions.php:4713 wp-includes/functions.php:4717
+#: wp-includes/functions.php:4714 wp-includes/functions.php:4718
 msgid "UTC"
 msgstr "UTC"
 
@@ -10642,7 +10642,7 @@ msgstr "Tilføj afsnit automatisk"
 
 #. translators: 1: WordPress version number, 2: Minimum required MySQL version
 #. number
-#: wp-includes/wp-db.php:3311
+#: wp-includes/wp-db.php:3318
 msgid "<strong>ERROR</strong>: WordPress %1$s requires MySQL %2$s or higher"
 msgstr "<strong>FEJL</strong>: WordPress %1$s kræver MySQL %2$s eller nyere"
 
@@ -10823,7 +10823,7 @@ msgstr "<strong>FEJL</strong>: Din konto er markeret som en spammer."
 msgid "An error occurred in the upload. Please try again later."
 msgstr "Der opstod en fejl under overførslen. Prøv venligst igen senere."
 
-#: wp-includes/functions.php:2610 wp-includes/ms-functions.php:2047
+#: wp-includes/functions.php:2611 wp-includes/ms-functions.php:2047
 msgid "Please try again."
 msgstr "Prøv venligst igen."
 
@@ -10851,7 +10851,7 @@ msgstr "Næste &gt;"
 msgid "Schedule for:"
 msgstr "Planlæg til:"
 
-#: wp-includes/functions.php:4668
+#: wp-includes/functions.php:4669
 msgid "Select a city"
 msgstr "Vælg en by"
 
@@ -10863,7 +10863,7 @@ msgstr "Forrige indlæg"
 msgid "Select all"
 msgstr "Vælg alle"
 
-#: wp-includes/general-template.php:3713
+#: wp-includes/general-template.php:3715
 msgid "Next &raquo;"
 msgstr "Næste &raquo;"
 
@@ -10896,7 +10896,7 @@ msgstr "Vis antal indlæg"
 msgid "Select Category"
 msgstr "Vælg kategori"
 
-#: wp-includes/widgets.php:1529
+#: wp-includes/widgets.php:1532
 msgid "Display item author if available?"
 msgstr "Vis forfatter hvis tilgængelig?"
 
@@ -10970,16 +10970,16 @@ msgstr "%s er en beskyttet WP-indstilling, som ikke må ændres"
 #. translators: 1: PHP file name, 2: version number, 3: alternative file name
 #. translators: 1: WordPress hook name, 2: version number, 3: alternative hook
 #. name
-#: wp-includes/functions.php:3837 wp-includes/functions.php:3965
-#: wp-includes/functions.php:4088
+#: wp-includes/functions.php:3838 wp-includes/functions.php:3966
+#: wp-includes/functions.php:4089
 msgid "%1$s is <strong>deprecated</strong> since version %2$s! Use %3$s instead."
 msgstr "%1$s har været <strong>forældet</strong> siden version %2$s! Brug %3$s i stedet."
 
 #. translators: 1: PHP function name, 2: version number
 #. translators: 1: PHP file name, 2: version number
 #. translators: 1: WordPress hook name, 2: version number
-#: wp-includes/functions.php:3840 wp-includes/functions.php:3968
-#: wp-includes/functions.php:4091
+#: wp-includes/functions.php:3841 wp-includes/functions.php:3969
+#: wp-includes/functions.php:4092
 msgid "%1$s is <strong>deprecated</strong> since version %2$s with no alternative available."
 msgstr "%1$s har været <strong>forældet</strong> siden version %2$s, og der er ingen alternativer."
 
@@ -11029,7 +11029,7 @@ msgstr "Kommentarer til %1$s ved søgning på %2$s"
 msgid "Gray"
 msgstr "Grå"
 
-#: wp-includes/rss.php:917 wp-includes/widgets.php:1410
+#: wp-includes/rss.php:917 wp-includes/widgets.php:1413
 msgid "An error has occurred, which probably means the feed is down. Try again later."
 msgstr "Der er opstået en fejl, feedet er sandsynligvis nede. Prøv igen senere."
 
@@ -11065,7 +11065,7 @@ msgid "%s [Current Revision]"
 msgstr "%s [Nuværende revision]"
 
 #. translators: %s: logout URL
-#: wp-includes/functions.php:2601
+#: wp-includes/functions.php:2602
 msgid "Do you really want to <a href=\"%s\">log out</a>?"
 msgstr "Vil du virkelig <a href=\"%s\">logge ud</a>?"
 
@@ -11085,7 +11085,7 @@ msgstr "Ugyldig aktiveringsnøgle."
 msgid "This feature requires inline frames. You have iframes disabled or your browser does not support them."
 msgstr "Denne mulighed kræver inline frames. Enten har du deaktiveret iframes eller de understøttes ikke af din browser."
 
-#: wp-includes/functions.php:5327 wp-includes/user.php:285
+#: wp-includes/functions.php:5328 wp-includes/user.php:285
 msgid "Please log in again."
 msgstr "Log venligst ind igen."
 
@@ -11118,7 +11118,7 @@ msgid "<strong>ERROR</strong>: The username field is empty."
 msgstr "<strong>FEJL</strong>: Brugernavnsfeltet er tomt."
 
 #. translators: %s: site name
-#: wp-includes/functions.php:2594
+#: wp-includes/functions.php:2595
 msgid "You are attempting to log out of %s"
 msgstr "Du prøver at logge ud af %s"
 
@@ -11162,11 +11162,11 @@ msgstr "%1$s %2$s %3$s-kommentarfeed"
 msgid "%1$s %2$s Comments Feed"
 msgstr "%1$s %2$s-kommentarfeed"
 
-#: wp-includes/widgets.php:1513
+#: wp-includes/widgets.php:1516
 msgid "Give the feed a title (optional):"
 msgstr "Giv feedet en titel (valgfrit):"
 
-#: wp-includes/functions.php:4721
+#: wp-includes/functions.php:4722
 msgid "Manual Offsets"
 msgstr "Manuelle forskydninger"
 
@@ -11183,13 +11183,13 @@ msgid "Slow down cowboy, no need to check for new mails so often!"
 msgstr "Klap lige hesten, cowboy. Du behøver ikke tjekke mail så tit!"
 
 #. translators: 1: PHP function name, 2: version number
-#: wp-includes/functions.php:4032
+#: wp-includes/functions.php:4033
 msgid "%1$s was called with an argument that is <strong>deprecated</strong> since version %2$s with no alternative available."
 msgstr "%1$s blev kaldt med en parameter der er blevet <strong>forældet</strong> siden version %2$s uden noget alternativ."
 
 #. translators: 1: PHP function name, 2: version number, 3: optional message
 #. regarding the change
-#: wp-includes/functions.php:4029
+#: wp-includes/functions.php:4030
 msgid "%1$s was called with an argument that is <strong>deprecated</strong> since version %2$s! %3$s"
 msgstr "%1$s blev kaldt med et argument der har været <strong>forældet</strong> siden version %2$s! %3$s"
 
@@ -11205,7 +11205,7 @@ msgstr "&lt; Forrige"
 msgid "User has blocked requests through HTTP."
 msgstr "Brugeren har blokeret forespørgsler via HTTP."
 
-#: wp-includes/general-template.php:3712
+#: wp-includes/general-template.php:3714
 msgid "&laquo; Previous"
 msgstr "&laquo; Forrige"
 
@@ -11388,7 +11388,7 @@ msgid "Strength indicator"
 msgstr "Styrkeindikator"
 
 #: wp-includes/admin-bar.php:830 wp-includes/class-wp-customize-widgets.php:412
-#: wp-includes/functions.php:3713
+#: wp-includes/functions.php:3714
 msgid "Widgets"
 msgstr "Widgets"
 
@@ -11579,7 +11579,7 @@ msgstr "Du skal være <a href=\"%s\">logget ind</a> for at skrive en kommentar."
 msgid "Blue"
 msgstr "Blå"
 
-#: wp-includes/category-template.php:1139
+#: wp-includes/category-template.php:1131
 msgid "Tags: "
 msgstr "Tags: "
 
@@ -12017,7 +12017,7 @@ msgstr "Forhåndsvis"
 msgid "Search Results for &#8220;%s&#8221;"
 msgstr "Søgeresultater for &#8220;%s&#8221;"
 
-#: wp-includes/deprecated.php:3130 wp-includes/functions.php:2605
+#: wp-includes/deprecated.php:3130 wp-includes/functions.php:2606
 msgid "Are you sure you want to do this?"
 msgstr "Er du sikker på, at du vil gøre dette?"
 
