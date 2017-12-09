@@ -28,14 +28,6 @@ add_action('wp_enqueue_scripts', function() {
 	wp_enqueue_script($script, get_template_directory_uri().$script_file, [$jquery, $vue_js, $vue_resource], $version, true);
 });
 
-/*add_filter('style_loader_tag', function($tag) {
-	return str_replace(' href', 'async href', $tag);
-});
-
-add_filter('script_loader_tag', function($tag) {
-	return str_replace(' src', 'async src', $tag);
-});*/
-
 add_action('init', function() {
     new TranslationStrings();
 	register_nav_menus([
@@ -52,36 +44,36 @@ add_action('init', function() {
 	remove_filter('comment_text_rss', 'wp_staticize_emoji');
 });
 
-add_filter('tiny_mce_plugins', function($plugins) {
-	return (is_array($plugins)) ? array_diff($plugins, ['wpemoji']) : [];
+add_filter('tiny_mce_plugins', function(array $plugins) : array {
+	return array_diff($plugins, ['wpemoji']);
 });
 
 add_filter('emoji_svg_url', '__return_false');
 
-add_filter('excerpt_length', function() {
+add_filter('excerpt_length', function() : int {
 	return 20;
 });
 
-add_filter('excerpt_more', function() {
+add_filter('excerpt_more', function() : string {
 	return '...';
 });
 
 remove_action('wp_head', 'wp_generator');
 
-function remove_version_query_string($src) {
+function remove_version_query_string(string $src) : string {
     $parts = explode('?ver', $src);
     return $parts[0];
 }
 
-add_filter('script_loader_src', function($src) {
+add_filter('script_loader_src', function(string $src) : string {
     return remove_version_query_string($src);
 });
 
-add_filter('style_loader_src', function($src) {
+add_filter('style_loader_src', function(string $src) : string {
     return remove_version_query_string($src);
 });
 
-function get_breadcrumb() {
+function get_breadcrumb() : array {
     global $post;
     if(!is_front_page()) {
         $pages[] = $post->ID;
