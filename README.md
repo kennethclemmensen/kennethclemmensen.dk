@@ -11,3 +11,4 @@ These tecnologies includes:
 * JavaScript/jQuery
 * PHP
 * VueJS
+* Grunt
