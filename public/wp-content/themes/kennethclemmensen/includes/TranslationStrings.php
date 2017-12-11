@@ -12,15 +12,15 @@ class TranslationStrings {
         pll_register_string(self::SEARCH, self::SEARCH, $context);
     }
 
-    public static function getFrontPageText() {
+    public static function getFrontPageText() : string {
         return pll__(self::FRONT_PAGE);
     }
 
-    public static function getYouAreHereText() {
+    public static function getYouAreHereText() : string {
         return pll__(self::YOU_ARE_HERE);
     }
 
-    public static function getSearchText() {
+    public static function getSearchText() : string {
         return pll__(self::SEARCH);
     }
 }
