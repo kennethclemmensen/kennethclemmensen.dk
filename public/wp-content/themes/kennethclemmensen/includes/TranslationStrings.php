@@ -7,6 +7,8 @@ class TranslationStrings {
     const FRONT_PAGE = 'Front page';
     const YOU_ARE_HERE = 'You are here:';
     const SEARCH = 'Search';
+    const SEARCH_RESULTS = 'Search results';
+    const NO_RESULTS = 'Your search returned no results';
 
     /**
      * TranslationStrings constructor
@@ -16,6 +18,8 @@ class TranslationStrings {
         pll_register_string('Breadcrumb title', self::YOU_ARE_HERE, $context);
         pll_register_string(self::FRONT_PAGE, self::FRONT_PAGE, $context);
         pll_register_string(self::SEARCH, self::SEARCH, $context);
+        pll_register_string(self::SEARCH_RESULTS, self::SEARCH_RESULTS, $context);
+        pll_register_string('No results', self::NO_RESULTS, $context);
     }
 
     /**
@@ -43,5 +47,23 @@ class TranslationStrings {
      */
     public static function getSearchText() : string {
         return pll__(self::SEARCH);
+    }
+
+    /**
+     * Get the search results text
+     *
+     * @return string the search results text
+     */
+    public static function getSearchResultsText() : string {
+        return pll__(self::SEARCH_RESULTS);
+    }
+
+    /**
+     * Get the no results text
+     *
+     * @return string the no results text
+     */
+    public static function getNoResultsText() : string {
+        return pll__(self::NO_RESULTS);
     }
 }
