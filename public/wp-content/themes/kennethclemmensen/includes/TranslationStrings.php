@@ -11,4 +11,16 @@ class TranslationStrings {
         pll_register_string(self::FRONT_PAGE, self::FRONT_PAGE, $context);
         pll_register_string(self::SEARCH, self::SEARCH, $context);
     }
+
+    public static function getFrontPageText() {
+        return pll__(self::FRONT_PAGE);
+    }
+
+    public static function getYouAreHereText() {
+        return pll__(self::YOU_ARE_HERE);
+    }
+
+    public static function getSearchText() {
+        return pll__(self::SEARCH);
+    }
 }
