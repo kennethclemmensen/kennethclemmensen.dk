@@ -1,10 +1,16 @@
 <?php
+/**
+ * The TranslationStrings class contains methods to get translation strings
+ */
 class TranslationStrings {
 
     const FRONT_PAGE = 'Front page';
     const YOU_ARE_HERE = 'You are here:';
     const SEARCH = 'Search';
 
+    /**
+     * TranslationStrings constructor
+     */
     public function __construct() {
         $context = 'Theme';
         pll_register_string('Breadcrumb title', self::YOU_ARE_HERE, $context);
@@ -12,14 +18,29 @@ class TranslationStrings {
         pll_register_string(self::SEARCH, self::SEARCH, $context);
     }
 
+    /**
+     * Get the front page text
+     *
+     * @return string the front page text
+     */
     public static function getFrontPageText() : string {
         return pll__(self::FRONT_PAGE);
     }
 
+    /**
+     * Get the You are here text
+     *
+     * @return string the You are here text
+     */
     public static function getYouAreHereText() : string {
         return pll__(self::YOU_ARE_HERE);
     }
 
+    /**
+     * Get the search text
+     *
+     * @return string the search text
+     */
     public static function getSearchText() : string {
         return pll__(self::SEARCH);
     }
