@@ -1,5 +1,6 @@
 <?php
 require_once 'includes/MobileMenuWalker.php';
+require_once 'includes/ThemeSettings.php';
 require_once 'includes/TranslationStrings.php';
 
 add_action('wp_enqueue_scripts', function() {
@@ -29,6 +30,7 @@ add_action('wp_enqueue_scripts', function() {
 });
 
 add_action('init', function() {
+    new ThemeSettings();
     new TranslationStrings();
 	register_nav_menus([
 		'mobile-menu' => 'Mobile menu',
