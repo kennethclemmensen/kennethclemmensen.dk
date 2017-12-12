@@ -9,6 +9,8 @@ class TranslationStrings {
     const SEARCH = 'Search';
     const SEARCH_RESULTS = 'Search results';
     const NO_RESULTS = 'Your search returned no results';
+    const IMAGE = 'Image';
+    const OF = 'of';
 
     /**
      * TranslationStrings constructor
@@ -20,6 +22,8 @@ class TranslationStrings {
         pll_register_string(self::SEARCH, self::SEARCH, $context);
         pll_register_string(self::SEARCH_RESULTS, self::SEARCH_RESULTS, $context);
         pll_register_string('No results', self::NO_RESULTS, $context);
+        pll_register_string(self::IMAGE, self::IMAGE, $context);
+        pll_register_string(self::OF, self::OF, $context);
     }
 
     /**
@@ -65,5 +69,23 @@ class TranslationStrings {
      */
     public static function getNoResultsText() : string {
         return pll__(self::NO_RESULTS);
+    }
+
+    /**
+     * Get the image text
+     *
+     * @return string the image text
+     */
+    public static function getImageText() : string {
+        return pll__(self::IMAGE);
+    }
+
+    /**
+     * Get the of text
+     *
+     * @return string the of text
+     */
+    public static function getOfText() : string {
+        return pll__(self::OF);
     }
 }

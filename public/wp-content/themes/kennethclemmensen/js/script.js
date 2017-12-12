@@ -35,11 +35,12 @@ jQuery.noConflict();
         var slider = new Slider($slider.data('delay'), $slider.data('duration'));
         slider.show();
     });
-})(jQuery);
 
-lightbox.option({
-    'albumLabel': 'Billede %1 af %2'
-});
+    var $body = $('body');
+    lightbox.option({
+        'albumLabel': $body.data('image-text') + ' %1 ' + $body.data('of-text') + ' %2'
+    });
+})(jQuery);
 
 var app = new Vue({
     el: '#search-app',
