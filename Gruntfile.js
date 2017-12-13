@@ -35,13 +35,9 @@ module.exports = function(grunt) {
         },
         uglify: {
             my_target: {
-                files: [{
-                    expand: true,
-                    cwd: 'public/wp-content/themes/<%= pkg.name %>/js',
-                    src: '*.js',
-                    dest: 'public/wp-content/themes/<%= pkg.name %>/js/minified',
-                    ext: '.min.js'
-                }]
+                files: {
+                    'public/wp-content/themes/<%= pkg.name %>/js/minified/script.min.js': ['public/wp-content/themes/<%= pkg.name %>/js/*.js']
+                }
             }
         },
         sass: {

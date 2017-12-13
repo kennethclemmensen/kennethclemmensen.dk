@@ -14,18 +14,18 @@ jQuery.noConflict();
         });
 
         function Slider(delay, duration) {
-            var sliderImages = $('.slider__image');
+            var $sliderImages = $('.slider__image');
             var getRandomNumber = function() {
-                return Math.floor(Math.random() * sliderImages.length);
+                return Math.floor(Math.random() * $sliderImages.length);
             };
             this.show = function() {
                 var randomNumber = getRandomNumber();
-                sliderImages.eq(randomNumber).show();
+                $sliderImages.eq(randomNumber).show();
                 setInterval(function() {
-                    sliderImages.eq(randomNumber).fadeOut(duration, function() {
-                        sliderImages.css('display', 'none'); //prevent display block on more than one image
+                    $sliderImages.eq(randomNumber).fadeOut(duration, function() {
+                        $sliderImages.hide(); //prevent display block on more than one image
                         randomNumber = getRandomNumber();
-                        sliderImages.eq(randomNumber).fadeIn(duration);
+                        $sliderImages.eq(randomNumber).fadeIn(duration);
                     });
                 }, delay);
             }
@@ -34,33 +34,10 @@ jQuery.noConflict();
         var $slider = $('#slider');
         var slider = new Slider($slider.data('delay'), $slider.data('duration'));
         slider.show();
-    });
 
-    var $body = $('body');
-    lightbox.option({
-        'albumLabel': $body.data('image-text') + ' %1 ' + $body.data('of-text') + ' %2'
+        var $body = $('body');
+        lightbox.option({
+            'albumLabel': $body.data('image-text') + ' %1 ' + $body.data('of-text') + ' %2'
+        });
     });
 })(jQuery);
-
-var app = new Vue({
-    el: '#search-app',
-    data: {
-        searchString: '',
-        results: []
-    },
-    watch: {
-        searchString: function() {
-            this.search(null);
-        }
-    },
-    methods: {
-        search: function(event) {
-            if(event !== null) event.preventDefault();
-            this.$http.post('/wp-json/kcapi/v1/search', {title: this.searchString}).then(function(response) {
-                this.results = response.body;
-            }, function() {
-                this.results = [];
-            });
-        }
-    }
-});
