@@ -1,18 +1,18 @@
 <?php
 get_header();
 while(have_posts()) {
-	the_post();
-	?>
+    the_post();
+    ?>
     <div class="page">
-		<?php
+        <?php
         get_template_part('partials/slider');
-		get_template_part('partials/breadcrumb');
-		?>
+        get_template_part('partials/breadcrumb');
+        ?>
         <section class="page__content">
             <h1><?php the_title(); ?></h1>
-			<?php the_content(); ?>
+            <?php the_content(); ?>
         </section>
     </div>
-	<?php
+    <?php
 }
 get_footer();

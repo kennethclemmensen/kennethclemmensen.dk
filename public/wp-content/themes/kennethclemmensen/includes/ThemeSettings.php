@@ -1,4 +1,7 @@
 <?php
+/**
+ * The ThemeSettings class contains methods to setup and retrieve the theme settings
+ */
 class ThemeSettings {
 
     private $pageSlug;
