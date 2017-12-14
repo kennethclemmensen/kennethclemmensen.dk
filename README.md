@@ -6,9 +6,9 @@ The website is created using WordPress and a number of other technologies.
 These tecnologies includes:
 * HTML5
 * CSS3
-* LESS
-* SASS
-* JavaScript/jQuery
-* PHP
-* VueJS
-* Grunt
+* [LESS](http://lesscss.org/)
+* [SASS](http://sass-lang.com/)
+* JavaScript/[jQuery](http://jquery.com/)
+* [PHP](http://php.net/)
+* [VueJS](https://vuejs.org/)
+* [Grunt](https://gruntjs.com/)
