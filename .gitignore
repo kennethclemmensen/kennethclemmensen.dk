@@ -12,3 +12,6 @@ public/wp-config.php
 
 #Uploads
 public/wp-content/uploads
+
+#Composer
+vendor
