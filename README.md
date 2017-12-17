@@ -12,3 +12,5 @@ These tecnologies includes:
 * [PHP](http://php.net/)
 * [VueJS](https://vuejs.org/)
 * [Grunt](https://gruntjs.com/)
+* [Composer](https://getcomposer.org/)
+* [Codeception](http://codeception.com/)
