@@ -13,13 +13,6 @@ use \WP_Query;
 class KCAPI {
 
     /**
-     * KCAPI constructor
-     */
-    public function __construct() {
-
-    }
-
-    /**
      * Execute the plugin
      */
     public function execute() {
