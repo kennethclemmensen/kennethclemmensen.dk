@@ -15,8 +15,7 @@ class KCSlider {
      * KCSlider constructor
      */
     public function __construct() {
-        $prefix = 'slider_';
-        $this->fieldSlideImage = $prefix.'slide_image';
+        $this->fieldSlideImage = 'slider_slide_image';
     }
 
     /**
