@@ -5,7 +5,7 @@ require_once 'includes/TranslationStrings.php';
 
 add_action('wp_enqueue_scripts', function() {
     $font_awesome = 'font-awesome';
-    wp_register_style($font_awesome, '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+    wp_register_style($font_awesome, '//use.fontawesome.com/releases/v5.0.2/css/all.css');
     wp_enqueue_style($font_awesome);
 
     $style = 'theme-css';
