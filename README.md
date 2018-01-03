@@ -1,4 +1,4 @@
-# kennethclemmensen.dk #
+# kennethclemmensen.dk
 
 The repository for my personal website https://www.kennethclemmensen.dk/
 
@@ -13,4 +13,4 @@ These tecnologies includes:
 * [VueJS](https://vuejs.org/)
 * [Grunt](https://gruntjs.com/)
 * [Composer](https://getcomposer.org/)
-* [Codeception](http://codeception.com/)
+* [Codeception](http://codeception.com/){:target="_blank"}
