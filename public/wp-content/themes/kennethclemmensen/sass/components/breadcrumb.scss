@@ -21,6 +21,7 @@
   &:after {
     display: inline-block;
     @extend .font-awesome-styles;
+    font-weight: 900;
     content: "\f105";
     margin: 0 7px;
   }
