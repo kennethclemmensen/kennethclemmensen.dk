@@ -3,6 +3,13 @@ require_once 'includes/MobileMenuWalker.php';
 require_once 'includes/ThemeSettings.php';
 require_once 'includes/TranslationStrings.php';
 
+function addScriptWithFallback(string $handle, string $cdnFile, string $localFile, $deps = [], $ver = false, $inFooter = false) {
+    $file = @fopen($cdnFile, 'r');
+    $src = ($file === false) ? $localFile : $cdnFile;
+    wp_deregister_script($handle);
+    wp_enqueue_script($handle, $src, $deps, $ver, $inFooter);
+}
+
 add_action('wp_enqueue_scripts', function() {
     $font_awesome = 'font-awesome';
     wp_register_style($font_awesome, '//use.fontawesome.com/releases/v5.0.2/css/all.css');
@@ -14,14 +21,19 @@ add_action('wp_enqueue_scripts', function() {
     wp_enqueue_style($style, get_template_directory_uri().$style_file, [$font_awesome], $version);
 
     $jquery = 'jquery';
-    wp_deregister_script($jquery);
-    wp_enqueue_script($jquery, '//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js', [], false, true);
+    $cdnFile = 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js';
+    $localFile = get_template_directory_uri().'/js/libraries/jquery-3.2.1.min.js';
+    addScriptWithFallback($jquery, $cdnFile, $localFile);
 
     $vue_js = 'vue-js';
-    wp_enqueue_script($vue_js, '//cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js', [], false, true);
+    $cdnFile = 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js';
+    $localFile = get_template_directory_uri().'/js/libraries/vue-2.5.13.min.js';
+    addScriptWithFallback($vue_js, $cdnFile, $localFile, [], false, true);
 
     $vue_resource = 'vue-resource';
-    wp_enqueue_script($vue_resource, '//cdnjs.cloudflare.com/ajax/libs/vue-resource/1.3.4/vue-resource.min.js', [$vue_js], false, true);
+    $cdnFile = 'https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.3.4/vue-resource.min.js';
+    $localFile = get_template_directory_uri().'/js/plugins/vue-resource-1.3.4.min.js';
+    addScriptWithFallback($vue_resource, $cdnFile, $localFile, [$vue_js], false, true);
 
     $script = 'theme-js';
     $script_file = '/js/minified/script.min.js';
