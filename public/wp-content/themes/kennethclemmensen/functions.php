@@ -1,19 +1,12 @@
 <?php
 require_once 'includes/MobileMenuWalker.php';
+require_once 'includes/ThemeHelper.php';
 require_once 'includes/ThemeSettings.php';
 require_once 'includes/TranslationStrings.php';
 
-function addScriptWithFallback(string $handle, string $cdnFile, string $localFile, $deps = [], $ver = false, $inFooter = false) {
-    $file = @fopen($cdnFile, 'r');
-    $src = ($file === false) ? $localFile : $cdnFile;
-    wp_deregister_script($handle);
-    wp_enqueue_script($handle, $src, $deps, $ver, $inFooter);
-}
-
 add_action('wp_enqueue_scripts', function() {
     $font_awesome = 'font-awesome';
-    wp_register_style($font_awesome, '//use.fontawesome.com/releases/v5.0.2/css/all.css');
-    wp_enqueue_style($font_awesome);
+    wp_enqueue_style($font_awesome, '//use.fontawesome.com/releases/v5.0.2/css/all.css');
 
     $style = 'theme-css';
     $style_file = '/css/style.css';
@@ -23,17 +16,17 @@ add_action('wp_enqueue_scripts', function() {
     $jquery = 'jquery';
     $cdnFile = 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js';
     $localFile = get_template_directory_uri().'/js/libraries/jquery-3.2.1.min.js';
-    addScriptWithFallback($jquery, $cdnFile, $localFile);
+    ThemeHelper::addScriptWithLocalFallback($jquery, $cdnFile, $localFile);
 
     $vue_js = 'vue-js';
     $cdnFile = 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js';
     $localFile = get_template_directory_uri().'/js/libraries/vue-2.5.13.min.js';
-    addScriptWithFallback($vue_js, $cdnFile, $localFile, [], false, true);
+    ThemeHelper::addScriptWithLocalFallback($vue_js, $cdnFile, $localFile, [], false, true);
 
     $vue_resource = 'vue-resource';
     $cdnFile = 'https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.3.4/vue-resource.min.js';
     $localFile = get_template_directory_uri().'/js/plugins/vue-resource-1.3.4.min.js';
-    addScriptWithFallback($vue_resource, $cdnFile, $localFile, [$vue_js], false, true);
+    ThemeHelper::addScriptWithLocalFallback($vue_resource, $cdnFile, $localFile, [$vue_js], false, true);
 
     $script = 'theme-js';
     $script_file = '/js/minified/script.min.js';
@@ -74,30 +67,15 @@ add_filter('excerpt_more', function() : string {
 
 remove_action('wp_head', 'wp_generator');
 
-function remove_version_query_string(string $src) : string {
+function removeVersionQueryString(string $src) : string {
     $parts = explode('?ver', $src);
     return $parts[0];
 }
 
 add_filter('script_loader_src', function(string $src) : string {
-    return remove_version_query_string($src);
+    return removeVersionQueryString($src);
 });
 
 add_filter('style_loader_src', function(string $src) : string {
-    return remove_version_query_string($src);
+    return removeVersionQueryString($src);
 });
-
-function get_breadcrumb() : array {
-    global $post;
-    if(!is_front_page()) {
-        $pages[] = $post->ID;
-        $parent = $post->post_parent;
-        while($parent !== 0) {
-            $page = get_post($parent);
-            $pages[] = $page->ID;
-            $parent = $page->post_parent;
-        }
-    }
-    $pages[] = get_option('page_on_front');
-    return array_reverse($pages);
-}

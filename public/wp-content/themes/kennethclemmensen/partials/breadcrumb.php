@@ -2,7 +2,7 @@
     <span class="breadcrumb__title"><?php echo TranslationStrings::getYouAreHereText(); ?></span>
     <ul class="breadcrumb__list">
         <?php
-        $pages = get_breadcrumb();
+        $pages = ThemeHelper::getBreadcrumb();
         for($i = 0; $i < count($pages); $i++) {
             $pageID = $pages[$i];
             $title = ($i === 0) ? TranslationStrings::getFrontPageText() : get_the_title($pageID);
