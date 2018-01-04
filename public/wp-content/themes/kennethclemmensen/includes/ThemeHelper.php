@@ -12,13 +12,26 @@ class ThemeHelper {
      * @param string $localFile the path to the local file
      * @param array $deps the dependencies of the script
      * @param bool $ver the script version number
-     * @param bool $inFooter true if the script should be enqueued in the footer
+     * @param bool $inFooter false if the script should be enqueued in the header
      */
-    public static function addScriptWithLocalFallback(string $handle, string $cdnFile, string $localFile, array $deps = [], bool $ver = false, bool $inFooter = false) {
+    public static function addScriptWithLocalFallback(string $handle, string $cdnFile, string $localFile, array $deps = [], bool $ver = false, bool $inFooter = true) {
         $file = @fopen($cdnFile, 'r');
         $src = ($file === false) ? $localFile : $cdnFile;
         wp_deregister_script($handle);
         wp_enqueue_script($handle, $src, $deps, $ver, $inFooter);
+    }
+
+    /**
+     * Add a stylesheet from a CDN with a fallback to a local file
+     *
+     * @param string $handle the name of the stylesheet
+     * @param string $cdnFile the path to the CDN file
+     * @param string $localFile the path to the local file
+     */
+    public static function addStyleWithLocalFallback(string $handle, string $cdnFile, string $localFile) {
+        $file = @fopen($cdnFile, 'r');
+        $src = ($file === false) ? $localFile : $cdnFile;
+        wp_enqueue_style($handle, $src);
     }
 
     /**

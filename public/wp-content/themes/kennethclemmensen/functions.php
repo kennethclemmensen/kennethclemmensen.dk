@@ -6,7 +6,9 @@ require_once 'includes/TranslationStrings.php';
 
 add_action('wp_enqueue_scripts', function() {
     $font_awesome = 'font-awesome';
-    wp_enqueue_style($font_awesome, '//use.fontawesome.com/releases/v5.0.2/css/all.css');
+    $cdnFile = 'https://use.fontawesome.com/releases/v5.0.2/css/all.css';
+    $localFile = get_template_directory_uri().'/css/fontawesome-5.0.2.min.css';
+    ThemeHelper::addStyleWithLocalFallback($font_awesome, $cdnFile, $localFile);
 
     $style = 'theme-css';
     $style_file = '/css/style.css';
@@ -21,12 +23,12 @@ add_action('wp_enqueue_scripts', function() {
     $vue_js = 'vue-js';
     $cdnFile = 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js';
     $localFile = get_template_directory_uri().'/js/libraries/vue-2.5.13.min.js';
-    ThemeHelper::addScriptWithLocalFallback($vue_js, $cdnFile, $localFile, [], false, true);
+    ThemeHelper::addScriptWithLocalFallback($vue_js, $cdnFile, $localFile);
 
     $vue_resource = 'vue-resource';
     $cdnFile = 'https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.3.4/vue-resource.min.js';
     $localFile = get_template_directory_uri().'/js/plugins/vue-resource-1.3.4.min.js';
-    ThemeHelper::addScriptWithLocalFallback($vue_resource, $cdnFile, $localFile, [$vue_js], false, true);
+    ThemeHelper::addScriptWithLocalFallback($vue_resource, $cdnFile, $localFile, [$vue_js]);
 
     $script = 'theme-js';
     $script_file = '/js/minified/script.min.js';
