@@ -16,8 +16,8 @@ add_action('wp_enqueue_scripts', function() {
     wp_enqueue_style($style, get_template_directory_uri().$style_file, [$font_awesome], $version);
 
     $jquery = 'jquery';
-    $cdnFile = 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.0/jquery.min.js';
-    $localFile = get_template_directory_uri().'/js/libraries/jquery-3.3.0.min.js';
+    $cdnFile = 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js';
+    $localFile = get_template_directory_uri().'/js/libraries/jquery-3.3.1.min.js';
     ThemeHelper::addScriptWithLocalFallback($jquery, $cdnFile, $localFile);
 
     $vue_js = 'vue-js';
