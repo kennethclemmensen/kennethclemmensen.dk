@@ -39,10 +39,10 @@ class KCGallerySettings {
     /**
      * Use the admin_menu action to create a settings page
      */
-    private function adminMenu() {
-        add_action('admin_menu', function() {
+    private function adminMenu() : void {
+        add_action('admin_menu', function() : void {
             $title = 'KC Gallery';
-            add_menu_page($title, $title, 'administrator', $this->pageSlug, function() {
+            add_menu_page($title, $title, 'administrator', $this->pageSlug, function() : void {
                 settings_errors();
                 ?>
                 <form action="options.php" method="post">
@@ -60,22 +60,22 @@ class KCGallerySettings {
     /**
      * Use the admin_init action to create and register the setting inputs
      */
-    private function adminInit() {
-        add_action('admin_init', function() {
+    private function adminInit() : void {
+        add_action('admin_init', function() : void {
             $sectionID = 'kc-gallery-section';
-            add_settings_section($sectionID, '', function() {
+            add_settings_section($sectionID, '', function() : void {
                 echo '<h2>KC Gallery Settings</h2>';
             }, $this->pageSlug);
-            add_settings_field('kc-photo-width', 'Width', function() {
+            add_settings_field('kc-photo-width', 'Width', function() : void {
                 echo '<input type="number" name="'.$this->optionGroup.'['.$this->photoWidth.']" value="'.$this->getPhotoWidth().'">';
             }, $this->pageSlug, $sectionID);
-            add_settings_field('kc-photo-height', 'Height', function() {
+            add_settings_field('kc-photo-height', 'Height', function() : void {
                 echo '<input type="number" name="'.$this->optionGroup.'['.$this->photoHeight.']" value="'.$this->getPhotoHeight().'">';
             }, $this->pageSlug, $sectionID);
-            add_settings_field('kc-thumbnail-width', 'Thumbnail width', function() {
+            add_settings_field('kc-thumbnail-width', 'Thumbnail width', function() : void {
                 echo '<input type="number" name="'.$this->optionGroup.'['.$this->thumbnailWidth.']" value="'.$this->getThumbnailWidth().'">';
             }, $this->pageSlug, $sectionID);
-            add_settings_field('kc-thumbnail-height', 'Thumbnail height', function() {
+            add_settings_field('kc-thumbnail-height', 'Thumbnail height', function() : void {
                 echo '<input type="number" name="'.$this->optionGroup.'['.$this->thumbnailHeight.']" value="'.$this->getThumbnailHeight().'">';
             }, $this->pageSlug, $sectionID);
             register_setting($this->optionGroup, $this->optionGroup, function($input) : array {

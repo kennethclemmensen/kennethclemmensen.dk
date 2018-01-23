@@ -15,8 +15,8 @@ class KCGallery {
     private $fieldPhotoGallery;
     private $gallerySettings;
 
-    const GALLERY = 'gallery';
-    const PHOTO = 'photo';
+    private const GALLERY = 'gallery';
+    private const PHOTO = 'photo';
 
     /**
      * KCGallery constructor
@@ -36,8 +36,8 @@ class KCGallery {
      *
      * @param string $mainPluginFile the path to the main plugin file
      */
-    public function activate(string $mainPluginFile) {
-        register_activation_hook($mainPluginFile, function() {
+    public function activate(string $mainPluginFile) : void {
+        register_activation_hook($mainPluginFile, function() : void {
             if(!class_exists('RW_Meta_Box')) {
                 die('Meta Box is not activated');
             }
@@ -47,7 +47,7 @@ class KCGallery {
     /**
      * Execute the plugin
      */
-    public function execute() {
+    public function execute() : void {
         $this->loadDependencies();
         $loader = new KCGalleryLoader();
         $loader->loadStylesAndScripts();
@@ -61,7 +61,7 @@ class KCGallery {
     /**
      * Load the dependencies files
      */
-    private function loadDependencies() {
+    private function loadDependencies() : void {
         require_once 'KCGalleryLoader.php';
         require_once 'KCGallerySettings.php';
     }
@@ -69,8 +69,8 @@ class KCGallery {
     /**
      * Use the init action to register the gallery and photo custom post types
      */
-    private function init() {
-        add_action('init', function() {
+    private function init() : void {
+        add_action('init', function() : void {
             register_post_type(self::GALLERY, [
                 'labels' => [
                     'name' => 'Galleries',
@@ -97,7 +97,7 @@ class KCGallery {
     /**
      * Use the rwmb_meta_boxes filter to add meta boxes to the gallery and photo custom post types
      */
-    private function addMetaBoxes() {
+    private function addMetaBoxes() : void {
         add_filter('rwmb_meta_boxes', function(array $metaBoxes) : array {
             $metaBoxes[] = [
                 'id' => 'gallery_informations',
@@ -144,7 +144,7 @@ class KCGallery {
     /**
      * Add the galleries and gallery shortcodes to show a list of galleries and a single gallery
      */
-    private function addShortcodes() {
+    private function addShortcodes() : void {
         add_shortcode('galleries', function() : string {
             $html = '<div class="kc-galleries">';
             $galleries = $this->getGalleries();
@@ -193,7 +193,7 @@ class KCGallery {
     /**
      * Add admin columns to the gallery and photo custom post types
      */
-    private function admin_columns() {
+    private function admin_columns() : void {
         $columnGalleryKey = 'gallery';
         $columnGalleryValue = 'Gallery';
         $columnPhotoKey = 'photo';
@@ -202,7 +202,7 @@ class KCGallery {
             $columns[$columnPhotoKey] = 'Photo';
             return $columns;
         });
-        add_action('manage_'.self::PHOTO.'_posts_custom_column', function(string $columnName) use ($columnGalleryKey, $columnPhotoKey) {
+        add_action('manage_'.self::PHOTO.'_posts_custom_column', function(string $columnName) use ($columnGalleryKey, $columnPhotoKey) : void {
             if($columnName === $columnGalleryKey) {
                 $galleryID = rwmb_meta($this->fieldPhotoGallery);
                 echo get_post($galleryID)->post_title;
