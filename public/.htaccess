@@ -1,3 +1,4 @@
+AddType application/x-httpd-php-latest .php
 
 # BEGIN HTTPS Redirection Plugin
 <IfModule mod_rewrite.c>
