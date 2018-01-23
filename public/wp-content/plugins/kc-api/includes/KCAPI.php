@@ -15,15 +15,15 @@ class KCAPI {
     /**
      * Execute the plugin
      */
-    public function execute() {
+    public function execute() : void {
         $this->restApiInit();
     }
 
     /**
      * Use the rest_api_init to register a route
      */
-    private function restApiInit() {
-        add_action('rest_api_init', function() {
+    private function restApiInit() : void {
+        add_action('rest_api_init', function() : void {
             register_rest_route('kcapi/v1', '/search', [
                 'methods' => [WP_REST_Server::CREATABLE],
                 'callback' => function(WP_REST_Request $request) : WP_REST_Response {
