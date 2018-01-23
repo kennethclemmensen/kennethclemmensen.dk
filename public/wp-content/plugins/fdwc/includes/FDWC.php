@@ -15,7 +15,7 @@ class FDWC {
     private $fieldFileType;
     private $taxFileType;
 
-    const FDWC_FILE = 'fdwc_file';
+    private const FDWC_FILE = 'fdwc_file';
 
     /**
      * FDWC constructor
@@ -35,8 +35,8 @@ class FDWC {
      *
      * @param string $mainPluginFile the path to the main plugin file
      */
-    public function activate(string $mainPluginFile) {
-        register_activation_hook($mainPluginFile, function() {
+    public function activate(string $mainPluginFile) : void {
+        register_activation_hook($mainPluginFile, function() : void {
             if(!class_exists('RW_Meta_Box')) {
                 die('Meta Box is not activated');
             }
@@ -46,7 +46,7 @@ class FDWC {
     /**
      * Execute the plugin
      */
-    public function execute() {
+    public function execute() : void {
         $this->loadDepedencies();
         $loader = new FDWCLoader();
         $loader->loadScripts();
@@ -61,7 +61,7 @@ class FDWC {
     /**
      * Load the dependencies files
      */
-    private function loadDepedencies() {
+    private function loadDepedencies() : void {
         require_once 'FDWCLoader.php';
     }
 
@@ -69,8 +69,8 @@ class FDWC {
      * Use the init action to register the fdwc file custom post type
      * and the file types taxonomy
      */
-    private function init() {
-        add_action('init', function() {
+    private function init() : void {
+        add_action('init', function() : void {
             register_post_type(self::FDWC_FILE, [
                 'labels' => [
                     'name' => 'Files',
@@ -95,8 +95,8 @@ class FDWC {
     /**
      * Use the admin_menu action to remove the File types meta box
      */
-    private function adminMenu() {
-        add_action('admin_menu', function() {
+    private function adminMenu() : void {
+        add_action('admin_menu', function() : void {
             remove_meta_box('tagsdiv-'.$this->taxFileType, self::FDWC_FILE, 'normal');
         });
     }
@@ -104,7 +104,7 @@ class FDWC {
     /**
      * Use the rwmb_meta_boxes filter to add meta boxes to the fdwc file custom post type
      */
-    private function addMetaBoxes() {
+    private function addMetaBoxes() : void {
         add_filter('rwmb_meta_boxes', function(array $metaBoxes) : array {
             $metaBoxes[] = [
                 'id' => 'file_informations',
@@ -158,7 +158,7 @@ class FDWC {
     /**
      * Add the fdwc_files shortcode to show a list of files
      */
-    private function addShortcode() {
+    private function addShortcode() : void {
         add_shortcode('fdwc_files', function(array $atts) : string {
             $html = '<div class="fdwc">';
             $paged = (get_query_var('paged')) ? absint(get_query_var('paged')) : 1;
@@ -202,7 +202,7 @@ class FDWC {
     /**
      * Use the upload_mimes filter to allow java files upload
      */
-    private function uploadMimes() {
+    private function uploadMimes() : void {
         $priority = 1;
         add_filter('upload_mimes', function(array $mimeTypes) : array {
             $mimeTypes['java'] = 'application/java';
@@ -213,7 +213,7 @@ class FDWC {
     /**
      * Use the wp_ajax wp_ajax_nopriv actions to update the counter
      */
-    private function wpAjax() {
+    private function wpAjax() : void {
         $action = 'fdwc_download';
         add_action('wp_ajax_nopriv_'.$action, function() {
             $this->updateCounter();
@@ -228,7 +228,7 @@ class FDWC {
     /**
      * Update the counter for a file
      */
-    private function updateCounter() {
+    private function updateCounter() : void {
         $id = $_POST['post_id'];
         $downloads = $this->getFileDownloads($id);
         $downloads++;

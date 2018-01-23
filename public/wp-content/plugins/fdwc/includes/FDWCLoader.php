@@ -10,8 +10,8 @@ class FDWCLoader {
     /**
      * Load a JavaScript file
      */
-    public function loadScripts() {
-        add_action('wp_enqueue_scripts', function() {
+    public function loadScripts() : void {
+        add_action('wp_enqueue_scripts', function() : void {
             $script = 'fdwc-js';
             $scriptFile = 'assets/js/script.min.js';
             $version = filemtime(__DIR__.'/../'.$scriptFile);
