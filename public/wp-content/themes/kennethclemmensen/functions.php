@@ -4,7 +4,7 @@ require_once 'includes/ThemeHelper.php';
 require_once 'includes/ThemeSettings.php';
 require_once 'includes/TranslationStrings.php';
 
-add_action('wp_enqueue_scripts', function() {
+add_action('wp_enqueue_scripts', function() : void {
     $font_awesome = 'font-awesome';
     $cdnFile = 'https://use.fontawesome.com/releases/v5.0.4/css/all.css';
     $localFile = get_template_directory_uri().'/css/fontawesome-5.0.4.min.css';
@@ -36,7 +36,7 @@ add_action('wp_enqueue_scripts', function() {
     wp_enqueue_script($script, get_template_directory_uri().$script_file, [$jquery, $vue_js, $vue_resource], $version, true);
 });
 
-add_action('init', function() {
+add_action('init', function() : void {
     new ThemeSettings();
     new TranslationStrings();
     register_nav_menus([

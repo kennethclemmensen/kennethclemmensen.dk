@@ -14,7 +14,7 @@ class ThemeHelper {
      * @param bool $ver the script version number
      * @param bool $inFooter false if the script should be enqueued in the header
      */
-    public static function addScriptWithLocalFallback(string $handle, string $cdnFile, string $localFile, array $deps = [], bool $ver = false, bool $inFooter = true) {
+    public static function addScriptWithLocalFallback(string $handle, string $cdnFile, string $localFile, array $deps = [], bool $ver = false, bool $inFooter = true) : void {
         $file = @fopen($cdnFile, 'r');
         $src = ($file === false) ? $localFile : $cdnFile;
         wp_deregister_script($handle);
@@ -28,7 +28,7 @@ class ThemeHelper {
      * @param string $cdnFile the path to the CDN file
      * @param string $localFile the path to the local file
      */
-    public static function addStyleWithLocalFallback(string $handle, string $cdnFile, string $localFile) {
+    public static function addStyleWithLocalFallback(string $handle, string $cdnFile, string $localFile) : void {
         $file = @fopen($cdnFile, 'r');
         $src = ($file === false) ? $localFile : $cdnFile;
         wp_enqueue_style($handle, $src);

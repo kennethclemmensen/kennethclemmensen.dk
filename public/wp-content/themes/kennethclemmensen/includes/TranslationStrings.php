@@ -4,13 +4,13 @@
  */
 class TranslationStrings {
 
-    const FRONT_PAGE = 'Front page';
-    const YOU_ARE_HERE = 'You are here:';
-    const SEARCH = 'Search';
-    const SEARCH_RESULTS = 'Search results';
-    const NO_RESULTS = 'Your search returned no results';
-    const IMAGE = 'Image';
-    const OF = 'of';
+    private const FRONT_PAGE = 'Front page';
+    private const YOU_ARE_HERE = 'You are here:';
+    private const SEARCH = 'Search';
+    private const SEARCH_RESULTS = 'Search results';
+    private const NO_RESULTS = 'Your search returned no results';
+    private const IMAGE = 'Image';
+    private const OF = 'of';
 
     /**
      * TranslationStrings constructor

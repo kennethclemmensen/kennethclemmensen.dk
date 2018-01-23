@@ -28,10 +28,10 @@ class ThemeSettings {
     /**
      * Use the admin_menu action to create a settings page
      */
-    private function adminMenu() {
-        add_action('admin_menu', function() {
+    private function adminMenu() : void {
+        add_action('admin_menu', function() : void {
             $title = 'Theme settings';
-            add_menu_page($title, $title, 'administrator', $this->pageSlug, function() {
+            add_menu_page($title, $title, 'administrator', $this->pageSlug, function() : void {
                 settings_errors();
                 ?>
                 <form action="options.php" method="post">
@@ -49,20 +49,20 @@ class ThemeSettings {
     /**
      * Use the admin_init action to create and register the settings inputs
      */
-    private function adminInit() {
-        add_action('admin_init', function() {
+    private function adminInit() : void {
+        add_action('admin_init', function() : void {
             $sectionID = 'kc-theme-settings-section';
-            add_settings_section($sectionID, '', function() {
+            add_settings_section($sectionID, '', function() : void {
                 echo '<h2>Theme settings</h2>';
             }, $this->pageSlug);
             $prefix = 'kc-theme-settings-';
-            add_settings_field($prefix.'email', 'Email', function() {
+            add_settings_field($prefix.'email', 'Email', function() : void {
                 echo '<input type="email" name="'.$this->optionGroup.'['.$this->email.']" value="'.$this->getEmail().'" required>';
             }, $this->pageSlug, $sectionID);
-            add_settings_field($prefix.'linkedin', 'LinkedIn', function() {
+            add_settings_field($prefix.'linkedin', 'LinkedIn', function() : void {
                 echo '<input type="url" name="'.$this->optionGroup.'['.$this->linkedIn.']" value="'.$this->getLinkedInUrl().'" required>';
             }, $this->pageSlug, $sectionID);
-            add_settings_field($prefix.'github', 'GitHub', function() {
+            add_settings_field($prefix.'github', 'GitHub', function() : void {
                 echo '<input type="url" name="'.$this->optionGroup.'['.$this->gitHub.']" value="'.$this->getGitHubUrl().'" required>';
             }, $this->pageSlug, $sectionID);
             register_setting($this->optionGroup, $this->optionGroup, function(array $input) : array {
