@@ -30,10 +30,10 @@ class KCSliderSettings {
     /**
      * Use the admin_menu action to create a settings page
      */
-    private function adminMenu() {
-        add_action('admin_menu', function() {
+    private function adminMenu() : void {
+        add_action('admin_menu', function() : void {
             $title = 'Settings';
-            add_submenu_page('edit.php?post_type=slides', $title, $title, 'administrator', $this->pageSlug, function() {
+            add_submenu_page('edit.php?post_type=slides', $title, $title, 'administrator', $this->pageSlug, function() : void {
                 settings_errors();
                 ?>
                 <form action="options.php" method="post">
@@ -51,16 +51,16 @@ class KCSliderSettings {
     /**
      * Use the admin_init action to create and register the setting inputs
      */
-    private function adminInit() {
-        add_action('admin_init', function() {
+    private function adminInit() : void {
+        add_action('admin_init', function() : void {
             $sectionID = 'kc-slider-section';
-            add_settings_section($sectionID, '', function() {
+            add_settings_section($sectionID, '', function() : void {
                 echo '<h2>KC Slider Settings</h2>';
             }, $this->pageSlug);
-            add_settings_field('kc-slider-delay', 'Delay', function() {
+            add_settings_field('kc-slider-delay', 'Delay', function() : void {
                 echo '<input type="number" name="'.$this->optionGroup.'['.$this->delay.']" value="'.$this->getDelay().'" required min="1" max="10000" step="500">';
             }, $this->pageSlug, $sectionID);
-            add_settings_field('kc-slider-duration', 'Duration', function() {
+            add_settings_field('kc-slider-duration', 'Duration', function() : void {
                 echo '<input type="number" name="'.$this->optionGroup.'['.$this->duration.']" value="'.$this->getDuration().'" required min="1" max="10000" step="500">';
             }, $this->pageSlug, $sectionID);
             register_setting($this->optionGroup, $this->optionGroup, function(array $input) : array {

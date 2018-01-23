@@ -9,7 +9,7 @@ class KCSlider {
 
     private $fieldSlideImage;
 
-    const SLIDES = 'slides';
+    public const SLIDES = 'slides';
 
     /**
      * KCSlider constructor
@@ -23,8 +23,8 @@ class KCSlider {
      *
      * @param string $mainPluginFile the path to the main plugin file
      */
-    public function activate(string $mainPluginFile) {
-        register_activation_hook($mainPluginFile, function() {
+    public function activate(string $mainPluginFile) : void {
+        register_activation_hook($mainPluginFile, function() : void {
             if(!class_exists('RW_Meta_Box')) {
                 die('Meta Box is not activated');
             }
@@ -34,7 +34,7 @@ class KCSlider {
     /**
      * Execute the plugin
      */
-    public function execute() {
+    public function execute() : void {
         $this->loadDependencies();
         new KCSliderSettings();
         $this->init();
@@ -45,15 +45,15 @@ class KCSlider {
     /**
      * Load the dependencies files
      */
-    private function loadDependencies() {
+    private function loadDependencies() : void {
         require_once 'KCSliderSettings.php';
     }
 
     /**
      * Use the init action to register the slides custom post type
      */
-    private function init() {
-        add_action('init', function() {
+    private function init() : void {
+        add_action('init', function() : void {
             register_post_type(self::SLIDES, [
                 'labels' => [
                     'name' => 'Slides',
@@ -70,7 +70,7 @@ class KCSlider {
     /**
      * Use the rwmb_meta_boxes filter to add meta boxes to the slides custom post type
      */
-    private function addMetaBoxes() {
+    private function addMetaBoxes() : void {
         add_filter('rwmb_meta_boxes', function(array $metaBoxes) : array {
             $metaBoxes[] = [
                 'id' => 'slide_informations',
@@ -93,13 +93,13 @@ class KCSlider {
      * Use the manage_{$post_type}_posts_column and manage_{$post_type}_posts_custom_column filters to create custom
      * columns for the slides custom post type
      */
-    private function adminColumns() {
+    private function adminColumns() : void {
         $image_column_key = 'image';
         add_filter('manage_'.self::SLIDES.'_posts_columns', function(array $columns) use ($image_column_key) : array {
             $columns[$image_column_key] = 'Image';
             return $columns;
         });
-        add_filter('manage_'.self::SLIDES.'_posts_custom_column', function(string $column_name) use ($image_column_key) {
+        add_filter('manage_'.self::SLIDES.'_posts_custom_column', function(string $column_name) use ($image_column_key) : void {
             if($column_name === $image_column_key) {
                 echo '<img src="'.$this->getSlideImage().'" alt="'.get_the_title().'" style="height: 60px">';
             }
