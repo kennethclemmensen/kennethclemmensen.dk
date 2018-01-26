@@ -13,10 +13,10 @@ class KCGalleryLoader {
     public function loadStylesAndScripts() : void {
         add_action('wp_enqueue_scripts', function() : void {
             $lightbox = 'lightbox';
-            $cdnFile = 'https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.10.1/css/lightbox.min.css';
+            $cdnFile = 'https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.10.0/css/lightbox.min.css';
             $localFile = plugin_dir_url(__DIR__).'assets/css/lightbox-2.10.0.min.css';
             $this->addStyleWithLocalFallback($lightbox, $cdnFile, $localFile);
-            $cdnFile = 'https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.10.1/js/lightbox.min.js';
+            $cdnFile = 'https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.10.0/js/lightbox.min.js';
             $localFile = plugin_dir_url(__DIR__).'assets/js/lightbox-2.10.0.min.js';
             $this->addScriptWithLocalFallback($lightbox, $cdnFile, $localFile, ['jquery'], false, true);
         });
