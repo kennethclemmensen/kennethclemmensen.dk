@@ -2,13 +2,13 @@
 
 The repository for my personal website https://www.kennethclemmensen.dk/
 
-The website is created using WordPress and a number of other technologies.
+The website is created using [WordPress](https://wordpress.org/) and a number of other technologies.
 These tecnologies includes:
 * HTML5
 * CSS3
 * [LESS](http://lesscss.org/)
-* [SASS](http://sass-lang.com/)
-* JavaScript/[jQuery](http://jquery.com/)
+* [SASS](https://sass-lang.com/)
+* JavaScript/[jQuery](https://jquery.com/)
 * [PHP](http://php.net/)
 * [VueJS](https://vuejs.org/)
 * [Grunt](https://gruntjs.com/)
