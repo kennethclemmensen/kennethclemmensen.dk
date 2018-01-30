@@ -56,7 +56,7 @@ module.exports = function(grunt) {
                 debugInfo: true,
                 logConnections: true,
                 notify: true,
-                proxy: '<%= pkg.name %>.dev',
+                proxy: '<%= pkg.name %>.test',
                 files: ['public/wp-content/themes/<%= pkg.name %>/css/*.css', 'public/wp-content/themes/<%= pkg.name %>/**/*.php', 'public/wp-content/themes/<%= pkg.name %>/js/*.js']
             }
         }
