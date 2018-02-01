@@ -24,12 +24,12 @@ class KCAPI {
      */
     private function restApiInit() : void {
         add_action('rest_api_init', function() : void {
-            register_rest_route('kcapi/v1', '/search', [
-                'methods' => [WP_REST_Server::CREATABLE],
+            register_rest_route('kcapi/v1', '/search/pagesbytitle/(?P<title>[\S]+)', [
+                'methods' => [WP_REST_Server::READABLE],
                 'callback' => function(WP_REST_Request $request) : WP_REST_Response {
-                    $data = json_decode($request->get_body(), true);
+                    $title = $request->get_param('title');
                     $statusCode = 200;
-                    return new WP_REST_Response($this->getPagesByTitle($data['title']), $statusCode);
+                    return new WP_REST_Response($this->getPagesByTitle($title), $statusCode);
                 }
             ]);
         });
