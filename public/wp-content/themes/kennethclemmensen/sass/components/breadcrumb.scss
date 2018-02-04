@@ -18,14 +18,14 @@
 .breadcrumb__list-item {
   display: inline-block;
   font-size: 0.8em;
-  &:after {
+  &::after {
     display: inline-block;
     @extend .font-awesome-solid;
     content: "\f105";
     margin: 0 7px;
   }
   &:last-child {
-    &:after {
+    &::after {
       display: none;
     }
   }

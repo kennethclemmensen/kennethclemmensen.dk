@@ -38,11 +38,11 @@
   &--active {
     .header__nav-icon {
       background: transparent;
-      &:before {
+      &::before {
         margin-top: 0;
         @include rotate(45deg);
       }
-      &:after {
+      &::after {
         margin-top: 0;
         @include rotate(-45deg);
       }
@@ -57,7 +57,7 @@
   height: 5px;
   position: relative;
   @include transition(background, .2s, ease, 0s);
-  &:before, &:after {
+  &::before, &::after {
     display: block;
     background: $color-white;
     content: "";
@@ -67,7 +67,7 @@
     position: absolute;
     @include transition();
   }
-  &:after {
+  &::after {
     margin-top: 10px;
   }
 }

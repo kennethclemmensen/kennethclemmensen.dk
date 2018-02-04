@@ -52,7 +52,7 @@
   position: absolute;
   top: 5px;
   right: 10px;
-  &:after {
+  &::after {
     display: inline-block;
     @extend .font-awesome-solid;
     content: "\f107";
@@ -62,7 +62,7 @@
     @include transition();
   }
   &--rotated {
-    &:after {
+    &::after {
       @include rotate(-180deg);
     }
   }
