@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Yoast SEO - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-01-17 16:39:54+0000\n"
+"PO-Revision-Date: 2018-01-28 15:46:11+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,15 @@ msgstr ""
 "X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: da_DK\n"
 "Project-Id-Version: Plugins - Yoast SEO - Stable (latest release)\n"
+
+#: languages/yoast-seo-js.php:212
+msgid "The focus keyword appears in %2$d (out of %1$d) subheadings in your copy."
+msgstr "Fokussøgeordet findes i %2$d (ud af %1$d) underoverskrifter i din kopi."
+
+#. translators: %s expands to Yoast SEO Premium.
+#: admin/class-social-admin.php:181
+msgid "Find out why you should upgrade to %s"
+msgstr "Find ud af, hvorfor du bør opgraderer til %s"
 
 #. Author URI of the plugin/theme
 msgid "https://yoa.st/1uk"
@@ -245,7 +254,7 @@ msgstr "Indlæser hjælpecenter."
 msgid "Open support form"
 msgstr "Åbn supportformular"
 
-#: admin/views/licenses.php:159 admin/views/licenses.php:217
+#: admin/views/licenses.php:165 admin/views/licenses.php:223
 msgid "Manage your subscription on My Yoast"
 msgstr "Administrér dine abonnementer på My Yoast"
 
@@ -474,11 +483,11 @@ msgstr "Læsbarhed: Behov for forbedringer"
 msgid "SEO: Needs improvement"
 msgstr "SEO: Behov for forbedringer"
 
-#: admin/views/licenses.php:161 admin/views/licenses.php:219
+#: admin/views/licenses.php:167 admin/views/licenses.php:225
 msgid "Not activated"
 msgstr "Ikke aktiveret"
 
-#: admin/views/licenses.php:158 admin/views/licenses.php:216
+#: admin/views/licenses.php:164 admin/views/licenses.php:222
 msgid "Activated"
 msgstr "Aktiveret"
 
@@ -497,11 +506,11 @@ msgid "You are not receiving updates or support! Fix this problem by adding this
 msgstr "Du får ingen opdateringer eller support! Løs problemet ved at tilføje dette site og aktivere %1$s på det i %2$s."
 
 #. translators: %1$s expands to "Yoast".
-#: admin/class-yoast-form.php:203
+#: admin/class-yoast-form.php:205
 msgid "%1s recommendations for you"
 msgstr "$%1s anbefalinger til dig"
 
-#: admin/views/licenses.php:162 admin/views/licenses.php:220
+#: admin/views/licenses.php:168 admin/views/licenses.php:226
 msgid "Activate your site on My Yoast"
 msgstr "Aktivér dit websted på My Yoast"
 
@@ -514,7 +523,7 @@ msgstr "Mind mig om det om 4 uger."
 msgid "Request method %1$s is not valid."
 msgstr "Forespørgselsmetoden %1$s er ikke gyldig."
 
-#: admin/views/tabs/tool/import-seo.php:27
+#: admin/views/tabs/tool/import-seo.php:33
 msgid "Import from Jetpack SEO"
 msgstr "Importér fra Jetpack SEO"
 
@@ -671,10 +680,6 @@ msgstr "Læsbarheds-score"
 #: admin/banner/class-admin-banner-sidebar.php:361
 msgid "Take the online Structured Data Training course and learn how to create rich snippets!"
 msgstr "Tak kurset Structured Data Training og lær at oprette rich snippets!"
-
-#: languages/yoast-seo-js.php:212
-msgid "The focus keyword appears only in %2$d (out of %1$d) subheadings in your copy. Try to use it in at least one more subheading."
-msgstr "Fokussøgeordet forekommer kun i %2$d (ud af %1$d) underoverskrifter i din tekst. Prøv at bruge det i mindst én underoverskrift mere."
 
 #: languages/yoast-seo-js.php:118
 msgid "No internal links appear in this page, consider adding some as appropriate."
@@ -996,7 +1001,7 @@ msgstr "Variabel"
 msgid "Available variables"
 msgstr "Tilgængelige variabler"
 
-#: admin/class-admin.php:354
+#: admin/class-admin.php:356
 msgid "Scroll to see the table content."
 msgstr "Scroll for at se tabelindholdet."
 
@@ -1141,6 +1146,10 @@ msgid_plural "This is below the recommended minimum of %2$d words. Add more cont
 msgstr[0] "Dette er under det anbefalede minimum på %2$d word. Tilføj mere indhold, som er relevant for emnet."
 msgstr[1] "Dette er under det anbefalede minimum på %2$d word. Tilføj mere indhold, som er relevant for emnet."
 
+#: languages/yoast-seo-js.php:273
+msgid "The focus keyword '%1$s' does not appear in the SEO title."
+msgstr "Fokussøgeordet '%1$s' forekommer ikke i SEO-titlen."
+
 #. Translators: The preceding sentence is "The text contains x words.", %2$s
 #. expands to the recommended minimum of words. 	   Translators: The preceding
 #. sentence is "The text contains x words.", %2$s expands to the recommended
@@ -1150,10 +1159,6 @@ msgid "This is far below the recommended minimum of %2$d word. Add more content 
 msgid_plural "This is far below the recommended minimum of %2$d words. Add more content that is relevant for the topic."
 msgstr[0] "Dette er langt under det anbefalede minimum på %2$d ord. Tilføj mere indhold, som er relvant for emnet."
 msgstr[1] "Dette er langt under det anbefalede minimum på %2$d ord. Tilføj mere indhold, som er relvant for emnet."
-
-#: languages/yoast-seo-js.php:273
-msgid "The focus keyword '%1$s' does not appear in the SEO title."
-msgstr "Fokussøgeordet '%1$s' forekommer ikke i SEO-titlen."
 
 #. Translators: %1$s expands to the number of sentences containing transition
 #. words, %2$s expands to a link on yoast.com, 	   %3$s expands to the anchor
@@ -1181,17 +1186,17 @@ msgstr[1] "Korttitlen for denne side indeholder %1$sstopord%2$s. Overvej at fjer
 #. to a link on yoast.com, 	   %3$d expands to the recommended maximum number
 #. of syllables, 	   %4$s expands to the anchor end tag, %5$s expands to the
 #. recommended maximum number of syllables.
-#: languages/yoast-seo-js.php:115
-msgid "%1$s of the words contain %2$sover %3$s syllables%4$s, which is more than the recommended maximum of %5$s."
-msgstr "%1$s af ordene har %2$sover %3$s stavelser%4$s, hvilket er mere end det anbefalede maksimum på %5$s."
+#: languages/yoast-seo-js.php:109
+msgid "%1$s of the words contain %2$sover %3$s syllables%4$s, which is less than or equal to the recommended maximum of %5$s."
+msgstr "%1$s af ordene har %2$sover %3$s stavelser%4$s, hvilket er mindre end eller lig med det anbefalede maksimum på %5$s."
 
 #. Translators: %1$s expands to the percentage of complex words, %2$s expands
 #. to a link on yoast.com, 	   %3$d expands to the recommended maximum number
 #. of syllables, 	   %4$s expands to the anchor end tag, %5$s expands to the
 #. recommended maximum number of syllables.
-#: languages/yoast-seo-js.php:109
-msgid "%1$s of the words contain %2$sover %3$s syllables%4$s, which is less than or equal to the recommended maximum of %5$s."
-msgstr "%1$s af ordene har %2$sover %3$s stavelser%4$s, hvilket er mindre end eller lig med det anbefalede maksimum på %5$s."
+#: languages/yoast-seo-js.php:115
+msgid "%1$s of the words contain %2$sover %3$s syllables%4$s, which is more than the recommended maximum of %5$s."
+msgstr "%1$s af ordene har %2$sover %3$s stavelser%4$s, hvilket er mere end det anbefalede maksimum på %5$s."
 
 #. Translators: %1$s expands to the name of the assessment.
 #: languages/yoast-seo-js.php:300
@@ -1206,13 +1211,13 @@ msgid_plural "%1$d of the subheadings are followed by more than the recommended 
 msgstr[0] "%1$d afsnitsoverskrift efterfølges af et afsnit på mere end det anbefalede maksimum på %2$d ord. Prøv at indsætte en afsnitsoverskrift mere."
 msgstr[1] "%1$d af afsnitsoverskrifterne efterfølges af mere end det anbefalede maksimum på %2$d ord. Prøv at indsætte flere afsnitsoverskrifter."
 
-#: admin/class-bulk-editor-list-table.php:888
-msgid "Save all"
-msgstr "Gem alle"
-
-#: admin/class-bulk-editor-list-table.php:887
+#: admin/class-bulk-editor-list-table.php:892
 msgid "Save"
 msgstr "Gem"
+
+#: admin/class-bulk-editor-list-table.php:893
+msgid "Save all"
+msgstr "Gem alle"
 
 #: admin/views/partial-alerts-warnings.php:11
 msgid "No new notifications."
@@ -1690,7 +1695,7 @@ msgstr "Indtast et fokussøgeord"
 msgid "By the way, did you know we also have a %1$sPremium plugin%2$s? It offers advanced features, like a redirect manager and support for multiple keywords. It also comes with 24/7 personal support."
 msgstr "Vidste du forresten, at vi også har en %1$sbetalingsudgave%2$s? Den indeholder avancerede funktioner så som administration af redirects og understøttelse af flere nøgleord. Du får også personlig support 24/7."
 
-#: admin/class-bulk-editor-list-table.php:794
+#: admin/class-bulk-editor-list-table.php:799
 msgid "(no title)"
 msgstr "(ingen titel)"
 
@@ -1938,26 +1943,26 @@ msgstr "Succes!"
 msgid "Take a look at the people that create %1$s."
 msgstr "Læs om dem, som står bag %1$s."
 
-#: admin/views/licenses.php:184
+#: admin/views/licenses.php:190
 msgid "Comes with our 30-day no questions asked money back guarantee"
 msgstr "Du kan få pengene tilbage helt uden betingelser inden for 30 dage"
 
 #. translators: Text between %1$s and %2$s will only be shown to screen
 #. readers. %3$s expands to the product name.
-#: admin/views/licenses.php:177 admin/views/licenses.php:231
+#: admin/views/licenses.php:183 admin/views/licenses.php:237
 msgid "More information %1$sabout %3$s%2$s"
 msgstr "Læs mere %1$som %3$s%2$s"
 
-#: admin/views/licenses.php:155 admin/views/licenses.php:213
+#: admin/views/licenses.php:161 admin/views/licenses.php:219
 msgid "Installed"
 msgstr "Installeret"
 
-#: admin/views/licenses.php:150
+#: admin/views/licenses.php:156
 msgid "gain access to our 24/7 support team."
 msgstr "få adgang til vores 24/7-supportteam."
 
 #. translators: %1$s expands to Yoast SEO Premium
-#: admin/views/licenses.php:132
+#: admin/views/licenses.php:135
 msgid "%1$s, take your optimization to the next level!"
 msgstr "%1$s – løft din optimering til næste niveau!"
 
@@ -1995,48 +2000,48 @@ msgid "Default for this taxonomy type, currently: %s"
 msgstr "Standard for denne type taksonomi, nuværende: %s"
 
 #. translators: %1$s expands to Yoast SEO extensions
-#: admin/views/licenses.php:197
+#: admin/views/licenses.php:203
 msgid "%1$s to optimize your site even further"
 msgstr "%1$s, hvis du vil optimere dit site yderligere"
 
 #. translators: %1$s expands to Yoast SEO
-#: admin/views/licenses.php:192
+#: admin/views/licenses.php:198
 msgid "%1$s extensions"
 msgstr "%1$s-udvidelser"
 
 #. translators: $1$s expands to Yoast SEO Premium
-#: admin/views/licenses.php:171
+#: admin/views/licenses.php:177
 msgid "Buy %1$s"
 msgstr "Køb %1$s"
 
 #: admin/metabox/class-metabox.php:483
-#: admin/taxonomy/class-taxonomy-metabox.php:275 admin/views/licenses.php:149
+#: admin/taxonomy/class-taxonomy-metabox.php:275 admin/views/licenses.php:155
 msgid "Premium support"
 msgstr "Premium-support"
 
-#: admin/views/licenses.php:146
+#: admin/views/licenses.php:152
 msgid "check what your Facebook or Twitter post will look like."
 msgstr "tjek, hvordan din Facebook- eller Twitter-indlæg vil se ud."
 
-#: admin/views/licenses.php:145
+#: admin/views/licenses.php:151
 msgid "Social previews"
 msgstr "Sociale previews"
 
-#: admin/views/licenses.php:142
+#: admin/views/licenses.php:148
 msgid "optimize a single post for up to 5 keywords."
 msgstr "optimér et enkelt indlæg til op til 5 søgeord."
 
 #: admin/metabox/class-metabox.php:479
-#: admin/taxonomy/class-taxonomy-metabox.php:271 admin/views/licenses.php:141
+#: admin/taxonomy/class-taxonomy-metabox.php:271 admin/views/licenses.php:147
 msgid "Multiple focus keywords"
 msgstr "Flere fokussøgeord"
 
-#: admin/views/licenses.php:138
+#: admin/views/licenses.php:144
 msgid "create and manage redirects from within your WordPress install."
 msgstr "opret og administrér redirects direkte i WordPress."
 
 #: admin/metabox/class-metabox.php:477
-#: admin/taxonomy/class-taxonomy-metabox.php:269 admin/views/licenses.php:137
+#: admin/taxonomy/class-taxonomy-metabox.php:269 admin/views/licenses.php:143
 msgid "Redirect manager"
 msgstr "Redirect-administrator"
 
@@ -2099,13 +2104,6 @@ msgstr "Se credits"
 msgid "Go Premium"
 msgstr "Skift til Premium"
 
-#. translators: %1$s expands to Yoast SEO
-#: admin/pages/dashboard.php:45
-msgid "The following file is blocking your XML sitemaps from working properly. Either delete it (this can be done with the \"Fix it\" button) or disable %1$s XML sitemaps."
-msgid_plural "The following files are blocking your XML sitemaps from working properly. Either delete them (this can be done with the \"Fix it\" button) or disable %1$s XML sitemaps."
-msgstr[0] "Den følgende fil forhindrer dine XML-sitemaps i at fungere korrekt. Enten slet den (dette kan gøres med knappen \"Ret det\") eller deaktivér %1$ss XML-sitemaps."
-msgstr[1] "De følgende filer forhindrer dine XML-sitemaps i at fungere korrekt. Enten slet dem (dette kan gøres med knappen \"Ret det\") eller deaktivér %1$ss XML-sitemaps."
-
 #: admin/google_search_console/views/gsc-display.php:111
 msgid "Crawl issues list navigation"
 msgstr "Navigering for liste over gennemgangsfejl"
@@ -2115,11 +2113,11 @@ msgid "Crawl issues list"
 msgstr "Liste over gennemgangsfejl"
 
 #. translators: %s: post title
-#: admin/class-bulk-editor-list-table.php:808
+#: admin/class-bulk-editor-list-table.php:813
 msgid "Edit &#8220;%s&#8221;"
 msgstr "Redigér &#8220;%s&#8221;"
 
-#: admin/class-bulk-editor-list-table.php:420
+#: admin/class-bulk-editor-list-table.php:425
 msgid "Filter by post type"
 msgstr "Filtrér efter indholdstype"
 
@@ -2139,6 +2137,13 @@ msgstr "Filer blev fjernet."
 #: admin/ajax.php:121
 msgid "The directory %s could not be removed. Please remove it via FTP."
 msgstr "Mappen %s kunne ikke slettes. Slet den venligst via FTP"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/pages/dashboard.php:45
+msgid "The following file is blocking your XML sitemaps from working properly. Either delete it (this can be done with the \"Fix it\" button) or disable %1$s XML sitemaps."
+msgid_plural "The following files are blocking your XML sitemaps from working properly. Either delete them (this can be done with the \"Fix it\" button) or disable %1$s XML sitemaps."
+msgstr[0] "Den følgende fil forhindrer dine XML-sitemaps i at fungere korrekt. Enten slet den (dette kan gøres med knappen \"Ret det\") eller deaktivér %1$ss XML-sitemaps."
+msgstr[1] "De følgende filer forhindrer dine XML-sitemaps i at fungere korrekt. Enten slet dem (dette kan gøres med knappen \"Ret det\") eller deaktivér %1$ss XML-sitemaps."
 
 #: admin/views/tabs/sitemaps/post-types.php:12
 msgid "Post types sitemap settings"
@@ -2189,7 +2194,7 @@ msgstr "Notifikationer"
 msgid "Google Trends"
 msgstr "Google Trends"
 
-#: admin/views/tabs/sitemaps/general.php:31
+#: admin/views/tabs/sitemaps/general.php:36
 msgid "Entries per sitemap page"
 msgstr "Poster pr sitemap side"
 
@@ -2243,7 +2248,7 @@ msgid_plural "%s notifications"
 msgstr[0] "%s notifikation"
 msgstr[1] "%s notifikationer"
 
-#: admin/class-admin.php:353
+#: admin/class-admin.php:355
 msgid "Yoast SEO video tutorial"
 msgstr "Yoast SEO-videotutorial"
 
@@ -2319,8 +2324,8 @@ msgstr "Du prøver at indlæse ikke-minimerede filer. Disse er kun tilgængelige
 msgid "You have a new issue concerning your SEO!"
 msgstr "Du har et nyt problem vedrørende din SEO!"
 
-#. translators: %1$s expands to Yoast SEO
-#: admin/views/tabs/dashboard/dashboard.php:17
+#. translators: %1$s expands to Yoast SEO.
+#: admin/views/tabs/dashboard/dashboard.php:14
 msgid "%1$s Dashboard"
 msgstr "%1$s-kontrolpanel"
 
@@ -2592,7 +2597,7 @@ msgid "New %1$s Title"
 msgstr "Ny %1$s-titel"
 
 #. translators: %s expands to the product name
-#: admin/views/licenses.php:225
+#: admin/views/licenses.php:231
 msgid "Buy %s"
 msgstr "Køb %s"
 
@@ -2608,7 +2613,7 @@ msgstr "Forventede et input bestående af et heltal."
 msgid "Trying to build the sitemap cache key, but the postfix and prefix combination leaves too little room to do this. You are probably requesting a page that is way out of the expected range."
 msgstr "Forsøger at lave en cachenøgle for sitemaps, men kombinationen af postfix og præfix giver for lidt plads til at gøre det. Du har formentlig sendt en forespørgsel om en side, som ligger langt uden for det forventede område."
 
-#: admin/views/tabs/advanced/permalinks.php:41
+#: admin/views/tabs/advanced/permalinks.php:48
 msgid "Note: this feature has been deprecated, as the SEO value is close to 0 these days. If you disable it you will not be able to put it back on."
 msgstr "Bemærk: Denne funktion er under udfasning, fordi den stort set ingen SEO-værdi har længere. Hvis du deaktiverer den, kan du ikke slå den til igen."
 
@@ -2715,7 +2720,7 @@ msgstr "Den avancerede sektion i %1$sʼs metaboks lader en bruger sætte noindex
 msgid "Advanced part of the %1$s meta box"
 msgstr "Avanceret del af %1$s-metaboksen"
 
-#: admin/class-yoast-form.php:316 admin/views/tabs/dashboard/features.php:85
+#: admin/class-yoast-form.php:318 admin/views/tabs/dashboard/features.php:85
 #: admin/views/tabs/dashboard/security.php:17
 #: admin/views/tabs/metas/archives.php:34
 #: admin/views/tabs/metas/archives.php:53
@@ -2724,7 +2729,7 @@ msgstr "Avanceret del af %1$s-metaboksen"
 msgid "Enabled"
 msgstr "Aktiveret"
 
-#: admin/class-yoast-form.php:316 admin/views/tabs/dashboard/features.php:86
+#: admin/class-yoast-form.php:318 admin/views/tabs/dashboard/features.php:86
 #: admin/views/tabs/dashboard/security.php:18
 #: admin/views/tabs/metas/archives.php:35
 #: admin/views/tabs/metas/archives.php:54
@@ -2770,7 +2775,7 @@ msgstr "Fjern kategoribasen (sædvanligvis %s) fra kategori-URLʼen."
 msgid "Remove the %s variables."
 msgstr "Fjern %s-variablerne."
 
-#: admin/views/tabs/tool/import-seo.php:29
+#: admin/views/tabs/tool/import-seo.php:35
 msgid "Import from wpSEO"
 msgstr "Importér fra wpSEO"
 
@@ -3048,7 +3053,7 @@ msgstr "Oversættelse af %s"
 msgid "We couldn't create a connection to our API to verify your license key(s). Please ask your hosting company to allow outgoing connections from your server to %s."
 msgstr "Vi kunne ikke oprette en forbindelse til vores API for at validere din(e) licensnøgle(r). Kontakt din udbyder for at tillade udgående forbindelser fra din server til %s."
 
-#. #-#-#-#-#  wordpress-seo-code.pot (Yoast SEO 6.1.1)  #-#-#-#-#
+#. #-#-#-#-#  wordpress-seo-code.pot (Yoast SEO 6.2)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: admin/capabilities/class-capability-manager-integration.php:66
 msgid "Yoast SEO"
@@ -3212,8 +3217,8 @@ msgstr[1] "Du har brugt %d/%d aktiveringer."
 #. translators: %s expands to a time period, i.e. month name, year or specific
 #. date.
 #. translators: %s expands to the variable used for term title.
-#: frontend/class-frontend.php:527 frontend/class-frontend.php:531
-#: frontend/class-frontend.php:535
+#: frontend/class-frontend.php:553 frontend/class-frontend.php:557
+#: frontend/class-frontend.php:561
 #: inc/options/class-wpseo-option-titles.php:241
 msgid "%s Archives"
 msgstr "%s Arkiv"
@@ -3234,7 +3239,7 @@ msgstr "Et link til dit websted med dit websteds navn som ankertekst."
 msgid "Add Open Graph meta data"
 msgstr "Tilføj Open Graph metadata"
 
-#: frontend/class-frontend.php:1261
+#: frontend/class-frontend.php:1277
 msgid "Admin only notice: this page doesn't show a meta description because it doesn't have one, either write it for this page specifically or go into the SEO -> Titles menu and set up a template."
 msgstr "Administrator besked: denne side viser ikke en meta-beskrivelse fordi den ikke har en. Du kan enten angive en specifikt for denne side eller gå til menuen SEO -> Titles og opsætte en skabelon."
 
@@ -3279,7 +3284,7 @@ msgstr "Anerkendelse"
 msgid "Default settings"
 msgstr "Standardindstillinger"
 
-#: admin/views/tabs/tool/import-seo.php:35
+#: admin/views/tabs/tool/import-seo.php:41
 msgid "Delete the old data after import? (recommended)"
 msgstr "Skal de gamle data slettes efter import? (anbefalet)"
 
@@ -3344,7 +3349,7 @@ msgstr "Har din virksomhed en Google+ side, kan du tilføje URL'en her og linke 
 msgid "Image URL"
 msgstr "Billed URL"
 
-#: admin/views/tabs/tool/import-seo.php:39
+#: admin/views/tabs/tool/import-seo.php:45
 msgid "Import"
 msgstr "Importer"
 
@@ -3361,7 +3366,7 @@ msgstr "Import fra andre SEO-plugins"
 msgid "Import settings"
 msgstr "Importer indstillinger"
 
-#: admin/views/tabs/tool/wpseo-export.php:23
+#: admin/views/tabs/tool/wpseo-export.php:27
 msgid "Include Taxonomy Metadata"
 msgstr "Inkluder taksonomi-metadata"
 
@@ -3375,7 +3380,7 @@ msgstr "Instagram-URL"
 msgid "LinkedIn URL"
 msgstr "LinkedIn-URL"
 
-#: admin/views/tabs/sitemaps/general.php:44
+#: admin/views/tabs/sitemaps/general.php:49
 msgid "Max entries per sitemap"
 msgstr "Maksimale antal elementer per sitemap"
 
@@ -3392,7 +3397,7 @@ msgstr "Meta-søgeord til brug på forfattersiden"
 msgid "MySpace URL"
 msgstr "MySpace-URL"
 
-#: admin/views/tabs/advanced/permalinks.php:68
+#: admin/views/tabs/advanced/permalinks.php:75
 msgid "Other variables not to clean"
 msgstr "Andre variable, der ikke skal renses"
 
@@ -3401,7 +3406,7 @@ msgstr "Andre variable, der ikke skal renses"
 msgid "Page %1$d of %2$d"
 msgstr "Side %1$d af %2$d"
 
-#: frontend/class-frontend.php:550
+#: frontend/class-frontend.php:576
 #: inc/options/class-wpseo-option-titles.php:181
 msgid "Page not found"
 msgstr "Siden blev ikke fundet"
@@ -3556,7 +3561,7 @@ msgid "Replaced with the title of the post/page"
 msgstr "Erstattes med titlen på indlægget/siden"
 
 #. translators: %s expands to the search phrase.
-#: frontend/class-frontend.php:467
+#: frontend/class-frontend.php:512
 msgid "Search for \"%s\""
 msgstr "Søgning for \"%s\""
 
@@ -3569,7 +3574,7 @@ msgid "Taxonomy to show in breadcrumbs for post types"
 msgstr "Taksonomi at vise i brødkrummer for indholdstyper"
 
 #. translators: %1$s expands to Yoast SEO
-#: admin/views/about.php:33
+#: admin/views/about.php:28
 msgid "Thank you for updating %1$s!"
 msgstr "Tak fordi du opdaterede %1$s!"
 
@@ -3662,12 +3667,12 @@ msgstr "indhold, der skal indsættes før hvert indlæg i feedet"
 
 #. translators: %1$s expands to <code>.html</code>, %2$s expands to
 #. <code>/</code>
-#: admin/views/tabs/advanced/permalinks.php:45
+#: admin/views/tabs/advanced/permalinks.php:52
 msgid "If you choose a permalink for your posts with %1$s, or anything else but a %2$s at the end, this will force WordPress to add a trailing slash to non-post pages nonetheless."
 msgstr "Hvis du vælger et permalink for dine indlæg med %1$s, eller noget som helst andet end %2$s til sidst, vil det få WordPress til alligevel at tilføje et afsluttende skråstreg til alle sider, der ikke er et indlæg."
 
 #. translators: %s expands to <code>?utm_</code>
-#: admin/views/tabs/advanced/permalinks.php:63
+#: admin/views/tabs/advanced/permalinks.php:70
 msgid "If you use Google Analytics campaign parameters starting with %s, check this box. However, you're advised not to use these. Instead, use the version with a hash."
 msgstr "Hvis du bruger Google Analytics kampagneparametre der starter med %s, så sæt hak i denne boks. Du bør dog ikke bruge dem. Brug istedet en version med et hash."
 
@@ -3679,7 +3684,7 @@ msgstr "Importér indstillinger fra andre SEO-plugins og eksportér dine indstil
 msgid "No doubt you've used an SEO plugin before if this site isn't new. Let's make it easy on you, you can import the data below. If you want, you can import first, check if it was imported correctly, and then import &amp; delete. No duplicate data will be imported."
 msgstr "Uden tvivl har du brugt et SEO-plugin før, hvis dette website ikke er nyt. Lad os gøre det nemt for dig: du kan importere dataene herunder. Hvis du ønsker det, kan du importere først, tjekke, om de er importeret korrekt, og så importere &amp; slette. Ingen data importeres to gange."
 
-#: admin/views/tabs/advanced/permalinks.php:53
+#: admin/views/tabs/advanced/permalinks.php:60
 msgid "People make mistakes in their links towards you sometimes, or unwanted parameters are added to the end of your URLs, this allows you to redirect them all away. Please note that while this is a feature that is actively maintained, it is known to break several plugins, and should for that reason be the first feature you disable when you encounter issues after installing this plugin."
 msgstr "Folk laver fejl i deres links, der henviser til din hjemmeside, eller uønskede parametre tilføjes til slutningen af dine webadresser. Denne funktion tillader dig at viderestille dem alle helt væk. Bemærk, at mens dette er en funktion, der er aktivt vedligeholdt, er det kendt for at bryde flere plugins, og det bør derfor være den første funktion, du deaktiverer, når du støder på problemer efter installation af dette plugin."
 
@@ -3687,7 +3692,7 @@ msgstr "Folk laver fejl i deres links, der henviser til din hjemmeside, eller u�
 msgid "Pinterest uses Open Graph metadata just like Facebook, so be sure to keep the Open Graph checkbox on the Facebook tab checked if you want to optimize your site for Pinterest."
 msgstr "Pinterest bruger Open Graph-metadata ligesom Facebook, så behold krydset ud for Open Graph på Facebook-fanen, hvis du vil optimere dit website til Pinterest."
 
-#: admin/views/tabs/advanced/permalinks.php:59
+#: admin/views/tabs/advanced/permalinks.php:66
 msgid "Prevent cleaning out Google Analytics Campaign & Google AdWords Parameters."
 msgstr "Forhindr, at der bliver renset ud i parametre fra Google Analytics Campaign & Google AdWords."
 
@@ -3742,11 +3747,7 @@ msgstr "Du kan bruge følgende variabler i indholdet; de vil blive erstattet af 
 msgid "You cannot overrule a WPSEO standard variable replacement by registering a variable with the same name. Use the \"wpseo_replacements\" filter instead to adjust the replacement value."
 msgstr "Du kan ikke overtrumfe en WPSEO-standardvariabeludskiftning ved at registrere en variabel med det samme navn. Brug i stedet filteret \"wpseo_replacements\" til at justere erstatningsværdien."
 
-#: admin/views/tabs/sitemaps/general.php:24
-msgid "You do <strong>not</strong> need to generate the XML sitemap, nor will it take up time to generate after publishing a post."
-msgstr "Du behøver <strong>ikke</strong> at oprette en XML-sitemap, ej heller bruges der tid på at generere det efter udgivelse af et indlæg."
-
-#: admin/views/tabs/advanced/permalinks.php:69
+#: admin/views/tabs/advanced/permalinks.php:76
 msgid "You might have extra variables you want to prevent from cleaning out, add them here, comma separated."
 msgstr "Du har muligvis ekstra variabler, som du gerne vil undgå at rense væk. Tilføj dem i stedet her,  adskilt af kommaer."
 
@@ -3756,7 +3757,7 @@ msgid "Export your %1$s settings"
 msgstr "Eksporter dine %1$s-indstillinger"
 
 #. translators: %1$s expands to Yoast SEO
-#: admin/views/user-profile.php:12
+#: admin/views/user-profile.php:7
 msgid "%1$s settings"
 msgstr "%1$s-indstillinger"
 
@@ -3765,23 +3766,19 @@ msgstr "%1$s-indstillinger"
 msgid "To %1$sconfirm your site with Pinterest%2$s, add the meta tag here:"
 msgstr "For at %1$sbekræfte dit site hos Pinterest%2$s, tilføj metatagget her:"
 
-#: admin/views/tabs/advanced/permalinks.php:36
-msgid "This prevents threaded replies from working when the user has JavaScript disabled, but on a large site can mean a <em>huge</em> improvement in crawl efficiency for search engines when you have a lot of comments."
-msgstr "Dette forhindrer trådede svar fra at virke, når brugeren har JavaScript deaktiveret, men på et stort websted kan dette betyde <em>enorme </em> forbedringer i gennemgangseffektiviteten for søgemaskiner, når du har en mange kommentarer."
-
 #: admin/views/tabs/social/facebook.php:29
 msgid "Frontpage settings"
 msgstr "Forsideindstillinger"
 
-#: admin/views/tabs/advanced/permalinks.php:57
+#: admin/views/tabs/advanced/permalinks.php:64
 msgid "Google Site Search URLs look weird, and ugly, but if you're using Google Site Search, you probably do not want them cleaned out."
 msgstr "Google Site Search URLʼer ser underlige ‒ og grimme ‒ ud, men hvis du bruger Google Site Search, vil du sandsynligvis ikke ønske at fjerne dem."
 
-#: admin/views/tabs/advanced/permalinks.php:56
+#: admin/views/tabs/advanced/permalinks.php:63
 msgid "Prevent cleaning out Google Site Search URLs."
 msgstr "Forhindr, at Google Site Search URLʼer renses væk."
 
-#: admin/views/tabs/advanced/permalinks.php:40
+#: admin/views/tabs/advanced/permalinks.php:47
 msgid "Enforce a trailing slash on all category and tag URLs"
 msgstr "Gennemtving en afsluttende skråstreg på alle kategori- og tag-URLʼer"
 
@@ -3793,11 +3790,11 @@ msgstr "Viderestil URL for vedhæftede filer til URL for forældreindlægget."
 msgid "Attachments to posts are stored in the database as posts, this means they're accessible under their own URLs if you do not redirect them, enabling this will redirect them to the post they were attached to."
 msgstr "Vedhæftninger til indlæg gemmes i databasen som indlæg. De er således tilgængelige under deres egen URL, hvis du ikke viderestiller dem. Hvis du aktiverer viderestillinger, vil vedhæftningen viderestille til det indlæg, det er vedhæftet."
 
-#: admin/views/tabs/advanced/permalinks.php:52
+#: admin/views/tabs/advanced/permalinks.php:59
 msgid "Redirect ugly URLs to clean permalinks. (Not recommended in many cases!)"
 msgstr "Viderestil grimme URLʼer til pæne permalinks. (Frarådes i de fleste tilfælde!)"
 
-#: admin/views/tabs/sitemaps/general.php:28
+#: admin/views/tabs/sitemaps/general.php:33
 msgid "Save your settings to activate your XML Sitemap."
 msgstr "Gem dine indstillinger for at aktivere XML-sitemaps."
 
@@ -3812,7 +3809,7 @@ msgid "Replaced with the posts focus keyword"
 msgstr "Erstattes med indlæggets fokusnøgleord"
 
 #. translators: 1: link open tag; 2: link close tag.
-#: admin/views/tabs/tool/import-seo.php:17
+#: admin/views/tabs/tool/import-seo.php:19
 msgid "If you've used another SEO plugin, try the %1$sSEO Data Transporter%2$s plugin to move your data into this plugin, it rocks!"
 msgstr "Hvis du har brugt et andet SEO-plugin, prøv pluginnet %1$sSEO Data Transporter%2$s for at flytte din data til dette plugin ‒ det er fantastisk!"
 
@@ -3820,15 +3817,15 @@ msgstr "Hvis du har brugt et andet SEO-plugin, prøv pluginnet %1$sSEO Data Tran
 msgid "A replacement variable with the same name has already been registered. Try making your variable name unique."
 msgstr "En udskiftningsvariabel med det samme navn er allerede registreret. Prøv at gøre dit variabelnavn unik. "
 
-#: admin/views/tabs/tool/import-seo.php:26
+#: admin/views/tabs/tool/import-seo.php:32
 msgid "Import from All-in-One SEO"
 msgstr "Importér fra All-in-One SEO"
 
-#: admin/views/tabs/tool/import-seo.php:25
+#: admin/views/tabs/tool/import-seo.php:31
 msgid "Import from HeadSpace2"
 msgstr "Importér fra HeadSpace2"
 
-#: admin/views/tabs/tool/import-seo.php:28
+#: admin/views/tabs/tool/import-seo.php:34
 msgid "Import from WooThemes SEO framework"
 msgstr "Importér fra WooThemes SEO framework"
 
@@ -3845,7 +3842,7 @@ msgid "If your %s were writable, you could edit it from here."
 msgstr "Hvis din %s var skrivbar, ville du kunne redigere den her."
 
 #. translators: %d expands to default number of entries per sitemap.
-#: admin/views/tabs/sitemaps/general.php:37
+#: admin/views/tabs/sitemaps/general.php:42
 msgid "Please enter the maximum number of entries per sitemap page (defaults to %d, you might want to lower this to prevent memory issues on some installs):"
 msgstr "Indtast venligst det maksimale antal af elementer pr. sitemap-side (standard er %d, du vil muligvis ønske at sænke antallet for at undgå memory-problemer på nogle installationer):"
 
@@ -3863,8 +3860,18 @@ msgstr "Nedenfor kan du se din SEO-score for dine udgivne indlæg. Nu vil være 
 msgid "Import settings by locating %1$ssettings.zip%2$s and clicking \"Import settings\""
 msgstr "Importér indstillinger ved at lokalisere %1$ssettings.zip%2$s og klikke på \"Importér indstillinger\""
 
-#. translators: %1$s expands to Yoast SEO
-#: admin/views/licenses.php:121
+#. translators: 1: <strong> open tag; 2: close tag.
+#: admin/views/tabs/sitemaps/general.php:26
+msgid "You do %1$snot%2$s need to generate the XML sitemap, nor will it take up time to generate after publishing a post."
+msgstr "Du behøver %1$sikke%2$s at oprette et XML-sitemap, ej heller bruges der tid på at generere det efter udgivelse af et indlæg."
+
+#. translators: 1: emphasis open tag; 2: emphasis close tag.
+#: admin/views/tabs/advanced/permalinks.php:39
+msgid "This prevents threaded replies from working when the user has JavaScript disabled, but on a large site can mean a %1$shuge%2$s improvement in crawl efficiency for search engines when you have a lot of comments."
+msgstr "Dette forhindrer trådede svar fra at virke, når brugeren har JavaScript deaktiveret, men på et stort websted kan dette betyde %1$senorme%2$s forbedringer i gennemgangseffektiviteten for søgemaskiner, når du har en mange kommentarer."
+
+#. translators: %1$s expands to Yoast SEO.
+#: admin/views/licenses.php:117
 msgid "%1$s Extensions"
 msgstr "%1$s udvidelser"
 
@@ -4467,7 +4474,7 @@ msgstr "Alle SEO-bedømmelser"
 msgid "Always include"
 msgstr "Inkluder altid"
 
-#: admin/pages/metas.php:24 frontend/class-frontend.php:538
+#: admin/pages/metas.php:24 frontend/class-frontend.php:564
 msgid "Archives"
 msgstr "Arkiver"
 
@@ -4484,7 +4491,7 @@ msgstr "Blokeret"
 msgid "Breadcrumbs title"
 msgstr "Brødkrummetitel"
 
-#: admin/class-social-facebook-form.php:246
+#: admin/class-social-facebook-form.php:244
 msgid "Clear all Facebook Data"
 msgstr "Ryd al data fra Facebook"
 
@@ -4623,7 +4630,7 @@ msgstr "URL peger på ikke-eksisterende side."
 msgid "Upgrade to %1$s &raquo;"
 msgstr "Opgrader til %1$s &raquo;"
 
-#: admin/class-yoast-form.php:508 admin/metabox/class-metabox.php:712
+#: admin/class-yoast-form.php:510 admin/metabox/class-metabox.php:712
 #: admin/taxonomy/class-taxonomy-fields-presenter.php:134
 msgid "Upload Image"
 msgstr "Overfør billede"
@@ -4911,7 +4918,7 @@ msgstr "%s brødkrummer"
 msgid "(no parent)"
 msgstr "(ingen forælder)"
 
-#: admin/class-bulk-editor-list-table.php:1008
+#: admin/class-bulk-editor-list-table.php:1013
 msgid "Action"
 msgstr "Handling"
 
@@ -4921,7 +4928,7 @@ msgstr "Handling"
 msgid "Advanced"
 msgstr "Avanceret"
 
-#: admin/class-admin.php:700 admin/class-admin.php:701 admin/pages/metas.php:75
+#: admin/class-admin.php:702 admin/class-admin.php:703 admin/pages/metas.php:75
 msgid "Advanced Variables"
 msgstr "Avancerede variable"
 
@@ -4929,7 +4936,7 @@ msgstr "Avancerede variable"
 msgid "Anchor text for the homepage:"
 msgstr "Ankertekst for forsiden:"
 
-#: admin/class-admin.php:692 admin/class-admin.php:693 admin/pages/metas.php:69
+#: admin/class-admin.php:694 admin/class-admin.php:695 admin/pages/metas.php:69
 msgid "Basic Variables"
 msgstr "Grundlæggende variable"
 
@@ -4959,7 +4966,7 @@ msgstr "Indstillingerne kunne ikke skrives til fil."
 msgid "Could not zip settings-file."
 msgstr "Kunne ikke komprimere indstillingsfil."
 
-#: admin/class-bulk-editor-list-table.php:809
+#: admin/class-bulk-editor-list-table.php:814
 msgid "Edit"
 msgstr "Rediger"
 
@@ -4983,23 +4990,23 @@ msgstr "Eksisterende Yoast meta-beskrivelse"
 msgid "Extensions"
 msgstr "Udvidelser"
 
-#: admin/class-admin.php:237
+#: admin/class-admin.php:239
 msgid "FAQ"
 msgstr "FAQ"
 
-#: admin/class-admin.php:276
+#: admin/class-admin.php:278
 msgid "Facebook profile URL"
 msgstr "Facebook-profil-URL"
 
-#: admin/class-bulk-editor-list-table.php:428
+#: admin/class-bulk-editor-list-table.php:433
 msgid "Filter"
 msgstr "Filter"
 
-#: admin/class-admin.php:670
+#: admin/class-admin.php:672
 msgid "For more information:"
 msgstr "For mere information:"
 
-#: admin/class-admin.php:272 admin/pages/social.php:20
+#: admin/class-admin.php:274 admin/pages/social.php:20
 msgid "Google+"
 msgstr "Google+"
 
@@ -5046,19 +5053,19 @@ msgstr "Der blev ikke fundet taksonomiske metadata"
 msgid "None"
 msgstr "Ingen"
 
-#: admin/class-admin.php:685 admin/pages/metas.php:64
+#: admin/class-admin.php:687 admin/pages/metas.php:64
 msgid "Note that not all variables can be used in every template."
 msgstr "Bemærk at ikke alle variable kan benyttes i alle skabeloner."
 
-#: admin/class-bulk-editor-list-table.php:1003
+#: admin/class-bulk-editor-list-table.php:1008
 msgid "Page URL/Slug"
 msgstr "Sides URL/korttitel"
 
-#: admin/class-bulk-editor-list-table.php:1001
+#: admin/class-bulk-editor-list-table.php:1006
 msgid "Post Status"
 msgstr "Indlægsstatus"
 
-#: admin/class-bulk-editor-list-table.php:1000
+#: admin/class-bulk-editor-list-table.php:1005
 msgid "Post Type"
 msgstr "Indholdstype"
 
@@ -5091,20 +5098,20 @@ msgstr "Præfiks for brødkrummer:"
 msgid "Prefix for search result pages:"
 msgstr "Præfiks for søgeresultatssider:"
 
-#: admin/class-admin.php:233
+#: admin/class-admin.php:235
 msgid "Premium Support"
 msgstr "Førsteklasses support"
 
-#: admin/class-bulk-editor-list-table.php:821
+#: admin/class-bulk-editor-list-table.php:826
 msgid "Preview"
 msgstr "Forhåndsvisning"
 
 #. translators: %s: post title
-#: admin/class-bulk-editor-list-table.php:820
+#: admin/class-bulk-editor-list-table.php:825
 msgid "Preview &#8220;%s&#8221;"
 msgstr "Forhåndsvis &#8220;%s&#8221;"
 
-#: admin/class-bulk-editor-list-table.php:1002
+#: admin/class-bulk-editor-list-table.php:1007
 msgid "Publication date"
 msgstr "Udgivelsesdato"
 
@@ -5164,7 +5171,7 @@ msgstr "Standard for hele webstedet: %s"
 msgid "Social"
 msgstr "Social"
 
-#: admin/class-admin.php:678 admin/class-admin.php:679 admin/pages/metas.php:41
+#: admin/class-admin.php:680 admin/class-admin.php:681 admin/pages/metas.php:41
 #: admin/pages/metas.php:62
 msgid "Template explanation"
 msgstr "Skabelon-forklaring"
@@ -5173,7 +5180,7 @@ msgstr "Skabelon-forklaring"
 msgid "This export includes taxonomy metadata"
 msgstr "Denne eksport inkluderer taksonomiske metadata"
 
-#: admin/class-admin.php:671
+#: admin/class-admin.php:673
 msgid "Title optimization"
 msgstr "Titel-optimering"
 
@@ -5185,7 +5192,7 @@ msgstr "Titler &amp; Meta"
 msgid "Tools"
 msgstr "Værktøjer"
 
-#: admin/class-admin.php:274
+#: admin/class-admin.php:276
 msgid "Twitter username (without @)"
 msgstr "Twitter brugernavn (uden @)"
 
@@ -5207,21 +5214,21 @@ msgstr "Overførsel mislykkedes."
 msgid "Use Image"
 msgstr "Benyt billede"
 
-#: admin/class-bulk-editor-list-table.php:831
+#: admin/class-bulk-editor-list-table.php:836
 #: admin/google_search_console/class-gsc-table.php:207
 msgid "View"
 msgstr "Vis"
 
 #. translators: %s: post title
-#: admin/class-bulk-editor-list-table.php:830
+#: admin/class-bulk-editor-list-table.php:835
 msgid "View &#8220;%s&#8221;"
 msgstr "Vis &#8220;%s&#8221;"
 
-#: admin/class-bulk-editor-list-table.php:999
+#: admin/class-bulk-editor-list-table.php:1004
 msgid "WP Page Title"
 msgstr "WP sidetitel"
 
-#: admin/class-admin.php:672
+#: admin/class-admin.php:674
 msgid "Why Google won't display the right page title"
 msgstr "Hvorfor Google ikke viser den korrekte sidetitel"
 
@@ -5270,7 +5277,7 @@ msgid "Advanced <code>meta</code> robots settings for this page."
 msgstr "Avancerede <code>meta</code>robot-indstillinger for denne side."
 
 #. translators: %1$s expands to Yoast SEO.
-#: admin/class-admin.php:682
+#: admin/class-admin.php:684
 msgid "The title &amp; metas settings for %1$s are made up of variables that are replaced by specific values from the page when the page is displayed. The tabs on the left explain the available variables."
 msgstr "Titlen &amp; meta-indstillingerne for %1$s består af variabler, der erstattes af specifikke værdier fra siden, når den vises. Fanerne til venstre forklarer de tilgængelige variabler."
 
