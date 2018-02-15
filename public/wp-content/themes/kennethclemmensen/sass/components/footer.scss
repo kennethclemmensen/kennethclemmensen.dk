@@ -29,6 +29,7 @@
 
 .footer__link {
   margin: 0 6px;
+  text-decoration: none;
   &::before {
     @extend .font-awesome-styles;
     display: inline-block;
