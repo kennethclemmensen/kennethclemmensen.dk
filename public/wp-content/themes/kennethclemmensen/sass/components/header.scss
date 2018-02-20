@@ -6,7 +6,7 @@
   border-bottom: 1px solid $color-gray;
   position: fixed;
   top: 0;
-  @media #{$sm} {
+  @media #{$tablet} {
     height: $header-height-sm;
     padding: 0;
     position: static;
@@ -18,7 +18,7 @@
   margin-top: 18px;
   font-size: 1.1em;
   text-decoration: none;
-  @media #{$sm} {
+  @media #{$tablet} {
     display: none;
   }
 }
@@ -32,7 +32,7 @@
   position: absolute;
   top: 10px;
   right: 10px;
-  @media #{$sm} {
+  @media #{$tablet} {
     display: none;
   }
   &--active {

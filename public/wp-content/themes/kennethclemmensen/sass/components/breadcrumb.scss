@@ -1,6 +1,6 @@
 .breadcrumb {
   display: none;
-  @media #{$sm} {
+  @media #{$tablet} {
     display: block;
     margin: -20px 0 25px 0;
   }
