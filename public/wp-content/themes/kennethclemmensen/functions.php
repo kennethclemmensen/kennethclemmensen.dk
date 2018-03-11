@@ -21,8 +21,8 @@ add_action('wp_enqueue_scripts', function() : void {
     ThemeHelper::addScriptWithLocalFallback($jquery, $cdnFile, $localFile);
 
     $vue_js = 'vue-js';
-    $cdnFile = 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js';
-    $localFile = get_template_directory_uri().'/js/libraries/vue-2.5.13.min.js';
+    $cdnFile = 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.15/vue.min.js';
+    $localFile = get_template_directory_uri().'/js/libraries/vue-2.5.15.min.js';
     ThemeHelper::addScriptWithLocalFallback($vue_js, $cdnFile, $localFile);
 
     $vue_resource = 'vue-resource';
