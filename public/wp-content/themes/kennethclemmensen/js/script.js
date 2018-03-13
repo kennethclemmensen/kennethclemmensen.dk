@@ -14,16 +14,16 @@ jQuery.noConflict();
         });
 
         function Slider(delay, duration) {
-            var $sliderImages = $('.slider__image');
-            var getRandomNumber = function() {
+            let $sliderImages = $('.slider__image');
+            let getRandomNumber = function() {
                 return Math.floor(Math.random() * $sliderImages.length);
             };
             this.show = function() {
-                var randomNumber = getRandomNumber();
+                let randomNumber = getRandomNumber();
                 $sliderImages.eq(randomNumber).show();
                 setInterval(function() {
                     $sliderImages.eq(randomNumber).fadeOut(duration, function() {
-                        $sliderImages.hide(); //prevent display block on more than one image
+                        $sliderImages.eq(randomNumber).hide(); //prevent display block on more than one image
                         randomNumber = getRandomNumber();
                         $sliderImages.eq(randomNumber).fadeIn(duration);
                     });
@@ -31,11 +31,11 @@ jQuery.noConflict();
             }
         }
 
-        var $slider = $('#slider');
-        var slider = new Slider($slider.data('delay'), $slider.data('duration'));
+        let $slider = $('#slider');
+        let slider = new Slider($slider.data('delay'), $slider.data('duration'));
         slider.show();
 
-        var $body = $('body');
+        let $body = $('body');
         lightbox.option({
             'albumLabel': $body.data('image-text') + ' %1 ' + $body.data('of-text') + ' %2'
         });
