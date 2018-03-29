@@ -7,7 +7,7 @@
   position: fixed;
   top: 0;
   @media #{$tablet} {
-    height: $header-height-sm;
+    height: $header-height-tablet;
     padding: 0;
     position: static;
   }
@@ -60,9 +60,9 @@
   &::before, &::after {
     display: block;
     background: $color-white;
-    content: "";
-    width: 30px;
-    height: 5px;
+    content: '';
+    width: inherit;
+    height: inherit;
     margin-top: -10px;
     position: absolute;
     @include transition();

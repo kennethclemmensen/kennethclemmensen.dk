@@ -1,15 +1,3 @@
-@mixin translateX($value) {
-  transform: translateX($value);
-}
-
-@mixin transition($property: all, $duration: .4s, $timing-function: ease, $delay: 0s) {
-  transition: $property $duration $timing-function $delay;
-}
-
-@mixin box-shadow($x, $y, $blur, $color) {
-  box-shadow: $x $y $blur $color;
-}
-
 @mixin border-radius($value) {
   border-radius: $value;
 }
@@ -18,6 +6,18 @@
   border-radius: $topLeft $topRight $bottomRight $bottomLeft;
 }
 
+@mixin box-shadow($x, $y, $blur, $color) {
+  box-shadow: $x $y $blur $color;
+}
+
 @mixin rotate($deg) {
   transform: rotate($deg);
+}
+
+@mixin transition($property: all, $duration: .4s, $timing-function: ease, $delay: 0s) {
+  transition: $property $duration $timing-function $delay;
+}
+
+@mixin translateX($value) {
+  transform: translateX($value);
 }

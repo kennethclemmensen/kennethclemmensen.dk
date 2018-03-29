@@ -2,7 +2,7 @@
   display: none;
   @media #{$tablet} {
     display: block;
-    margin: -20px 0 25px 0;
+    margin: -20px 0 25px;
   }
 }
 
@@ -21,7 +21,7 @@
   &::after {
     display: inline-block;
     @extend .font-awesome-solid;
-    content: "\f105";
+    content: '\f105';
     margin: 0 7px;
   }
   &:last-child {

@@ -9,8 +9,8 @@
   right: 0;
   bottom: 0;
   @media @tablet {
-    width: @page-width-sm;
-    height: @footer-height-sm;
+    width: @page-width-tablet;
+    height: @footer-height-tablet;
     border-left: 1px solid @color-gray;
     border-right: 1px solid @color-gray;
     .border-radius(8px, 8px, 0, 0);
@@ -19,7 +19,7 @@
     .translateX(-50%);
   }
   @media @desktop {
-    width: @page-width-md;
+    width: @page-width-desktop;
   }
 }
 
@@ -37,17 +37,17 @@
   }
   &--email {
     &::before {
-      content: "\f0e0";
+      content: '\f0e0';
     }
   }
   &--linkedin {
     &::before {
-      content: "\f0e1";
+      content: '\f0e1';
     }
   }
   &--github {
     &::before {
-      content: "\f09b";
+      content: '\f09b';
     }
   }
 }

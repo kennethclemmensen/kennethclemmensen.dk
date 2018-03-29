@@ -14,21 +14,10 @@ class MobileMenuWalker extends Walker_Nav_Menu {
      * @param int $id Current item ID
      */
     public function start_el(&$output, $item, $depth = 0, $args = [], $id = 0) : void {
-        $current_class = ($item->current) ? 'mobile-nav__link--current' : '';
+        $currentClass = ($item->current) ? 'mobile-nav__link--current' : '';
         $link = get_permalink($item->object_id);
-        $output .= '<li><a href="'.$link.'" class="mobile-nav__link '.$current_class.'">'.$item->title;
-        if($this->hasSubPages($item->object_id)) $output .= '<span class="mobile-nav__arrow"></span>';
+        $output .= '<li><a href="'.$link.'" class="mobile-nav__link '.$currentClass.'">'.$item->title;
+        if($this->has_children) $output .= '<span class="mobile-nav__arrow"></span>';
         $output .= '</a>';
-    }
-
-    /**
-     * Check if a page with the specified ID has sub pages
-     *
-     * @param int $pageID the id of the page
-     * @return bool true if the page has sub pages. False otherwise
-     */
-    private function hasSubPages(int $pageID) : bool {
-        $children = get_pages(['child_of' => $pageID]);
-        return count($children) !== 0;
     }
 }

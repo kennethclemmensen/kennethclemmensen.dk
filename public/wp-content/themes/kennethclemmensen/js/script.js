@@ -7,8 +7,7 @@ jQuery.noConflict();
             $('.mobile-nav').toggleClass('mobile-nav--active');
             $('html, body').toggleClass('show-mobile-nav');
         });
-        $('.mobile-nav__arrow').on('click', function(event) {
-            event.preventDefault();
+        $('.mobile-nav__arrow').on('click', function() {
             $(this).toggleClass('mobile-nav__arrow--rotated');
             $(this).parent().parent().find('.sub-menu').toggle();
         });

@@ -1,15 +1,3 @@
-.translateX(@value) {
-  transform: translateX(@value);
-}
-
-.transition(@property: all; @duration: .4s; @timing-function: ease; @delay: 0s) {
-  transition: @arguments;
-}
-
-.box-shadow(@x; @y; @blur; @color) {
-  box-shadow: @arguments;
-}
-
 .border-radius(@value) {
   border-radius: @value;
 }
@@ -18,6 +6,18 @@
   border-radius: @arguments;
 }
 
+.box-shadow(@x; @y; @blur; @color) {
+  box-shadow: @arguments;
+}
+
 .rotate(@deg) {
   transform: rotate(@deg);
+}
+
+.transition(@property: all; @duration: .4s; @timing-function: ease; @delay: 0s) {
+  transition: @arguments;
+}
+
+.translateX(@value) {
+  transform: translateX(@value);
 }

@@ -9,7 +9,6 @@ get_header();
                 Siden du søgte efter blev ikke fundet. For at finde siden kan du kigge under
                 <a href="/sitemap">Sitemap.</a>
             </p>
-            <?php the_content(); ?>
         </section>
     </div>
 <?php
