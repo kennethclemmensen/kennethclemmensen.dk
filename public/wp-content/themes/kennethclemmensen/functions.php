@@ -5,35 +5,39 @@ require_once 'includes/ThemeSettings.php';
 require_once 'includes/TranslationStrings.php';
 
 add_action('wp_enqueue_scripts', function() : void {
-    $font_awesome = 'font-awesome';
+    $fontAwesome = 'font-awesome';
     $cdnFile = 'https://use.fontawesome.com/releases/v5.0.9/css/all.css';
-    $localFile = get_template_directory_uri().'/css/fontawesome-5.0.9.min.css';
-    ThemeHelper::addStyleWithLocalFallback($font_awesome, $cdnFile, $localFile);
+    $localFile = '/css/fontawesome-5.0.9.min.css';
+    $version = filemtime(get_template_directory().$localFile);
+    ThemeHelper::addStyleWithLocalFallback($fontAwesome, $cdnFile, get_template_directory_uri().$localFile, [], $version);
 
     $style = 'theme-css';
-    $style_file = '/css/style.css';
-    $version = filemtime(get_template_directory().$style_file);
-    wp_enqueue_style($style, get_template_directory_uri().$style_file, [$font_awesome], $version);
+    $styleFile = '/css/style.css';
+    $version = filemtime(get_template_directory().$styleFile);
+    wp_enqueue_style($style, get_template_directory_uri().$styleFile, [$fontAwesome], $version);
 
     $jquery = 'jquery';
     $cdnFile = 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js';
-    $localFile = get_template_directory_uri().'/js/libraries/jquery-3.3.1.min.js';
-    ThemeHelper::addScriptWithLocalFallback($jquery, $cdnFile, $localFile);
+    $localFile = '/js/libraries/jquery-3.3.1.min.js';
+    $version = filemtime(get_template_directory().$localFile);
+    ThemeHelper::addScriptWithLocalFallback($jquery, $cdnFile, get_template_directory_uri().$localFile, [], $version);
 
-    $vue_js = 'vue-js';
+    $vueJS = 'vue-js';
     $cdnFile = 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js';
-    $localFile = get_template_directory_uri().'/js/libraries/vue-2.5.16.min.js';
-    ThemeHelper::addScriptWithLocalFallback($vue_js, $cdnFile, $localFile);
+    $localFile = '/js/libraries/vue-2.5.16.min.js';
+    $version = filemtime(get_template_directory().$localFile);
+    ThemeHelper::addScriptWithLocalFallback($vueJS, $cdnFile, get_template_directory_uri().$localFile, [], $version);
 
-    $vue_resource = 'vue-resource';
+    $vueResource = 'vue-resource';
     $cdnFile = 'https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.5.0/vue-resource.min.js';
-    $localFile = get_template_directory_uri().'/js/plugins/vue-resource-1.5.0.min.js';
-    ThemeHelper::addScriptWithLocalFallback($vue_resource, $cdnFile, $localFile, [$vue_js]);
+    $localFile = '/js/plugins/vue-resource-1.5.0.min.js';
+    $version = filemtime(get_template_directory().$localFile);
+    ThemeHelper::addScriptWithLocalFallback($vueResource, $cdnFile, get_template_directory_uri().$localFile, [$vueJS], $version);
 
     $script = 'theme-js';
-    $script_file = '/js/minified/script.min.js';
-    $version = filemtime(get_template_directory().$script_file);
-    wp_enqueue_script($script, get_template_directory_uri().$script_file, [$jquery, $vue_js, $vue_resource], $version, true);
+    $scriptFile = '/js/minified/script.min.js';
+    $version = filemtime(get_template_directory().$scriptFile);
+    wp_enqueue_script($script, get_template_directory_uri().$scriptFile, [$jquery, $vueJS, $vueResource], $version, true);
 });
 
 add_action('init', function() : void {
