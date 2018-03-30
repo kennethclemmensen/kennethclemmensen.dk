@@ -2,7 +2,7 @@
 namespace KCGallery\Includes;
 
 /**
- * Class KCGalleryLoader contains a method to load CSS and JavaScript files
+ * Class KCGalleryLoader contains methods to load CSS and JavaScript files
  * @package KCGallery\Includes
  */
 class KCGalleryLoader {
@@ -14,11 +14,13 @@ class KCGalleryLoader {
         add_action('wp_enqueue_scripts', function() : void {
             $lightbox = 'lightbox';
             $cdnFile = 'https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.10.0/css/lightbox.min.css';
-            $localFile = plugin_dir_url(__DIR__).'assets/css/lightbox-2.10.0.min.css';
-            $this->addStyleWithLocalFallback($lightbox, $cdnFile, $localFile);
+            $localFile = 'assets/css/lightbox-2.10.0.min.css';
+            $version = filemtime(plugin_dir_path(__DIR__).$localFile);
+            $this->addStyleWithLocalFallback($lightbox, $cdnFile, plugin_dir_url(__DIR__).$localFile, [], $version);
             $cdnFile = 'https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.10.0/js/lightbox.min.js';
-            $localFile = plugin_dir_url(__DIR__).'assets/js/lightbox-2.10.0.min.js';
-            $this->addScriptWithLocalFallback($lightbox, $cdnFile, $localFile, ['jquery'], false, true);
+            $localFile = 'assets/js/lightbox-2.10.0.min.js';
+            $version = filemtime(plugin_dir_path(__DIR__).$localFile);
+            $this->addScriptWithLocalFallback($lightbox, $cdnFile, plugin_dir_url(__DIR__).$localFile, ['jquery'], $version);
         });
     }
 
@@ -29,12 +31,17 @@ class KCGalleryLoader {
      * @param string $cdnFile the path to the CDN file
      * @param string $localFile the path to the local file
      * @param array $deps the dependencies of the script
-     * @param bool $ver the script version number
+     * @param int $ver the script version number
      * @param bool $inFooter false if the script should be enqueued in the header
      */
-    private function addScriptWithLocalFallback(string $handle, string $cdnFile, string $localFile, array $deps = [], bool $ver = false, bool $inFooter = true) : void {
+    private function addScriptWithLocalFallback(string $handle, string $cdnFile, string $localFile, array $deps = [], int $ver = null, bool $inFooter = true) : void {
         $file = @fopen($cdnFile, 'r');
-        $src = ($file === false) ? $localFile : $cdnFile;
+        if($file === false) {
+            $src = $localFile;
+        } else {
+            $src = $cdnFile;
+            $ver = null;
+        }
         wp_deregister_script($handle);
         wp_enqueue_script($handle, $src, $deps, $ver, $inFooter);
     }
@@ -45,10 +52,17 @@ class KCGalleryLoader {
      * @param string $handle the name of the stylesheet
      * @param string $cdnFile the path to the CDN file
      * @param string $localFile the path to the local file
+     * @param array $deps the dependencies to the local file
+     * @param int $ver the version of the local file
      */
-    private function addStyleWithLocalFallback(string $handle, string $cdnFile, string $localFile) : void {
+    private function addStyleWithLocalFallback(string $handle, string $cdnFile, string $localFile, array $deps = [], int $ver = null) : void {
         $file = @fopen($cdnFile, 'r');
-        $src = ($file === false) ? $localFile : $cdnFile;
-        wp_enqueue_style($handle, $src);
+        if($file === false) {
+            $src = $localFile;
+        } else {
+            $src = $cdnFile;
+            $ver = null;
+        }
+        wp_enqueue_style($handle, $src, $deps, $ver);
     }
 }

@@ -55,7 +55,7 @@ class KCGallery {
         $this->init();
         $this->addMetaBoxes();
         $this->addShortcodes();
-        $this->admin_columns();
+        $this->adminColumns();
     }
 
     /**
@@ -150,7 +150,7 @@ class KCGallery {
             $galleries = $this->getGalleries();
             foreach($galleries as $key => $gallery) {
                 $html .= '<div class="kc-galleries__gallery">';
-                $html .= '<a href="'.$this->getGalleryPage($key).'"><img src="'.$this->getGalleryPhoto($key).'" alt="'.get_the_title($key).'"></a>';
+                $html .= '<a href="'.$this->getGalleryPageUrl($key).'"><img src="'.$this->getGalleryPhotoUrl($key).'" alt="'.get_the_title($key).'"></a>';
                 $html .= '</div>';
             }
             $html .= '</div>';
@@ -193,7 +193,7 @@ class KCGallery {
     /**
      * Add admin columns to the gallery and photo custom post types
      */
-    private function admin_columns() : void {
+    private function adminColumns() : void {
         $columnGalleryKey = 'gallery';
         $columnGalleryValue = 'Gallery';
         $columnPhotoKey = 'photo';
@@ -273,7 +273,7 @@ class KCGallery {
      * @param array $args an array of arguments
      * @return string the gallery page url
      */
-    private function getGalleryPage(int $postID = null, array $args = []) : string {
+    private function getGalleryPageUrl(int $postID = null, array $args = []) : string {
         return get_permalink(rwmb_meta($this->fieldGalleryPage, $args, $postID));
     }
 
@@ -284,7 +284,7 @@ class KCGallery {
      * @param array $args an array of arguments
      * @return string the gallery photo url
      */
-    private function getGalleryPhoto(int $postID = null, array $args = []) : string {
+    private function getGalleryPhotoUrl(int $postID = null, array $args = []) : string {
         $photo = rwmb_meta($this->fieldGalleryPhoto, $args, $postID);
         return array_shift($photo)['full_url'];
     }
