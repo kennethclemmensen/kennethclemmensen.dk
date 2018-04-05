@@ -8,7 +8,13 @@
             $title = ($i === 0) ? TranslationStrings::getFrontPageText() : get_the_title($pageID);
             ?>
             <li class="breadcrumb__list-item">
-                <a href="<?php echo get_permalink($pageID); ?>"><?php echo $title; ?></a>
+                <?php
+                if(($i + 1) === count($pages)) {
+                    echo '<em>'.$title.'</em>';
+                } else {
+                    echo '<a href="'.get_permalink($pageID).'">'.$title.'</a>';
+                }
+                ?>
             </li>
             <?php
         }
