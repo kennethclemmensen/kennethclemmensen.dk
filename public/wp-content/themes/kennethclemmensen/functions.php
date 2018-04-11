@@ -47,6 +47,14 @@ add_action('init', function() : void {
         'mobile-menu' => 'Mobile menu',
         'main-menu' => 'Main menu'
     ]);
+    register_sidebar([
+        'name' => '404',
+        'id' => '404',
+        'before_widget' => '',
+        'after_widget' => '',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>'
+    ]);
     remove_action('admin_print_styles', 'print_emoji_styles');
     $priority = 7;
     remove_action('wp_head', 'print_emoji_detection_script', $priority);
