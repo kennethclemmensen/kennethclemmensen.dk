@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: KC API
-Description:
+Description: The API for the site
 Version: 1.0
 Author: Kenneth Clemmensen
 Author URI: https://www.kennethclemmensen.dk

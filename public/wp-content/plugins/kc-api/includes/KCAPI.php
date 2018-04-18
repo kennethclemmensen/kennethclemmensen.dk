@@ -7,7 +7,7 @@ use \WP_REST_Server;
 use \WP_Query;
 
 /**
- * Class KCAPI contains methods to handle the functionality of the plugin
+ * Class KCAPI contains methods to set up API endpoints and get data
  * @package KCAPI\Includes
  */
 class KCAPI {
@@ -27,7 +27,7 @@ class KCAPI {
             register_rest_route('kcapi/v1', '/search/pagesbytitle/(?P<title>[\S]+)', [
                 'methods' => [WP_REST_Server::READABLE],
                 'callback' => function(WP_REST_Request $request) : WP_REST_Response {
-                    $title = $request->get_param('title');
+                    $title = sanitize_text_field($request->get_param('title'));
                     $statusCode = 200;
                     return new WP_REST_Response($this->getPagesByTitle($title), $statusCode);
                 }
