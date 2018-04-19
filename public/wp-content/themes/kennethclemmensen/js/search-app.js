@@ -6,11 +6,11 @@ const app = new Vue({
     },
     watch: {
         searchString: function() {
-            this.search(null);
+            this.search();
         }
     },
     methods: {
-        search: function(event) {
+        search: function(event = null) {
             if(event !== null) event.preventDefault();
             this.$http.get('/wp-json/kcapi/v1/search/pagesbytitle/' + this.searchString).then(response => {
                 this.results = response.body;
