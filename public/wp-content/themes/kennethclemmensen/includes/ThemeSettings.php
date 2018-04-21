@@ -10,6 +10,9 @@ class ThemeSettings {
     private $email;
     private $linkedIn;
     private $gitHub;
+    private $emailShortcode;
+    private $linkedInShortcode;
+    private $gitHubShortcode;
 
     /**
      * ThemeSettings constructor
@@ -21,8 +24,13 @@ class ThemeSettings {
         $this->email = 'email';
         $this->linkedIn = 'linkedin';
         $this->gitHub = 'github';
+        $prefix = 'kc-';
+        $this->emailShortcode = $prefix.'email';
+        $this->linkedInShortcode = $prefix.'linkedin';
+        $this->gitHubShortcode = $prefix.'github';
         $this->adminMenu();
         $this->adminInit();
+        $this->addShortcodes();
     }
 
     /**
@@ -57,17 +65,35 @@ class ThemeSettings {
             }, $this->pageSlug);
             $prefix = 'kc-theme-settings-';
             add_settings_field($prefix.'email', 'Email', function() : void {
-                echo '<input type="email" name="'.$this->optionGroup.'['.$this->email.']" value="'.$this->getEmail().'" required>';
+                echo '<input type="email" name="'.$this->optionGroup.'['.$this->email.']" value="'.$this->getEmail().'" required> ';
+                echo '['.$this->emailShortcode.']';
             }, $this->pageSlug, $sectionID);
             add_settings_field($prefix.'linkedin', 'LinkedIn', function() : void {
-                echo '<input type="url" name="'.$this->optionGroup.'['.$this->linkedIn.']" value="'.$this->getLinkedInUrl().'" required>';
+                echo '<input type="url" name="'.$this->optionGroup.'['.$this->linkedIn.']" value="'.$this->getLinkedInUrl().'" required> ';
+                echo '['.$this->linkedInShortcode.']';
             }, $this->pageSlug, $sectionID);
             add_settings_field($prefix.'github', 'GitHub', function() : void {
-                echo '<input type="url" name="'.$this->optionGroup.'['.$this->gitHub.']" value="'.$this->getGitHubUrl().'" required>';
+                echo '<input type="url" name="'.$this->optionGroup.'['.$this->gitHub.']" value="'.$this->getGitHubUrl().'" required> ';
+                echo '['.$this->gitHubShortcode.']';
             }, $this->pageSlug, $sectionID);
             register_setting($this->optionGroup, $this->optionGroup, function(array $input) : array {
                 return $this->validateInput($input);
             });
+        });
+    }
+
+    /**
+     * Add shortcodes
+     */
+    private function addShortcodes() : void {
+        add_shortcode($this->emailShortcode, function() : string {
+            return $this->getEmail();
+        });
+        add_shortcode($this->linkedInShortcode, function() : string {
+            return $this->getLinkedInUrl();
+        });
+        add_shortcode($this->gitHubShortcode, function() : string {
+            return $this->getGitHubUrl();
         });
     }
 
