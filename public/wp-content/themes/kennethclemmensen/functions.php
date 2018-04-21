@@ -48,8 +48,8 @@ add_action('init', function() : void {
         'main-menu' => 'Main menu'
     ]);
     register_sidebar([
-        'name' => '404',
-        'id' => '404',
+        'name' => 'Page not found',
+        'id' => 'page-not-found',
         'before_widget' => '',
         'after_widget' => '',
         'before_title' => '<h1>',
