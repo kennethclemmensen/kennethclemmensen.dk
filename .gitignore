@@ -15,3 +15,6 @@ public/wp-content/uploads
 
 #Composer
 vendor
+
+#Cache
+public/wp-content/cache
