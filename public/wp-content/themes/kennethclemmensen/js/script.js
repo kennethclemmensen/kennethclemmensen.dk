@@ -13,21 +13,29 @@ jQuery.noConflict();
             $(this).parent().parent().find('.sub-menu').toggle();
         });
 
-        function Slider(delay, duration) {
-            let $sliderImages = $('.slider__image');
-            let getRandomNumber = function() {
-                return Math.floor(Math.random() * $sliderImages.length);
-            };
-            this.show = function() {
-                let randomNumber = getRandomNumber();
-                $sliderImages.eq(randomNumber).show();
+        class Slider {
+
+            constructor(delay, duration) {
+                this.delay = delay;
+                this.duration = duration;
+                this.$sliderImages = $('.slider__image');
+            }
+
+            getRandomNumber() {
+                return Math.floor(Math.random() * this.$sliderImages.length);
+            }
+
+            show() {
+                let randomNumber = this.getRandomNumber();
+                this.$sliderImages.eq(randomNumber).show();
+                let self = this;
                 setInterval(function() {
-                    $sliderImages.eq(randomNumber).fadeOut(duration, function() {
-                        $sliderImages.eq(randomNumber).hide(); //prevent display block on more than one image
-                        randomNumber = getRandomNumber();
-                        $sliderImages.eq(randomNumber).fadeIn(duration);
+                    self.$sliderImages.eq(randomNumber).fadeOut(self.duration, function() {
+                        self.$sliderImages.eq(randomNumber).hide(); //prevent display block on more than one image
+                        randomNumber = self.getRandomNumber();
+                        self.$sliderImages.eq(randomNumber).fadeIn(self.duration);
                     });
-                }, delay);
+                }, this.delay);
             }
         }
 
