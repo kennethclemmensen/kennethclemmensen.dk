@@ -1,10 +1,10 @@
 <?php
 use KCSlider\Includes\KCSlider;
 use KCSlider\Includes\KCSliderSettings;
-$kc_slider = new KCSlider();
-$kc_slider_settings = new KCSliderSettings();
-$delay = $kc_slider_settings->getDelay();
-$duration = $kc_slider_settings->getDuration();
+$kcSlider = new KCSlider();
+$kcSliderSettings = new KCSliderSettings();
+$delay = $kcSliderSettings->getDelay();
+$duration = $kcSliderSettings->getDuration();
 ?>
 <div id="slider" class="slider" data-delay="<?php echo $delay; ?>" data-duration="<?php echo $duration; ?>">
     <?php
@@ -14,11 +14,11 @@ $duration = $kc_slider_settings->getDuration();
         'order' => 'ASC',
         'orderby' => 'menu_order'
     ];
-    $wp_query = new WP_Query($args);
-    while($wp_query->have_posts()) {
-        $wp_query->the_post();
+    $wpQuery = new WP_Query($args);
+    while($wpQuery->have_posts()) {
+        $wpQuery->the_post();
         ?>
-        <img src="<?php echo $kc_slider->getSlideImage(); ?>" alt="<?php the_title(); ?>" class="slider__image">
+        <img src="<?php echo $kcSlider->getSlideImage(); ?>" alt="<?php the_title(); ?>" class="slider__image">
         <?php
     }
     wp_reset_query();
