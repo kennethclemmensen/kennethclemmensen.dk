@@ -1,4 +1,6 @@
 .footer {
+  display: flex;
+  justify-content: center;
   background-color: $color-blue--darker;
   height: $footer-height;
   padding: 8px;
@@ -21,33 +23,14 @@
   @media #{$desktop} {
     width: $page-width-desktop;
   }
-}
-
-.footer__text {
-  margin-bottom: 0;
-  font-size: .99em;
-}
-
-.footer__link {
-  margin: 0 6px;
-  text-decoration: none;
-  &::before {
-    @extend .font-awesome-styles;
-    display: inline-block;
+  div {
+    margin: 0 6px;
   }
-  &--email {
-    &::before {
-      content: '\f0e0';
-    }
+  p {
+    margin-bottom: 0;
+    font-size: .99em;
   }
-  &--linkedin {
-    &::before {
-      content: '\f0e1';
-    }
-  }
-  &--github {
-    &::before {
-      content: '\f09b';
-    }
+  a {
+    text-decoration: none;
   }
 }

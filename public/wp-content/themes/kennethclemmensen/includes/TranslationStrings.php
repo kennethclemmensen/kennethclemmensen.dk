@@ -11,9 +11,6 @@ class TranslationStrings {
     private const NO_RESULTS = 'Your search returned no results';
     private const IMAGE = 'Image';
     private const OF = 'of';
-    private const EMAIL = 'Email';
-    private const LINKEDIN = 'LinkedIn';
-    private const GITHUB = 'GitHub';
 
     /**
      * TranslationStrings constructor
@@ -27,9 +24,6 @@ class TranslationStrings {
         pll_register_string('No results', self::NO_RESULTS, $context);
         pll_register_string(self::IMAGE, self::IMAGE, $context);
         pll_register_string(self::OF, self::OF, $context);
-        pll_register_string(self::EMAIL, self::EMAIL, $context);
-        pll_register_string(self::LINKEDIN, self::LINKEDIN, $context);
-        pll_register_string(self::GITHUB, self::GITHUB, $context);
     }
 
     /**
@@ -93,32 +87,5 @@ class TranslationStrings {
      */
     public static function getOfText() : string {
         return pll__(self::OF);
-    }
-
-    /**
-     * Get the email text
-     *
-     * @return string the email text
-     */
-    public static function getEmailText() : string {
-        return pll__(self::EMAIL);
-    }
-
-    /**
-     * Get the LinkedIn text
-     *
-     * @return string the LinkedIn text
-     */
-    public static function getLinkedInText() : string {
-        return pll__(self::LINKEDIN);
-    }
-
-    /**
-     * Get the GitHub text
-     *
-     * @return string the GitHub text
-     */
-    public static function getGitHubText() : string {
-        return pll__(self::GITHUB);
     }
 }

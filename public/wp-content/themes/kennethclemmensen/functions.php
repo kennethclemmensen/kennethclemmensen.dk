@@ -47,14 +47,6 @@ add_action('init', function() : void {
         'mobile-menu' => 'Mobile menu',
         'main-menu' => 'Main menu'
     ]);
-    register_sidebar([
-        'name' => 'Page not found',
-        'id' => 'page-not-found',
-        'before_widget' => '',
-        'after_widget' => '',
-        'before_title' => '<h1>',
-        'after_title' => '</h1>'
-    ]);
     remove_action('admin_print_styles', 'print_emoji_styles');
     $priority = 7;
     remove_action('wp_head', 'print_emoji_detection_script', $priority);
@@ -63,6 +55,25 @@ add_action('init', function() : void {
     remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
     remove_filter('the_content_feed', 'wp_staticize_emoji');
     remove_filter('comment_text_rss', 'wp_staticize_emoji');
+});
+
+add_action('widgets_init', function() : void {
+    register_sidebar([
+        'name' => 'Footer',
+        'id' => 'footer',
+        'before_widget' => '',
+        'after_widget' => '',
+        'before_title' => '',
+        'after_title' => ''
+    ]);
+    register_sidebar([
+        'name' => 'Page not found',
+        'id' => 'page-not-found',
+        'before_widget' => '',
+        'after_widget' => '',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>'
+    ]);
 });
 
 add_filter('tiny_mce_plugins', function(array $plugins) : array {

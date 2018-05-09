@@ -116,7 +116,7 @@ class ThemeSettings {
      *
      * @return string the email
      */
-    public function getEmail() : string {
+    private function getEmail() : string {
         return (isset($this->option[$this->email])) ? $this->option[$this->email] : '';
     }
 
@@ -125,7 +125,7 @@ class ThemeSettings {
      *
      * @return string the LinkedIn url
      */
-    public function getLinkedInUrl() : string {
+    private function getLinkedInUrl() : string {
         return (isset($this->option[$this->linkedIn])) ? $this->option[$this->linkedIn] : '';
     }
 
@@ -134,7 +134,7 @@ class ThemeSettings {
      *
      * @return string the GitHub url
      */
-    public function getGitHubUrl() : string {
+    private function getGitHubUrl() : string {
         return (isset($this->option[$this->gitHub])) ? $this->option[$this->gitHub] : '';
     }
 }

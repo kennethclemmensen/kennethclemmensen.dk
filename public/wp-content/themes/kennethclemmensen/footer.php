@@ -1,19 +1,6 @@
 <footer class="footer">
-    <?php
-    $themeSettings = new ThemeSettings();
-    ?>
-    <p class="footer__text">
-        <?php bloginfo('description'); ?> |
-        <a href="mailto:<?php echo $themeSettings->getEmail(); ?>" class="footer__link footer__link--email"
-           title="<?php echo TranslationStrings::getEmailText(); ?>"></a> |
-        <a href="<?php echo $themeSettings->getLinkedInUrl(); ?>" class="footer__link footer__link--linkedin"
-           target="_blank" title="<?php echo TranslationStrings::getLinkedInText(); ?>"></a> |
-        <a href="<?php echo $themeSettings->getGitHubUrl(); ?>" class="footer__link footer__link--github"
-           target="_blank" title="<?php echo TranslationStrings::getGitHubText(); ?>"></a>
-    </p>
+    <?php dynamic_sidebar('footer'); ?>
 </footer>
-<?php
-wp_footer();
-?>
+<?php wp_footer(); ?>
 </body>
 </html>
