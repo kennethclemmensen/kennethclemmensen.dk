@@ -13,11 +13,12 @@ while(have_posts()) {
             <h1><?php the_title(); ?></h1>
             <?php
             the_content();
+            $searchText = TranslationStrings::getSearchText();
             ?>
             <div id="search-app">
                 <form method="post" action="/" @submit="search($event)">
-                    <input type="search" v-model="searchString" required>
-                    <input type="submit" value="<?php echo TranslationStrings::getSearchText(); ?>">
+                    <input type="search" placeholder="<?php echo $searchText; ?>" v-model="searchString" required>
+                    <input type="submit" value="<?php echo $searchText; ?>">
                 </form>
                 <h2 v-if="results.length === 0 && searchString !== ''">
                     <?php echo TranslationStrings::getNoResultsText(); ?>
