@@ -24,9 +24,7 @@
     content: '\f105';
     margin: 0 7px;
   }
-  &:last-child {
-    &::after {
-      display: none;
-    }
+  &:last-child::after {
+    display: none;
   }
 }
