@@ -126,7 +126,7 @@ class ThemeSettings {
      * @return string the LinkedIn url
      */
     private function getLinkedInUrl() : string {
-        return (isset($this->option[$this->linkedIn])) ? $this->option[$this->linkedIn] : '';
+        return (isset($this->option[$this->linkedIn])) ? esc_url($this->option[$this->linkedIn]) : '';
     }
 
     /**
@@ -135,6 +135,6 @@ class ThemeSettings {
      * @return string the GitHub url
      */
     private function getGitHubUrl() : string {
-        return (isset($this->option[$this->gitHub])) ? $this->option[$this->gitHub] : '';
+        return (isset($this->option[$this->gitHub])) ? esc_url($this->option[$this->gitHub]) : '';
     }
 }

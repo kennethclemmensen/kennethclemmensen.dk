@@ -245,7 +245,7 @@ class FDWC {
     private function getFileUrl(int $postID = null, array $args = []) : string {
         $file = rwmb_meta($this->fieldFile, $args, $postID);
         $file = array_shift($file);
-        return $file['url'];
+        return esc_url($file['url']);
     }
 
     /**

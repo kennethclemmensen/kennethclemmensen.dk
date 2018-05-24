@@ -27,14 +27,14 @@ class KCGalleryLoader {
     /**
      * Add a script from a CDN with a fallback to a local file
      *
-     * @param string $handle the name of the script
+     * @param string $name the name of the script
      * @param string $cdnFile the path to the CDN file
      * @param string $localFile the path to the local file
      * @param array $deps the dependencies of the script
      * @param int $ver the script version number
      * @param bool $inFooter false if the script should be enqueued in the header
      */
-    private function addScriptWithLocalFallback(string $handle, string $cdnFile, string $localFile, array $deps = [], int $ver = null, bool $inFooter = true) : void {
+    private function addScriptWithLocalFallback(string $name, string $cdnFile, string $localFile, array $deps = [], int $ver = null, bool $inFooter = true) : void {
         $file = @fopen($cdnFile, 'r');
         if($file === false) {
             $src = $localFile;
@@ -42,20 +42,20 @@ class KCGalleryLoader {
             $src = $cdnFile;
             $ver = null;
         }
-        wp_deregister_script($handle);
-        wp_enqueue_script($handle, $src, $deps, $ver, $inFooter);
+        wp_deregister_script($name);
+        wp_enqueue_script($name, $src, $deps, $ver, $inFooter);
     }
 
     /**
      * Add a stylesheet from a CDN with a fallback to a local file
      *
-     * @param string $handle the name of the stylesheet
+     * @param string $name the name of the stylesheet
      * @param string $cdnFile the path to the CDN file
      * @param string $localFile the path to the local file
      * @param array $deps the dependencies to the local file
      * @param int $ver the version of the local file
      */
-    private function addStyleWithLocalFallback(string $handle, string $cdnFile, string $localFile, array $deps = [], int $ver = null) : void {
+    private function addStyleWithLocalFallback(string $name, string $cdnFile, string $localFile, array $deps = [], int $ver = null) : void {
         $file = @fopen($cdnFile, 'r');
         if($file === false) {
             $src = $localFile;
@@ -63,6 +63,6 @@ class KCGalleryLoader {
             $src = $cdnFile;
             $ver = null;
         }
-        wp_enqueue_style($handle, $src, $deps, $ver);
+        wp_enqueue_style($name, $src, $deps, $ver);
     }
 }

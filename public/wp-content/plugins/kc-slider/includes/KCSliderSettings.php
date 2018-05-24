@@ -1,4 +1,5 @@
 <?php
+
 namespace KCSlider\Includes;
 
 /**
@@ -90,7 +91,8 @@ class KCSliderSettings {
      * @return int the delay
      */
     public function getDelay() : int {
-        return $this->option[$this->delay];
+        $defaultValue = 8000;
+        return (isset($this->option[$this->delay])) ? $this->option[$this->delay] : $defaultValue;
     }
 
     /**
@@ -99,6 +101,7 @@ class KCSliderSettings {
      * @return int the duration
      */
     public function getDuration() : int {
-        return $this->option[$this->duration];
+        $defaultValue = 500;
+        return (isset($this->option[$this->duration])) ? $this->option[$this->duration] : $defaultValue;
     }
 }

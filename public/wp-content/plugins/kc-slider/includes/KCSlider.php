@@ -116,6 +116,7 @@ class KCSlider {
      */
     public function getSlideImage(int $postID = null, array $args = []) : string {
         $image = rwmb_meta($this->fieldSlideImage, $args, $postID);
-        return array_shift($image)['full_url'];
+        $url = array_shift($image)['full_url'];
+        return esc_url($url);
     }
 }

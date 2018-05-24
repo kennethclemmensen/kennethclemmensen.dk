@@ -108,8 +108,8 @@ class KCGallerySettings {
      * @return int the photo width
      */
     private function getPhotoWidth() : int {
-        $default_value = 550;
-        return (isset($this->option[$this->photoWidth])) ? $this->option[$this->photoWidth] : $default_value;
+        $defaultValue = 550;
+        return (isset($this->option[$this->photoWidth])) ? $this->option[$this->photoWidth] : $defaultValue;
     }
 
     /**
@@ -118,8 +118,8 @@ class KCGallerySettings {
      * @return int the photo height
      */
     private function getPhotoHeight() : int {
-        $default_value = 350;
-        return (isset($this->option[$this->photoHeight])) ? $this->option[$this->photoHeight] : $default_value;
+        $defaultValue = 350;
+        return (isset($this->option[$this->photoHeight])) ? $this->option[$this->photoHeight] : $defaultValue;
     }
 
     /**
@@ -128,8 +128,8 @@ class KCGallerySettings {
      * @return int the thumbnail width
      */
     private function getThumbnailWidth() : int {
-        $default_value = 55;
-        return (isset($this->option[$this->thumbnailWidth])) ? $this->option[$this->thumbnailWidth] : $default_value;
+        $defaultValue = 55;
+        return (isset($this->option[$this->thumbnailWidth])) ? $this->option[$this->thumbnailWidth] : $defaultValue;
     }
 
     /**
@@ -138,8 +138,8 @@ class KCGallerySettings {
      * @return int the thumbnail height
      */
     private function getThumbnailHeight() : int {
-        $default_value = 35;
-        return (isset($this->option[$this->thumbnailHeight])) ? $this->option[$this->thumbnailHeight] : $default_value;
+        $defaultValue = 35;
+        return (isset($this->option[$this->thumbnailHeight])) ? $this->option[$this->thumbnailHeight] : $defaultValue;
     }
 
     /**
