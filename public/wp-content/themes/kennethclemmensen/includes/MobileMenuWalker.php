@@ -15,8 +15,7 @@ class MobileMenuWalker extends Walker_Nav_Menu {
      */
     public function start_el(&$output, $item, $depth = 0, $args = [], $id = 0) : void {
         $currentClass = ($item->current) ? 'mobile-nav__link--current' : '';
-        $link = get_permalink($item->object_id);
-        $output .= '<li><a href="'.$link.'" class="mobile-nav__link '.$currentClass.'">'.$item->title;
+        $output .= '<li><a href="'.$item->url.'" class="mobile-nav__link '.$currentClass.'">'.$item->title;
         if($this->has_children) $output .= '<span class="mobile-nav__arrow"></span>';
         $output .= '</a>';
     }

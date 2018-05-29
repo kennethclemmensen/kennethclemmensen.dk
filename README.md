@@ -3,7 +3,7 @@
 The repository for my personal website https://www.kennethclemmensen.dk/
 
 The website is created using [WordPress](https://wordpress.org/) and a number of other technologies.
-These tecnologies includes:
+These technologies includes:
 * HTML5
 * CSS3
 * [LESS](http://lesscss.org/)
