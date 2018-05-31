@@ -1,4 +1,5 @@
 <?php
+require_once 'includes/IconWidget.php';
 require_once 'includes/MobileMenuWalker.php';
 require_once 'includes/ThemeHelper.php';
 require_once 'includes/ThemeSettings.php';
@@ -74,6 +75,7 @@ add_action('widgets_init', function() : void {
         'before_title' => '<h1>',
         'after_title' => '</h1>'
     ]);
+    register_widget(IconWidget::class);
 });
 
 add_filter('tiny_mce_plugins', function(array $plugins) : array {
