@@ -67,7 +67,7 @@ class IconWidget extends WP_Widget {
                    name="<?php echo esc_attr($this->get_field_name($this->icon)); ?>"
                    value="<?php echo esc_attr($icon); ?>">
             <label for="<?php echo $linkFieldID; ?>"><?php echo esc_attr('Link:'); ?></label>
-            <input type="url" id="<?php echo $linkFieldID; ?>" class="widefat"
+            <input type="text" id="<?php echo $linkFieldID; ?>" class="widefat"
                    name="<?php echo esc_attr($this->get_field_name($this->link)); ?>"
                    value="<?php echo esc_attr($link); ?>">
             <label for="<?php echo $targetFieldID; ?>"><?php echo esc_attr('Open in a new tab:'); ?></label>
