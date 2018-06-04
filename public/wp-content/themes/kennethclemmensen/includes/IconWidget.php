@@ -38,7 +38,7 @@ class IconWidget extends WP_Widget {
         $link = (isset($instance[$this->link])) ? $instance[$this->link] : '';
         $target = (isset($instance[$this->target]) && $instance[$this->target] === $this->on) ? '_blank' : '_self';
         if($title !== '') echo $args['before_title'].apply_filters('widget_title', $title).$args['after_title'];
-        echo ($link !== '') ? '<a href="'.esc_url($link).'" target="'.$target.'">'.$icon.'</a>' : $icon;
+        echo ($link !== '') ? '<a href="'.esc_url(do_shortcode($link)).'" target="'.$target.'">'.$icon.'</a>' : $icon;
         echo '</div>'.$args['after_widget'];
     }
 
