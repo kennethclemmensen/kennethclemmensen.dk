@@ -26,8 +26,7 @@ class FDWC {
         $this->fieldFile = $prefix.'file';
         $this->fieldDownloadCounter = $prefix.'download_counter';
         $this->fieldFileType = $prefix.'file_type';
-        $prefix = 'fdwc_tax_';
-        $this->taxFileType = $prefix.'file_type';
+        $this->taxFileType = 'fdwc_tax_file_type';
     }
 
     /**
@@ -37,9 +36,7 @@ class FDWC {
      */
     public function activate(string $mainPluginFile) : void {
         register_activation_hook($mainPluginFile, function() : void {
-            if(!class_exists('RW_Meta_Box')) {
-                die('Meta Box is not activated');
-            }
+            if(!class_exists('RW_Meta_Box')) die('Meta Box is not activated');
         });
     }
 
@@ -86,7 +83,8 @@ class FDWC {
                     'name' => 'File types',
                     'singular_name' => 'File type'
                 ],
-                'show_admin_column' => true
+                'show_admin_column' => true,
+                'hierarchical' => true
             ]);
             register_taxonomy_for_object_type($this->taxFileType, self::FDWC_FILE);
         });
