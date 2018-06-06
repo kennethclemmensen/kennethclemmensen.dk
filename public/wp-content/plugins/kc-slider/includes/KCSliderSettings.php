@@ -104,4 +104,13 @@ class KCSliderSettings {
         $defaultValue = 500;
         return (isset($this->option[$this->duration])) ? $this->option[$this->duration] : $defaultValue;
     }
+
+    /**
+     * Get the option name
+     *
+     * @return string the option name
+     */
+    public function getOptionName() : string {
+        return $this->optionGroup;
+    }
 }
