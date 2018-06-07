@@ -78,6 +78,11 @@ add_action('widgets_init', function() : void {
     register_widget(IconWidget::class);
 });
 
+add_action('admin_menu', function() : void {
+    remove_menu_page('edit.php');
+    remove_menu_page('edit-comments.php');
+});
+
 add_filter('excerpt_length', function() : int {
     return 20;
 });
