@@ -65,4 +65,22 @@ class ThemeHelper {
         $pages[] = get_option('page_on_front');
         return array_reverse($pages);
     }
+
+    /**
+     * Get the id of the footer sidebar
+     *
+     * @return string the id of the footer sidebar
+     */
+    public static function getFooterSidebarID() : string {
+        return 'footer';
+    }
+
+    /**
+     * Get the id of the page not found sidebar
+     *
+     * @return string the id of the page not found sidebar
+     */
+    public static function getPageNotFoundSidebarID() : string {
+        return 'page-not-found';
+    }
 }

@@ -61,7 +61,7 @@ add_action('init', function() : void {
 add_action('widgets_init', function() : void {
     register_sidebar([
         'name' => 'Footer',
-        'id' => 'footer',
+        'id' => ThemeHelper::getFooterSidebarID(),
         'before_widget' => '',
         'after_widget' => '',
         'before_title' => '',
@@ -69,7 +69,7 @@ add_action('widgets_init', function() : void {
     ]);
     register_sidebar([
         'name' => 'Page not found',
-        'id' => 'page-not-found',
+        'id' => ThemeHelper::getPageNotFoundSidebarID(),
         'before_widget' => '',
         'after_widget' => '',
         'before_title' => '<h1>',
@@ -77,12 +77,6 @@ add_action('widgets_init', function() : void {
     ]);
     register_widget(IconWidget::class);
 });
-
-add_filter('tiny_mce_plugins', function(array $plugins) : array {
-    return array_diff($plugins, ['wpemoji']);
-});
-
-add_filter('emoji_svg_url', '__return_false');
 
 add_filter('excerpt_length', function() : int {
     return 20;
