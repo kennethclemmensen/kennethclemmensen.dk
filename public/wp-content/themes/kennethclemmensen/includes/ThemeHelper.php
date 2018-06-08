@@ -83,4 +83,22 @@ class ThemeHelper {
     public static function getPageNotFoundSidebarID() : string {
         return 'page-not-found';
     }
+
+    /**
+     * Get the main menu key
+     *
+     * @return string the main menu key
+     */
+    public static function getMainMenuKey() : string {
+        return 'main-menu';
+    }
+
+    /**
+     * Get the mobile menu key
+     *
+     * @return string the mobile menu key
+     */
+    public static function getMobileMenuKey() : string {
+        return 'mobile-menu';
+    }
 }

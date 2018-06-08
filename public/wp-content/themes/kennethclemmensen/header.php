@@ -18,14 +18,14 @@
         <span class="header__nav-icon"></span>
     </a>
     <nav class="navigation">
-        <?php wp_nav_menu(['theme_location' => 'main-menu']); ?>
+        <?php wp_nav_menu(['theme_location' => ThemeHelper::getMainMenuKey()]); ?>
     </nav>
 </header>
 <nav class="mobile-nav">
     <div class="mobile-nav__content">
         <?php
         wp_nav_menu([
-            'theme_location' => 'mobile-menu',
+            'theme_location' => ThemeHelper::getMobileMenuKey(),
             'walker' => new MobileMenuWalker()
         ]);
         ?>
