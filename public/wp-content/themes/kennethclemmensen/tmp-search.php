@@ -17,7 +17,7 @@ while(have_posts()) {
             ?>
             <div id="search-app">
                 <form method="post" action="/" @submit="search($event)">
-                    <input type="search" placeholder="<?php echo $searchText; ?>" v-model="searchString" required>
+                    <input type="search" name="search" placeholder="<?php echo $searchText; ?>" v-model="searchString" required>
                     <input type="submit" value="<?php echo $searchText; ?>">
                 </form>
                 <h2 v-if="results.length === 0 && searchString !== ''">
