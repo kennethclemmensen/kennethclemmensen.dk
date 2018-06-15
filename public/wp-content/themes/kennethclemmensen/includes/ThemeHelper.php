@@ -47,6 +47,17 @@ class ThemeHelper {
     }
 
     /**
+     * Remove the version query string from the source
+     *
+     * @param string $src the source to remove the version query string from
+     * @return string the source without the version query string
+     */
+    public static function removeVersionQueryString(string $src) : string {
+        $parts = explode('?ver', $src);
+        return $parts[0];
+    }
+
+    /**
      * Get the breadcrumb as an array of page ids
      *
      * @return array an array of page ids

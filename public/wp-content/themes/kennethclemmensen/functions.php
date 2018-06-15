@@ -93,17 +93,12 @@ add_filter('excerpt_more', function() : string {
 
 remove_action('wp_head', 'wp_generator');
 
-function removeVersionQueryString(string $src) : string {
-    $parts = explode('?ver', $src);
-    return $parts[0];
-}
-
 add_filter('script_loader_src', function(string $src) : string {
-    return removeVersionQueryString($src);
+    return ThemeHelper::removeVersionQueryString($src);
 });
 
 add_filter('style_loader_src', function(string $src) : string {
-    return removeVersionQueryString($src);
+    return ThemeHelper::removeVersionQueryString($src);
 });
 
 add_filter('script_loader_tag', function(string $tag) : string {
