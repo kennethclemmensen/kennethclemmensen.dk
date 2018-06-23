@@ -5,7 +5,7 @@
 class ThemeSettings {
 
     private $pageSlug;
-    private $optionGroup;
+    private $optionName;
     private $option;
     private $email;
     private $linkedIn;
@@ -19,15 +19,15 @@ class ThemeSettings {
      */
     public function __construct() {
         $this->pageSlug = 'kc-theme-settings';
-        $this->optionGroup = $this->pageSlug.'-group';
-        $this->option = get_option($this->optionGroup);
+        $this->optionName = $this->pageSlug.'-group';
+        $this->option = get_option($this->optionName);
         $this->email = 'email';
         $this->linkedIn = 'linkedin';
         $this->gitHub = 'github';
         $prefix = 'kc-';
-        $this->emailShortcode = $prefix.'email';
-        $this->linkedInShortcode = $prefix.'linkedin';
-        $this->gitHubShortcode = $prefix.'github';
+        $this->emailShortcode = $prefix.$this->email;
+        $this->linkedInShortcode = $prefix.$this->linkedIn;
+        $this->gitHubShortcode = $prefix.$this->gitHub;
         $this->adminMenu();
         $this->adminInit();
         $this->addShortcodes();
@@ -44,7 +44,7 @@ class ThemeSettings {
                 ?>
                 <form action="options.php" method="post">
                     <?php
-                    settings_fields($this->optionGroup);
+                    settings_fields($this->optionName);
                     do_settings_sections($this->pageSlug);
                     submit_button();
                     ?>
@@ -65,18 +65,18 @@ class ThemeSettings {
             }, $this->pageSlug);
             $prefix = 'kc-theme-settings-';
             add_settings_field($prefix.'email', 'Email', function() : void {
-                echo '<input type="email" name="'.$this->optionGroup.'['.$this->email.']" value="'.$this->getEmail().'" required> ';
+                echo '<input type="email" name="'.$this->optionName.'['.$this->email.']" value="'.$this->getEmail().'" required> ';
                 echo '['.$this->emailShortcode.']';
             }, $this->pageSlug, $sectionID);
             add_settings_field($prefix.'linkedin', 'LinkedIn', function() : void {
-                echo '<input type="url" name="'.$this->optionGroup.'['.$this->linkedIn.']" value="'.$this->getLinkedInUrl().'" required> ';
+                echo '<input type="url" name="'.$this->optionName.'['.$this->linkedIn.']" value="'.$this->getLinkedInUrl().'" required> ';
                 echo '['.$this->linkedInShortcode.']';
             }, $this->pageSlug, $sectionID);
             add_settings_field($prefix.'github', 'GitHub', function() : void {
-                echo '<input type="url" name="'.$this->optionGroup.'['.$this->gitHub.']" value="'.$this->getGitHubUrl().'" required> ';
+                echo '<input type="url" name="'.$this->optionName.'['.$this->gitHub.']" value="'.$this->getGitHubUrl().'" required> ';
                 echo '['.$this->gitHubShortcode.']';
             }, $this->pageSlug, $sectionID);
-            register_setting($this->optionGroup, $this->optionGroup, function(array $input) : array {
+            register_setting($this->optionName, $this->optionName, function(array $input) : array {
                 return $this->validateInput($input);
             });
         });
@@ -105,9 +105,7 @@ class ThemeSettings {
      */
     private function validateInput(array $input) : array {
         $output = [];
-        foreach($input as $key => $value) {
-            if(isset($input[$key])) $output[$key] = strip_tags(stripslashes($input[$key]));
-        }
+        foreach($input as $key => $value) $output[$key] = strip_tags(stripslashes($input[$key]));
         return apply_filters(__FUNCTION__, $output, $input);
     }
 

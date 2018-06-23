@@ -43,6 +43,7 @@ class ThemeHelper {
             $src = $cdnFile;
             $ver = null;
         }
+        wp_deregister_style($name);
         wp_enqueue_style($name, $src, $deps, $ver);
     }
 

@@ -22,6 +22,7 @@ input[type='submit'] {
   @include border-radius(4px);
   color: $color-white;
   cursor: pointer;
+  @include transition();
   &:hover {
     background: darken($color-blue, 10%);
   }

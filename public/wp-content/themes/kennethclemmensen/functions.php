@@ -62,8 +62,8 @@ add_action('widgets_init', function() : void {
     register_sidebar([
         'name' => 'Footer',
         'id' => ThemeHelper::getFooterSidebarID(),
-        'before_widget' => '',
-        'after_widget' => '',
+        'before_widget' => '<div class="footer__widget">',
+        'after_widget' => '</div>',
         'before_title' => '',
         'after_title' => ''
     ]);

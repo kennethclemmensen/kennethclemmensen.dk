@@ -61,9 +61,7 @@
     text-align: center;
     .transition();
   }
-  &--rotated {
-    &::after {
-      .rotate(-180deg);
-    }
+  &--rotated::after {
+    .rotate(-180deg);
   }
 }

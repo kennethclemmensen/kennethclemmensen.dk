@@ -61,9 +61,7 @@
     text-align: center;
     @include transition();
   }
-  &--rotated {
-    &::after {
-      @include rotate(-180deg);
-    }
+  &--rotated::after {
+    @include rotate(-180deg);
   }
 }
