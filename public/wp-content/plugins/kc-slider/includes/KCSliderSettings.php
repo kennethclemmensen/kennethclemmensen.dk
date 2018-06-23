@@ -1,5 +1,4 @@
 <?php
-
 namespace KCSlider\Includes;
 
 /**
@@ -9,7 +8,7 @@ namespace KCSlider\Includes;
 class KCSliderSettings {
 
     private $pageSlug;
-    private $optionGroup;
+    private $optionName;
     private $option;
     private $delay;
     private $duration;
@@ -19,8 +18,8 @@ class KCSliderSettings {
      */
     public function __construct() {
         $this->pageSlug = 'kc-slider-settings';
-        $this->optionGroup = $this->pageSlug.'-group';
-        $this->option = get_option($this->optionGroup);
+        $this->optionName = $this->pageSlug.'-group';
+        $this->option = get_option($this->optionName);
         $prefix = 'kc_slider_';
         $this->delay = $prefix.'delay';
         $this->duration = $prefix.'duration';
@@ -39,7 +38,7 @@ class KCSliderSettings {
                 ?>
                 <form action="options.php" method="post">
                     <?php
-                    settings_fields($this->optionGroup);
+                    settings_fields($this->optionName);
                     do_settings_sections($this->pageSlug);
                     submit_button();
                     ?>
@@ -59,12 +58,12 @@ class KCSliderSettings {
                 echo '<h2>KC Slider Settings</h2>';
             }, $this->pageSlug);
             add_settings_field('kc-slider-delay', 'Delay', function() : void {
-                echo '<input type="number" name="'.$this->optionGroup.'['.$this->delay.']" value="'.$this->getDelay().'" required min="1" max="10000" step="500">';
+                echo '<input type="number" name="'.$this->optionName.'['.$this->delay.']" value="'.$this->getDelay().'" required min="1" max="10000" step="500">';
             }, $this->pageSlug, $sectionID);
             add_settings_field('kc-slider-duration', 'Duration', function() : void {
-                echo '<input type="number" name="'.$this->optionGroup.'['.$this->duration.']" value="'.$this->getDuration().'" required min="1" max="10000" step="500">';
+                echo '<input type="number" name="'.$this->optionName.'['.$this->duration.']" value="'.$this->getDuration().'" required min="1" max="10000" step="500">';
             }, $this->pageSlug, $sectionID);
-            register_setting($this->optionGroup, $this->optionGroup, function(array $input) : array {
+            register_setting($this->optionName, $this->optionName, function(array $input) : array {
                 return $this->validateInput($input);
             });
         });
@@ -80,7 +79,7 @@ class KCSliderSettings {
     private function validateInput(array $input) : array {
         $output = [];
         foreach($input as $key => $value) {
-            if(isset($input[$key])) $output[$key] = strip_tags(stripslashes($input[$key]));
+            $output[$key] = strip_tags(stripslashes($input[$key]));
         }
         return apply_filters(__FUNCTION__, $output, $input);
     }
@@ -111,6 +110,6 @@ class KCSliderSettings {
      * @return string the option name
      */
     public function getOptionName() : string {
-        return $this->optionGroup;
+        return $this->optionName;
     }
 }

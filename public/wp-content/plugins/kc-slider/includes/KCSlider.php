@@ -100,14 +100,12 @@ class KCSlider {
             return $columns;
         });
         add_filter('manage_'.self::SLIDES.'_posts_custom_column', function(string $column_name) use ($image_column_key) : void {
-            if($column_name === $image_column_key) {
-                echo '<img src="'.$this->getSlideImage().'" alt="'.get_the_title().'" style="height: 60px">';
-            }
+            if($column_name === $image_column_key) echo '<img src="'.$this->getSlideImage().'" alt="'.get_the_title().'" style="height: 60px">';
         });
     }
 
     /**
-     * Get the slide image
+     * Get the url of slide image
      *
      * @param int|null $postID the post id of the slide image
      * @param array $args an array of arguments
