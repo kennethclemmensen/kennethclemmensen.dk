@@ -17,9 +17,7 @@ $duration = $kcSliderSettings->getDuration();
     $wpQuery = new WP_Query($args);
     while($wpQuery->have_posts()) {
         $wpQuery->the_post();
-        ?>
-        <img src="<?php echo $kcSlider->getSlideImage(); ?>" alt="<?php the_title(); ?>" class="slider__image">
-        <?php
+        echo '<img src="'.$kcSlider->getSlideImage().'" alt="'.get_the_title().'" class="slider__image">';
     }
     wp_reset_query();
     ?>
