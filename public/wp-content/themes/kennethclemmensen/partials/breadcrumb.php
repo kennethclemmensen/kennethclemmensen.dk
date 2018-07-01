@@ -9,11 +9,7 @@
             ?>
             <li class="breadcrumb__list-item">
                 <?php
-                if(($i + 1) === count($pages)) {
-                    echo '<em>'.$title.'</em>';
-                } else {
-                    echo '<a href="'.get_permalink($pageID).'">'.$title.'</a>';
-                }
+                echo (($i + 1) === count($pages)) ? '<em>'.$title.'</em>' : '<a href="'.get_permalink($pageID).'">'.$title.'</a>';
                 ?>
             </li>
             <?php
