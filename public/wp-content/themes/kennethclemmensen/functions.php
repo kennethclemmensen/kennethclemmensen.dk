@@ -12,10 +12,9 @@ add_action('wp_enqueue_scripts', function() : void {
     $version = filemtime(get_template_directory().$localFile);
     ThemeHelper::addStyleWithLocalFallback($fontAwesome, $cdnFile, get_template_directory_uri().$localFile, [], $version);
 
-    $style = 'theme-css';
     $styleFile = '/css/style.css';
     $version = filemtime(get_template_directory().$styleFile);
-    wp_enqueue_style($style, get_template_directory_uri().$styleFile, [$fontAwesome], $version);
+    wp_enqueue_style('theme-css', get_template_directory_uri().$styleFile, [$fontAwesome], $version);
 
     $jquery = 'jquery';
     $cdnFile = 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js';
@@ -35,10 +34,9 @@ add_action('wp_enqueue_scripts', function() : void {
     $version = filemtime(get_template_directory().$localFile);
     ThemeHelper::addScriptWithLocalFallback($vueResource, $cdnFile, get_template_directory_uri().$localFile, [$vueJS], $version);
 
-    $script = 'theme-js';
     $scriptFile = '/js/minified/script.min.js';
     $version = filemtime(get_template_directory().$scriptFile);
-    wp_enqueue_script($script, get_template_directory_uri().$scriptFile, [$jquery, $vueJS, $vueResource], $version, true);
+    wp_enqueue_script('theme-js', get_template_directory_uri().$scriptFile, [$jquery, $vueJS, $vueResource], $version, true);
 });
 
 add_action('init', function() : void {
