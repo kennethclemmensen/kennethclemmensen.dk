@@ -10,7 +10,7 @@ jQuery.noConflict();
         $('.mobile-nav__arrow').on('click', function(event) {
             event.preventDefault();
             $(this).toggleClass('mobile-nav__arrow--rotated');
-            $(this).closest('.sub-menu').toggle();
+            $(this).parent().parent().find('.sub-menu').toggle();
         });
 
         class Slider {
