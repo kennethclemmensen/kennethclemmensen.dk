@@ -10,6 +10,10 @@
 
 <body data-image-text="<?php echo TranslationStrings::getImageText(); ?>"
       data-of-text="<?php echo TranslationStrings::getOfText(); ?>">
+<?php
+use KCScriptSnippets\Includes\KCScriptSnippets;
+do_action(KCScriptSnippets::AFTER_START_BODY);
+?>
 <header class="header">
     <a href="<?php bloginfo('url'); ?>" class="header__site-name">
         <?php bloginfo('name'); ?>
