@@ -13,7 +13,6 @@ class KCGallery {
     private $fieldGalleryPhoto;
     private $fieldPhoto;
     private $fieldPhotoGallery;
-    private $gallerySettings;
 
     private const GALLERY = 'gallery';
     private const PHOTO = 'photo';
@@ -28,7 +27,6 @@ class KCGallery {
         $prefix = 'photo_';
         $this->fieldPhoto = $prefix.'photo';
         $this->fieldPhotoGallery = $prefix.'gallery';
-        $this->gallerySettings = null;
     }
 
     /**
@@ -38,9 +36,7 @@ class KCGallery {
      */
     public function activate(string $mainPluginFile) : void {
         register_activation_hook($mainPluginFile, function() : void {
-            if(!class_exists('RW_Meta_Box')) {
-                die('Meta Box is not activated');
-            }
+            if(!class_exists('RW_Meta_Box')) die('Meta Box is not activated');
         });
     }
 
@@ -51,7 +47,6 @@ class KCGallery {
         $this->loadDependencies();
         $loader = new KCGalleryLoader();
         $loader->loadStylesAndScripts();
-        $this->gallerySettings = new KCGallerySettings();
         $this->init();
         $this->addMetaBoxes();
         $this->addShortcodes();
@@ -63,7 +58,6 @@ class KCGallery {
      */
     private function loadDependencies() : void {
         require_once 'KCGalleryLoader.php';
-        require_once 'KCGallerySettings.php';
     }
 
     /**
@@ -298,8 +292,8 @@ class KCGallery {
      */
     private function getPhoto(int $postID = null, array $args = []) : string {
         $photo = rwmb_meta($this->fieldPhoto, $args, $postID);
-        $photoID = array_shift($photo)['ID'];
-        return wp_get_attachment_image_src($photoID, $this->gallerySettings->getPhotoKey())[0];
+        $photo = array_shift($photo);
+        return $photo['full_url'];
     }
 
     /**
@@ -311,8 +305,8 @@ class KCGallery {
      */
     private function getPhotoThumbnail(int $postID = null, array $args = []) : string {
         $photo = rwmb_meta($this->fieldPhoto, $args, $postID);
-        $photoID = array_shift($photo)['ID'];
-        return wp_get_attachment_image_src($photoID, $this->gallerySettings->getPhotoThumbnailKey())[0];
+        $photo = array_shift($photo);
+        return $photo['url'];
     }
 
     /**
