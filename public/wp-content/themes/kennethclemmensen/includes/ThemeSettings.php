@@ -39,7 +39,7 @@ class ThemeSettings {
     private function adminMenu() : void {
         add_action('admin_menu', function() : void {
             $title = 'Theme settings';
-            add_menu_page($title, $title, 'administrator', $this->pageSlug, function() : void {
+            add_submenu_page('themes.php', $title, $title, 'administrator', $this->pageSlug, function() : void {
                 settings_errors();
                 ?>
                 <form action="options.php" method="post">
