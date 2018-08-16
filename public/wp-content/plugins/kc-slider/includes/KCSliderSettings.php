@@ -54,13 +54,12 @@ class KCSliderSettings {
     private function adminInit() : void {
         add_action('admin_init', function() : void {
             $sectionID = 'kc-slider-section';
-            add_settings_section($sectionID, '', function() : void {
-                echo '<h2>KC Slider Settings</h2>';
-            }, $this->pageSlug);
-            add_settings_field('kc-slider-delay', 'Delay', function() : void {
+            add_settings_section($sectionID, 'KC Slider Settings', null, $this->pageSlug);
+            $prefix = 'kc-slider-';
+            add_settings_field($prefix.'delay', 'Delay', function() : void {
                 echo '<input type="number" name="'.$this->optionName.'['.$this->delay.']" value="'.$this->getDelay().'" required min="1" max="10000" step="500">';
             }, $this->pageSlug, $sectionID);
-            add_settings_field('kc-slider-duration', 'Duration', function() : void {
+            add_settings_field($prefix.'duration', 'Duration', function() : void {
                 echo '<input type="number" name="'.$this->optionName.'['.$this->duration.']" value="'.$this->getDuration().'" required min="1" max="10000" step="500">';
             }, $this->pageSlug, $sectionID);
             register_setting($this->optionName, $this->optionName, function(array $input) : array {

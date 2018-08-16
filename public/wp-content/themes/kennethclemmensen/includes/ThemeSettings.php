@@ -60,9 +60,7 @@ class ThemeSettings {
     private function adminInit() : void {
         add_action('admin_init', function() : void {
             $sectionID = 'kc-theme-settings-section';
-            add_settings_section($sectionID, '', function() : void {
-                echo '<h2>Theme settings</h2>';
-            }, $this->pageSlug);
+            add_settings_section($sectionID, 'Theme settings', null, $this->pageSlug);
             $prefix = 'kc-theme-settings-';
             add_settings_field($prefix.'email', 'Email', function() : void {
                 echo '<input type="email" name="'.$this->optionName.'['.$this->email.']" value="'.$this->getEmail().'" required> ';
@@ -105,7 +103,9 @@ class ThemeSettings {
      */
     private function validateInput(array $input) : array {
         $output = [];
-        foreach($input as $key => $value) $output[$key] = strip_tags(stripslashes($input[$key]));
+        foreach($input as $key => $value) {
+            $output[$key] = strip_tags(stripslashes($input[$key]));
+        }
         return apply_filters(__FUNCTION__, $output, $input);
     }
 

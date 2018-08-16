@@ -55,9 +55,7 @@ class KCScriptSnippetsSettings {
     private function adminInit() : void {
         add_action('admin_init', function() : void {
             $sectionID = 'kc-script-snippets-section';
-            add_settings_section($sectionID, '', function() : void {
-                echo '<h2>Script Snippets</h2>';
-            }, $this->pageSlug);
+            add_settings_section($sectionID, 'Script Snippets', null, $this->pageSlug);
             $prefix = 'kc-script-snippets-';
             add_settings_field($prefix.'header', 'Header', function() : void {
                 echo '<textarea name="'.$this->optionName.'['.$this->headerScripts.']" cols="120" rows="7">'.$this->getHeaderScriptSnippets().'</textarea>';
@@ -82,7 +80,9 @@ class KCScriptSnippetsSettings {
      */
     private function validateInput(array $input) : array {
         $output = [];
-        foreach($input as $key => $value) $output[$key] = strip_tags(stripslashes($input[$key]), '<script>');
+        foreach($input as $key => $value) {
+            $output[$key] = strip_tags(stripslashes($input[$key]), '<script>');
+        }
         return apply_filters(__FUNCTION__, $output, $input);
     }
 
