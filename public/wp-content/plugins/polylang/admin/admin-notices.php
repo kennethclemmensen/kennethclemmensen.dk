@@ -56,7 +56,7 @@ class PLL_Admin_Notices {
 	 * @param string $notice Notice name
 	 * @return bool
 	 */
-	protected function is_dismissed( $notice ) {
+	static public function is_dismissed( $notice ) {
 		$dismissed = get_user_meta( get_current_user_id(), 'pll_dismissed_notices', true );
 		return is_array( $dismissed ) && in_array( $notice, $dismissed );
 	}
@@ -82,7 +82,25 @@ class PLL_Admin_Notices {
 	}
 
 	/**
-	 * Stores dismissed notices in database
+	 * Stores a dismissed notice in database
+	 *
+	 * @since 2.3.9
+	 *
+	 * @param string $notice
+	 */
+	static public function dismiss( $notice ) {
+		if ( ! $dismissed = get_user_meta( get_current_user_id(), 'pll_dismissed_notices', true ) ) {
+			$dismissed = array();
+		}
+
+		if ( ! in_array( $notice, $dismissed ) ) {
+			$dismissed[] = $notice;
+			update_user_meta( get_current_user_id(), 'pll_dismissed_notices', array_unique( $dismissed ) );
+		}
+	}
+
+	/**
+	 * Handle a click on the dismiss button
 	 *
 	 * @since 2.3.9
 	 */
@@ -90,11 +108,7 @@ class PLL_Admin_Notices {
 		if ( isset( $_GET['pll-hide-notice'], $_GET['_pll_notice_nonce'] ) ) {
 			$notice = sanitize_key( $_GET['pll-hide-notice'] );
 			check_admin_referer( $notice, '_pll_notice_nonce' );
-			if ( ! $dismissed = get_user_meta( get_current_user_id(), 'pll_dismissed_notices', true ) ) {
-				$dismissed = array();
-			}
-			$dismissed[] = $notice;
-			update_user_meta( get_current_user_id(), 'pll_dismissed_notices', $dismissed );
+			self::dismiss( $notice );
 			wp_safe_redirect( remove_query_arg( array( 'pll-hide-notice', '_pll_notice_nonce' ), wp_get_referer() ) );
 			exit;
 		}
@@ -113,14 +127,16 @@ class PLL_Admin_Notices {
 
 			// Custom notices
 			foreach ( $this->get_notices() as $notice => $html ) {
-				?>
-				<div class="pll-notice notice notice-info">
-					<?php
-					$this->dismiss_button( $notice );
-					echo wp_kses_post( $html );
+				if ( ! $this->is_dismissed( $notice ) ) {
 					?>
-				</div>
-				<?php
+					<div class="pll-notice notice notice-info">
+						<?php
+						$this->dismiss_button( $notice );
+						echo wp_kses_post( $html );
+						?>
+					</div>
+					<?php
+				}
 			}
 		}
 	}
