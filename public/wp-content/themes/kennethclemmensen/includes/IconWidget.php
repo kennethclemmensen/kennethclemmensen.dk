@@ -34,7 +34,7 @@ class IconWidget extends WP_Widget {
     public function widget($args, $instance) : void {
         echo $args['before_widget'].'<div class="iconwidget">';
         $title = (isset($instance[$this->title])) ? $instance[$this->title] : '';
-        $icon = (isset($instance[$this->icon])) ? $instance[$this->icon] : '';
+        $icon = (isset($instance[$this->icon])) ? '<i class="'.$instance[$this->icon].'"></i>' : '';
         $link = (isset($instance[$this->link])) ? $instance[$this->link] : '';
         $target = (isset($instance[$this->target]) && $instance[$this->target] === $this->on) ? '_blank' : '_self';
         if($title !== '') echo $args['before_title'].apply_filters('widget_title', $title).$args['after_title'];
@@ -63,9 +63,15 @@ class IconWidget extends WP_Widget {
                    name="<?php echo esc_attr($this->get_field_name($this->title)); ?>"
                    value="<?php echo esc_attr($title); ?>">
             <label for="<?php echo $iconFieldID; ?>"><?php echo esc_attr('Icon:'); ?></label>
-            <input type="text" id="<?php echo $iconFieldID; ?>" class="widefat"
-                   name="<?php echo esc_attr($this->get_field_name($this->icon)); ?>"
-                   value="<?php echo esc_attr($icon); ?>">
+            <select id="<?php echo $iconFieldID; ?>" class="widefat"
+                    name="<?php echo esc_attr($this->get_field_name($this->icon)); ?>">
+                <?php
+                $icons = $this->getIcons();
+                foreach($icons as $key => $value) {
+                    echo '<option value="'.$key.'" '.selected($icon, $key).'>'.$value.'</option>';
+                }
+                ?>
+            </select>
             <label for="<?php echo $linkFieldID; ?>"><?php echo esc_attr('Link:'); ?></label>
             <input type="text" id="<?php echo $linkFieldID; ?>" class="widefat"
                    name="<?php echo esc_attr($this->get_field_name($this->link)); ?>"
@@ -75,5 +81,15 @@ class IconWidget extends WP_Widget {
                    name="<?php echo esc_attr($this->get_field_name($this->target)); ?>">
         </p>
         <?php
+    }
+
+    /**
+     * Get the icons
+     *
+     * @return array the icons
+     */
+    private function getIcons() : array {
+        $icons = file_get_contents(__DIR__.'/../json/icons.json');
+        return ($icons !== false) ? json_decode($icons, true) : [];
     }
 }
