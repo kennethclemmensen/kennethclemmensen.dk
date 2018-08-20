@@ -8,7 +8,7 @@ class IconWidget extends WP_Widget {
     private $icon;
     private $link;
     private $target;
-    private $on;
+    private $checkboxCheckedValue;
 
     /**
      * IconWidget constructor
@@ -22,7 +22,7 @@ class IconWidget extends WP_Widget {
         $this->icon = 'icon';
         $this->link = 'link';
         $this->target = 'target';
-        $this->on = 'on';
+        $this->checkboxCheckedValue = 'on';
     }
 
     /**
@@ -36,7 +36,7 @@ class IconWidget extends WP_Widget {
         $title = (isset($instance[$this->title])) ? $instance[$this->title] : '';
         $icon = (isset($instance[$this->icon])) ? '<i class="'.$instance[$this->icon].'"></i>' : '';
         $link = (isset($instance[$this->link])) ? $instance[$this->link] : '';
-        $target = (isset($instance[$this->target]) && $instance[$this->target] === $this->on) ? '_blank' : '_self';
+        $target = (isset($instance[$this->target]) && $instance[$this->target] === $this->checkboxCheckedValue) ? '_blank' : '_self';
         if($title !== '') echo $args['before_title'].apply_filters('widget_title', $title).$args['after_title'];
         echo ($link !== '') ? '<a href="'.esc_url(do_shortcode($link)).'" target="'.$target.'">'.$icon.'</a>' : $icon;
         echo '</div>'.$args['after_widget'];
@@ -77,7 +77,8 @@ class IconWidget extends WP_Widget {
                    name="<?php echo esc_attr($this->get_field_name($this->link)); ?>"
                    value="<?php echo esc_attr($link); ?>">
             <label for="<?php echo $targetFieldID; ?>"><?php echo esc_attr('Open in a new tab:'); ?></label>
-            <input type="checkbox" id="<?php echo $targetFieldID; ?>" <?php checked($target, $this->on); ?>
+            <input type="checkbox"
+                   id="<?php echo $targetFieldID; ?>" <?php checked($target, $this->checkboxCheckedValue); ?>
                    name="<?php echo esc_attr($this->get_field_name($this->target)); ?>">
         </p>
         <?php

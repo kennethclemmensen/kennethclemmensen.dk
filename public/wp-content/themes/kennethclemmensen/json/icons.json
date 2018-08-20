@@ -1,5 +1,8 @@
 {
   "fas fa-envelope": "Email",
+  "far fa-envelope": "Email 2",
+  "fab fa-github": "GitHub",
+  "fab fa-github-square": "GitHub 2",
   "fab fa-linkedin-in": "LinkedIn",
-  "fab fa-github": "GitHub"
+  "fab fa-linkedin": "LinkedIn 2"
 }
