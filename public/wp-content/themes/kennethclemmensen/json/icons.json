@@ -1,8 +1,23 @@
 {
+  "fab fa-android": "Android",
+  "fab fa-angular": "Angular",
+  "fab fa-app-store": "App store",
+  "fab fa-app-store-ios": "App store 2",
+  "fab fa-apple": "Apple",
+  "fas fa-apple-alt": "Apple 2",
+  "fas fa-at": "AT",
+  "fab fa-aws": "AWS",
+  "fab fa-cpanel": "cPanel",
+  "fab fa-drupal": "Drupal",
   "fas fa-envelope": "Email",
   "far fa-envelope": "Email 2",
+  "fab fa-git": "git",
+  "fab fa-git-square": "git 2",
   "fab fa-github": "GitHub",
   "fab fa-github-square": "GitHub 2",
+  "fab fa-google-plus": "Google Plus",
+  "fab fa-google-plus-g": "Google Plus 2",
+  "fab fa-google-plus-square": "Google Plus 3",
   "fab fa-linkedin-in": "LinkedIn",
   "fab fa-linkedin": "LinkedIn 2"
 }
