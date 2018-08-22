@@ -7,7 +7,10 @@ namespace KCScriptSnippets\Includes;
  */
 class KCScriptSnippets {
 
-    private $kcScriptSnippetsSettings;
+    /**
+     * @var KCScriptSnippetsSettings
+     */
+    private $scriptSnippetsSettings;
 
     public const AFTER_START_BODY = 'kcss_after_start_body';
 
@@ -16,7 +19,7 @@ class KCScriptSnippets {
      */
     public function __construct() {
         require_once 'KCScriptSnippetsSettings.php';
-        $this->kcScriptSnippetsSettings = new KCScriptSnippetsSettings();
+        $this->scriptSnippetsSettings = new KCScriptSnippetsSettings();
     }
 
     /**
@@ -33,7 +36,7 @@ class KCScriptSnippets {
      */
     private function addScriptSnippets2Header() : void {
         add_action('wp_head', function() : void {
-            echo $this->kcScriptSnippetsSettings->getHeaderScriptSnippets();
+            echo $this->scriptSnippetsSettings->getHeaderScriptSnippets();
         });
     }
 
@@ -42,7 +45,7 @@ class KCScriptSnippets {
      */
     private function addScriptSnippets2AfterStartBody() : void {
         add_action(self::AFTER_START_BODY, function() : void {
-            echo $this->kcScriptSnippetsSettings->getAfterStartBodyScriptSnippets();
+            echo $this->scriptSnippetsSettings->getAfterStartBodyScriptSnippets();
         });
     }
 
@@ -51,7 +54,7 @@ class KCScriptSnippets {
      */
     private function addScriptSnippets2Footer() : void {
         add_action('wp_footer', function() : void {
-            echo $this->kcScriptSnippetsSettings->getFooterScriptSnippets();
+            echo $this->scriptSnippetsSettings->getFooterScriptSnippets();
         });
     }
 }
