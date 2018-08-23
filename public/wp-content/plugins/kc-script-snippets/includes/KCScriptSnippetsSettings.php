@@ -27,6 +27,7 @@ class KCScriptSnippetsSettings {
         $this->footerScripts = $prefix.'footer';
         $this->adminMenu();
         $this->adminInit();
+        $this->addPluginPageLinks();
     }
 
     /**
@@ -69,6 +70,16 @@ class KCScriptSnippetsSettings {
             register_setting($this->optionName, $this->optionName, function(array $input) : array {
                 return $this->validateInput($input);
             });
+        });
+    }
+
+    /**
+     * Use the plugin_action_links_{$plugin_file} filter to add links to the plugin page
+     */
+    private function addPluginPageLinks() : void {
+        add_filter('plugin_action_links_kc-script-snippets/index.php', function(array $links) : array {
+            $links[] = '<a href="'.esc_url(get_admin_url(null, 'options-general.php?page='.$this->pageSlug)).'">Settings</a>';
+            return $links;
         });
     }
 

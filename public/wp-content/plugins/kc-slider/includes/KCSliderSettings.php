@@ -25,6 +25,7 @@ class KCSliderSettings {
         $this->duration = $prefix.'duration';
         $this->adminMenu();
         $this->adminInit();
+        $this->addPluginPageLinks();
     }
 
     /**
@@ -65,6 +66,16 @@ class KCSliderSettings {
             register_setting($this->optionName, $this->optionName, function(array $input) : array {
                 return $this->validateInput($input);
             });
+        });
+    }
+
+    /**
+     * Use the plugin_action_links_{$plugin_file} filter to add links to the plugin page
+     */
+    private function addPluginPageLinks() : void {
+        add_filter('plugin_action_links_kc-slider/index.php', function(array $links) : array {
+            $links[] = '<a href="'.esc_url(get_admin_url(null, 'edit.php?post_type=slides&page='.$this->pageSlug)).'">Settings</a>';
+            return $links;
         });
     }
 
