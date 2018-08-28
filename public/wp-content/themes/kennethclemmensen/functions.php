@@ -40,7 +40,7 @@ add_action('wp_enqueue_scripts', function() : void {
 });
 
 add_action('init', function() : void {
-    new ThemeSettings();
+    ThemeSettings::getInstance();
     new TranslationStrings();
     register_nav_menus([
         ThemeHelper::getMobileMenuKey() => 'Mobile menu',

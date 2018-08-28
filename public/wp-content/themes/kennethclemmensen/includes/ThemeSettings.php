@@ -4,6 +4,7 @@
  */
 class ThemeSettings {
 
+    private static $instance = null;
     private $pageSlug;
     private $optionName;
     private $option;
@@ -17,7 +18,7 @@ class ThemeSettings {
     /**
      * ThemeSettings constructor
      */
-    public function __construct() {
+    private function __construct() {
         $this->pageSlug = 'kc-theme-settings';
         $this->optionName = $this->pageSlug.'-group';
         $this->option = get_option($this->optionName);
@@ -31,6 +32,16 @@ class ThemeSettings {
         $this->adminMenu();
         $this->adminInit();
         $this->addShortcodes();
+    }
+
+    /**
+     * Get the instance of the class
+     *
+     * @return ThemeSettings the instance of the class
+     */
+    public static function getInstance() : ThemeSettings {
+        if(self::$instance === null) self::$instance = new ThemeSettings();
+        return self::$instance;
     }
 
     /**
