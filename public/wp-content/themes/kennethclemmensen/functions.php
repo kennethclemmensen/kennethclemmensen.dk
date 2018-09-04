@@ -100,7 +100,7 @@ add_filter('style_loader_src', function(string $src) : string {
 });
 
 add_filter('script_loader_tag', function(string $tag) : string {
-    return str_replace(" type='text/javascript'", '', $tag);
+    return str_replace(" type='text/javascript'", ' defer', $tag);
 });
 
 define('DISALLOW_FILE_EDIT', true);
