@@ -5,6 +5,9 @@ require_once 'includes/ThemeHelper.php';
 require_once 'includes/ThemeSettings.php';
 require_once 'includes/TranslationStrings.php';
 
+/**
+ * Use the wp_enqueue_scripts action to add scripts and stylesheets
+ */
 add_action('wp_enqueue_scripts', function() : void {
     $fontAwesome = 'font-awesome';
     $cdnFile = 'https://use.fontawesome.com/releases/v5.3.1/css/all.css';
@@ -39,6 +42,9 @@ add_action('wp_enqueue_scripts', function() : void {
     wp_enqueue_script('theme-js', get_template_directory_uri().$scriptFile, [$jquery, $vueJS, $vueResource], $version, true);
 });
 
+/**
+ * Use the init action to remove emoji scripts and setup the theme settings, translation strings and menus
+ */
 add_action('init', function() : void {
     ThemeSettings::getInstance();
     new TranslationStrings();
@@ -56,6 +62,9 @@ add_action('init', function() : void {
     remove_filter('comment_text_rss', 'wp_staticize_emoji');
 });
 
+/**
+ * Use the widgets_init action to register sidebars and a custom widget
+ */
 add_action('widgets_init', function() : void {
     register_sidebar([
         'name' => 'Footer',
@@ -76,32 +85,69 @@ add_action('widgets_init', function() : void {
     register_widget(IconWidget::class);
 });
 
+/**
+ * Use the admin_menu action to remove the Posts and Comments menu pages
+ */
 add_action('admin_menu', function() : void {
     remove_menu_page('edit.php');
     remove_menu_page('edit-comments.php');
 });
 
+/**
+ * Use the excerpt_length filter to set the length of the excerpt
+ *
+ * @return int the length of the excerpt
+ */
 add_filter('excerpt_length', function() : int {
     return 20;
 });
 
+/**
+ * Use the excerpt_more filter to change the last part of the excerpt
+ *
+ * @return string the last part of the excerpt
+ */
 add_filter('excerpt_more', function() : string {
     return '...';
 });
 
+/**
+ * Remove the meta generator tag
+ */
 remove_action('wp_head', 'wp_generator');
 
+/**
+ * Use the script_loader_src filter to remove the version query string from scripts
+ *
+ * @param string $src the source to remove the version query string from
+ * @return string the source without the version query string
+ */
 add_filter('script_loader_src', function(string $src) : string {
     return ThemeHelper::removeVersionQueryString($src);
 });
 
+/**
+ * Use the style_loader_src filter to remove the version query string from stylesheets
+ *
+ * @param string $src the source to remove the version query string from
+ * @return string the source without the version query string
+ */
 add_filter('style_loader_src', function(string $src) : string {
     return ThemeHelper::removeVersionQueryString($src);
 });
 
+/**
+ * Use the script_loader_tag to add the defer attribute and remove the type attribute
+ *
+ * @param string $tag the tag to add and remove the attributes from
+ * @return string the tag
+ */
 add_filter('script_loader_tag', function(string $tag) : string {
     $replace = (is_admin()) ? '' : ' defer';
     return str_replace(" type='text/javascript'", $replace, $tag);
 });
 
+/**
+ * Disallow file edit for themes and plugins
+ */
 define('DISALLOW_FILE_EDIT', true);
