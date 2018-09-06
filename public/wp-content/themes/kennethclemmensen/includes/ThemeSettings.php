@@ -71,7 +71,7 @@ class ThemeSettings {
      */
     private function adminInit() : void {
         add_action('admin_init', function() : void {
-            $sectionID = 'kc-theme-settings-section';
+            $sectionID = $this->pageSlug.'-section';
             add_settings_section($sectionID, $this->title, null, $this->pageSlug);
             $prefix = 'kc-theme-settings-';
             add_settings_field($prefix.'email', 'Email', function() : void {

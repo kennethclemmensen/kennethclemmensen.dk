@@ -63,8 +63,7 @@ class FDWC {
     }
 
     /**
-     * Use the init action to register the fdwc file custom post type
-     * and the file types taxonomy
+     * Use the init action to register the fdwc file custom post type and the file types taxonomy
      */
     private function init() : void {
         add_action('init', function() : void {
@@ -175,10 +174,11 @@ class FDWC {
             $wpQuery = new WP_Query($args);
             while($wpQuery->have_posts()) {
                 $wpQuery->the_post();
+                $id = get_the_ID();
                 $html .= '<div class="fdwc__section">';
-                $html .= '<a href="'.$this->getFileUrl().'" class="fdwc__link" rel="nofollow" data-post-id="'.get_the_ID().'" download>'.$this->getFileName().'</a>';
-                $html .= '<p>'.$this->getFileDescription().'</p>';
-                $html .= '<p>Antal downloads: '.$this->getFileDownloads().'</p>';
+                $html .= '<a href="'.$this->getFileUrl($id).'" class="fdwc__link" rel="nofollow" data-post-id="'.$id.'" download>'.$this->getFileName($id).'</a>';
+                $html .= '<p>'.$this->getFileDescription($id).'</p>';
+                $html .= '<p>Antal downloads: '.$this->getFileDownloads($id).'</p>';
                 $html .= '</div>';
             }
             $big = 999999999; // need an unlikely integer
@@ -236,12 +236,11 @@ class FDWC {
     /**
      * Get the file url
      *
-     * @param int|null $postID the id of the post
-     * @param array $args an array of arguments
+     * @param int $fileID the id of the file
      * @return string the file url
      */
-    private function getFileUrl(int $postID = null, array $args = []) : string {
-        $file = rwmb_meta($this->fieldFile, $args, $postID);
+    private function getFileUrl(int $fileID) : string {
+        $file = rwmb_meta($this->fieldFile, [], $fileID);
         $file = array_shift($file);
         return esc_url($file['url']);
     }
@@ -249,12 +248,11 @@ class FDWC {
     /**
      * Get the file path
      *
-     * @param int|null $postID the id of the post
-     * @param array $args an array of arguments
+     * @param int $fileID the id of the file
      * @return string the file path
      */
-    private function getFilePath(int $postID = null, array $args = []) : string {
-        $file = rwmb_meta($this->fieldFile, $args, $postID);
+    private function getFilePath(int $fileID) : string {
+        $file = rwmb_meta($this->fieldFile, [], $fileID);
         $file = array_shift($file);
         return $file['path'];
     }
@@ -262,33 +260,30 @@ class FDWC {
     /**
      * Get the file name
      *
-     * @param int|null $postID the id of the post
-     * @param array $args an array of arguments
+     * @param int $fileID the id of the file
      * @return string the file name
      */
-    private function getFileName(int $postID = null, array $args = []) : string {
-        return basename($this->getFilePath($postID, $args));
+    private function getFileName(int $fileID) : string {
+        return basename($this->getFilePath($fileID));
     }
 
     /**
      * Get the file description
      *
-     * @param int|null $postID the id of the post
-     * @param array $args an array of arguments
+     * @param int $fileID the id of the file
      * @return string the file description
      */
-    private function getFileDescription(int $postID = null, array $args = []) : string {
-        return rwmb_meta($this->fieldDescription, $args, $postID);
+    private function getFileDescription(int $fileID) : string {
+        return rwmb_meta($this->fieldDescription, [], $fileID);
     }
 
     /**
      * Get the number of file downloads
      *
-     * @param int|null $postID the id of the post
-     * @param array $args an array of arguments
+     * @param int $fileID the id of the file
      * @return int the number of file downloads
      */
-    private function getFileDownloads(int $postID = null, array $args = []) : int {
-        return rwmb_meta($this->fieldDownloadCounter, $args, $postID);
+    private function getFileDownloads(int $fileID) : int {
+        return rwmb_meta($this->fieldDownloadCounter, [], $fileID);
     }
 }

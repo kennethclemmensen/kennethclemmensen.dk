@@ -165,8 +165,10 @@ class KCGallery {
             $wpQuery = new WP_Query($args);
             while($wpQuery->have_posts()) {
                 $wpQuery->the_post();
-                $html .= '<a href="'.$this->getPhoto(get_the_ID()).'" data-title="'.get_the_title().'" data-lightbox="'.$galleryID.'">';
-                $html .= '<img src="'.$this->getPhotoThumbnail(get_the_ID()).'" class="kc-gallery__photo" alt="'.get_the_title().'"></a>';
+                $id = get_the_ID();
+                $title = get_the_title();
+                $html .= '<a href="'.$this->getPhotoUrl($id).'" data-title="'.$title.'" data-lightbox="'.$galleryID.'">';
+                $html .= '<img src="'.$this->getPhotoThumbnailUrl($id).'" class="kc-gallery__photo" alt="'.$title.'"></a>';
             }
             $html .= '<div class="kc-gallery__pagination">';
             $big = 999999999; // need an unlikely integer
@@ -201,7 +203,7 @@ class KCGallery {
                 $galleryID = rwmb_meta($this->fieldPhotoGallery);
                 echo get_post($galleryID)->post_title;
             } else if($columnName === $columnPhotoKey) {
-                echo '<img src="'.$this->getPhotoThumbnail().'" alt="'.get_the_title().'">';
+                echo '<img src="'.$this->getPhotoThumbnailUrl().'" alt="'.get_the_title().'">';
             }
         });
         add_filter('manage_edit-'.self::PHOTO.'_sortable_columns', function(array $columns) use ($columnGalleryKey, $columnGalleryValue) : array {
@@ -263,48 +265,44 @@ class KCGallery {
     /**
      * Get the gallery page url
      *
-     * @param int|null $postID the id of the post
-     * @param array $args an array of arguments
+     * @param int $galleryID the id of the gallery
      * @return string the gallery page url
      */
-    private function getGalleryPageUrl(int $postID = null, array $args = []) : string {
-        return get_permalink(rwmb_meta($this->fieldGalleryPage, $args, $postID));
+    private function getGalleryPageUrl(int $galleryID) : string {
+        return get_permalink(rwmb_meta($this->fieldGalleryPage, [], $galleryID));
     }
 
     /**
      * Get the gallery photo url
      *
-     * @param int|null $postID the id of the post
-     * @param array $args an array of arguments
+     * @param int $galleryID the id of the gallery
      * @return string the gallery photo url
      */
-    private function getGalleryPhotoUrl(int $postID = null, array $args = []) : string {
-        $photo = rwmb_meta($this->fieldGalleryPhoto, $args, $postID);
+    private function getGalleryPhotoUrl(int $galleryID) : string {
+        $photo = rwmb_meta($this->fieldGalleryPhoto, [], $galleryID);
         return array_shift($photo)['full_url'];
     }
 
     /**
-     * Get the photo
+     * Get the photo url
      *
-     * @param int|null $postID the id of the post
-     * @param array $args an array of arguments
-     * @return string the photo
+     * @param int $photoID the id of the photo
+     * @return string the photo url
      */
-    private function getPhoto(int $postID = null, array $args = []) : string {
-        $photo = rwmb_meta($this->fieldPhoto, $args, $postID);
+    private function getPhotoUrl(int $photoID) : string {
+        $photo = rwmb_meta($this->fieldPhoto, [], $photoID);
         $photo = array_shift($photo);
         return $photo['full_url'];
     }
 
     /**
-     * Get the photo thumbnail
+     * Get the photo thumbnail url
      *
-     * @param int|null $postID the id of the post
-     * @param array $args an array of arguments
+     * @param int|null $photoID the id of the photo
      * @return string the photo thumbnail
      */
-    private function getPhotoThumbnail(int $postID = null, array $args = []) : string {
-        $photo = rwmb_meta($this->fieldPhoto, $args, $postID);
+    private function getPhotoThumbnailUrl(int $photoID = null) : string {
+        $photo = rwmb_meta($this->fieldPhoto, [], $photoID);
         $photo = array_shift($photo);
         return $photo['url'];
     }

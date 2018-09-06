@@ -94,26 +94,24 @@ class KCSlider {
      * columns for the slides custom post type
      */
     private function adminColumns() : void {
-        $image_column_key = 'image';
-        add_filter('manage_'.self::SLIDES.'_posts_columns', function(array $columns) use ($image_column_key) : array {
-            $columns[$image_column_key] = 'Image';
+        $imageColumnKey = 'image';
+        add_filter('manage_'.self::SLIDES.'_posts_columns', function(array $columns) use ($imageColumnKey) : array {
+            $columns[$imageColumnKey] = 'Image';
             return $columns;
         });
-        add_filter('manage_'.self::SLIDES.'_posts_custom_column', function(string $column_name) use ($image_column_key) : void {
-            if($column_name === $image_column_key) echo '<img src="'.$this->getSlideImage().'" alt="'.get_the_title().'" style="height: 60px">';
+        add_filter('manage_'.self::SLIDES.'_posts_custom_column', function(string $columnName) use ($imageColumnKey) : void {
+            if($columnName === $imageColumnKey) echo '<img src="'.$this->getSlideImage().'" alt="'.get_the_title().'" style="height: 60px">';
         });
     }
 
     /**
-     * Get the url of slide image
+     * Get the slide image url
      *
-     * @param int|null $postID the post id of the slide image
-     * @param array $args an array of arguments
-     *
-     * @return string the url of the slide image
+     * @param int|null $slideImageID the id of the slide image
+     * @return string the slide image url
      */
-    public function getSlideImage(int $postID = null, array $args = []) : string {
-        $image = rwmb_meta($this->fieldSlideImage, $args, $postID);
+    public function getSlideImage(int $slideImageID = null) : string {
+        $image = rwmb_meta($this->fieldSlideImage, [], $slideImageID);
         $url = array_shift($image)['full_url'];
         return esc_url($url);
     }
