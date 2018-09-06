@@ -5,6 +5,7 @@
 class ThemeSettings {
 
     private static $instance = null;
+    private $title;
     private $pageSlug;
     private $optionName;
     private $option;
@@ -19,6 +20,7 @@ class ThemeSettings {
      * ThemeSettings constructor
      */
     private function __construct() {
+        $this->title = 'Theme settings';
         $this->pageSlug = 'kc-theme-settings';
         $this->optionName = $this->pageSlug.'-group';
         $this->option = get_option($this->optionName);
@@ -39,7 +41,7 @@ class ThemeSettings {
      *
      * @return ThemeSettings the instance of the class
      */
-    public static function getInstance() : ThemeSettings {
+    public static function getInstance() : self {
         if(self::$instance === null) self::$instance = new ThemeSettings();
         return self::$instance;
     }
@@ -49,8 +51,7 @@ class ThemeSettings {
      */
     private function adminMenu() : void {
         add_action('admin_menu', function() : void {
-            $title = 'Theme settings';
-            add_submenu_page('themes.php', $title, $title, 'administrator', $this->pageSlug, function() : void {
+            add_submenu_page('themes.php', $this->title, $this->title, 'administrator', $this->pageSlug, function() : void {
                 settings_errors();
                 ?>
                 <form action="options.php" method="post">
@@ -71,7 +72,7 @@ class ThemeSettings {
     private function adminInit() : void {
         add_action('admin_init', function() : void {
             $sectionID = 'kc-theme-settings-section';
-            add_settings_section($sectionID, 'Theme settings', null, $this->pageSlug);
+            add_settings_section($sectionID, $this->title, null, $this->pageSlug);
             $prefix = 'kc-theme-settings-';
             add_settings_field($prefix.'email', 'Email', function() : void {
                 echo '<input type="email" name="'.$this->optionName.'['.$this->email.']" value="'.$this->getEmail().'" required> ';
