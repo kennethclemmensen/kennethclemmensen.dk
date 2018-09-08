@@ -156,7 +156,7 @@ class FDWC {
      * Add the fdwc_files shortcode to show a list of files
      */
     private function addShortcode() : void {
-        add_shortcode('fdwc_files', function(array $atts) : string {
+        add_shortcode('fdwc_files', function(array $attributes) : string {
             $html = '<div class="fdwc">';
             $paged = (get_query_var('paged')) ? absint(get_query_var('paged')) : 1;
             $args = [
@@ -166,7 +166,7 @@ class FDWC {
                 'tax_query' => [
                     [
                         'taxonomy' => $this->taxFileType,
-                        'terms' => $atts['file_type_id']
+                        'terms' => $attributes['file_type_id']
                     ]
                 ],
                 'paged' => $paged
@@ -176,9 +176,9 @@ class FDWC {
                 $wpQuery->the_post();
                 $id = get_the_ID();
                 $html .= '<div class="fdwc__section">';
-                $html .= '<a href="'.$this->getFileUrl($id).'" class="fdwc__link" rel="nofollow" data-post-id="'.$id.'" download>'.$this->getFileName($id).'</a>';
+                $html .= '<a href="'.$this->getFileUrl($id).'" class="fdwc__link" rel="nofollow" data-file-id="'.$id.'" download>'.$this->getFileName($id).'</a>';
                 $html .= '<p>'.$this->getFileDescription($id).'</p>';
-                $html .= '<p>Antal downloads: '.$this->getFileDownloads($id).'</p>';
+                $html .= '<p>Antal downloads: <span class="fdwc__downloads">'.$this->getFileDownloads($id).'</span></p>';
                 $html .= '</div>';
             }
             $big = 999999999; // need an unlikely integer
@@ -213,24 +213,29 @@ class FDWC {
      */
     private function wpAjax() : void {
         $action = 'fdwc_download';
-        add_action('wp_ajax_nopriv_'.$action, function() {
-            $this->updateCounter();
+        add_action('wp_ajax_nopriv_'.$action, function() : void {
+            $fileID = sanitize_text_field($_POST['file_id']);
+            $this->updateCounter($fileID);
+            echo $this->getFileDownloads($fileID);
             wp_die();
         });
-        add_action('wp_ajax_'.$action, function() {
-            $this->updateCounter();
+        add_action('wp_ajax_'.$action, function() : void {
+            $fileID = sanitize_text_field($_POST['file_id']);
+            $this->updateCounter($fileID);
+            echo $this->getFileDownloads($fileID);
             wp_die();
         });
     }
 
     /**
      * Update the counter for a file
+     *
+     * @param int $fileID the id of the file
      */
-    private function updateCounter() : void {
-        $id = $_POST['post_id'];
-        $downloads = $this->getFileDownloads($id);
+    private function updateCounter(int $fileID) : void {
+        $downloads = $this->getFileDownloads($fileID);
         $downloads++;
-        update_post_meta($id, $this->fieldDownloadCounter, $downloads);
+        update_post_meta($fileID, $this->fieldDownloadCounter, $downloads);
     }
 
     /**
