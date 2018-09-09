@@ -3,14 +3,45 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
+        browserSync: {
+            bsFiles: {
+                src: '<%= pkg.cssFolderPath %>/*.css'
+            },
+            options: {
+                debugInfo: true,
+                files: [
+                    '<%= pkg.cssFolderPath %>*.css',
+                    '<%= pkg.themeFolderPath %>**/*.php',
+                    '<%= pkg.jsFolderPath %>*.js'
+                ],
+                logConnections: true,
+                notify: true,
+                proxy: '<%= pkg.name %>.test',
+                watchTask: true
+            }
+        },
         less: {
             development: {
+                files: {
+                    '<%= pkg.cssFolderPath %>style.css': '<%= pkg.lessFolderPath %>style.less'
+                },
                 options: {
                     compress: true,
                     optimization: 1
-                },
+                }
+            }
+        },
+        sass: {
+            dist: {
                 files: {
-                    'public/wp-content/themes/<%= pkg.name %>/css/style.css': 'public/wp-content/themes/<%= pkg.name %>/less/style.less' //dest : src
+                    '<%= pkg.cssFolderPath %>style.css': '<%= pkg.sassFolderPath %>style.scss'
+                }
+            }
+        },
+        uglify: {
+            my_target: {
+                files: {
+                    '<%= pkg.jsFolderPath %>minified/script.min.js': ['<%= pkg.jsFolderPath %>*.js']
                 }
             }
         },
@@ -19,54 +50,27 @@ module.exports = function(grunt) {
                 livereload: true
             },
             scripts: {
-                files: ['public/wp-content/themes/<%= pkg.name %>/js/**/*.js'], //the files to watch
-                tasks: ['uglify'], //the task to do
+                files: ['<%= pkg.jsFolderPath %>**/*.js'],
                 options: {
                     spawn: false
-                }
+                },
+                tasks: ['uglify']
             },
             styles: {
-                files: ['public/wp-content/themes/<%= pkg.name %>/less/**/*.less'], //the files to watch
-                tasks: ['less'], //the task to do
+                files: ['<%= pkg.lessFolderPath %>**/*.less'],
                 options: {
                     spawn: false
-                }
-            }
-        },
-        uglify: {
-            my_target: {
-                files: {
-                    'public/wp-content/themes/<%= pkg.name %>/js/minified/script.min.js': ['public/wp-content/themes/<%= pkg.name %>/js/*.js']
-                }
-            }
-        },
-        sass: {
-            dist: {
-                files: {
-                    'public/wp-content/themes/<%= pkg.name %>/css/style.css': 'public/wp-content/themes/<%= pkg.name %>/sass/style.scss' //dest : src
-                }
-            }
-        },
-        browserSync: {
-            bsFiles: {
-                src: 'public/wp-content/themes/<%= pkg.name %>/css/*.css'
-            },
-            options: {
-                watchTask: true,
-                debugInfo: true,
-                logConnections: true,
-                notify: true,
-                proxy: '<%= pkg.name %>.test',
-                files: ['public/wp-content/themes/<%= pkg.name %>/css/*.css', 'public/wp-content/themes/<%= pkg.name %>/**/*.php', 'public/wp-content/themes/<%= pkg.name %>/js/*.js']
+                },
+                tasks: ['less']
             }
         }
     });
 
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-uglify-es');
     grunt.loadNpmTasks('assemble-less');
-    grunt.loadNpmTasks('grunt-contrib-sassjs');
     grunt.loadNpmTasks('grunt-browser-sync');
+    grunt.loadNpmTasks('grunt-contrib-sassjs');
+    grunt.loadNpmTasks('grunt-contrib-uglify-es');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
     grunt.registerTask('default', ['browserSync', 'watch']);
 };
