@@ -14,6 +14,7 @@
     "grunt-contrib-sassjs": "*",
     "grunt-browser-sync": "*",
     "gulp": "*",
-    "browser-sync": "*"
+    "browser-sync": "*",
+    "gulp-notify": "*"
   }
 }
