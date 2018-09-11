@@ -12,6 +12,8 @@
     "grunt-contrib-uglify-es": "*",
     "assemble-less": "*",
     "grunt-contrib-sassjs": "*",
-    "grunt-browser-sync": "*"
+    "grunt-browser-sync": "*",
+    "gulp": "*",
+    "browser-sync": "*"
   }
 }
