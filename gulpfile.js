@@ -2,6 +2,7 @@ let p = require('./package.json');
 let gulp = require('gulp');
 let browserSync = require('browser-sync');
 let sass = require('gulp-sass');
+let less = require('gulp-less');
 let cssnano = require('gulp-cssnano');
 let concat = require('gulp-concat');
 let uglify = require('gulp-uglifyes');
@@ -25,6 +26,16 @@ gulp.task('default', function() {
     gulp.start('browser-sync', 'watch');
 });
 
+gulp.task('less', function() {
+    return gulp.src(p.lessFolderPath + 'style.less')
+        .pipe(less())
+        .pipe(cssnano())
+        .pipe(gulp.dest(p.cssFolderPath))
+        .pipe(browserSync.reload({
+            stream: true
+        }));
+});
+
 gulp.task('scripts', function() {
     return gulp.src(p.jsFolderPath + '*.js')
         .pipe(concat('script.min.js'))
@@ -35,7 +46,7 @@ gulp.task('scripts', function() {
         }));
 });
 
-gulp.task('styles', function() {
+gulp.task('sass', function() {
     return gulp.src(p.sassFolderPath + 'style.scss')
         .pipe(sass())
         .pipe(cssnano())
@@ -47,5 +58,6 @@ gulp.task('styles', function() {
 
 gulp.task('watch', function() {
     gulp.watch(p.jsFolderPath + '*.js', ['scripts']);
-    gulp.watch(p.sassFolderPath + '**/*.scss', ['styles']);
+    gulp.watch(p.lessFolderPath + '**/*.less', ['less']);
+    gulp.watch(p.sassFolderPath + '**/*.scss', ['sass']);
 });

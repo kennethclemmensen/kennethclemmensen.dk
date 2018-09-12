@@ -17,6 +17,7 @@
     "gulp": "*",
     "browser-sync": "*",
     "gulp-sass": "*",
+    "gulp-less": "*",
     "gulp-cssnano": "*",
     "gulp-concat": "*",
     "gulp-uglifyes": "*"
