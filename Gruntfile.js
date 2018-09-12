@@ -32,6 +32,10 @@ module.exports = function(grunt) {
             }
         },
         sass: {
+            options: {
+                implementation: require('node-sass'),
+                outputStyle: 'compressed'
+            },
             dist: {
                 files: {
                     '<%= pkg.cssFolderPath %>style.css': '<%= pkg.sassFolderPath %>style.scss'
@@ -66,9 +70,9 @@ module.exports = function(grunt) {
         }
     });
 
-    grunt.loadNpmTasks('assemble-less');
+    grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-browser-sync');
-    grunt.loadNpmTasks('grunt-contrib-sassjs');
+    grunt.loadNpmTasks('grunt-sass');
     grunt.loadNpmTasks('grunt-contrib-uglify-es');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
