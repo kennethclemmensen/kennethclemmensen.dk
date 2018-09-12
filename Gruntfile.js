@@ -60,12 +60,19 @@ module.exports = function(grunt) {
                 },
                 tasks: ['uglify']
             },
-            styles: {
+            less: {
                 files: ['<%= pkg.lessFolderPath %>**/*.less'],
                 options: {
                     spawn: false
                 },
                 tasks: ['less']
+            },
+            sass: {
+                files: ['<%= pkg.sassFolderPath %>**/*.scss'],
+                options: {
+                    spawn: false
+                },
+                tasks: ['sass']
             }
         }
     });
