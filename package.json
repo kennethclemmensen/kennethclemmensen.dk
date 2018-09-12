@@ -15,6 +15,9 @@
     "grunt-browser-sync": "*",
     "gulp": "*",
     "browser-sync": "*",
-    "gulp-notify": "*"
+    "gulp-sass": "*",
+    "gulp-cssnano": "*",
+    "gulp-concat": "*",
+    "gulp-uglifyes": "*"
   }
 }
