@@ -5,7 +5,7 @@ module.exports = function(grunt) {
 
         browserSync: {
             bsFiles: {
-                src: '<%= pkg.cssFolderPath %>/*.css'
+                src: '<%= pkg.cssFolderPath %>*.css'
             },
             options: {
                 debugInfo: true,
