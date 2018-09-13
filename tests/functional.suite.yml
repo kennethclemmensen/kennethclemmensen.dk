@@ -7,6 +7,7 @@
 
 actor: FunctionalTester
 modules:
-    enabled:
-        # add a framework module here
-        - \Helper\Functional
+  enabled:
+  - PhpBrowser:
+      url: http://kennethclemmensen.test
+  - \Helper\Functional

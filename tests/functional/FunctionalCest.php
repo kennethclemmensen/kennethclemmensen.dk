@@ -1,15 +1,15 @@
 <?php
 /**
- * The AcceptanceCest class contains acceptance tests for the website
+ * The FunctionalCest class contains functional tests for the website
  */
-class AcceptanceCest {
+class FunctionalCest {
 
     /**
      * Test the front page
      *
-     * @param AcceptanceTester $I the acceptance tester
+     * @param FunctionalTester $I the functional tester
      */
-    public function testFrontPage(AcceptanceTester $I) : void {
+    public function testFrontPage(FunctionalTester $I) : void {
         $I->wantToTest('the front page');
         $I->amOnPage('/');
         $I->see('Velkommen');
@@ -18,9 +18,9 @@ class AcceptanceCest {
     /**
      * Test a gallery page
      *
-     * @param AcceptanceTester $I the acceptance tester
+     * @param FunctionalTester $I the functional tester
      */
-    public function testGalleryPage(AcceptanceTester $I) : void {
+    public function testGalleryPage(FunctionalTester $I) : void {
         $I->wantToTest('a gallery page');
         $I->amOnPage('/');
         $I->click('Billeder');
@@ -33,9 +33,9 @@ class AcceptanceCest {
     /**
      * Test the search page
      *
-     * @param AcceptanceTester $I the acceptance tester
+     * @param FunctionalTester $I the functional tester
      */
-    public function testSearchPage(AcceptanceTester $I) : void {
+    public function testSearchPage(FunctionalTester $I) : void {
         $I->wantToTest('the search page');
         $I->amOnPage('/');
         $I->click('Søg');
