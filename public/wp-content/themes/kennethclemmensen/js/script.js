@@ -13,18 +13,35 @@ jQuery.noConflict();
             $(this).parent().parent().find('.sub-menu').toggle();
         });
 
+        /**
+         * The Slider class contains methods to handle the functionality of the slider
+         */
         class Slider {
 
+            /**
+             * Slider constructor
+             *
+             * @param delay the delay of a slide
+             * @param duration the duration of a slide
+             */
             constructor(delay, duration) {
                 this.delay = delay;
                 this.duration = duration;
                 this.$sliderImages = $('.slider__image');
             }
 
+            /**
+             * Get a random number
+             *
+             * @returns {number} a random number
+             */
             getRandomNumber() {
                 return Math.floor(Math.random() * this.$sliderImages.length);
             }
 
+            /**
+             * Show the slider
+             */
             show() {
                 let randomNumber = this.getRandomNumber();
                 this.$sliderImages.eq(randomNumber).show();
