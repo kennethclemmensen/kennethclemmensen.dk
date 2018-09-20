@@ -6,6 +6,7 @@
   "jsFolderPath": "public/wp-content/themes/kennethclemmensen/js/",
   "sassFolderPath": "public/wp-content/themes/kennethclemmensen/sass/",
   "themeFolderPath": "public/wp-content/themes/kennethclemmensen/",
+  "uploadsFolderPath": "public/wp-content/uploads/",
   "devDependencies": {
     "grunt": "*",
     "grunt-contrib-watch": "*",
@@ -14,12 +15,14 @@
     "grunt-sass": "*",
     "node-sass": "*",
     "grunt-browser-sync": "*",
+    "grunt-contrib-imagemin": "*",
     "gulp": "*",
     "browser-sync": "*",
     "gulp-sass": "*",
     "gulp-less": "*",
     "gulp-cssnano": "*",
     "gulp-concat": "*",
-    "gulp-uglifyes": "*"
+    "gulp-uglifyes": "*",
+    "gulp-imagemin": "*"
   }
 }

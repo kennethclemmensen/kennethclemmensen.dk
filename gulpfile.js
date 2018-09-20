@@ -6,6 +6,7 @@ let less = require('gulp-less');
 let cssnano = require('gulp-cssnano');
 let concat = require('gulp-concat');
 let uglify = require('gulp-uglifyes');
+let imagemin = require('gulp-imagemin');
 
 gulp.task('browser-sync', function() {
     browserSync.init({
@@ -26,9 +27,25 @@ gulp.task('default', function() {
     gulp.start('browser-sync', 'watch');
 });
 
+gulp.task('imagemin', function() {
+    return gulp.src(p.uploadsFolderPath + '**')
+        .pipe(imagemin())
+        .pipe(gulp.dest(p.uploadsFolderPath));
+});
+
 gulp.task('less', function() {
     return gulp.src(p.lessFolderPath + 'style.less')
         .pipe(less())
+        .pipe(cssnano())
+        .pipe(gulp.dest(p.cssFolderPath))
+        .pipe(browserSync.reload({
+            stream: true
+        }));
+});
+
+gulp.task('sass', function() {
+    return gulp.src(p.sassFolderPath + 'style.scss')
+        .pipe(sass())
         .pipe(cssnano())
         .pipe(gulp.dest(p.cssFolderPath))
         .pipe(browserSync.reload({
@@ -41,16 +58,6 @@ gulp.task('scripts', function() {
         .pipe(concat('script.min.js'))
         .pipe(uglify())
         .pipe(gulp.dest(p.jsFolderPath + 'minified/'))
-        .pipe(browserSync.reload({
-            stream: true
-        }));
-});
-
-gulp.task('sass', function() {
-    return gulp.src(p.sassFolderPath + 'style.scss')
-        .pipe(sass())
-        .pipe(cssnano())
-        .pipe(gulp.dest(p.cssFolderPath))
         .pipe(browserSync.reload({
             stream: true
         }));

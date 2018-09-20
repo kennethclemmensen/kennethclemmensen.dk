@@ -20,6 +20,16 @@ module.exports = function(grunt) {
                 watchTask: true
             }
         },
+        imagemin: {
+            dynamic: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= pkg.uploadsFolderPath %>',
+                    src: ['**/*.{png,jpg,gif}'],
+                    dest: '<%= pkg.uploadsFolderPath %>'
+                }]
+            }
+        },
         less: {
             development: {
                 files: {
@@ -77,11 +87,12 @@ module.exports = function(grunt) {
         }
     });
 
-    grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-browser-sync');
-    grunt.loadNpmTasks('grunt-sass');
+    grunt.loadNpmTasks('grunt-contrib-imagemin');
+    grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-uglify-es');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-sass');
 
     grunt.registerTask('default', ['browserSync', 'watch']);
 };
