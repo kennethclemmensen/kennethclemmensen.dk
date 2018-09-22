@@ -137,7 +137,7 @@ add_filter('style_loader_src', function(string $src) : string {
 });
 
 /**
- * Use the script_loader_tag to add the defer attribute and remove the type attribute
+ * Use the script_loader_tag action to add the defer attribute and remove the type attribute
  *
  * @param string $tag the tag to add and remove the attributes from
  * @return string the tag
@@ -145,6 +145,15 @@ add_filter('style_loader_src', function(string $src) : string {
 add_filter('script_loader_tag', function(string $tag) : string {
     $replace = (is_admin()) ? '' : ' defer';
     return str_replace(" type='text/javascript'", $replace, $tag);
+});
+
+/**
+ * Use the customize_register action to remove the custom css tag
+ *
+ * @param WP_Customize_Manager $wpCustomizeManager the customize manager
+ */
+add_action('customize_register', function(WP_Customize_Manager $wpCustomizeManager) : void {
+    $wpCustomizeManager->remove_section('custom_css');
 });
 
 /**
