@@ -36,6 +36,10 @@ gulp.task('imagemin', function() {
 gulp.task('less', function() {
     return gulp.src(p.lessFolderPath + 'style.less')
         .pipe(less())
+        .on('error', function(error) {
+            console.log(error.toString());
+            this.emit('end');
+        })
         .pipe(cssnano())
         .pipe(gulp.dest(p.cssFolderPath))
         .pipe(browserSync.reload({
@@ -46,6 +50,10 @@ gulp.task('less', function() {
 gulp.task('sass', function() {
     return gulp.src(p.sassFolderPath + 'style.scss')
         .pipe(sass())
+        .on('error', function(error) {
+            console.log(error.toString());
+            this.emit('end');
+        })
         .pipe(cssnano())
         .pipe(gulp.dest(p.cssFolderPath))
         .pipe(browserSync.reload({
@@ -57,6 +65,10 @@ gulp.task('scripts', function() {
     return gulp.src(p.jsFolderPath + '*.js')
         .pipe(concat('script.min.js'))
         .pipe(uglify())
+        .on('error', function(error) {
+            console.log(error.toString());
+            this.emit('end');
+        })
         .pipe(gulp.dest(p.jsFolderPath + 'minified/'))
         .pipe(browserSync.reload({
             stream: true
