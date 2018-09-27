@@ -94,6 +94,14 @@ add_action('admin_menu', function() : void {
 });
 
 /**
+ * Use the admin_bar_menu action to remove the New Post menu link
+ */
+$priority = 999;
+add_action('admin_bar_menu', function(WP_Admin_Bar $wpAdminBar) : void {
+    $wpAdminBar->remove_node('new-post');
+}, $priority);
+
+/**
  * Use the excerpt_length filter to set the length of the excerpt
  *
  * @return int the length of the excerpt
