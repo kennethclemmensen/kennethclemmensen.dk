@@ -12,7 +12,7 @@ const app = new Vue({
     methods: {
         search: function(event = null) {
             if(event !== null) event.preventDefault();
-            this.$http.get('/wp-json/kcapi/v1/pages/' + this.searchString).then(response => {
+            this.$http.get('/wp-json/kcapi/v1/pages/' + this.searchString + '?per_page=30').then(response => {
                 this.results = response.body;
             }, () => {
                 this.results = [];

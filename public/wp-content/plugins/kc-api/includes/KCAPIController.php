@@ -19,10 +19,11 @@ final class KCAPIController extends WP_REST_Controller {
     public function registerRoutes() : void {
         $title = 'title';
         $page = 'page';
+        $perPage = 'per_page';
         register_rest_route('kcapi/v1', '/pages/(?P<'.$title.'>[\S]+)', [
             'methods' => [WP_REST_Server::READABLE],
-            'callback' => function(WP_REST_Request $request) use ($title, $page) : WP_REST_Response {
-                $pages = $this->getPagesByTitle($request->get_param($title), $request->get_param($page));
+            'callback' => function(WP_REST_Request $request) use ($title, $page, $perPage) : WP_REST_Response {
+                $pages = $this->getPagesByTitle($request->get_param($title), $request->get_param($page) - 1, $request->get_param($perPage));
                 $statusCode = 200;
                 return new WP_REST_Response($pages, $statusCode);
             },
@@ -42,6 +43,13 @@ final class KCAPIController extends WP_REST_Controller {
                     'validate_callback' => function(int $value) : bool {
                         return is_int($value) && $value > 0;
                     }
+                ],
+                $perPage => [
+                    'default' => 4,
+                    'required' => false,
+                    'validate_callback' => function(int $value) : bool {
+                        return is_int($value) && $value > 0;
+                    }
                 ]
             ],
             'permission_callback' => function() : bool {
@@ -55,15 +63,16 @@ final class KCAPIController extends WP_REST_Controller {
      *
      * @param string $title the title to get the pages from
      * @param int $offset the number of pages to pass over
+     * @param int $resultsPerPage the number of results per page
      * @return array the pages
      */
-    private function getPagesByTitle(string $title, int $offset) : array {
+    private function getPagesByTitle(string $title, int $offset, int $resultsPerPage) : array {
         $pages = [];
         $args = [
             'order' => 'ASC',
             'orderby' => 'menu_order',
-            'offset' => ($offset - 1),
-            'posts_per_page' => 4,
+            'offset' => $offset,
+            'posts_per_page' => $resultsPerPage,
             'post_type' => ['page'],
             's' => $title
         ];
