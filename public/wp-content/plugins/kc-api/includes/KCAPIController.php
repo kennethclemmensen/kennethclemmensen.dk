@@ -18,12 +18,13 @@ final class KCAPIController extends WP_REST_Controller {
      */
     public function registerRoutes() : void {
         $title = 'title';
+        $page = 'page';
         register_rest_route('kcapi/v1', '/pages/(?P<'.$title.'>[\S]+)', [
             'methods' => [WP_REST_Server::READABLE],
-            'callback' => function(WP_REST_Request $request) use ($title) : WP_REST_Response {
-                $title = $request->get_param($title);
+            'callback' => function(WP_REST_Request $request) use ($title, $page) : WP_REST_Response {
+                $pages = $this->getPagesByTitle($request->get_param($title), $request->get_param($page));
                 $statusCode = 200;
-                return new WP_REST_Response($this->getPagesByTitle($title), $statusCode);
+                return new WP_REST_Response($pages, $statusCode);
             },
             'args' => [
                 $title => [
@@ -33,6 +34,13 @@ final class KCAPIController extends WP_REST_Controller {
                     },
                     'validate_callback' => function(string $value) : bool {
                         return !empty($value);
+                    }
+                ],
+                $page => [
+                    'default' => 1,
+                    'required' => false,
+                    'validate_callback' => function(int $value) : bool {
+                        return is_int($value) && $value > 0;
                     }
                 ]
             ],
@@ -46,13 +54,17 @@ final class KCAPIController extends WP_REST_Controller {
      * Get the pages by title
      *
      * @param string $title the title to get the pages from
+     * @param int $offset the number of pages to pass over
      * @return array the pages
      */
-    private function getPagesByTitle(string $title) : array {
+    private function getPagesByTitle(string $title, int $offset) : array {
         $pages = [];
         $args = [
+            'order' => 'ASC',
+            'orderby' => 'menu_order',
+            'offset' => ($offset - 1),
+            'posts_per_page' => 4,
             'post_type' => ['page'],
-            'posts_per_page' => -1,
             's' => $title
         ];
         $wpQuery = new WP_Query($args);
