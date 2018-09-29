@@ -82,7 +82,7 @@ final class KCAPIController extends WP_REST_Controller {
             $pages[] = [
                 'title' => get_the_title(),
                 'link' => get_permalink(get_the_ID()),
-                'excerpt' => get_the_excerpt()
+                'excerpt' => html_entity_decode(get_the_excerpt())
             ];
         }
         return $pages;
