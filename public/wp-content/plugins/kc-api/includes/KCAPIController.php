@@ -7,18 +7,37 @@ use \WP_REST_Response;
 use \WP_REST_Server;
 use \WP_Query;
 
-class KCAPIController extends WP_REST_Controller {
+/**
+ * Class KCAPIController contains methods to set up API endpoints and get data
+ * @package KCAPI\Includes
+ */
+final class KCAPIController extends WP_REST_Controller {
 
     /**
      * Register routes
      */
     public function registerRoutes() : void {
-        register_rest_route('kcapi/v1', '/pages/(?P<title>[\S]+)', [
+        $title = 'title';
+        register_rest_route('kcapi/v1', '/pages/(?P<'.$title.'>[\S]+)', [
             'methods' => [WP_REST_Server::READABLE],
-            'callback' => function(WP_REST_Request $request) : WP_REST_Response {
-                $title = sanitize_text_field($request->get_param('title'));
+            'callback' => function(WP_REST_Request $request) use ($title) : WP_REST_Response {
+                $title = $request->get_param($title);
                 $statusCode = 200;
                 return new WP_REST_Response($this->getPagesByTitle($title), $statusCode);
+            },
+            'args' => [
+                $title => [
+                    'required' => true,
+                    'sanitize_callback' => function(string $value) : string {
+                        return sanitize_text_field($value);
+                    },
+                    'validate_callback' => function(string $value) : bool {
+                        return !empty($value);
+                    }
+                ]
+            ],
+            'permission_callback' => function() : bool {
+                return true;
             }
         ]);
     }

@@ -2,10 +2,10 @@
 namespace KCAPI\Includes;
 
 /**
- * Class KCAPI contains methods to set up API endpoints and get data
+ * Class KCAPI contains methods to set up the plugin
  * @package KCAPI\Includes
  */
-class KCAPI {
+final class KCAPI {
 
     /**
      * Execute the plugin
@@ -23,7 +23,7 @@ class KCAPI {
     }
 
     /**
-     * Use the rest_api_init to register a route
+     * Use the rest_api_init to register routes
      */
     private function restApiInit() : void {
         add_action('rest_api_init', function() : void {
