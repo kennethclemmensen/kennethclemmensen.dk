@@ -45,7 +45,6 @@ final class KCAPIController extends WP_REST_Controller {
                     }
                 ],
                 $perPage => [
-                    'default' => 4,
                     'required' => false,
                     'validate_callback' => function(int $value) : bool {
                         return is_int($value) && $value > 0;
@@ -66,13 +65,13 @@ final class KCAPIController extends WP_REST_Controller {
      * @param int $resultsPerPage the number of results per page
      * @return array the pages
      */
-    private function getPagesByTitle(string $title, int $offset, int $resultsPerPage) : array {
+    private function getPagesByTitle(string $title, int $offset, int $resultsPerPage = null) : array {
         $pages = [];
         $args = [
             'order' => 'ASC',
             'orderby' => 'menu_order',
             'offset' => $offset,
-            'posts_per_page' => $resultsPerPage,
+            'posts_per_page' => ($resultsPerPage !== null) ? $resultsPerPage : -1,
             'post_type' => ['page'],
             's' => $title
         ];
