@@ -16,8 +16,8 @@ while(have_posts()) {
             $searchText = TranslationStrings::getSearchText();
             ?>
             <div id="search-app">
-                <form method="post" action="/" @submit="search($event)">
-                    <input type="search" name="search" placeholder="<?php echo $searchText; ?>" v-model="searchString" required>
+                <form method="post" action="<?php echo $_SERVER['HTTP_REFERER']; ?>" @submit.prevent="search">
+                    <input type="search" placeholder="<?php echo $searchText; ?>" v-model="searchString" required>
                     <input type="submit" value="<?php echo $searchText; ?>">
                 </form>
                 <h2 v-if="results.length === 0 && searchString !== ''">
