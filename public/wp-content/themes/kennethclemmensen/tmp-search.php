@@ -25,12 +25,7 @@ while(have_posts()) {
                 </h2>
                 <div v-else-if="results.length > 0">
                     <h2><?php echo TranslationStrings::getSearchResultsText(); ?></h2>
-                    <ul>
-                        <li v-for="result in results">
-                            <a :href="result.link">{{ result.title }}</a>
-                            <p>{{ result.excerpt }}</p>
-                        </li>
-                    </ul>
+                    <search-results :results="results"></search-results>
                 </div>
             </div>
         </section>

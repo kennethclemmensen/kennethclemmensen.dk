@@ -21,5 +21,13 @@ const app = new Vue({
                 this.results = [];
             });
         }
+    },
+    components: {
+        'search-results': {
+            props: {
+                results: Array
+            },
+            template: '<ul><li v-for="result in results"><a :href="result.link">{{ result.title }}</a><p>{{ result.excerpt }}</p></li></ul>'
+        }
     }
 });
