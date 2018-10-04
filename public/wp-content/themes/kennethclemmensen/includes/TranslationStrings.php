@@ -11,6 +11,8 @@ class TranslationStrings {
     private const NO_RESULTS = 'Your search returned no results';
     private const IMAGE = 'Image';
     private const OF = 'of';
+    private const PREVIOUS = 'Previous';
+    private const NEXT = 'Next';
 
     /**
      * TranslationStrings constructor
@@ -24,6 +26,8 @@ class TranslationStrings {
         pll_register_string('No results', self::NO_RESULTS, $context);
         pll_register_string(self::IMAGE, self::IMAGE, $context);
         pll_register_string(self::OF, self::OF, $context);
+        pll_register_string(self::PREVIOUS, self::PREVIOUS, $context);
+        pll_register_string(self::NEXT, self::NEXT, $context);
     }
 
     /**
@@ -87,5 +91,23 @@ class TranslationStrings {
      */
     public static function getOfText() : string {
         return pll__(self::OF);
+    }
+
+    /**
+     * Get the previous text
+     *
+     * @return string the previous text
+     */
+    public static function getPreviousText() : string {
+        return pll__(self::PREVIOUS);
+    }
+
+    /**
+     * Get the next text
+     *
+     * @return string the next text
+     */
+    public static function getNextText() : string {
+        return pll__(self::NEXT);
     }
 }

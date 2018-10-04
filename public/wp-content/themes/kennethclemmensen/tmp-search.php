@@ -16,7 +16,7 @@ while(have_posts()) {
             $searchText = TranslationStrings::getSearchText();
             ?>
             <div id="search-app">
-                <form method="post" action="<?php echo $_SERVER['HTTP_REFERER']; ?>" @submit.prevent="search">
+                <form method="post" action="<?php echo $_SERVER['REQUEST_URI']; ?>" @submit.prevent="search">
                     <input type="search" placeholder="<?php echo $searchText; ?>" v-model="searchString" required>
                     <input type="submit" value="<?php echo $searchText; ?>">
                 </form>
@@ -25,7 +25,9 @@ while(have_posts()) {
                 </h2>
                 <div v-else-if="results.length > 0">
                     <h2><?php echo TranslationStrings::getSearchResultsText(); ?></h2>
-                    <search-results :results="results"></search-results>
+                    <search-results :results="results"
+                                    previous-text="<?php echo TranslationStrings::getPreviousText(); ?>"
+                                    next-text="<?php echo TranslationStrings::getNextText(); ?>"></search-results>
                 </div>
             </div>
         </section>
