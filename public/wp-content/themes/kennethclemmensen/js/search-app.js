@@ -15,10 +15,16 @@ const app = new Vue({
                 this.results = [];
                 return;
             }
-            this.$http.get('/wp-json/kcapi/v1/pages/' + this.searchString).then(response => {
-                this.results = response.body;
-            }, () => {
-                this.results = [];
+            let self = this;
+            jQuery.ajax({
+                url: '/wp-json/kcapi/v1/pages/' + this.searchString,
+                method: 'get',
+                success: function(response) {
+                    self.results = response;
+                },
+                error: function() {
+                    self.results = [];
+                }
             });
         }
     },

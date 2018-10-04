@@ -31,15 +31,9 @@ add_action('wp_enqueue_scripts', function() : void {
     $version = filemtime(get_template_directory().$localFile);
     ThemeHelper::addScriptWithLocalFallback($vueJS, $cdnFile, get_template_directory_uri().$localFile, [], $version);
 
-    $vueResource = 'vue-resource';
-    $cdnFile = 'https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.5.1/vue-resource.min.js';
-    $localFile = '/js/plugins/vue-resource-1.5.1.min.js';
-    $version = filemtime(get_template_directory().$localFile);
-    ThemeHelper::addScriptWithLocalFallback($vueResource, $cdnFile, get_template_directory_uri().$localFile, [$vueJS], $version);
-
     $scriptFile = '/js/minified/script.min.js';
     $version = filemtime(get_template_directory().$scriptFile);
-    wp_enqueue_script('theme-js', get_template_directory_uri().$scriptFile, [$jquery, $vueJS, $vueResource], $version, true);
+    wp_enqueue_script('theme-js', get_template_directory_uri().$scriptFile, [$jquery, $vueJS], $version, true);
 });
 
 /**
