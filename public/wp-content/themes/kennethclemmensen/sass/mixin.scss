@@ -6,8 +6,8 @@
   border-radius: $topLeft $topRight $bottomRight $bottomLeft;
 }
 
-@mixin box-shadow($x, $y, $blur, $color, $shadows...) {
-  box-shadow: $x $y $blur $color, $shadows;
+@mixin box-shadow($shadows...) {
+  box-shadow: $shadows;
 }
 
 @mixin placeholder-color($color) {
@@ -16,14 +16,10 @@
   }
 }
 
-@mixin rotate($deg, $args...) {
-  transform: rotate($deg) $args;
+@mixin transform($args...) {
+  transform: $args;
 }
 
-@mixin transition($property: all, $duration: .4s, $timing-function: ease, $delay: 0s, $args...) {
-  transition: $property $duration $timing-function $delay, $args;
-}
-
-@mixin translateX($value, $args...) {
-  transform: translateX($value) $args;
+@mixin transition($args...) {
+  transition: $args;
 }

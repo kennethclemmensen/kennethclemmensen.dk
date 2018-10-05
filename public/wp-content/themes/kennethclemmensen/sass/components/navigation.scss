@@ -18,7 +18,7 @@
     list-style: none;
     li {
       padding: 14px 10px 0 10px;
-      @include transition(background, 0.3s, ease-out);
+      @include transition(background 0.3s ease-out 0s);
       @media #{$desktop} {
         width: 90px;
         height: 32px;
