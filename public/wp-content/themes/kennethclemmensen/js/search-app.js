@@ -63,12 +63,12 @@ const app = new Vue({
             },
             template: `
                 <div>
-                    <ul>
-                        <li v-for="(result, index) in results" :key="result.id" v-if="index >= offset && index < offset + perPage">
+                    <div v-for="(result, index) in results" :key="result.id">
+                        <span v-if="index >= offset && index < offset + perPage">
                             <a :href="result.link">{{ result.title }}</a>
                             <p>{{ result.excerpt }}</p>
-                        </li>
-                    </ul>
+                        </span>
+                    </div>
                     <div>
                         <a href="#" @click.prevent="previousPage" v-if="offset > 0">{{ previousText }}</a>
                         <a href="#" @click.prevent="nextPage" v-if="offset < (results.length - perPage)">{{ nextText }}</a>
