@@ -7,7 +7,7 @@
 }
 
 .box-shadow(@x; @y; @blur; @color) {
-  box-shadow: @arguments;
+  box-shadow+: @arguments;
 }
 
 .placeholder-color(@color) {
@@ -17,13 +17,13 @@
 }
 
 .rotate(@deg) {
-  transform: rotate(@deg);
+  transform+_: rotate(@deg);
 }
 
 .transition(@property: all; @duration: .4s; @timing-function: ease; @delay: 0s) {
-  transition: @arguments;
+  transition+: @arguments;
 }
 
 .translateX(@value) {
-  transform: translateX(@value);
+  transform+_: translateX(@value);
 }
