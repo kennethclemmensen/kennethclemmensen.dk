@@ -61,6 +61,12 @@ const app = new Vue({
                     type: String
                 }
             },
+            watch: {
+                results: function() {
+                    this.currentPage = 0;
+                    this.offset = 0;
+                }
+            },
             template: `
                 <div>
                     <div v-for="(result, index) in results" :key="result.id">
