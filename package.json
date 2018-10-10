@@ -6,6 +6,7 @@
   "jsFolderPath": "public/wp-content/themes/kennethclemmensen/js/",
   "sassFolderPath": "public/wp-content/themes/kennethclemmensen/sass/",
   "themeFolderPath": "public/wp-content/themes/kennethclemmensen/",
+  "tsFolderPath": "public/wp-content/themes/kennethclemmensen/ts/",
   "uploadsFolderPath": "public/wp-content/uploads/",
   "devDependencies": {
     "grunt": "*",
@@ -16,6 +17,7 @@
     "node-sass": "*",
     "grunt-browser-sync": "*",
     "grunt-contrib-imagemin": "*",
+    "grunt-ts": "*",
     "gulp": "*",
     "browser-sync": "*",
     "gulp-sass": "*",

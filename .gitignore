@@ -21,3 +21,6 @@ public/wp-content/cache
 
 #All In One WP Security
 public/wp-content/aiowps_backups
+
+#TypeScript
+.tscache

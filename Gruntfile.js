@@ -52,6 +52,18 @@ module.exports = function(grunt) {
                 }
             }
         },
+        ts: {
+            default: {
+                files: [{
+                    src: ['<%= pkg.tsFolderPath %>**/*.ts'],
+                    out: '<%= pkg.jsFolderPath %>minified/script.min.js'
+                }],
+                options: {
+                    sourceMap: false,
+                    target: 'es6'
+                }
+            }
+        },
         uglify: {
             my_target: {
                 files: {
@@ -63,7 +75,7 @@ module.exports = function(grunt) {
             options: {
                 livereload: true
             },
-            scripts: {
+            javascript: {
                 files: ['<%= pkg.jsFolderPath %>**/*.js'],
                 options: {
                     spawn: false
@@ -83,6 +95,13 @@ module.exports = function(grunt) {
                     spawn: false
                 },
                 tasks: ['sass']
+            },
+            typescript: {
+                files: ['<%= pkg.tsFolderPath %>**/*.ts'],
+                options: {
+                    spawn: false
+                },
+                tasks: ['ts']
             }
         }
     });
@@ -93,6 +112,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify-es');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-sass');
+    grunt.loadNpmTasks('grunt-ts');
 
     grunt.registerTask('default', ['browserSync', 'watch']);
 };
