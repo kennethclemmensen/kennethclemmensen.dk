@@ -25,6 +25,7 @@
     "gulp-cssnano": "*",
     "gulp-concat": "*",
     "gulp-uglifyes": "*",
-    "gulp-imagemin": "*"
+    "gulp-imagemin": "*",
+    "gulp-typescript": "*"
   }
 }

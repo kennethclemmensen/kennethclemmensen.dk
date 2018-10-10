@@ -7,6 +7,7 @@ let cssnano = require('gulp-cssnano');
 let concat = require('gulp-concat');
 let uglify = require('gulp-uglifyes');
 let imagemin = require('gulp-imagemin');
+let ts = require('gulp-typescript');
 
 gulp.task('browser-sync', function() {
     browserSync.init({
@@ -31,6 +32,20 @@ gulp.task('imagemin', function() {
     return gulp.src(p.uploadsFolderPath + '**')
         .pipe(imagemin())
         .pipe(gulp.dest(p.uploadsFolderPath));
+});
+
+gulp.task('javascript', function() {
+    return gulp.src(p.jsFolderPath + '*.js')
+        .pipe(concat('script.min.js'))
+        .pipe(uglify())
+        .on('error', function(error) {
+            console.log(error.toString());
+            this.emit('end');
+        })
+        .pipe(gulp.dest(p.jsFolderPath + 'minified/'))
+        .pipe(browserSync.reload({
+            stream: true
+        }));
 });
 
 gulp.task('less', function() {
@@ -61,22 +76,19 @@ gulp.task('sass', function() {
         }));
 });
 
-gulp.task('scripts', function() {
-    return gulp.src(p.jsFolderPath + '*.js')
-        .pipe(concat('script.min.js'))
-        .pipe(uglify())
-        .on('error', function(error) {
-            console.log(error.toString());
-            this.emit('end');
-        })
-        .pipe(gulp.dest(p.jsFolderPath + 'minified/'))
-        .pipe(browserSync.reload({
-            stream: true
-        }));
+gulp.task('typescript', function() {
+    return gulp.src(p.tsFolderPath + '*.ts')
+        .pipe(ts({
+            noImplicitAny: true,
+            out: 'script.min.js',
+            target: 'es6'
+        }))
+        .js.pipe(gulp.dest(p.jsFolderPath + 'minified'));
 });
 
 gulp.task('watch', function() {
-    gulp.watch(p.jsFolderPath + '*.js', ['scripts']);
+    gulp.watch(p.jsFolderPath + '*.js', ['javascript']);
     gulp.watch(p.lessFolderPath + '**/*.less', ['less']);
     gulp.watch(p.sassFolderPath + '**/*.scss', ['sass']);
+    gulp.watch(p.tsFolderPath + '*.ts', ['typescript']);
 });
