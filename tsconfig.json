@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "outDir": "public/wp-content/themes/kennethclemmensen/js/minified",
+    "allowJs": true,
+    "target": "es5"
+  },
+  "include": [
+    "public/wp-content/themes/kennethclemmensen/ts/**/*"
+  ]
+}
