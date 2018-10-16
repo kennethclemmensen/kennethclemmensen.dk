@@ -9,6 +9,7 @@ These technologies includes:
 * [LESS](http://lesscss.org/)
 * [SASS](https://sass-lang.com/)
 * JavaScript/[jQuery](https://jquery.com/)
+* [TypeScript](https://www.typescriptlang.org/)
 * [PHP](http://php.net/)
 * [VueJS](https://vuejs.org/)
 * [Grunt](https://gruntjs.com/)
