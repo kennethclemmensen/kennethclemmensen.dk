@@ -16,16 +16,16 @@ const app = new Vue({
                 return;
             }
             let self = this;
-            jQuery.ajax({
-                url: '/wp-json/kcapi/v1/pages/' + this.searchString,
-                method: 'get',
-                success: function(response) {
-                    self.results = response;
-                },
-                error: function() {
-                    self.results = [];
-                }
-            });
+            let statusCodeOk = 200;
+            let request = new XMLHttpRequest();
+            request.open('get', '/wp-json/kcapi/v1/pages/' + this.searchString, true);
+            request.onload = function() {
+                self.results = (request.status === statusCodeOk) ? JSON.parse(request.responseText) : [];
+            };
+            request.onerror = function() {
+                self.results = [];
+            };
+            request.send();
         }
     },
     components: {

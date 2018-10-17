@@ -28,6 +28,7 @@ jQuery.noConflict();
                 this.delay = delay;
                 this.duration = duration;
                 this.$sliderImages = $('.slider__image');
+                this.show();
             }
 
             /**
@@ -56,13 +57,12 @@ jQuery.noConflict();
             }
         }
 
-        let $slider = $('#slider');
-        let slider = new Slider($slider.data('delay'), $slider.data('duration'));
-        slider.show();
+        let slider = document.getElementById('slider');
+        new Slider(slider.dataset.delay, slider.dataset.duration);
 
-        let $body = $('body');
+        let body = document.querySelector('body');
         lightbox.option({
-            'albumLabel': $body.data('image-text') + ' %1 ' + $body.data('of-text') + ' %2'
+            'albumLabel': body.dataset.imageText + ' %1 ' + body.dataset.ofText + ' %2'
         });
     });
 })(jQuery);
