@@ -145,8 +145,7 @@ add_filter('style_loader_src', function(string $src) : string {
  * @return string the tag
  */
 add_filter('script_loader_tag', function(string $tag) : string {
-    $replace = (is_admin()) ? '' : ' defer';
-    return str_replace(" type='text/javascript'", $replace, $tag);
+    return (is_admin()) ? $tag : str_replace(" type='text/javascript'", ' defer', $tag);
 });
 
 /**

@@ -48,7 +48,7 @@ class ThemeSettings {
      * @return ThemeSettings the instance of the class
      */
     public static function getInstance() : self {
-        if(self::$instance === null) self::$instance = new ThemeSettings();
+        if(self::$instance === null) self::$instance = new self();
         return self::$instance;
     }
 

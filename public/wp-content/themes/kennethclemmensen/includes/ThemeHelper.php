@@ -14,7 +14,7 @@ class ThemeHelper {
      * @param int $ver the script version number
      * @param bool $inFooter false if the script should be enqueued in the header
      */
-    public static function addScriptWithLocalFallback(string $name, string $cdnFile, string $localFile, array $deps = [], int $ver = null, bool $inFooter = true) : void {
+    public static function addScriptWithLocalFallback(string $name, string $cdnFile, string $localFile, array $deps = [], ?int $ver = null, bool $inFooter = true) : void {
         $file = @fopen($cdnFile, 'r');
         if($file === false) {
             $src = $localFile;
@@ -35,7 +35,7 @@ class ThemeHelper {
      * @param array $deps the dependencies of the stylesheet
      * @param int $ver the stylesheet version number
      */
-    public static function addStyleWithLocalFallback(string $name, string $cdnFile, string $localFile, array $deps = [], int $ver = null) : void {
+    public static function addStyleWithLocalFallback(string $name, string $cdnFile, string $localFile, array $deps = [], ?int $ver = null) : void {
         $file = @fopen($cdnFile, 'r');
         if($file === false) {
             $src = $localFile;
