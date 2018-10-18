@@ -2,7 +2,7 @@ declare let jQuery: any;
 declare let lightbox: any;
 
 jQuery.noConflict();
-(function($): void {
+(function($: any): void {
     $(document).ready(function(): void {
         $('.header__nav-trigger').on('click', function(event: Event): void {
             event.preventDefault();

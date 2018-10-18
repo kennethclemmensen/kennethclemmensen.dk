@@ -59,6 +59,7 @@ module.exports = function(grunt) {
                     out: '<%= pkg.jsFolderPath %>minified/script.min.js'
                 }],
                 options: {
+                    noImplicitAny: true,
                     sourceMap: false,
                     target: 'es6'
                 }
