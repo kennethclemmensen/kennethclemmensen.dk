@@ -1,30 +1,30 @@
 declare let Vue: any;
 
-const app = new Vue({
+const app: any = new Vue({
     el: '#search-app',
     data: {
         searchString: '',
         results: []
     },
     watch: {
-        searchString: function () {
+        searchString: function(): void {
             this.search();
         }
     },
     methods: {
-        search: function () {
-            if (this.searchString === '') {
+        search: function(): void {
+            if(this.searchString === '') {
                 this.results = [];
                 return;
             }
-            let self = this;
-            let statusCodeOk = 200;
-            let request = new XMLHttpRequest();
+            let self: any = this;
+            let statusCodeOk: number = 200;
+            let request: XMLHttpRequest = new XMLHttpRequest();
             request.open('get', '/wp-json/kcapi/v1/pages/' + this.searchString, true);
-            request.onload = function () {
+            request.onload = function(): void {
                 self.results = (request.status === statusCodeOk) ? JSON.parse(request.responseText) : [];
             };
-            request.onerror = function () {
+            request.onerror = function(): void {
                 self.results = [];
             };
             request.send();
@@ -32,7 +32,7 @@ const app = new Vue({
     },
     components: {
         'search-results': {
-            data: function () {
+            data: function(): Object {
                 return {
                     currentPage: 0,
                     offset: 0,
@@ -40,11 +40,11 @@ const app = new Vue({
                 }
             },
             methods: {
-                previousPage: function () {
+                previousPage: function(): void {
                     this.currentPage--;
                     this.offset = this.currentPage * this.perPage;
                 },
-                nextPage: function () {
+                nextPage: function(): void {
                     this.currentPage++;
                     this.offset = this.currentPage * this.perPage;
                 }
@@ -64,7 +64,7 @@ const app = new Vue({
                 }
             },
             watch: {
-                results: function () {
+                results: function(): void {
                     this.currentPage = 0;
                     this.offset = 0;
                 }

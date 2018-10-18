@@ -2,15 +2,15 @@ declare let jQuery: any;
 declare let lightbox: any;
 
 jQuery.noConflict();
-(function($) {
-    $(document).ready(function() {
-        $('.header__nav-trigger').on('click', function(event) {
+(function($): void {
+    $(document).ready(function(): void {
+        $('.header__nav-trigger').on('click', function(event: Event): void {
             event.preventDefault();
             $(this).toggleClass('header__nav-trigger--active');
             $('.mobile-nav').toggleClass('mobile-nav--active');
             $('html, body').toggleClass('show-mobile-nav');
         });
-        $('.mobile-nav__arrow').on('click', function(event) {
+        $('.mobile-nav__arrow').on('click', function(event: Event): void {
             event.preventDefault();
             $(this).toggleClass('mobile-nav__arrow--rotated');
             $(this).parent().parent().find('.sub-menu').toggle();
@@ -21,9 +21,9 @@ jQuery.noConflict();
          */
         class Slider {
 
-            delay: number;
-            duration: number;
-            $sliderImages: any;
+            private delay: number;
+            private duration: number;
+            private $sliderImages: any;
 
             /**
              * Slider constructor
@@ -31,7 +31,7 @@ jQuery.noConflict();
              * @param delay the delay of a slide
              * @param duration the duration of a slide
              */
-            constructor(delay, duration) {
+            public constructor(delay: number, duration: number) {
                 this.delay = delay;
                 this.duration = duration;
                 this.$sliderImages = $('.slider__image');
@@ -43,19 +43,19 @@ jQuery.noConflict();
              *
              * @returns {number} a random number
              */
-            getRandomNumber() {
+            private getRandomNumber(): number {
                 return Math.floor(Math.random() * this.$sliderImages.length);
             }
 
             /**
              * Show the slider
              */
-            show() {
-                let randomNumber = this.getRandomNumber();
+            private show(): void {
+                let randomNumber: number = this.getRandomNumber();
                 this.$sliderImages.eq(randomNumber).show();
-                let self = this;
-                setInterval(function() {
-                    self.$sliderImages.eq(randomNumber).fadeOut(self.duration, function() {
+                let self: any = this;
+                setInterval(function(): void {
+                    self.$sliderImages.eq(randomNumber).fadeOut(self.duration, function(): void {
                         self.$sliderImages.eq(randomNumber).hide(); //prevent display block on more than one image
                         randomNumber = self.getRandomNumber();
                         self.$sliderImages.eq(randomNumber).fadeIn(self.duration);
@@ -64,12 +64,12 @@ jQuery.noConflict();
             }
         }
 
-        let $slider = $('#slider');
-        new Slider($slider.data('delay'), $slider.data('duration'));
+        let slider: any = document.getElementById('slider');
+        new Slider(slider.dataset.delay, slider.dataset.duration);
 
-        let $body = $('body');
+        let body: any = document.querySelector('body');
         lightbox.option({
-            'albumLabel': $body.data('image-text') + ' %1 ' + $body.data('of-text') + ' %2'
+            'albumLabel': body.dataset.imageText + ' %1 ' + body.dataset.ofText + ' %2'
         });
     });
 })(jQuery);
