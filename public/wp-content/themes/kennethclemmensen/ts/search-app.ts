@@ -21,12 +21,12 @@ const app: any = new Vue({
             let statusCodeOk: number = 200;
             let request: XMLHttpRequest = new XMLHttpRequest();
             request.open('get', '/wp-json/kcapi/v1/pages/' + this.searchString, true);
-            request.onload = function(): void {
+            request.addEventListener('load', () => {
                 self.results = (request.status === statusCodeOk) ? JSON.parse(request.responseText) : [];
-            };
-            request.onerror = function(): void {
+            });
+            request.addEventListener('error', () => {
                 self.results = [];
-            };
+            });
             request.send();
         }
     },
