@@ -32,7 +32,7 @@ const app: any = new Vue({
     },
     components: {
         'search-results': {
-            data: function(): Object {
+            data: function(): object {
                 return {
                     currentPage: 0,
                     offset: 0,
