@@ -1,6 +1,6 @@
 declare let Vue: any;
 
-const app: any = new Vue({
+new Vue({
     el: '#search-app',
     data: {
         searchString: '',
@@ -34,19 +34,16 @@ const app: any = new Vue({
         'search-results': {
             data: function(): object {
                 return {
-                    currentPage: 0,
                     offset: 0,
                     perPage: 5
                 }
             },
             methods: {
                 previousPage: function(): void {
-                    this.currentPage--;
-                    this.offset = this.currentPage * this.perPage;
+                    this.offset -= this.perPage;
                 },
                 nextPage: function(): void {
-                    this.currentPage++;
-                    this.offset = this.currentPage * this.perPage;
+                    this.offset += this.perPage;
                 }
             },
             props: {
@@ -65,7 +62,6 @@ const app: any = new Vue({
             },
             watch: {
                 results: function(): void {
-                    this.currentPage = 0;
                     this.offset = 0;
                 }
             },
