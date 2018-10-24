@@ -33,21 +33,15 @@ new Vue({
             data: function() {
                 return {
                     offset: 0,
-                    perPage: 5,
-                    showResults: []
+                    perPage: 5
                 }
-            },
-            created: function() {
-                this.showResults = this.results.slice(this.offset, this.perPage);
             },
             methods: {
                 previousPage: function() {
                     this.offset -= this.perPage;
-                    this.showResults = this.results.slice(this.offset, (this.offset + this.perPage));
                 },
                 nextPage: function() {
                     this.offset += this.perPage;
-                    this.showResults = this.results.slice(this.offset, (this.offset + this.perPage));
                 }
             },
             props: {
@@ -71,7 +65,7 @@ new Vue({
             },
             template: `
                 <div>
-                    <div v-for="result in showResults" :key="result.id">
+                    <div v-for="result in results.slice(offset, (offset + perPage))" :key="result.id">
                         <a :href="result.link">{{ result.title }}</a>
                         <p>{{ result.excerpt }}</p>
                     </div>
