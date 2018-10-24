@@ -35,15 +35,21 @@ new Vue({
             data: function(): object {
                 return {
                     offset: 0,
-                    perPage: 5
+                    perPage: 5,
+                    showResults: []
                 }
+            },
+            created: function(): void {
+                this.showResults = this.results.slice(this.offset, this.perPage);
             },
             methods: {
                 previousPage: function(): void {
                     this.offset -= this.perPage;
+                    this.showResults = this.results.slice(this.offset, (this.offset + this.perPage));
                 },
                 nextPage: function(): void {
                     this.offset += this.perPage;
+                    this.showResults = this.results.slice(this.offset, (this.offset + this.perPage));
                 }
             },
             props: {
@@ -67,11 +73,9 @@ new Vue({
             },
             template: `
                 <div>
-                    <div v-for="(result, index) in results" :key="result.id">
-                        <span v-if="index >= offset && index < offset + perPage">
-                            <a :href="result.link">{{ result.title }}</a>
-                            <p>{{ result.excerpt }}</p>
-                        </span>
+                    <div v-for="result in showResults" :key="result.id">
+                        <a :href="result.link">{{ result.title }}</a>
+                        <p>{{ result.excerpt }}</p>
                     </div>
                     <div>
                         <a href="#" @click.prevent="previousPage" v-if="offset > 0">{{ previousText }}</a>
