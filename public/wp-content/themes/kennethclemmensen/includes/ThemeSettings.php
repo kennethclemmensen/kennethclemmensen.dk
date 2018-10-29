@@ -57,8 +57,8 @@ class ThemeSettings {
      */
     private function adminMenu() : void {
         add_action('admin_menu', function() : void {
-            $title = 'Theme settings';
-            add_submenu_page('themes.php', $title, $title, 'administrator', $this->contactPageSlug, function() : void {
+            $title = __('Settings');
+            add_theme_page($title, $title, 'administrator', $this->contactPageSlug, function() : void {
                 settings_errors();
                 ?>
                 <div class="wrap">
