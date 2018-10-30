@@ -6,33 +6,48 @@ class ThemeSettings {
 
     private static $instance = null;
     private $contactPageSlug;
+    private $scriptsPageSlug;
     private $otherPageSlug;
     private $contactOptionsName;
+    private $scriptsOptionsName;
     private $otherOptionsName;
     private $contactOptions;
+    private $scriptsOptions;
     private $otherOptions;
     private $email;
     private $linkedIn;
     private $gitHub;
+    private $scriptsHeader;
+    private $scriptsStartBody;
+    private $scriptsFooter;
     private $emailShortcode;
     private $linkedInShortcode;
     private $gitHubShortcode;
+
+    public const AFTER_START_BODY = 'kc_after_start_body';
 
     /**
      * ThemeSettings constructor
      */
     private function __construct() {
         $prefix = 'kc-theme-settings-';
-        $suffix = '-options';
+        $postfix = '-options';
         $this->contactPageSlug = $prefix.'contact';
+        $this->scriptsPageSlug = $prefix.'scripts';
         $this->otherPageSlug = $prefix.'other';
-        $this->contactOptionsName = $this->contactPageSlug.$suffix;
-        $this->otherOptionsName = $this->otherPageSlug.$suffix;
+        $this->contactOptionsName = $this->contactPageSlug.$postfix;
+        $this->scriptsOptionsName = $this->scriptsPageSlug.$postfix;
+        $this->otherOptionsName = $this->otherPageSlug.$postfix;
         $this->contactOptions = get_option($this->contactOptionsName);
+        $this->scriptsOptions = get_option($this->scriptsOptionsName);
         $this->otherOptions = get_option($this->otherOptionsName);
         $this->email = 'email';
         $this->linkedIn = 'linkedin';
         $this->gitHub = 'github';
+        $prefix = 'scripts_';
+        $this->scriptsHeader = $prefix.'header';
+        $this->scriptsStartBody = $prefix.'start_body';
+        $this->scriptsFooter = $prefix.'footer';
         $prefix = 'kc-';
         $this->emailShortcode = $prefix.$this->email;
         $this->linkedInShortcode = $prefix.$this->linkedIn;
@@ -40,6 +55,9 @@ class ThemeSettings {
         $this->adminMenu();
         $this->adminInit();
         $this->addShortcodes();
+        $this->addScriptSnippets2Header();
+        $this->addScriptSnippets2AfterStartBody();
+        $this->addScriptSnippets2Footer();
     }
 
     /**
@@ -65,12 +83,15 @@ class ThemeSettings {
                     <h2 class="nav-tab-wrapper">
                         <?php
                         $contactTab = 'contact_options';
+                        $scriptsTab = 'scripts_options';
                         $otherTab = 'other_options';
                         $activeTab = (isset($_GET['tab'])) ? $_GET['tab'] : $contactTab;
                         $currentTab = 'nav-tab-active';
                         ?>
                         <a href="?page=<?php echo $this->contactPageSlug; ?>&tab=<?php echo $contactTab; ?>"
                            class="nav-tab <?php echo ($activeTab === $contactTab) ? $currentTab : ''; ?>">Contact</a>
+                        <a href="?page=<?php echo $this->contactPageSlug; ?>&tab=<?php echo $scriptsTab; ?>"
+                           class="nav-tab <?php echo ($activeTab === $scriptsTab) ? $currentTab : ''; ?>">Scripts</a>
                         <a href="?page=<?php echo $this->contactPageSlug; ?>&tab=<?php echo $otherTab; ?>"
                            class="nav-tab <?php echo ($activeTab === $otherTab) ? $currentTab : ''; ?>">Other</a>
                     </h2>
@@ -79,6 +100,9 @@ class ThemeSettings {
                         if($activeTab === $contactTab) {
                             settings_fields($this->contactOptionsName);
                             do_settings_sections($this->contactPageSlug);
+                        } else if($activeTab === $scriptsTab) {
+                            settings_fields($this->scriptsOptionsName);
+                            do_settings_sections($this->scriptsPageSlug);
                         } else {
                             settings_fields($this->otherOptionsName);
                             do_settings_sections($this->otherPageSlug);
@@ -98,6 +122,7 @@ class ThemeSettings {
     private function adminInit() : void {
         add_action('admin_init', function() : void {
             $this->setupContactInputs();
+            $this->setupScriptsInputs();
             $this->setupOtherInputs();
         });
     }
@@ -118,6 +143,27 @@ class ThemeSettings {
             echo '['.$this->linkedInShortcode.']';
         }, $this->contactPageSlug, $sectionID);
         register_setting($this->contactOptionsName, $this->contactOptionsName, function(array $input) : array {
+            return $this->validateInput($input);
+        });
+    }
+
+    /**
+     * Setup scripts inputs
+     */
+    private function setupScriptsInputs() : void {
+        $sectionID = $this->scriptsPageSlug.'-section-scripts';
+        $prefix = $this->scriptsPageSlug;
+        add_settings_section($sectionID, '', null, $this->scriptsPageSlug);
+        add_settings_field($prefix.'header', 'Header', function() : void {
+            echo '<textarea name="'.$this->scriptsOptionsName.'['.$this->scriptsHeader.']" cols="80" rows="10">'.$this->getHeaderScripts().'</textarea>';
+        }, $this->scriptsPageSlug, $sectionID);
+        add_settings_field($prefix.'start-body', 'Start body', function() : void {
+            echo '<textarea name="'.$this->scriptsOptionsName.'['.$this->scriptsStartBody.']" cols="80" rows="10">'.$this->getStartBodyScripts().'</textarea>';
+        }, $this->scriptsPageSlug, $sectionID);
+        add_settings_field($prefix.'footer', 'Footer', function() : void {
+            echo '<textarea name="'.$this->scriptsOptionsName.'['.$this->scriptsFooter.']" cols="80" rows="10">'.$this->getFooterScripts().'</textarea>';
+        }, $this->scriptsPageSlug, $sectionID);
+        register_setting($this->scriptsOptionsName, $this->scriptsOptionsName, function(array $input) : array {
             return $this->validateInput($input);
         });
     }
@@ -154,6 +200,35 @@ class ThemeSettings {
     }
 
     /**
+     * Use the wp_head action to add script snippets to the header
+     */
+    private function addScriptSnippets2Header() : void {
+        $priority = 0;
+        add_action('wp_head', function() : void {
+            echo $this->getHeaderScripts();
+        }, $priority);
+    }
+
+    /**
+     * Use the kc_after_start_body action to add script snippets after the start body tag
+     */
+    private function addScriptSnippets2AfterStartBody() : void {
+        add_action(self::AFTER_START_BODY, function() : void {
+            echo $this->getStartBodyScripts();
+        });
+    }
+
+    /**
+     * Use the wp_footer action to add script snippets to the footer
+     */
+    private function addScriptSnippets2Footer() : void {
+        $priority = 100;
+        add_action('wp_footer', function() : void {
+            echo $this->getFooterScripts();
+        }, $priority);
+    }
+
+    /**
      * Validate the setting inputs
      *
      * @param array $input the input to validate
@@ -162,7 +237,7 @@ class ThemeSettings {
     private function validateInput(array $input) : array {
         $output = [];
         foreach($input as $key => $value) {
-            $output[$key] = strip_tags(stripslashes($input[$key]));
+            $output[$key] = strip_tags(stripslashes($input[$key]), '<script>');
         }
         return apply_filters(__FUNCTION__, $output, $input);
     }
@@ -192,5 +267,32 @@ class ThemeSettings {
      */
     private function getGitHubUrl() : string {
         return (isset($this->otherOptions[$this->gitHub])) ? esc_url($this->otherOptions[$this->gitHub]) : '';
+    }
+
+    /**
+     * Get the header scripts
+     *
+     * @return string the header scripts
+     */
+    private function getHeaderScripts() : string {
+        return (isset($this->scriptsOptions[$this->scriptsHeader])) ? $this->scriptsOptions[$this->scriptsHeader] : '';
+    }
+
+    /**
+     * Get the start body scripts
+     *
+     * @return string the start body scripts
+     */
+    private function getStartBodyScripts() : string {
+        return (isset($this->scriptsOptions[$this->scriptsStartBody])) ? $this->scriptsOptions[$this->scriptsStartBody] : '';
+    }
+
+    /**
+     * Get the footer scripts
+     *
+     * @return string the footer scripts
+     */
+    private function getFooterScripts() : string {
+        return (isset($this->scriptsOptions[$this->scriptsFooter])) ? $this->scriptsOptions[$this->scriptsFooter] : '';
     }
 }
