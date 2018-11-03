@@ -237,9 +237,9 @@ class ThemeSettings {
     private function validateInput(array $input) : array {
         $output = [];
         foreach($input as $key => $value) {
-            $output[$key] = strip_tags(stripslashes($input[$key]), '<script>');
+            $output[$key] = strip_tags(addslashes($input[$key]), '<script>');
         }
-        return apply_filters(__FUNCTION__, $output, $input);
+        return $output;
     }
 
     /**
@@ -248,7 +248,7 @@ class ThemeSettings {
      * @return string the email
      */
     private function getEmail() : string {
-        return (isset($this->contactOptions[$this->email])) ? $this->contactOptions[$this->email] : '';
+        return (isset($this->contactOptions[$this->email])) ? stripslashes($this->contactOptions[$this->email]) : '';
     }
 
     /**
@@ -275,7 +275,7 @@ class ThemeSettings {
      * @return string the header scripts
      */
     private function getHeaderScripts() : string {
-        return (isset($this->scriptsOptions[$this->scriptsHeader])) ? $this->scriptsOptions[$this->scriptsHeader] : '';
+        return (isset($this->scriptsOptions[$this->scriptsHeader])) ? stripslashes($this->scriptsOptions[$this->scriptsHeader]) : '';
     }
 
     /**
@@ -284,7 +284,7 @@ class ThemeSettings {
      * @return string the start body scripts
      */
     private function getStartBodyScripts() : string {
-        return (isset($this->scriptsOptions[$this->scriptsStartBody])) ? $this->scriptsOptions[$this->scriptsStartBody] : '';
+        return (isset($this->scriptsOptions[$this->scriptsStartBody])) ? stripslashes($this->scriptsOptions[$this->scriptsStartBody]) : '';
     }
 
     /**
@@ -293,6 +293,6 @@ class ThemeSettings {
      * @return string the footer scripts
      */
     private function getFooterScripts() : string {
-        return (isset($this->scriptsOptions[$this->scriptsFooter])) ? $this->scriptsOptions[$this->scriptsFooter] : '';
+        return (isset($this->scriptsOptions[$this->scriptsFooter])) ? stripslashes($this->scriptsOptions[$this->scriptsFooter]) : '';
     }
 }
