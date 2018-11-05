@@ -15,7 +15,7 @@ class FDWC {
     private $fieldFileType;
     private $taxFileType;
 
-    private const FDWC_FILE = 'fdwc_file';
+    public const FDWC_FILE = 'fdwc_file';
 
     /**
      * FDWC constructor
