@@ -291,4 +291,13 @@ class FDWC {
     private function getFileDownloads(int $fileID) : int {
         return rwmb_meta($this->fieldDownloadCounter, [], $fileID);
     }
+
+    /**
+     * Get the file type taxonomy
+     *
+     * @return string the file type taxonomy
+     */
+    public function getFileTypeTaxonomy() : string {
+        return $this->taxFileType;
+    }
 }
