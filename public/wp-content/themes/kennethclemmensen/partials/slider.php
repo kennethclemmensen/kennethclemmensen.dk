@@ -2,7 +2,7 @@
 use KCSlider\Includes\KCSlider;
 use KCSlider\Includes\KCSliderSettings;
 $kcSlider = new KCSlider();
-$kcSliderSettings = new KCSliderSettings();
+$kcSliderSettings = KCSliderSettings::getInstance();
 $delay = $kcSliderSettings->getDelay();
 $duration = $kcSliderSettings->getDuration();
 ?>

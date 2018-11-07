@@ -36,7 +36,7 @@ class KCSlider {
      */
     public function execute() : void {
         $this->loadDependencies();
-        new KCSliderSettings();
+        KCSliderSettings::getInstance();
         $this->init();
         $this->addMetaBoxes();
         $this->adminColumns();

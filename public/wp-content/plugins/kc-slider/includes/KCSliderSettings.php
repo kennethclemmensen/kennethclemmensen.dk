@@ -7,6 +7,7 @@ namespace KCSlider\Includes;
  */
 class KCSliderSettings {
 
+    private static $instance = null;
     private $pageSlug;
     private $optionName;
     private $option;
@@ -16,7 +17,7 @@ class KCSliderSettings {
     /**
      * KCSliderSettings constructor
      */
-    public function __construct() {
+    private function __construct() {
         $this->pageSlug = 'kc-slider-settings';
         $this->optionName = $this->pageSlug.'-group';
         $this->option = get_option($this->optionName);
@@ -26,6 +27,16 @@ class KCSliderSettings {
         $this->adminMenu();
         $this->adminInit();
         $this->addPluginPageLinks();
+    }
+
+    /**
+     * Get the instance of the class
+     *
+     * @return KCSliderSettings the instance of the class
+     */
+    public static function getInstance() : self {
+        if(self::$instance === null) self::$instance = new self();
+        return self::$instance;
     }
 
     /**
