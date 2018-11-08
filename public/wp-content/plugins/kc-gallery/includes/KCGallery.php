@@ -14,8 +14,8 @@ class KCGallery {
     private $fieldPhoto;
     private $fieldPhotoGallery;
 
-    private const GALLERY = 'gallery';
-    private const PHOTO = 'photo';
+    public const GALLERY = 'gallery';
+    public const PHOTO = 'photo';
 
     /**
      * KCGallery constructor
