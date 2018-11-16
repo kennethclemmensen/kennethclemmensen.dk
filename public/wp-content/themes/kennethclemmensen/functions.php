@@ -161,10 +161,3 @@ add_action('customize_register', function(WP_Customize_Manager $wpCustomizeManag
  * Disallow file edit for themes and plugins
  */
 define('DISALLOW_FILE_EDIT', true);
-
-/**
- * Use the after_setup_theme action to add post thumbnails support
- */
-add_action('after_setup_theme', function() {
-    add_theme_support('post-thumbnails');
-});
