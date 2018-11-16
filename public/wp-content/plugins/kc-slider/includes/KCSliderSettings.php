@@ -85,7 +85,7 @@ class KCSliderSettings {
      */
     private function addPluginPageLinks() : void {
         add_filter('plugin_action_links_kc-slider/index.php', function(array $links) : array {
-            $links[] = '<a href="'.esc_url(get_admin_url(null, 'edit.php?post_type=slides&page='.$this->pageSlug)).'">Settings</a>';
+            $links[] = '<a href="'.esc_url(get_admin_url(null, 'edit.php?post_type=slides&page='.$this->pageSlug)).'">'.__('Settings').'</a>';
             return $links;
         });
     }
@@ -102,7 +102,7 @@ class KCSliderSettings {
         foreach($input as $key => $value) {
             $output[$key] = strip_tags(stripslashes($input[$key]));
         }
-        return apply_filters(__FUNCTION__, $output, $input);
+        return $output;
     }
 
     /**

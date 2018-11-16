@@ -7,29 +7,7 @@ namespace KCSlider\Includes;
  */
 class KCSlider {
 
-    private $fieldSlideImage;
-
     public const SLIDES = 'slides';
-
-    /**
-     * KCSlider constructor
-     */
-    public function __construct() {
-        $this->fieldSlideImage = 'slider_slide_image';
-    }
-
-    /**
-     * Activate the plugin
-     *
-     * @param string $mainPluginFile the path to the main plugin file
-     */
-    public function activate(string $mainPluginFile) : void {
-        register_activation_hook($mainPluginFile, function() : void {
-            if(!class_exists('RW_Meta_Box')) {
-                die('Meta Box is not activated');
-            }
-        });
-    }
 
     /**
      * Execute the plugin
@@ -38,7 +16,7 @@ class KCSlider {
         $this->loadDependencies();
         KCSliderSettings::getInstance();
         $this->init();
-        $this->addMetaBoxes();
+        $this->afterSetupTheme();
         $this->adminColumns();
     }
 
@@ -61,31 +39,18 @@ class KCSlider {
                 ],
                 'public' => true,
                 'has_archive' => true,
-                'supports' => ['title'],
+                'supports' => ['title', 'thumbnail'],
                 'menu_icon' => 'dashicons-images-alt'
             ]);
         });
     }
 
     /**
-     * Use the rwmb_meta_boxes filter to add meta boxes to the slides custom post type
+     * Use the after_setup_theme action to add post thumbnails support
      */
-    private function addMetaBoxes() : void {
-        add_filter('rwmb_meta_boxes', function(array $metaBoxes) : array {
-            $metaBoxes[] = [
-                'id' => 'slide_informations',
-                'title' => 'Slide informations',
-                'post_types' => [self::SLIDES],
-                'fields' => [
-                    [
-                        'name' => 'Photo',
-                        'id' => $this->fieldSlideImage,
-                        'type' => 'image_advanced',
-                        'max_file_uploads' => 1
-                    ]
-                ]
-            ];
-            return $metaBoxes;
+    private function afterSetupTheme() : void {
+        add_action('after_setup_theme', function() : void {
+            add_theme_support('post-thumbnails');
         });
     }
 
@@ -100,19 +65,18 @@ class KCSlider {
             return $columns;
         });
         add_filter('manage_'.self::SLIDES.'_posts_custom_column', function(string $columnName) use ($imageColumnKey) : void {
-            if($columnName === $imageColumnKey) echo '<img src="'.$this->getSlideImage().'" alt="'.get_the_title().'" style="height: 60px">';
+            if($columnName === $imageColumnKey) echo '<img src="'.$this->getSlideImage(get_the_ID()).'" alt="'.get_the_title().'" style="height: 60px">';
         });
     }
 
     /**
      * Get the slide image url
      *
-     * @param int|null $slideImageID the id of the slide image
+     * @param int $imageID the id of the image
      * @return string the slide image url
      */
-    public function getSlideImage(int $slideImageID = null) : string {
-        $image = rwmb_meta($this->fieldSlideImage, [], $slideImageID);
-        $url = array_shift($image)['full_url'];
-        return esc_url($url);
+    public function getSlideImage(int $imageID) : string {
+        $url = get_the_post_thumbnail_url($imageID);
+        return (isset($url)) ? esc_url($url) : '';
     }
 }
