@@ -65,20 +65,30 @@ class KCGallery {
                     'name' => 'Galleries',
                     'singular_name' => 'Gallery'
                 ],
-                'public' => true,
-                'has_archive' => true,
+                'public' => false,
+                'has_archive' => false,
                 'supports' => ['title', 'thumbnail'],
-                'menu_icon' => 'dashicons-format-gallery'
+                'menu_icon' => 'dashicons-format-gallery',
+                'publicly_queryable' => true,
+                'show_ui' => true,
+                'exclude_from_search' => true,
+                'show_in_nav_menus' => false,
+                'rewrite' => false
             ]);
             register_post_type(self::PHOTO, [
                 'labels' => [
                     'name' => 'Photos',
                     'singular_name' => 'Photo'
                 ],
-                'public' => true,
-                'has_archive' => true,
+                'public' => false,
+                'has_archive' => false,
                 'supports' => ['title', 'thumbnail'],
-                'menu_icon' => 'dashicons-format-image'
+                'menu_icon' => 'dashicons-format-image',
+                'publicly_queryable' => true,
+                'show_ui' => true,
+                'exclude_from_search' => true,
+                'show_in_nav_menus' => false,
+                'rewrite' => false
             ]);
         });
     }
