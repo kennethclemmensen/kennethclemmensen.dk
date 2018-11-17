@@ -84,7 +84,7 @@ class KCSliderSettings {
      * Use the plugin_action_links_{$plugin_file} filter to add links to the plugin page
      */
     private function addPluginPageLinks() : void {
-        add_filter('plugin_action_links_kc-slider/index.php', function(array $links) : array {
+        add_filter('plugin_action_links_kc-slider/kc-slider.php', function(array $links) : array {
             $links[] = '<a href="'.esc_url(get_admin_url(null, 'edit.php?post_type=slides&page='.$this->pageSlug)).'">'.__('Settings').'</a>';
             return $links;
         });
@@ -94,13 +94,12 @@ class KCSliderSettings {
      * Validate the setting inputs
      *
      * @param array $input the input to validate
-     *
      * @return array the validated input
      */
     private function validateInput(array $input) : array {
         $output = [];
         foreach($input as $key => $value) {
-            $output[$key] = strip_tags(stripslashes($input[$key]));
+            $output[$key] = strip_tags(addslashes($input[$key]));
         }
         return $output;
     }
@@ -112,7 +111,7 @@ class KCSliderSettings {
      */
     public function getDelay() : int {
         $defaultValue = 8000;
-        return (isset($this->option[$this->delay])) ? $this->option[$this->delay] : $defaultValue;
+        return (isset($this->option[$this->delay])) ? intval(stripslashes($this->option[$this->delay])) : $defaultValue;
     }
 
     /**
@@ -122,7 +121,7 @@ class KCSliderSettings {
      */
     public function getDuration() : int {
         $defaultValue = 500;
-        return (isset($this->option[$this->duration])) ? $this->option[$this->duration] : $defaultValue;
+        return (isset($this->option[$this->duration])) ? intval(stripslashes($this->option[$this->duration])) : $defaultValue;
     }
 
     /**

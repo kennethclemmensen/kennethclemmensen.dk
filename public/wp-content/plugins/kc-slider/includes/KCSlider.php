@@ -37,10 +37,15 @@ class KCSlider {
                     'name' => 'Slides',
                     'singular_name' => 'Slide'
                 ],
-                'public' => true,
-                'has_archive' => true,
+                'public' => false,
+                'has_archive' => false,
                 'supports' => ['title', 'thumbnail'],
-                'menu_icon' => 'dashicons-images-alt'
+                'menu_icon' => 'dashicons-images-alt',
+                'publicly_queryable' => true,
+                'show_ui' => true,
+                'exclude_from_search' => true,
+                'show_in_nav_menus' => false,
+                'rewrite' => false
             ]);
         });
     }
@@ -65,7 +70,7 @@ class KCSlider {
             return $columns;
         });
         add_filter('manage_'.self::SLIDES.'_posts_custom_column', function(string $columnName) use ($imageColumnKey) : void {
-            if($columnName === $imageColumnKey) echo '<img src="'.$this->getSlideImage(get_the_ID()).'" alt="'.get_the_title().'" style="height: 60px">';
+            if($columnName === $imageColumnKey) echo '<img src="'.$this->getSlideImageUrl(get_the_ID()).'" alt="'.get_the_title().'" style="height: 60px">';
         });
     }
 
@@ -75,7 +80,7 @@ class KCSlider {
      * @param int $imageID the id of the image
      * @return string the slide image url
      */
-    public function getSlideImage(int $imageID) : string {
+    public function getSlideImageUrl(int $imageID) : string {
         $url = get_the_post_thumbnail_url($imageID);
         return (isset($url)) ? esc_url($url) : '';
     }
