@@ -10,8 +10,6 @@ use \WP_Query;
 class KCGallery {
 
     private $fieldGalleryPage;
-    private $fieldGalleryPhoto;
-    private $fieldPhoto;
     private $fieldPhotoGallery;
 
     public const GALLERY = 'gallery';
@@ -21,12 +19,8 @@ class KCGallery {
      * KCGallery constructor
      */
     public function __construct() {
-        $prefix = 'gallery_';
-        $this->fieldGalleryPage = $prefix.'page';
-        $this->fieldGalleryPhoto = $prefix.'photo';
-        $prefix = 'photo_';
-        $this->fieldPhoto = $prefix.'photo';
-        $this->fieldPhotoGallery = $prefix.'gallery';
+        $this->fieldGalleryPage = 'gallery_page';
+        $this->fieldPhotoGallery = 'photo_gallery';
     }
 
     /**
@@ -48,6 +42,7 @@ class KCGallery {
         $loader = new KCGalleryLoader();
         $loader->loadStylesAndScripts();
         $this->init();
+        $this->afterSetupTheme();
         $this->addMetaBoxes();
         $this->addShortcodes();
         $this->adminColumns();
@@ -72,7 +67,7 @@ class KCGallery {
                 ],
                 'public' => true,
                 'has_archive' => true,
-                'supports' => ['title'],
+                'supports' => ['title', 'thumbnail'],
                 'menu_icon' => 'dashicons-format-gallery'
             ]);
             register_post_type(self::PHOTO, [
@@ -82,9 +77,18 @@ class KCGallery {
                 ],
                 'public' => true,
                 'has_archive' => true,
-                'supports' => ['title'],
+                'supports' => ['title', 'thumbnail'],
                 'menu_icon' => 'dashicons-format-image'
             ]);
+        });
+    }
+
+    /**
+     * Use the after_setup_theme action to add post thumbnails support
+     */
+    private function afterSetupTheme() : void {
+        add_action('after_setup_theme', function() : void {
+            add_theme_support('post-thumbnails');
         });
     }
 
@@ -103,12 +107,6 @@ class KCGallery {
                         'id' => $this->fieldGalleryPage,
                         'type' => 'select',
                         'options' => $this->getPages()
-                    ],
-                    [
-                        'name' => 'Photo',
-                        'id' => $this->fieldGalleryPhoto,
-                        'type' => 'image_advanced',
-                        'max_file_uploads' => 1
                     ]
                 ]
             ];
@@ -117,12 +115,6 @@ class KCGallery {
                 'title' => 'Photo informations',
                 'post_types' => [self::PHOTO],
                 'fields' => [
-                    [
-                        'name' => 'Photo',
-                        'id' => $this->fieldPhoto,
-                        'type' => 'image_advanced',
-                        'max_file_uploads' => 1
-                    ],
                     [
                         'name' => 'Gallery',
                         'id' => $this->fieldPhotoGallery,
@@ -203,7 +195,7 @@ class KCGallery {
                 $galleryID = rwmb_meta($this->fieldPhotoGallery);
                 echo get_post($galleryID)->post_title;
             } else if($columnName === $columnPhotoKey) {
-                echo '<img src="'.$this->getPhotoThumbnailUrl().'" alt="'.get_the_title().'">';
+                echo '<img src="'.$this->getPhotoThumbnailUrl(get_the_ID()).'" alt="'.get_the_title().'">';
             }
         });
         add_filter('manage_edit-'.self::PHOTO.'_sortable_columns', function(array $columns) use ($columnGalleryKey, $columnGalleryValue) : array {
@@ -279,8 +271,8 @@ class KCGallery {
      * @return string the gallery photo url
      */
     private function getGalleryPhotoUrl(int $galleryID) : string {
-        $photo = rwmb_meta($this->fieldGalleryPhoto, [], $galleryID);
-        return array_shift($photo)['full_url'];
+        $url = get_the_post_thumbnail_url($galleryID);
+        return (isset($url)) ? esc_url($url) : '';
     }
 
     /**
@@ -290,21 +282,19 @@ class KCGallery {
      * @return string the photo url
      */
     private function getPhotoUrl(int $photoID) : string {
-        $photo = rwmb_meta($this->fieldPhoto, [], $photoID);
-        $photo = array_shift($photo);
-        return $photo['full_url'];
+        $url = get_the_post_thumbnail_url($photoID);
+        return (isset($url)) ? esc_url($url) : '';
     }
 
     /**
      * Get the photo thumbnail url
      *
-     * @param int|null $photoID the id of the photo
+     * @param int $photoID the id of the photo
      * @return string the photo thumbnail
      */
-    private function getPhotoThumbnailUrl(int $photoID = null) : string {
-        $photo = rwmb_meta($this->fieldPhoto, [], $photoID);
-        $photo = array_shift($photo);
-        return $photo['url'];
+    private function getPhotoThumbnailUrl(int $photoID) : string {
+        $url = get_the_post_thumbnail_url($photoID, 'thumbnail');
+        return (isset($url)) ? esc_url($url) : '';
     }
 
     /**
