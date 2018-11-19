@@ -9,7 +9,6 @@ use \WP_Query;
  */
 class KCGallery {
 
-    private $fieldGalleryPage;
     private $fieldPhotoGallery;
 
     public const GALLERY = 'gallery';
@@ -19,7 +18,6 @@ class KCGallery {
      * KCGallery constructor
      */
     public function __construct() {
-        $this->fieldGalleryPage = 'gallery_page';
         $this->fieldPhotoGallery = 'photo_gallery';
     }
 
@@ -65,15 +63,11 @@ class KCGallery {
                     'name' => 'Galleries',
                     'singular_name' => 'Gallery'
                 ],
-                'public' => false,
-                'has_archive' => false,
-                'supports' => ['title', 'thumbnail'],
+                'public' => true,
+                'has_archive' => true,
+                'supports' => ['title', 'editor', 'thumbnail'],
                 'menu_icon' => 'dashicons-format-gallery',
-                'publicly_queryable' => true,
-                'show_ui' => true,
-                'exclude_from_search' => true,
-                'show_in_nav_menus' => false,
-                'rewrite' => false
+                'rewrite' => ['slug' => '/billeder', 'with_front' => false]
             ]);
             register_post_type(self::PHOTO, [
                 'labels' => [
@@ -108,19 +102,6 @@ class KCGallery {
     private function addMetaBoxes() : void {
         add_filter('rwmb_meta_boxes', function(array $metaBoxes) : array {
             $metaBoxes[] = [
-                'id' => 'gallery_informations',
-                'title' => 'Gallery informations',
-                'post_types' => [self::GALLERY],
-                'fields' => [
-                    [
-                        'name' => 'Page',
-                        'id' => $this->fieldGalleryPage,
-                        'type' => 'select',
-                        'options' => $this->getPages()
-                    ]
-                ]
-            ];
-            $metaBoxes[] = [
                 'id' => 'photo_informations',
                 'title' => 'Photo informations',
                 'post_types' => [self::PHOTO],
@@ -146,7 +127,7 @@ class KCGallery {
             $galleries = $this->getGalleries();
             foreach($galleries as $key => $gallery) {
                 $html .= '<div class="kc-galleries__gallery">';
-                $html .= '<a href="'.$this->getGalleryPageUrl($key).'"><img src="'.$this->getGalleryPhotoUrl($key).'" alt="'.get_the_title($key).'"></a>';
+                $html .= '<a href="'.get_permalink($key).'"><img src="'.$this->getGalleryPhotoUrl($key).'" alt="'.get_the_title($key).'"></a>';
                 $html .= '</div>';
             }
             $html .= '</div>';
@@ -224,27 +205,6 @@ class KCGallery {
     }
 
     /**
-     * Get the pages
-     *
-     * @return array the pages
-     */
-    private function getPages() : array {
-        $pages = [];
-        $args = [
-            'post_type' => 'page',
-            'posts_per_page' => -1,
-            'order' => 'ASC',
-            'orderby' => 'menu_order'
-        ];
-        $wpQuery = new WP_Query($args);
-        while($wpQuery->have_posts()) {
-            $wpQuery->the_post();
-            $pages[get_the_ID()] = get_the_title();
-        }
-        return $pages;
-    }
-
-    /**
      * Get the galleries
      *
      * @return array the galleries
@@ -262,16 +222,6 @@ class KCGallery {
             $galleries[get_the_ID()] = get_the_title();
         }
         return $galleries;
-    }
-
-    /**
-     * Get the gallery page url
-     *
-     * @param int $galleryID the id of the gallery
-     * @return string the gallery page url
-     */
-    private function getGalleryPageUrl(int $galleryID) : string {
-        return get_permalink(rwmb_meta($this->fieldGalleryPage, [], $galleryID));
     }
 
     /**

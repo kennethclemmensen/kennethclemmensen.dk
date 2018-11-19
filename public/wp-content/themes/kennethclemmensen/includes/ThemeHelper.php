@@ -1,4 +1,6 @@
 <?php
+use \KCGallery\Includes\KCGallery;
+
 /**
  * The ThemeHelper class contains utility methods to use in the theme
  */
@@ -65,6 +67,7 @@ class ThemeHelper {
      */
     public static function getBreadcrumb() : array {
         global $post;
+        $imagesPageID = 21;
         if(!is_front_page()) {
             $pages[] = $post->ID;
             $parent = $post->post_parent;
@@ -74,6 +77,7 @@ class ThemeHelper {
                 $parent = $page->post_parent;
             }
         }
+        if($post->post_type === KCGallery::GALLERY) $pages[] = $imagesPageID;
         $pages[] = get_option('page_on_front');
         return array_reverse($pages);
     }
