@@ -32,7 +32,6 @@ while(have_posts()) {
                 }
                 ?>
             </div>
-            ?>
         </section>
     </div>
     <?php
