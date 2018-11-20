@@ -42,7 +42,6 @@ class KCGallery {
         $this->init();
         $this->afterSetupTheme();
         $this->addMetaBoxes();
-        $this->addShortcodes();
         $this->adminColumns();
     }
 
@@ -119,23 +118,6 @@ class KCGallery {
     }
 
     /**
-     * Add the galleries shortcode to show a list of galleries
-     */
-    private function addShortcodes() : void {
-        add_shortcode('galleries', function() : string {
-            $html = '<div class="kc-galleries">';
-            $galleries = $this->getGalleries();
-            foreach($galleries as $key => $gallery) {
-                $html .= '<div class="kc-galleries__gallery">';
-                $html .= '<a href="'.get_permalink($key).'"><img src="'.$this->getGalleryPhotoUrl($key).'" alt="'.get_the_title($key).'"></a>';
-                $html .= '</div>';
-            }
-            $html .= '</div>';
-            return $html;
-        });
-    }
-
-    /**
      * Add admin columns to the gallery and photo custom post types
      */
     private function adminColumns() : void {
@@ -175,7 +157,7 @@ class KCGallery {
      *
      * @return array the galleries
      */
-    private function getGalleries() : array {
+    public function getGalleries() : array {
         $galleries = [];
         $args = [
             'post_type' => self::GALLERY,
@@ -196,7 +178,7 @@ class KCGallery {
      * @param int $galleryID the id of the gallery
      * @return string the gallery photo url
      */
-    private function getGalleryPhotoUrl(int $galleryID) : string {
+    public function getGalleryPhotoUrl(int $galleryID) : string {
         $url = get_the_post_thumbnail_url($galleryID);
         return (isset($url)) ? esc_url($url) : '';
     }
