@@ -36,20 +36,10 @@ class KCGallery {
      * Execute the plugin
      */
     public function execute() : void {
-        $this->loadDependencies();
-        $loader = new KCGalleryLoader();
-        $loader->loadStylesAndScripts();
         $this->init();
         $this->afterSetupTheme();
         $this->addMetaBoxes();
         $this->adminColumns();
-    }
-
-    /**
-     * Load the dependencies files
-     */
-    private function loadDependencies() : void {
-        require_once 'KCGalleryLoader.php';
     }
 
     /**
