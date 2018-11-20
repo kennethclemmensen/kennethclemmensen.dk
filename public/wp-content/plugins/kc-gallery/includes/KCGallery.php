@@ -119,7 +119,7 @@ class KCGallery {
     }
 
     /**
-     * Add the galleries and gallery shortcodes to show a list of galleries and a single gallery
+     * Add the galleries shortcode to show a list of galleries
      */
     private function addShortcodes() : void {
         add_shortcode('galleries', function() : string {
@@ -131,40 +131,6 @@ class KCGallery {
                 $html .= '</div>';
             }
             $html .= '</div>';
-            return $html;
-        });
-        add_shortcode('gallery', function(array $atts) : string {
-            $html = '<div class="kc-gallery">';
-            $galleryID = addslashes($atts['id']);
-            $paged = (get_query_var('paged')) ? absint(get_query_var('paged')) : 1;
-            $args = [
-                'post_type' => self::PHOTO,
-                'posts_per_page' => 39,
-                'order' => 'ASC',
-                'meta_key' => $this->fieldPhotoGallery,
-                'meta_value' => $galleryID,
-                'paged' => $paged
-            ];
-            $wpQuery = new WP_Query($args);
-            while($wpQuery->have_posts()) {
-                $wpQuery->the_post();
-                $id = get_the_ID();
-                $title = get_the_title();
-                $html .= '<a href="'.$this->getPhotoUrl($id).'" data-title="'.$title.'" data-lightbox="'.$galleryID.'">';
-                $html .= '<img src="'.$this->getPhotoThumbnailUrl($id).'" class="kc-gallery__photo" alt="'.$title.'"></a>';
-            }
-            $html .= '<div class="kc-gallery__pagination">';
-            $big = 999999999; // need an unlikely integer
-            $replace = '%#%';
-            $html .= paginate_links([
-                'base' => str_replace($big, $replace, esc_url(get_pagenum_link($big))),
-                'format' => '?paged='.$replace,
-                'current' => max(1, $paged),
-                'total' => $wpQuery->max_num_pages,
-                'prev_text' => 'Forrige',
-                'next_text' => 'Næste'
-            ]);
-            $html .= '</div></div>';
             return $html;
         });
     }
@@ -241,7 +207,7 @@ class KCGallery {
      * @param int $photoID the id of the photo
      * @return string the photo url
      */
-    private function getPhotoUrl(int $photoID) : string {
+    public function getPhotoUrl(int $photoID) : string {
         $url = get_the_post_thumbnail_url($photoID);
         return (isset($url)) ? esc_url($url) : '';
     }
@@ -252,7 +218,7 @@ class KCGallery {
      * @param int $photoID the id of the photo
      * @return string the photo thumbnail
      */
-    private function getPhotoThumbnailUrl(int $photoID) : string {
+    public function getPhotoThumbnailUrl(int $photoID) : string {
         $url = get_the_post_thumbnail_url($photoID, 'thumbnail');
         return (isset($url)) ? esc_url($url) : '';
     }
@@ -272,5 +238,14 @@ class KCGallery {
         ];
         $wpQuery = new WP_Query($args);
         return $wpQuery->found_posts;
+    }
+
+    /**
+     * Get the photo gallery field id
+     *
+     * @return string the photo gallery field id
+     */
+    public function getPhotoGalleryFieldID() : string {
+        return $this->fieldPhotoGallery;
     }
 }
