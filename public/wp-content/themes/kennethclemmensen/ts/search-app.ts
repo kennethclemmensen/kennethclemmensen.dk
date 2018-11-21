@@ -18,11 +18,11 @@ new Vue({
                 return;
             }
             let self: any = this;
-            let statusCodeOk: number = 200;
+            let responseCodeOk: number = 200;
             let request: XMLHttpRequest = new XMLHttpRequest();
             request.open('get', '/wp-json/kcapi/v1/pages/' + this.searchString, true);
             request.addEventListener('load', () => {
-                self.results = (request.status === statusCodeOk) ? JSON.parse(request.responseText) : [];
+                self.results = (request.status === responseCodeOk) ? JSON.parse(request.responseText) : [];
             });
             request.addEventListener('error', () => {
                 self.results = [];
@@ -32,11 +32,11 @@ new Vue({
     },
     components: {
         'search-results': {
-            data: function(): object {
+            data: function(): Object {
                 return {
                     offset: 0,
                     perPage: 5
-                }
+                };
             },
             methods: {
                 previousPage: function(): void {

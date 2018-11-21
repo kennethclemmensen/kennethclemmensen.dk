@@ -18,12 +18,12 @@ while(have_posts()) {
             $kcGallery = new KCGallery();
             $galleries = $kcGallery->getGalleries();
             ?>
-            <div class="galleries">
+            <div class="page__galleries">
                 <?php
                 foreach($galleries as $key => $gallery) {
                     $src = $kcGallery->getGalleryPhotoUrl($key);
                     ?>
-                    <div class="galleries__gallery">
+                    <div class="page__gallery">
                         <a href="<?php echo get_permalink($key); ?>">
                             <img src="<?php echo $src; ?>" alt="<?php echo get_the_title($key); ?>">
                         </a>

@@ -12,11 +12,11 @@ class ThemeHelper {
      * @param string $name the name of the script
      * @param string $cdnFile the path to the CDN file
      * @param string $localFile the path to the local file
-     * @param array $deps the dependencies of the script
      * @param int $ver the script version number
+     * @param array $deps the dependencies of the script
      * @param bool $inFooter false if the script should be enqueued in the header
      */
-    public static function addScriptWithLocalFallback(string $name, string $cdnFile, string $localFile, array $deps = [], ?int $ver = null, bool $inFooter = true) : void {
+    public static function addScriptWithLocalFallback(string $name, string $cdnFile, string $localFile, ?int $ver = null, array $deps = [], bool $inFooter = true) : void {
         $file = @fopen($cdnFile, 'r');
         if($file === false) {
             $src = $localFile;
@@ -34,10 +34,10 @@ class ThemeHelper {
      * @param string $name the name of the stylesheet
      * @param string $cdnFile the path to the CDN file
      * @param string $localFile the path to the local file
-     * @param array $deps the dependencies of the stylesheet
      * @param int $ver the stylesheet version number
+     * @param array $deps the dependencies of the stylesheet
      */
-    public static function addStyleWithLocalFallback(string $name, string $cdnFile, string $localFile, array $deps = [], ?int $ver = null) : void {
+    public static function addStyleWithLocalFallback(string $name, string $cdnFile, string $localFile, ?int $ver = null, array $deps = []) : void {
         $file = @fopen($cdnFile, 'r');
         if($file === false) {
             $src = $localFile;

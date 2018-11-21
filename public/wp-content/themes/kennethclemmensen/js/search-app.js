@@ -16,11 +16,11 @@ new Vue({
                 return;
             }
             let self = this;
-            let statusCodeOk = 200;
+            let responseCodeOk = 200;
             let request = new XMLHttpRequest();
             request.open('get', '/wp-json/kcapi/v1/pages/' + this.searchString, true);
             request.addEventListener('load', () => {
-                self.results = (request.status === statusCodeOk) ? JSON.parse(request.responseText) : [];
+                self.results = (request.status === responseCodeOk) ? JSON.parse(request.responseText) : [];
             });
             request.addEventListener('error', () => {
                 self.results = [];
@@ -34,7 +34,7 @@ new Vue({
                 return {
                     offset: 0,
                     perPage: 5
-                }
+                };
             },
             methods: {
                 previousPage: function() {

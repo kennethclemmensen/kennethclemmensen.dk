@@ -13,13 +13,13 @@ add_action('wp_enqueue_scripts', function() : void {
     $cdnFile = 'https://use.fontawesome.com/releases/v5.5.0/css/all.css';
     $localFile = '/css/fontawesome-5.5.0.min.css';
     $version = filemtime(get_template_directory().$localFile);
-    ThemeHelper::addStyleWithLocalFallback($fontAwesome, $cdnFile, get_template_directory_uri().$localFile, [], $version);
+    ThemeHelper::addStyleWithLocalFallback($fontAwesome, $cdnFile, get_template_directory_uri().$localFile, $version);
 
     $lightbox = 'lightbox';
     $cdnFile = 'https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.0/css/lightbox.min.css';
     $localFile = '/css/lightbox-2.10.0.min.css';
     $version = filemtime(get_template_directory().$localFile);
-    ThemeHelper::addStyleWithLocalFallback($lightbox, $cdnFile, get_template_directory_uri().$localFile, [], $version);
+    ThemeHelper::addStyleWithLocalFallback($lightbox, $cdnFile, get_template_directory_uri().$localFile, $version);
 
     $styleFile = '/css/style.css';
     $version = filemtime(get_template_directory().$styleFile);
@@ -29,23 +29,23 @@ add_action('wp_enqueue_scripts', function() : void {
     $cdnFile = 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js';
     $localFile = '/js/libraries/jquery-3.3.1.min.js';
     $version = filemtime(get_template_directory().$localFile);
-    ThemeHelper::addScriptWithLocalFallback($jquery, $cdnFile, get_template_directory_uri().$localFile, [], $version);
+    ThemeHelper::addScriptWithLocalFallback($jquery, $cdnFile, get_template_directory_uri().$localFile, $version);
 
     $vueJS = 'vue-js';
     $cdnFile = 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js';
     $localFile = '/js/libraries/vue-2.5.17.min.js';
     $version = filemtime(get_template_directory().$localFile);
-    ThemeHelper::addScriptWithLocalFallback($vueJS, $cdnFile, get_template_directory_uri().$localFile, [], $version);
+    ThemeHelper::addScriptWithLocalFallback($vueJS, $cdnFile, get_template_directory_uri().$localFile, $version);
 
     $lightbox = 'lightbox-js';
     $cdnFile = 'https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.0/js/lightbox.min.js';
     $localFile = '/js/plugins/lightbox-2.10.0.min.js';
     $version = filemtime(get_template_directory().$localFile);
-    ThemeHelper::addScriptWithLocalFallback($lightbox, $cdnFile, get_template_directory_uri().$localFile, [], $version);
+    ThemeHelper::addScriptWithLocalFallback($lightbox, $cdnFile, get_template_directory_uri().$localFile, $version);
 
     $scriptFile = '/js/minified/script.min.js';
     $version = filemtime(get_template_directory().$scriptFile);
-    wp_enqueue_script('theme-js', get_template_directory_uri().$scriptFile, [$jquery, $vueJS, $lightbox], $version, true);
+    wp_enqueue_script('theme-js', get_template_directory_uri().$scriptFile, $version, [$jquery, $vueJS, $lightbox], true);
 });
 
 /**

@@ -17,3 +17,25 @@
     padding: 0 0 (@footer-height-tablet + 20px) 0;
   }
 }
+
+.page__galleries {
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+  @media @tablet {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  @media @desktop {
+    justify-content: space-between;
+  }
+}
+
+.page__gallery {
+  width: 285px;
+  margin: 0 20px 20px 0;
+  border: 1px solid @color-white;
+  @media @desktop {
+    margin-right: 10px;
+  }
+}
