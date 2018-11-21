@@ -8,6 +8,7 @@ let concat = require('gulp-concat');
 let uglify = require('gulp-uglifyes');
 let imagemin = require('gulp-imagemin');
 let ts = require('gulp-typescript');
+let tsConfig = ts.createProject('tsconfig.json');
 
 gulp.task('browser-sync', function() {
     browserSync.init({
@@ -77,13 +78,9 @@ gulp.task('sass', function() {
 });
 
 gulp.task('typescript', function() {
-    return gulp.src(p.tsFolderPath + '*.ts')
-        .pipe(ts({
-            noImplicitAny: true,
-            out: 'script.min.js',
-            target: 'es6'
-        }))
-        .js.pipe(gulp.dest(p.jsFolderPath + 'minified'));
+    return tsConfig.src()
+        .pipe(tsConfig())
+        .js.pipe(gulp.dest('./'));
 });
 
 gulp.task('watch', function() {
