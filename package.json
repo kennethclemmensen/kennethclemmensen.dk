@@ -26,6 +26,7 @@
     "gulp-sass": "*",
     "gulp-typescript": "*",
     "gulp-uglifyes": "*",
-    "node-sass": "*"
+    "node-sass": "*",
+    "typescript": "*"
   }
 }
