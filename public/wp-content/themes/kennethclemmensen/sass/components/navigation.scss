@@ -16,6 +16,9 @@
     height: $header-height-tablet;
     margin-left: 0;
     list-style: none;
+    &.sub-menu {
+      display: none;
+    }
     li {
       padding: 14px 10px 0 10px;
       @include transition(background 0.3s ease-out 0s);
@@ -28,7 +31,7 @@
         @include border-radiuses(8px, 8px, 0, 0);
         text-align: center;
       }
-      &:hover, &.current-menu-item, &.current-page-ancestor {
+      &:hover, &.current-menu-item, &.current_page_ancestor {
         background: $color-blue--dark;
       }
       a {
