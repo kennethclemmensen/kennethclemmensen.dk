@@ -80,7 +80,7 @@ gulp.task('sass', function() {
 gulp.task('typescript', function() {
     return tsConfig.src()
         .pipe(tsConfig())
-        .js.pipe(gulp.dest('./'));
+        .pipe(gulp.dest('./'));
 });
 
 gulp.task('watch', function() {
