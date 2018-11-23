@@ -17,6 +17,8 @@ class ThemeSettings {
     private $email;
     private $linkedIn;
     private $gitHub;
+    private $photosPerPage;
+    private $imagesPage;
     private $scriptsHeader;
     private $scriptsStartBody;
     private $scriptsFooter;
@@ -44,6 +46,8 @@ class ThemeSettings {
         $this->email = 'email';
         $this->linkedIn = 'linkedin';
         $this->gitHub = 'github';
+        $this->photosPerPage = 'photos_per_page';
+        $this->imagesPage = 'images_page';
         $prefix = 'scripts_';
         $this->scriptsHeader = $prefix.'header';
         $this->scriptsStartBody = $prefix.'start_body';
@@ -179,6 +183,18 @@ class ThemeSettings {
             echo '<input type="url" name="'.$this->otherOptionsName.'['.$this->gitHub.']" value="'.$this->getGitHubUrl().'" class="regular-text" required> ';
             echo '['.$this->gitHubShortcode.']';
         }, $this->otherPageSlug, $sectionID);
+        add_settings_field($prefix.'photos-per-page', 'Photos per page', function() : void {
+            echo '<input type="number" name="'.$this->otherOptionsName.'['.$this->photosPerPage.']" value="'.$this->getPhotosPerPage().'" min="1" max="50">';
+        }, $this->otherPageSlug, $sectionID);
+        add_settings_field($prefix.'images-page', 'Images page', function() : void {
+            $html = '<select name="'.$this->otherOptionsName.'['.$this->imagesPage.']">';
+            $pages = $this->getPages();
+            foreach($pages as $id => $title) {
+                $html .= '<option value="'.$id.'">'.$title.'</option>';
+            }
+            $html .= '</select>';
+            echo $html;
+        }, $this->otherPageSlug, $sectionID);
         register_setting($this->otherOptionsName, $this->otherOptionsName, function(array $input) : array {
             return $this->validateInput($input);
         });
@@ -243,6 +259,26 @@ class ThemeSettings {
     }
 
     /**
+     * Get all pages
+     *
+     * @return array all pages
+     */
+    private function getPages() : array {
+        $pages = [];
+        $args = [
+            'post_type' => 'page',
+            'posts_per_page' => -1
+        ];
+        $wpQuery = new \WP_Query($args);
+        while($wpQuery->have_posts()) {
+            $wpQuery->the_post();
+            $pages[get_the_ID()] = get_the_title();
+        }
+        wp_reset_postdata();
+        return $pages;
+    }
+
+    /**
      * Get the email
      *
      * @return string the email
@@ -294,5 +330,24 @@ class ThemeSettings {
      */
     private function getFooterScripts() : string {
         return (isset($this->scriptsOptions[$this->scriptsFooter])) ? stripslashes($this->scriptsOptions[$this->scriptsFooter]) : '';
+    }
+
+    /**
+     * Get the number of photos per page
+     *
+     * @return int the number of photos per page
+     */
+    public function getPhotosPerPage() : int {
+        $defaultValue = 39;
+        return (isset($this->otherOptions[$this->photosPerPage])) ? intval($this->otherOptions[$this->photosPerPage]) : $defaultValue;
+    }
+
+    /**
+     * Get the images page id
+     *
+     * @return int the images page id
+     */
+    public function getImagesPageID() : ?int {
+        return (isset($this->otherOptions[$this->imagesPage])) ? $this->otherOptions[$this->imagesPage] : null;
     }
 }

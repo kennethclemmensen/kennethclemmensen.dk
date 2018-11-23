@@ -67,7 +67,8 @@ class ThemeHelper {
      */
     public static function getBreadcrumb() : array {
         global $post;
-        $imagesPageID = 21;
+        $themeSettings = ThemeSettings::getInstance();
+        $imagesPageID = $themeSettings->getImagesPageID();
         if(!is_front_page()) {
             $pages[] = $post->ID;
             $parent = $post->post_parent;

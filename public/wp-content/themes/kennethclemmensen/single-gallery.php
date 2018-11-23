@@ -16,11 +16,12 @@ while(have_posts()) {
             <div class="gallery">
                 <?php
                 $kcGallery = new KCGallery();
+                $themeSettings = ThemeSettings::getInstance();
                 $galleryID = get_the_ID();
                 $paged = (get_query_var('paged')) ? absint(get_query_var('paged')) : 1;
                 $args = [
                     'post_type' => KCGallery::PHOTO,
-                    'posts_per_page' => 39,
+                    'posts_per_page' => $themeSettings->getPhotosPerPage(),
                     'order' => 'ASC',
                     'meta_key' => $kcGallery->getPhotoGalleryFieldID(),
                     'meta_value' => $galleryID,
