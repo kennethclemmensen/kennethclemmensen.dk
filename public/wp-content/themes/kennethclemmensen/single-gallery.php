@@ -31,23 +31,31 @@ while(have_posts()) {
                 while($wpQuery->have_posts()) {
                     $wpQuery->the_post();
                     $title = get_the_title();
-                    echo '<a href="'.$kcGallery->getPhotoUrl($id).'" data-title="'.$title.'" data-lightbox="'.$galleryID.'">';
-                    echo '<img src="'.$kcGallery->getPhotoThumbnailUrl($id).'" class="gallery__photo" alt="'.$title.'"></a>';
+                    $url = $kcGallery->getPhotoUrl($id);
+                    $thumbnail = $kcGallery->getPhotoThumbnailUrl($id);
+                    ?>
+                    <a href="<?php echo $url; ?>" data-title="<?php echo $title; ?>"
+                       data-lightbox="<?php echo $galleryID; ?>" class="gallery__link">
+                        <img src="<?php echo $thumbnail; ?>" alt="<?php echo $title; ?>" class="gallery__photo">
+                    </a>
+                    <?php
                 }
-                echo '<div class="gallery__pagination">';
-                $big = 999999999; // need an unlikely integer
-                $replace = '%#%';
-                echo paginate_links([
-                    'base' => str_replace($big, $replace, esc_url(get_pagenum_link($big))),
-                    'format' => '?paged='.$replace,
-                    'current' => max(1, $paged),
-                    'total' => $wpQuery->max_num_pages,
-                    'prev_text' => TranslationStrings::getPreviousText(),
-                    'next_text' => TranslationStrings::getNextText()
-                ]);
-                echo '</div></div>';
-                wp_reset_postdata();
                 ?>
+                <div class="gallery__pagination">
+                    <?php
+                    $big = 999999999; // need an unlikely integer
+                    $replace = '%#%';
+                    echo paginate_links([
+                        'base' => str_replace($big, $replace, esc_url(get_pagenum_link($big))),
+                        'format' => '?paged='.$replace,
+                        'current' => max(1, $paged),
+                        'total' => $wpQuery->max_num_pages,
+                        'prev_text' => TranslationStrings::getPreviousText(),
+                        'next_text' => TranslationStrings::getNextText()
+                    ]);
+                    wp_reset_postdata();
+                    ?>
+                </div>
             </div>
         </section>
     </div>
