@@ -56,7 +56,7 @@ module.exports = function(grunt) {
             default: {
                 files: [{
                     src: ['<%= pkg.tsFolderPath %>**/*.ts'],
-                    out: '<%= pkg.jsFolderPath %>minified/script.min.js'
+                    out: '<%= pkg.jsFolderPath %>ts-compiled/script.js'
                 }],
                 options: {
                     noImplicitAny: true,
