@@ -11,7 +11,7 @@ These technologies includes:
 * JavaScript/[jQuery](https://jquery.com/)
 * [TypeScript](https://www.typescriptlang.org/)
 * [PHP](http://php.net/)
-* [VueJS](https://vuejs.org/)
+* [Vue](https://vuejs.org/)
 * [Grunt](https://gruntjs.com/)
 * [Gulp](https://gulpjs.com/)
 * [Composer](https://getcomposer.org/)

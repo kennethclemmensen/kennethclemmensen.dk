@@ -65,7 +65,7 @@ final class KCAPIController extends WP_REST_Controller {
      * @param int $resultsPerPage the number of results per page
      * @return array the pages
      */
-    private function getPagesByTitle(string $title, int $offset, int $resultsPerPage = null) : array {
+    private function getPagesByTitle(string $title, int $offset, ?int $resultsPerPage = null) : array {
         $pages = [];
         $args = [
             'order' => 'ASC',
