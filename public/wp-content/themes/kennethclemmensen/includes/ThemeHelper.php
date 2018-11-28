@@ -18,12 +18,7 @@ class ThemeHelper {
      */
     public static function addScriptWithLocalFallback(string $name, string $cdnFile, string $localFile, ?int $ver = null, array $deps = [], bool $inFooter = true) : void {
         $file = @fopen($cdnFile, 'r');
-        if($file === false) {
-            $src = $localFile;
-        } else {
-            $src = $cdnFile;
-            $ver = null;
-        }
+        $src = ($file === false) ? $localFile : $cdnFile;
         wp_deregister_script($name);
         wp_enqueue_script($name, $src, $deps, $ver, $inFooter);
     }
@@ -39,12 +34,7 @@ class ThemeHelper {
      */
     public static function addStyleWithLocalFallback(string $name, string $cdnFile, string $localFile, ?int $ver = null, array $deps = []) : void {
         $file = @fopen($cdnFile, 'r');
-        if($file === false) {
-            $src = $localFile;
-        } else {
-            $src = $cdnFile;
-            $ver = null;
-        }
+        $src = ($file === false) ? $localFile : $cdnFile;
         wp_deregister_style($name);
         wp_enqueue_style($name, $src, $deps, $ver);
     }
@@ -67,8 +57,6 @@ class ThemeHelper {
      */
     public static function getBreadcrumb() : array {
         global $post;
-        $themeSettings = ThemeSettings::getInstance();
-        $imagesPageID = $themeSettings->getImagesPageID();
         if(!is_front_page()) {
             $pages[] = $post->ID;
             $parent = $post->post_parent;
@@ -78,7 +66,10 @@ class ThemeHelper {
                 $parent = $page->post_parent;
             }
         }
-        if($post->post_type === KCGallery::GALLERY) $pages[] = $imagesPageID;
+        if($post->post_type === KCGallery::GALLERY) {
+            $themeSettings = ThemeSettings::getInstance();
+            $pages[] = $themeSettings->getImagesPageID();
+        }
         $pages[] = get_option('page_on_front');
         return array_reverse($pages);
     }

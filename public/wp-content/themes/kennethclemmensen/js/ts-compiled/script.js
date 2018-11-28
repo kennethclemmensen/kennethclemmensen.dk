@@ -25,12 +25,11 @@ jQuery.noConflict();
             show() {
                 let randomNumber = this.getRandomNumber();
                 this.$sliderImages.eq(randomNumber).show();
-                let self = this;
-                setInterval(function () {
-                    self.$sliderImages.eq(randomNumber).fadeOut(self.duration, function () {
-                        self.$sliderImages.eq(randomNumber).hide();
-                        randomNumber = self.getRandomNumber();
-                        self.$sliderImages.eq(randomNumber).fadeIn(self.duration);
+                setInterval(() => {
+                    this.$sliderImages.eq(randomNumber).fadeOut(this.duration, () => {
+                        this.$sliderImages.eq(randomNumber).hide();
+                        randomNumber = this.getRandomNumber();
+                        this.$sliderImages.eq(randomNumber).fadeIn(this.duration);
                     });
                 }, this.delay);
             }

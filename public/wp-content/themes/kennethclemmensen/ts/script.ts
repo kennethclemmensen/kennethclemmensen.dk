@@ -53,12 +53,11 @@ jQuery.noConflict();
             private show(): void {
                 let randomNumber: number = this.getRandomNumber();
                 this.$sliderImages.eq(randomNumber).show();
-                let self: any = this;
-                setInterval(function(): void {
-                    self.$sliderImages.eq(randomNumber).fadeOut(self.duration, function(): void {
-                        self.$sliderImages.eq(randomNumber).hide(); //prevent display block on more than one image
-                        randomNumber = self.getRandomNumber();
-                        self.$sliderImages.eq(randomNumber).fadeIn(self.duration);
+                setInterval(() => {
+                    this.$sliderImages.eq(randomNumber).fadeOut(this.duration, () => {
+                        this.$sliderImages.eq(randomNumber).hide(); //prevent display block on more than one image
+                        randomNumber = this.getRandomNumber();
+                        this.$sliderImages.eq(randomNumber).fadeIn(this.duration);
                     });
                 }, this.delay);
             }
