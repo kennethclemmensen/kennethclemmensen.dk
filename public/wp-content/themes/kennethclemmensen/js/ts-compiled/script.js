@@ -59,15 +59,14 @@ new Vue({
                 this.results = [];
                 return;
             }
-            let self = this;
             let responseCodeOk = 200;
             let request = new XMLHttpRequest();
             request.open('get', '/wp-json/kcapi/v1/pages/' + this.searchString, true);
             request.addEventListener('load', () => {
-                self.results = (request.status === responseCodeOk) ? JSON.parse(request.responseText) : [];
+                this.results = (request.status === responseCodeOk) ? JSON.parse(request.responseText) : [];
             });
             request.addEventListener('error', () => {
-                self.results = [];
+                this.results = [];
             });
             request.send();
         }
