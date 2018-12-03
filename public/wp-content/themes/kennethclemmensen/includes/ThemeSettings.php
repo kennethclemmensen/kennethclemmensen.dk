@@ -190,7 +190,7 @@ class ThemeSettings {
             $html = '<select name="'.$this->otherOptionsName.'['.$this->imagesPage.']">';
             $pages = $this->getPages();
             foreach($pages as $id => $title) {
-                $html .= '<option value="'.$id.'">'.$title.'</option>';
+                $html .= '<option value="'.$id.'" '.selected($id, $this->getImagesPageID(), false).'>'.$title.'</option>';
             }
             $html .= '</select>';
             echo $html;
