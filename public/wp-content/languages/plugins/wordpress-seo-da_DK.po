@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Yoast SEO - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-11-26 10:32:12+0000\n"
+"PO-Revision-Date: 2018-12-11 12:33:53+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1456,7 +1456,7 @@ msgstr "Indstillinger for arkivet %s"
 #. translators: %s is the singular version of the post type's name.
 #: admin/views/tabs/metas/paper-content/post-type-content.php:18
 msgid "Settings for single %s URLs"
-msgstr "Indstillinger for enkelt-URL%#39;er for %s"
+msgstr "Indstillinger for enkelt %s URLer"
 
 #: admin/views/tabs/metas/post-types.php:31
 msgid "The settings on this page allow you to specify what the default search appearance should be for any type of content you have. You can choose which content types appear in search results and what their default description should be."
