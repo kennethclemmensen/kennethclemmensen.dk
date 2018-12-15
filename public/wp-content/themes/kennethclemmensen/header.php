@@ -8,8 +8,8 @@
     <?php wp_head(); ?>
 </head>
 
-<body data-image-text="<?php echo TranslationStrings::getImageText(); ?>"
-      data-of-text="<?php echo TranslationStrings::getOfText(); ?>">
+<body <?php body_class(); ?> data-image-text="<?php echo TranslationStrings::getImageText(); ?>"
+                             data-of-text="<?php echo TranslationStrings::getOfText(); ?>">
 <?php
 do_action(ThemeSettings::AFTER_START_BODY);
 ?>
