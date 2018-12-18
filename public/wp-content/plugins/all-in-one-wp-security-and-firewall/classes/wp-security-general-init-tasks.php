@@ -204,7 +204,9 @@ class AIOWPSecurity_General_Init_Tasks
             switch_to_blog($blog_id);
             if($aio_wp_security->configs->get_value('aiowps_enable_comment_captcha') == '1'){
                 if (!is_user_logged_in()) {
-                    add_action('wp_head', array(&$this, 'add_recaptcha_script'));
+                    if($aio_wp_security->configs->get_value('aiowps_default_recaptcha')) {
+                        add_action('wp_head', array(&$this, 'add_recaptcha_script'));
+                    }
                     add_action( 'comment_form_after_fields', array(&$this, 'insert_captcha_question_form'), 1 );
                     add_action( 'comment_form_logged_in_after', array(&$this, 'insert_captcha_question_form'), 1 );
                     add_filter( 'preprocess_comment', array(&$this, 'process_comment_post') );
@@ -214,7 +216,9 @@ class AIOWPSecurity_General_Init_Tasks
         }else{
             if($aio_wp_security->configs->get_value('aiowps_enable_comment_captcha') == '1'){
                 if (!is_user_logged_in()) {
-                    add_action('wp_head', array(&$this, 'add_recaptcha_script'));
+                    if($aio_wp_security->configs->get_value('aiowps_default_recaptcha')) {
+                        add_action('wp_head', array(&$this, 'add_recaptcha_script'));
+                    }
                     add_action( 'comment_form_after_fields', array(&$this, 'insert_captcha_question_form'), 1 );
                     add_action( 'comment_form_logged_in_after', array(&$this, 'insert_captcha_question_form'), 1 );
                     add_filter( 'preprocess_comment', array(&$this, 'process_comment_post') );

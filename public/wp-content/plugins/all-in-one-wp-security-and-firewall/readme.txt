@@ -187,6 +187,14 @@ https://www.tipsandtricks-hq.com/wordpress-security-and-firewall-plugin
 None
 
 == Changelog ==
+= 4.3.8.3 =
+- Trying again - Fixed login captcha authentication bug.
+
+= 4.3.8.2 =
+- Fixed login captcha authentication bug.
+
+= 4.3.8.1 =
+- Minor bug fix - added missing check to enqueue recaptcha script only if that feature is enabled.
 
 = 4.3.8 =
 - Added ability to hide secret rename login page link when sending emails to people asking for personal data export.
