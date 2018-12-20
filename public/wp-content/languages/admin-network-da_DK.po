@@ -1,5 +1,5 @@
-# Translation of WordPress - 4.9.x - Development - Administration - Network Admin in Danish
-# This file is distributed under the same license as the WordPress - 4.9.x - Development - Administration - Network Admin package.
+# Translation of WordPress - 5.0.x - Development - Administration - Network Admin in Danish
+# This file is distributed under the same license as the WordPress - 5.0.x - Development - Administration - Network Admin package.
 msgid ""
 msgstr ""
 "PO-Revision-Date: 2017-10-31 08:58:38+0000\n"
@@ -9,7 +9,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: da_DK\n"
-"Project-Id-Version: WordPress - 4.9.x - Development - Administration - Network Admin\n"
+"Project-Id-Version: WordPress - 5.0.x - Development - Administration - Network Admin\n"
 
 #. translators: %s: DO_NOT_UPGRADE_GLOBAL_TABLES
 #: wp-admin/includes/network.php:107
@@ -89,8 +89,8 @@ msgstr "Du har desværre ikke tilladelse til at håndtere temaer på dette webst
 msgid "Sorry, you are not allowed to add sites to this network."
 msgstr "Du har desværre ikke tilladelse til at tilføje websteder til dette netværk."
 
-#: wp-admin/network/site-info.php:14 wp-admin/network/site-settings.php:14
-#: wp-admin/network/site-users.php:14
+#: wp-admin/network/site-info.php:14 wp-admin/network/site-users.php:14
+#: wp-admin/network/site-settings.php:14
 msgid "Sorry, you are not allowed to edit this site."
 msgstr "Du har desværre ikke tilladelse til at redigere dette websted."
 
@@ -102,10 +102,6 @@ msgstr "E-mailadressen på den første, der har kommenteret på et nyt websted."
 msgid "First Comment Email"
 msgstr "E-mailadresse på første kommentar"
 
-#. translators: This string should only be translated if wp-config-sample.php
-#. is localized. You can check the localized release package or
-#. https://i18n.svn.wordpress.org/<locale code>/branches/<wp
-#. version>/dist/wp-config-sample.php
 #: wp-admin/includes/network.php:436
 msgid "That&#8217;s all, stop editing! Happy blogging."
 msgstr "Det var alt, stop med at redigere! God blogging."
@@ -373,7 +369,7 @@ msgstr "Spam"
 msgid "Archived"
 msgstr "Arkiveret"
 
-#: wp-admin/network/site-users.php:346 wp-admin/network/user-new.php:117
+#: wp-admin/network/user-new.php:117 wp-admin/network/site-users.php:346
 msgid "A password reset link will be sent to the user via email."
 msgstr "Et link til nulstilling af adgangskoden vil blive sendt til brugeren via e-mail."
 
@@ -467,8 +463,8 @@ msgstr "Du er ved at deaktivere webstedet %s."
 msgid "You are about to activate the site %s."
 msgstr "Du er ved at aktivere webstedet %s."
 
-#: wp-admin/network/site-info.php:28 wp-admin/network/site-settings.php:26
-#: wp-admin/network/site-themes.php:49 wp-admin/network/site-users.php:42
+#: wp-admin/network/site-info.php:28 wp-admin/network/site-users.php:42
+#: wp-admin/network/site-themes.php:49 wp-admin/network/site-settings.php:26
 msgid "The requested site does not exist."
 msgstr "Det anmodede websted findes ikke."
 
@@ -517,13 +513,13 @@ msgstr "Disse temaer kan være aktive på andre websteder i netværket."
 msgid "Are you sure you wish to delete this theme?"
 msgstr "Er du sikker på, du ønsker at slette dette tema?"
 
-#: wp-admin/network/site-themes.php:183 wp-admin/network/themes.php:279
+#: wp-admin/network/themes.php:279 wp-admin/network/site-themes.php:183
 msgid "%s theme disabled."
 msgid_plural "%s themes disabled."
 msgstr[0] "%s tema deaktiveret."
 msgstr[1] "%s temaer deaktiveret."
 
-#: wp-admin/network/site-themes.php:175 wp-admin/network/themes.php:271
+#: wp-admin/network/themes.php:271 wp-admin/network/site-themes.php:175
 msgid "%s theme enabled."
 msgid_plural "%s themes enabled."
 msgstr[0] "%s tema aktiveret."
@@ -636,8 +632,8 @@ msgstr "WordPress er blevet opdateret! Før vi sender dig af sted, så skal vi o
 msgid "Only use this screen once you have updated to a new version of WordPress through Updates/Available Updates (via the Network Administration navigation menu or the Toolbar). Clicking the Upgrade Network button will step through each site in the network, five at a time, and make sure any database updates are applied."
 msgstr "Brug kun dette skærmbillede efter du har opdateret til den seneste version af WordPress gennem Opdateringer/Tilgængelige opdateringer (via Netværksadministrationens navigationsmenu eller værktøjslinjen). Hvis du klikker på Opgrader netværk-knappen vil du trinvist komme gennem hvert websted i netværket, fem ad gangen, og sikre at databaseopdateringerne gennemføres."
 
-#: wp-admin/network/menu.php:34 wp-admin/network/upgrade.php:15
-#: wp-admin/network/upgrade.php:40 wp-admin/network/upgrade.php:131
+#: wp-admin/network/upgrade.php:15 wp-admin/network/upgrade.php:40
+#: wp-admin/network/upgrade.php:131 wp-admin/network/menu.php:34
 msgid "Upgrade Network"
 msgstr "Opgrader netværk"
 
@@ -691,7 +687,7 @@ msgstr "Slet hvilket er en permanent handling efter bekræftelsesskærmene."
 msgid "Clicking on bold headings can re-sort this table."
 msgstr "Ved at klikke på overskrifterne med fed kan du sortere i tabellen."
 
-#: wp-admin/network/menu.php:53 wp-admin/network/themes.php:253
+#: wp-admin/network/themes.php:253 wp-admin/network/menu.php:53
 msgctxt "theme"
 msgid "Add New"
 msgstr "Tilføj nyt"
@@ -738,25 +734,25 @@ msgid "No, return me to the theme list"
 msgstr "Nej, vend tilbage til listen over temaer"
 
 #. translators: %s: site name
-#: wp-admin/network/site-info.php:117 wp-admin/network/site-settings.php:70
-#: wp-admin/network/site-themes.php:153 wp-admin/network/site-users.php:196
+#: wp-admin/network/site-info.php:117 wp-admin/network/site-users.php:196
+#: wp-admin/network/site-themes.php:153 wp-admin/network/site-settings.php:70
 msgid "Edit Site: %s"
 msgstr "Rediger websted: %s"
 
-#: wp-admin/network/site-themes.php:187 wp-admin/network/themes.php:291
+#: wp-admin/network/themes.php:291 wp-admin/network/site-themes.php:187
 msgid "No theme selected."
 msgstr "Intet tema valgt."
 
-#: wp-admin/network/site-themes.php:173 wp-admin/network/themes.php:269
+#: wp-admin/network/themes.php:269 wp-admin/network/site-themes.php:173
 msgid "Theme enabled."
 msgstr "Tema aktiveret."
 
-#: wp-admin/network/site-info.php:23 wp-admin/network/site-settings.php:22
-#: wp-admin/network/site-themes.php:43 wp-admin/network/site-users.php:38
+#: wp-admin/network/site-info.php:23 wp-admin/network/site-users.php:38
+#: wp-admin/network/site-themes.php:43 wp-admin/network/site-settings.php:22
 msgid "Invalid site ID."
 msgstr "Ugyldigt websted-ID."
 
-#: wp-admin/network/site-themes.php:181 wp-admin/network/themes.php:277
+#: wp-admin/network/themes.php:277 wp-admin/network/site-themes.php:181
 msgid "Theme disabled."
 msgstr "Tema deaktiveret."
 
@@ -768,7 +764,7 @@ msgstr "Tilføj bruger vil oprette en ny brugerkonto på netværket og personen 
 msgid "Network enabled themes are not shown on this screen."
 msgstr "Netværksaktiverede temaer vises ikke på dette skærmbillede."
 
-#: wp-admin/network/menu.php:67 wp-admin/network/settings.php:19
+#: wp-admin/network/settings.php:19 wp-admin/network/menu.php:67
 msgid "Network Settings"
 msgstr "Netværksindstillinger"
 
@@ -820,7 +816,7 @@ msgstr "Du har desværre ikke tilladelse til at slette webstedet %s."
 msgid "Cannot add user."
 msgstr "Kan ikke tilføje bruger."
 
-#: wp-admin/network/site-users.php:310 wp-admin/network/user-new.php:129
+#: wp-admin/network/user-new.php:129 wp-admin/network/site-users.php:310
 msgid "Add User"
 msgstr "Tilføj bruger"
 
