@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.0.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-12-20 20:28:13+0000\n"
+"PO-Revision-Date: 2019-01-02 23:45:10+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -560,7 +560,7 @@ msgstr "Adskil dit indhold til en flersidet oplevelse."
 #: wp-includes/js/dist/block-library.js:10536
 msgctxt "block name"
 msgid "More"
-msgstr "Flere"
+msgstr "Læs mere"
 
 #: wp-includes/js/dist/block-library.js:10494
 msgid "Hide the teaser before the \"More\" tag"
@@ -2003,7 +2003,7 @@ msgstr "Anvend \"%1$s\" formatet."
 
 #: wp-includes/js/dist/editor.js:26728
 msgid "Your theme uses post formats to highlight different kinds of content, like images or videos. Apply a post format to see this special styling."
-msgstr "Dit tema bruger postformater til at fremhæve forskellige slags indhold, som billeder eller videoer. Anvend et postformat for at se dette specielle design."
+msgstr "Dit tema bruger indlægsformater til at fremhæve forskellige slags indhold, som billeder eller videoer. Anvend et indlægsformat for at se dette specielle design."
 
 #: wp-includes/js/dist/editor.js:26724
 msgid "Use a post format"
@@ -2035,7 +2035,7 @@ msgstr "Udgiver..."
 
 #: wp-includes/js/dist/editor.js:25345
 msgid "Click “Preview” to load a preview of this page, so you can make sure you’re happy with your blocks."
-msgstr "Klik på \"Forhåndsvisning\" for at indlæse et eksempel på denne side, så du kan være sikker på at du er tilfreds med dine blokke."
+msgstr "Klik på \"Forhåndsvisning\" for at indlæse et eksempel på denne side, så du kan være sikker på, at du er tilfreds med dine blokke."
 
 #: wp-includes/js/dist/editor.js:25339
 msgctxt "imperative verb"
@@ -12765,7 +12765,7 @@ msgstr "Tilføj nyt indlæg"
 
 #: wp-includes/post.php:1520
 msgid "Search Pages"
-msgstr "Søgesider"
+msgstr "Søg i sider"
 
 #: wp-includes/post.php:244
 msgid "No blocks found in Trash."
