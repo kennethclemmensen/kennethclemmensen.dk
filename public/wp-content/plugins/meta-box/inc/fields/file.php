@@ -442,27 +442,28 @@ class RWMB_File_Field extends RWMB_Field {
 	 */
 	public static function handle_upload_custom_dir( $file_id, $post_id, $field ) {
 		// @codingStandardsIgnoreStart
-		if ( ! isset( $_FILES[ $file_id ] ) ) {
+		if ( empty( $_FILES[ $file_id ] ) ) {
 			return;
 		}
 		$file = $_FILES[ $file_id ];
-		if ( UPLOAD_ERR_OK !== $file['error'] || ! $file['tmp_name'] ) {
-			return;
-		}
 		// @codingStandardsIgnoreEnd
 
-		if ( ! file_exists( $field['upload_dir'] ) ) {
-			wp_mkdir_p( $field['upload_dir'] );
-		}
-		if ( ! is_dir( $field['upload_dir'] ) || ! is_writable( $field['upload_dir'] ) ) {
-			return;
-		}
+		// Use a closure to filter upload directory. Requires PHP >= 5.3.0.
+		$filter_upload_dir = function( $uploads ) use ( $field ) {
+			$uploads['path']    = $field['upload_dir'];
+			$uploads['url']     = self::convert_path_to_url( $field['upload_dir'] );
+			$uploads['subdir']  = '';
+			$uploads['basedir'] = $field['upload_dir'];
 
-		$file_name = wp_unique_filename( $field['upload_dir'], basename( $file['name'] ) );
-		$path      = trailingslashit( $field['upload_dir'] ) . $file_name;
-		move_uploaded_file( $file['tmp_name'], $path );
+			return $uploads;
+		};
 
-		return self::convert_path_to_url( $path );
+		// Let WordPress handle upload to the custom directory.
+		add_filter( 'upload_dir', $filter_upload_dir );
+		$file_info = wp_handle_upload( $file, array( 'test_form' => false ) );
+		remove_filter( 'upload_dir', $filter_upload_dir );
+
+		return empty( $file_info['url'] ) ? null : $file_info['url'];
 	}
 
 	/**
