@@ -6,14 +6,14 @@
   top: $header-height;
   bottom: $footer-height;
   z-index: 1;
-  @include transform(translateX(-100%));
-  @include transition(all .4s ease 0s);
+  transform: translateX(-100%);
+  transition: all .4s ease 0s;
   overflow-y: auto;
   @media #{$tablet} {
     display: none;
   }
   &--active {
-    @include transform(translateX(0));
+    transform: translateX(0);
   }
 }
 
@@ -59,9 +59,9 @@
     width: 35px;
     height: 25px;
     text-align: center;
-    @include transition(all .4s ease 0s);
+    transition: all .4s ease 0s;
   }
   &--rotated::after {
-    @include transform(rotate(-180deg));
+    transform: rotate(-180deg);
   }
 }

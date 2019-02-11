@@ -12,17 +12,19 @@ input[type='search'] {
   margin: 0 15px 15px 0;
   border: 2px inset @color-gray;
   color: @color-black;
-  .placeholder-color(@color-gray--dark);
+  &::placeholder {
+    color: @color-gray--dark;
+  }
 }
 
 input[type='submit'] {
   background: @color-blue;
   padding: 6px 15px;
   border: 2px outset @color-gray;
-  .border-radius(4px);
+  border-radius: 4px;
   color: @color-white;
   cursor: pointer;
-  .transition();
+  transition: all .4s ease 0s;
   &:hover {
     background: darken(@color-blue, 10%);
   }
