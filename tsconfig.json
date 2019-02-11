@@ -2,7 +2,7 @@
   "compilerOptions": {
     "allowJs": true,
     "noImplicitAny": true,
-    "outFile": "./public/wp-content/themes/kennethclemmensen/js/ts-compiled/script.js",
+    "outDir": "./public/wp-content/themes/kennethclemmensen/js",
     "sourceMap": false,
     "target": "es6"
   },

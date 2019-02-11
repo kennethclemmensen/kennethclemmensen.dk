@@ -5,13 +5,13 @@ new Vue({
         results: []
     },
     watch: {
-        searchString: function() {
+        searchString: function () {
             this.search();
         }
     },
     methods: {
-        search: function() {
-            if(this.searchString === '') {
+        search: function () {
+            if (this.searchString === '') {
                 this.results = [];
                 return;
             }
@@ -29,17 +29,17 @@ new Vue({
     },
     components: {
         'search-results': {
-            data: function() {
+            data: function () {
                 return {
                     offset: 0,
                     perPage: 5
                 };
             },
             methods: {
-                previousPage: function() {
+                previousPage: function () {
                     this.offset -= this.perPage;
                 },
-                nextPage: function() {
+                nextPage: function () {
                     this.offset += this.perPage;
                 }
             },
@@ -58,7 +58,7 @@ new Vue({
                 }
             },
             watch: {
-                results: function() {
+                results: function () {
                     this.offset = 0;
                 }
             },
