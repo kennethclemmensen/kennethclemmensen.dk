@@ -59,8 +59,10 @@ module.exports = function(grunt) {
                     outDir: '<%= pkg.jsFolderPath %>'
                 }],
                 options: {
+                    allowJs: true,
                     noImplicitAny: true,
                     sourceMap: false,
+                    strictNullChecks: true,
                     target: 'es6'
                 }
             }

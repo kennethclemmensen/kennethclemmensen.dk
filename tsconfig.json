@@ -4,6 +4,7 @@
     "noImplicitAny": true,
     "outDir": "./public/wp-content/themes/kennethclemmensen/js",
     "sourceMap": false,
+    "strictNullChecks": true,
     "target": "es6"
   },
   "include": [

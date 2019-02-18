@@ -1,5 +1,4 @@
-declare let jQuery: any;
-declare let lightbox: any;
+import { jQuery, lightbox } from './variables';
 
 jQuery.noConflict();
 (function($: any): void {

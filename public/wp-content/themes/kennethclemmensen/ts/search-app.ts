@@ -1,4 +1,4 @@
-declare let Vue: any;
+import { Vue } from './variables';
 
 new Vue({
     el: '#search-app',
