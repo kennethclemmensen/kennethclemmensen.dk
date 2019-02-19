@@ -4,7 +4,7 @@ use \KCGallery\Includes\KCGallery;
 /**
  * The ThemeHelper class contains utility methods to use in the theme
  */
-class ThemeHelper {
+final class ThemeHelper {
 
     /**
      * Add a script from a CDN with a fallback to a local file

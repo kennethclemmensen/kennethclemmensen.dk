@@ -2,7 +2,7 @@
 /**
  * The MobileMenuWalker class contains methods to build the structure of the mobile menu
  */
-class MobileMenuWalker extends Walker_Nav_Menu {
+final class MobileMenuWalker extends Walker_Nav_Menu {
 
     /**
      * Starts the element output

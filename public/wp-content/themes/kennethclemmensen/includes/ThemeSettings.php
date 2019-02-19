@@ -2,7 +2,7 @@
 /**
  * The ThemeSettings class contains methods to setup and retrieve the theme settings
  */
-class ThemeSettings {
+final class ThemeSettings {
 
     private static $instance = null;
     private $contactPageSlug;

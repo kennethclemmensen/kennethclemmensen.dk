@@ -2,7 +2,7 @@
 /**
  * The IconWidget class creates a widget to show an icon
  */
-class IconWidget extends WP_Widget {
+final class IconWidget extends WP_Widget {
 
     private $title;
     private $icon;

@@ -2,7 +2,7 @@
 /**
  * The TranslationStrings class contains methods to get translation strings
  */
-class TranslationStrings {
+final class TranslationStrings {
 
     private const FRONT_PAGE = 'Front page';
     private const YOU_ARE_HERE = 'You are here:';
