@@ -34,7 +34,7 @@ jQuery.noConflict();
                 this.delay = delay;
                 this.duration = duration;
                 this.$sliderImages = $('.slider__image');
-                this.show();
+                this.showSlider();
             }
 
             /**
@@ -49,7 +49,7 @@ jQuery.noConflict();
             /**
              * Show the slider
              */
-            private show(): void {
+            private showSlider(): void {
                 let randomNumber: number = this.getRandomNumber();
                 this.$sliderImages.eq(randomNumber).show();
                 setInterval(() => {
