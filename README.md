@@ -1,6 +1,6 @@
 # kennethclemmensen.dk
 
-The repository for my personal website https://www.kennethclemmensen.dk/
+The repository for my personal website https://kennethclemmensen.dk/
 
 The website is created using [WordPress](https://wordpress.org/) and a number of other technologies.
 These technologies includes:
