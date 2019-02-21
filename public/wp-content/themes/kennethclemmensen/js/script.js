@@ -1,4 +1,4 @@
-import { jQuery, lightbox } from './variables';
+import { jQuery, lightbox } from './global';
 jQuery.noConflict();
 (function ($) {
     $(document).ready(function () {

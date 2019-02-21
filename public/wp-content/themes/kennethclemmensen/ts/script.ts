@@ -1,4 +1,4 @@
-import { jQuery, lightbox } from './variables';
+import { jQuery, lightbox } from './global';
 
 jQuery.noConflict();
 (function($: any): void {
@@ -20,8 +20,6 @@ jQuery.noConflict();
          */
         class Slider {
 
-            private delay: number;
-            private duration: number;
             private $sliderImages: any;
 
             /**
@@ -30,9 +28,7 @@ jQuery.noConflict();
              * @param delay the delay of a slide
              * @param duration the duration of a slide
              */
-            public constructor(delay: number, duration: number) {
-                this.delay = delay;
-                this.duration = duration;
+            public constructor(private delay: number, private duration: number) {
                 this.$sliderImages = $('.slider__image');
                 this.showSlider();
             }

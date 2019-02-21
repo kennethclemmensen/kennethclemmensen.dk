@@ -1,4 +1,4 @@
-import { Vue } from './variables';
+import { Vue } from './global';
 new Vue({
     el: '#search-app',
     data: {
