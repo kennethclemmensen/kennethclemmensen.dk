@@ -52,7 +52,8 @@ class Red_Database {
 		$upgraders = $this->get_upgrades_for_version( $status->get_current_version(), $status->get_current_stage() );
 
 		if ( count( $upgraders ) === 0 ) {
-			return new WP_Error( 'redirect', 'No upgrades found for version ' . $status->get_current_version() );
+			$status->set_error( 'No upgrades found for version ' . $status->get_current_version() );
+			return;
 		}
 
 		if ( $status->get_current_stage() === false ) {
@@ -142,6 +143,11 @@ class Red_Database {
 				'version' => '2.4',
 				'file' => '240.php',
 				'class' => 'Red_Database_240',
+			],
+			[
+				'version' => '4.0',
+				'file' => '400.php',
+				'class' => 'Red_Database_400',
 			],
 		];
 	}
