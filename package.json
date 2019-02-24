@@ -24,8 +24,8 @@
     "gulp-imagemin": "*",
     "gulp-less": "*",
     "gulp-sass": "*",
+    "gulp-terser": "*",
     "gulp-typescript": "*",
-    "gulp-uglifyes": "*",
     "node-sass": "*",
     "typescript": "*"
   }

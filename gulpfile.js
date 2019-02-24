@@ -6,9 +6,9 @@ const imagemin = require('gulp-imagemin');
 const less = require('gulp-less');
 const p = require('./package.json');
 const sass = require('gulp-sass');
+const terser = require('gulp-terser');
 const ts = require('gulp-typescript');
 const tsConfig = ts.createProject('tsconfig.json');
-const uglify = require('gulp-uglifyes');
 
 exports.imagemin = function() {
     return src(p.uploadsFolderPath + '**')
@@ -34,7 +34,7 @@ exports.default = series(function() {
 watch(p.jsFolderPath + '*.js', function() {
     return src(p.jsFolderPath + '*.js')
         .pipe(concat('script.min.js'))
-        .pipe(uglify())
+        .pipe(terser())
         .on('error', function(error) {
             console.log(error.toString());
             this.emit('end');
