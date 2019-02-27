@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.1.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-02-25 02:52:11+0000\n"
+"PO-Revision-Date: 2019-02-27 14:02:26+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1117,11 +1117,6 @@ msgstr "Men det er dit ansvar at bruge disse ressourcer rigtigt til at levere de
 msgid "Privacy Policy page"
 msgstr "Privatlivspolitik side."
 
-#. translators: Privacy Policy page slug
-#: wp-admin/includes/upgrade.php:365
-msgid "privacy-policy"
-msgstr "privatlivs-politik"
-
 #: wp-admin/privacy.php:134
 msgid "The new page will include help and suggestions for your Privacy Policy."
 msgstr "Den nye side vil indeholde hjælp og forslag til din privatlivspolitik."
@@ -1147,6 +1142,11 @@ msgstr "Kunne ikke oprette en side med privatlivspolitik."
 #: wp-admin/privacy.php:42
 msgid "Privacy Policy page setting updated successfully. Remember to <a href=\"%s\">update your menus</a>!"
 msgstr "Side med privatlivspolitik blev opdateret uden problemer. Husk at <a href=\"%s\">opdatere dine menuer</a>!"
+
+#. translators: Privacy Policy page slug
+#: wp-admin/includes/upgrade.php:365
+msgid "privacy-policy"
+msgstr "privatlivspolitik"
 
 #: wp-admin/includes/misc.php:1714
 msgid "Copy suggested policy text from %s."
