@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
-    "allowJs": true,
+    "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
+    "noImplicitReturns": true,
     "outDir": "./public/wp-content/themes/kennethclemmensen/js",
     "sourceMap": false,
     "strictNullChecks": true,

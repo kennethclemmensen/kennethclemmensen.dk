@@ -1,4 +1,5 @@
 import { jQuery, lightbox } from './global';
+import { Slider } from './slider';
 jQuery.noConflict();
 (function ($) {
     $(document).ready(function () {
@@ -13,28 +14,6 @@ jQuery.noConflict();
             $(this).toggleClass('mobile-nav__arrow--rotated');
             $(this).parent().parent().find('.sub-menu').toggle();
         });
-        class Slider {
-            constructor(delay, duration) {
-                this.delay = delay;
-                this.duration = duration;
-                this.$sliderImages = $('.slider__image');
-                this.showSlider();
-            }
-            getRandomNumber() {
-                return Math.floor(Math.random() * this.$sliderImages.length);
-            }
-            showSlider() {
-                let randomNumber = this.getRandomNumber();
-                this.$sliderImages.eq(randomNumber).show();
-                setInterval(() => {
-                    this.$sliderImages.eq(randomNumber).fadeOut(this.duration, () => {
-                        this.$sliderImages.eq(randomNumber).hide();
-                        randomNumber = this.getRandomNumber();
-                        this.$sliderImages.eq(randomNumber).fadeIn(this.duration);
-                    });
-                }, this.delay);
-            }
-        }
         let slider = document.getElementById('slider');
         new Slider(slider.dataset.delay, slider.dataset.duration);
         let body = document.querySelector('body');
