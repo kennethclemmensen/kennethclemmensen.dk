@@ -154,7 +154,7 @@ class Red_Item {
 			}
 		}
 
-		usort( $items, array( 'Red_Item', 'sort_urls' ) );
+		usort( $items, array( 'Red_Item', 'sort_urls_old' ) );
 		$items = array_map( array( 'Red_Item', 'reduce_sorted_items' ), $items );
 
 		// Sort it in PHP
@@ -186,6 +186,14 @@ class Red_Item {
 		}
 
 		return ( $first->position < $second->position ) ? -1 : 1;
+	}
+
+	public static function sort_urls_old( $first, $second ) {
+		if ( $first['position'] === $second['position'] ) {
+			return 0;
+		}
+
+		return ( $first['position'] < $second['position'] ) ? -1 : 1;
 	}
 
 	static function get_by_id( $id ) {
@@ -301,13 +309,24 @@ class Red_Item {
 
 		$url = new Red_Url( $this->url );
 		if ( $url->is_match( $requested_url, $this->source_flags ) ) {
-			// Check if our match wants this URL
-			$target = $this->match->get_target( $requested_url, $url->get_url(), $this->source_flags );
-			$target = Red_Url_Query::add_to_target( $target, $requested_url, $this->source_flags );
-			$target = apply_filters( 'redirection_url_target', $target, $this->url );
-			$target = $this->action->process_before( $this->action_code, $target );
+			// URL is matched, now match the redirect type (i.e. login status, IP address)
+			$target = $this->match->is_match( $requested_url );
+
+			// Check if our action wants a URL
+			if ( $this->action->needs_target() ) {
+				// Our action requires a target URL - get this, using our type match result
+				$target = $this->match->get_target_url( $requested_url, $url->get_url(), $this->source_flags, $target );
+				$target = Red_Url_Query::add_to_target( $target, $requested_url, $this->source_flags );
+				$target = apply_filters( 'redirection_url_target', $target, $this->url );
+			}
+
+			// Fire any early actions
+			if ( $target ) {
+				$target = $this->action->process_before( $this->action_code, $target );
+			}
 
 			if ( $target ) {
+				// We still have a target, so log it and carry on with the action
 				do_action( 'redirection_visit', $this, $requested_url, $target );
 				return $this->action->process_after( $this->action_code, $target );
 			}

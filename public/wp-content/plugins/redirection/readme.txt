@@ -4,7 +4,7 @@ Donate link: https://redirection.me/donation/
 Tags: redirect, htaccess, 301, 404, seo, permalink, apache, nginx, post, admin
 Requires at least: 4.5
 Tested up to: 5.1
-Stable tag: 4.0
+Stable tag: 4.0.1
 Requires PHP: 5.4
 License: GPLv3
 
@@ -19,6 +19,8 @@ Redirection is designed to be used on sites with a few redirects to sites with t
 It has been a WordPress plugin for over 10 years and has been recommended countless times. And it's free!
 
 Full documentation can be found at [https://redirection.me](https://redirection.me)
+
+Redirection is compatible with PHP from 5.4 and upwards (including 7.2).
 
 = Redirect manager =
 
@@ -156,6 +158,15 @@ The plugin works in a similar manner to how WordPress handles permalinks and sho
 * Alters database to support case insensitivity, trailing slashes, and query params. Please backup your data
 
 == Changelog ==
+
+= 4.0.1 - 2nd Mar 2019 =
+* Improve styling of query flags
+* Match DB upgrade for new match_url to creation script
+* Fix upgrade on some hosts where plugin is auto-updated
+* Fix pagination button style in WP 5.1
+* Fix IP match when action is 'error'
+* Fix database upgrade on multisite WP CLI
+
 = 4.0 - 23rd Feb 2019 =
 * Add option for case insensitive redirects
 * Add option to ignore trailing slashes
