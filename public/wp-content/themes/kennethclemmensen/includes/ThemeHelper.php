@@ -66,10 +66,7 @@ final class ThemeHelper {
                 $parent = $page->post_parent;
             }
         }
-        if($post->post_type === KCGallery::GALLERY) {
-            $themeSettings = ThemeSettings::getInstance();
-            $pages[] = $themeSettings->getImagesPageID();
-        }
+        if($post->post_type === KCGallery::GALLERY) $pages[] = ThemeSettings::getInstance()->getImagesPageID();
         $pages[] = get_option('page_on_front');
         return array_reverse($pages);
     }
