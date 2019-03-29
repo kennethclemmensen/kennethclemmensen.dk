@@ -59,6 +59,9 @@ module.exports = function(grunt) {
                     outDir: '<%= pkg.jsFolderPath %>'
                 }],
                 options: {
+                    allowUnreachableCode: false,
+                    allowUnusedLabels: false,
+                    noEmitOnError: true,
                     noFallthroughCasesInSwitch: true,
                     noImplicitAny: true,
                     noImplicitReturns: true,
