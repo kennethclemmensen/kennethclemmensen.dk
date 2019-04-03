@@ -1,80 +1,87 @@
-const { dest, series, src, watch } = require('gulp');
-const browserSync = require('browser-sync');
-const concat = require('gulp-concat');
-const cssnano = require('gulp-cssnano');
-const imagemin = require('gulp-imagemin');
-const less = require('gulp-less');
-const p = require('./package.json');
-const sass = require('gulp-sass');
-const terser = require('gulp-terser');
-const ts = require('gulp-typescript');
-const tsConfig = ts.createProject('tsconfig.json');
+const {dest, series, src, watch} = require('gulp');
+const browserSyncPlugin = require('browser-sync');
+const concatPlugin = require('gulp-concat');
+const cssnanoPlugin = require('gulp-cssnano');
+const imageminPlugin = require('gulp-imagemin');
+const lessPlugin = require('gulp-less');
+const packageConfig = require('./package.json');
+const sassPlugin = require('gulp-sass');
+const terserPlugin = require('gulp-terser');
+const typescriptPlugin = require('gulp-typescript');
+const typescriptConfig = typescriptPlugin.createProject('tsconfig.json');
 
-exports.imagemin = function() {
-    return src(p.uploadsFolderPath + '**')
-        .pipe(imagemin())
-        .pipe(dest(p.uploadsFolderPath));
-};
-
-exports.default = series(function() {
-    browserSync.init({
+function browserSync() {
+    browserSyncPlugin.init({
         debugInfo: true,
         files: [
-            p.cssFolderPath + '*.css',
-            p.themeFolderPath + '**/*.php',
-            p.jsFolderPath + '*.js'
+            packageConfig.cssFolderPath + '*.css',
+            packageConfig.themeFolderPath + '**/*.php',
+            packageConfig.jsFolderPath + '*.js'
         ],
         logConnections: true,
         notify: true,
-        proxy: p.name + '.test',
+        proxy: packageConfig.name + '.test',
         watchTask: true
     });
-});
+}
 
-watch(p.jsFolderPath + '*.js', function() {
-    return src(p.jsFolderPath + '*.js')
-        .pipe(concat('script.min.js'))
-        .pipe(terser())
-        .on('error', function(error) {
+function imagemin() {
+    return src(packageConfig.uploadsFolderPath + '**')
+        .pipe(imageminPlugin())
+        .pipe(dest(packageConfig.uploadsFolderPath));
+}
+
+function javascript() {
+    return src(packageConfig.jsFolderPath + '*.js')
+        .pipe(concatPlugin('script.min.js'))
+        .pipe(terserPlugin())
+        .on('error', function (error) {
             console.log(error.toString());
             this.emit('end');
         })
-        .pipe(dest(p.jsFolderPath + 'minified/'))
-        .pipe(browserSync.reload({
+        .pipe(dest(packageConfig.jsFolderPath + 'minified/'))
+        .pipe(browserSyncPlugin.reload({
             stream: true
         }));
-});
+}
 
-watch(p.lessFolderPath + '**/*.less', function() {
-    return src(p.lessFolderPath + 'style.less')
-        .pipe(less())
-        .on('error', function(error) {
+function less() {
+    return src(packageConfig.lessFolderPath + 'style.less')
+        .pipe(lessPlugin())
+        .on('error', function (error) {
             console.log(error.toString());
             this.emit('end');
         })
-        .pipe(cssnano())
-        .pipe(dest(p.cssFolderPath))
-        .pipe(browserSync.reload({
+        .pipe(cssnanoPlugin())
+        .pipe(dest(packageConfig.cssFolderPath))
+        .pipe(browserSyncPlugin.reload({
             stream: true
         }));
-});
+}
 
-watch(p.sassFolderPath + '**/*.scss', function() {
-    return src(p.sassFolderPath + 'style.scss')
-        .pipe(sass())
-        .on('error', function(error) {
+function sass() {
+    return src(packageConfig.sassFolderPath + 'style.scss')
+        .pipe(sassPlugin())
+        .on('error', function (error) {
             console.log(error.toString());
             this.emit('end');
         })
-        .pipe(cssnano())
-        .pipe(dest(p.cssFolderPath))
-        .pipe(browserSync.reload({
+        .pipe(cssnanoPlugin())
+        .pipe(dest(packageConfig.cssFolderPath))
+        .pipe(browserSyncPlugin.reload({
             stream: true
         }));
-});
+}
 
-watch(p.tsFolderPath + '*.ts', function() {
-    return tsConfig.src()
-        .pipe(tsConfig())
-        .pipe(dest(tsConfig.options.outDir));
-});
+function typescript() {
+    return typescriptConfig.src()
+        .pipe(typescriptConfig())
+        .pipe(dest(typescriptConfig.options.outDir));
+}
+
+exports.default = series(browserSync);
+exports.imagemin = imagemin;
+watch(packageConfig.jsFolderPath + '*.js', javascript);
+watch(packageConfig.lessFolderPath + '**/*.less', less);
+watch(packageConfig.sassFolderPath + '**/*.scss', sass);
+watch(packageConfig.tsFolderPath + '*.ts', typescript);
