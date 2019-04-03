@@ -275,26 +275,14 @@ abstract class RWMB_Field {
 		$name    = $field['id'];
 		$storage = $field['storage'];
 
-		// Remove empty values for clones.
-		if ( $field['clone'] ) {
-			$new = (array) $new;
-			foreach ( $new as $k => $v ) {
-				if ( '' === $v || array() === $v ) {
-					unset( $new[ $k ] );
-				}
-			}
-		}
-
 		// Remove post meta if it's empty.
-		if ( '' === $new || array() === $new ) {
+		if ( ! RWMB_Helpers_Value::is_valid_for_field( $new ) ) {
 			$storage->delete( $post_id, $name );
 			return;
 		}
 
 		// If field is cloneable AND not force to save as multiple rows, value is saved as a single row in the database.
 		if ( $field['clone'] && ! $field['clone_as_multiple'] ) {
-			// Reset indexes.
-			$new = array_values( $new );
 			$storage->update( $post_id, $name, $new );
 			return;
 		}
@@ -401,11 +389,8 @@ abstract class RWMB_Field {
 	public static function render_attributes( $attributes ) {
 		$output = '';
 
+		$attributes = array_filter( $attributes, 'RWMB_Helpers_Value::is_valid_for_attribute' );
 		foreach ( $attributes as $key => $value ) {
-			if ( false === $value || '' === $value ) {
-				continue;
-			}
-
 			if ( is_array( $value ) ) {
 				$value = wp_json_encode( $value );
 			}

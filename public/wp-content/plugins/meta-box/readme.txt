@@ -3,8 +3,8 @@ Contributors: metabox, rilwis, fitwp, f-j-kaiser, funkatronic, PerWiklander, rua
 Donate link: https://metabox.io/pricing/
 Tags: meta-box, custom fields, custom field, meta, meta-boxes, admin, advanced, custom, edit, field, file, image, magic fields, matrix, more fields, Post, repeater, simple fields, text, textarea, type, cms, fields post
 Requires at least: 4.3
-Tested up to: 5.1
-Stable tag: 4.17.0
+Tested up to: 5.1.1
+Stable tag: 4.17.2
 License: GPLv2 or later
 
 Meta Box plugin is a powerful, professional developer toolkit to create custom meta boxes and custom fields for WordPress.
@@ -165,28 +165,13 @@ To getting started with the plugin, please read the [Quick Start Guide](https://
 
 == Changelog ==
 
-= 4.17.0 - 2019-03-18 =
-
-**Added**
-
-- Added `range` support for `slider` field for storing 2 values.
-- Added `attribute` to `[rwmb_meta]` shortcode to get only one attribute from the value (such as URL of the image or term slug).
-- Added `prepend` and `append` attributes for inputs like Bootstrap's input group.
-
-**Changed**
-
-- Refactored the code.
-- Changed shortcode attributes to use `id` (instead of `meta_key`), `object_id` (instead of `post_id`).
+= 4.17.1 - 2019-04-02 =
 
 **Fixed**
 
-- Fixed empty date field with save_format causes error.
-- Fixed wrong position of the asterisk when the field is required and has label description.
-- Fixed indirect modification of `meta_box->$fields`.
-- Fixed `required` attribute not working for `file`, `image` fields.
-- Fixed warning in the about page.
-- Fixed box-sizing issue for settings page.
+- Fixed `required` attribute for `file` prevents updating posts when the field already has value.
+- Fixed couldn't add images if `max_file_uploads` is not set (`image_advanced`).
 
-[See full changelog here](https://github.com/wpmetabox/meta-box/blob/master/CHANGELOG.md).
+[See full changelog here](https://metabox.io/changelog/).
 
 == Upgrade Notice ==
