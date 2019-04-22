@@ -16,8 +16,8 @@ add_action('wp_enqueue_scripts', function() : void {
     ThemeHelper::addStyleWithLocalFallback($fontAwesome, $cdnFile, get_template_directory_uri().$localFile, $version);
 
     $lightbox = 'lightbox';
-    $cdnFile = 'https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.10.0/css/lightbox.min.css';
-    $localFile = '/css/lightbox-2.10.0.min.css';
+    $cdnFile = 'https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.0/css/lightbox.min.css';
+    $localFile = '/css/lightbox-2.11.0.min.css';
     $version = filemtime(get_template_directory().$localFile);
     ThemeHelper::addStyleWithLocalFallback($lightbox, $cdnFile, get_template_directory_uri().$localFile, $version);
 
@@ -38,8 +38,8 @@ add_action('wp_enqueue_scripts', function() : void {
     ThemeHelper::addScriptWithLocalFallback($vue, $cdnFile, get_template_directory_uri().$localFile, $version);
 
     $lightbox = 'lightbox-js';
-    $cdnFile = 'https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.10.0/js/lightbox.min.js';
-    $localFile = '/js/plugins/lightbox-2.10.0.min.js';
+    $cdnFile = 'https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.0/js/lightbox.min.js';
+    $localFile = '/js/plugins/lightbox-2.11.0.min.js';
     $version = filemtime(get_template_directory().$localFile);
     ThemeHelper::addScriptWithLocalFallback($lightbox, $cdnFile, get_template_directory_uri().$localFile, $version);
 
