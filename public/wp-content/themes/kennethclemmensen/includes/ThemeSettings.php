@@ -26,8 +26,6 @@ final class ThemeSettings {
     private $linkedInShortcode;
     private $gitHubShortcode;
 
-    public const AFTER_START_BODY = 'kc_after_start_body';
-
     /**
      * ThemeSettings constructor
      */
@@ -226,10 +224,10 @@ final class ThemeSettings {
     }
 
     /**
-     * Use the kc_after_start_body action to add script snippets after the start body tag
+     * Use the wp_body_open action to add script snippets after the start body tag
      */
     private function addScriptSnippets2AfterStartBody() : void {
-        add_action(self::AFTER_START_BODY, function() : void {
+        add_action('wp_body_open', function() : void {
             echo $this->getStartBodyScripts();
         });
     }
