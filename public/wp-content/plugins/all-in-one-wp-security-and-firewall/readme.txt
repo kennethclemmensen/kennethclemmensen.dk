@@ -186,6 +186,8 @@ https://www.tipsandtricks-hq.com/wordpress-security-and-firewall-plugin
 None
 
 == Changelog ==
+= 4.3.9.1 =
+- Fixed rename login page feature bug introduced after WP core change in version 5.2.
 
 = 4.3.9 =
 - Fixed captcha bug.
