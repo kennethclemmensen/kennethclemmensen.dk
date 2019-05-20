@@ -225,8 +225,7 @@ class AIOWPSecurity_General_Init_Tasks
         if (AIOWPSecurity_Utility::is_multisite_install()){
             $blog_id = get_current_blog_id();
             switch_to_blog($blog_id);
-            if($aio_wp_security->configs->get_value('aiowps_enable_comment_captcha') == '1' || 
-                    $aio_wp_security->configs->get_value('aiowps_enable_custom_login_captcha') == '1'){
+            if($aio_wp_security->configs->get_value('aiowps_enable_comment_captcha') == '1'){
                 if (!is_user_logged_in()) {
                     if($aio_wp_security->configs->get_value('aiowps_default_recaptcha')) {
                         add_action('wp_head', array(&$this, 'add_recaptcha_script'));
@@ -238,8 +237,7 @@ class AIOWPSecurity_General_Init_Tasks
             }
             restore_current_blog();
         }else{
-            if($aio_wp_security->configs->get_value('aiowps_enable_comment_captcha') == '1' || 
-                    $aio_wp_security->configs->get_value('aiowps_enable_custom_login_captcha') == '1'){
+            if($aio_wp_security->configs->get_value('aiowps_enable_comment_captcha') == '1'){
                 if (!is_user_logged_in()) {
                     if($aio_wp_security->configs->get_value('aiowps_default_recaptcha')) {
                         add_action('wp_head', array(&$this, 'add_recaptcha_script'));

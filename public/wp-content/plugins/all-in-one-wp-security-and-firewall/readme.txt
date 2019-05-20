@@ -186,6 +186,9 @@ https://www.tipsandtricks-hq.com/wordpress-security-and-firewall-plugin
 None
 
 == Changelog ==
+= 4.3.9.3 =
+- Fixed another captcha bug related to comment form.
+
 = 4.3.9.2 =
 - Fixed various captcha bugs: woocommerce lost password page, custom login form page, etc
 
