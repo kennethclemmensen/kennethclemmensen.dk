@@ -120,14 +120,12 @@ class AIOWPSecurity_List_Blocked_IP extends AIOWPSecurity_List_Table
                 if($result !== false)
                 {
                     $redir_url = sprintf('admin.php?page=%s&tab=%s&bulk_count=%s', AIOWPSEC_MAIN_MENU_SLUG, $tab, count($entries));
-                    wp_redirect($redir_url);
-                    exit;
+                    AIOWPSecurity_Utility::redirect_to_url($redir_url);
                 } else {
                     // error on bulk delete
                     $aio_wp_security->debug_logger->log_debug("DB error: ".$wpdb->last_error,4);
                     $redir_url = sprintf('admin.php?page=%s&tab=%s&bulk_error=%s', AIOWPSEC_MAIN_MENU_SLUG, $tab, 1);
-                    wp_redirect($redir_url);
-                    exit;
+                    AIOWPSecurity_Utility::redirect_to_url($redir_url);
                     
                 }
             }

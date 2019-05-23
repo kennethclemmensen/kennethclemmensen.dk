@@ -7,7 +7,7 @@ if ( !defined('ABSPATH') ) {
 if (!class_exists('AIO_WP_Security')){
 
 class AIO_WP_Security{
-    var $version = '4.3.9.3';
+    var $version = '4.3.9.4';
     var $db_version = '1.9';
     var $plugin_url;
     var $plugin_path;
@@ -74,7 +74,6 @@ class AIO_WP_Security{
         define('AIOWPSEC_USER_REGISTRATION_MENU_SLUG', 'aiowpsec_user_registration');
         define('AIOWPSEC_DB_SEC_MENU_SLUG', 'aiowpsec_database');
         define('AIOWPSEC_FILESYSTEM_MENU_SLUG', 'aiowpsec_filesystem');
-        define('AIOWPSEC_WHOIS_MENU_SLUG', 'aiowpsec_whois');
         define('AIOWPSEC_BLACKLIST_MENU_SLUG', 'aiowpsec_blacklist');
         define('AIOWPSEC_FIREWALL_MENU_SLUG', 'aiowpsec_firewall');
         define('AIOWPSEC_MAINTENANCE_MENU_SLUG', 'aiowpsec_maintenance');
