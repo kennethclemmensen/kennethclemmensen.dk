@@ -33,8 +33,8 @@ export class Slider {
     private showSlider(): void {
         let randomNumber: number = this.getRandomNumber();
         this.sliderImages.eq(randomNumber).show();
-        setInterval(() => {
-            this.sliderImages.eq(randomNumber).fadeOut(this.duration, () => {
+        setInterval((): void => {
+            this.sliderImages.eq(randomNumber).fadeOut(this.duration, (): void => {
                 this.sliderImages.eq(randomNumber).hide(); //prevent display block on more than one image
                 randomNumber = this.getRandomNumber();
                 this.sliderImages.eq(randomNumber).fadeIn(this.duration);

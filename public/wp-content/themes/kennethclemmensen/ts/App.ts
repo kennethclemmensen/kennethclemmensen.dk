@@ -2,8 +2,14 @@ import { jQuery, lightbox } from './global';
 import { SearchApp } from './SearchApp';
 import { Slider } from './slider';
 
+/**
+ * The App class contains a method to handle the functionality of the app
+ */
 class App {
 
+    /**
+     * App constructor
+     */
     public constructor() {
         jQuery.noConflict();
         (function($: any): void {

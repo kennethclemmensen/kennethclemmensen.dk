@@ -1,6 +1,9 @@
 import { Vue } from './global';
 export class SearchApp {
     constructor() {
+        this.setupSearchApp();
+    }
+    setupSearchApp() {
         new Vue({
             el: '#search-app',
             data: {

@@ -1,8 +1,21 @@
 import { Vue } from './global';
 
+/**
+ * The search app class contains methods to handle the search functionality
+ */
 export class SearchApp {
 
+    /**
+     * SearchApp constructor
+     */
     public constructor() {
+        this.setupSearchApp();
+    }
+
+    /**
+     * Setup the search app
+     */
+    private setupSearchApp(): void {
         new Vue({
             el: '#search-app',
             data: {
