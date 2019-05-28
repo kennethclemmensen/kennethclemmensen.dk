@@ -1,6 +1,6 @@
 import { jQuery, lightbox } from './global';
 import { SearchApp } from './SearchApp';
-import { Slider } from './slider';
+import { Slider } from './Slider';
 
 /**
  * The App class contains a method to handle the functionality of the app
