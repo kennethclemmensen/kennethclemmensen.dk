@@ -14,5 +14,6 @@ These technologies includes:
 * [Vue](https://vuejs.org/)
 * [Grunt](https://gruntjs.com/)
 * [Gulp](https://gulpjs.com/)
+* [NPM](https://npmjs.com/)
 * [Composer](https://getcomposer.org/)
 * [Codeception](http://codeception.com/)
