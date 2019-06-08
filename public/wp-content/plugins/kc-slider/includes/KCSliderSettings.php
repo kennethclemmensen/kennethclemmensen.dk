@@ -44,7 +44,7 @@ class KCSliderSettings {
      */
     private function adminMenu() : void {
         add_action('admin_menu', function() : void {
-            $title = 'Settings';
+            $title = __('Settings');
             add_submenu_page('edit.php?post_type=slides', $title, $title, 'administrator', $this->pageSlug, function() : void {
                 settings_errors();
                 ?>

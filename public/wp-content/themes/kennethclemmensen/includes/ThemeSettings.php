@@ -267,7 +267,7 @@ final class ThemeSettings {
             'post_type' => 'page',
             'posts_per_page' => -1
         ];
-        $wpQuery = new \WP_Query($args);
+        $wpQuery = new WP_Query($args);
         while($wpQuery->have_posts()) {
             $wpQuery->the_post();
             $pages[get_the_ID()] = get_the_title();
