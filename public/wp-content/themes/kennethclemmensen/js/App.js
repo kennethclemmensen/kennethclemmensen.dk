@@ -1,6 +1,5 @@
-import { jQuery, lightbox } from './global';
 import { SearchApp } from './SearchApp';
-import { Slider } from './slider';
+import { Slider } from './Slider';
 class App {
     constructor() {
         jQuery.noConflict();

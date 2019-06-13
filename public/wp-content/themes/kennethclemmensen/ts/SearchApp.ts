@@ -1,5 +1,3 @@
-import { Vue } from './global';
-
 /**
  * The search app class contains methods to handle the search functionality
  */

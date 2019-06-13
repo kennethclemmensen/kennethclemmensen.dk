@@ -1,4 +1,3 @@
-import { jQuery, lightbox } from './global';
 import { SearchApp } from './SearchApp';
 import { Slider } from './Slider';
 

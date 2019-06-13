@@ -1,5 +1,3 @@
-import { jQuery } from './global';
-
 /**
  * The Slider class contains methods to handle the functionality of the slider
  */

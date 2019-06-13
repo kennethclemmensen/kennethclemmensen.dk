@@ -1,4 +1,3 @@
-import { Vue } from './global';
 export class SearchApp {
     constructor() {
         this.setupSearchApp();

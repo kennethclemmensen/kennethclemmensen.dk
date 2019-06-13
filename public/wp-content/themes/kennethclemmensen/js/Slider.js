@@ -1,4 +1,3 @@
-import { jQuery } from './global';
 export class Slider {
     constructor(delay, duration) {
         this.delay = delay;
