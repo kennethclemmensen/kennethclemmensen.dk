@@ -9,6 +9,7 @@
   "tsFolderPath": "public/wp-content/themes/kennethclemmensen/ts/",
   "uploadsFolderPath": "public/wp-content/uploads/",
   "devDependencies": {
+    "@types/jquery": "*",
     "browser-sync": "*",
     "grunt": "*",
     "grunt-browser-sync": "*",
