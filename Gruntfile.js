@@ -67,7 +67,8 @@ module.exports = function(grunt) {
                     noImplicitReturns: true,
                     sourceMap: false,
                     strictNullChecks: true,
-                    target: 'es6'
+                    target: 'es6',
+                    types: ['jquery']
                 }
             }
         },
