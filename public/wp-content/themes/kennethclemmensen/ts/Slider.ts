@@ -3,7 +3,7 @@
  */
 export class Slider {
 
-    private sliderImages: any;
+    private sliderImages: JQuery;
 
     /**
      * Slider constructor

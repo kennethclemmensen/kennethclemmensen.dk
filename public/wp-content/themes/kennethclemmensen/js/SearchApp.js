@@ -1,7 +1,16 @@
+/**
+ * The search app class contains methods to handle the search functionality
+ */
 export class SearchApp {
+    /**
+     * SearchApp constructor
+     */
     constructor() {
         this.setupSearchApp();
     }
+    /**
+     * Setup the search app
+     */
     setupSearchApp() {
         new Vue({
             el: '#search-app',
