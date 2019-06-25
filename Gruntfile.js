@@ -16,7 +16,7 @@ module.exports = function(grunt) {
                 ],
                 logConnections: true,
                 notify: true,
-                proxy: '<%= pkg.name %>.test',
+                proxy: '<%= pkg.testDomain %>',
                 watchTask: true
             }
         },

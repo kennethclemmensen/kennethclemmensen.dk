@@ -20,7 +20,7 @@ function browserSync() {
         ],
         logConnections: true,
         notify: true,
-        proxy: packageConfig.name + '.test',
+        proxy: packageConfig.testDomain,
         watchTask: true
     });
 }

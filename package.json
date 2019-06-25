@@ -8,6 +8,7 @@
   "themeFolderPath": "public/wp-content/themes/kennethclemmensen/",
   "tsFolderPath": "public/wp-content/themes/kennethclemmensen/ts/",
   "uploadsFolderPath": "public/wp-content/uploads/",
+  "testDomain": "kennethclemmensen.test",
   "devDependencies": {
     "@types/jquery": "*",
     "browser-sync": "*",
