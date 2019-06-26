@@ -54,21 +54,9 @@ module.exports = function(grunt) {
         },
         ts: {
             default: {
-                files: [{
-                    src: ['<%= pkg.tsFolderPath %>**/*.ts'],
-                    outDir: '<%= pkg.jsFolderPath %>'
-                }],
-                options: {
-                    allowUnreachableCode: false,
-                    allowUnusedLabels: false,
-                    noEmitOnError: true,
-                    noFallthroughCasesInSwitch: true,
-                    noImplicitAny: true,
-                    noImplicitReturns: true,
-                    sourceMap: false,
-                    strictNullChecks: true,
-                    target: 'es6',
-                    types: ['jquery']
+                tsconfig: {
+                    tsconfig: './tsconfig.json',
+                    passThrough: true
                 }
             }
         },
