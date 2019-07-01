@@ -1,3 +1,4 @@
+//
 const {dest, series, src, watch} = require('gulp');
 const browserSyncPlugin = require('browser-sync');
 const concatPlugin = require('gulp-concat');
@@ -10,6 +11,7 @@ const terserPlugin = require('gulp-terser');
 const typescriptPlugin = require('gulp-typescript');
 const typescriptConfig = typescriptPlugin.createProject('tsconfig.json');
 
+//Setup the browserSync task to synchronize browsers on different devices
 function browserSync() {
     browserSyncPlugin.init({
         debugInfo: true,
@@ -25,17 +27,19 @@ function browserSync() {
     });
 }
 
+//Optimize images
 function imagemin() {
     return src(packageConfig.uploadsFolderPath + '**')
         .pipe(imageminPlugin())
         .pipe(dest(packageConfig.uploadsFolderPath));
 }
 
+//Uglify the JavaScript files
 function javascript() {
     return src(packageConfig.jsFolderPath + '*.js')
         .pipe(concatPlugin('script.min.js'))
         .pipe(terserPlugin())
-        .on('error', function (error) {
+        .on('error', function(error) {
             console.log(error.toString());
             this.emit('end');
         })
@@ -45,10 +49,11 @@ function javascript() {
         }));
 }
 
+//Translate less to css
 function less() {
     return src(packageConfig.lessFolderPath + 'style.less')
         .pipe(lessPlugin())
-        .on('error', function (error) {
+        .on('error', function(error) {
             console.log(error.toString());
             this.emit('end');
         })
@@ -59,10 +64,11 @@ function less() {
         }));
 }
 
+//Translate sass to css
 function sass() {
     return src(packageConfig.sassFolderPath + 'style.scss')
         .pipe(sassPlugin())
-        .on('error', function (error) {
+        .on('error', function(error) {
             console.log(error.toString());
             this.emit('end');
         })
@@ -73,14 +79,18 @@ function sass() {
         }));
 }
 
+//Translate TypeScript to JavaScript by using the tsconfig.json file
 function typescript() {
     return typescriptConfig.src()
         .pipe(typescriptConfig())
         .pipe(dest(typescriptConfig.options.outDir));
 }
 
+//Register the tasks
 exports.default = series(browserSync);
 exports.imagemin = imagemin;
+
+//Look for changes in files
 watch(packageConfig.jsFolderPath + '*.js', javascript);
 watch(packageConfig.lessFolderPath + '**/*.less', less);
 watch(packageConfig.sassFolderPath + '**/*.scss', sass);
