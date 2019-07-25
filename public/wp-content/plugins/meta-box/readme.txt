@@ -3,8 +3,9 @@ Contributors: metabox, rilwis, fitwp, f-j-kaiser, funkatronic, PerWiklander, rua
 Donate link: https://metabox.io/pricing/
 Tags: meta-box, custom fields, custom field, meta, meta-boxes, admin, advanced, custom, edit, field, file, image, magic fields, matrix, more fields, Post, repeater, simple fields, text, textarea, type, cms, fields post
 Requires at least: 4.3
+Requires PHP: 5.3
 Tested up to: 5.2.2
-Stable tag: 4.18.4
+Stable tag: 5.0.1
 License: GPLv2 or later
 
 Meta Box plugin is a powerful, professional developer toolkit to create custom meta boxes and custom fields for WordPress.
@@ -165,6 +166,33 @@ To getting started with the plugin, please read the [Quick Start Guide](https://
 
 == Changelog ==
 
+= 5.0.1 - 2019-07-25 =
+
+**Fixed**
+
+- Fix license notification always show
+
+= 5.0.0 - 2019-07-24 =
+
+**IMPORTANT:** Since version 5.0.0, the plugin requires PHP >= 5.3. If you use an older PHP version, please ask your host to upgrade or use an older version of Meta Box.
+
+**Changed**
+
+- New minimum PHP version is now 5.3.
+- Rewrite all JavaScript to prepare for Gutenberg blocks
+- Allow to create meta box with no fields.
+
+**Added**
+
+- Add the updater for auto update of premium extensions
+- Add support for `user`, `settings_pages` in `rwmb_get_object_fields`
+
+**Fixed**
+
+- Fix warning for cloneable single image.
+
 [See full changelog here](https://metabox.io/changelog/).
 
 == Upgrade Notice ==
+
+Since version 5.0.0, the plugin requires PHP >= 5.3. If you use an older PHP version, please ask your host to upgrade or use an older version of Meta Box.
