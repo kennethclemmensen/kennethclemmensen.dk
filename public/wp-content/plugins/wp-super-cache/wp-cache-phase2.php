@@ -214,7 +214,7 @@ function wp_cache_serve_cache_file() {
 	} else {
 		$ungzip = false;
 	}
-	foreach ( $meta['headers'] as $t => $header ) {
+	foreach ( $meta[ 'headers' ] as $t => $header) {
 		// godaddy fix, via http://blog.gneu.org/2008/05/wp-supercache-on-godaddy/ and http://www.littleredrails.com/blog/2007/09/08/using-wp-cache-on-godaddy-500-error/
 		if ( strpos( $header, 'Last-Modified:' ) === false ) {
 			header( $header );
@@ -391,7 +391,7 @@ function wp_cache_get_cookies_values() {
 	$regex .= "/";
 	while ($key = key($_COOKIE)) {
 		if ( preg_match( $regex, $key ) ) {
-			wp_cache_debug( "wp_cache_get_cookies_values: $regex Cookie detected: $key", 5 );
+			wp_cache_debug( "wp_cache_get_cookies_values: Login/postpass cookie detected" );
 			$string .= $_COOKIE[ $key ] . ",";
 		}
 		next($_COOKIE);
@@ -488,7 +488,7 @@ function wp_cache_check_mobile( $cache_key ) {
 	$user_agent = strtolower( $_SERVER['HTTP_USER_AGENT'] );
 	foreach ($browsers as $browser) {
 		if ( strstr( $user_agent, trim( strtolower( $browser ) ) ) ) {
-			wp_cache_debug( 'mobile browser detected: ' . $_SERVER['HTTP_USER_AGENT'], 5 );
+			wp_cache_debug( 'mobile browser detected: ' . $browser );
 			return $cache_key . '-' . wp_cache_mobile_group( $user_agent );
 		}
 	}
@@ -501,7 +501,7 @@ function wp_cache_check_mobile( $cache_key ) {
 		$browsers = explode( ',', $wp_cache_mobile_prefixes );
 		foreach ($browsers as $browser_prefix) {
 			if ( substr($user_agent, 0, 4) == $browser_prefix ) {
-				wp_cache_debug( 'mobile browser (prefix) detected: ' . $_SERVER['HTTP_USER_AGENT'], 5 );
+				wp_cache_debug( 'mobile browser (prefix) detected: ' . $browser_prefix );
 				return $cache_key . '-' . $browser_prefix;
 			}
 		}
@@ -526,6 +526,12 @@ function wp_cache_check_mobile( $cache_key ) {
  */
 function wp_cache_debug( $message, $level = 1 ) {
 	global $wp_cache_debug_log, $cache_path, $wp_cache_debug_ip, $wp_super_cache_debug;
+	static $last_message = '';
+
+	if ( $last_message == $message ) {
+		return false;
+	}
+	$last_message = $message;
 
 	// If either of the debug or log globals aren't set, then we can stop
 	if ( !isset($wp_super_cache_debug)
@@ -1014,13 +1020,7 @@ function wpsc_create_debug_log( $filename = '', $username = '' ) {
 		$wp_cache_debug_username = wpsc_debug_username();
 	}
 
-	$msg = '
-if ( !isset( $_SERVER[ "PHP_AUTH_USER" ] ) || ( $_SERVER[ "PHP_AUTH_USER" ] != "' . $wp_cache_debug_username . '" && $_SERVER[ "PHP_AUTH_PW" ] != "' . $wp_cache_debug_username . '" ) ) {
-	header( "WWW-Authenticate: Basic realm=\"WP-Super-Cache Debug Log\"" );
-	header( $_SERVER[ "SERVER_PROTOCOL" ] . " 401 Unauthorized" );
-	echo "You must login to view the debug log";
-	exit;
-}' . PHP_EOL;
+	$msg = 'die( "Please use the viewer" );' . PHP_EOL;
 	$fp = fopen( $cache_path . $wp_cache_debug_log, 'w' );
 	if ( $fp ) {
 		fwrite( $fp, '<' . "?php\n" );
@@ -1031,6 +1031,15 @@ if ( !isset( $_SERVER[ "PHP_AUTH_USER" ] ) || ( $_SERVER[ "PHP_AUTH_USER" ] != "
 		wp_cache_setting( 'wp_cache_debug_log', $wp_cache_debug_log );
 		wp_cache_setting( 'wp_cache_debug_username', $wp_cache_debug_username );
 	}
+
+	$msg = '
+if ( !isset( $_SERVER[ "PHP_AUTH_USER" ] ) || ( $_SERVER[ "PHP_AUTH_USER" ] != "' . $wp_cache_debug_username . '" && $_SERVER[ "PHP_AUTH_PW" ] != "' . $wp_cache_debug_username . '" ) ) {
+	header( "WWW-Authenticate: Basic realm=\"WP-Super-Cache Debug Log\"" );
+	header( $_SERVER[ "SERVER_PROTOCOL" ] . " 401 Unauthorized" );
+	echo "You must login to view the debug log";
+	exit;
+}' . PHP_EOL;
+
 	$fp = fopen( $cache_path . 'view_' . $wp_cache_debug_log, 'w' );
 	if ( $fp ) {
 		fwrite( $fp, '<' . "?php" . PHP_EOL );
@@ -1058,6 +1067,10 @@ if ( isset( $_GET[ "filter" ] ) ) {
 
 unset( $checks[1] ); // exclude_filter
 ?' . '>
+<h2>WP Super Cache Log Viewer</h2>
+<h3>Warning! Do not copy and paste this log file to a public website!</h3>
+<p>This log file contains sensitive information about your website such as cookies and directories.</p>
+<p>If you must share it please remove any cookies and remove any directories such as ' . ABSPATH . '.</p>
 Exclude requests: <br />
 <' . '?php foreach ( $checks as $check ) { ?>
 	<label><input type="checkbox" name="<' . '?php echo $check; ?' . '>" value="1" <' . '?php if ( $$check ) { echo "checked"; } ?' . '> /> <' . '?php echo $check; ?' . '></label><br />
@@ -1070,7 +1083,10 @@ Text to filter by:
 <input type="submit" value="Submit" />
 </form>
 <' . '?php
+$path_to_site = "' . ABSPATH . '";
 foreach ( $debug_log as $t => $line ) {
+	$line = str_replace( $path_to_site, "ABSPATH/", $line );
+	$debug_log[ $t ] = $line;
 	foreach( $checks as $check ) {
 		if ( $$check && false !== strpos( $line, " /$check/" ) ) {
 			unset( $debug_log[ $t ] );
@@ -1085,7 +1101,7 @@ foreach ( $debug_log as $t => $line ) {
 	}
 }
 foreach( $debug_log as $line ) {
-	echo $line . "<br />";
+	echo htmlspecialchars( $line ) . "<br />";
 }';
 		fwrite( $fp, $msg );
 		fclose( $fp );
@@ -1200,7 +1216,7 @@ function wp_cache_replace_line( $old, $new, $my_file ) {
 	}
 
 	$tmp_config_filename = tempnam( $GLOBALS['cache_path'], 'wpsc' );
-	rename( $tmp_config_filename, $tmp_config_filename. ".php" );
+	rename( $tmp_config_filename, $tmp_config_filename . ".php" );
 	$tmp_config_filename .= ".php";
 	wp_cache_debug( 'wp_cache_replace_line: writing to ' . $tmp_config_filename );
 	$fd = fopen( $tmp_config_filename, 'w' );

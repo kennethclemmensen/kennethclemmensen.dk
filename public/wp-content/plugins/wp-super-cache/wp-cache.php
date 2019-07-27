@@ -3,7 +3,7 @@
 Plugin Name: WP Super Cache
 Plugin URI: https://wordpress.org/plugins/wp-super-cache/
 Description: Very fast caching plugin for WordPress.
-Version: 1.6.8
+Version: 1.6.9
 Author: Automattic
 Author URI: https://automattic.com/
 License: GPL2+
@@ -41,25 +41,25 @@ if ( ! defined( 'PHP_VERSION_ID' ) ) {
 }
 
 function wpsc_init() {
-	global $wp_cache_config_file, $wp_cache_config_file_sample, $wp_cache_file, $wp_cache_check_wp_config, $wp_cache_link;
+	global $wp_cache_config_file, $wp_cache_config_file_sample, $wpsc_advanced_cache_dist_filename, $wp_cache_check_wp_config, $wpsc_advanced_cache_filename;
 
 	$wp_cache_config_file = WP_CONTENT_DIR . '/wp-cache-config.php';
 
 	if ( !defined( 'WPCACHEHOME' ) ) {
 		define( 'WPCACHEHOME', dirname( __FILE__ ) . '/' );
 		$wp_cache_config_file_sample = WPCACHEHOME . 'wp-cache-config-sample.php';
-		$wp_cache_file = WPCACHEHOME . 'advanced-cache.php';
+		$wpsc_advanced_cache_dist_filename = WPCACHEHOME . 'advanced-cache.php';
 	} elseif ( realpath( WPCACHEHOME ) != realpath( dirname( __FILE__ ) ) ) {
 		$wp_cache_config_file_sample = dirname( __FILE__ ) . '/wp-cache-config-sample.php';
-		$wp_cache_file = dirname( __FILE__ ) . '/advanced-cache.php';
+		$wpsc_advanced_cache_dist_filename = dirname( __FILE__ ) . '/advanced-cache.php';
 		if ( ! defined( 'ADVANCEDCACHEPROBLEM' ) ) {
 			define( 'ADVANCEDCACHEPROBLEM', 1 ); // force an update of WPCACHEHOME
 		}
 	} else {
 		$wp_cache_config_file_sample = WPCACHEHOME . 'wp-cache-config-sample.php';
-		$wp_cache_file = WPCACHEHOME . 'advanced-cache.php';
+		$wpsc_advanced_cache_dist_filename = WPCACHEHOME . 'advanced-cache.php';
 	}
-	$wp_cache_link = WP_CONTENT_DIR . '/advanced-cache.php';
+	$wpsc_advanced_cache_filename = WP_CONTENT_DIR . '/advanced-cache.php';
 
 	if ( !defined( 'WP_CACHE' ) || ( defined( 'WP_CACHE' ) && constant( 'WP_CACHE' ) == false ) ) {
 		$wp_cache_check_wp_config = true;
@@ -102,10 +102,6 @@ function wp_super_cache_init_action() {
 	load_plugin_textdomain( 'wp-super-cache', false, basename( dirname( __FILE__ ) ) . '/languages' );
 
 	wpsc_register_post_hooks();
-
-	if ( is_admin() ) {
-		wpsc_fix_164();
-	}
 }
 add_action( 'init', 'wp_super_cache_init_action' );
 
@@ -138,14 +134,14 @@ function get_wpcachehome() {
 }
 
 function wpsc_remove_advanced_cache() {
-	global $wp_cache_link;
-	if ( file_exists( $wp_cache_link ) ) {
-		$file = file_get_contents( $wp_cache_link );
+	global $wpsc_advanced_cache_filename;
+	if ( file_exists( $wpsc_advanced_cache_filename ) ) {
+		$file = file_get_contents( $wpsc_advanced_cache_filename );
 		if (
 			strpos( $file, "WP SUPER CACHE 0.8.9.1" ) ||
 			strpos( $file, "WP SUPER CACHE 1.2" )
 		) {
-			unlink( $wp_cache_link );
+			unlink( $wpsc_advanced_cache_filename );
 		}
 	}
 }
@@ -178,7 +174,7 @@ if ( is_admin() ) {
 }
 
 function wpsupercache_deactivate() {
-	global $wp_cache_config_file, $wp_cache_link, $cache_path;
+	global $wp_cache_config_file, $wpsc_advanced_cache_filename, $cache_path;
 
 	wpsc_remove_advanced_cache();
 
@@ -206,9 +202,11 @@ function wpsupercache_activate() {
 	ob_start();
 	wpsc_init();
 
-	if ( !wp_cache_check_link() ||
-		!wp_cache_verify_config_file() ||
-		!wp_cache_verify_cache_dir() ) {
+	if (
+		! wpsc_check_advanced_cache() ||
+		! wp_cache_verify_config_file() ||
+		! wp_cache_verify_cache_dir()
+	) {
 		$text = ob_get_contents();
 		ob_end_clean();
 		return false;
@@ -312,9 +310,11 @@ function wp_cache_manager_error_checks() {
 		}
 	}
 
-	if ( !wp_cache_check_link() ||
-		!wp_cache_verify_config_file() ||
-		!wp_cache_verify_cache_dir() ) {
+	if (
+		! wpsc_check_advanced_cache() ||
+		! wp_cache_verify_config_file() ||
+		! wp_cache_verify_cache_dir()
+	) {
 		echo '<p>' . __( "Cannot continue... fix previous problems and retry.", 'wp-super-cache' ) . '</p>';
 		return false;
 	}
@@ -2126,12 +2126,13 @@ function wp_cache_debug_settings() {
 	if ( ! isset( $wp_cache_debug_log ) || $wp_cache_debug_log == '' ) {
 		extract( wpsc_create_debug_log() ); // $wp_cache_debug_log, $wp_cache_debug_username
 	}
-	$log_file_link = "<a href='" . site_url( str_replace( ABSPATH, '', "{$cache_path}view_{$wp_cache_debug_log}" ) ) . "'>$wp_cache_debug_log</a>";
-	$raw_log_file_link = "<a href='" . site_url( str_replace( ABSPATH, '', "{$cache_path}{$wp_cache_debug_log}" ) ) . "'>" . __( 'RAW', 'wp-super-cache' ) . "</a>";
+
+	$log_file_link = "<a href='" . site_url( str_replace( ABSPATH, '', "{$cache_path}view_{$wp_cache_debug_log}?wp-admin=1&wp-json=1&filter=" ) ) . "'>$wp_cache_debug_log</a>";
+
 	if ( $wp_super_cache_debug == 1 ) {
-		echo "<p>" . sprintf( __( 'Currently logging to: %s (%s)', 'wp-super-cache' ), $log_file_link, $raw_log_file_link ) . "</p>";
+		echo "<p>" . sprintf( __( 'Currently logging to: %s', 'wp-super-cache' ), $log_file_link ) . "</p>";
 	} else {
-		echo "<p>" . sprintf( __( 'Last Logged to: %s (%s)', 'wp-super-cache' ), $log_file_link, $raw_log_file_link ) . "</p>";
+		echo "<p>" . sprintf( __( 'Last Logged to: %s', 'wp-super-cache' ), $log_file_link ) . "</p>";
 	}
 	echo "<p>" . sprintf( __( 'Username/Password: %s', 'wp-super-cache' ), $wp_cache_debug_username ) . "</p>";
 
@@ -2564,7 +2565,7 @@ function wp_cache_verify_config_file() {
 }
 
 function wp_cache_create_advanced_cache() {
-	global $wp_cache_link, $wp_cache_file;
+	global $wpsc_advanced_cache_filename, $wpsc_advanced_cache_dist_filename;
 	if ( file_exists( ABSPATH . 'wp-config.php') ) {
 		$global_config_file = ABSPATH . 'wp-config.php';
 	} else {
@@ -2601,18 +2602,18 @@ function wp_cache_create_advanced_cache() {
 	}
 	$ret = true;
 
-	if ( file_exists( $wp_cache_link ) ) {
-		$file = file_get_contents( $wp_cache_link );
+	if ( file_exists( $wpsc_advanced_cache_filename ) ) {
+		$file = file_get_contents( $wpsc_advanced_cache_filename );
 		if (
 			! strpos( $file, "WP SUPER CACHE 0.8.9.1" ) &&
 			! strpos( $file, "WP SUPER CACHE 1.2" )
 		) {
-			wp_die( '<div class="notice notice-error"><h4>' . __( 'Warning!', 'wp-super-cache' ) . "</h4><p>" . sprintf( __( 'The file %s already exists. Please manually delete it before using this plugin.', 'wp-super-cache' ), $wp_cache_link ) . "</p></div>" );
+			wp_die( '<div class="notice notice-error"><h4>' . __( 'Warning!', 'wp-super-cache' ) . "</h4><p>" . sprintf( __( 'The file %s already exists. Please manually delete it before using this plugin. If you continue to see this message after deleting it please contact your hosting support.', 'wp-super-cache' ), $wpsc_advanced_cache_filename ) . "</p></div>" );
 		}
 	}
 
-	$file = file_get_contents( $wp_cache_file );
-	$fp = @fopen( $wp_cache_link, 'w' );
+	$file = file_get_contents( $wpsc_advanced_cache_dist_filename );
+	$fp = @fopen( $wpsc_advanced_cache_filename, 'w' );
 	if( $fp ) {
 		fputs( $fp, $file );
 		fclose( $fp );
@@ -2622,12 +2623,12 @@ function wp_cache_create_advanced_cache() {
 	return $ret;
 }
 
-function wp_cache_check_link() {
-	global $wp_cache_link, $wp_cache_file;
+function wpsc_check_advanced_cache() {
+	global $wpsc_advanced_cache_filename;
 
 	$ret = true;
-	if( file_exists($wp_cache_link) ) {
-		$file = file_get_contents( $wp_cache_link );
+	if ( file_exists( $wpsc_advanced_cache_filename ) ) {
+		$file = file_get_contents( $wpsc_advanced_cache_filename );
 		if( strpos( $file, "WP SUPER CACHE 0.8.9.1" ) || strpos( $file, "WP SUPER CACHE 1.2" ) ) {
 			return true;
 		} else {
@@ -4284,25 +4285,21 @@ function wpsc_get_extra_cookies() {
 	}
 }
 
-/*
- * 1.6.4 created an empty file called wp-admin/.php that must be cleaned up.
- */
-function wpsc_fix_164() {
-	global $wpsc_fix_164;
+function wpsc_update_check() {
+	global $wpsc_version;
 
 	if (
-		isset( $wpsc_fix_164 ) &&
-		$wpsc_fix_164
+		! isset( $wpsc_version ) ||
+		$wpsc_version != 169
 	) {
-		return false;
+		wp_cache_setting( 'wpsc_version', 169 );
+		global $wp_cache_debug_log, $cache_path;
+		$log_file = $cache_path . str_replace('/', '', str_replace('..', '', $wp_cache_debug_log));
+		if ( ! file_exists( $log_file ) ) {
+			return false;
+		}
+		@unlink( $log_file );
+		wp_cache_debug( 'wpsc_update_check: Deleted old log file on plugin update.' );
 	}
-
-	if (
-		file_exists( ABSPATH . '/wp-admin/.php' ) &&
-		0 == filesize( ABSPATH . '/wp-admin/.php' )
-	) {
-		@unlink( ABSPATH . '/wp-admin/.php' );
-	}
-
-	wp_cache_setting( 'wpsc_fix_164', 1 );
 }
+add_action( 'admin_init', 'wpsc_update_check' );
