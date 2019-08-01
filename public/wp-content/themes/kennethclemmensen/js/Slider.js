@@ -1,7 +1,7 @@
 /**
  * The Slider class contains methods to handle the functionality of the slider
  */
-export class Slider {
+export default class Slider {
     /**
      * Slider constructor
      *

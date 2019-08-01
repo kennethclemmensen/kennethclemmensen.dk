@@ -1,5 +1,5 @@
-import { SearchApp } from './SearchApp';
-import { Slider } from './Slider';
+import SearchApp from './SearchApp';
+import Slider from './Slider';
 
 /**
  * The App class contains methods to handle the functionality of the app
