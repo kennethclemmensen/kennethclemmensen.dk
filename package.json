@@ -10,7 +10,7 @@
   "uploadsFolderPath": "public/wp-content/uploads/",
   "testDomain": "kennethclemmensen.test",
   "devDependencies": {
-    "@types/jquery": "^3.3.30",
+    "@types/jquery": "^3.3.31",
     "browser-sync": "^2.26.7",
     "grunt": "^1.0.4",
     "grunt-browser-sync": "^2.2.0",
