@@ -12,7 +12,7 @@ export default class Slider {
      * @param duration the duration of a slide
      */
     public constructor(private delay: number, private duration: number) {
-        this.sliderImages = jQuery('.slider__image');
+        this.sliderImages = $('.slider__image');
         this.showSlider();
     }
 

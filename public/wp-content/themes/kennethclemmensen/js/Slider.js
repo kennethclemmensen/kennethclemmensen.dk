@@ -11,7 +11,7 @@ export default class Slider {
     constructor(delay, duration) {
         this.delay = delay;
         this.duration = duration;
-        this.sliderImages = jQuery('.slider__image');
+        this.sliderImages = $('.slider__image');
         this.showSlider();
     }
     /**
