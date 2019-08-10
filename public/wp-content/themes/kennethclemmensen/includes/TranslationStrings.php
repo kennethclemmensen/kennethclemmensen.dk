@@ -19,11 +19,11 @@ final class TranslationStrings {
      */
     public function __construct() {
         $context = 'Theme';
-        pll_register_string('Breadcrumb title', self::YOU_ARE_HERE, $context);
+        pll_register_string(self::YOU_ARE_HERE, self::YOU_ARE_HERE, $context);
         pll_register_string(self::FRONT_PAGE, self::FRONT_PAGE, $context);
         pll_register_string(self::SEARCH, self::SEARCH, $context);
         pll_register_string(self::SEARCH_RESULTS, self::SEARCH_RESULTS, $context);
-        pll_register_string('No results', self::NO_RESULTS, $context);
+        pll_register_string(self::NO_RESULTS, self::NO_RESULTS, $context);
         pll_register_string(self::IMAGE, self::IMAGE, $context);
         pll_register_string(self::OF, self::OF, $context);
         pll_register_string(self::PREVIOUS, self::PREVIOUS, $context);
