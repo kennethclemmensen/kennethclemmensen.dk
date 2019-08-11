@@ -14,7 +14,7 @@ class App {
      * Setup the app
      */
     setupApp() {
-        $.when($.ready).then(() => {
+        jQuery.when(jQuery.ready).then(() => {
             this.setupMobileNavigation();
             let slider = document.getElementById('slider');
             new Slider(slider.dataset.delay, slider.dataset.duration);
@@ -29,16 +29,16 @@ class App {
      * Setup the mobile navigation
      */
     setupMobileNavigation() {
-        $('.header__nav-trigger').on('click', (event) => {
+        jQuery('.header__nav-trigger').on('click', (event) => {
             event.preventDefault();
-            $(this).toggleClass('header__nav-trigger--active');
-            $('.mobile-nav').toggleClass('mobile-nav--active');
-            $('html, body').toggleClass('show-mobile-nav');
+            jQuery(this).toggleClass('header__nav-trigger--active');
+            jQuery('.mobile-nav').toggleClass('mobile-nav--active');
+            jQuery('html, body').toggleClass('show-mobile-nav');
         });
-        $('.mobile-nav__arrow').on('click', (event) => {
+        jQuery('.mobile-nav__arrow').on('click', (event) => {
             event.preventDefault();
-            $(this).toggleClass('mobile-nav__arrow--rotated');
-            $(this).parent().parent().find('.sub-menu').toggle();
+            jQuery(this).toggleClass('mobile-nav__arrow--rotated');
+            jQuery(this).parent().parent().find('.sub-menu').toggle();
         });
     }
 }

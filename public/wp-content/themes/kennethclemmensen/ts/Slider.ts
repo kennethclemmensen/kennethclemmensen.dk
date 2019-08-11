@@ -12,7 +12,7 @@ export default class Slider {
      * @param duration the duration of a slide
      */
     public constructor(private delay: number, private duration: number) {
-        this.sliderImages = $('.slider__image');
+        this.sliderImages = jQuery('.slider__image');
         this.showSlider();
     }
 
@@ -33,7 +33,7 @@ export default class Slider {
         this.sliderImages.eq(randomNumber).show();
         setInterval((): void => {
             this.sliderImages.eq(randomNumber).fadeOut(this.duration, (): void => {
-                this.sliderImages.eq(randomNumber).hide(); //prevent display block on more than one image
+                this.sliderImages.hide(); //prevent display block on more than one image
                 randomNumber = this.getRandomNumber();
                 this.sliderImages.eq(randomNumber).fadeIn(this.duration);
             });
