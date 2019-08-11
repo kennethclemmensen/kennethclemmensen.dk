@@ -18,16 +18,18 @@ final class TranslationStrings {
      * TranslationStrings constructor
      */
     public function __construct() {
-        $context = 'Theme';
-        pll_register_string(self::YOU_ARE_HERE, self::YOU_ARE_HERE, $context);
-        pll_register_string(self::FRONT_PAGE, self::FRONT_PAGE, $context);
-        pll_register_string(self::SEARCH, self::SEARCH, $context);
-        pll_register_string(self::SEARCH_RESULTS, self::SEARCH_RESULTS, $context);
-        pll_register_string(self::NO_RESULTS, self::NO_RESULTS, $context);
-        pll_register_string(self::IMAGE, self::IMAGE, $context);
-        pll_register_string(self::OF, self::OF, $context);
-        pll_register_string(self::PREVIOUS, self::PREVIOUS, $context);
-        pll_register_string(self::NEXT, self::NEXT, $context);
+        if(self::isPolylangActivated()) {
+            $context = 'Theme';
+            pll_register_string(self::YOU_ARE_HERE, self::YOU_ARE_HERE, $context);
+            pll_register_string(self::FRONT_PAGE, self::FRONT_PAGE, $context);
+            pll_register_string(self::SEARCH, self::SEARCH, $context);
+            pll_register_string(self::SEARCH_RESULTS, self::SEARCH_RESULTS, $context);
+            pll_register_string(self::NO_RESULTS, self::NO_RESULTS, $context);
+            pll_register_string(self::IMAGE, self::IMAGE, $context);
+            pll_register_string(self::OF, self::OF, $context);
+            pll_register_string(self::PREVIOUS, self::PREVIOUS, $context);
+            pll_register_string(self::NEXT, self::NEXT, $context);
+        }
     }
 
     /**
@@ -36,7 +38,7 @@ final class TranslationStrings {
      * @return string the front page text
      */
     public static function getFrontPageText() : string {
-        return pll__(self::FRONT_PAGE);
+        return (self::isPolylangActivated()) ? pll__(self::FRONT_PAGE) : self::FRONT_PAGE;
     }
 
     /**
@@ -45,7 +47,7 @@ final class TranslationStrings {
      * @return string the You are here text
      */
     public static function getYouAreHereText() : string {
-        return pll__(self::YOU_ARE_HERE);
+        return (self::isPolylangActivated()) ? pll__(self::YOU_ARE_HERE) : self::YOU_ARE_HERE;
     }
 
     /**
@@ -54,7 +56,7 @@ final class TranslationStrings {
      * @return string the search text
      */
     public static function getSearchText() : string {
-        return pll__(self::SEARCH);
+        return (self::isPolylangActivated()) ? pll__(self::SEARCH) : self::SEARCH;
     }
 
     /**
@@ -63,7 +65,7 @@ final class TranslationStrings {
      * @return string the search results text
      */
     public static function getSearchResultsText() : string {
-        return pll__(self::SEARCH_RESULTS);
+        return (self::isPolylangActivated()) ? pll__(self::SEARCH_RESULTS) : self::SEARCH_RESULTS;
     }
 
     /**
@@ -72,7 +74,7 @@ final class TranslationStrings {
      * @return string the no results text
      */
     public static function getNoResultsText() : string {
-        return pll__(self::NO_RESULTS);
+        return (self::isPolylangActivated()) ? pll__(self::NO_RESULTS) : self::NO_RESULTS;
     }
 
     /**
@@ -81,7 +83,7 @@ final class TranslationStrings {
      * @return string the image text
      */
     public static function getImageText() : string {
-        return pll__(self::IMAGE);
+        return (self::isPolylangActivated()) ? pll__(self::IMAGE) : self::IMAGE;
     }
 
     /**
@@ -90,7 +92,7 @@ final class TranslationStrings {
      * @return string the of text
      */
     public static function getOfText() : string {
-        return pll__(self::OF);
+        return (self::isPolylangActivated()) ? pll__(self::OF) : self::OF;
     }
 
     /**
@@ -99,7 +101,7 @@ final class TranslationStrings {
      * @return string the previous text
      */
     public static function getPreviousText() : string {
-        return pll__(self::PREVIOUS);
+        return (self::isPolylangActivated()) ? pll__(self::PREVIOUS) : self::PREVIOUS;
     }
 
     /**
@@ -108,6 +110,15 @@ final class TranslationStrings {
      * @return string the next text
      */
     public static function getNextText() : string {
-        return pll__(self::NEXT);
+        return (self::isPolylangActivated()) ? pll__(self::NEXT) : self::NEXT;
+    }
+
+    /**
+     * Check if the Polylang plugin is activated
+     *
+     * @return bool true if the Polylang plugin is activated. False otherwise
+     */
+    private static function isPolylangActivated() : bool {
+        return function_exists('pll_register_string');
     }
 }
