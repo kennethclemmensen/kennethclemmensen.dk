@@ -79,7 +79,7 @@ module.exports = function(grunt) {
                 livereload: true
             },
             javascript: {
-                files: ['<%= pkg.jsFolderPath %>**/*.js'],
+                files: ['<%= pkg.jsFolderPath %>*.js'],
                 options: {
                     spawn: false
                 },
