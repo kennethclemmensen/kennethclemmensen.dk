@@ -33,7 +33,6 @@ export default class Slider {
         this.sliderImages.eq(randomNumber).show();
         setInterval((): void => {
             this.sliderImages.eq(randomNumber).fadeOut(this.duration, (): void => {
-                this.sliderImages.hide(); //prevent display block on more than one image
                 randomNumber = this.getRandomNumber();
                 this.sliderImages.eq(randomNumber).fadeIn(this.duration);
             });
