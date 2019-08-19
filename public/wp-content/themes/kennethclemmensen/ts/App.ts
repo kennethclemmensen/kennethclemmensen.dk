@@ -33,16 +33,18 @@ class App {
      * Setup the mobile navigation
      */
     private setupMobileNavigation(): void {
-        jQuery('.header__nav-trigger').on('click', (event: Event): void => {
+        let headerTrigger = '.header__nav-trigger';
+        jQuery(headerTrigger).on('click', (event: Event): void => {
             event.preventDefault();
-            jQuery(this).toggleClass('header__nav-trigger--active');
+            jQuery(headerTrigger).toggleClass('header__nav-trigger--active');
             jQuery('.mobile-nav').toggleClass('mobile-nav--active');
             jQuery('html, body').toggleClass('show-mobile-nav');
         });
-        jQuery('.mobile-nav__arrow').on('click', (event: Event): void => {
+        let mobileArrow = '.mobile-nav__arrow';
+        jQuery(mobileArrow).on('click', (event: Event): void => {
             event.preventDefault();
-            jQuery(this).toggleClass('mobile-nav__arrow--rotated');
-            jQuery(this).parent().parent().find('.sub-menu').toggle();
+            jQuery(mobileArrow).toggleClass('mobile-nav__arrow--rotated');
+            jQuery(mobileArrow).parent().parent().find('.sub-menu').toggle();
         });
     }
 }
