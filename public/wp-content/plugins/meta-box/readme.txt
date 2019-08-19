@@ -5,7 +5,7 @@ Tags: meta-box, custom fields, custom field, meta, meta-boxes, admin, advanced, 
 Requires at least: 4.3
 Requires PHP: 5.3
 Tested up to: 5.2.2
-Stable tag: 5.0.1
+Stable tag: 5.1.0
 License: GPLv2 or later
 
 Meta Box plugin is a powerful, professional developer toolkit to create custom meta boxes and custom fields for WordPress.
@@ -102,6 +102,7 @@ You'll have ultimate control to add whatever meta box and custom fields in WordP
 
 #### Premium Extensions
 
+- [MB Blocks](https://metabox.io/plugins/mb-blocks/): Create custom Gutenberg blocks with PHP, using the same syntax in Meta Box.
 - [Meta Box Builder](https://metabox.io/plugins/meta-box-builder/): Create custom meta boxes and custom fields in WordPress using a user-friendly drag-and-drop interface.
 - [Meta Box Group](https://metabox.io/plugins/meta-box-group/): Create repeatable groups of WordPress custom fields for better appearance and structure.
 - [MB Settings Page](https://metabox.io/plugins/mb-settings-page/): Create settings pages for themes, plugins or websites with beautiful syntax.
@@ -165,6 +166,22 @@ To getting started with the plugin, please read the [Quick Start Guide](https://
 1. Post Taxonomy Fields
 
 == Changelog ==
+
+= 5.1.0 - 2019-08-19 =
+
+**Fixed**
+
+- Fatal error with `RWMB_About::redirect()`
+- Ensure change event fires when editors change
+- Fix `rwmb_{$field_id}_choice_label` not working for cloneable fields
+- Fix missing dependency (underscore) for datepicker JS
+- Fix unindex notice for key_value field
+- Fix alignment for video field
+
+**Changed**
+
+- Update notification sytem
+- Improve sanitization for fields. See [documentation](https://docs.metabox.io/sanitization/) for details.
 
 = 5.0.1 - 2019-07-25 =
 
