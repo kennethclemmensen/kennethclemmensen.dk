@@ -6,22 +6,22 @@ final class ThemeSettings {
 
     private static $instance = null;
     private $contactPageSlug;
-    private $scriptsPageSlug;
+    private $scriptPageSlug;
     private $otherPageSlug;
     private $contactOptionsName;
-    private $scriptsOptionsName;
+    private $scriptOptionsName;
     private $otherOptionsName;
     private $contactOptions;
-    private $scriptsOptions;
+    private $scriptOptions;
     private $otherOptions;
     private $email;
     private $linkedIn;
     private $gitHub;
     private $photosPerPage;
     private $imagesPage;
-    private $scriptsHeader;
-    private $scriptsStartBody;
-    private $scriptsFooter;
+    private $scriptHeader;
+    private $scriptStartBody;
+    private $scriptFooter;
     private $emailShortcode;
     private $linkedInShortcode;
     private $gitHubShortcode;
@@ -33,13 +33,13 @@ final class ThemeSettings {
         $prefix = 'kc-theme-settings-';
         $postfix = '-options';
         $this->contactPageSlug = $prefix.'contact';
-        $this->scriptsPageSlug = $prefix.'scripts';
+        $this->scriptPageSlug = $prefix.'scripts';
         $this->otherPageSlug = $prefix.'other';
         $this->contactOptionsName = $this->contactPageSlug.$postfix;
-        $this->scriptsOptionsName = $this->scriptsPageSlug.$postfix;
+        $this->scriptOptionsName = $this->scriptPageSlug.$postfix;
         $this->otherOptionsName = $this->otherPageSlug.$postfix;
         $this->contactOptions = get_option($this->contactOptionsName);
-        $this->scriptsOptions = get_option($this->scriptsOptionsName);
+        $this->scriptOptions = get_option($this->scriptOptionsName);
         $this->otherOptions = get_option($this->otherOptionsName);
         $this->email = 'email';
         $this->linkedIn = 'linkedin';
@@ -47,9 +47,9 @@ final class ThemeSettings {
         $this->photosPerPage = 'photos_per_page';
         $this->imagesPage = 'images_page';
         $prefix = 'scripts_';
-        $this->scriptsHeader = $prefix.'header';
-        $this->scriptsStartBody = $prefix.'start_body';
-        $this->scriptsFooter = $prefix.'footer';
+        $this->scriptHeader = $prefix.'header';
+        $this->scriptStartBody = $prefix.'start_body';
+        $this->scriptFooter = $prefix.'footer';
         $prefix = 'kc-';
         $this->emailShortcode = $prefix.$this->email;
         $this->linkedInShortcode = $prefix.$this->linkedIn;
@@ -57,9 +57,9 @@ final class ThemeSettings {
         $this->adminMenu();
         $this->adminInit();
         $this->addShortcodes();
-        $this->addScriptSnippets2Header();
-        $this->addScriptSnippets2AfterStartBody();
-        $this->addScriptSnippets2Footer();
+        $this->addHeaderScripts();
+        $this->addAfterStartBodyScripts();
+        $this->addFooterScripts();
     }
 
     /**
@@ -103,8 +103,8 @@ final class ThemeSettings {
                             settings_fields($this->contactOptionsName);
                             do_settings_sections($this->contactPageSlug);
                         } else if($activeTab === $scriptsTab) {
-                            settings_fields($this->scriptsOptionsName);
-                            do_settings_sections($this->scriptsPageSlug);
+                            settings_fields($this->scriptOptionsName);
+                            do_settings_sections($this->scriptPageSlug);
                         } else {
                             settings_fields($this->otherOptionsName);
                             do_settings_sections($this->otherPageSlug);
@@ -119,20 +119,20 @@ final class ThemeSettings {
     }
 
     /**
-     * Use the admin_init action to create and register the settings inputs
+     * Use the admin_init action to register the settings inputs
      */
     private function adminInit() : void {
         add_action('admin_init', function() : void {
-            $this->setupContactInputs();
-            $this->setupScriptsInputs();
-            $this->setupOtherInputs();
+            $this->createContactInputs();
+            $this->createScriptInputs();
+            $this->createOtherInputs();
         });
     }
 
     /**
-     * Setup contact inputs
+     * Create the contact inputs
      */
-    private function setupContactInputs() : void {
+    private function createContactInputs() : void {
         $sectionID = $this->contactPageSlug.'-section-contact';
         $prefix = $this->contactPageSlug;
         add_settings_section($sectionID, '', null, $this->contactPageSlug);
@@ -145,35 +145,35 @@ final class ThemeSettings {
             echo '['.$this->linkedInShortcode.']';
         }, $this->contactPageSlug, $sectionID);
         register_setting($this->contactOptionsName, $this->contactOptionsName, function(array $input) : array {
-            return $this->validateInput($input);
+            return $this->validateSettingInputs($input);
         });
     }
 
     /**
-     * Setup scripts inputs
+     * Create the script inputs
      */
-    private function setupScriptsInputs() : void {
-        $sectionID = $this->scriptsPageSlug.'-section-scripts';
-        $prefix = $this->scriptsPageSlug;
-        add_settings_section($sectionID, '', null, $this->scriptsPageSlug);
+    private function createScriptInputs() : void {
+        $sectionID = $this->scriptPageSlug.'-section-scripts';
+        $prefix = $this->scriptPageSlug;
+        add_settings_section($sectionID, '', null, $this->scriptPageSlug);
         add_settings_field($prefix.'header', 'Header', function() : void {
-            echo '<textarea name="'.$this->scriptsOptionsName.'['.$this->scriptsHeader.']" cols="80" rows="10">'.$this->getHeaderScripts().'</textarea>';
-        }, $this->scriptsPageSlug, $sectionID);
+            echo '<textarea name="'.$this->scriptOptionsName.'['.$this->scriptHeader.']" cols="80" rows="10">'.$this->getHeaderScripts().'</textarea>';
+        }, $this->scriptPageSlug, $sectionID);
         add_settings_field($prefix.'start-body', 'Start body', function() : void {
-            echo '<textarea name="'.$this->scriptsOptionsName.'['.$this->scriptsStartBody.']" cols="80" rows="10">'.$this->getStartBodyScripts().'</textarea>';
-        }, $this->scriptsPageSlug, $sectionID);
+            echo '<textarea name="'.$this->scriptOptionsName.'['.$this->scriptStartBody.']" cols="80" rows="10">'.$this->getStartBodyScripts().'</textarea>';
+        }, $this->scriptPageSlug, $sectionID);
         add_settings_field($prefix.'footer', 'Footer', function() : void {
-            echo '<textarea name="'.$this->scriptsOptionsName.'['.$this->scriptsFooter.']" cols="80" rows="10">'.$this->getFooterScripts().'</textarea>';
-        }, $this->scriptsPageSlug, $sectionID);
-        register_setting($this->scriptsOptionsName, $this->scriptsOptionsName, function(array $input) : array {
-            return $this->validateInput($input);
+            echo '<textarea name="'.$this->scriptOptionsName.'['.$this->scriptFooter.']" cols="80" rows="10">'.$this->getFooterScripts().'</textarea>';
+        }, $this->scriptPageSlug, $sectionID);
+        register_setting($this->scriptOptionsName, $this->scriptOptionsName, function(array $input) : array {
+            return $this->validateSettingInputs($input);
         });
     }
 
     /**
-     * Setup other inputs
+     * Create other inputs
      */
-    private function setupOtherInputs() : void {
+    private function createOtherInputs() : void {
         $sectionID = $this->otherPageSlug.'-section-other';
         $prefix = $this->otherPageSlug;
         add_settings_section($sectionID, '', null, $this->otherPageSlug);
@@ -194,7 +194,7 @@ final class ThemeSettings {
             echo $html;
         }, $this->otherPageSlug, $sectionID);
         register_setting($this->otherOptionsName, $this->otherOptionsName, function(array $input) : array {
-            return $this->validateInput($input);
+            return $this->validateSettingInputs($input);
         });
     }
 
@@ -214,9 +214,9 @@ final class ThemeSettings {
     }
 
     /**
-     * Use the wp_head action to add script snippets to the header
+     * Use the wp_head action to add scripts to the header
      */
-    private function addScriptSnippets2Header() : void {
+    private function addHeaderScripts() : void {
         $priority = 0;
         add_action('wp_head', function() : void {
             echo $this->getHeaderScripts();
@@ -226,7 +226,7 @@ final class ThemeSettings {
     /**
      * Use the wp_body_open action to add script snippets after the start body tag
      */
-    private function addScriptSnippets2AfterStartBody() : void {
+    private function addAfterStartBodyScripts() : void {
         add_action('wp_body_open', function() : void {
             echo $this->getStartBodyScripts();
         });
@@ -235,7 +235,7 @@ final class ThemeSettings {
     /**
      * Use the wp_footer action to add script snippets to the footer
      */
-    private function addScriptSnippets2Footer() : void {
+    private function addFooterScripts() : void {
         $priority = 100;
         add_action('wp_footer', function() : void {
             echo $this->getFooterScripts();
@@ -245,13 +245,13 @@ final class ThemeSettings {
     /**
      * Validate the setting inputs
      *
-     * @param array $input the input to validate
-     * @return array the validated input
+     * @param array $inputs the inputs to validate
+     * @return array the validated inputs
      */
-    private function validateInput(array $input) : array {
+    private function validateSettingInputs(array $inputs) : array {
         $output = [];
-        foreach($input as $key => $value) {
-            $output[$key] = strip_tags(addslashes($input[$key]), '<script>');
+        foreach($inputs as $key => $value) {
+            $output[$key] = strip_tags(addslashes($inputs[$key]), '<script>');
         }
         return $output;
     }
@@ -282,7 +282,7 @@ final class ThemeSettings {
      * @return string the email
      */
     private function getEmail() : string {
-        return (isset($this->contactOptions[$this->email])) ? stripslashes($this->contactOptions[$this->email]) : '';
+        return stripslashes($this->contactOptions[$this->email]);
     }
 
     /**
@@ -291,7 +291,7 @@ final class ThemeSettings {
      * @return string the LinkedIn url
      */
     private function getLinkedInUrl() : string {
-        return (isset($this->contactOptions[$this->linkedIn])) ? esc_url($this->contactOptions[$this->linkedIn]) : '';
+        return esc_url($this->contactOptions[$this->linkedIn]);
     }
 
     /**
@@ -300,7 +300,7 @@ final class ThemeSettings {
      * @return string the GitHub url
      */
     private function getGitHubUrl() : string {
-        return (isset($this->otherOptions[$this->gitHub])) ? esc_url($this->otherOptions[$this->gitHub]) : '';
+        return esc_url($this->otherOptions[$this->gitHub]);
     }
 
     /**
@@ -309,7 +309,7 @@ final class ThemeSettings {
      * @return string the header scripts
      */
     private function getHeaderScripts() : string {
-        return (isset($this->scriptsOptions[$this->scriptsHeader])) ? stripslashes($this->scriptsOptions[$this->scriptsHeader]) : '';
+        return stripslashes($this->scriptOptions[$this->scriptHeader]);
     }
 
     /**
@@ -318,7 +318,7 @@ final class ThemeSettings {
      * @return string the start body scripts
      */
     private function getStartBodyScripts() : string {
-        return (isset($this->scriptsOptions[$this->scriptsStartBody])) ? stripslashes($this->scriptsOptions[$this->scriptsStartBody]) : '';
+        return stripslashes($this->scriptOptions[$this->scriptStartBody]);
     }
 
     /**
@@ -327,7 +327,7 @@ final class ThemeSettings {
      * @return string the footer scripts
      */
     private function getFooterScripts() : string {
-        return (isset($this->scriptsOptions[$this->scriptsFooter])) ? stripslashes($this->scriptsOptions[$this->scriptsFooter]) : '';
+        return stripslashes($this->scriptOptions[$this->scriptFooter]);
     }
 
     /**
@@ -336,8 +336,7 @@ final class ThemeSettings {
      * @return int the number of photos per page
      */
     public function getPhotosPerPage() : int {
-        $defaultValue = 39;
-        return (isset($this->otherOptions[$this->photosPerPage])) ? intval($this->otherOptions[$this->photosPerPage]) : $defaultValue;
+        return intval($this->otherOptions[$this->photosPerPage]);
     }
 
     /**
@@ -345,7 +344,7 @@ final class ThemeSettings {
      *
      * @return int the images page id
      */
-    public function getImagesPageID() : ?int {
-        return (isset($this->otherOptions[$this->imagesPage])) ? $this->otherOptions[$this->imagesPage] : null;
+    public function getImagesPageID() : int {
+        return $this->otherOptions[$this->imagesPage];
     }
 }

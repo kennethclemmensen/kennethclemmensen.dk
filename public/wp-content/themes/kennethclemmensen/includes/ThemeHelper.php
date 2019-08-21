@@ -14,11 +14,11 @@ final class ThemeHelper {
      * @param string $localFile the path to the local file
      * @param int $ver the script version number
      * @param array $deps the dependencies of the script
-     * @param bool $inFooter false if the script should be enqueued in the header
+     * @param bool $inFooter false if the script should be enqueued in the header. True is default
      */
     public static function addScriptWithLocalFallback(string $name, string $cdnFile, string $localFile, ?int $ver = null, array $deps = [], bool $inFooter = true) : void {
         $file = @fopen($cdnFile, 'r');
-        $src = ($file === false) ? $localFile : $cdnFile;
+        $src = ($file) ? $cdnFile : $localFile;
         wp_deregister_script($name);
         wp_enqueue_script($name, $src, $deps, $ver, $inFooter);
     }
@@ -34,7 +34,7 @@ final class ThemeHelper {
      */
     public static function addStyleWithLocalFallback(string $name, string $cdnFile, string $localFile, ?int $ver = null, array $deps = []) : void {
         $file = @fopen($cdnFile, 'r');
-        $src = ($file === false) ? $localFile : $cdnFile;
+        $src = ($file) ? $cdnFile : $localFile;
         wp_deregister_style($name);
         wp_enqueue_style($name, $src, $deps, $ver);
     }
@@ -46,18 +46,17 @@ final class ThemeHelper {
      * @return string the source without the version query string
      */
     public static function removeVersionQueryString(string $src) : string {
-        $parts = explode('?ver', $src);
-        return $parts[0];
+        return explode('?ver', $src)[0];
     }
 
     /**
-     * Get the breadcrumb as an array of page ids
+     * Get the breadcrumb as an array of page IDs
      *
-     * @return array an array of page ids
+     * @return array the breadcrumb as an array of page IDs
      */
     public static function getBreadcrumb() : array {
-        global $post;
         if(!is_front_page()) {
+            global $post;
             $pages[] = $post->ID;
             $parent = $post->post_parent;
             while($parent !== 0) {
@@ -65,10 +64,7 @@ final class ThemeHelper {
                 $pages[] = $page->ID;
                 $parent = $page->post_parent;
             }
-        }
-        if($post->post_type === KCGallery::GALLERY) {
-            $imagesPageID = ThemeSettings::getInstance()->getImagesPageID();
-            if($imagesPageID !== null) $pages[] = $imagesPageID;
+            if($post->post_type === KCGallery::GALLERY) $pages[] = ThemeSettings::getInstance()->getImagesPageID();
         }
         $pages[] = get_option('page_on_front');
         return array_reverse($pages);

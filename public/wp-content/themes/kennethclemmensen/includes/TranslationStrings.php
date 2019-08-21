@@ -15,7 +15,7 @@ final class TranslationStrings {
     private const NEXT = 'Next';
 
     /**
-     * TranslationStrings constructor
+     * The TranslationStrings constructor register the strings that should be translated
      */
     public function __construct() {
         if(self::isPolylangActivated()) {
@@ -116,7 +116,7 @@ final class TranslationStrings {
     /**
      * Check if the Polylang plugin is activated
      *
-     * @return bool true if the Polylang plugin is activated. False otherwise
+     * @return bool true if the Polylang plugin is activated. False if it isn't activated
      */
     private static function isPolylangActivated() : bool {
         return function_exists('pll_register_string');

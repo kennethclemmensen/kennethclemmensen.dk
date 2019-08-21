@@ -28,33 +28,33 @@ final class IconWidget extends WP_Widget {
     /**
      * Outputs the content of the widget
      *
-     * @param array $args Display arguments including 'before_title', 'after_title', 'before_widget', and 'after_widget'
-     * @param array $instance The settings for the particular instance of the widget
+     * @param array $args display arguments including 'before_title', 'after_title', 'before_widget', and 'after_widget'
+     * @param array $instance the settings for the particular instance of the widget
      */
     public function widget($args, $instance) : void {
         echo $args['before_widget'].'<div class="iconwidget">';
-        $title = (isset($instance[$this->title])) ? $instance[$this->title] : '';
-        $icon = (isset($instance[$this->icon])) ? '<i class="'.$instance[$this->icon].'"></i>' : '';
-        $link = (isset($instance[$this->link])) ? $instance[$this->link] : '';
-        $target = (isset($instance[$this->target]) && $instance[$this->target] === $this->checkboxCheckedValue) ? '_blank' : '_self';
+        $title = $instance[$this->title];
+        $icon = '<i class="'.$instance[$this->icon].'"></i>';
+        $link = $instance[$this->link];
+        $target = ($instance[$this->target] === $this->checkboxCheckedValue) ? '_blank' : '_self';
         if($title !== '') echo $args['before_title'].apply_filters('widget_title', $title).$args['after_title'];
         echo ($link !== '') ? '<a href="'.esc_url(do_shortcode($link)).'" target="'.$target.'">'.$icon.'</a>' : $icon;
         echo '</div>'.$args['after_widget'];
     }
 
     /**
-     * Outputs the settings update form.
+     * Show the settings update form for the widget
      *
-     * @param array $instance Current settings
+     * @param array $instance the current settings for the widget
      */
     public function form($instance) : void {
-        $title = (isset($instance[$this->title])) ? $instance[$this->title] : '';
+        $title = $instance[$this->title];
         $titleFieldID = esc_attr($this->get_field_id($this->title));
-        $icon = (isset($instance[$this->icon])) ? $instance[$this->icon] : '';
+        $icon = $instance[$this->icon];
         $iconFieldID = esc_attr($this->get_field_id($this->icon));
-        $link = (isset($instance[$this->link])) ? $instance[$this->link] : '';
+        $link = $instance[$this->link];
         $linkFieldID = esc_attr($this->get_field_id($this->link));
-        $target = (isset($instance[$this->target])) ? $instance[$this->target] : false;
+        $target = $instance[$this->target];
         $targetFieldID = esc_attr($this->get_field_id($this->target));
         ?>
         <p>
@@ -91,6 +91,6 @@ final class IconWidget extends WP_Widget {
      */
     private function getIcons() : array {
         $icons = file_get_contents(__DIR__.'/../json/icons.json');
-        return ($icons !== false) ? json_decode($icons, true) : [];
+        return ($icons) ? json_decode($icons, true) : [];
     }
 }

@@ -7,11 +7,11 @@ final class MobileMenuWalker extends Walker_Nav_Menu {
     /**
      * Starts the element output
      *
-     * @param string $output Used to append additional content (passed by reference)
-     * @param WP_Post $item Menu item data object
-     * @param int $depth Depth of menu item. Used for padding
-     * @param array $args An object of wp_nav_menu() arguments
-     * @param int $id Current item ID
+     * @param string $output used to append additional content
+     * @param WP_Post $item menu item data object
+     * @param int $depth depth of menu item
+     * @param array $args an object of wp_nav_menu() arguments
+     * @param int $id the current item ID
      */
     public function start_el(&$output, $item, $depth = 0, $args = [], $id = 0) : void {
         $currentClass = ($item->current) ? 'mobile-nav__link--current' : '';
