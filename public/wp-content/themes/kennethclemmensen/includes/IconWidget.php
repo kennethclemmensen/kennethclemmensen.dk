@@ -4,7 +4,6 @@
  */
 final class IconWidget extends WP_Widget {
 
-    private $title;
     private $icon;
     private $link;
     private $target;
@@ -18,7 +17,6 @@ final class IconWidget extends WP_Widget {
             'classname' => self::class,
             'description' => 'Add an icon'
         ]);
-        $this->title = 'title';
         $this->icon = 'icon';
         $this->link = 'link';
         $this->target = 'target';
@@ -33,11 +31,9 @@ final class IconWidget extends WP_Widget {
      */
     public function widget($args, $instance) : void {
         echo $args['before_widget'].'<div class="iconwidget">';
-        $title = $instance[$this->title];
         $icon = '<i class="'.$instance[$this->icon].'"></i>';
         $link = $instance[$this->link];
         $target = ($instance[$this->target] === $this->checkboxCheckedValue) ? '_blank' : '_self';
-        if($title !== '') echo $args['before_title'].apply_filters('widget_title', $title).$args['after_title'];
         echo ($link !== '') ? '<a href="'.esc_url(do_shortcode($link)).'" target="'.$target.'">'.$icon.'</a>' : $icon;
         echo '</div>'.$args['after_widget'];
     }
@@ -48,8 +44,9 @@ final class IconWidget extends WP_Widget {
      * @param array $instance the current settings for the widget
      */
     public function form($instance) : void {
-        $title = $instance[$this->title];
-        $titleFieldID = esc_attr($this->get_field_id($this->title));
+        $titleKey = 'title';
+        $title = $instance[$titleKey];
+        $titleFieldID = esc_attr($this->get_field_id($titleKey));
         $icon = $instance[$this->icon];
         $iconFieldID = esc_attr($this->get_field_id($this->icon));
         $link = $instance[$this->link];
@@ -60,7 +57,7 @@ final class IconWidget extends WP_Widget {
         <p>
             <label for="<?php echo $titleFieldID; ?>"><?php echo esc_attr('Title:'); ?></label>
             <input type="text" id="<?php echo $titleFieldID; ?>" class="widefat"
-                   name="<?php echo esc_attr($this->get_field_name($this->title)); ?>"
+                   name="<?php echo esc_attr($this->get_field_name($titleKey)); ?>"
                    value="<?php echo esc_attr($title); ?>">
             <label for="<?php echo $iconFieldID; ?>"><?php echo esc_attr('Icon:'); ?></label>
             <select id="<?php echo $iconFieldID; ?>" class="widefat"
