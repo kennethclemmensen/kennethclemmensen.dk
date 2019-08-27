@@ -1,4 +1,3 @@
-//
 const {dest, series, src, watch} = require('gulp');
 const browserSyncPlugin = require('browser-sync');
 const concatPlugin = require('gulp-concat');
