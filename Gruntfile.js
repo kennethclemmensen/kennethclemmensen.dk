@@ -56,20 +56,23 @@ module.exports = function(grunt) {
                 }
             }
         },
+        //Uglify the JavaScript files
+        terser: {
+            options: {
+
+            },
+            your_target: {
+                files: {
+                    '<%= pkg.jsFolderPath %>minified/script.min.js': ['<%= pkg.jsFolderPath %>*.js']
+                }
+            }
+        },
         //Translate TypeScript to JavaScript by using the tsconfig.json file
         ts: {
             default: {
                 tsconfig: {
                     passThrough: true,
                     tsconfig: './tsconfig.json'
-                }
-            }
-        },
-        //Uglify the JavaScript files
-        uglify: {
-            my_target: {
-                files: {
-                    '<%= pkg.jsFolderPath %>minified/script.min.js': ['<%= pkg.jsFolderPath %>*.js']
                 }
             }
         },
@@ -83,7 +86,7 @@ module.exports = function(grunt) {
                 options: {
                     spawn: false
                 },
-                tasks: ['uglify']
+                tasks: ['terser']
             },
             less: {
                 files: ['<%= pkg.lessFolderPath %>**/*.less'],
@@ -113,9 +116,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-browser-sync');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-contrib-less');
-    grunt.loadNpmTasks('grunt-contrib-uglify-es');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-sass');
+    grunt.loadNpmTasks('grunt-terser');
     grunt.loadNpmTasks('grunt-ts');
 
     //Register the default tasks
