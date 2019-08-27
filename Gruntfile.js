@@ -58,9 +58,6 @@ module.exports = function(grunt) {
         },
         //Uglify the JavaScript files
         terser: {
-            options: {
-
-            },
             your_target: {
                 files: {
                     '<%= pkg.jsFolderPath %>minified/script.min.js': ['<%= pkg.jsFolderPath %>*.js']
