@@ -10,4 +10,12 @@ window.rwmb = window.rwmb || {};
 	rwmb.$document.on( 'ready', function() {
 		rwmb.$document.trigger( 'mb_ready' );
 	} );
+
+	// Selectors for all plugin inputs.
+	rwmb.inputSelectors = 'input[class*="rwmb"], textarea[class*="rwmb"], select[class*="rwmb"], button[class*="rwmb"]';
+
+	// Generate unique ID.
+	rwmb.uniqid = function uniqid() {
+		return Math.random().toString( 36 ).substr( 2 );
+	}
 } )( jQuery, document, rwmb );
