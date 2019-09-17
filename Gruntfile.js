@@ -6,14 +6,14 @@ module.exports = function(grunt) {
         //Setup the browserSync task to synchronize browsers on different devices
         browserSync: {
             bsFiles: {
-                src: '<%= pkg.cssFolderPath %>*.css'
+                src: '<%= pkg.cssFolder %>*.css'
             },
             options: {
                 debugInfo: true,
                 files: [
-                    '<%= pkg.cssFolderPath %>*.css',
-                    '<%= pkg.themeFolderPath %>**/*.php',
-                    '<%= pkg.jsFolderPath %>*.js'
+                    '<%= pkg.cssFolder %>*.css',
+                    '<%= pkg.themeFolder %>**/*.php',
+                    '<%= pkg.jsFolder %>*.js'
                 ],
                 logConnections: true,
                 notify: true,
@@ -26,9 +26,9 @@ module.exports = function(grunt) {
             dynamic: {
                 files: [{
                     expand: true,
-                    cwd: '<%= pkg.uploadsFolderPath %>',
+                    cwd: '<%= pkg.uploadsFolder %>',
                     src: ['**/*.{png,jpg,gif}'],
-                    dest: '<%= pkg.uploadsFolderPath %>'
+                    dest: '<%= pkg.uploadsFolder %>'
                 }]
             }
         },
@@ -36,7 +36,7 @@ module.exports = function(grunt) {
         less: {
             development: {
                 files: {
-                    '<%= pkg.cssFolderPath %>style.css': '<%= pkg.lessFolderPath %>style.less'
+                    '<%= pkg.cssFolder %>style.css': '<%= pkg.lessFolder %>style.less'
                 },
                 options: {
                     compress: true,
@@ -52,7 +52,7 @@ module.exports = function(grunt) {
             },
             dist: {
                 files: {
-                    '<%= pkg.cssFolderPath %>style.css': '<%= pkg.sassFolderPath %>style.scss'
+                    '<%= pkg.cssFolder %>style.css': '<%= pkg.sassFolder %>style.scss'
                 }
             }
         },
@@ -60,7 +60,7 @@ module.exports = function(grunt) {
         terser: {
             your_target: {
                 files: {
-                    '<%= pkg.jsFolderPath %>minified/script.min.js': ['<%= pkg.jsFolderPath %>*.js']
+                    '<%= pkg.jsFolder %>minified/script.min.js': ['<%= pkg.jsFolder %>*.js']
                 }
             }
         },
@@ -79,28 +79,28 @@ module.exports = function(grunt) {
                 livereload: true
             },
             javascript: {
-                files: ['<%= pkg.jsFolderPath %>*.js'],
+                files: ['<%= pkg.jsFolder %>*.js'],
                 options: {
                     spawn: false
                 },
                 tasks: ['terser']
             },
             less: {
-                files: ['<%= pkg.lessFolderPath %>**/*.less'],
+                files: ['<%= pkg.lessFolder %>**/*.less'],
                 options: {
                     spawn: false
                 },
                 tasks: ['less']
             },
             sass: {
-                files: ['<%= pkg.sassFolderPath %>**/*.scss'],
+                files: ['<%= pkg.sassFolder %>**/*.scss'],
                 options: {
                     spawn: false
                 },
                 tasks: ['sass']
             },
             typescript: {
-                files: ['<%= pkg.tsFolderPath %>**/*.ts'],
+                files: ['<%= pkg.tsFolder %>**/*.ts'],
                 options: {
                     spawn: false
                 },

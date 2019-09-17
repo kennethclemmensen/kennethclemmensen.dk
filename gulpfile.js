@@ -15,9 +15,9 @@ function browserSync() {
     browserSyncPlugin.init({
         debugInfo: true,
         files: [
-            packageConfig.cssFolderPath + '*.css',
-            packageConfig.themeFolderPath + '**/*.php',
-            packageConfig.jsFolderPath + '*.js'
+            packageConfig.cssFolder + '*.css',
+            packageConfig.themeFolder + '**/*.php',
+            packageConfig.jsFolder + '*.js'
         ],
         logConnections: true,
         notify: true,
@@ -28,21 +28,21 @@ function browserSync() {
 
 //Optimize images
 function imagemin() {
-    return src(packageConfig.uploadsFolderPath + '**')
+    return src(packageConfig.uploadsFolder + '**')
         .pipe(imageminPlugin())
-        .pipe(dest(packageConfig.uploadsFolderPath));
+        .pipe(dest(packageConfig.uploadsFolder));
 }
 
 //Uglify the JavaScript files
 function javascript() {
-    return src(packageConfig.jsFolderPath + '*.js')
+    return src(packageConfig.jsFolder + '*.js')
         .pipe(concatPlugin('script.min.js'))
         .pipe(terserPlugin())
         .on('error', function(error) {
             console.log(error.toString());
             this.emit('end');
         })
-        .pipe(dest(packageConfig.jsFolderPath + 'minified/'))
+        .pipe(dest(packageConfig.jsFolder + 'minified/'))
         .pipe(browserSyncPlugin.reload({
             stream: true
         }));
@@ -50,14 +50,14 @@ function javascript() {
 
 //Translate less to css
 function less() {
-    return src(packageConfig.lessFolderPath + 'style.less')
+    return src(packageConfig.lessFolder + 'style.less')
         .pipe(lessPlugin())
         .on('error', function(error) {
             console.log(error.toString());
             this.emit('end');
         })
         .pipe(cssnanoPlugin())
-        .pipe(dest(packageConfig.cssFolderPath))
+        .pipe(dest(packageConfig.cssFolder))
         .pipe(browserSyncPlugin.reload({
             stream: true
         }));
@@ -65,14 +65,14 @@ function less() {
 
 //Translate sass to css
 function sass() {
-    return src(packageConfig.sassFolderPath + 'style.scss')
+    return src(packageConfig.sassFolder + 'style.scss')
         .pipe(sassPlugin())
         .on('error', function(error) {
             console.log(error.toString());
             this.emit('end');
         })
         .pipe(cssnanoPlugin())
-        .pipe(dest(packageConfig.cssFolderPath))
+        .pipe(dest(packageConfig.cssFolder))
         .pipe(browserSyncPlugin.reload({
             stream: true
         }));
@@ -90,7 +90,7 @@ exports.default = series(browserSync);
 exports.imagemin = imagemin;
 
 //Look for changes in files
-watch(packageConfig.jsFolderPath + '*.js', javascript);
-watch(packageConfig.lessFolderPath + '**/*.less', less);
-watch(packageConfig.sassFolderPath + '**/*.scss', sass);
-watch(packageConfig.tsFolderPath + '*.ts', typescript);
+watch(packageConfig.jsFolder + '*.js', javascript);
+watch(packageConfig.lessFolder + '**/*.less', less);
+watch(packageConfig.sassFolder + '**/*.scss', sass);
+watch(packageConfig.tsFolder + '*.ts', typescript);
