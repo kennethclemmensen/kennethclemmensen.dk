@@ -18,7 +18,7 @@ class RWMB_Loader {
 	 */
 	protected function constants() {
 		// Script version, used to add version for scripts and styles.
-		define( 'RWMB_VER', '5.1.2' );
+		define( 'RWMB_VER', '5.2.0' );
 
 		list( $path, $url ) = self::get_path( dirname( dirname( __FILE__ ) ) );
 
@@ -102,7 +102,7 @@ class RWMB_Loader {
 		$wpml->init();
 
 		// Update.
-		$update_option = new RWMB_Update_Option();
+		$update_option  = new RWMB_Update_Option();
 		$update_checker = new RWMB_Update_Checker( $update_option );
 		$update_checker->init();
 		$update_settings = new RWMB_Update_Settings( $update_checker, $update_option );

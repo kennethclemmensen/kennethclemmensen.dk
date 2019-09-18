@@ -31,7 +31,7 @@ class RWMB_Update_Checker {
 	 * @param object $option  Update option object.
 	 */
 	public function __construct( $option ) {
-		$this->option  = $option;
+		$this->option = $option;
 	}
 
 	/**
@@ -92,8 +92,8 @@ class RWMB_Update_Checker {
 			'meta-box-tabs',
 			'meta-box-template',
 		);
-		$plugins = get_plugins();
-		$plugins = array_map( 'dirname', array_keys( $plugins ) );
+		$plugins    = get_plugins();
+		$plugins    = array_map( 'dirname', array_keys( $plugins ) );
 
 		return array_intersect( $extensions, $plugins );
 	}
@@ -107,6 +107,12 @@ class RWMB_Update_Checker {
 	 */
 	public function check_updates( $data ) {
 		static $response = null;
+
+		// Bypass embed plugins via TGMPA.
+		// @codingStandardsIgnoreLine
+		if ( isset( $_GET['tgmpa-update'] ) || ( isset( $_POST['action'] ) && 'tgmpa-bulk-update' === $_POST['action'] ) ) {
+			return $data;
+		}
 
 		// Make sure to send remote request once.
 		if ( null === $response ) {
