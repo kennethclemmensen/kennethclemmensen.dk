@@ -4,6 +4,7 @@
 export default class Slider {
 
     private sliderImages: JQuery;
+    private currentRandomNumber: number;
 
     /**
      * Slider constructor
@@ -13,16 +14,20 @@ export default class Slider {
      */
     public constructor(private delay: number, private duration: number) {
         this.sliderImages = jQuery('.slider__image');
+        this.currentRandomNumber = -1;
         this.showSlider();
     }
 
     /**
-     * Get a random number
+     * Get a random number between 0 and the number of slides minus 1
      *
      * @returns {number} a random number
      */
     private getRandomNumber(): number {
-        return Math.floor(Math.random() * this.sliderImages.length);
+        let randomNumber: number = Math.floor(Math.random() * this.sliderImages.length);
+        if(this.currentRandomNumber === randomNumber) return this.getRandomNumber();
+        this.currentRandomNumber = randomNumber;
+        return this.currentRandomNumber;
     }
 
     /**
