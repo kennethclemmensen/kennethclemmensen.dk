@@ -47,9 +47,9 @@ div.page {
   font-weight: bold;
   font-style: italic;
   @media #{$desktop} {
-  margin-right: 10px;
-}
-  &:hover {
+    margin-right: 10px;
+  }
+  &:hover, &:focus {
     color: $color-black;
   }
 }
