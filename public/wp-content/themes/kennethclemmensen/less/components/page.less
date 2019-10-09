@@ -31,11 +31,25 @@ div.page {
   }
 }
 
-.page__gallery {
-  width: 285px;
+.page__gallery-link {
+  background: no-repeat center;
+  background-size: cover;
+  display: inline-flex;
+  justify-content: flex-end;
+  width: 283px;
+  height: 180px;
   margin: 0 20px 20px 0;
+  padding: 5px 15px;
   border: 1px solid @color-white;
+  text-decoration: none;
+  color: @color-black;
+  font-size: 1.3em;
+  font-weight: bold;
+  font-style: italic;
   @media @desktop {
     margin-right: 10px;
+  }
+  &:hover {
+    color: @color-black;
   }
 }

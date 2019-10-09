@@ -20,14 +20,13 @@ while(have_posts()) {
             ?>
             <div class="page__galleries">
                 <?php
-                foreach($galleries as $key => $gallery) {
-                    $src = $kcGallery->getGalleryPhotoUrl($key);
+                foreach($galleries as $id => $title) {
+                    $src = $kcGallery->getGalleryPhotoUrl($id);
                     ?>
-                    <div class="page__gallery">
-                        <a href="<?php echo get_permalink($key); ?>">
-                            <img src="<?php echo $src; ?>" alt="<?php echo get_the_title($key); ?>">
-                        </a>
-                    </div>
+                    <a href="<?php echo get_permalink($id); ?>" class="page__gallery-link"
+                       style="background-image: url('<?php echo $src; ?>')">
+                        <?php echo $title; ?>
+                    </a>
                     <?php
                 }
                 ?>
