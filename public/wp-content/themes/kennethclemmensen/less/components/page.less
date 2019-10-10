@@ -42,14 +42,29 @@ div.page {
   padding: 5px 15px;
   border: 1px solid @color-white;
   text-decoration: none;
-  color: @color-black;
-  font-size: 1.3em;
-  font-weight: bold;
-  font-style: italic;
   @media @desktop {
     margin-right: 10px;
   }
-  &:hover, &:focus {
-    color: @color-black;
+  &:hover {
+    .page__gallery-title::after {
+      background: @color-black;
+    }
+  }
+}
+
+.page__gallery-title {
+  font-size: 1.3em;
+  font-weight: bold;
+  font-style: italic;
+  color: @color-black;
+  text-shadow: 1px 1px 1px @color-black;
+  &::after {
+    display: block;
+    background: transparent;
+    content: '';
+    width: 100%;
+    height: 2px;
+    margin-top: 4px;
+    transition: all .4s ease-in-out 0s;
   }
 }

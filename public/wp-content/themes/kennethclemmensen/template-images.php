@@ -25,7 +25,7 @@ while(have_posts()) {
                     ?>
                     <a href="<?php echo get_permalink($id); ?>" class="page__gallery-link"
                        style="background-image: url('<?php echo $src; ?>')">
-                        <?php echo $title; ?>
+                        <span class="page__gallery-title"><?php echo $title; ?></span>
                     </a>
                     <?php
                 }
