@@ -17,7 +17,7 @@ class App {
      * Setup the app
      */
     private setupApp(): void {
-        jQuery((): void => {
+        document.addEventListener('DOMContentLoaded', (): void => {
             this.setupMobileNavigation();
             let slider: any = document.getElementById('slider');
             new Slider(slider.dataset.delay, slider.dataset.duration);
