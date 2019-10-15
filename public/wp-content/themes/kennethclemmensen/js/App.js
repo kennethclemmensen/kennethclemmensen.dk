@@ -29,19 +29,23 @@ class App {
      * Setup the mobile navigation
      */
     setupMobileNavigation() {
-        let headerTrigger = '.header__nav-trigger';
-        jQuery(headerTrigger).on('click', (event) => {
+        let mobileNavigationTrigger = document.getElementsByClassName('header__nav-trigger')[0];
+        let mobileNavigation = document.getElementsByClassName('mobile-nav')[0];
+        let showMobileNavigationClass = 'show-mobile-nav';
+        mobileNavigationTrigger.addEventListener('click', (event) => {
             event.preventDefault();
-            jQuery(headerTrigger).toggleClass('header__nav-trigger--active');
-            jQuery('.mobile-nav').toggleClass('mobile-nav--active');
-            jQuery('html, body').toggleClass('show-mobile-nav');
+            mobileNavigationTrigger.classList.toggle('header__nav-trigger--active');
+            mobileNavigation.classList.toggle('mobile-nav--active');
+            document.getElementsByTagName('html')[0].classList.toggle(showMobileNavigationClass);
+            document.getElementsByTagName('body')[0].classList.toggle(showMobileNavigationClass);
         });
-        let mobileArrow = '.mobile-nav__arrow';
-        jQuery(mobileArrow).on('click', (event) => {
+        let mobileNavigationArrows = document.querySelectorAll('.mobile-nav__arrow');
+        mobileNavigationArrows.forEach((a) => a.addEventListener('click', (event) => {
             event.preventDefault();
-            jQuery(mobileArrow).toggleClass('mobile-nav__arrow--rotated');
-            jQuery(mobileArrow).parent().parent().find('.sub-menu').toggle();
-        });
+            a.classList.toggle('mobile-nav__arrow--rotated');
+            let subMenu = a.parentNode.parentNode.getElementsByClassName('sub-menu')[0];
+            subMenu.style.display = (subMenu.style.display === 'block') ? 'none' : 'block';
+        }));
     }
 }
 new App();
