@@ -39,7 +39,7 @@ add_action('wp_enqueue_scripts', function() : void {
 
     $lightbox = 'lightbox-js';
     $cdnFile = 'https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js';
-    $localFile = '/js/plugins/lightbox-2.11.1.min.js';
+    $localFile = '/js/libraries/lightbox-2.11.1.min.js';
     $version = filemtime(get_template_directory().$localFile);
     ThemeHelper::addScriptWithLocalFallback($lightbox, $cdnFile, get_template_directory_uri().$localFile, $version);
 
