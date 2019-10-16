@@ -29,21 +29,21 @@ class App {
      * Setup the mobile navigation
      */
     setupMobileNavigation() {
-        let mobileNavigationTrigger = document.getElementsByClassName('header__nav-trigger')[0];
-        let mobileNavigation = document.getElementsByClassName('mobile-nav')[0];
-        let showMobileNavigationClass = 'show-mobile-nav';
+        let mobileNavigationTrigger = document.getElementById('mobile-menu-trigger');
+        let mobileNavigation = document.getElementById('mobile-menu');
+        let showMobileMenuClass = 'show-mobile-nav';
         mobileNavigationTrigger.addEventListener('click', (event) => {
             event.preventDefault();
             mobileNavigationTrigger.classList.toggle('header__nav-trigger--active');
             mobileNavigation.classList.toggle('mobile-nav--active');
-            document.getElementsByTagName('html')[0].classList.toggle(showMobileNavigationClass);
-            document.getElementsByTagName('body')[0].classList.toggle(showMobileNavigationClass);
+            document.getElementsByTagName('html')[0].classList.toggle(showMobileMenuClass);
+            document.getElementsByTagName('body')[0].classList.toggle(showMobileMenuClass);
         });
         let mobileNavigationArrows = document.querySelectorAll('.mobile-nav__arrow');
-        mobileNavigationArrows.forEach((a) => a.addEventListener('click', (event) => {
+        mobileNavigationArrows.forEach((arrow) => arrow.addEventListener('click', (event) => {
             event.preventDefault();
-            a.classList.toggle('mobile-nav__arrow--rotated');
-            let subMenu = a.parentNode.parentNode.getElementsByClassName('sub-menu')[0];
+            arrow.classList.toggle('mobile-nav__arrow--rotated');
+            let subMenu = arrow.parentNode.parentNode.getElementsByClassName('sub-menu')[0];
             subMenu.style.display = (subMenu.style.display === 'block') ? 'none' : 'block';
         }));
     }

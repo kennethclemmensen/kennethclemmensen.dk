@@ -17,14 +17,14 @@ wp_body_open();
     <a href="<?php bloginfo('url'); ?>" class="header__site-name">
         <?php bloginfo('name'); ?>
     </a>
-    <a href="#" class="header__nav-trigger">
+    <a href="#" class="header__nav-trigger" id="mobile-menu-trigger">
         <span class="header__nav-icon"></span>
     </a>
     <nav class="navigation">
         <?php wp_nav_menu(['theme_location' => ThemeHelper::getMainMenuKey()]); ?>
     </nav>
 </header>
-<nav class="mobile-nav">
+<nav class="mobile-nav" id="mobile-menu">
     <div class="mobile-nav__content">
         <?php
         wp_nav_menu([
