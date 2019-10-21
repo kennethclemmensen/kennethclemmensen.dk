@@ -10,7 +10,7 @@ require_once 'includes/TranslationStrings.php';
  */
 add_action('wp_enqueue_scripts', function() : void {
     $fontAwesome = 'font-awesome';
-    $cdnFile = 'https://use.fontawesome.com/releases/v5.11.2/css/all.css';
+    $cdnFile = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css';
     $localFile = '/css/fontawesome-5.11.2.min.css';
     $version = filemtime(get_template_directory().$localFile);
     ThemeHelper::addStyleWithLocalFallback($fontAwesome, $cdnFile, get_template_directory_uri().$localFile, $version);
