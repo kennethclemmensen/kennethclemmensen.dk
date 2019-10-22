@@ -23,6 +23,7 @@ while(have_posts()) {
                     'post_type' => KCGallery::PHOTO,
                     'posts_per_page' => $themeSettings->getPhotosPerPage(),
                     'order' => 'ASC',
+                    'orderby' => 'title',
                     'meta_key' => $kcGallery->getPhotoGalleryFieldID(),
                     'meta_value' => $galleryID,
                     'paged' => $paged
