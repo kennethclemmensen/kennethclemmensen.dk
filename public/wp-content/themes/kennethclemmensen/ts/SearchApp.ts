@@ -1,7 +1,7 @@
 /**
  * The search app class contains methods to handle the search functionality
  */
-export default class SearchApp {
+export class SearchApp {
 
     /**
      * SearchApp constructor

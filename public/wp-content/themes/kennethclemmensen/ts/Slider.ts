@@ -1,7 +1,7 @@
 /**
  * The Slider class contains methods to handle the functionality of the slider
  */
-export default class Slider {
+export class Slider {
 
     private sliderImages: JQuery;
     private currentRandomNumber: number;

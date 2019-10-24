@@ -21,9 +21,12 @@ add_action('wp_enqueue_scripts', function() : void {
     $version = filemtime(get_template_directory().$localFile);
     ThemeHelper::addStyleWithLocalFallback($lightbox, $cdnFile, get_template_directory_uri().$localFile, $version);
 
+    $ubuntu = 'ubuntu';
+    wp_enqueue_style($ubuntu, 'https://fonts.googleapis.com/css?family=Ubuntu');
+
     $styleFile = '/css/style.css';
     $version = filemtime(get_template_directory().$styleFile);
-    wp_enqueue_style('theme-css', get_template_directory_uri().$styleFile, [$fontAwesome, $lightbox], $version);
+    wp_enqueue_style('theme-css', get_template_directory_uri().$styleFile, [$fontAwesome, $lightbox, $ubuntu], $version);
 
     $jquery = 'jquery';
     $cdnFile = 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js';
