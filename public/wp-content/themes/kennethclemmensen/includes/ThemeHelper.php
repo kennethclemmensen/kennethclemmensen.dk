@@ -96,13 +96,4 @@ final class ThemeHelper {
     public static function getMainMenuKey() : string {
         return 'main-menu';
     }
-
-    /**
-     * Get the mobile menu key
-     *
-     * @return string the mobile menu key
-     */
-    public static function getMobileMenuKey() : string {
-        return 'mobile-menu';
-    }
 }

@@ -28,7 +28,7 @@ wp_body_open();
     <div class="mobile-nav__content">
         <?php
         wp_nav_menu([
-            'theme_location' => ThemeHelper::getMobileMenuKey(),
+            'theme_location' => ThemeHelper::getMainMenuKey(),
             'walker' => new MobileMenuWalker()
         ]);
         ?>

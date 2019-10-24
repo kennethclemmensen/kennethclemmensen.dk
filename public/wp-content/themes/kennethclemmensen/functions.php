@@ -55,7 +55,6 @@ add_action('init', function() : void {
     ThemeSettings::getInstance();
     new TranslationStrings();
     register_nav_menus([
-        ThemeHelper::getMobileMenuKey() => 'Mobile menu',
         ThemeHelper::getMainMenuKey() => 'Main menu'
     ]);
     remove_action('admin_print_styles', 'print_emoji_styles');
