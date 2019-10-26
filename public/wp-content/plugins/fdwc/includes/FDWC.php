@@ -44,22 +44,12 @@ class FDWC {
      * Execute the plugin
      */
     public function execute() : void {
-        $this->loadDepedencies();
-        $loader = new FDWCLoader();
-        $loader->loadScripts();
         $this->init();
         $this->adminMenu();
         $this->addMetaBoxes();
         $this->addShortcode();
         $this->uploadMimes();
         $this->wpAjax();
-    }
-
-    /**
-     * Load the dependencies files
-     */
-    private function loadDepedencies() : void {
-        require_once 'FDWCLoader.php';
     }
 
     /**

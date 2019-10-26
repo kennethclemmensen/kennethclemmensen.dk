@@ -22,6 +22,7 @@ class App {
         document.addEventListener('DOMContentLoaded', (): void => {
             this.body = document.querySelector('body');
             this.setupMobileNavigation();
+            this.setupDownloadLinks();
             let slider: any = document.getElementById('slider');
             new Slider(slider.dataset.delay, slider.dataset.duration);
             lightbox.option({
@@ -52,6 +53,27 @@ class App {
                 arrow.classList.toggle('mobile-nav__arrow--rotated');
                 let subMenu: any = arrow.parentNode.parentNode.getElementsByClassName('sub-menu')[0];
                 subMenu.style.display = (subMenu.style.display === 'block') ? 'none' : 'block';
+            });
+        });
+    }
+
+    /**
+     * Setup the download links
+     */
+    private setupDownloadLinks(): void {
+        jQuery('.fdwc__link').on('click', function() {
+            let $this = jQuery(this);
+            jQuery.ajax({
+                method: 'post',
+                dataType: 'json',
+                url: '/wp-admin/admin-ajax.php',
+                data: {
+                    action: 'fdwc_download',
+                    file_id: $this.data('file-id')
+                },
+                success: function(data) {
+                    $this.parent().find('.fdwc__downloads').html(data);
+                }
             });
         });
     }
