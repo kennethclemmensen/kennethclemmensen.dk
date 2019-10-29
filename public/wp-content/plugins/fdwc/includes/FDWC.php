@@ -49,7 +49,6 @@ class FDWC {
         $this->addMetaBoxes();
         $this->addShortcode();
         $this->uploadMimes();
-        $this->wpAjax();
     }
 
     /**
@@ -196,36 +195,6 @@ class FDWC {
             $mimeTypes['java'] = 'application/java';
             return $mimeTypes;
         }, $priority);
-    }
-
-    /**
-     * Use the wp_ajax wp_ajax_nopriv actions to update the counter
-     */
-    private function wpAjax() : void {
-        $action = 'fdwc_download';
-        add_action('wp_ajax_nopriv_'.$action, function() : void {
-            $fileID = sanitize_text_field($_POST['file_id']);
-            $this->updateCounter($fileID);
-            echo $this->getFileDownloads($fileID);
-            wp_die();
-        });
-        add_action('wp_ajax_'.$action, function() : void {
-            $fileID = sanitize_text_field($_POST['file_id']);
-            $this->updateCounter($fileID);
-            echo $this->getFileDownloads($fileID);
-            wp_die();
-        });
-    }
-
-    /**
-     * Update the counter for a file
-     *
-     * @param int $fileID the id of the file
-     */
-    private function updateCounter(int $fileID) : void {
-        $downloads = $this->getFileDownloads($fileID);
-        $downloads++;
-        update_post_meta($fileID, $this->fieldDownloadCounter, $downloads);
     }
 
     /**

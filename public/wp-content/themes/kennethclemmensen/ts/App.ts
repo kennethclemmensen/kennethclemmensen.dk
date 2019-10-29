@@ -1,3 +1,5 @@
+import { HttpMethod } from './HttpMethod';
+import { HttpStatusCode } from './HttpStatusCode';
 import { SearchApp } from './SearchApp';
 import { Slider } from './Slider';
 
@@ -61,19 +63,19 @@ class App {
      * Setup the download links
      */
     private setupDownloadLinks(): void {
-        jQuery('.fdwc__link').on('click', function() {
-            let $this = jQuery(this);
-            jQuery.ajax({
-                method: 'post',
-                dataType: 'json',
-                url: '/wp-admin/admin-ajax.php',
-                data: {
-                    action: 'fdwc_download',
-                    file_id: $this.data('file-id')
-                },
-                success: function(data) {
-                    $this.parent().find('.fdwc__downloads').html(data);
-                }
+        let downloadLinks: any = document.querySelectorAll('.fdwc__link');
+        downloadLinks.forEach((downloadLink: any): void => {
+            downloadLink.addEventListener('click', (): void => {
+                let xmlHttpRequest: XMLHttpRequest = new XMLHttpRequest();
+                let fileId: number = downloadLink.dataset.fileId;
+                xmlHttpRequest.open(HttpMethod.Put, '/wp-json/kcapi/v1/fileDownloads?fileid=' + fileId, true);
+                xmlHttpRequest.addEventListener('load', (): void => {
+                    if(xmlHttpRequest.status === HttpStatusCode.Ok) {
+                        let downloads = downloadLink.parentNode.querySelector('span.fdwc__downloads');
+                        downloads.innerText = parseInt(downloads.innerText) + 1;
+                    }
+                });
+                xmlHttpRequest.send();
             });
         });
     }

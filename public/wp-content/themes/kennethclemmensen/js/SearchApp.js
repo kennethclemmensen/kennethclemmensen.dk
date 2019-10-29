@@ -1,3 +1,5 @@
+import { HttpMethod } from './HttpMethod';
+import { HttpStatusCode } from './HttpStatusCode';
 /**
  * The search app class contains methods to handle the search functionality
  */
@@ -29,11 +31,10 @@ export class SearchApp {
                         this.results = [];
                         return;
                     }
-                    let responseCodeOk = 200;
                     let request = new XMLHttpRequest();
-                    request.open('get', '/wp-json/kcapi/v1/pages/' + this.searchString, true);
+                    request.open(HttpMethod.Get, '/wp-json/kcapi/v1/pages/' + this.searchString, true);
                     request.addEventListener('load', () => {
-                        this.results = (request.status === responseCodeOk) ? JSON.parse(request.responseText) : [];
+                        this.results = (request.status === HttpStatusCode.Ok) ? JSON.parse(request.responseText) : [];
                     });
                     request.addEventListener('error', () => {
                         this.results = [];
