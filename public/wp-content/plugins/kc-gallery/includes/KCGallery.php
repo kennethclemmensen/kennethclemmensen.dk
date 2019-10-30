@@ -121,7 +121,7 @@ class KCGallery {
         });
         add_action('manage_'.self::PHOTO.'_posts_custom_column', function(string $columnName) use ($columnGalleryKey, $columnPhotoKey) : void {
             if($columnName === $columnGalleryKey) {
-                $galleryID = rwmb_meta($this->fieldPhotoGallery);
+                $galleryID = get_post_meta(get_the_ID(), $this->fieldPhotoGallery, true);
                 echo get_post($galleryID)->post_title;
             } else if($columnName === $columnPhotoKey) {
                 echo '<img src="'.$this->getPhotoThumbnailUrl(get_the_ID()).'" alt="'.get_the_title().'">';
