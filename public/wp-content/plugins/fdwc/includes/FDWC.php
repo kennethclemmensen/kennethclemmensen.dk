@@ -238,7 +238,7 @@ class FDWC {
      * @return string the file description
      */
     private function getFileDescription(int $fileID) : string {
-        return rwmb_meta($this->fieldDescription, [], $fileID);
+        return get_post_meta($fileID, $this->fieldDescription, true);
     }
 
     /**
@@ -248,7 +248,7 @@ class FDWC {
      * @return int the number of file downloads
      */
     private function getFileDownloads(int $fileID) : int {
-        return rwmb_meta($this->fieldDownloadCounter, [], $fileID);
+        return get_post_meta($fileID, $this->fieldDownloadCounter, true);
     }
 
     /**
