@@ -1,0 +1,27 @@
+@mixin border-radius($value) {
+  border-radius: $value;
+}
+
+@mixin border-radius2($topLeft, $topRight, $bottomRight, $bottomLeft) {
+  border-radius: $topLeft $topRight $bottomRight $bottomLeft;
+}
+
+@mixin box-shadow($x, $y, $blur, $color) {
+  box-shadow: $x $y $blur $color;
+}
+
+@mixin rotate($value) {
+  transform: rotate($value);
+}
+
+@mixin text-shadow($x, $y, $blur, $color) {
+  text-shadow: $x $y $blur $color;
+}
+
+@mixin transition($properties: all, $duration: .4s, $timing-function: ease, $delay: 0s) {
+  transition: $properties $duration $timing-function $delay;
+}
+
+@mixin translateX($value) {
+  transform: translateX($value);
+}

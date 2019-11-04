@@ -5,7 +5,7 @@
     height: 129px;
     margin: 25px 0;
     border: 2px solid $color-gray;
-    box-shadow: 4px 4px 6px $color-black;
+    @include box-shadow(4px, 4px, 6px, $color-black);
   }
   @media #{$desktop} {
     height: 160px;
