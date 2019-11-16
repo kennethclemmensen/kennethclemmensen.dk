@@ -17,13 +17,14 @@ class App {
      */
     setupApp() {
         document.addEventListener('DOMContentLoaded', () => {
+            var _a, _b;
             this.body = document.querySelector('body');
             this.setupMobileNavigation();
             this.setupDownloadLinks();
             let slider = document.getElementById('slider');
             new Slider(slider.dataset.delay, slider.dataset.duration);
             lightbox.option({
-                'albumLabel': this.body.dataset.imageText + ' %1 ' + this.body.dataset.ofText + ' %2'
+                'albumLabel': ((_a = this.body) === null || _a === void 0 ? void 0 : _a.dataset.imageText) + ' %1 ' + ((_b = this.body) === null || _b === void 0 ? void 0 : _b.dataset.ofText) + ' %2'
             });
             new SearchApp();
         });
@@ -32,15 +33,17 @@ class App {
      * Setup the mobile navigation
      */
     setupMobileNavigation() {
+        var _a;
         let mobileMenuTrigger = document.getElementById('mobile-menu-trigger');
         let mobileMenu = document.getElementById('mobile-menu');
         let showMobileMenuClass = 'show-mobile-menu';
-        mobileMenuTrigger.addEventListener('click', (event) => {
+        (_a = mobileMenuTrigger) === null || _a === void 0 ? void 0 : _a.addEventListener('click', (event) => {
+            var _a, _b, _c;
             event.preventDefault();
-            mobileMenuTrigger.classList.toggle('header__nav-trigger--active');
-            mobileMenu.classList.toggle('mobile-nav--active');
+            (_a = mobileMenuTrigger) === null || _a === void 0 ? void 0 : _a.classList.toggle('header__nav-trigger--active');
+            (_b = mobileMenu) === null || _b === void 0 ? void 0 : _b.classList.toggle('mobile-nav--active');
             document.getElementsByTagName('html')[0].classList.toggle(showMobileMenuClass);
-            this.body.classList.toggle(showMobileMenuClass);
+            (_c = this.body) === null || _c === void 0 ? void 0 : _c.classList.toggle(showMobileMenuClass);
         });
         let mobileNavigationArrows = document.querySelectorAll('.mobile-nav__arrow');
         mobileNavigationArrows.forEach((arrow) => {

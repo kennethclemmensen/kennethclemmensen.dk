@@ -8,7 +8,7 @@ import { Slider } from './Slider';
  */
 class App {
 
-    private body: any;
+    private body: HTMLBodyElement | null;
 
     /**
      * App constructor
@@ -28,7 +28,7 @@ class App {
             let slider: any = document.getElementById('slider');
             new Slider(slider.dataset.delay, slider.dataset.duration);
             lightbox.option({
-                'albumLabel': this.body.dataset.imageText + ' %1 ' + this.body.dataset.ofText + ' %2'
+                'albumLabel': this.body?.dataset.imageText + ' %1 ' + this.body?.dataset.ofText + ' %2'
             });
             new SearchApp();
         });
@@ -38,22 +38,22 @@ class App {
      * Setup the mobile navigation
      */
     private setupMobileNavigation(): void {
-        let mobileMenuTrigger: any = document.getElementById('mobile-menu-trigger');
-        let mobileMenu: any = document.getElementById('mobile-menu');
+        let mobileMenuTrigger: HTMLElement | null = document.getElementById('mobile-menu-trigger');
+        let mobileMenu: HTMLElement | null = document.getElementById('mobile-menu');
         let showMobileMenuClass: string = 'show-mobile-menu';
-        mobileMenuTrigger.addEventListener('click', (event: Event): void => {
+        mobileMenuTrigger?.addEventListener('click', (event: Event): void => {
             event.preventDefault();
-            mobileMenuTrigger.classList.toggle('header__nav-trigger--active');
-            mobileMenu.classList.toggle('mobile-nav--active');
+            mobileMenuTrigger?.classList.toggle('header__nav-trigger--active');
+            mobileMenu?.classList.toggle('mobile-nav--active');
             document.getElementsByTagName('html')[0].classList.toggle(showMobileMenuClass);
-            this.body.classList.toggle(showMobileMenuClass);
+            this.body?.classList.toggle(showMobileMenuClass);
         });
         let mobileNavigationArrows: any = document.querySelectorAll('.mobile-nav__arrow');
         mobileNavigationArrows.forEach((arrow: any): void => {
             arrow.addEventListener('click', (event: Event): void => {
                 event.preventDefault();
                 arrow.classList.toggle('mobile-nav__arrow--rotated');
-                let subMenu: any = arrow.parentNode.parentNode.getElementsByClassName('sub-menu')[0];
+                let subMenu: HTMLElement = arrow.parentNode.parentNode.getElementsByClassName('sub-menu')[0];
                 subMenu.style.display = (subMenu.style.display === 'block') ? 'none' : 'block';
             });
         });
