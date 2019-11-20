@@ -204,9 +204,8 @@ class FDWC {
      * @return string the file url
      */
     private function getFileUrl(int $fileID) : string {
-        $file = rwmb_meta($this->fieldFile, [], $fileID);
-        $file = array_shift($file);
-        return esc_url($file['url']);
+        $attachmentID = get_post_meta($fileID, $this->fieldFile, true);
+        return esc_url(wp_get_attachment_url($attachmentID));
     }
 
     /**
@@ -216,9 +215,8 @@ class FDWC {
      * @return string the file path
      */
     private function getFilePath(int $fileID) : string {
-        $file = rwmb_meta($this->fieldFile, [], $fileID);
-        $file = array_shift($file);
-        return $file['path'];
+        $attachmentID = get_post_meta($fileID, $this->fieldFile, true);
+        return get_attached_file($attachmentID);
     }
 
     /**
