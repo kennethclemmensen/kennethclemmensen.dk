@@ -81,7 +81,6 @@ class KCSlider {
      * @return string the slide image url
      */
     public function getSlideImageUrl(int $imageID) : string {
-        $url = get_the_post_thumbnail_url($imageID);
-        return (isset($url)) ? esc_url($url) : '';
+        return esc_url(get_the_post_thumbnail_url($imageID));
     }
 }

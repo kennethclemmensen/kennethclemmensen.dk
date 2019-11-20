@@ -110,8 +110,7 @@ class KCSliderSettings {
      * @return int the delay
      */
     public function getDelay() : int {
-        $defaultValue = 8000;
-        return (isset($this->option[$this->delay])) ? intval(stripslashes($this->option[$this->delay])) : $defaultValue;
+        return intval(stripslashes($this->option[$this->delay]));
     }
 
     /**
@@ -120,8 +119,7 @@ class KCSliderSettings {
      * @return int the duration
      */
     public function getDuration() : int {
-        $defaultValue = 500;
-        return (isset($this->option[$this->duration])) ? intval(stripslashes($this->option[$this->duration])) : $defaultValue;
+        return intval(stripslashes($this->option[$this->duration]));
     }
 
     /**
