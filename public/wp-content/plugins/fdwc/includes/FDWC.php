@@ -209,24 +209,14 @@ class FDWC {
     }
 
     /**
-     * Get the file path
-     *
-     * @param int $fileID the id of the file
-     * @return string the file path
-     */
-    private function getFilePath(int $fileID) : string {
-        $attachmentID = get_post_meta($fileID, $this->fieldFile, true);
-        return get_attached_file($attachmentID);
-    }
-
-    /**
      * Get the file name
      *
      * @param int $fileID the id of the file
      * @return string the file name
      */
     private function getFileName(int $fileID) : string {
-        return basename($this->getFilePath($fileID));
+        $attachmentID = get_post_meta($fileID, $this->fieldFile, true);
+        return basename(get_attached_file($attachmentID));
     }
 
     /**
