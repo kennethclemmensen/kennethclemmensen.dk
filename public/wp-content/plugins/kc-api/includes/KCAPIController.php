@@ -13,6 +13,15 @@ use \WP_Query;
  */
 final class KCAPIController extends WP_REST_Controller {
 
+    private $downloadCounterField;
+
+    /**
+     * KCAPIController constructor
+     */
+    public function __construct() {
+        $this->downloadCounterField = 'fdwc_field_download_counter';
+    }
+
     /**
      * Register routes
      */
@@ -57,23 +66,36 @@ final class KCAPIController extends WP_REST_Controller {
             }
         ]);
         $key = 'fileid';
-        register_rest_route($namespace, '/fileDownloads', [
+        $route = '/fileDownloads';
+        $args = [
+            $key => [
+                'required' => true,
+                'sanitize_callback' => function(int $value) : int {
+                    return sanitize_text_field($value);
+                },
+                'validate_callback' => function(int $value) : bool {
+                    return !empty($value);
+                }
+            ]
+        ];
+        register_rest_route($namespace, $route, [
+            'methods' => [WP_REST_Server::READABLE],
+            'callback' => function(WP_REST_Request $request) use ($key, $statusCodeOk) : WP_REST_Response {
+                $fileDownloads = $this->getFileDownloads($request->get_param($key));
+                return new WP_REST_Response($fileDownloads, $statusCodeOk);
+            },
+            'args' => $args,
+            'permission_callback' => function() : bool {
+                return true;
+            }
+        ]);
+        register_rest_route($namespace, $route, [
             'methods' => ['PUT'],
             'callback' => function(WP_REST_Request $request) use ($key, $statusCodeOk) : WP_REST_Response {
                 $this->updateFileDownloadCounter($request->get_param($key));
                 return new WP_REST_Response($statusCodeOk);
             },
-            'args' => [
-                $key => [
-                    'required' => true,
-                    'sanitize_callback' => function(int $value) : int {
-                        return sanitize_text_field($value);
-                    },
-                    'validate_callback' => function(int $value) : bool {
-                        return !empty($value);
-                    }
-                ]
-            ],
+            'args' => $args,
             'permission_callback' => function() : bool {
                 return true;
             }
@@ -116,9 +138,18 @@ final class KCAPIController extends WP_REST_Controller {
      * @param int $fileID the id of the file
      */
     private function updateFileDownloadCounter(int $fileID) : void {
-        $field = 'fdwc_field_download_counter';
-        $downloads = get_post_meta($fileID, $field, true);
+        $downloads = $this->getFileDownloads($fileID);
         $downloads++;
-        update_post_meta($fileID, $field, $downloads);
+        update_post_meta($fileID, $this->downloadCounterField, $downloads);
+    }
+
+    /**
+     * Get the number of file downloads for a file
+     *
+     * @param int $fileID the id of the file
+     * @return int the number of file downloads
+     */
+    private function getFileDownloads(int $fileID) : int {
+        return get_post_meta($fileID, $this->downloadCounterField, true);
     }
 }

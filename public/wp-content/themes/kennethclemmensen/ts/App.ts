@@ -68,11 +68,17 @@ class App {
             downloadLink.addEventListener('click', (): void => {
                 let xmlHttpRequest: XMLHttpRequest = new XMLHttpRequest();
                 let fileId: number = downloadLink.dataset.fileId;
-                xmlHttpRequest.open(HttpMethod.Put, '/wp-json/kcapi/v1/fileDownloads?fileid=' + fileId, true);
+                let url: string = '/wp-json/kcapi/v1/fileDownloads?fileid=' + fileId;
+                xmlHttpRequest.open(HttpMethod.Put, url, true);
                 xmlHttpRequest.addEventListener('load', (): void => {
                     if(xmlHttpRequest.status === HttpStatusCode.Ok) {
-                        let downloads = downloadLink.parentNode.querySelector('span.fdwc__downloads');
-                        downloads.innerText = parseInt(downloads.innerText) + 1;
+                        let xhr: XMLHttpRequest = new XMLHttpRequest();
+                        xhr.open(HttpMethod.Get, url, true);
+                        xhr.addEventListener('load', (): void => {
+                            let downloads = downloadLink.parentNode.querySelector('span.fdwc__downloads');
+                            downloads.innerText = (xhr.status === HttpStatusCode.Ok) ? xhr.responseText : parseInt(downloads.innerText) + 1;
+                        });
+                        xhr.send();
                     }
                 });
                 xmlHttpRequest.send();

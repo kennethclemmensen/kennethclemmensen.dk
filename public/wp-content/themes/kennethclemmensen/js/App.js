@@ -64,11 +64,17 @@ class App {
             downloadLink.addEventListener('click', () => {
                 let xmlHttpRequest = new XMLHttpRequest();
                 let fileId = downloadLink.dataset.fileId;
-                xmlHttpRequest.open(HttpMethod.Put, '/wp-json/kcapi/v1/fileDownloads?fileid=' + fileId, true);
+                let url = '/wp-json/kcapi/v1/fileDownloads?fileid=' + fileId;
+                xmlHttpRequest.open(HttpMethod.Put, url, true);
                 xmlHttpRequest.addEventListener('load', () => {
                     if (xmlHttpRequest.status === HttpStatusCode.Ok) {
-                        let downloads = downloadLink.parentNode.querySelector('span.fdwc__downloads');
-                        downloads.innerText = parseInt(downloads.innerText) + 1;
+                        let xhr = new XMLHttpRequest();
+                        xhr.open(HttpMethod.Get, url, true);
+                        xhr.addEventListener('load', () => {
+                            let downloads = downloadLink.parentNode.querySelector('span.fdwc__downloads');
+                            downloads.innerText = (xhr.status === HttpStatusCode.Ok) ? xhr.responseText : parseInt(downloads.innerText) + 1;
+                        });
+                        xhr.send();
                     }
                 });
                 xmlHttpRequest.send();
