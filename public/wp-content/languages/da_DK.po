@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.3.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-11-13 22:42:26+0000\n"
+"PO-Revision-Date: 2019-11-27 22:25:02+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1104,7 +1104,7 @@ msgstr "Forhåndsvisning af vedhæftning"
 msgid "Your browser cannot upload files"
 msgstr "Din browser kan ikke uploade filer"
 
-#: wp-includes/class-wp-xmlrpc-server.php:615 wp-includes/option.php:2081
+#: wp-includes/class-wp-xmlrpc-server.php:615 wp-includes/option.php:2084
 msgid "Allow people to submit comments on new posts."
 msgstr "Tillad folk at skrive kommentarer til nye indlæg."
 
@@ -1659,7 +1659,7 @@ msgstr[1] "%s kommentarer til godkendelse"
 msgid "Quote from Hello Dolly song, by Jerry Herman:"
 msgstr "Citat fra Hello Dolly-sang af Jerry Herman:"
 
-#: wp-login.php:1296
+#: wp-login.php:1302
 msgid "Recovery Mode Initialized. Please log in to continue."
 msgstr "Gendannelsetilstand initialiseret. Log ind for at fortsætte."
 
@@ -6552,7 +6552,7 @@ msgid "Featured Image"
 msgstr "Udvalgt billede"
 
 #. translators: 1: $sanitize_callback, 2: register_setting()
-#: wp-includes/option.php:2233
+#: wp-includes/option.php:2236
 msgid "%1$s is deprecated. The callback from %2$s is used instead."
 msgstr "%1$s er forældet. Callback fra %2$s bruges i stedet."
 
@@ -6681,7 +6681,7 @@ msgstr[1] "Dit tema har %s andre widgetområder, men denne særlige side viser d
 msgid "Your theme has 1 other widget area, but this particular page doesn&#8217;t display it."
 msgstr "Dit tema har 1 widgetområde, men denne side viser det ikke."
 
-#: wp-includes/option.php:1955
+#: wp-includes/option.php:1958
 msgid "This address is used for admin purposes, like new user notification."
 msgstr "Denne adresse bruges til administrative formål, f.eks. besked om nye brugerkonti."
 
@@ -6873,11 +6873,11 @@ msgstr "Beskrivelse af vedhæftningen."
 msgid "The attachment caption."
 msgstr "Vedhæftningens billedtekst."
 
-#: wp-includes/option.php:2032
+#: wp-includes/option.php:2035
 msgid "Default post category."
 msgstr "Standardkategori for indlæg."
 
-#: wp-includes/option.php:1922
+#: wp-includes/option.php:1925
 msgid "Site tagline."
 msgstr "Websteds undertitel/slogan."
 
@@ -8232,48 +8232,48 @@ msgstr "%1$s %2$s, %3$s siden (%4$s)"
 
 #. translators: %s: misc
 #. translators: %s: privacy
-#: wp-includes/option.php:2150 wp-includes/option.php:2163
-#: wp-includes/option.php:2203 wp-includes/option.php:2216
+#: wp-includes/option.php:2153 wp-includes/option.php:2166
+#: wp-includes/option.php:2206 wp-includes/option.php:2219
 msgid "The \"%s\" options group has been removed. Use another settings group."
 msgstr "\"%s\" gruppen er blevet fjernet. Brug en anden indstillingsgruppe."
 
-#: wp-includes/option.php:2067
+#: wp-includes/option.php:2070
 msgid "Allow link notifications from other blogs (pingbacks and trackbacks) on new articles."
 msgstr "Tillad link-beskeder fra andre blogge (pingback og trackbacks) til nye artikler."
 
-#: wp-includes/option.php:2052
+#: wp-includes/option.php:2055
 msgid "Blog pages show at most."
 msgstr "Blogsider viser maksimalt."
 
-#: wp-includes/option.php:2042
+#: wp-includes/option.php:2045
 msgid "Default post format."
 msgstr "Standard indlægsformat."
 
-#: wp-includes/option.php:2021
+#: wp-includes/option.php:2024
 msgid "Convert emoticons like :-) and :-P to graphics on display."
 msgstr "Konverter emoticons som :-) og :-P til grafik ved visning."
 
-#: wp-includes/option.php:2010
+#: wp-includes/option.php:2013
 msgid "WordPress locale code."
 msgstr "WordPress landestandard."
 
-#: wp-includes/option.php:1998
+#: wp-includes/option.php:2001
 msgid "A day number of the week that the week should start on."
 msgstr "Nummer ugedag som ugen skal starte på."
 
-#: wp-includes/option.php:1988
+#: wp-includes/option.php:1991
 msgid "A time format for all time strings."
 msgstr "Klokkeslætformat for alle tidsstrenge."
 
-#: wp-includes/option.php:1978
+#: wp-includes/option.php:1981
 msgid "A date format for all date strings."
 msgstr "Datoformat for alle datostrenge."
 
-#: wp-includes/option.php:1968
+#: wp-includes/option.php:1971
 msgid "A city in the same timezone as you."
 msgstr "En by i samme tidszone som dig."
 
-#: wp-includes/option.php:1910
+#: wp-includes/option.php:1913
 msgid "Site title."
 msgstr "Webstedstitel."
 
@@ -8291,7 +8291,7 @@ msgctxt "previous set of posts"
 msgid "Previous"
 msgstr "Forrige"
 
-#: wp-login.php:829 wp-login.php:1334 wp-includes/general-template.php:463
+#: wp-login.php:829 wp-login.php:1340 wp-includes/general-template.php:463
 msgid "Username or Email Address"
 msgstr "Brugernavn eller e-mailadresse"
 
@@ -9036,7 +9036,7 @@ msgstr "At fjerne %1$s manuelt vil udløse PHP-advarsler. Brug i stedet %2$s fil
 msgid "The next group of formatting shortcuts are applied as you type or when you insert them around plain text in the same paragraph. Press Escape or the Undo button to undo."
 msgstr "Den næste gruppe af formateringsgenveje anvendes, mens du skriver, eller når du indsætter dem rundt om almindelig tekst i samme afsnit. Tryk Escape eller på knappen Fortryd for at fortryde."
 
-#: wp-login.php:1279
+#: wp-login.php:1285
 msgid "Your session has expired. Please log in to continue where you left off."
 msgstr "Din session er udløbet. Log ind igen for at fortsætte, hvor du slap."
 
@@ -9942,7 +9942,7 @@ msgstr "Din nye adgangskode er ikke blevet gemt."
 msgid "Hide password"
 msgstr "Skjul adgangskode"
 
-#: wp-login.php:1342 wp-includes/script-loader.php:1484
+#: wp-login.php:1348 wp-includes/script-loader.php:1484
 msgid "Show password"
 msgstr "Vis adgangskode"
 
@@ -11142,7 +11142,7 @@ msgctxt "add new media"
 msgid "Add New"
 msgstr "Tilføj nyt"
 
-#: wp-login.php:1294
+#: wp-login.php:1300
 msgid "<strong>You have successfully updated WordPress!</strong> Please log back in to see what&#8217;s new."
 msgstr "<strong>Du har nu opdateret WordPress!</strong> Log venligst ind igen for at se hvad der er nyt."
 
@@ -14201,7 +14201,7 @@ msgstr "Du har desværre ikke tilladelse til at udgive indlæg på dette websted
 msgid "Sorry, you are not allowed to post on this site."
 msgstr "Du har desværre ikke tilladelse til at skrive på dette websted."
 
-#: wp-includes/option.php:1938
+#: wp-includes/option.php:1941
 msgid "Site URL."
 msgstr "Webstedets URL."
 
@@ -14852,23 +14852,23 @@ msgstr "Der lader ikke til at være nye e-mails."
 msgid "Slow down cowboy, no need to check for new mails so often!"
 msgstr "Klap lige hesten, cowboy. Du behøver ikke tjekke mail så tit!"
 
-#: wp-login.php:1292
+#: wp-login.php:1298
 msgid "Registration complete. Please check your email."
 msgstr "Registrering færdig. Tjek venligst din e-mail."
 
-#: wp-login.php:1290
+#: wp-login.php:1296
 msgid "Check your email for your new password."
 msgstr "Tjek din e-mail for din nye adgangskode."
 
-#: wp-login.php:1288
+#: wp-login.php:1294
 msgid "Check your email for the confirmation link."
 msgstr "Tjek din e-mail for bekræftelseslinket."
 
-#: wp-login.php:1286
+#: wp-login.php:1292
 msgid "User registration is currently not allowed."
 msgstr "Registrering af brugere er i øjeblikket ikke tilladt."
 
-#: wp-login.php:1284
+#: wp-login.php:1290
 msgid "You are now logged out."
 msgstr "Du er nu logget ud."
 
@@ -14876,7 +14876,7 @@ msgstr "Du er nu logget ud."
 msgid "You have logged in successfully."
 msgstr "Du er logget ind."
 
-#: wp-login.php:1088 wp-login.php:1401 wp-includes/user.php:179
+#: wp-login.php:1088 wp-login.php:1407 wp-includes/user.php:179
 #: wp-includes/user.php:250
 msgid "Lost your password?"
 msgstr "Mistet din adgangskode?"
@@ -16068,12 +16068,12 @@ msgstr "Søgeresultater %1$s %2$s"
 msgid "Site Admin"
 msgstr "Webstedsadministrator"
 
-#: wp-login.php:853 wp-login.php:988 wp-login.php:1081 wp-login.php:1392
+#: wp-login.php:853 wp-login.php:988 wp-login.php:1081 wp-login.php:1398
 #: wp-includes/general-template.php:595
 msgid "Register"
 msgstr "Registrer"
 
-#: wp-login.php:1357 wp-includes/general-template.php:465
+#: wp-login.php:1363 wp-includes/general-template.php:465
 msgid "Remember Me"
 msgstr "Husk mig"
 
@@ -16678,7 +16678,7 @@ msgstr "Ja"
 msgid "Edit Category"
 msgstr "Rediger kategori"
 
-#: wp-login.php:1315 wp-login.php:1359 wp-includes/general-template.php:466
+#: wp-login.php:1321 wp-login.php:1365 wp-includes/general-template.php:466
 msgid "Log In"
 msgstr "Log ind"
 
@@ -16998,7 +16998,7 @@ msgstr "Miniature"
 msgid "Redo"
 msgstr "Annuller fortryd"
 
-#: wp-login.php:1339 wp-includes/general-template.php:464
+#: wp-login.php:1345 wp-includes/general-template.php:464
 msgid "Password"
 msgstr "Adgangskode"
 
