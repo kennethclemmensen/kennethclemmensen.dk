@@ -13,7 +13,7 @@ module.exports = function(grunt) {
                 files: [
                     '<%= pkg.cssFolder %>*.css',
                     '<%= pkg.themeFolder %>**/*.php',
-                    '<%= pkg.jsFolder %>*.js'
+                    '<%= pkg.jsCompiledFolder %>**/*.js'
                 ],
                 logConnections: true,
                 notify: true,
@@ -60,7 +60,7 @@ module.exports = function(grunt) {
         terser: {
             your_target: {
                 files: {
-                    '<%= pkg.jsFolder %>minified/script.min.js': ['<%= pkg.jsFolder %>*.js']
+                    '<%= pkg.jsFolder %>minified/script.min.js': ['<%= pkg.jsCompiledFolder %>**/*.js']
                 }
             }
         },
@@ -79,7 +79,7 @@ module.exports = function(grunt) {
                 livereload: true
             },
             javascript: {
-                files: ['<%= pkg.jsFolder %>*.js'],
+                files: ['<%= pkg.jsCompiledFolder %>**/*.js'],
                 options: {
                     spawn: false
                 },

@@ -6,7 +6,7 @@
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
     "noImplicitReturns": true,
-    "outDir": "./public/wp-content/themes/kennethclemmensen/js",
+    "outDir": "./public/wp-content/themes/kennethclemmensen/js/compiled",
     "sourceMap": false,
     "strictNullChecks": true,
     "target": "es6",

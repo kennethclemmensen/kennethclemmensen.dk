@@ -2,6 +2,7 @@
   "cssFolder": "public/wp-content/themes/kennethclemmensen/css/",
   "lessFolder": "public/wp-content/themes/kennethclemmensen/less/",
   "jsFolder": "public/wp-content/themes/kennethclemmensen/js/",
+  "jsCompiledFolder": "public/wp-content/themes/kennethclemmensen/js/compiled/",
   "sassFolder": "public/wp-content/themes/kennethclemmensen/sass/",
   "themeFolder": "public/wp-content/themes/kennethclemmensen/",
   "tsFolder": "public/wp-content/themes/kennethclemmensen/ts/",
