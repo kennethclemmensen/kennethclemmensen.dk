@@ -17,7 +17,7 @@ function browserSync() {
         files: [
             packageConfig.cssFolder + '*.css',
             packageConfig.themeFolder + '**/*.php',
-            packageConfig.jsCompiledFolder + '**/*.js'
+            packageConfig.jsCompiledFiles
         ],
         logConnections: true,
         notify: true,
@@ -35,14 +35,14 @@ function imagemin() {
 
 //Uglify the JavaScript files
 function javascript() {
-    return src(packageConfig.jsCompiledFolder + '**/*.js')
+    return src(packageConfig.jsCompiledFiles)
         .pipe(concatPlugin('script.min.js'))
         .pipe(terserPlugin())
         .on('error', function(error) {
             console.log(error.toString());
             this.emit('end');
         })
-        .pipe(dest(packageConfig.jsFolder + 'minified/'))
+        .pipe(dest(packageConfig.jsMinifiedFolder))
         .pipe(browserSyncPlugin.reload({
             stream: true
         }));
@@ -90,7 +90,7 @@ exports.default = series(browserSync);
 exports.imagemin = imagemin;
 
 //Look for changes in files
-watch(packageConfig.jsCompiledFolder + '**/*.js', javascript);
+watch(packageConfig.jsCompiledFiles, javascript);
 watch(packageConfig.lessFolder + '**/*.less', less);
 watch(packageConfig.sassFolder + '**/*.scss', sass);
 watch(packageConfig.tsFolder + '*.ts', typescript);
