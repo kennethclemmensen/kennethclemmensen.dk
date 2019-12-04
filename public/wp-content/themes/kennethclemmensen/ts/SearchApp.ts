@@ -1,5 +1,5 @@
-import { HttpMethod } from './HttpMethod';
-import { HttpStatusCode } from './HttpStatusCode';
+import { HttpMethod } from './enums/HttpMethod';
+import { HttpStatusCode } from './enums/HttpStatusCode';
 
 /**
  * The search app class contains methods to handle the search functionality
