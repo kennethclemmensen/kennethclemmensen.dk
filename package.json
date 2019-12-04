@@ -29,6 +29,6 @@
     "gulp-terser": "^1.2.0",
     "gulp-typescript": "^5.0.1",
     "node-sass": "^4.13.0",
-    "typescript": "^3.7.2"
+    "typescript": "^3.7.3"
   }
 }
