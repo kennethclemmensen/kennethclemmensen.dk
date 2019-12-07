@@ -3,7 +3,7 @@
  */
 export class Slider {
 
-    private sliderImages: JQuery;
+    private readonly sliderImages: JQuery;
     private currentRandomNumber: number;
 
     /**
