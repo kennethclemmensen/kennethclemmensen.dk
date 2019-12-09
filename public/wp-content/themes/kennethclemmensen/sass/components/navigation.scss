@@ -28,7 +28,7 @@
         padding: 2px 0 0 0;
         border: 1px solid $color-gray;
         border-bottom: none;
-        @include border-radius2(8px, 8px, 0, 0);
+        @include border-radius(8px, 8px, 0, 0);
         text-align: center;
       }
       &:hover, &.current-menu-item, &.current_page_ancestor {
