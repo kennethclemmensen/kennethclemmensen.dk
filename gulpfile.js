@@ -15,8 +15,8 @@ function browserSync() {
     browserSyncPlugin.init({
         debugInfo: true,
         files: [
-            packageConfig.cssFolder + '*.css',
-            packageConfig.themeFolder + '**/*.php',
+            packageConfig.cssFiles,
+            packageConfig.phpFiles,
             packageConfig.jsCompiledFiles
         ],
         logConnections: true,
@@ -36,9 +36,9 @@ function imagemin() {
 //Uglify the JavaScript files
 function javascript() {
     return src(packageConfig.jsCompiledFiles)
-        .pipe(concatPlugin('script.min.js'))
+        .pipe(concatPlugin(packageConfig.jsMinifiedFile))
         .pipe(terserPlugin())
-        .on('error', function(error) {
+        .on('error', (error) => {
             console.log(error.toString());
             this.emit('end');
         })
@@ -50,9 +50,9 @@ function javascript() {
 
 //Translate less to css
 function less() {
-    return src(packageConfig.lessFolder + 'style.less')
+    return src(packageConfig.styleLessFile)
         .pipe(lessPlugin())
-        .on('error', function(error) {
+        .on('error', (error) => {
             console.log(error.toString());
             this.emit('end');
         })
@@ -65,9 +65,9 @@ function less() {
 
 //Translate sass to css
 function sass() {
-    return src(packageConfig.sassFolder + 'style.scss')
+    return src(packageConfig.styleScssFile)
         .pipe(sassPlugin())
-        .on('error', function(error) {
+        .on('error', (error) => {
             console.log(error.toString());
             this.emit('end');
         })
@@ -91,6 +91,6 @@ exports.imagemin = imagemin;
 
 //Look for changes in files
 watch(packageConfig.jsCompiledFiles, javascript);
-watch(packageConfig.lessFolder + '**/*.less', less);
-watch(packageConfig.sassFolder + '**/*.scss', sass);
-watch(packageConfig.tsFolder + '*.ts', typescript);
+watch(packageConfig.lessFiles, less);
+watch(packageConfig.scssFiles, sass);
+watch(packageConfig.tsFiles, typescript);

@@ -6,13 +6,13 @@ module.exports = function(grunt) {
         //Setup the browserSync task to synchronize browsers on different devices
         browserSync: {
             bsFiles: {
-                src: '<%= pkg.cssFolder %>*.css'
+                src: '<%= pkg.cssFiles %>'
             },
             options: {
                 debugInfo: true,
                 files: [
-                    '<%= pkg.cssFolder %>*.css',
-                    '<%= pkg.themeFolder %>**/*.php',
+                    '<%= pkg.cssFiles %>',
+                    '<%= pkg.phpFiles %>',
                     '<%= pkg.jsCompiledFiles %>'
                 ],
                 logConnections: true,
@@ -36,7 +36,7 @@ module.exports = function(grunt) {
         less: {
             development: {
                 files: {
-                    '<%= pkg.cssFolder %>style.css': '<%= pkg.lessFolder %>style.less'
+                    '<%= pkg.styleCssFile %>': '<%= pkg.styleLessFile %>'
                 },
                 options: {
                     compress: true,
@@ -52,7 +52,7 @@ module.exports = function(grunt) {
             },
             dist: {
                 files: {
-                    '<%= pkg.cssFolder %>style.css': '<%= pkg.sassFolder %>style.scss'
+                    '<%= pkg.styleCssFile %>': '<%= pkg.styleScssFile %>'
                 }
             }
         },
@@ -60,7 +60,7 @@ module.exports = function(grunt) {
         terser: {
             your_target: {
                 files: {
-                    '<%= pkg.jsMinifiedFolder %>script.min.js': ['<%= pkg.jsCompiledFiles %>']
+                    '<%= pkg.jsMinifiedFolder %><%= pkg.jsMinifiedFile %>': ['<%= pkg.jsCompiledFiles %>']
                 }
             }
         },
@@ -86,21 +86,21 @@ module.exports = function(grunt) {
                 tasks: ['terser']
             },
             less: {
-                files: ['<%= pkg.lessFolder %>**/*.less'],
+                files: ['<%= pkg.lessFiles %>'],
                 options: {
                     spawn: false
                 },
                 tasks: ['less']
             },
             sass: {
-                files: ['<%= pkg.sassFolder %>**/*.scss'],
+                files: ['<%= pkg.scssFiles %>'],
                 options: {
                     spawn: false
                 },
                 tasks: ['sass']
             },
             typescript: {
-                files: ['<%= pkg.tsFolder %>**/*.ts'],
+                files: ['<%= pkg.tsFiles %>'],
                 options: {
                     spawn: false
                 },
