@@ -5,8 +5,8 @@ while(have_posts()) {
     ?>
     <div class="page">
         <?php
-        get_template_part('partials/slider');
-        get_template_part('partials/breadcrumb');
+        get_template_part('template-parts/slider');
+        get_template_part('template-parts/breadcrumb');
         ?>
         <section class="page__content">
             <h1><?php the_title(); ?></h1>
