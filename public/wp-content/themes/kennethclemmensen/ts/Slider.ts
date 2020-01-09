@@ -12,7 +12,7 @@ export class Slider {
      * @param delay the delay of a slide
      * @param duration the duration of a slide
      */
-    public constructor(private delay: number, private duration: number) {
+    public constructor(private readonly delay: number, private readonly duration: number) {
         this.sliderImages = jQuery('.slider__image');
         this.currentRandomNumber = -1;
         this.showSlider();
