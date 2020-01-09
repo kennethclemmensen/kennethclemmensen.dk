@@ -1,41 +1,50 @@
 <?php
 namespace KCAPI\Includes;
 
-use \WP_REST_Controller;
 use \WP_REST_Request;
 use \WP_REST_Response;
 use \WP_REST_Server;
 use \WP_Query;
 
 /**
- * Class KCAPIController contains methods to set up API endpoints and get data
+ * The KCAPIController contains methods to register routes and get data
  * @package KCAPI\Includes
  */
-final class KCAPIController extends WP_REST_Controller {
+final class KCAPIController {
 
+    private $namespace;
+    private $statusCodeOk;
     private $downloadCounterField;
 
     /**
      * KCAPIController constructor
      */
     public function __construct() {
+        $this->namespace = 'kcapi/v1';
+        $this->statusCodeOk = 200;
         $this->downloadCounterField = 'fdwc_field_download_counter';
     }
 
     /**
-     * Register routes
+     * Register routes to the API
      */
     public function registerRoutes() : void {
-        $namespace = 'kcapi/v1';
+        $this->registerPagesRoute();
+        $this->registerFileDownloadCounterRoutes();
+    }
+
+    /**
+     * Register the pages route
+     */
+    private function registerPagesRoute() : void {
         $title = 'title';
         $page = 'page';
         $perPage = 'per_page';
-        $statusCodeOk = 200;
-        register_rest_route($namespace, '/pages/(?P<'.$title.'>[\S]+)', [
+        register_rest_route($this->namespace, '/pages/(?P<'.$title.'>[\S]+)', [
             'methods' => [WP_REST_Server::READABLE],
-            'callback' => function(WP_REST_Request $request) use ($title, $page, $perPage, $statusCodeOk) : WP_REST_Response {
+            'callback' => function(WP_REST_Request $request) use ($title, $page, $perPage) : WP_REST_Response {
                 $pages = $this->getPagesByTitle($request->get_param($title), $request->get_param($page) - 1, $request->get_param($perPage));
-                return new WP_REST_Response($pages, $statusCodeOk);
+                return new WP_REST_Response($pages, $this->statusCodeOk);
             },
             'args' => [
                 $title => [
@@ -65,8 +74,14 @@ final class KCAPIController extends WP_REST_Controller {
                 return true;
             }
         ]);
-        $key = 'fileid';
+    }
+
+    /**
+     * Register the file download counter routes
+     */
+    private function registerFileDownloadCounterRoutes() : void {
         $route = '/fileDownloads';
+        $key = 'fileid';
         $args = [
             $key => [
                 'required' => true,
@@ -78,22 +93,22 @@ final class KCAPIController extends WP_REST_Controller {
                 }
             ]
         ];
-        register_rest_route($namespace, $route, [
+        register_rest_route($this->namespace, $route, [
             'methods' => [WP_REST_Server::READABLE],
-            'callback' => function(WP_REST_Request $request) use ($key, $statusCodeOk) : WP_REST_Response {
+            'callback' => function(WP_REST_Request $request) use ($key) : WP_REST_Response {
                 $fileDownloads = $this->getFileDownloads($request->get_param($key));
-                return new WP_REST_Response($fileDownloads, $statusCodeOk);
+                return new WP_REST_Response($fileDownloads, $this->statusCodeOk);
             },
             'args' => $args,
             'permission_callback' => function() : bool {
                 return true;
             }
         ]);
-        register_rest_route($namespace, $route, [
+        register_rest_route($this->namespace, $route, [
             'methods' => ['PUT'],
-            'callback' => function(WP_REST_Request $request) use ($key, $statusCodeOk) : WP_REST_Response {
+            'callback' => function(WP_REST_Request $request) use ($key) : WP_REST_Response {
                 $this->updateFileDownloadCounter($request->get_param($key));
-                return new WP_REST_Response($statusCodeOk);
+                return new WP_REST_Response($this->statusCodeOk);
             },
             'args' => $args,
             'permission_callback' => function() : bool {
