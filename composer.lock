@@ -68,16 +68,16 @@
         },
         {
             "name": "codeception/codeception",
-            "version": "4.0.1",
+            "version": "4.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/Codeception.git",
-                "reference": "65bb6f8248000d7b8a3e2e98b7a6da6248096b78"
+                "reference": "e610c15ebb73b56722c67e1c799bf0565f062899"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/65bb6f8248000d7b8a3e2e98b7a6da6248096b78",
-                "reference": "65bb6f8248000d7b8a3e2e98b7a6da6248096b78",
+                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/e610c15ebb73b56722c67e1c799bf0565f062899",
+                "reference": "e610c15ebb73b56722c67e1c799bf0565f062899",
                 "shasum": ""
             },
             "require": {
@@ -149,7 +149,7 @@
                 "functional testing",
                 "unit testing"
             ],
-            "time": "2019-12-21T16:22:15+00:00"
+            "time": "2020-01-14T14:44:10+00:00"
         },
         {
             "name": "codeception/lib-asserts",
