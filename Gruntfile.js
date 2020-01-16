@@ -56,14 +56,6 @@ module.exports = function(grunt) {
                 }
             }
         },
-        //Uglify the JavaScript files
-        terser: {
-            your_target: {
-                files: {
-                    '<%= pkg.jsMinifiedFolder %><%= pkg.jsMinifiedFile %>': ['<%= pkg.jsCompiledFiles %>']
-                }
-            }
-        },
         //Translate TypeScript to JavaScript by using the tsconfig.json file
         ts: {
             default: {
@@ -77,13 +69,6 @@ module.exports = function(grunt) {
         watch: {
             options: {
                 livereload: true
-            },
-            javascript: {
-                files: ['<%= pkg.jsCompiledFiles %>'],
-                options: {
-                    spawn: false
-                },
-                tasks: ['terser']
             },
             less: {
                 files: ['<%= pkg.lessFiles %>'],
@@ -115,7 +100,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-sass');
-    grunt.loadNpmTasks('grunt-terser');
     grunt.loadNpmTasks('grunt-ts');
 
     //Register the default tasks
