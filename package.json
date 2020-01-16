@@ -33,6 +33,11 @@
     "gulp-terser": "^1.2.0",
     "gulp-typescript": "^5.0.1",
     "node-sass": "^4.13.1",
-    "typescript": "^3.7.4"
+    "typescript": "^3.7.4",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  },
+  "scripts": {
+    "build": "webpack"
   }
 }
