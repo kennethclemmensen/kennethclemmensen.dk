@@ -1,6 +1,6 @@
 {
-  "cssFolder": "public/wp-content/themes/kennethclemmensen/css/",
   "cssFiles": "public/wp-content/themes/kennethclemmensen/css/*.css",
+  "cssFolder": "public/wp-content/themes/kennethclemmensen/css/",
   "jsCompiledFiles": "public/wp-content/themes/kennethclemmensen/js/compiled/**/*.js",
   "jsMinifiedFile": "script.min.js",
   "jsMinifiedFolder": "public/wp-content/themes/kennethclemmensen/js/minified/",
@@ -32,7 +32,7 @@
     "gulp-sass": "^4.0.2",
     "gulp-terser": "^1.2.0",
     "gulp-typescript": "^5.0.1",
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.13.1",
     "typescript": "^3.7.4"
   }
 }
