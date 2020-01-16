@@ -1,3 +1,4 @@
+import { EventType } from './enums/EventType';
 import { HttpMethod } from './enums/HttpMethod';
 import { HttpStatusCode } from './enums/HttpStatusCode';
 /**
@@ -33,10 +34,10 @@ export class SearchApp {
                     }
                     let request = new XMLHttpRequest();
                     request.open(HttpMethod.Get, '/wp-json/kcapi/v1/pages/' + this.searchString, true);
-                    request.addEventListener('load', () => {
+                    request.addEventListener(EventType.Load, () => {
                         this.results = (request.status === HttpStatusCode.Ok) ? JSON.parse(request.responseText) : [];
                     });
-                    request.addEventListener('error', () => {
+                    request.addEventListener(EventType.Error, () => {
                         this.results = [];
                     });
                     request.send();

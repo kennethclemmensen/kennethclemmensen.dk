@@ -1,3 +1,4 @@
+import { EventType } from './enums/EventType';
 import { HttpMethod } from './enums/HttpMethod';
 import { HttpStatusCode } from './enums/HttpStatusCode';
 import { SearchApp } from './SearchApp';
@@ -16,7 +17,7 @@ class App {
      * Setup the app
      */
     setupApp() {
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener(EventType.DOMContentLoaded, () => {
             var _a, _b;
             this.body = document.querySelector('body');
             this.setupMobileNavigation();
@@ -37,7 +38,7 @@ class App {
         let mobileMenuTrigger = document.getElementById('mobile-menu-trigger');
         let mobileMenu = document.getElementById('mobile-menu');
         let showMobileMenuClass = 'show-mobile-menu';
-        (_a = mobileMenuTrigger) === null || _a === void 0 ? void 0 : _a.addEventListener('click', (event) => {
+        (_a = mobileMenuTrigger) === null || _a === void 0 ? void 0 : _a.addEventListener(EventType.Click, (event) => {
             var _a, _b, _c;
             event.preventDefault();
             (_a = mobileMenuTrigger) === null || _a === void 0 ? void 0 : _a.classList.toggle('header__nav-trigger--active');
@@ -47,7 +48,7 @@ class App {
         });
         let mobileNavigationArrows = document.querySelectorAll('.mobile-nav__arrow');
         mobileNavigationArrows.forEach((arrow) => {
-            arrow.addEventListener('click', (event) => {
+            arrow.addEventListener(EventType.Click, (event) => {
                 event.preventDefault();
                 arrow.classList.toggle('mobile-nav__arrow--rotated');
                 let subMenu = arrow.parentNode.parentNode.getElementsByClassName('sub-menu')[0];
@@ -61,16 +62,16 @@ class App {
     setupDownloadLinks() {
         let downloadLinks = document.querySelectorAll('.fdwc__link');
         downloadLinks.forEach((downloadLink) => {
-            downloadLink.addEventListener('click', () => {
+            downloadLink.addEventListener(EventType.Click, () => {
                 let xmlHttpRequest = new XMLHttpRequest();
                 let fileId = downloadLink.dataset.fileId;
                 let url = '/wp-json/kcapi/v1/fileDownloads?fileid=' + fileId;
                 xmlHttpRequest.open(HttpMethod.Put, url, true);
-                xmlHttpRequest.addEventListener('load', () => {
+                xmlHttpRequest.addEventListener(EventType.Load, () => {
                     if (xmlHttpRequest.status === HttpStatusCode.Ok) {
                         let xhr = new XMLHttpRequest();
                         xhr.open(HttpMethod.Get, url, true);
-                        xhr.addEventListener('load', () => {
+                        xhr.addEventListener(EventType.Load, () => {
                             let downloads = downloadLink.parentNode.querySelector('span.fdwc__downloads');
                             downloads.innerText = (xhr.status === HttpStatusCode.Ok) ? xhr.responseText : parseInt(downloads.innerText) + 1;
                         });
