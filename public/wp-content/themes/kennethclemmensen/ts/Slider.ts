@@ -9,7 +9,7 @@ export class Slider {
     /**
      * Slider constructor
      *
-     * @param delay the delay of a slide
+     * @param delay the delay between two slides
      * @param duration the duration of a slide
      */
     public constructor(private readonly delay: number, private readonly duration: number) {
@@ -37,10 +37,10 @@ export class Slider {
         let randomNumber: number = this.getRandomNumber();
         this.sliderImages.eq(randomNumber).show();
         setInterval((): void => {
-            this.sliderImages.eq(randomNumber).fadeOut(this.duration, (): void => {
+            this.sliderImages.eq(randomNumber).fadeOut(this.delay, (): void => {
                 randomNumber = this.getRandomNumber();
-                this.sliderImages.eq(randomNumber).fadeIn(this.duration);
+                this.sliderImages.eq(randomNumber).fadeIn(this.delay);
             });
-        }, this.delay);
+        }, this.duration);
     }
 }

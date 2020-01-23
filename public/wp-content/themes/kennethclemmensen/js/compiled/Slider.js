@@ -5,7 +5,7 @@ export class Slider {
     /**
      * Slider constructor
      *
-     * @param delay the delay of a slide
+     * @param delay the delay between two slides
      * @param duration the duration of a slide
      */
     constructor(delay, duration) {
@@ -34,10 +34,10 @@ export class Slider {
         let randomNumber = this.getRandomNumber();
         this.sliderImages.eq(randomNumber).show();
         setInterval(() => {
-            this.sliderImages.eq(randomNumber).fadeOut(this.duration, () => {
+            this.sliderImages.eq(randomNumber).fadeOut(this.delay, () => {
                 randomNumber = this.getRandomNumber();
-                this.sliderImages.eq(randomNumber).fadeIn(this.duration);
+                this.sliderImages.eq(randomNumber).fadeIn(this.delay);
             });
-        }, this.delay);
+        }, this.duration);
     }
 }

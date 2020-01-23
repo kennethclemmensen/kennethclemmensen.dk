@@ -76,7 +76,7 @@ class App {
                         let xhr: XMLHttpRequest = new XMLHttpRequest();
                         xhr.open(HttpMethod.Get, url, true);
                         xhr.addEventListener(EventType.Load, (): void => {
-                            let downloads = downloadLink.parentNode.querySelector('span.fdwc__downloads');
+                            let downloads: any = downloadLink.parentNode.querySelector('span.fdwc__downloads');
                             downloads.innerText = (xhr.status === HttpStatusCode.Ok) ? xhr.responseText : parseInt(downloads.innerText) + 1;
                         });
                         xhr.send();
