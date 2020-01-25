@@ -69,10 +69,10 @@ class KCSliderSettings {
             add_settings_section($sectionID, 'KC Slider Settings', null, $this->pageSlug);
             $prefix = 'kc-slider-';
             add_settings_field($prefix.'delay', 'Delay', function() : void {
-                echo '<input type="number" name="'.$this->optionName.'['.$this->delay.']" value="'.$this->getDelay().'" required min="1" max="10000" step="500">';
+                echo '<input type="number" name="'.$this->optionName.'['.$this->delay.']" value="'.$this->getDelay().'" required min="1" max="10000">';
             }, $this->pageSlug, $sectionID);
             add_settings_field($prefix.'duration', 'Duration', function() : void {
-                echo '<input type="number" name="'.$this->optionName.'['.$this->duration.']" value="'.$this->getDuration().'" required min="1" max="10000" step="500">';
+                echo '<input type="number" name="'.$this->optionName.'['.$this->duration.']" value="'.$this->getDuration().'" required min="1" max="10000">';
             }, $this->pageSlug, $sectionID);
             register_setting($this->optionName, $this->optionName, function(array $input) : array {
                 return $this->validateInput($input);
@@ -97,11 +97,11 @@ class KCSliderSettings {
      * @return array the validated input
      */
     private function validateInput(array $input) : array {
-        $output = [];
+        $validatedInput = [];
         foreach($input as $key => $value) {
-            $output[$key] = strip_tags(addslashes($input[$key]));
+            $validatedInput[$key] = strip_tags(addslashes($input[$key]));
         }
-        return $output;
+        return $validatedInput;
     }
 
     /**
