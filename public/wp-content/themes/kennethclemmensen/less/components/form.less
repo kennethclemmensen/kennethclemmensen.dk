@@ -8,9 +8,7 @@ input[type='search'] {
   margin: 0 15px 15px 0;
   border: 2px inset @color-gray;
   color: @color-black;
-  &::placeholder {
-    color: @color-gray--dark;
-  }
+  .placeholder-color(@color-gray--dark);
 }
 
 input[type='submit'] {

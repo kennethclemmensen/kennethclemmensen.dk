@@ -10,6 +10,12 @@
   box-shadow: $x $y $blur $color;
 }
 
+@mixin placeholder-color($color) {
+  &::placeholder {
+    color: $color;
+  }
+}
+
 @mixin rotate($value) {
   transform: rotate($value);
 }

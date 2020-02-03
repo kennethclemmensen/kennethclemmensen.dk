@@ -10,6 +10,12 @@
   box-shadow: @arguments;
 }
 
+.placeholder-color(@color) {
+  &::placeholder {
+    color: @color;
+  }
+}
+
 .rotate(@value) {
   transform: rotate(@value);
 }
