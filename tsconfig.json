@@ -9,7 +9,7 @@
     "outDir": "./public/wp-content/themes/kennethclemmensen/js/compiled",
     "sourceMap": false,
     "strictNullChecks": true,
-    "target": "es6",
+    "target": "es2020",
     "types": ["jquery"]
   },
   "include": [
