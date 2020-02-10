@@ -65,7 +65,7 @@ final class IconWidget extends WP_Widget {
                 <?php
                 $icons = $this->getIcons();
                 foreach($icons as $key => $value) {
-                    echo '<option value="'.$value.'" '.selected($icon, $value).'>'.$key.'</option>';
+                    echo '<option value="'.$key.'" '.selected($icon, $key).'>'.$value.'</option>';
                 }
                 ?>
             </select>

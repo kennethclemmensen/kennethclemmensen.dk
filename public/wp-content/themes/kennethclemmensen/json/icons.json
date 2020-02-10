@@ -1,5 +1,5 @@
 {
-  "Envelope": "fas fa-envelope",
-  "GitHub": "fab fa-github",
-  "LinkedIn": "fab fa-linkedin-in"
+  "fas fa-envelope": "Envelope",
+  "fab fa-github": "GitHub",
+  "fab fa-linkedin-in": "LinkedIn"
 }
