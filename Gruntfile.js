@@ -56,6 +56,12 @@ module.exports = function(grunt) {
                 }
             }
         },
+        //Use the grunt-shell plugin to run commands
+        shell: {
+            npm_run_build: {
+                command: 'npm run build'
+            }
+        },
         //Translate TypeScript to JavaScript by using the tsconfig.json file
         ts: {
             default: {
@@ -69,6 +75,13 @@ module.exports = function(grunt) {
         watch: {
             options: {
                 livereload: true
+            },
+            javascript: {
+                files: ['<%= pkg.jsCompiledFiles %>'],
+                options: {
+                    spawn: false
+                },
+                tasks: ['shell:npm_run_build']
             },
             less: {
                 files: ['<%= pkg.lessFiles %>'],
@@ -100,6 +113,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-sass');
+    grunt.loadNpmTasks('grunt-shell');
     grunt.loadNpmTasks('grunt-ts');
 
     //Register the default tasks
