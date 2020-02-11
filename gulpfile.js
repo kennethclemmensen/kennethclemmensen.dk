@@ -5,6 +5,7 @@ const imageminPlugin = require('gulp-imagemin');
 const lessPlugin = require('gulp-less');
 const packageConfig = require('./package.json');
 const sassPlugin = require('gulp-sass');
+const shellPlugin = require('gulp-shell');
 const typescriptPlugin = require('gulp-typescript');
 const typescriptConfig = typescriptPlugin.createProject('tsconfig.json');
 
@@ -46,6 +47,19 @@ function less() {
         }));
 }
 
+//Run a npm command
+function runNpmCommand() {
+    return src(packageConfig.jsCompiledFiles)
+        .pipe(shellPlugin(packageConfig.npmCommand))
+        .on('error', (error) => {
+            console.log(error.toString());
+            this.emit('end');
+        })
+        .pipe(browserSyncPlugin.reload({
+            stream: true
+        }));
+}
+
 //Translate sass to css
 function sass() {
     return src(packageConfig.styleScssFile)
@@ -73,6 +87,7 @@ exports.default = series(browserSync);
 exports.imagemin = imagemin;
 
 //Look for changes in files
+watch(packageConfig.jsCompiledFiles, runNpmCommand);
 watch(packageConfig.lessFiles, less);
 watch(packageConfig.scssFiles, sass);
 watch(packageConfig.tsFiles, typescript);

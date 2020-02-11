@@ -56,10 +56,10 @@ module.exports = function(grunt) {
                 }
             }
         },
-        //Use the grunt-shell plugin to run commands
+        //Use the grunt-shell plugin to run a npm command
         shell: {
             npm_run_build: {
-                command: 'npm run build'
+                command: '<%= pkg.npmCommand %>'
             }
         },
         //Translate TypeScript to JavaScript by using the tsconfig.json file
