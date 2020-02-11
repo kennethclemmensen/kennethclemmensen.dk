@@ -16,7 +16,7 @@ function browserSync() {
         files: [
             packageConfig.cssFiles,
             packageConfig.phpFiles,
-            packageConfig.jsCompiledFiles
+            packageConfig.jsMinifiedFolder + '/' + packageConfig.jsMinifiedFile
         ],
         logConnections: true,
         notify: true,

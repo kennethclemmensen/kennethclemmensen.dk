@@ -2,6 +2,8 @@
   "cssFiles": "public/wp-content/themes/kennethclemmensen/css/*.css",
   "cssFolder": "public/wp-content/themes/kennethclemmensen/css/",
   "jsCompiledFiles": "public/wp-content/themes/kennethclemmensen/js/compiled/**/*.js",
+  "jsMinifiedFile": "script.min.js",
+  "jsMinifiedFolder": "public/wp-content/themes/kennethclemmensen/js/minified",
   "lessFiles": "public/wp-content/themes/kennethclemmensen/less/**/*.less",
   "npmCommand": "npm run build",
   "phpFiles": "public/wp-content/themes/kennethclemmensen/**/*.php",

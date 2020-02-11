@@ -13,7 +13,7 @@ module.exports = function(grunt) {
                 files: [
                     '<%= pkg.cssFiles %>',
                     '<%= pkg.phpFiles %>',
-                    '<%= pkg.jsCompiledFiles %>'
+                    '<%= pkg.jsMinifiedFolder %>/<%= pkg.jsMinifiedFile %>'
                 ],
                 logConnections: true,
                 notify: true,
