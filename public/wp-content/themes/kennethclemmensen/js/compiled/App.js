@@ -8,7 +8,7 @@ import { Slider } from './Slider';
  */
 class App {
     /**
-     * App constructor
+     * Initialize a new instance of the App class
      */
     constructor() {
         this.setupApp();
@@ -20,7 +20,7 @@ class App {
         document.addEventListener(EventType.DOMContentLoaded, () => {
             var _a, _b;
             this.body = document.querySelector('body');
-            this.setupMobileNavigation();
+            this.setupMobileMenu();
             this.setupDownloadLinks();
             let slider = document.getElementById('slider');
             new Slider(slider.dataset.delay, slider.dataset.duration);
@@ -31,9 +31,9 @@ class App {
         });
     }
     /**
-     * Setup the mobile navigation
+     * Setup the event listeners for the mobile menu
      */
-    setupMobileNavigation() {
+    setupMobileMenu() {
         var _a;
         let mobileMenuTrigger = document.getElementById('mobile-menu-trigger');
         let mobileMenu = document.getElementById('mobile-menu');
@@ -46,8 +46,8 @@ class App {
             document.getElementsByTagName('html')[0].classList.toggle(showMobileMenuClass);
             (_c = this.body) === null || _c === void 0 ? void 0 : _c.classList.toggle(showMobileMenuClass);
         });
-        let mobileNavigationArrows = document.querySelectorAll('.mobile-nav__arrow');
-        mobileNavigationArrows.forEach((arrow) => {
+        let mobileMenuArrows = document.querySelectorAll('.mobile-nav__arrow');
+        mobileMenuArrows.forEach((arrow) => {
             arrow.addEventListener(EventType.Click, (event) => {
                 event.preventDefault();
                 arrow.classList.toggle('mobile-nav__arrow--rotated');
@@ -57,15 +57,14 @@ class App {
         });
     }
     /**
-     * Setup the download links
+     * Setup the event listeners for the download links
      */
     setupDownloadLinks() {
         let downloadLinks = document.querySelectorAll('.fdwc__link');
         downloadLinks.forEach((downloadLink) => {
             downloadLink.addEventListener(EventType.Click, () => {
                 let xmlHttpRequest = new XMLHttpRequest();
-                let fileId = downloadLink.dataset.fileId;
-                let url = '/wp-json/kcapi/v1/fileDownloads?fileid=' + fileId;
+                let url = '/wp-json/kcapi/v1/fileDownloads?fileid=' + downloadLink.dataset.fileId;
                 xmlHttpRequest.open(HttpMethod.Put, url, true);
                 xmlHttpRequest.addEventListener(EventType.Load, () => {
                     if (xmlHttpRequest.status === HttpStatusCode.Ok) {

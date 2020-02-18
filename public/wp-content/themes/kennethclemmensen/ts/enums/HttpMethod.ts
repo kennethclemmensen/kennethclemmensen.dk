@@ -1,6 +1,7 @@
 /**
- * The HttpMethod enum contains http methods
+ * The HttpMethod enum defines the http methods
  */
 export enum HttpMethod {
-    Get = 'get', Put = 'put'
+    Get = 'get',
+    Put = 'put'
 }

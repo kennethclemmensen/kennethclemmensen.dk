@@ -1,5 +1,5 @@
 /**
- * The EventType enum contains event types
+ * The EventType enum defines the event types
  */
 export enum EventType {
     Click = 'click',

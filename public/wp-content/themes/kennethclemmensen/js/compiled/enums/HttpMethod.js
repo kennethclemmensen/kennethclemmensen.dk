@@ -1,5 +1,5 @@
 /**
- * The HttpMethod enum contains http methods
+ * The HttpMethod enum defines the http methods
  */
 export var HttpMethod;
 (function (HttpMethod) {

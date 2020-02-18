@@ -1,5 +1,5 @@
 /**
- * The HttpStatusCode enum contains http status codes
+ * The HttpStatusCode enum defines the http status codes
  */
 export var HttpStatusCode;
 (function (HttpStatusCode) {

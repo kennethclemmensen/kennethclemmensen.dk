@@ -6,7 +6,7 @@ import { HttpStatusCode } from './enums/HttpStatusCode';
  */
 export class SearchApp {
     /**
-     * SearchApp constructor
+     * Initialize a new instance of the SearchApp class
      */
     constructor() {
         this.setupSearchApp();

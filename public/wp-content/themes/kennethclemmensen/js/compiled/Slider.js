@@ -3,7 +3,7 @@
  */
 export class Slider {
     /**
-     * Slider constructor
+     * Initialize a new instance of the Slider class with the delay and the duration
      *
      * @param delay the delay between two slides
      * @param duration the duration of a slide

@@ -12,7 +12,7 @@ class App {
     private body: HTMLBodyElement | null;
 
     /**
-     * App constructor
+     * Initialize a new instance of the App class
      */
     public constructor() {
         this.setupApp();
@@ -24,7 +24,7 @@ class App {
     private setupApp(): void {
         document.addEventListener(EventType.DOMContentLoaded, (): void => {
             this.body = document.querySelector('body');
-            this.setupMobileNavigation();
+            this.setupMobileMenu();
             this.setupDownloadLinks();
             let slider: any = document.getElementById('slider');
             new Slider(slider.dataset.delay, slider.dataset.duration);
@@ -36,9 +36,9 @@ class App {
     }
 
     /**
-     * Setup the mobile navigation
+     * Setup the event listeners for the mobile menu
      */
-    private setupMobileNavigation(): void {
+    private setupMobileMenu(): void {
         let mobileMenuTrigger: HTMLElement | null = document.getElementById('mobile-menu-trigger');
         let mobileMenu: HTMLElement | null = document.getElementById('mobile-menu');
         let showMobileMenuClass: string = 'show-mobile-menu';
@@ -49,8 +49,8 @@ class App {
             document.getElementsByTagName('html')[0].classList.toggle(showMobileMenuClass);
             this.body?.classList.toggle(showMobileMenuClass);
         });
-        let mobileNavigationArrows: any = document.querySelectorAll('.mobile-nav__arrow');
-        mobileNavigationArrows.forEach((arrow: any): void => {
+        let mobileMenuArrows: any = document.querySelectorAll('.mobile-nav__arrow');
+        mobileMenuArrows.forEach((arrow: any): void => {
             arrow.addEventListener(EventType.Click, (event: Event): void => {
                 event.preventDefault();
                 arrow.classList.toggle('mobile-nav__arrow--rotated');
@@ -61,15 +61,14 @@ class App {
     }
 
     /**
-     * Setup the download links
+     * Setup the event listeners for the download links
      */
     private setupDownloadLinks(): void {
         let downloadLinks: any = document.querySelectorAll('.fdwc__link');
         downloadLinks.forEach((downloadLink: any): void => {
             downloadLink.addEventListener(EventType.Click, (): void => {
                 let xmlHttpRequest: XMLHttpRequest = new XMLHttpRequest();
-                let fileId: number = downloadLink.dataset.fileId;
-                let url: string = '/wp-json/kcapi/v1/fileDownloads?fileid=' + fileId;
+                let url: string = '/wp-json/kcapi/v1/fileDownloads?fileid=' + downloadLink.dataset.fileId;
                 xmlHttpRequest.open(HttpMethod.Put, url, true);
                 xmlHttpRequest.addEventListener(EventType.Load, (): void => {
                     if(xmlHttpRequest.status === HttpStatusCode.Ok) {
