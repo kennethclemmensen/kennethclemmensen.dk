@@ -3,17 +3,11 @@
  */
 export class Slider {
     /**
-     * Initialize a new instance of the Slider class with the delay and the duration
-     *
-     * @param delay the delay between two slides
-     * @param duration the duration of a slide
+     * Initialize a new instance of the Slider class
      */
-    constructor(delay, duration) {
-        this.delay = delay;
-        this.duration = duration;
+    constructor() {
         this.sliderImages = jQuery('.slider__image');
         this.currentRandomNumber = -1;
-        this.showSlider();
     }
     /**
      * Get a random number between 0 and the number of slides minus 1
@@ -28,16 +22,19 @@ export class Slider {
         return this.currentRandomNumber;
     }
     /**
-     * Show the slider
+     * Show the slides
+     *
+     * @param delay the delay between two slides
+     * @param duration the duration of a slide
      */
-    showSlider() {
+    showSlides(delay, duration) {
         let randomNumber = this.getRandomNumber();
         this.sliderImages.eq(randomNumber).show();
         setInterval(() => {
-            this.sliderImages.eq(randomNumber).fadeOut(this.delay, () => {
+            this.sliderImages.eq(randomNumber).fadeOut(delay, () => {
                 randomNumber = this.getRandomNumber();
-                this.sliderImages.eq(randomNumber).fadeIn(this.delay);
+                this.sliderImages.eq(randomNumber).fadeIn(delay);
             });
-        }, this.duration);
+        }, duration);
     }
 }

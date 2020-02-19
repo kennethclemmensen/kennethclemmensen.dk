@@ -27,7 +27,7 @@ class App {
             this.setupMobileMenu();
             this.setupDownloadLinks();
             let slider: any = document.getElementById('slider');
-            new Slider(slider.dataset.delay, slider.dataset.duration);
+            new Slider().showSlides(slider.dataset.delay, slider.dataset.duration);
             lightbox.option({
                 'albumLabel': this.body?.dataset.imageText + ' %1 ' + this.body?.dataset.ofText + ' %2'
             });

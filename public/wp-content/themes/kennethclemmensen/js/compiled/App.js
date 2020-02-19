@@ -23,7 +23,7 @@ class App {
             this.setupMobileMenu();
             this.setupDownloadLinks();
             let slider = document.getElementById('slider');
-            new Slider(slider.dataset.delay, slider.dataset.duration);
+            new Slider().showSlides(slider.dataset.delay, slider.dataset.duration);
             lightbox.option({
                 'albumLabel': ((_a = this.body) === null || _a === void 0 ? void 0 : _a.dataset.imageText) + ' %1 ' + ((_b = this.body) === null || _b === void 0 ? void 0 : _b.dataset.ofText) + ' %2'
             });
