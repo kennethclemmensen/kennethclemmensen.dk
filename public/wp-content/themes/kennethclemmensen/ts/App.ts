@@ -9,7 +9,7 @@ import { Slider } from './Slider';
  */
 class App {
 
-    private body: HTMLBodyElement | null;
+    private body: any;
 
     /**
      * Initialize a new instance of the App class
@@ -29,7 +29,7 @@ class App {
             let slider: any = document.getElementById('slider');
             new Slider().showSlides(slider.dataset.delay, slider.dataset.duration);
             lightbox.option({
-                'albumLabel': this.body?.dataset.imageText + ' %1 ' + this.body?.dataset.ofText + ' %2'
+                'albumLabel': this.body.dataset.imageText + ' %1 ' + this.body.dataset.ofText + ' %2'
             });
             new SearchApp();
         });
@@ -39,15 +39,15 @@ class App {
      * Setup the event listeners for the mobile menu
      */
     private setupMobileMenu(): void {
-        let mobileMenuTrigger: HTMLElement | null = document.getElementById('mobile-menu-trigger');
-        let mobileMenu: HTMLElement | null = document.getElementById('mobile-menu');
+        let mobileMenuTrigger: any = document.getElementById('mobile-menu-trigger');
+        let mobileMenu: any = document.getElementById('mobile-menu');
         let showMobileMenuClass: string = 'show-mobile-menu';
-        mobileMenuTrigger?.addEventListener(EventType.Click, (event: Event): void => {
+        mobileMenuTrigger.addEventListener(EventType.Click, (event: Event): void => {
             event.preventDefault();
-            mobileMenuTrigger?.classList.toggle('header__nav-trigger--active');
-            mobileMenu?.classList.toggle('mobile-nav--active');
+            mobileMenuTrigger.classList.toggle('header__nav-trigger--active');
+            mobileMenu.classList.toggle('mobile-nav--active');
             document.getElementsByTagName('html')[0].classList.toggle(showMobileMenuClass);
-            this.body?.classList.toggle(showMobileMenuClass);
+            this.body.classList.toggle(showMobileMenuClass);
         });
         let mobileMenuArrows: any = document.querySelectorAll('.mobile-nav__arrow');
         mobileMenuArrows.forEach((arrow: any): void => {
