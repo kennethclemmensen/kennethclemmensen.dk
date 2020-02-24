@@ -93,4 +93,18 @@ final class ThemeHelper {
     public static function getMainMenuKey() : string {
         return 'main-menu';
     }
+
+    /**
+     * Load the breadcrumb template part
+     */
+    public static function loadBreadcrumbTemplatePart(): void {
+        get_template_part('template-parts/breadcrumb');
+    }
+
+    /**
+     * Load the slider template part
+     */
+    public static function loadSliderTemplatePart(): void {
+        get_template_part('template-parts/slider');
+    }
 }
