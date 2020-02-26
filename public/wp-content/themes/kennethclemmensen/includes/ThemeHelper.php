@@ -97,14 +97,14 @@ final class ThemeHelper {
     /**
      * Load the breadcrumb template part
      */
-    public static function loadBreadcrumbTemplatePart(): void {
+    public static function loadBreadcrumbTemplatePart() : void {
         get_template_part('template-parts/breadcrumb');
     }
 
     /**
      * Load the slider template part
      */
-    public static function loadSliderTemplatePart(): void {
+    public static function loadSliderTemplatePart() : void {
         get_template_part('template-parts/slider');
     }
 }
