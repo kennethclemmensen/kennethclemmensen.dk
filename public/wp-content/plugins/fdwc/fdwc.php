@@ -4,7 +4,7 @@ Plugin Name: File Download With Counter
 Description: Download files and counts the number of downloads
 Version: 1.0
 Author: Kenneth Clemmensen
-Author URI: https://www.kennethclemmensen.dk
+Author URI: https://kennethclemmensen.dk
 */
 namespace FDWC;
 if(!defined('ABSPATH')) die();

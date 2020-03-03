@@ -4,7 +4,7 @@ Plugin Name: KC Slider
 Description: A slider plugin
 Version: 1.0
 Author: Kenneth Clemmensen
-Author URI: https://www.kennethclemmensen.dk
+Author URI: https://kennethclemmensen.dk
 */
 namespace KCSlider;
 if(!defined('ABSPATH')) die();

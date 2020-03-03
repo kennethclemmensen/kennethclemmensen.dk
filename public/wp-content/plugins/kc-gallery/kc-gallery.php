@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name: KC Gallery
-Description: Shows photos in galleries using <a href="http://lokeshdhakar.com/projects/lightbox2/">Lightbox</a>
+Description: Shows photos in galleries using <a href="https://lokeshdhakar.com/projects/lightbox2/">Lightbox</a>
 Version: 1.0
 Author: Kenneth Clemmensen
-Author URI: https://www.kennethclemmensen.dk
+Author URI: https://kennethclemmensen.dk
 */
 namespace KCGallery;
 if(!defined('ABSPATH')) die();
