@@ -15,10 +15,10 @@ input[type='submit'] {
   background: $color-blue;
   padding: 6px 15px;
   border: 2px outset $color-gray;
-  border-radius: 4px;
+  @include border-radius(4px);
   color: $color-white;
   cursor: pointer;
-  transition: all .4s ease 0s;
+  @include transition();
   &:hover {
     background: darken($color-blue, 10%);
   }
