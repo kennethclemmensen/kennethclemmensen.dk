@@ -2,7 +2,7 @@
   border-radius: $value;
 }
 
-@mixin border-radius($topLeft, $topRight: 0px, $bottomRight: 0px, $bottomLeft: 0px) {
+@mixin border-radius2($topLeft, $topRight, $bottomRight, $bottomLeft) {
   border-radius: $topLeft $topRight $bottomRight $bottomLeft;
 }
 
