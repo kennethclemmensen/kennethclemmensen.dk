@@ -5,5 +5,6 @@ export enum EventType {
     Click = 'click',
     DOMContentLoaded = 'DOMContentLoaded',
     Error = 'error',
+    Keypress = 'keypress',
     Load = 'load'
 }

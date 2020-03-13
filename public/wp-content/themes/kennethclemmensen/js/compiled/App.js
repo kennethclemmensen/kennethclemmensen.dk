@@ -2,6 +2,7 @@ import { EventType } from './enums/EventType';
 import { HttpMethod } from './enums/HttpMethod';
 import { HttpStatusCode } from './enums/HttpStatusCode';
 import { SearchApp } from './SearchApp';
+import { ShortcutController } from './ShortcutController';
 import { Slider } from './Slider';
 /**
  * The App class contains methods to handle the functionality of the app
@@ -18,6 +19,7 @@ class App {
      */
     setupApp() {
         document.addEventListener(EventType.DOMContentLoaded, () => {
+            new ShortcutController();
             this.body = document.querySelector('body');
             this.setupMobileMenu();
             this.setupDownloadLinks();

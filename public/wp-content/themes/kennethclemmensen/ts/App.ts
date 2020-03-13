@@ -2,6 +2,7 @@ import { EventType } from './enums/EventType';
 import { HttpMethod } from './enums/HttpMethod';
 import { HttpStatusCode } from './enums/HttpStatusCode';
 import { SearchApp } from './SearchApp';
+import { ShortcutController } from './ShortcutController';
 import { Slider } from './Slider';
 
 /**
@@ -23,6 +24,7 @@ class App {
      */
     private setupApp(): void {
         document.addEventListener(EventType.DOMContentLoaded, (): void => {
+            new ShortcutController();
             this.body = document.querySelector('body');
             this.setupMobileMenu();
             this.setupDownloadLinks();
