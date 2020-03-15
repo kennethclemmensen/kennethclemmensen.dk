@@ -5,26 +5,53 @@ import { KeyCode } from './enums/KeyCode';
  */
 export class ShortcutController {
     /**
-     * Initialize a new instance of the ShortcutController class
+     * Initialize the ShortcutController
      */
-    constructor() {
-        this.setupShortcuts();
+    initialize() {
+        this.setupKeypressEventListener();
+        this.setupKeydownEventListener();
     }
     /**
-     * Setup the shortcuts
+     * Setup the keypress event listener
      */
-    setupShortcuts() {
-        document.addEventListener(EventType.Keypress, (e) => {
-            if (e.shiftKey) {
-                switch (e.keyCode) {
+    setupKeypressEventListener() {
+        document.addEventListener(EventType.Keypress, (event) => {
+            if (event.shiftKey) {
+                switch (event.keyCode) {
                     case KeyCode.B:
                         this.redirectToUrl('/billeder');
                         break;
                     case KeyCode.F:
                         this.redirectToUrl('/');
                         break;
+                    case KeyCode.J:
+                        this.redirectToUrl('/java');
+                        break;
+                    case KeyCode.O:
+                        this.redirectToUrl('/om-mig');
+                        break;
+                    case KeyCode.P:
+                        this.redirectToUrl('/php');
+                        break;
                     case KeyCode.S:
                         this.redirectToUrl('/soeg');
+                        break;
+                }
+            }
+        });
+    }
+    /**
+     * Setup the keydown event listener
+     */
+    setupKeydownEventListener() {
+        document.addEventListener(EventType.Keydown, (event) => {
+            if (event.ctrlKey && event.shiftKey) {
+                switch (event.keyCode) {
+                    case KeyCode.F:
+                        this.redirectToUrl('/film');
+                        break;
+                    case KeyCode.S:
+                        this.redirectToUrl('/sitemap');
                         break;
                 }
             }

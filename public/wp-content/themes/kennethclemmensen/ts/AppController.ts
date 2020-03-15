@@ -1,0 +1,94 @@
+import { EventType } from './enums/EventType';
+import { HttpMethod } from './enums/HttpMethod';
+import { HttpStatusCode } from './enums/HttpStatusCode';
+import { IController } from './interfaces/IController';
+import { SearchApp } from './SearchApp';
+import { ShortcutController } from './ShortcutController';
+import { Slider } from './Slider';
+
+/**
+ * The AppController class contains methods to handle the functionality of the app
+ */
+class AppController implements IController {
+
+    private body: any;
+
+    /**
+     * Initialize the AppController
+     */
+    public initialize(): void {
+        this.setupApp();
+    }
+
+    /**
+     * Setup the app
+     */
+    private setupApp(): void {
+        document.addEventListener(EventType.DOMContentLoaded, (): void => {
+            let shortcutController: IController = new ShortcutController();
+            shortcutController.initialize();
+            this.body = document.querySelector('body');
+            this.setupMobileMenu();
+            this.setupDownloadLinks();
+            let slider: any = document.getElementById('slider');
+            new Slider().showSlides(slider.dataset.delay, slider.dataset.duration);
+            lightbox.option({
+                'albumLabel': this.body.dataset.imageText + ' %1 ' + this.body.dataset.ofText + ' %2'
+            });
+            new SearchApp();
+        });
+    }
+
+    /**
+     * Setup the event listeners for the mobile menu
+     */
+    private setupMobileMenu(): void {
+        let mobileMenuTrigger: any = document.getElementById('mobile-menu-trigger');
+        let mobileMenu: any = document.getElementById('mobile-menu');
+        let showMobileMenuClass: string = 'show-mobile-menu';
+        mobileMenuTrigger.addEventListener(EventType.Click, (event: Event): void => {
+            event.preventDefault();
+            mobileMenuTrigger.classList.toggle('header__nav-trigger--active');
+            mobileMenu.classList.toggle('mobile-nav--active');
+            document.getElementsByTagName('html')[0].classList.toggle(showMobileMenuClass);
+            this.body.classList.toggle(showMobileMenuClass);
+        });
+        let mobileMenuArrows: any = document.querySelectorAll('.mobile-nav__arrow');
+        mobileMenuArrows.forEach((arrow: any): void => {
+            arrow.addEventListener(EventType.Click, (event: Event): void => {
+                event.preventDefault();
+                arrow.classList.toggle('mobile-nav__arrow--rotated');
+                let subMenu: HTMLElement = arrow.parentNode.parentNode.getElementsByClassName('sub-menu')[0];
+                subMenu.style.display = (subMenu.style.display === 'block') ? 'none' : 'block';
+            });
+        });
+    }
+
+    /**
+     * Setup the event listeners for the download links
+     */
+    private setupDownloadLinks(): void {
+        let downloadLinks: any = document.querySelectorAll('.fdwc__link');
+        downloadLinks.forEach((downloadLink: any): void => {
+            downloadLink.addEventListener(EventType.Click, (): void => {
+                let xmlHttpRequest: XMLHttpRequest = new XMLHttpRequest();
+                let url: string = '/wp-json/kcapi/v1/fileDownloads?fileid=' + downloadLink.dataset.fileId;
+                xmlHttpRequest.open(HttpMethod.Put, url, true);
+                xmlHttpRequest.addEventListener(EventType.Load, (): void => {
+                    if(xmlHttpRequest.status === HttpStatusCode.Ok) {
+                        let xhr: XMLHttpRequest = new XMLHttpRequest();
+                        xhr.open(HttpMethod.Get, url, true);
+                        xhr.addEventListener(EventType.Load, (): void => {
+                            let downloads: any = downloadLink.parentNode.querySelector('span.fdwc__downloads');
+                            downloads.innerText = (xhr.status === HttpStatusCode.Ok) ? xhr.responseText : parseInt(downloads.innerText) + 1;
+                        });
+                        xhr.send();
+                    }
+                });
+                xmlHttpRequest.send();
+            });
+        });
+    }
+}
+
+new AppController().initialize();
