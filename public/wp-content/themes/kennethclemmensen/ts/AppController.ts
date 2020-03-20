@@ -11,7 +11,7 @@ import { Slider } from './Slider';
  */
 class AppController implements IController {
 
-    private body: any;
+    private body: HTMLElement;
 
     /**
      * Initialize the AppController
@@ -27,7 +27,7 @@ class AppController implements IController {
         document.addEventListener(EventType.DOMContentLoaded, (): void => {
             let shortcutController: IController = new ShortcutController();
             shortcutController.initialize();
-            this.body = document.querySelector('body');
+            this.body = document.body;
             this.setupMobileMenu();
             this.setupDownloadLinks();
             let slider: any = document.getElementById('slider');

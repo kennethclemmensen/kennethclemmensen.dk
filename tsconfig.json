@@ -6,11 +6,15 @@
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
     "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "outDir": "./public/wp-content/themes/kennethclemmensen/js/compiled",
     "sourceMap": false,
     "strictNullChecks": true,
     "target": "es2020",
-    "types": ["jquery"]
+    "types": [
+      "jquery"
+    ]
   },
   "include": [
     "./public/wp-content/themes/kennethclemmensen/ts/**/*.ts"

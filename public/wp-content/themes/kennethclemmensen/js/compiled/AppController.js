@@ -21,7 +21,7 @@ class AppController {
         document.addEventListener(EventType.DOMContentLoaded, () => {
             let shortcutController = new ShortcutController();
             shortcutController.initialize();
-            this.body = document.querySelector('body');
+            this.body = document.body;
             this.setupMobileMenu();
             this.setupDownloadLinks();
             let slider = document.getElementById('slider');
