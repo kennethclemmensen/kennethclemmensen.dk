@@ -1,5 +1,6 @@
 import { EventType } from './enums/EventType';
 import { KeyCode } from './enums/KeyCode';
+import { Url } from './enums/Url';
 /**
  * The ShortcutController class contains methods to handle shortcuts
  */
@@ -19,22 +20,22 @@ export class ShortcutController {
             if (event.shiftKey) {
                 switch (event.keyCode) {
                     case KeyCode.B:
-                        this.redirectToUrl('/billeder');
+                        this.redirectToUrl(Url.ImagesPage);
                         break;
                     case KeyCode.F:
-                        this.redirectToUrl('/');
+                        this.redirectToUrl(Url.Frontpage);
                         break;
                     case KeyCode.J:
-                        this.redirectToUrl('/java');
+                        this.redirectToUrl(Url.JavaPage);
                         break;
                     case KeyCode.O:
-                        this.redirectToUrl('/om-mig');
+                        this.redirectToUrl(Url.AboutMePage);
                         break;
                     case KeyCode.P:
-                        this.redirectToUrl('/php');
+                        this.redirectToUrl(Url.PhpPage);
                         break;
                     case KeyCode.S:
-                        this.redirectToUrl('/soeg');
+                        this.redirectToUrl(Url.SearchPage);
                         break;
                 }
             }
@@ -48,10 +49,10 @@ export class ShortcutController {
             if (event.ctrlKey && event.shiftKey) {
                 switch (event.keyCode) {
                     case KeyCode.F:
-                        this.redirectToUrl('/film');
+                        this.redirectToUrl(Url.MoviePage);
                         break;
                     case KeyCode.S:
-                        this.redirectToUrl('/sitemap');
+                        this.redirectToUrl(Url.SitemapPage);
                         break;
                 }
             }

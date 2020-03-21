@@ -1,6 +1,7 @@
 import { EventType } from './enums/EventType';
 import { HttpMethod } from './enums/HttpMethod';
 import { HttpStatusCode } from './enums/HttpStatusCode';
+import { Url } from './enums/Url';
 import { SearchApp } from './SearchApp';
 import { ShortcutController } from './ShortcutController';
 import { Slider } from './Slider';
@@ -43,7 +44,7 @@ class AppController {
             event.preventDefault();
             mobileMenuTrigger.classList.toggle('header__nav-trigger--active');
             mobileMenu.classList.toggle('mobile-nav--active');
-            document.getElementsByTagName('html')[0].classList.toggle(showMobileMenuClass);
+            document.documentElement.classList.toggle(showMobileMenuClass);
             this.body.classList.toggle(showMobileMenuClass);
         });
         let mobileMenuArrows = document.querySelectorAll('.mobile-nav__arrow');
@@ -63,21 +64,21 @@ class AppController {
         let downloadLinks = document.querySelectorAll('.fdwc__link');
         downloadLinks.forEach((downloadLink) => {
             downloadLink.addEventListener(EventType.Click, () => {
-                let xmlHttpRequest = new XMLHttpRequest();
-                let url = '/wp-json/kcapi/v1/fileDownloads?fileid=' + downloadLink.dataset.fileId;
-                xmlHttpRequest.open(HttpMethod.Put, url, true);
-                xmlHttpRequest.addEventListener(EventType.Load, () => {
-                    if (xmlHttpRequest.status === HttpStatusCode.Ok) {
-                        let xhr = new XMLHttpRequest();
-                        xhr.open(HttpMethod.Get, url, true);
-                        xhr.addEventListener(EventType.Load, () => {
+                let url = Url.ApiFileDownloads + downloadLink.dataset.fileId;
+                let xhr = new XMLHttpRequest();
+                xhr.open(HttpMethod.Put, url, true);
+                xhr.addEventListener(EventType.Load, () => {
+                    if (xhr.status === HttpStatusCode.Ok) {
+                        let xmlHttpRequest = new XMLHttpRequest();
+                        xmlHttpRequest.open(HttpMethod.Get, url, true);
+                        xmlHttpRequest.addEventListener(EventType.Load, () => {
                             let downloads = downloadLink.parentNode.querySelector('span.fdwc__downloads');
-                            downloads.innerText = (xhr.status === HttpStatusCode.Ok) ? xhr.responseText : parseInt(downloads.innerText) + 1;
+                            downloads.innerText = (xmlHttpRequest.status === HttpStatusCode.Ok) ? xmlHttpRequest.responseText : parseInt(downloads.innerText) + 1;
                         });
-                        xhr.send();
+                        xmlHttpRequest.send();
                     }
                 });
-                xmlHttpRequest.send();
+                xhr.send();
             });
         });
     }

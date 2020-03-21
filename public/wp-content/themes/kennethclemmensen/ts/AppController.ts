@@ -1,6 +1,7 @@
 import { EventType } from './enums/EventType';
 import { HttpMethod } from './enums/HttpMethod';
 import { HttpStatusCode } from './enums/HttpStatusCode';
+import { Url } from './enums/Url';
 import { IController } from './interfaces/IController';
 import { SearchApp } from './SearchApp';
 import { ShortcutController } from './ShortcutController';
@@ -50,10 +51,10 @@ class AppController implements IController {
             event.preventDefault();
             mobileMenuTrigger.classList.toggle('header__nav-trigger--active');
             mobileMenu.classList.toggle('mobile-nav--active');
-            document.getElementsByTagName('html')[0].classList.toggle(showMobileMenuClass);
+            document.documentElement.classList.toggle(showMobileMenuClass);
             this.body.classList.toggle(showMobileMenuClass);
         });
-        let mobileMenuArrows: any = document.querySelectorAll('.mobile-nav__arrow');
+        let mobileMenuArrows: NodeListOf<HTMLElement> = document.querySelectorAll('.mobile-nav__arrow');
         mobileMenuArrows.forEach((arrow: any): void => {
             arrow.addEventListener(EventType.Click, (event: Event): void => {
                 event.preventDefault();
@@ -68,24 +69,24 @@ class AppController implements IController {
      * Setup the event listeners for the download links
      */
     private setupDownloadLinks(): void {
-        let downloadLinks: any = document.querySelectorAll('.fdwc__link');
+        let downloadLinks: NodeListOf<HTMLElement> = document.querySelectorAll('.fdwc__link');
         downloadLinks.forEach((downloadLink: any): void => {
             downloadLink.addEventListener(EventType.Click, (): void => {
-                let xmlHttpRequest: XMLHttpRequest = new XMLHttpRequest();
-                let url: string = '/wp-json/kcapi/v1/fileDownloads?fileid=' + downloadLink.dataset.fileId;
-                xmlHttpRequest.open(HttpMethod.Put, url, true);
-                xmlHttpRequest.addEventListener(EventType.Load, (): void => {
-                    if(xmlHttpRequest.status === HttpStatusCode.Ok) {
-                        let xhr: XMLHttpRequest = new XMLHttpRequest();
-                        xhr.open(HttpMethod.Get, url, true);
-                        xhr.addEventListener(EventType.Load, (): void => {
+                let url: string = Url.ApiFileDownloads + downloadLink.dataset.fileId;
+                let xhr: XMLHttpRequest = new XMLHttpRequest();
+                xhr.open(HttpMethod.Put, url, true);
+                xhr.addEventListener(EventType.Load, (): void => {
+                    if(xhr.status === HttpStatusCode.Ok) {
+                        let xmlHttpRequest: XMLHttpRequest = new XMLHttpRequest();
+                        xmlHttpRequest.open(HttpMethod.Get, url, true);
+                        xmlHttpRequest.addEventListener(EventType.Load, (): void => {
                             let downloads: any = downloadLink.parentNode.querySelector('span.fdwc__downloads');
-                            downloads.innerText = (xhr.status === HttpStatusCode.Ok) ? xhr.responseText : parseInt(downloads.innerText) + 1;
+                            downloads.innerText = (xmlHttpRequest.status === HttpStatusCode.Ok) ? xmlHttpRequest.responseText : parseInt(downloads.innerText) + 1;
                         });
-                        xhr.send();
+                        xmlHttpRequest.send();
                     }
                 });
-                xmlHttpRequest.send();
+                xhr.send();
             });
         });
     }

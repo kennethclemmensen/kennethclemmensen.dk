@@ -1,6 +1,7 @@
 import { EventType } from './enums/EventType';
 import { HttpMethod } from './enums/HttpMethod';
 import { HttpStatusCode } from './enums/HttpStatusCode';
+import { Url } from './enums/Url';
 
 /**
  * The SearchApp class contains methods to handle the search functionality
@@ -35,15 +36,15 @@ export class SearchApp {
                         this.results = [];
                         return;
                     }
-                    let request: XMLHttpRequest = new XMLHttpRequest();
-                    request.open(HttpMethod.Get, '/wp-json/kcapi/v1/pages/' + this.searchString, true);
-                    request.addEventListener(EventType.Load, (): void => {
-                        this.results = (request.status === HttpStatusCode.Ok) ? JSON.parse(request.responseText) : [];
+                    let xhr: XMLHttpRequest = new XMLHttpRequest();
+                    xhr.open(HttpMethod.Get, Url.ApiPages + this.searchString, true);
+                    xhr.addEventListener(EventType.Load, (): void => {
+                        this.results = (xhr.status === HttpStatusCode.Ok) ? JSON.parse(xhr.responseText) : [];
                     });
-                    request.addEventListener(EventType.Error, (): void => {
+                    xhr.addEventListener(EventType.Error, (): void => {
                         this.results = [];
                     });
-                    request.send();
+                    xhr.send();
                 }
             },
             components: {
