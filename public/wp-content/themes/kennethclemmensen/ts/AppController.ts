@@ -18,26 +18,26 @@ class AppController implements IController {
      * Initialize the AppController
      */
     public initialize(): void {
-        this.setupApp();
+        document.addEventListener(EventType.DOMContentLoaded, (): void => {
+            this.body = document.body;
+            this.setupApp();
+        });
     }
 
     /**
      * Setup the app
      */
     private setupApp(): void {
-        document.addEventListener(EventType.DOMContentLoaded, (): void => {
-            let shortcutController: IController = new ShortcutController();
-            shortcutController.initialize();
-            this.body = document.body;
-            this.setupMobileMenu();
-            this.setupDownloadLinks();
-            let slider: any = document.getElementById('slider');
-            new Slider().showSlides(slider.dataset.delay, slider.dataset.duration);
-            lightbox.option({
-                'albumLabel': this.body.dataset.imageText + ' %1 ' + this.body.dataset.ofText + ' %2'
-            });
-            new SearchApp();
+        let shortcutController: IController = new ShortcutController();
+        shortcutController.initialize();
+        this.setupMobileMenu();
+        this.setupDownloadLinks();
+        let slider: any = document.getElementById('slider');
+        new Slider().showSlides(slider.dataset.delay, slider.dataset.duration);
+        lightbox.option({
+            'albumLabel': this.body.dataset.imageText + ' %1 ' + this.body.dataset.ofText + ' %2'
         });
+        new SearchApp();
     }
 
     /**

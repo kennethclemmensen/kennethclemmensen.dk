@@ -13,25 +13,25 @@ class AppController {
      * Initialize the AppController
      */
     initialize() {
-        this.setupApp();
+        document.addEventListener(EventType.DOMContentLoaded, () => {
+            this.body = document.body;
+            this.setupApp();
+        });
     }
     /**
      * Setup the app
      */
     setupApp() {
-        document.addEventListener(EventType.DOMContentLoaded, () => {
-            let shortcutController = new ShortcutController();
-            shortcutController.initialize();
-            this.body = document.body;
-            this.setupMobileMenu();
-            this.setupDownloadLinks();
-            let slider = document.getElementById('slider');
-            new Slider().showSlides(slider.dataset.delay, slider.dataset.duration);
-            lightbox.option({
-                'albumLabel': this.body.dataset.imageText + ' %1 ' + this.body.dataset.ofText + ' %2'
-            });
-            new SearchApp();
+        let shortcutController = new ShortcutController();
+        shortcutController.initialize();
+        this.setupMobileMenu();
+        this.setupDownloadLinks();
+        let slider = document.getElementById('slider');
+        new Slider().showSlides(slider.dataset.delay, slider.dataset.duration);
+        lightbox.option({
+            'albumLabel': this.body.dataset.imageText + ' %1 ' + this.body.dataset.ofText + ' %2'
         });
+        new SearchApp();
     }
     /**
      * Setup the event listeners for the mobile menu
