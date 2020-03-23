@@ -1,4 +1,4 @@
-.mobile-nav {
+.mobile-menu {
   background: $color-blue--darker;
   width: 100%;
   padding: 25px 0;
@@ -17,7 +17,7 @@
   }
 }
 
-.mobile-nav__content {
+.mobile-menu__content {
   overflow-y: auto;
   ul {
     margin-left: 0;
@@ -25,6 +25,9 @@
     &.sub-menu {
       display: none;
       margin-left: 20px;
+    }
+    &.show {
+      display: block;
     }
     li {
       a {
@@ -40,7 +43,7 @@
   }
 }
 
-.mobile-nav__link {
+.mobile-menu__link {
   position: relative;
   &--current {
     background: $color-blue--dark;
@@ -48,7 +51,7 @@
   }
 }
 
-.mobile-nav__arrow {
+.mobile-menu__arrow {
   position: absolute;
   top: 5px;
   right: 10px;

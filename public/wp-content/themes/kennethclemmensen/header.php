@@ -24,8 +24,8 @@ wp_body_open();
         <?php wp_nav_menu(['theme_location' => ThemeHelper::getMainMenuKey()]); ?>
     </nav>
 </header>
-<nav class="mobile-nav" id="mobile-menu">
-    <div class="mobile-nav__content">
+<nav class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu__content">
         <?php
         wp_nav_menu([
             'theme_location' => ThemeHelper::getMainMenuKey(),
