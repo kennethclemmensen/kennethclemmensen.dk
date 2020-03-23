@@ -20,7 +20,7 @@ wp_body_open();
     <a href="#" class="header__nav-trigger" id="mobile-menu-trigger">
         <span class="header__nav-icon"></span>
     </a>
-    <nav class="navigation">
+    <nav class="menu">
         <?php wp_nav_menu(['theme_location' => ThemeHelper::getMainMenuKey()]); ?>
     </nav>
 </header>
