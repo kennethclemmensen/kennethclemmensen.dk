@@ -15,7 +15,7 @@
   "tsFiles": "public/wp-content/themes/kennethclemmensen/ts/**/*.ts",
   "uploadsFolder": "public/wp-content/uploads/",
   "devDependencies": {
-    "@types/jquery": "^3.3.33",
+    "@types/jquery": "^3.3.34",
     "browser-sync": "^2.26.7",
     "grunt": "^1.1.0",
     "grunt-browser-sync": "^2.2.0",
