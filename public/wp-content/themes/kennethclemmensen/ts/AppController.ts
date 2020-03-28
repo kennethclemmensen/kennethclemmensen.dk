@@ -20,24 +20,30 @@ class AppController implements IController {
     public initialize(): void {
         document.addEventListener(EventType.DOMContentLoaded, (): void => {
             this.body = document.body;
-            this.setupApp();
+            this.setupSlider();
+            this.setupMobileMenu();
+            this.setupDownloadLinks();
+            lightbox.option({
+                'albumLabel': this.body.dataset.imageText + ' %1 ' + this.body.dataset.ofText + ' %2'
+            });
+            new SearchApp();
+            new ShortcutController().initialize();
         });
     }
 
     /**
-     * Setup the app
+     * Setup the slider
      */
-    private setupApp(): void {
-        let shortcutController: IController = new ShortcutController();
-        shortcutController.initialize();
-        this.setupMobileMenu();
-        this.setupDownloadLinks();
-        let slider: any = document.getElementById('slider');
-        new Slider().showSlides(slider.dataset.delay, slider.dataset.duration);
-        lightbox.option({
-            'albumLabel': this.body.dataset.imageText + ' %1 ' + this.body.dataset.ofText + ' %2'
-        });
-        new SearchApp();
+    private setupSlider() : void {
+        let slider: HTMLElement | null = document.getElementById('slider');
+        if(slider) {
+            let dataset: DOMStringMap = slider.dataset;
+            let defaultDelay: number = 500;
+            let delay: number = (dataset.delay) ? parseInt(dataset.delay) : defaultDelay;
+            let defaultDuration: number = 8000;
+            let duration: number = (dataset.duration) ? parseInt(dataset.duration) : defaultDuration;
+            new Slider().showSlides(delay, duration);
+        }
     }
 
     /**
@@ -47,22 +53,24 @@ class AppController implements IController {
         let mobileMenuTrigger: HTMLElement | null = document.getElementById('mobile-menu-trigger');
         let mobileMenu: HTMLElement | null = document.getElementById('mobile-menu');
         let showMobileMenuClass: string = 'show-mobile-menu';
-        if(mobileMenuTrigger != null) {
+        if(mobileMenuTrigger) {
             mobileMenuTrigger.addEventListener(EventType.Click, (event: Event): void => {
                 event.preventDefault();
-                if(mobileMenuTrigger != null) mobileMenuTrigger.classList.toggle('header__nav-trigger--active');
-                if(mobileMenu != null) mobileMenu.classList.toggle('mobile-menu--active');
+                if(mobileMenuTrigger) mobileMenuTrigger.classList.toggle('header__nav-trigger--active');
+                if(mobileMenu) mobileMenu.classList.toggle('mobile-menu--active');
                 document.documentElement.classList.toggle(showMobileMenuClass);
                 this.body.classList.toggle(showMobileMenuClass);
             });
         }
         let mobileMenuArrows: NodeListOf<HTMLElement> = document.querySelectorAll('.mobile-menu__arrow');
-        mobileMenuArrows.forEach((arrow: any): void => {
+        mobileMenuArrows.forEach((arrow: HTMLElement): void => {
             arrow.addEventListener(EventType.Click, (event: Event): void => {
                 event.preventDefault();
                 arrow.classList.toggle('mobile-menu__arrow--rotated');
-                let subMenu: HTMLElement = arrow.parentNode.parentNode.getElementsByClassName('sub-menu')[0];
-                subMenu.classList.toggle('show');
+                if(arrow.parentNode && arrow.parentNode.parentElement) {
+                    let subMenu: Element = arrow.parentNode.parentElement.getElementsByClassName('sub-menu')[0];
+                    subMenu.classList.toggle('show');
+                }
             });
         });
     }
@@ -82,9 +90,9 @@ class AppController implements IController {
                         let xmlHttpRequest: XMLHttpRequest = new XMLHttpRequest();
                         xmlHttpRequest.open(HttpMethod.Get, url, true);
                         xmlHttpRequest.addEventListener(EventType.Load, (): void => {
-                            if(downloadLink.parentNode != null) {
-                                let downloads: any = downloadLink.parentNode.querySelector('span.fdwc__downloads');
-                                downloads.innerText = (xmlHttpRequest.status === HttpStatusCode.Ok) ? xmlHttpRequest.responseText : parseInt(downloads.innerText) + 1;
+                            if(downloadLink.parentNode) {
+                                let downloads: HTMLElement | null = downloadLink.parentNode.querySelector('span.fdwc__downloads');
+                                if(downloads) downloads.innerText = (xmlHttpRequest.status === HttpStatusCode.Ok) ? xmlHttpRequest.responseText : (parseInt(downloads.innerText) + 1).toString();
                             }
                         });
                         xmlHttpRequest.send();

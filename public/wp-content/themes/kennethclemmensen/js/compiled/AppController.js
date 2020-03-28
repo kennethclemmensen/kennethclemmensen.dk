@@ -15,23 +15,29 @@ class AppController {
     initialize() {
         document.addEventListener(EventType.DOMContentLoaded, () => {
             this.body = document.body;
-            this.setupApp();
+            this.setupSlider();
+            this.setupMobileMenu();
+            this.setupDownloadLinks();
+            lightbox.option({
+                'albumLabel': this.body.dataset.imageText + ' %1 ' + this.body.dataset.ofText + ' %2'
+            });
+            new SearchApp();
+            new ShortcutController().initialize();
         });
     }
     /**
-     * Setup the app
+     * Setup the slider
      */
-    setupApp() {
-        let shortcutController = new ShortcutController();
-        shortcutController.initialize();
-        this.setupMobileMenu();
-        this.setupDownloadLinks();
+    setupSlider() {
         let slider = document.getElementById('slider');
-        new Slider().showSlides(slider.dataset.delay, slider.dataset.duration);
-        lightbox.option({
-            'albumLabel': this.body.dataset.imageText + ' %1 ' + this.body.dataset.ofText + ' %2'
-        });
-        new SearchApp();
+        if (slider) {
+            let dataset = slider.dataset;
+            let defaultDelay = 500;
+            let delay = (dataset.delay) ? parseInt(dataset.delay) : defaultDelay;
+            let defaultDuration = 8000;
+            let duration = (dataset.duration) ? parseInt(dataset.duration) : defaultDuration;
+            new Slider().showSlides(delay, duration);
+        }
     }
     /**
      * Setup the event listeners for the mobile menu
@@ -40,12 +46,12 @@ class AppController {
         let mobileMenuTrigger = document.getElementById('mobile-menu-trigger');
         let mobileMenu = document.getElementById('mobile-menu');
         let showMobileMenuClass = 'show-mobile-menu';
-        if (mobileMenuTrigger != null) {
+        if (mobileMenuTrigger) {
             mobileMenuTrigger.addEventListener(EventType.Click, (event) => {
                 event.preventDefault();
-                if (mobileMenuTrigger != null)
+                if (mobileMenuTrigger)
                     mobileMenuTrigger.classList.toggle('header__nav-trigger--active');
-                if (mobileMenu != null)
+                if (mobileMenu)
                     mobileMenu.classList.toggle('mobile-menu--active');
                 document.documentElement.classList.toggle(showMobileMenuClass);
                 this.body.classList.toggle(showMobileMenuClass);
@@ -56,8 +62,10 @@ class AppController {
             arrow.addEventListener(EventType.Click, (event) => {
                 event.preventDefault();
                 arrow.classList.toggle('mobile-menu__arrow--rotated');
-                let subMenu = arrow.parentNode.parentNode.getElementsByClassName('sub-menu')[0];
-                subMenu.classList.toggle('show');
+                if (arrow.parentNode && arrow.parentNode.parentElement) {
+                    let subMenu = arrow.parentNode.parentElement.getElementsByClassName('sub-menu')[0];
+                    subMenu.classList.toggle('show');
+                }
             });
         });
     }
@@ -76,9 +84,10 @@ class AppController {
                         let xmlHttpRequest = new XMLHttpRequest();
                         xmlHttpRequest.open(HttpMethod.Get, url, true);
                         xmlHttpRequest.addEventListener(EventType.Load, () => {
-                            if (downloadLink.parentNode != null) {
+                            if (downloadLink.parentNode) {
                                 let downloads = downloadLink.parentNode.querySelector('span.fdwc__downloads');
-                                downloads.innerText = (xmlHttpRequest.status === HttpStatusCode.Ok) ? xmlHttpRequest.responseText : parseInt(downloads.innerText) + 1;
+                                if (downloads)
+                                    downloads.innerText = (xmlHttpRequest.status === HttpStatusCode.Ok) ? xmlHttpRequest.responseText : (parseInt(downloads.innerText) + 1).toString();
                             }
                         });
                         xmlHttpRequest.send();
