@@ -34,7 +34,7 @@ class AppController implements IController {
     /**
      * Setup the slider
      */
-    private setupSlider() : void {
+    private setupSlider(): void {
         let slider: HTMLElement | null = document.getElementById('slider');
         if(slider) {
             let dataset: DOMStringMap = slider.dataset;
@@ -104,7 +104,7 @@ class AppController implements IController {
      * @param downloadsElement the number of downloads element
      * @param url the url to use to get the number of downloads
      */
-    private updateNumberOfDownloads(downloadsElement: HTMLElement, url: string) : void {
+    private updateNumberOfDownloads(downloadsElement: HTMLElement, url: string): void {
         let xhr: XMLHttpRequest = new XMLHttpRequest();
         xhr.open(HttpMethod.Get, url, true);
         xhr.addEventListener(EventType.Load, (): void => {
