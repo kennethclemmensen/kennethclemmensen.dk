@@ -87,20 +87,34 @@ class AppController implements IController {
                 xhr.open(HttpMethod.Put, url, true);
                 xhr.addEventListener(EventType.Load, (): void => {
                     if(xhr.status === HttpStatusCode.Ok) {
-                        let xmlHttpRequest: XMLHttpRequest = new XMLHttpRequest();
-                        xmlHttpRequest.open(HttpMethod.Get, url, true);
-                        xmlHttpRequest.addEventListener(EventType.Load, (): void => {
-                            if(downloadLink.parentNode) {
-                                let downloads: HTMLElement | null = downloadLink.parentNode.querySelector('span.fdwc__downloads');
-                                if(downloads) downloads.innerText = (xmlHttpRequest.status === HttpStatusCode.Ok) ? xmlHttpRequest.responseText : (parseInt(downloads.innerText) + 1).toString();
-                            }
-                        });
-                        xmlHttpRequest.send();
+                        if(downloadLink.parentNode) {
+                            let downloads: HTMLElement | null = downloadLink.parentNode.querySelector('span.fdwc__downloads');
+                            if(downloads) this.updateNumberOfDownloads(downloads, url);
+                        }
                     }
                 });
                 xhr.send();
             });
         });
+    }
+
+    /**
+     * Update the number of downloads
+     * 
+     * @param downloadsElement the number of downloads element
+     * @param url the url to use to get the number of downloads
+     */
+    private updateNumberOfDownloads(downloadsElement: HTMLElement, url: string) : void {
+        let xhr: XMLHttpRequest = new XMLHttpRequest();
+        xhr.open(HttpMethod.Get, url, true);
+        xhr.addEventListener(EventType.Load, (): void => {
+            if(xhr.status === HttpStatusCode.Ok) {
+                downloadsElement.innerText = xhr.responseText;
+            } else {
+                downloadsElement.innerText = (parseInt(downloadsElement.innerText) + 1).toString();
+            }
+        });
+        xhr.send();
     }
 }
 
