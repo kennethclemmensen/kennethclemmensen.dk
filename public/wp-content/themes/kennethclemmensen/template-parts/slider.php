@@ -1,6 +1,6 @@
 <?php
-use KCSlider\Includes\KCSlider;
-use KCSlider\Includes\KCSliderSettings;
+use KC\Slider\KCSlider;
+use KC\Slider\KCSliderSettings;
 $kcSlider = new KCSlider();
 $kcSliderSettings = KCSliderSettings::getInstance();
 $delay = $kcSliderSettings->getDelay();

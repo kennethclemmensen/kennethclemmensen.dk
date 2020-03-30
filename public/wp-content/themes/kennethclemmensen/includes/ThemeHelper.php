@@ -1,5 +1,5 @@
 <?php
-use \KCGallery\Includes\KCGallery;
+use \KC\Gallery\KCGallery;
 
 /**
  * The ThemeHelper class contains utility methods to use in the theme

@@ -22,3 +22,15 @@ body {
   background: $color-blue--dark;
   min-width: 320px;
 }
+
+.fdwc__pagination {
+  padding-top: 10px;
+  text-align: center;
+  .page-numbers {
+    display: inline-block;
+    margin: 0 10px;
+    &.current {
+      font-weight: bold;
+    }
+  }
+}

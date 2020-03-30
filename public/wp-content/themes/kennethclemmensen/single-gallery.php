@@ -1,5 +1,5 @@
 <?php
-use KCGallery\Includes\KCGallery;
+use KC\Gallery\KCGallery;
 
 get_header();
 while(have_posts()) {
