@@ -1,7 +1,9 @@
 <?php
 namespace KC\Files;
 
+use KC\Core\Constant;
 use KC\Core\CustomPostType;
+use KC\Core\PluginHelper;
 use \WP_Query;
 
 /**
@@ -11,7 +13,6 @@ class Files {
 
     private $fieldDescription;
     private $fieldFile;
-    private $fieldDownloadCounter;
     private $fieldFileType;
     private $taxFileType;
 
@@ -22,7 +23,6 @@ class Files {
         $prefix = 'fdwc_field_';
         $this->fieldDescription = $prefix.'description';
         $this->fieldFile = $prefix.'file';
-        $this->fieldDownloadCounter = $prefix.'download_counter';
         $this->fieldFileType = $prefix.'file_type';
         $this->taxFileType = 'fdwc_tax_file_type';
         $this->init();
@@ -91,7 +91,7 @@ class Files {
                     ],
                     [
                         'name' => 'Download counter',
-                        'id' => $this->fieldDownloadCounter,
+                        'id' => Constant::FILE_DOWNLOAD_COUNTER_FIELD_ID,
                         'type' => 'number',
                         'std' => 0
                     ],
@@ -108,7 +108,7 @@ class Files {
                         $this->fieldDescription => [
                             'required' => true
                         ],
-                        $this->fieldDownloadCounter => [
+                        Constant::FILE_DOWNLOAD_COUNTER_FIELD_ID => [
                             'required' => true,
                             'min' => 0
                         ],
@@ -148,7 +148,7 @@ class Files {
                 $html .= '<div>';
                 $html .= '<a href="'.$this->getFileUrl($id).'" class="fdwc__link" rel="nofollow" data-file-id="'.$id.'" download>'.$this->getFileName($id).'</a>';
                 $html .= '<p>'.$this->getFileDescription($id).'</p>';
-                $html .= '<p>Antal downloads: <span class="fdwc__downloads">'.$this->getFileDownloads($id).'</span></p>';
+                $html .= '<p>Antal downloads: <span class="fdwc__downloads">'.PluginHelper::getFileDownloads($id).'</span></p>';
                 $html .= '</div>';
             }
             $big = 999999999; // need an unlikely integer
@@ -208,15 +208,5 @@ class Files {
      */
     private function getFileDescription(int $fileID) : string {
         return get_post_meta($fileID, $this->fieldDescription, true);
-    }
-
-    /**
-     * Get the number of file downloads
-     *
-     * @param int $fileID the id of the file
-     * @return int the number of file downloads
-     */
-    private function getFileDownloads(int $fileID) : int {
-        return get_post_meta($fileID, $this->fieldDownloadCounter, true);
     }
 }

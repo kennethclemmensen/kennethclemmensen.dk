@@ -27,7 +27,9 @@ class PluginActivator {
      */
     public function run(): void {
         $basePath = __DIR__.'/../';
+        require_once 'Constant.php';
         require_once 'CustomPostType.php';
+        require_once 'PluginHelper.php';
         require_once $basePath.'Api/API.php';
         require_once $basePath.'Files/Files.php';
         require_once $basePath.'Gallery/Gallery.php';

@@ -1,6 +1,8 @@
 <?php
 namespace KC\Api;
 
+use KC\Core\Constant;
+use KC\Core\PluginHelper;
 use \WP_REST_Request;
 use \WP_REST_Response;
 use \WP_REST_Server;
@@ -13,7 +15,6 @@ class APIController {
 
     private $namespace;
     private $statusCodeOk;
-    private $downloadCounterField;
 
     /**
      * Initialize a new instance of the APIController class
@@ -21,7 +22,6 @@ class APIController {
     public function __construct() {
         $this->namespace = 'kcapi/v1';
         $this->statusCodeOk = 200;
-        $this->downloadCounterField = 'fdwc_field_download_counter';
     }
 
     /**
@@ -95,7 +95,7 @@ class APIController {
         register_rest_route($this->namespace, $route, [
             'methods' => [WP_REST_Server::READABLE],
             'callback' => function(WP_REST_Request $request) use ($key) : WP_REST_Response {
-                $fileDownloads = $this->getFileDownloads($request->get_param($key));
+                $fileDownloads = PluginHelper::getFileDownloads($request->get_param($key));
                 return new WP_REST_Response($fileDownloads, $this->statusCodeOk);
             },
             'args' => $args,
@@ -152,18 +152,8 @@ class APIController {
      * @param int $fileID the id of the file
      */
     private function updateFileDownloadCounter(int $fileID) : void {
-        $downloads = $this->getFileDownloads($fileID);
+        $downloads = PluginHelper::getFileDownloads($fileID);
         $downloads++;
-        update_post_meta($fileID, $this->downloadCounterField, $downloads);
-    }
-
-    /**
-     * Get the number of file downloads for a file
-     *
-     * @param int $fileID the id of the file
-     * @return int the number of file downloads
-     */
-    private function getFileDownloads(int $fileID) : int {
-        return get_post_meta($fileID, $this->downloadCounterField, true);
+        update_post_meta($fileID, Constant::FILE_DOWNLOAD_COUNTER_FIELD_ID, $downloads);
     }
 }
