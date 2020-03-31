@@ -2,10 +2,9 @@
 namespace KC\Slider;
 
 /**
- * Class KCSliderSettings contains methods to handle the settings for the plugin
- * @package KCSlider\Includes
+ * The SliderSettings class contains functionality to handle the settings
  */
-class KCSliderSettings {
+class SliderSettings {
 
     private static $instance = null;
     private $pageSlug;
@@ -15,7 +14,7 @@ class KCSliderSettings {
     private $duration;
 
     /**
-     * KCSliderSettings constructor
+     * Initialize a new instance of the SliderSettings class
      */
     private function __construct() {
         $this->pageSlug = 'kc-slider-settings';
@@ -32,7 +31,7 @@ class KCSliderSettings {
     /**
      * Get the instance of the class
      *
-     * @return KCSliderSettings the instance of the class
+     * @return SliderSettings the instance of the class
      */
     public static function getInstance() : self {
         if(self::$instance === null) self::$instance = new self();

@@ -1,30 +1,22 @@
 <?php
 namespace KC\Slider;
 
-/**
- * Class KCSlider contains methods to handle the functionality of the plugin
- * @package KCSlider\Includes
- */
-class KCSlider {
+use KC\Core\CustomPostType;
 
-    public const SLIDES = 'slides';
+/**
+ * The Slider class contains methods to handle the slides
+ */
+class Slider {
 
     /**
-     * Execute the plugin
+     * Initialize a new instance of the Slider class
      */
-    public function execute() : void {
-        $this->loadDependencies();
-        KCSliderSettings::getInstance();
+    public function __construct() {
+        require_once 'SliderSettings.php';
+        SliderSettings::getInstance();
         $this->init();
         $this->afterSetupTheme();
         $this->adminColumns();
-    }
-
-    /**
-     * Load the dependencies files
-     */
-    private function loadDependencies() : void {
-        require_once 'KCSliderSettings.php';
     }
 
     /**
@@ -32,7 +24,7 @@ class KCSlider {
      */
     private function init() : void {
         add_action('init', function() : void {
-            register_post_type(self::SLIDES, [
+            register_post_type(CustomPostType::SLIDES, [
                 'labels' => [
                     'name' => 'Slides',
                     'singular_name' => 'Slide'
@@ -65,11 +57,11 @@ class KCSlider {
      */
     private function adminColumns() : void {
         $imageColumnKey = 'image';
-        add_filter('manage_'.self::SLIDES.'_posts_columns', function(array $columns) use ($imageColumnKey) : array {
+        add_filter('manage_'.CustomPostType::SLIDES.'_posts_columns', function(array $columns) use ($imageColumnKey) : array {
             $columns[$imageColumnKey] = 'Image';
             return $columns;
         });
-        add_filter('manage_'.self::SLIDES.'_posts_custom_column', function(string $columnName) use ($imageColumnKey) : void {
+        add_filter('manage_'.CustomPostType::SLIDES.'_posts_custom_column', function(string $columnName) use ($imageColumnKey) : void {
             if($columnName === $imageColumnKey) echo '<img src="'.$this->getSlideImageUrl(get_the_ID()).'" alt="'.get_the_title().'" style="height: 60px">';
         });
     }

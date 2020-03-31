@@ -1,5 +1,6 @@
 <?php
-use KC\Gallery\KCGallery;
+use KC\Core\CustomPostType;
+use KC\Gallery\Gallery;
 
 get_header();
 while(have_posts()) {
@@ -15,16 +16,16 @@ while(have_posts()) {
             <?php the_content(); ?>
             <div class="gallery">
                 <?php
-                $kcGallery = new KCGallery();
+                $gallery = new Gallery();
                 $themeSettings = ThemeSettings::getInstance();
                 $galleryID = get_the_ID();
                 $paged = (get_query_var('paged')) ? absint(get_query_var('paged')) : 1;
                 $args = [
-                    'post_type' => KCGallery::PHOTO,
+                    'post_type' => CustomPostType::PHOTO,
                     'posts_per_page' => $themeSettings->getPhotosPerPage(),
                     'order' => 'ASC',
                     'orderby' => 'title',
-                    'meta_key' => $kcGallery->getPhotoGalleryFieldID(),
+                    'meta_key' => $gallery->getPhotoGalleryFieldID(),
                     'meta_value' => $galleryID,
                     'paged' => $paged
                 ];
@@ -32,8 +33,8 @@ while(have_posts()) {
                 while($wpQuery->have_posts()) {
                     $wpQuery->the_post();
                     $title = get_the_title();
-                    $url = $kcGallery->getPhotoUrl($id);
-                    $thumbnail = $kcGallery->getPhotoThumbnailUrl($id);
+                    $url = $gallery->getPhotoUrl($id);
+                    $thumbnail = $gallery->getPhotoThumbnailUrl($id);
                     ?>
                     <a href="<?php echo $url; ?>" data-title="<?php echo $title; ?>"
                        data-lightbox="<?php echo $galleryID; ?>" class="gallery__link">

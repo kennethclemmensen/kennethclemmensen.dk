@@ -7,17 +7,16 @@ use \WP_REST_Server;
 use \WP_Query;
 
 /**
- * The KCAPIController contains methods to register routes and get data
- * @package KCAPI\Includes
+ * The APIController contains methods to register routes and handle requests and responses
  */
-final class KCAPIController {
+class APIController {
 
     private $namespace;
     private $statusCodeOk;
     private $downloadCounterField;
 
     /**
-     * KCAPIController constructor
+     * Initialize a new instance of the APIController class
      */
     public function __construct() {
         $this->namespace = 'kcapi/v1';

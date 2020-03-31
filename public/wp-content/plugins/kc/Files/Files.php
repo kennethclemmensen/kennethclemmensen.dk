@@ -1,13 +1,13 @@
 <?php
 namespace KC\Files;
 
+use KC\Core\CustomPostType;
 use \WP_Query;
 
 /**
- * Class FDWC contains methods to handle the functionality of the plugin
- * @package FDWC\Includes
+ * The Files class contains functionality to handle files
  */
-class FDWC {
+class Files {
 
     private $fieldDescription;
     private $fieldFile;
@@ -15,10 +15,8 @@ class FDWC {
     private $fieldFileType;
     private $taxFileType;
 
-    public const FDWC_FILE = 'fdwc_file';
-
     /**
-     * FDWC constructor
+     * Initialize a new instance of the Files class
      */
     public function __construct() {
         $prefix = 'fdwc_field_';
@@ -27,12 +25,6 @@ class FDWC {
         $this->fieldDownloadCounter = $prefix.'download_counter';
         $this->fieldFileType = $prefix.'file_type';
         $this->taxFileType = 'fdwc_tax_file_type';
-    }
-
-    /**
-     * Execute the plugin
-     */
-    public function execute() : void {
         $this->init();
         $this->adminMenu();
         $this->addMetaBoxes();
@@ -45,7 +37,7 @@ class FDWC {
      */
     private function init() : void {
         add_action('init', function() : void {
-            register_post_type(self::FDWC_FILE, [
+            register_post_type(CustomPostType::FILE, [
                 'labels' => [
                     'name' => 'Files',
                     'singular_name' => 'File'
@@ -55,7 +47,7 @@ class FDWC {
                 'has_archive' => true,
                 'supports' => ['title']
             ]);
-            register_taxonomy($this->taxFileType, self::FDWC_FILE, [
+            register_taxonomy($this->taxFileType, CustomPostType::FILE, [
                 'labels' => [
                     'name' => 'File types',
                     'singular_name' => 'File type'
@@ -63,7 +55,7 @@ class FDWC {
                 'show_admin_column' => true,
                 'hierarchical' => true
             ]);
-            register_taxonomy_for_object_type($this->taxFileType, self::FDWC_FILE);
+            register_taxonomy_for_object_type($this->taxFileType, CustomPostType::FILE);
         });
     }
 
@@ -72,7 +64,7 @@ class FDWC {
      */
     private function adminMenu() : void {
         add_action('admin_menu', function() : void {
-            remove_meta_box('tagsdiv-'.$this->taxFileType, self::FDWC_FILE, 'normal');
+            remove_meta_box('tagsdiv-'.$this->taxFileType, CustomPostType::FILE, 'normal');
         });
     }
 
@@ -84,7 +76,7 @@ class FDWC {
             $metaBoxes[] = [
                 'id' => 'file_informations',
                 'title' => 'File informations',
-                'post_types' => [self::FDWC_FILE],
+                'post_types' => [CustomPostType::FILE],
                 'fields' => [
                     [
                         'name' => 'Description',
@@ -135,10 +127,10 @@ class FDWC {
      */
     private function addShortcode() : void {
         add_shortcode('fdwc_files', function(array $attributes) : string {
-            $html = '<div class="fdwc">';
+            $html = '';
             $paged = (get_query_var('paged')) ? absint(get_query_var('paged')) : 1;
             $args = [
-                'post_type' => self::FDWC_FILE,
+                'post_type' => CustomPostType::FILE,
                 'posts_per_page' => 7,
                 'order' => 'ASC',
                 'tax_query' => [
@@ -153,7 +145,7 @@ class FDWC {
             while($wpQuery->have_posts()) {
                 $wpQuery->the_post();
                 $id = get_the_ID();
-                $html .= '<div class="fdwc__section">';
+                $html .= '<div>';
                 $html .= '<a href="'.$this->getFileUrl($id).'" class="fdwc__link" rel="nofollow" data-file-id="'.$id.'" download>'.$this->getFileName($id).'</a>';
                 $html .= '<p>'.$this->getFileDescription($id).'</p>';
                 $html .= '<p>Antal downloads: <span class="fdwc__downloads">'.$this->getFileDownloads($id).'</span></p>';
@@ -161,7 +153,7 @@ class FDWC {
             }
             $big = 999999999; // need an unlikely integer
             $replace = '%#%';
-            $html .= '<div class="fdwc__pagination">';
+            $html .= '<div class="pagination">';
             $html .= paginate_links([
                 'base' => str_replace($big, $replace, esc_url(get_pagenum_link($big))),
                 'format' => '?paged='.$replace,
@@ -170,7 +162,7 @@ class FDWC {
                 'prev_text' => 'Forrige',
                 'next_text' => 'Næste'
             ]);
-            $html .= '</div></div>';
+            $html .= '</div>';
             return $html;
         });
     }
@@ -226,14 +218,5 @@ class FDWC {
      */
     private function getFileDownloads(int $fileID) : int {
         return get_post_meta($fileID, $this->fieldDownloadCounter, true);
-    }
-
-    /**
-     * Get the file type taxonomy
-     *
-     * @return string the file type taxonomy
-     */
-    public function getFileTypeTaxonomy() : string {
-        return $this->taxFileType;
     }
 }

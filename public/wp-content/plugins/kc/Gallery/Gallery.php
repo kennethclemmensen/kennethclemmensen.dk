@@ -1,30 +1,21 @@
 <?php
 namespace KC\Gallery;
 
+use KC\Core\CustomPostType;
 use \WP_Query;
 
 /**
- * Class KCGallery contains methods to handle the functionality of the plugin
- * @package KCGallery\Includes
+ * The Gallery class contains functionality to handle galleries and photos
  */
-class KCGallery {
+class Gallery {
 
     private $fieldPhotoGallery;
 
-    public const GALLERY = 'gallery';
-    public const PHOTO = 'photo';
-
     /**
-     * KCGallery constructor
+     * Initialize a new instance of the Gallery class
      */
     public function __construct() {
         $this->fieldPhotoGallery = 'photo_gallery';
-    }
-
-    /**
-     * Execute the plugin
-     */
-    public function execute() : void {
         $this->init();
         $this->afterSetupTheme();
         $this->addMetaBoxes();
@@ -36,7 +27,7 @@ class KCGallery {
      */
     private function init() : void {
         add_action('init', function() : void {
-            register_post_type(self::GALLERY, [
+            register_post_type(CustomPostType::GALLERY, [
                 'labels' => [
                     'name' => 'Galleries',
                     'singular_name' => 'Gallery'
@@ -47,7 +38,7 @@ class KCGallery {
                 'menu_icon' => 'dashicons-format-gallery',
                 'rewrite' => ['slug' => '/billeder', 'with_front' => false]
             ]);
-            register_post_type(self::PHOTO, [
+            register_post_type(CustomPostType::PHOTO, [
                 'labels' => [
                     'name' => 'Photos',
                     'singular_name' => 'Photo'
@@ -82,7 +73,7 @@ class KCGallery {
             $metaBoxes[] = [
                 'id' => 'photo_informations',
                 'title' => 'Photo informations',
-                'post_types' => [self::PHOTO],
+                'post_types' => [CustomPostType::PHOTO],
                 'fields' => [
                     [
                         'name' => 'Gallery',
@@ -103,12 +94,12 @@ class KCGallery {
         $columnGalleryKey = 'gallery';
         $columnGalleryValue = 'Gallery';
         $columnPhotoKey = 'photo';
-        add_filter('manage_'.self::PHOTO.'_posts_columns', function(array $columns) use ($columnGalleryKey, $columnGalleryValue, $columnPhotoKey) : array {
+        add_filter('manage_'.CustomPostType::PHOTO.'_posts_columns', function(array $columns) use ($columnGalleryKey, $columnGalleryValue, $columnPhotoKey) : array {
             $columns[$columnGalleryKey] = $columnGalleryValue;
             $columns[$columnPhotoKey] = 'Photo';
             return $columns;
         });
-        add_action('manage_'.self::PHOTO.'_posts_custom_column', function(string $columnName) use ($columnGalleryKey, $columnPhotoKey) : void {
+        add_action('manage_'.CustomPostType::PHOTO.'_posts_custom_column', function(string $columnName) use ($columnGalleryKey, $columnPhotoKey) : void {
             if($columnName === $columnGalleryKey) {
                 $galleryID = get_post_meta(get_the_ID(), $this->fieldPhotoGallery, true);
                 echo get_post($galleryID)->post_title;
@@ -116,17 +107,17 @@ class KCGallery {
                 echo '<img src="'.$this->getPhotoThumbnailUrl(get_the_ID()).'" alt="'.get_the_title().'">';
             }
         });
-        add_filter('manage_edit-'.self::PHOTO.'_sortable_columns', function(array $columns) use ($columnGalleryKey, $columnGalleryValue) : array {
+        add_filter('manage_edit-'.CustomPostType::PHOTO.'_sortable_columns', function(array $columns) use ($columnGalleryKey, $columnGalleryValue) : array {
             $columns[$columnGalleryKey] = $columnGalleryValue;
             return $columns;
         });
         $columnNumberOfPhotosKey = 'number_of_photos';
         $columnNumberOfPhotosValue = 'Photos';
-        add_filter('manage_'.self::GALLERY.'_posts_columns', function(array $columns) use ($columnNumberOfPhotosKey, $columnNumberOfPhotosValue) : array {
+        add_filter('manage_'.CustomPostType::GALLERY.'_posts_columns', function(array $columns) use ($columnNumberOfPhotosKey, $columnNumberOfPhotosValue) : array {
             $columns[$columnNumberOfPhotosKey] = $columnNumberOfPhotosValue;
             return $columns;
         });
-        add_action('manage_'.self::GALLERY.'_posts_custom_column', function(string $columnName) use ($columnNumberOfPhotosKey) {
+        add_action('manage_'.CustomPostType::GALLERY.'_posts_custom_column', function(string $columnName) use ($columnNumberOfPhotosKey) {
             if($columnName === $columnNumberOfPhotosKey) echo $this->getNumberOfPhotosInGallery(get_the_ID());
         });
     }
@@ -139,7 +130,7 @@ class KCGallery {
     public function getGalleries() : array {
         $galleries = [];
         $args = [
-            'post_type' => self::GALLERY,
+            'post_type' => CustomPostType::GALLERY,
             'posts_per_page' => -1,
             'order' => 'ASC'
         ];
@@ -192,7 +183,7 @@ class KCGallery {
      */
     private function getNumberOfPhotosInGallery(int $galleryID) : int {
         $args = [
-            'post_type' => self::PHOTO,
+            'post_type' => CustomPostType::PHOTO,
             'posts_per_page' => -1,
             'meta_key' => $this->fieldPhotoGallery,
             'meta_value' => $galleryID

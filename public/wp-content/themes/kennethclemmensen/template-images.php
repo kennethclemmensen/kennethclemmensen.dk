@@ -1,6 +1,6 @@
 <?php
 //Template Name: Images
-use KC\Gallery\KCGallery;
+use KC\Gallery\Gallery;
 
 get_header();
 while(have_posts()) {
@@ -15,13 +15,13 @@ while(have_posts()) {
             <h1><?php the_title(); ?></h1>
             <?php
             the_content();
-            $kcGallery = new KCGallery();
-            $galleries = $kcGallery->getGalleries();
+            $gallery = new Gallery();
+            $galleries = $gallery->getGalleries();
             ?>
             <div class="page__galleries">
                 <?php
                 foreach($galleries as $id => $title) {
-                    $src = $kcGallery->getGalleryPhotoUrl($id);
+                    $src = $gallery->getGalleryPhotoUrl($id);
                     ?>
                     <a href="<?php echo get_permalink($id); ?>" class="page__gallery-link"
                        style="background-image: url('<?php echo $src; ?>')">

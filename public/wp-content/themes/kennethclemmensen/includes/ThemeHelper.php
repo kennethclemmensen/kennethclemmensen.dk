@@ -1,5 +1,5 @@
 <?php
-use \KC\Gallery\KCGallery;
+use \KC\Core\CustomPostType;
 
 /**
  * The ThemeHelper class contains utility methods to use in the theme
@@ -61,7 +61,7 @@ final class ThemeHelper {
                 $pages[] = $page->ID;
                 $parent = $page->post_parent;
             }
-            if($post->post_type === KCGallery::GALLERY) $pages[] = ThemeSettings::getInstance()->getImagesPageID();
+            if($post->post_type === CustomPostType::GALLERY) $pages[] = ThemeSettings::getInstance()->getImagesPageID();
         }
         $pages[] = get_option('page_on_front');
         return array_reverse($pages);
