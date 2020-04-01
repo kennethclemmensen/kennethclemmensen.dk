@@ -15,11 +15,17 @@ class AppController implements IController {
     private body: HTMLElement;
 
     /**
+     * Initialize a new instance of the AppController class
+     */
+    public constructor() {
+        this.body = document.body;        
+    }
+
+    /**
      * Initialize the AppController
      */
     public initialize(): void {
         document.addEventListener(EventType.DOMContentLoaded, (): void => {
-            this.body = document.body;
             this.setupSlider();
             this.setupMobileMenu();
             this.setupDownloadLinks();

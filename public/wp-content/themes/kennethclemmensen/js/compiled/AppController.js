@@ -10,11 +10,16 @@ import { Slider } from './Slider';
  */
 class AppController {
     /**
+     * Initialize a new instance of the AppController class
+     */
+    constructor() {
+        this.body = document.body;
+    }
+    /**
      * Initialize the AppController
      */
     initialize() {
         document.addEventListener(EventType.DOMContentLoaded, () => {
-            this.body = document.body;
             this.setupSlider();
             this.setupMobileMenu();
             this.setupDownloadLinks();
