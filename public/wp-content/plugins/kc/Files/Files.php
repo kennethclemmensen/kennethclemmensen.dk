@@ -3,7 +3,7 @@ namespace KC\Files;
 
 use KC\Core\Constant;
 use KC\Core\CustomPostType;
-use KC\Core\PluginHelper;
+use KC\Utils\PluginHelper;
 use \WP_Query;
 
 /**

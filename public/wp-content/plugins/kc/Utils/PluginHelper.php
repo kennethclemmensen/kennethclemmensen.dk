@@ -1,5 +1,7 @@
 <?php
-namespace KC\Core;
+namespace KC\Utils;
+
+use KC\Core\Constant;
 
 /**
  * The PluginHelper class contains utility methods to use in the plugin

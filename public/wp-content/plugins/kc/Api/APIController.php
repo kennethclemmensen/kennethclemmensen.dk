@@ -2,7 +2,7 @@
 namespace KC\Api;
 
 use KC\Core\Constant;
-use KC\Core\PluginHelper;
+use KC\Utils\PluginHelper;
 use \WP_REST_Request;
 use \WP_REST_Response;
 use \WP_REST_Server;
