@@ -4,13 +4,14 @@
     "allowUnusedLabels": false,
     "noEmitOnError": true,
     "noFallthroughCasesInSwitch": true,
-    "noImplicitAny": true,
     "noImplicitReturns": true,
+    "noImplicitThis": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "outDir": "./public/wp-content/themes/kennethclemmensen/js/compiled",
     "sourceMap": false,
-    "strictNullChecks": true,
+    "strict": true,
+    "strictPropertyInitialization": false,
     "target": "es2020",
     "types": [
       "jquery"
