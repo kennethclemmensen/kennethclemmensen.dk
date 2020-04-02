@@ -78,7 +78,7 @@ class AppController {
      * Setup the event listeners for the download links
      */
     setupDownloadLinks() {
-        let downloadLinks = document.querySelectorAll('.fdwc__link');
+        let downloadLinks = document.querySelectorAll('.kc-file-download-link');
         downloadLinks.forEach((downloadLink) => {
             downloadLink.addEventListener(EventType.Click, () => {
                 let url = Url.ApiFileDownloads + downloadLink.dataset.fileId;
@@ -87,7 +87,7 @@ class AppController {
                 xhr.addEventListener(EventType.Load, () => {
                     if (xhr.status === HttpStatusCode.Ok) {
                         if (downloadLink.parentNode) {
-                            let downloads = downloadLink.parentNode.querySelector('span.fdwc__downloads');
+                            let downloads = downloadLink.parentNode.querySelector('span.kc-file-downloads');
                             if (downloads)
                                 this.updateNumberOfDownloads(downloads, url);
                         }

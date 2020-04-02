@@ -12,13 +12,13 @@ import { Slider } from './Slider';
  */
 class AppController implements IController {
 
-    private body: HTMLElement;
+    private readonly body: HTMLElement;
 
     /**
      * Initialize a new instance of the AppController class
      */
     public constructor() {
-        this.body = document.body;        
+        this.body = document.body;
     }
 
     /**
@@ -85,7 +85,7 @@ class AppController implements IController {
      * Setup the event listeners for the download links
      */
     private setupDownloadLinks(): void {
-        let downloadLinks: NodeListOf<HTMLElement> = document.querySelectorAll('.fdwc__link');
+        let downloadLinks: NodeListOf<HTMLElement> = document.querySelectorAll('.kc-file-download-link');
         downloadLinks.forEach((downloadLink: HTMLElement): void => {
             downloadLink.addEventListener(EventType.Click, (): void => {
                 let url: string = Url.ApiFileDownloads + downloadLink.dataset.fileId;
@@ -94,7 +94,7 @@ class AppController implements IController {
                 xhr.addEventListener(EventType.Load, (): void => {
                     if(xhr.status === HttpStatusCode.Ok) {
                         if(downloadLink.parentNode) {
-                            let downloads: HTMLElement | null = downloadLink.parentNode.querySelector('span.fdwc__downloads');
+                            let downloads: HTMLElement | null = downloadLink.parentNode.querySelector('span.kc-file-downloads');
                             if(downloads) this.updateNumberOfDownloads(downloads, url);
                         }
                     }

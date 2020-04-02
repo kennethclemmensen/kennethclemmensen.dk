@@ -146,9 +146,9 @@ class Files {
                 $wpQuery->the_post();
                 $id = get_the_ID();
                 $html .= '<div>';
-                $html .= '<a href="'.$this->getFileUrl($id).'" class="fdwc__link" rel="nofollow" data-file-id="'.$id.'" download>'.$this->getFileName($id).'</a>';
+                $html .= '<a href="'.$this->getFileUrl($id).'" class="kc-file-download-link" rel="nofollow" data-file-id="'.$id.'" download>'.$this->getFileName($id).'</a>';
                 $html .= '<p>'.$this->getFileDescription($id).'</p>';
-                $html .= '<p>Antal downloads: <span class="fdwc__downloads">'.PluginHelper::getFileDownloads($id).'</span></p>';
+                $html .= '<p>Antal downloads: <span class="kc-file-downloads">'.PluginHelper::getFileDownloads($id).'</span></p>';
                 $html .= '</div>';
             }
             $big = 999999999; // need an unlikely integer
