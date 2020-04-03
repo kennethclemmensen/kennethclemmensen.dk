@@ -54,20 +54,20 @@ class AppController {
         if (mobileMenuTrigger) {
             mobileMenuTrigger.addEventListener(EventType.Click, (event) => {
                 event.preventDefault();
-                if (mobileMenuTrigger)
+                if (mobileMenuTrigger && mobileMenu) {
                     mobileMenuTrigger.classList.toggle('header__nav-trigger--active');
-                if (mobileMenu)
                     mobileMenu.classList.toggle('mobile-menu--active');
-                document.documentElement.classList.toggle(showMobileMenuClass);
-                this.body.classList.toggle(showMobileMenuClass);
+                    document.documentElement.classList.toggle(showMobileMenuClass);
+                    this.body.classList.toggle(showMobileMenuClass);
+                }
             });
         }
         let mobileMenuArrows = document.querySelectorAll('.mobile-menu__arrow');
         mobileMenuArrows.forEach((arrow) => {
             arrow.addEventListener(EventType.Click, (event) => {
                 event.preventDefault();
-                arrow.classList.toggle('mobile-menu__arrow--rotated');
                 if (arrow.parentNode && arrow.parentNode.parentElement) {
+                    arrow.classList.toggle('mobile-menu__arrow--rotated');
                     let subMenu = arrow.parentNode.parentElement.getElementsByClassName('sub-menu')[0];
                     subMenu.classList.toggle('show');
                 }

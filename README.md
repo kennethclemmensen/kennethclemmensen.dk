@@ -18,3 +18,4 @@ These technologies includes:
 * [Composer](https://getcomposer.org/)
 * [Codeception](http://codeception.com/)
 * [Webpack](https://webpack.js.org/)
+* [Lodash](https://lodash.com/)

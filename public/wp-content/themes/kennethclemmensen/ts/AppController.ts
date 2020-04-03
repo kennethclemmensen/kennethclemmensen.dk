@@ -62,18 +62,20 @@ class AppController implements IController {
         if(mobileMenuTrigger) {
             mobileMenuTrigger.addEventListener(EventType.Click, (event: Event): void => {
                 event.preventDefault();
-                if(mobileMenuTrigger) mobileMenuTrigger.classList.toggle('header__nav-trigger--active');
-                if(mobileMenu) mobileMenu.classList.toggle('mobile-menu--active');
-                document.documentElement.classList.toggle(showMobileMenuClass);
-                this.body.classList.toggle(showMobileMenuClass);
+                if(mobileMenuTrigger && mobileMenu) {
+                    mobileMenuTrigger.classList.toggle('header__nav-trigger--active');
+                    mobileMenu.classList.toggle('mobile-menu--active');
+                    document.documentElement.classList.toggle(showMobileMenuClass);
+                    this.body.classList.toggle(showMobileMenuClass);
+                }
             });
         }
         let mobileMenuArrows: NodeListOf<HTMLElement> = document.querySelectorAll('.mobile-menu__arrow');
         mobileMenuArrows.forEach((arrow: HTMLElement): void => {
             arrow.addEventListener(EventType.Click, (event: Event): void => {
                 event.preventDefault();
-                arrow.classList.toggle('mobile-menu__arrow--rotated');
                 if(arrow.parentNode && arrow.parentNode.parentElement) {
+                    arrow.classList.toggle('mobile-menu__arrow--rotated');
                     let subMenu: Element = arrow.parentNode.parentElement.getElementsByClassName('sub-menu')[0];
                     subMenu.classList.toggle('show');
                 }

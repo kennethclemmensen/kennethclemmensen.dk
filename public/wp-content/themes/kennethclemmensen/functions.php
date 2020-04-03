@@ -46,9 +46,15 @@ add_action('wp_enqueue_scripts', function() : void {
     $version = filemtime(get_template_directory().$localFile);
     ThemeHelper::addScriptWithLocalFallback($lightbox, $cdnFile, get_template_directory_uri().$localFile, $version);
 
+    $lodash = 'lodash';
+    $cdnFile = 'https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js';
+    $localFile = '/js/libraries/lodash-4.17.15.min.js';
+    $version = filemtime(get_template_directory().$localFile);
+    ThemeHelper::addScriptWithLocalFallback($lodash, $cdnFile, get_template_directory_uri().$localFile, $version);
+
     $scriptFile = '/js/minified/script.min.js';
     $version = filemtime(get_template_directory().$scriptFile);
-    wp_enqueue_script('theme-js', get_template_directory_uri().$scriptFile, $version, [$jquery, $vue, $lightbox], true);
+    wp_enqueue_script('theme-js', get_template_directory_uri().$scriptFile, $version, [$jquery, $vue, $lightbox, $lodash], true);
 });
 
 /**

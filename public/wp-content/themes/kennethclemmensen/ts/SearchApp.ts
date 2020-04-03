@@ -27,8 +27,11 @@ export class SearchApp {
             },
             watch: {
                 searchString: function(): void {
-                    this.search();
+                    this.debouncedSearch();
                 }
+            },
+            created: function(): void {
+                this.debouncedSearch = _.debounce(this.search, 500);
             },
             methods: {
                 search: function(): void {
