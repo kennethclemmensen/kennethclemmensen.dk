@@ -6,13 +6,13 @@ export class Slider {
      * Initialize a new instance of the Slider class
      */
     constructor() {
-        this.sliderImages = jQuery('.slider__image');
+        this.sliderImages = $('.slider__image');
         this.currentRandomNumber = -1;
     }
     /**
      * Get a random number between 0 and the number of slides minus 1
      *
-     * @returns {number} a random number
+     * @returns a random number
      */
     getRandomNumber() {
         let randomNumber = Math.floor(Math.random() * this.sliderImages.length);
