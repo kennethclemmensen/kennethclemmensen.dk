@@ -25,7 +25,7 @@ while(have_posts()) {
                 'order' => 'ASC',
                 'tax_query' => [
                     [
-                        'taxonomy' => 'fdwc_tax_file_type',
+                        'taxonomy' => PluginHelper::getFileTypeTaxonomyName(),
                         'terms' => $terms
                     ]
                 ],
