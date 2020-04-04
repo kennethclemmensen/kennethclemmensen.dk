@@ -13,6 +13,7 @@ final class TranslationStrings {
     private const OF = 'of';
     private const PREVIOUS = 'Previous';
     private const NEXT = 'Next';
+    private const NUMBER_OF_DOWNLOADS = 'Number of downloads:';
 
     /**
      * The TranslationStrings constructor register the strings that should be translated
@@ -29,6 +30,7 @@ final class TranslationStrings {
             pll_register_string(self::OF, self::OF, $context);
             pll_register_string(self::PREVIOUS, self::PREVIOUS, $context);
             pll_register_string(self::NEXT, self::NEXT, $context);
+            pll_register_string(self::NUMBER_OF_DOWNLOADS, self::NUMBER_OF_DOWNLOADS, $context);
         }
     }
 
@@ -111,6 +113,15 @@ final class TranslationStrings {
      */
     public static function getNextText() : string {
         return (self::isPolylangActivated()) ? pll__(self::NEXT) : self::NEXT;
+    }
+
+    /**
+     * Get the number of downloads text
+     * 
+     * @return string the number of downloads text
+     */
+    public static function getNumberOfDownloadsText() : string {
+        return (self::isPolylangActivated()) ? pll__(self::NUMBER_OF_DOWNLOADS) : self::NUMBER_OF_DOWNLOADS;
     }
 
     /**

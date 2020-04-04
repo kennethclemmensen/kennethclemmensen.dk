@@ -17,4 +17,13 @@ class PluginHelper {
     public static function getFileDownloads(int $fileID) : int {
         return get_post_meta($fileID, Constant::FILE_DOWNLOAD_COUNTER_FIELD_ID, true);
     }
+
+    /**
+     * Get the file type taxonomy name
+     * 
+     * @return string the file type taxonomy name
+     */
+    public static function getFileTypeTaxonomyName(): string {
+        return 'fdwc_tax_file_type';
+    }
 }

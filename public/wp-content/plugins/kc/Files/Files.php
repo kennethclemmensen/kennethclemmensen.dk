@@ -14,7 +14,6 @@ class Files {
     private $fieldDescription;
     private $fieldFile;
     private $fieldFileType;
-    private $taxFileType;
 
     /**
      * Initialize a new instance of the Files class
@@ -24,11 +23,9 @@ class Files {
         $this->fieldDescription = $prefix.'description';
         $this->fieldFile = $prefix.'file';
         $this->fieldFileType = $prefix.'file_type';
-        $this->taxFileType = 'fdwc_tax_file_type';
         $this->init();
         $this->adminMenu();
         $this->addMetaBoxes();
-        $this->addShortcode();
         $this->uploadMimes();
     }
 
@@ -47,7 +44,7 @@ class Files {
                 'has_archive' => true,
                 'supports' => ['title']
             ]);
-            register_taxonomy($this->taxFileType, CustomPostType::FILE, [
+            register_taxonomy(PluginHelper::getFileTypeTaxonomyName(), CustomPostType::FILE, [
                 'labels' => [
                     'name' => 'File types',
                     'singular_name' => 'File type'
@@ -55,7 +52,7 @@ class Files {
                 'show_admin_column' => true,
                 'hierarchical' => true
             ]);
-            register_taxonomy_for_object_type($this->taxFileType, CustomPostType::FILE);
+            register_taxonomy_for_object_type(PluginHelper::getFileTypeTaxonomyName(), CustomPostType::FILE);
         });
     }
 
@@ -64,7 +61,7 @@ class Files {
      */
     private function adminMenu() : void {
         add_action('admin_menu', function() : void {
-            remove_meta_box('tagsdiv-'.$this->taxFileType, CustomPostType::FILE, 'normal');
+            remove_meta_box('tagsdiv-'.PluginHelper::getFileTypeTaxonomyName(), CustomPostType::FILE, 'normal');
         });
     }
 
@@ -99,7 +96,7 @@ class Files {
                         'name' => 'File type',
                         'id' => $this->fieldFileType,
                         'type' => 'taxonomy',
-                        'taxonomy' => $this->taxFileType,
+                        'taxonomy' => PluginHelper::getFileTypeTaxonomyName(),
                         'field_type' => 'select'
                     ]
                 ],
@@ -123,51 +120,6 @@ class Files {
     }
 
     /**
-     * Add the fdwc_files shortcode to show a list of files
-     */
-    private function addShortcode() : void {
-        add_shortcode('fdwc_files', function(array $attributes) : string {
-            $html = '';
-            $paged = (get_query_var('paged')) ? absint(get_query_var('paged')) : 1;
-            $args = [
-                'post_type' => CustomPostType::FILE,
-                'posts_per_page' => 7,
-                'order' => 'ASC',
-                'tax_query' => [
-                    [
-                        'taxonomy' => $this->taxFileType,
-                        'terms' => $attributes['file_type_id']
-                    ]
-                ],
-                'paged' => $paged
-            ];
-            $wpQuery = new WP_Query($args);
-            while($wpQuery->have_posts()) {
-                $wpQuery->the_post();
-                $id = get_the_ID();
-                $html .= '<div>';
-                $html .= '<a href="'.$this->getFileUrl($id).'" class="kc-file-download-link" rel="nofollow" data-file-id="'.$id.'" download>'.$this->getFileName($id).'</a>';
-                $html .= '<p>'.$this->getFileDescription($id).'</p>';
-                $html .= '<p>Antal downloads: <span class="kc-file-downloads">'.PluginHelper::getFileDownloads($id).'</span></p>';
-                $html .= '</div>';
-            }
-            $big = 999999999; // need an unlikely integer
-            $replace = '%#%';
-            $html .= '<div class="pagination">';
-            $html .= paginate_links([
-                'base' => str_replace($big, $replace, esc_url(get_pagenum_link($big))),
-                'format' => '?paged='.$replace,
-                'current' => max(1, $paged),
-                'total' => $wpQuery->max_num_pages,
-                'prev_text' => 'Forrige',
-                'next_text' => 'Næste'
-            ]);
-            $html .= '</div>';
-            return $html;
-        });
-    }
-
-    /**
      * Use the upload_mimes filter to allow java files upload
      */
     private function uploadMimes() : void {
@@ -184,7 +136,7 @@ class Files {
      * @param int $fileID the id of the file
      * @return string the file url
      */
-    private function getFileUrl(int $fileID) : string {
+    public function getFileUrl(int $fileID) : string {
         $attachmentID = get_post_meta($fileID, $this->fieldFile, true);
         return esc_url(wp_get_attachment_url($attachmentID));
     }
@@ -195,7 +147,7 @@ class Files {
      * @param int $fileID the id of the file
      * @return string the file name
      */
-    private function getFileName(int $fileID) : string {
+    public function getFileName(int $fileID) : string {
         $attachmentID = get_post_meta($fileID, $this->fieldFile, true);
         return basename(get_attached_file($attachmentID));
     }
@@ -206,7 +158,7 @@ class Files {
      * @param int $fileID the id of the file
      * @return string the file description
      */
-    private function getFileDescription(int $fileID) : string {
+    public function getFileDescription(int $fileID) : string {
         return get_post_meta($fileID, $this->fieldDescription, true);
     }
 }
