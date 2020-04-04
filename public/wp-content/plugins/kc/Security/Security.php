@@ -1,6 +1,9 @@
 <?php
 namespace KC\Security;
 
+/**
+ * The Security class contains security methods to use in the plugin
+ */
 class Security {
 
     /**
