@@ -4,18 +4,18 @@ The repository for my personal website https://kennethclemmensen.dk/
 
 The website is created using [WordPress](https://wordpress.org/) and a number of other technologies.
 These technologies includes:
-* HTML5
+* [Codeception](http://codeception.com/)
+* [Composer](https://getcomposer.org/)
 * CSS3
-* [LESS](http://lesscss.org/)
-* [SASS](https://sass-lang.com/)
-* JavaScript/[jQuery](https://jquery.com/)
-* [TypeScript](https://www.typescriptlang.org/)
-* [PHP](http://php.net/)
-* [Vue](https://vuejs.org/)
 * [Grunt](https://gruntjs.com/)
 * [Gulp](https://gulpjs.com/)
-* [NPM](https://npmjs.com/)
-* [Composer](https://getcomposer.org/)
-* [Codeception](http://codeception.com/)
-* [Webpack](https://webpack.js.org/)
+* HTML5
+* JavaScript/[jQuery](https://jquery.com/)
+* [LESS](http://lesscss.org/)
 * [Lodash](https://lodash.com/)
+* [NPM](https://npmjs.com/)
+* [PHP](http://php.net/)
+* [SASS](https://sass-lang.com/)
+* [TypeScript](https://www.typescriptlang.org/)
+* [Vue](https://vuejs.org/)
+* [Webpack](https://webpack.js.org/)
