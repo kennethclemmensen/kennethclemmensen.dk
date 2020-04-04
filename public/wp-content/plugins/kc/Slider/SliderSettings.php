@@ -1,6 +1,8 @@
 <?php
 namespace KC\Slider;
 
+use KC\Security\Security;
+
 /**
  * The SliderSettings class contains functionality to handle the settings
  */
@@ -74,7 +76,7 @@ class SliderSettings {
                 echo '<input type="number" name="'.$this->optionName.'['.$this->duration.']" value="'.$this->getDuration().'" required min="1" max="10000">';
             }, $this->pageSlug, $sectionID);
             register_setting($this->optionName, $this->optionName, function(array $input) : array {
-                return $this->validateInput($input);
+                return Security::validateInput($input);
             });
         });
     }
@@ -87,20 +89,6 @@ class SliderSettings {
             $links[] = '<a href="'.esc_url(get_admin_url(null, 'edit.php?post_type=slides&page='.$this->pageSlug)).'">'.__('Settings').'</a>';
             return $links;
         });
-    }
-
-    /**
-     * Validate the setting inputs
-     *
-     * @param array $input the input to validate
-     * @return array the validated input
-     */
-    private function validateInput(array $input) : array {
-        $validatedInput = [];
-        foreach($input as $key => $value) {
-            $validatedInput[$key] = strip_tags(addslashes($input[$key]));
-        }
-        return $validatedInput;
     }
 
     /**

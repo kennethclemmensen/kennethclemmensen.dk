@@ -32,6 +32,7 @@ class PluginActivator {
         require_once $basePath.'Api/API.php';
         require_once $basePath.'Files/Files.php';
         require_once $basePath.'Gallery/Gallery.php';
+        require_once $basePath.'Security/Security.php';
         require_once $basePath.'Slider/Slider.php';
         require_once $basePath.'Utils/PluginHelper.php';
         new API();
