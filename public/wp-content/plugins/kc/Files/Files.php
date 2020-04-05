@@ -13,7 +13,6 @@ class Files {
 
     private $fieldDescription;
     private $fieldFile;
-    private $fieldFileType;
 
     /**
      * Initialize a new instance of the Files class
@@ -22,15 +21,13 @@ class Files {
         $prefix = 'fdwc_field_';
         $this->fieldDescription = $prefix.'description';
         $this->fieldFile = $prefix.'file';
-        $this->fieldFileType = $prefix.'file_type';
         $this->init();
-        $this->adminMenu();
         $this->addMetaBoxes();
         $this->uploadMimes();
     }
 
     /**
-     * Use the init action to register the fdwc file custom post type and the file types taxonomy
+     * Use the init action to register the file custom post type and the file types taxonomy
      */
     private function init() : void {
         add_action('init', function() : void {
@@ -44,7 +41,7 @@ class Files {
                 'has_archive' => true,
                 'supports' => ['title']
             ]);
-            register_taxonomy(PluginHelper::getFileTypeTaxonomyName(), CustomPostType::FILE, [
+            register_taxonomy(PluginHelper::getFileTypeTaxonomyName(), [Constant::PAGE, CustomPostType::FILE], [
                 'labels' => [
                     'name' => 'File types',
                     'singular_name' => 'File type'
@@ -52,21 +49,13 @@ class Files {
                 'show_admin_column' => true,
                 'hierarchical' => true
             ]);
+            register_taxonomy_for_object_type(PluginHelper::getFileTypeTaxonomyName(), Constant::PAGE);
             register_taxonomy_for_object_type(PluginHelper::getFileTypeTaxonomyName(), CustomPostType::FILE);
         });
     }
 
     /**
-     * Use the admin_menu action to remove the File types meta box
-     */
-    private function adminMenu() : void {
-        add_action('admin_menu', function() : void {
-            remove_meta_box('tagsdiv-'.PluginHelper::getFileTypeTaxonomyName(), CustomPostType::FILE, 'normal');
-        });
-    }
-
-    /**
-     * Use the rwmb_meta_boxes filter to add meta boxes to the fdwc file custom post type
+     * Use the rwmb_meta_boxes filter to add meta boxes to the file custom post type
      */
     private function addMetaBoxes() : void {
         add_filter('rwmb_meta_boxes', function(array $metaBoxes) : array {
@@ -91,13 +80,6 @@ class Files {
                         'id' => Constant::FILE_DOWNLOAD_COUNTER_FIELD_ID,
                         'type' => 'number',
                         'std' => 0
-                    ],
-                    [
-                        'name' => 'File type',
-                        'id' => $this->fieldFileType,
-                        'type' => 'taxonomy',
-                        'taxonomy' => PluginHelper::getFileTypeTaxonomyName(),
-                        'field_type' => 'select'
                     ]
                 ],
                 'validation' => [
@@ -108,9 +90,6 @@ class Files {
                         Constant::FILE_DOWNLOAD_COUNTER_FIELD_ID => [
                             'required' => true,
                             'min' => 0
-                        ],
-                        $this->fieldFileType => [
-                            'required' => true
                         ]
                     ]
                 ]

@@ -42,21 +42,19 @@ while(have_posts()) {
                     </a>
                     <?php
                 }
+                $big = 999999999; // need an unlikely integer
+                $replace = '%#%';
+                $links = paginate_links([
+                    'base' => str_replace($big, $replace, esc_url(get_pagenum_link($big))),
+                    'format' => '?paged='.$replace,
+                    'current' => max(1, $paged),
+                    'total' => $wpQuery->max_num_pages,
+                    'prev_text' => TranslationStrings::getPreviousText(),
+                    'next_text' => TranslationStrings::getNextText()
+                ]);
                 ?>
-                <div class="gallery__pagination">
-                    <?php
-                    $big = 999999999; // need an unlikely integer
-                    $replace = '%#%';
-                    echo paginate_links([
-                        'base' => str_replace($big, $replace, esc_url(get_pagenum_link($big))),
-                        'format' => '?paged='.$replace,
-                        'current' => max(1, $paged),
-                        'total' => $wpQuery->max_num_pages,
-                        'prev_text' => TranslationStrings::getPreviousText(),
-                        'next_text' => TranslationStrings::getNextText()
-                    ]);
-                    wp_reset_postdata();
-                    ?>
+                <div class="pagination">
+                    <?php echo $links; ?>
                 </div>
             </div>
         </section>

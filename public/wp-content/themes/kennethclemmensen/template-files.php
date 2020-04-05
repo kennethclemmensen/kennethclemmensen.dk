@@ -18,7 +18,9 @@ while(have_posts()) {
             <?php
             the_content();
             $paged = (get_query_var('paged')) ? absint(get_query_var('paged')) : 1;
-            $terms = (strpos($_SERVER['REQUEST_URI'], 'php') === false) ? 5 : 4;
+            $terms = [];
+            $fileTypeTerms = get_the_terms(get_the_ID(), PluginHelper::getFileTypeTaxonomyName());
+            foreach($fileTypeTerms as $fileTypeTerm) $terms[] = $fileTypeTerm->term_id;
             $args = [
                 'post_type' => CustomPostType::FILE,
                 'posts_per_page' => 7,

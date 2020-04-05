@@ -28,7 +28,8 @@ export class SearchApp {
                 }
             },
             created: function () {
-                this.debouncedSearch = _.debounce(this.search, 500);
+                let delay = 500;
+                this.debouncedSearch = _.debounce(this.search, delay);
             },
             methods: {
                 search: function () {
