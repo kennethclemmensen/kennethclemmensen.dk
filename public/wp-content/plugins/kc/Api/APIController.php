@@ -2,6 +2,9 @@
 namespace KC\Api;
 
 use KC\Core\Constant;
+use KC\Core\CustomPostType;
+use KC\Slider\Slider;
+use KC\Slider\SliderSettings;
 use KC\Utils\PluginHelper;
 use \WP_REST_Request;
 use \WP_REST_Response;
@@ -30,6 +33,7 @@ class APIController {
     public function registerRoutes() : void {
         $this->registerPagesRoute();
         $this->registerFileDownloadCounterRoutes();
+        $this->registerSliderRoute();
     }
 
     /**
@@ -117,6 +121,27 @@ class APIController {
     }
 
     /**
+     * Register the slider route
+     */
+    private function registerSliderRoute() : void {
+        register_rest_route($this->namespace, '/slider', [
+            'methods' => [WP_REST_Server::READABLE],
+            'callback' => function(WP_REST_Request $request) : WP_REST_Response {                
+                $sliderSettings = SliderSettings::getInstance();
+                $data = [
+                    'delay' => $sliderSettings->getDelay(),
+                    'duration' => $sliderSettings->getDuration(),
+                    'slidesImages' => $this->getSlidesImages()
+                ];
+                return new WP_REST_Response($data, $this->statusCodeOk);
+            },
+            'permission_callback' => function() : bool {
+                return true;
+            }
+        ]);
+    }
+
+    /**
      * Get the pages by title
      *
      * @param string $title the title to get the pages from
@@ -155,5 +180,27 @@ class APIController {
         $downloads = PluginHelper::getFileDownloads($fileID);
         $downloads++;
         update_post_meta($fileID, Constant::FILE_DOWNLOAD_COUNTER_FIELD_ID, $downloads);
+    }
+
+    /**
+     * Get the slides images
+     * 
+     * @return array the slides images
+     */
+    private function getSlidesImages() : array {
+        $slidesImages = [];
+        $slider = new Slider();
+        $args = [
+            'post_type' => CustomPostType::SLIDES,
+            'posts_per_page' => -1,
+            'order' => 'ASC',
+            'orderby' => 'menu_order'
+        ];
+        $wpQuery = new WP_Query($args);
+        while($wpQuery->have_posts()) {
+            $wpQuery->the_post();
+            $slidesImages[] = $slider->getSlideImageUrl(get_the_ID());
+        }
+        return $slidesImages;
     }
 }
