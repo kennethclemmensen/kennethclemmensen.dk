@@ -2,15 +2,15 @@
 namespace KC\Api;
 
 /**
- * The API class contains functionality to set up the API
+ * The Api class contains functionality to set up the API
  */
-class API {
+class Api {
 
     /**
-     * Initialize a new instance of the API class
+     * Initialize a new instance of the Api class
      */
     public function __construct() {
-        require_once 'APIController.php';
+        require_once 'ApiController.php';
         $this->restApiInit();
     }
 
@@ -19,7 +19,7 @@ class API {
      */
     private function restApiInit() : void {
         add_action('rest_api_init', function() : void {
-            $controller = new APIController();
+            $controller = new ApiController();
             $controller->registerRoutes();
         });
     }

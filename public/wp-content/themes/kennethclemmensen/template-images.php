@@ -1,6 +1,7 @@
 <?php
 //Template Name: Images
 use KC\Gallery\Gallery;
+use KC\Utils\PluginHelper;
 
 get_header();
 while(have_posts()) {
@@ -21,10 +22,9 @@ while(have_posts()) {
             <div class="page__galleries">
                 <?php
                 foreach($galleries as $id => $title) {
-                    $src = $gallery->getGalleryPhotoUrl($id);
+                    $src = PluginHelper::getImageUrl($id);
                     ?>
-                    <a href="<?php echo get_permalink($id); ?>" class="page__gallery-link"
-                       style="background-image: url('<?php echo $src; ?>')">
+                    <a href="<?php echo get_permalink($id); ?>" class="page__gallery-link" style="background-image: url('<?php echo $src; ?>')">
                         <span class="page__gallery-title"><?php echo $title; ?></span>
                     </a>
                     <?php

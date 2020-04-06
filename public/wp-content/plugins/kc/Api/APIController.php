@@ -2,25 +2,24 @@
 namespace KC\Api;
 
 use KC\Core\Constant;
-use KC\Core\CustomPostType;
+use KC\Files\Files;
 use KC\Slider\Slider;
 use KC\Slider\SliderSettings;
 use KC\Utils\PluginHelper;
 use \WP_REST_Request;
 use \WP_REST_Response;
 use \WP_REST_Server;
-use \WP_Query;
 
 /**
- * The APIController contains methods to register routes and handle requests and responses
+ * The ApiController contains methods to register routes and handle requests and responses
  */
-class APIController {
+class ApiController {
 
     private $namespace;
     private $statusCodeOk;
 
     /**
-     * Initialize a new instance of the APIController class
+     * Initialize a new instance of the ApiController class
      */
     public function __construct() {
         $this->namespace = 'kcapi/v1';
@@ -41,12 +40,10 @@ class APIController {
      */
     private function registerPagesRoute() : void {
         $title = 'title';
-        $page = 'page';
-        $perPage = 'per_page';
         register_rest_route($this->namespace, '/pages/(?P<'.$title.'>[\S]+)', [
             'methods' => [WP_REST_Server::READABLE],
-            'callback' => function(WP_REST_Request $request) use ($title, $page, $perPage) : WP_REST_Response {
-                $pages = $this->getPagesByTitle($request->get_param($title), $request->get_param($page) - 1, $request->get_param($perPage));
+            'callback' => function(WP_REST_Request $request) use ($title) : WP_REST_Response {
+                $pages = PluginHelper::getPagesByTitle($request->get_param($title));
                 return new WP_REST_Response($pages, $this->statusCodeOk);
             },
             'args' => [
@@ -57,19 +54,6 @@ class APIController {
                     },
                     'validate_callback' => function(string $value) : bool {
                         return !empty($value);
-                    }
-                ],
-                $page => [
-                    'default' => 1,
-                    'required' => false,
-                    'validate_callback' => function(int $value) : bool {
-                        return $value > 0;
-                    }
-                ],
-                $perPage => [
-                    'required' => false,
-                    'validate_callback' => function(int $value) : bool {
-                        return $value > 0;
                     }
                 ]
             ],
@@ -84,9 +68,9 @@ class APIController {
      */
     private function registerFileDownloadCounterRoutes() : void {
         $route = '/fileDownloads';
-        $key = 'fileid';
+        $fileId = 'fileid';
         $args = [
-            $key => [
+            $fileId => [
                 'required' => true,
                 'sanitize_callback' => function(int $value) : int {
                     return sanitize_text_field($value);
@@ -96,10 +80,11 @@ class APIController {
                 }
             ]
         ];
+        $files = new Files();
         register_rest_route($this->namespace, $route, [
             'methods' => [WP_REST_Server::READABLE],
-            'callback' => function(WP_REST_Request $request) use ($key) : WP_REST_Response {
-                $fileDownloads = PluginHelper::getFileDownloads($request->get_param($key));
+            'callback' => function(WP_REST_Request $request) use ($fileId) : WP_REST_Response {
+                $fileDownloads = PluginHelper::getFileDownloads($request->get_param($fileId));
                 return new WP_REST_Response($fileDownloads, $this->statusCodeOk);
             },
             'args' => $args,
@@ -108,9 +93,9 @@ class APIController {
             }
         ]);
         register_rest_route($this->namespace, $route, [
-            'methods' => ['PUT'],
-            'callback' => function(WP_REST_Request $request) use ($key) : WP_REST_Response {
-                $this->updateFileDownloadCounter($request->get_param($key));
+            'methods' => [Constant::PUT],
+            'callback' => function(WP_REST_Request $request) use ($files, $fileId) : WP_REST_Response {
+                $files->updateFileDownloadCounter($request->get_param($fileId));
                 return new WP_REST_Response($this->statusCodeOk);
             },
             'args' => $args,
@@ -124,14 +109,15 @@ class APIController {
      * Register the slider route
      */
     private function registerSliderRoute() : void {
+        $slider = new Slider();
+        $sliderSettings = new SliderSettings();
         register_rest_route($this->namespace, '/slider', [
             'methods' => [WP_REST_Server::READABLE],
-            'callback' => function(WP_REST_Request $request) : WP_REST_Response {                
-                $sliderSettings = SliderSettings::getInstance();
+            'callback' => function() use ($slider, $sliderSettings) : WP_REST_Response {
                 $data = [
                     'delay' => $sliderSettings->getDelay(),
                     'duration' => $sliderSettings->getDuration(),
-                    'slidesImages' => $this->getSlidesImages()
+                    'slidesImages' => $slider->getSlidesImages()
                 ];
                 return new WP_REST_Response($data, $this->statusCodeOk);
             },
@@ -139,68 +125,5 @@ class APIController {
                 return true;
             }
         ]);
-    }
-
-    /**
-     * Get the pages by title
-     *
-     * @param string $title the title to get the pages from
-     * @param int $offset the number of pages to pass over
-     * @param int $resultsPerPage the number of results per page
-     * @return array the pages
-     */
-    private function getPagesByTitle(string $title, int $offset, ?int $resultsPerPage = null) : array {
-        $pages = [];
-        $args = [
-            'order' => 'ASC',
-            'orderby' => 'menu_order',
-            'offset' => $offset,
-            'posts_per_page' => ($resultsPerPage !== null) ? $resultsPerPage : -1,
-            'post_type' => ['page'],
-            's' => $title
-        ];
-        $wpQuery = new WP_Query($args);
-        while($wpQuery->have_posts()) {
-            $wpQuery->the_post();
-            $pages[] = [
-                'title' => get_the_title(),
-                'link' => get_permalink(get_the_ID()),
-                'excerpt' => html_entity_decode(get_the_excerpt())
-            ];
-        }
-        return $pages;
-    }
-
-    /**
-     * Update the download counter for a file
-     *
-     * @param int $fileID the id of the file
-     */
-    private function updateFileDownloadCounter(int $fileID) : void {
-        $downloads = PluginHelper::getFileDownloads($fileID);
-        $downloads++;
-        update_post_meta($fileID, Constant::FILE_DOWNLOAD_COUNTER_FIELD_ID, $downloads);
-    }
-
-    /**
-     * Get the slides images
-     * 
-     * @return array the slides images
-     */
-    private function getSlidesImages() : array {
-        $slidesImages = [];
-        $slider = new Slider();
-        $args = [
-            'post_type' => CustomPostType::SLIDES,
-            'posts_per_page' => -1,
-            'order' => 'ASC',
-            'orderby' => 'menu_order'
-        ];
-        $wpQuery = new WP_Query($args);
-        while($wpQuery->have_posts()) {
-            $wpQuery->the_post();
-            $slidesImages[] = $slider->getSlideImageUrl(get_the_ID());
-        }
-        return $slidesImages;
     }
 }

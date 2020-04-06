@@ -9,7 +9,7 @@ Requires at least: 5.4
 Requires PHP: 7.4
 */
 namespace KC;
-if(!defined('ABSPATH')) die();
+if(!defined('ABSPATH')) wp_die();
 require_once 'Core/PluginActivator.php';
 $pluginActivator = new Core\PluginActivator();
 $pluginActivator->activate(__FILE__);

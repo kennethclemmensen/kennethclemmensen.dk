@@ -7,7 +7,7 @@ namespace KC\Security;
 class Security {
 
     /**
-     * Validate the inputs
+     * Validate the input
      *
      * @param array $input the input to validate
      * @return array the validated input

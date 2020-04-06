@@ -2,6 +2,8 @@
 namespace KC\Slider;
 
 use KC\Core\CustomPostType;
+use KC\Utils\PluginHelper;
+use \WP_Query;
 
 /**
  * The Slider class contains methods to handle the slides
@@ -13,7 +15,7 @@ class Slider {
      */
     public function __construct() {
         require_once 'SliderSettings.php';
-        SliderSettings::getInstance();
+        new SliderSettings();
         $this->init();
         $this->afterSetupTheme();
         $this->adminColumns();
@@ -62,17 +64,28 @@ class Slider {
             return $columns;
         });
         add_filter('manage_'.CustomPostType::SLIDES.'_posts_custom_column', function(string $columnName) use ($imageColumnKey) : void {
-            if($columnName === $imageColumnKey) echo '<img src="'.$this->getSlideImageUrl(get_the_ID()).'" alt="'.get_the_title().'" style="height: 60px">';
+            if($columnName === $imageColumnKey) echo '<img src="'.PluginHelper::getImageUrl(get_the_ID()).'" alt="'.get_the_title().'" style="height: 60px">';
         });
     }
 
     /**
-     * Get the slide image url
-     *
-     * @param int $imageID the id of the image
-     * @return string the slide image url
+     * Get the slides images
+     * 
+     * @return array the slides images
      */
-    public function getSlideImageUrl(int $imageID) : string {
-        return esc_url(get_the_post_thumbnail_url($imageID));
+    public function getSlidesImages() : array {
+        $slidesImages = [];
+        $args = [
+            'post_type' => CustomPostType::SLIDES,
+            'posts_per_page' => -1,
+            'order' => 'ASC',
+            'orderby' => 'menu_order'
+        ];
+        $wpQuery = new WP_Query($args);
+        while($wpQuery->have_posts()) {
+            $wpQuery->the_post();
+            $slidesImages[] = PluginHelper::getImageUrl(get_the_ID());
+        }
+        return $slidesImages;
     }
 }

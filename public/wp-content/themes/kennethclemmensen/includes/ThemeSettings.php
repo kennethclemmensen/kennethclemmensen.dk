@@ -17,7 +17,7 @@ final class ThemeSettings {
     private $email;
     private $linkedIn;
     private $gitHub;
-    private $photosPerPage;
+    private $imagesPerPage;
     private $imagesPage;
     private $scriptHeader;
     private $scriptStartBody;
@@ -44,7 +44,7 @@ final class ThemeSettings {
         $this->email = 'email';
         $this->linkedIn = 'linkedin';
         $this->gitHub = 'github';
-        $this->photosPerPage = 'photos_per_page';
+        $this->imagesPerPage = 'photos_per_page';
         $this->imagesPage = 'images_page';
         $prefix = 'scripts_';
         $this->scriptHeader = $prefix.'header';
@@ -181,8 +181,8 @@ final class ThemeSettings {
             echo '<input type="url" name="'.$this->otherOptionsName.'['.$this->gitHub.']" value="'.$this->getGitHubUrl().'" class="regular-text" required> ';
             echo '['.$this->gitHubShortcode.']';
         }, $this->otherPageSlug, $sectionID);
-        add_settings_field($prefix.'photos-per-page', 'Photos per page', function() : void {
-            echo '<input type="number" name="'.$this->otherOptionsName.'['.$this->photosPerPage.']" value="'.$this->getPhotosPerPage().'" min="1" max="50">';
+        add_settings_field($prefix.'images-per-page', 'Images per page', function() : void {
+            echo '<input type="number" name="'.$this->otherOptionsName.'['.$this->imagesPerPage.']" value="'.$this->getImagesPerPage().'" min="1" max="50">';
         }, $this->otherPageSlug, $sectionID);
         add_settings_field($prefix.'images-page', 'Images page', function() : void {
             $html = '<select name="'.$this->otherOptionsName.'['.$this->imagesPage.']">';
@@ -309,7 +309,7 @@ final class ThemeSettings {
      * @return string the header scripts
      */
     private function getHeaderScripts() : string {
-        return stripslashes($this->scriptOptions[$this->scriptHeader]);
+        return ($this->scriptOptions) ? stripslashes($this->scriptOptions[$this->scriptHeader]) : '';
     }
 
     /**
@@ -318,7 +318,7 @@ final class ThemeSettings {
      * @return string the start body scripts
      */
     private function getStartBodyScripts() : string {
-        return stripslashes($this->scriptOptions[$this->scriptStartBody]);
+        return ($this->scriptOptions) ? stripslashes($this->scriptOptions[$this->scriptStartBody]) : '';
     }
 
     /**
@@ -327,16 +327,16 @@ final class ThemeSettings {
      * @return string the footer scripts
      */
     private function getFooterScripts() : string {
-        return stripslashes($this->scriptOptions[$this->scriptFooter]);
+        return ($this->scriptOptions) ? stripslashes($this->scriptOptions[$this->scriptFooter]) : '';
     }
 
     /**
-     * Get the number of photos per page
+     * Get the number of images per page
      *
-     * @return int the number of photos per page
+     * @return int the number of images per page
      */
-    public function getPhotosPerPage() : int {
-        return intval($this->otherOptions[$this->photosPerPage]);
+    public function getImagesPerPage() : int {
+        return intval($this->otherOptions[$this->imagesPerPage]);
     }
 
     /**

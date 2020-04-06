@@ -10,7 +10,7 @@ class CustomPostType {
 
     public const GALLERY = 'gallery';
     
-    public const PHOTO = 'photo';
+    public const IMAGE = 'photo';
 
     public const SLIDES = 'slides';
 }

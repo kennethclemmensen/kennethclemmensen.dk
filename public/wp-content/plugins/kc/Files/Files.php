@@ -4,7 +4,6 @@ namespace KC\Files;
 use KC\Core\Constant;
 use KC\Core\CustomPostType;
 use KC\Utils\PluginHelper;
-use \WP_Query;
 
 /**
  * The Files class contains functionality to handle files
@@ -139,5 +138,16 @@ class Files {
      */
     public function getFileDescription(int $fileID) : string {
         return get_post_meta($fileID, $this->fieldDescription, true);
+    }
+
+    /**
+     * Update the download counter for a file
+     *
+     * @param int $fileID the id of the file
+     */
+    public function updateFileDownloadCounter(int $fileID) : void {
+        $downloads = PluginHelper::getFileDownloads($fileID);
+        $downloads++;
+        update_post_meta($fileID, Constant::FILE_DOWNLOAD_COUNTER_FIELD_ID, $downloads);
     }
 }

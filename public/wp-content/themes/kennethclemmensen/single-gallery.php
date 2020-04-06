@@ -1,6 +1,8 @@
 <?php
+use KC\Core\Constant;
 use KC\Core\CustomPostType;
 use KC\Gallery\Gallery;
+use KC\Utils\PluginHelper;
 
 get_header();
 while(have_posts()) {
@@ -21,11 +23,11 @@ while(have_posts()) {
                 $galleryID = get_the_ID();
                 $paged = (get_query_var('paged')) ? absint(get_query_var('paged')) : 1;
                 $args = [
-                    'post_type' => CustomPostType::PHOTO,
-                    'posts_per_page' => $themeSettings->getPhotosPerPage(),
+                    'post_type' => CustomPostType::IMAGE,
+                    'posts_per_page' => $themeSettings->getImagesPerPage(),
                     'order' => 'ASC',
                     'orderby' => 'title',
-                    'meta_key' => $gallery->getPhotoGalleryFieldID(),
+                    'meta_key' => $gallery->getImageGalleryFieldID(),
                     'meta_value' => $galleryID,
                     'paged' => $paged
                 ];
@@ -33,12 +35,11 @@ while(have_posts()) {
                 while($wpQuery->have_posts()) {
                     $wpQuery->the_post();
                     $title = get_the_title();
-                    $url = $gallery->getPhotoUrl($id);
-                    $thumbnail = $gallery->getPhotoThumbnailUrl($id);
+                    $url = PluginHelper::getImageUrl($id);
+                    $thumbnail = PluginHelper::getImageUrl($id, Constant::THUMBNAIL);
                     ?>
-                    <a href="<?php echo $url; ?>" data-title="<?php echo $title; ?>"
-                       data-lightbox="<?php echo $galleryID; ?>" class="gallery__link">
-                        <img src="<?php echo $thumbnail; ?>" alt="<?php echo $title; ?>" class="gallery__photo">
+                    <a href="<?php echo $url; ?>" data-title="<?php echo $title; ?>" data-lightbox="<?php echo $galleryID; ?>" class="gallery__link">
+                        <img src="<?php echo $thumbnail; ?>" alt="<?php echo $title; ?>" class="gallery__image">
                     </a>
                     <?php
                 }

@@ -8,7 +8,6 @@ use KC\Security\Security;
  */
 class SliderSettings {
 
-    private static $instance = null;
     private $pageSlug;
     private $optionName;
     private $option;
@@ -18,7 +17,7 @@ class SliderSettings {
     /**
      * Initialize a new instance of the SliderSettings class
      */
-    private function __construct() {
+    public function __construct() {
         $this->pageSlug = 'kc-slider-settings';
         $this->optionName = $this->pageSlug.'-group';
         $this->option = get_option($this->optionName);
@@ -27,17 +26,6 @@ class SliderSettings {
         $this->duration = $prefix.'duration';
         $this->adminMenu();
         $this->adminInit();
-        $this->addPluginPageLinks();
-    }
-
-    /**
-     * Get the instance of the class
-     *
-     * @return SliderSettings the instance of the class
-     */
-    public static function getInstance() : self {
-        if(self::$instance === null) self::$instance = new self();
-        return self::$instance;
     }
 
     /**
@@ -82,16 +70,6 @@ class SliderSettings {
     }
 
     /**
-     * Use the plugin_action_links_{$plugin_file} filter to add links to the plugin page
-     */
-    private function addPluginPageLinks() : void {
-        add_filter('plugin_action_links_kc-slider/kc-slider.php', function(array $links) : array {
-            $links[] = '<a href="'.esc_url(get_admin_url(null, 'edit.php?post_type=slides&page='.$this->pageSlug)).'">'.__('Settings').'</a>';
-            return $links;
-        });
-    }
-
-    /**
      * Get the delay
      *
      * @return int the delay
@@ -107,14 +85,5 @@ class SliderSettings {
      */
     public function getDuration() : int {
         return intval(stripslashes($this->option[$this->duration]));
-    }
-
-    /**
-     * Get the option name
-     *
-     * @return string the option name
-     */
-    public function getOptionName() : string {
-        return $this->optionName;
     }
 }
