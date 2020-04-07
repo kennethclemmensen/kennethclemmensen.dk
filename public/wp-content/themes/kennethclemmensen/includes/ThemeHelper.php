@@ -107,4 +107,31 @@ final class ThemeHelper {
     public static function loadSliderTemplatePart() : void {
         get_template_part('template-parts/slider');
     }
+
+    /**
+     * Get the slider
+     * 
+     * @return array the slider
+     */
+    public static function getSlider() : object {
+        return json_decode(file_get_contents(self::getApiUrl().'/slider'));
+    }
+
+    /**
+     * Get the galleries
+     * 
+     * @return array the galleries
+     */
+    public static function getGalleries() : array {
+        return json_decode(file_get_contents(self::getApiUrl().'/galleries'), true);
+    }
+
+    /**
+     * Get the API url
+     * 
+     * @return string the API url
+     */
+    private static function getApiUrl() : string {
+        return $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].'/wp-json/kcapi/v1';
+    }
 }

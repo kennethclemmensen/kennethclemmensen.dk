@@ -3,6 +3,7 @@ namespace KC\Api;
 
 use KC\Core\Constant;
 use KC\Files\Files;
+use KC\Gallery\Gallery;
 use KC\Slider\Slider;
 use KC\Slider\SliderSettings;
 use KC\Utils\PluginHelper;
@@ -33,6 +34,7 @@ class ApiController {
         $this->registerPagesRoute();
         $this->registerFileDownloadCounterRoutes();
         $this->registerSliderRoute();
+        $this->registerGalleriesRoute();
     }
 
     /**
@@ -120,6 +122,22 @@ class ApiController {
                     'slidesImages' => $slider->getSlidesImages()
                 ];
                 return new WP_REST_Response($data, $this->statusCodeOk);
+            },
+            'permission_callback' => function() : bool {
+                return true;
+            }
+        ]);
+    }
+
+    /**
+     * Register the galleries route
+     */
+    private function registerGalleriesRoute() : void {
+        $gallery = new Gallery();
+        register_rest_route($this->namespace, '/galleries', [
+            'methods' => [WP_REST_Server::READABLE],
+            'callback' => function() use ($gallery) : WP_REST_Response {
+                return new WP_REST_Response($gallery->getGalleries(true), $this->statusCodeOk);
             },
             'permission_callback' => function() : bool {
                 return true;

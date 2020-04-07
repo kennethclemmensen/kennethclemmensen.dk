@@ -1,8 +1,5 @@
 <?php
 //Template Name: Images
-use KC\Gallery\Gallery;
-use KC\Utils\PluginHelper;
-
 get_header();
 while(have_posts()) {
     the_post();
@@ -14,18 +11,14 @@ while(have_posts()) {
         ?>
         <section class="page__content">
             <h1><?php the_title(); ?></h1>
-            <?php
-            the_content();
-            $gallery = new Gallery();
-            $galleries = $gallery->getGalleries();
-            ?>
+            <?php the_content(); ?>
             <div class="page__galleries">
                 <?php
-                foreach($galleries as $id => $title) {
-                    $src = PluginHelper::getImageUrl($id);
+                $galleries = ThemeHelper::getGalleries();
+                foreach($galleries as $gallery) {
                     ?>
-                    <a href="<?php echo get_permalink($id); ?>" class="page__gallery-link" style="background-image: url('<?php echo $src; ?>')">
-                        <span class="page__gallery-title"><?php echo $title; ?></span>
+                    <a href="<?php echo $gallery['link']; ?>" class="page__gallery-link" style="background-image: url('<?php echo $gallery['image']; ?>')">
+                        <span class="page__gallery-title"><?php echo $gallery['title']; ?></span>
                     </a>
                     <?php
                 }

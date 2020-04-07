@@ -144,9 +144,10 @@ class Gallery {
     /**
      * Get the galleries
      *
+     * @param bool $isCalledFromApi a value that indicates whether the method is called from the API
      * @return array the galleries
      */
-    public function getGalleries() : array {
+    public function getGalleries(bool $isCalledFromApi = false) : array {
         $galleries = [];
         $args = [
             'post_type' => CustomPostType::GALLERY,
@@ -154,9 +155,20 @@ class Gallery {
             'order' => 'ASC'
         ];
         $wpQuery = new WP_Query($args);
-        while($wpQuery->have_posts()) {
-            $wpQuery->the_post();
-            $galleries[get_the_ID()] = get_the_title();
+        if($isCalledFromApi === true) {
+            while($wpQuery->have_posts()) {
+                $wpQuery->the_post();
+                $galleries[] = [
+                    'title' => get_the_title(),
+                    'link' => get_permalink(get_the_ID()),
+                    'image' => PluginHelper::getImageUrl(get_the_ID())
+                ];
+            }
+        } else {
+            while($wpQuery->have_posts()) {
+                $wpQuery->the_post();
+                $galleries[get_the_ID()] = get_the_title();
+            }
         }
         return $galleries;
     }

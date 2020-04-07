@@ -1,6 +1,5 @@
 <?php
-$url = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].'/wp-json/kcapi/v1/slider';
-$slider = json_decode(file_get_contents($url));
+$slider = ThemeHelper::getSlider();
 ?>
 <div id="slider" class="slider" data-delay="<?php echo $slider->delay; ?>" data-duration="<?php echo $slider->duration; ?>">
     <?php
