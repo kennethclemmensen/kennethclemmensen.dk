@@ -34,6 +34,7 @@ while(have_posts()) {
                 $wpQuery = new WP_Query($args);
                 while($wpQuery->have_posts()) {
                     $wpQuery->the_post();
+                    $id = get_the_ID();
                     $title = get_the_title();
                     $url = PluginHelper::getImageUrl($id);
                     $thumbnail = PluginHelper::getImageUrl($id, Constant::THUMBNAIL);
