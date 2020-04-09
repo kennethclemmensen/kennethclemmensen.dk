@@ -4,6 +4,7 @@
 export enum Url {
     AboutMePage = '/om-mig',
     ApiFileDownloads = '/wp-json/kcapi/v1/fileDownloads?fileid=',
+    ApiFiles = '/wp-json/kcapi/v1/files?type=',
     ApiPages = '/wp-json/kcapi/v1/pages/',
     Frontpage = '/',
     ImagesPage = '/billeder',

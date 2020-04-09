@@ -3,7 +3,7 @@ namespace KC\Files;
 
 use KC\Core\Constant;
 use KC\Core\CustomPostType;
-use KC\Utils\PluginHelper;
+use \WP_Query;
 
 /**
  * The Files class contains functionality to handle files
@@ -12,6 +12,8 @@ class Files {
 
     private $fieldDescription;
     private $fieldFile;
+    private $fieldFileDownloadCounter;
+    private $fileTypeTaxonomyName;
 
     /**
      * Initialize a new instance of the Files class
@@ -20,6 +22,8 @@ class Files {
         $prefix = 'fdwc_field_';
         $this->fieldDescription = $prefix.'description';
         $this->fieldFile = $prefix.'file';
+        $this->fieldFileDownloadCounter = $prefix.'download_counter';
+        $this->fileTypeTaxonomyName = 'fdwc_tax_file_type';
         $this->init();
         $this->addMetaBoxes();
         $this->uploadMimes();
@@ -40,7 +44,7 @@ class Files {
                 'has_archive' => true,
                 'supports' => ['title']
             ]);
-            register_taxonomy(PluginHelper::getFileTypeTaxonomyName(), [Constant::PAGE, CustomPostType::FILE], [
+            register_taxonomy($this->fileTypeTaxonomyName, [Constant::PAGE, CustomPostType::FILE], [
                 'labels' => [
                     'name' => 'File types',
                     'singular_name' => 'File type'
@@ -48,8 +52,8 @@ class Files {
                 'show_admin_column' => true,
                 'hierarchical' => true
             ]);
-            register_taxonomy_for_object_type(PluginHelper::getFileTypeTaxonomyName(), Constant::PAGE);
-            register_taxonomy_for_object_type(PluginHelper::getFileTypeTaxonomyName(), CustomPostType::FILE);
+            register_taxonomy_for_object_type($this->fileTypeTaxonomyName, Constant::PAGE);
+            register_taxonomy_for_object_type($this->fileTypeTaxonomyName, CustomPostType::FILE);
         });
     }
 
@@ -76,7 +80,7 @@ class Files {
                     ],
                     [
                         'name' => 'Download counter',
-                        'id' => Constant::FILE_DOWNLOAD_COUNTER_FIELD_ID,
+                        'id' => $this->fieldFileDownloadCounter,
                         'type' => 'number',
                         'std' => 0
                     ]
@@ -86,7 +90,7 @@ class Files {
                         $this->fieldDescription => [
                             'required' => true
                         ],
-                        Constant::FILE_DOWNLOAD_COUNTER_FIELD_ID => [
+                        $this->fieldFileDownloadCounter => [
                             'required' => true,
                             'min' => 0
                         ]
@@ -114,7 +118,7 @@ class Files {
      * @param int $fileID the id of the file
      * @return string the file url
      */
-    public function getFileUrl(int $fileID) : string {
+    private function getFileUrl(int $fileID) : string {
         $attachmentID = get_post_meta($fileID, $this->fieldFile, true);
         return esc_url(wp_get_attachment_url($attachmentID));
     }
@@ -125,7 +129,7 @@ class Files {
      * @param int $fileID the id of the file
      * @return string the file name
      */
-    public function getFileName(int $fileID) : string {
+    private function getFileName(int $fileID) : string {
         $attachmentID = get_post_meta($fileID, $this->fieldFile, true);
         return basename(get_attached_file($attachmentID));
     }
@@ -136,8 +140,18 @@ class Files {
      * @param int $fileID the id of the file
      * @return string the file description
      */
-    public function getFileDescription(int $fileID) : string {
+    private function getFileDescription(int $fileID) : string {
         return get_post_meta($fileID, $this->fieldDescription, true);
+    }
+
+    /**
+     * Get the number of file downloads for a file
+     *
+     * @param int $fileID the id of the file
+     * @return int the number of file downloads
+     */
+    private function getFileDownloads(int $fileID) : int {
+        return get_post_meta($fileID, $this->fieldFileDownloadCounter, true);
     }
 
     /**
@@ -146,8 +160,42 @@ class Files {
      * @param int $fileID the id of the file
      */
     public function updateFileDownloadCounter(int $fileID) : void {
-        $downloads = PluginHelper::getFileDownloads($fileID);
+        $downloads = $this->getFileDownloads($fileID);
         $downloads++;
-        update_post_meta($fileID, Constant::FILE_DOWNLOAD_COUNTER_FIELD_ID, $downloads);
+        update_post_meta($fileID, $this->fieldFileDownloadCounter, $downloads);
+    }
+
+    /**
+     * Get the files based on the file types
+     * 
+     * @param array $fileTypes the file types
+     * @return array the files
+     */
+    public function getFiles(array $fileTypes) : array {
+        $files = [];
+        $args = [
+            'post_type' => CustomPostType::FILE,
+            'posts_per_page' => -1,
+            'order' => 'ASC',
+            'tax_query' => [
+                [
+                    'taxonomy' => $this->fileTypeTaxonomyName,
+                    'terms' => $fileTypes
+                ]
+            ]
+        ];
+        $wpQuery = new WP_Query($args);
+        while($wpQuery->have_posts()) {
+            $wpQuery->the_post();
+            $id = get_the_ID();
+            $files[] = [
+                'id' => $id,
+                'fileName' => $this->getFileName($id), 
+                'url' => $this->getFileUrl($id),
+                'description' => $this->getFileDescription($id),
+                'downloads' => $this->getFileDownloads($id)
+            ];
+        }
+        return $files;
     }
 }

@@ -1,7 +1,5 @@
 import { EventType } from './enums/EventType';
-import { HttpMethod } from './enums/HttpMethod';
-import { HttpStatusCode } from './enums/HttpStatusCode';
-import { Url } from './enums/Url';
+import { FilesApp } from './FilesApp';
 import { SearchApp } from './SearchApp';
 import { ShortcutController } from './ShortcutController';
 import { Slider } from './Slider';
@@ -22,10 +20,10 @@ class AppController {
         document.addEventListener(EventType.DOMContentLoaded, () => {
             this.setupSlider();
             this.setupMobileMenu();
-            this.setupDownloadLinks();
             lightbox.option({
                 'albumLabel': this.body.dataset.imageText + ' %1 ' + this.body.dataset.ofText + ' %2'
             });
+            new FilesApp();
             new SearchApp();
             new ShortcutController().initialize();
         });
@@ -73,48 +71,6 @@ class AppController {
                 }
             });
         });
-    }
-    /**
-     * Setup the event listeners for the download links
-     */
-    setupDownloadLinks() {
-        let downloadLinks = document.querySelectorAll('.kc-file-download-link');
-        downloadLinks.forEach((downloadLink) => {
-            downloadLink.addEventListener(EventType.Click, () => {
-                let url = Url.ApiFileDownloads + downloadLink.dataset.fileId;
-                let xhr = new XMLHttpRequest();
-                xhr.open(HttpMethod.Put, url, true);
-                xhr.addEventListener(EventType.Load, () => {
-                    if (xhr.status === HttpStatusCode.Ok) {
-                        if (downloadLink.parentNode) {
-                            let downloads = downloadLink.parentNode.querySelector('span.kc-file-downloads');
-                            if (downloads)
-                                this.updateNumberOfDownloads(downloads, url);
-                        }
-                    }
-                });
-                xhr.send();
-            });
-        });
-    }
-    /**
-     * Update the number of downloads
-     *
-     * @param downloadsElement the number of downloads element
-     * @param url the url to use to get the number of downloads
-     */
-    updateNumberOfDownloads(downloadsElement, url) {
-        let xhr = new XMLHttpRequest();
-        xhr.open(HttpMethod.Get, url, true);
-        xhr.addEventListener(EventType.Load, () => {
-            if (xhr.status === HttpStatusCode.Ok) {
-                downloadsElement.innerText = xhr.responseText;
-            }
-            else {
-                downloadsElement.innerText = (parseInt(downloadsElement.innerText) + 1).toString();
-            }
-        });
-        xhr.send();
     }
 }
 new AppController().initialize();

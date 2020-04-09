@@ -134,4 +134,16 @@ final class ThemeHelper {
     private static function getApiUrl() : string {
         return $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].'/wp-json/kcapi/v1';
     }
+
+    /**
+     * Get the file types for the page
+     * 
+     * @return string the file types
+     */
+    public static function getFileTypes() : string {
+        $fileTypes = [];
+        $terms = get_the_terms(get_the_ID(), 'fdwc_tax_file_type');
+        foreach($terms as $term) $fileTypes[] = $term->term_id;
+        return implode(',', $fileTypes);
+    }
 }

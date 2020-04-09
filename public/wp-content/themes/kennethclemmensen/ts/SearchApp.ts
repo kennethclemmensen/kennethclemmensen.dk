@@ -92,7 +92,7 @@ export class SearchApp {
                                 <a :href="result.link">{{ result.title }}</a>
                                 <p>{{ result.excerpt }}</p>
                             </div>
-                            <div>
+                            <div class="pagination">
                                 <a href="#" @click.prevent="previousPage" v-if="offset > 0">{{ previousText }}</a>
                                 <a href="#" @click.prevent="nextPage" v-if="offset < (results.length - perPage)">{{ nextText }}</a>
                             </div>

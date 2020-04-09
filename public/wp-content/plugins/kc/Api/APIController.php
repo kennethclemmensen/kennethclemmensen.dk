@@ -1,7 +1,6 @@
 <?php
 namespace KC\Api;
 
-use KC\Core\Constant;
 use KC\Files\Files;
 use KC\Gallery\Gallery;
 use KC\Slider\Slider;
@@ -18,6 +17,7 @@ class ApiController {
 
     private $namespace;
     private $statusCodeOk;
+    private $files;
 
     /**
      * Initialize a new instance of the ApiController class
@@ -25,6 +25,7 @@ class ApiController {
     public function __construct() {
         $this->namespace = 'kcapi/v1';
         $this->statusCodeOk = 200;
+        $this->files = new Files();
     }
 
     /**
@@ -32,7 +33,8 @@ class ApiController {
      */
     public function registerRoutes() : void {
         $this->registerPagesRoute();
-        $this->registerFileDownloadCounterRoutes();
+        $this->registerFilesRoute();
+        $this->registerFileDownloadCounterRoute();
         $this->registerSliderRoute();
         $this->registerGalleriesRoute();
     }
@@ -66,41 +68,55 @@ class ApiController {
     }
 
     /**
-     * Register the file download counter routes
+     * Register the files route
      */
-    private function registerFileDownloadCounterRoutes() : void {
-        $route = '/fileDownloads';
-        $fileId = 'fileid';
-        $args = [
-            $fileId => [
-                'required' => true,
-                'sanitize_callback' => function(int $value) : int {
-                    return sanitize_text_field($value);
-                },
-                'validate_callback' => function(int $value) : bool {
-                    return !empty($value);
-                }
-            ]
-        ];
-        $files = new Files();
-        register_rest_route($this->namespace, $route, [
-            'methods' => [WP_REST_Server::READABLE],
-            'callback' => function(WP_REST_Request $request) use ($fileId) : WP_REST_Response {
-                $fileDownloads = PluginHelper::getFileDownloads($request->get_param($fileId));
-                return new WP_REST_Response($fileDownloads, $this->statusCodeOk);
+    private function registerFilesRoute() : void {
+        $type = 'type';
+        register_rest_route($this->namespace, '/files', [
+            'methods' => WP_REST_Server::READABLE,
+            'callback' => function(WP_REST_Request $request) use ($type) : WP_REST_Response {
+                $fileTypes = explode(',', $request->get_param($type));
+                return new WP_REST_Response($this->files->getFiles($fileTypes), $this->statusCodeOk);
             },
-            'args' => $args,
+            'args' => [
+                $type => [
+                    'required' => true,
+                    'sanitize_callback' => function(string $value) : string {
+                        return sanitize_text_field($value);
+                    },
+                    'validate_callback' => function(string $value) : bool {
+                        return !empty($value);
+                    }
+                ]
+            ],
             'permission_callback' => function() : bool {
                 return true;
             }
         ]);
-        register_rest_route($this->namespace, $route, [
-            'methods' => [Constant::PUT],
-            'callback' => function(WP_REST_Request $request) use ($files, $fileId) : WP_REST_Response {
-                $files->updateFileDownloadCounter($request->get_param($fileId));
+    }
+
+    /**
+     * Register the file download counter route
+     */
+    private function registerFileDownloadCounterRoute() : void {
+        $fileId = 'fileid';
+        register_rest_route($this->namespace, '/fileDownloads', [
+            'methods' => ['PUT'],
+            'callback' => function(WP_REST_Request $request) use ($fileId) : WP_REST_Response {
+                $this->files->updateFileDownloadCounter($request->get_param($fileId));
                 return new WP_REST_Response($this->statusCodeOk);
             },
-            'args' => $args,
+            'args' => [
+                $fileId => [
+                    'required' => true,
+                    'sanitize_callback' => function(int $value) : int {
+                        return sanitize_text_field($value);
+                    },
+                    'validate_callback' => function(int $value) : bool {
+                        return !empty($value);
+                    }
+                ]
+            ],
             'permission_callback' => function() : bool {
                 return true;
             }

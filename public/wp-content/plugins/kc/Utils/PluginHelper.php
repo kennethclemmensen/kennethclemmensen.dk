@@ -10,25 +10,6 @@ use \WP_Query;
 class PluginHelper {
 
     /**
-     * Get the number of file downloads for a file
-     *
-     * @param int $fileID the id of the file
-     * @return int the number of file downloads
-     */
-    public static function getFileDownloads(int $fileID) : int {
-        return get_post_meta($fileID, Constant::FILE_DOWNLOAD_COUNTER_FIELD_ID, true);
-    }
-
-    /**
-     * Get the file type taxonomy name
-     * 
-     * @return string the file type taxonomy name
-     */
-    public static function getFileTypeTaxonomyName(): string {
-        return 'fdwc_tax_file_type';
-    }
-
-    /**
      * Get the pages by title
      *
      * @param string $title the title to get the pages from
