@@ -62,7 +62,7 @@ module.exports = function(grunt) {
                 command: '<%= pkg.npmCommand %>'
             },
             npm_run_tsc: {
-                command: 'npm run tsc'
+                command: '<%= pkg.npmTscCommand %>'
             }
         },
         //Setup the watch task to look for changes in files

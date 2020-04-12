@@ -40,7 +40,7 @@ export class FilesApp {
                     xhr.send();
                 } else {
                     this.files = [];
-                }                
+                }
             },
             components: {
                 'files': {
