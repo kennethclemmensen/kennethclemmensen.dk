@@ -60,15 +60,9 @@ module.exports = function(grunt) {
         shell: {
             npm_run_build: {
                 command: '<%= pkg.npmCommand %>'
-            }
-        },
-        //Translate TypeScript to JavaScript by using the tsconfig.json file
-        ts: {
-            default: {
-                tsconfig: {
-                    passThrough: true,
-                    tsconfig: './tsconfig.json'
-                }
+            },
+            npm_run_tsc: {
+                command: 'npm run tsc'
             }
         },
         //Setup the watch task to look for changes in files
@@ -102,7 +96,7 @@ module.exports = function(grunt) {
                 options: {
                     spawn: false
                 },
-                tasks: ['ts']
+                tasks: ['shell:npm_run_tsc']
             }
         }
     });
