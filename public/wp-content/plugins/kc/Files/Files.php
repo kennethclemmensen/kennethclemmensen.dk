@@ -3,6 +3,7 @@ namespace KC\Files;
 
 use KC\Core\Constant;
 use KC\Core\CustomPostType;
+use KC\Security\Security;
 use \WP_Query;
 
 /**
@@ -120,7 +121,7 @@ class Files {
      */
     private function getFileUrl(int $fileID) : string {
         $attachmentID = get_post_meta($fileID, $this->fieldFile, true);
-        return esc_url(wp_get_attachment_url($attachmentID));
+        return Security::escapeUrl(wp_get_attachment_url($attachmentID));
     }
 
     /**

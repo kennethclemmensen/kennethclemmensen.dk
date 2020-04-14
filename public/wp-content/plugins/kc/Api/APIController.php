@@ -3,6 +3,7 @@ namespace KC\Api;
 
 use KC\Files\Files;
 use KC\Gallery\Gallery;
+use KC\Security\Security;
 use KC\Slider\Slider;
 use KC\Slider\SliderSettings;
 use KC\Utils\PluginHelper;
@@ -62,7 +63,7 @@ class ApiController {
                 ]
             ],
             'permission_callback' => function() : bool {
-                return true;
+                return Security::hasApiAccess();
             }
         ]);
     }
@@ -90,7 +91,7 @@ class ApiController {
                 ]
             ],
             'permission_callback' => function() : bool {
-                return true;
+                return Security::hasApiAccess();
             }
         ]);
     }
@@ -118,7 +119,7 @@ class ApiController {
                 ]
             ],
             'permission_callback' => function() : bool {
-                return true;
+                return Security::hasApiAccess();
             }
         ]);
     }
@@ -140,7 +141,7 @@ class ApiController {
                 return new WP_REST_Response($data, $this->statusCodeOk);
             },
             'permission_callback' => function() : bool {
-                return true;
+                return Security::hasApiAccess();
             }
         ]);
     }
@@ -156,7 +157,7 @@ class ApiController {
                 return new WP_REST_Response($gallery->getGalleries(true), $this->statusCodeOk);
             },
             'permission_callback' => function() : bool {
-                return true;
+                return Security::hasApiAccess();
             }
         ]);
     }

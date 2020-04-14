@@ -2,6 +2,7 @@
 namespace KC\Utils;
 
 use KC\Core\Constant;
+use KC\Security\Security;
 use \WP_Query;
 
 /**
@@ -44,6 +45,6 @@ class PluginHelper {
      * @return string the image url
      */
     public static function getImageUrl(int $imageID, string $size = 'post-thumbnail') : string {
-        return esc_url(get_the_post_thumbnail_url($imageID, $size));
+        return Security::escapeUrl(get_the_post_thumbnail_url($imageID, $size));
     }
 }
