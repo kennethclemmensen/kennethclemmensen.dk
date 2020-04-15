@@ -15,7 +15,7 @@ class Security {
     public static function validateInput(array $input) : array {
         $validatedInput = [];
         foreach($input as $key => $value) {
-            $validatedInput[$key] = strip_tags(addslashes($input[$key]));
+            $validatedInput[$key] = strip_tags(addslashes($value));
         }
         return $validatedInput;
     }
