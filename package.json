@@ -5,8 +5,8 @@
   "jsMinifiedFile": "script.min.js",
   "jsMinifiedFolder": "public/wp-content/themes/kennethclemmensen/js/minified",
   "lessFiles": "public/wp-content/themes/kennethclemmensen/less/**/*.less",
-  "npmCommand": "npm run build",
   "npmTscCommand": "npm run tsc",
+  "npmWebpackCommand": "npm run webpack",
   "phpFiles": "public/wp-content/themes/kennethclemmensen/**/*.php",
   "scssFiles": "public/wp-content/themes/kennethclemmensen/sass/**/*.scss",
   "styleCssFile": "public/wp-content/themes/kennethclemmensen/css/style.css",
@@ -38,7 +38,7 @@
     "webpack-cli": "^3.3.11"
   },
   "scripts": {
-    "build": "webpack",
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "webpack": "webpack"
   }
 }

@@ -58,8 +58,8 @@ module.exports = function(grunt) {
         },
         //Use the grunt-shell plugin to run a npm command
         shell: {
-            npm_run_build: {
-                command: '<%= pkg.npmCommand %>'
+            npm_run_webpack: {
+                command: '<%= pkg.npmWebpackCommand %>'
             },
             npm_run_tsc: {
                 command: '<%= pkg.npmTscCommand %>'
@@ -75,7 +75,7 @@ module.exports = function(grunt) {
                 options: {
                     spawn: false
                 },
-                tasks: ['shell:npm_run_build']
+                tasks: ['shell:npm_run_webpack']
             },
             less: {
                 files: ['<%= pkg.lessFiles %>'],

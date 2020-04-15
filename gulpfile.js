@@ -45,10 +45,10 @@ function less() {
         }));
 }
 
-//Run a npm command
-function runNpmCommand() {
+//Run the npm webpack command
+function runNpmWebpackCommand() {
     return src(packageConfig.jsCompiledFiles)
-        .pipe(shellPlugin(packageConfig.npmCommand))
+        .pipe(shellPlugin(packageConfig.npmWebpackCommand))
         .on('error', (error) => {
             console.log(error.toString());
             this.emit('end');
@@ -91,7 +91,7 @@ exports.default = series(browserSync);
 exports.imagemin = imagemin;
 
 //Look for changes in files
-watch(packageConfig.jsCompiledFiles, runNpmCommand);
+watch(packageConfig.jsCompiledFiles, runNpmWebpackCommand);
 watch(packageConfig.lessFiles, less);
 watch(packageConfig.scssFiles, sass);
 watch(packageConfig.tsFiles, runNpmTscCommand);
