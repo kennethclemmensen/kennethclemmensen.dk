@@ -36,6 +36,6 @@ class Security {
      * @return bool true if the user has access to the API. False if the user doesn't have access to the API
      */
     public static function hasApiAccess() : bool {
-        return true;
+        return !is_user_logged_in();
     }
 }
