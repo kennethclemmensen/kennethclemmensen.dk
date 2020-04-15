@@ -53,7 +53,7 @@ export class SearchApp {
             },
             components: {
                 'search-results': {
-                    data: function(): object {
+                    data: (): object => {
                         return {
                             offset: 0,
                             perPage: 5

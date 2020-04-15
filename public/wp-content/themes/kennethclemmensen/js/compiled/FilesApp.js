@@ -41,7 +41,7 @@ export class FilesApp {
             },
             components: {
                 'files': {
-                    data: function () {
+                    data: () => {
                         return {
                             offset: 0,
                             perPage: 7
@@ -54,7 +54,7 @@ export class FilesApp {
                         nextPage: function () {
                             this.offset += this.perPage;
                         },
-                        updateFileDownloads: function (file) {
+                        updateFileDownloads: (file) => {
                             let xhr = new XMLHttpRequest();
                             xhr.open(HttpMethod.Put, Url.ApiFileDownloads + file.id, true);
                             xhr.addEventListener(EventType.Load, () => {
