@@ -13,7 +13,7 @@ These technologies includes:
 * JavaScript/[jQuery](https://jquery.com/)
 * [LESS](http://lesscss.org/)
 * [Lodash](https://lodash.com/)
-* [NPM](https://npmjs.com/)
+* [NodeJS](https://nodejs.org/en/)/[NPM](https://npmjs.com/)
 * [PHP](http://php.net/)
 * [SASS](https://sass-lang.com/)
 * [TypeScript](https://www.typescriptlang.org/)

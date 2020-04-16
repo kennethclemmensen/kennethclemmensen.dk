@@ -58,11 +58,11 @@ module.exports = function(grunt) {
         },
         //Use the grunt-shell plugin to run a npm command
         shell: {
-            npm_run_webpack: {
-                command: '<%= pkg.npmWebpackCommand %>'
-            },
             npm_run_tsc: {
                 command: '<%= pkg.npmTscCommand %>'
+            },
+            npm_run_webpack: {
+                command: '<%= pkg.npmWebpackCommand %>'
             }
         },
         //Setup the watch task to look for changes in files
