@@ -1,4 +1,4 @@
-const {dest, series, src, watch} = require('gulp');
+const { dest, series, src, watch } = require('gulp');
 const browserSyncPlugin = require('browser-sync');
 const cssnanoPlugin = require('gulp-cssnano');
 const imageminPlugin = require('gulp-imagemin');
@@ -47,7 +47,7 @@ function less() {
 
 //Run the npm webpack command
 function runNpmWebpackCommand() {
-    return src(packageConfig.jsCompiledFiles)
+    return src('public/wp-content/themes/kennethclemmensen/js/compiled/AppController.js')
         .pipe(shellPlugin(packageConfig.npmWebpackCommand))
         .on('error', (error) => {
             console.log(error.toString());
@@ -60,15 +60,12 @@ function runNpmWebpackCommand() {
 
 //Run the npm tsc command
 function runNpmTscCommand() {
-    return src(packageConfig.tsFiles)
-    .pipe(shellPlugin(packageConfig.npmTscCommand))
-    .on('error', (error) => {
-        console.log(error.toString());
-        this.emit('end');
-    })
-    .pipe(browserSyncPlugin.reload({
-        stream: true
-    }));
+    return src('public/wp-content/themes/kennethclemmensen/ts/AppController.ts')
+        .pipe(shellPlugin(packageConfig.npmTscCommand))
+        .on('error', (error) => {
+            console.log(error.toString());
+            this.emit('end');
+        });
 }
 
 //Translate sass to css
