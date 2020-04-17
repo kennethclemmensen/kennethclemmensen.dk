@@ -33,7 +33,7 @@ final class IconWidget extends WP_Widget {
         echo $args['before_widget'].'<div class="iconwidget">';
         $icon = '<i class="'.$instance[$this->icon].'"></i>';
         $link = $instance[$this->link];
-        $target = ($instance[$this->target] === $this->checkboxCheckedValue) ? '_blank' : '_self';
+        $target = (isset($instance[$this->target]) && $instance[$this->target] === $this->checkboxCheckedValue) ? '_blank' : '_self';
         echo ($link !== '') ? '<a href="'.esc_url(do_shortcode($link)).'" target="'.$target.'">'.$icon.'</a>' : $icon;
         echo '</div>'.$args['after_widget'];
     }

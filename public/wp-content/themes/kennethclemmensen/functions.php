@@ -1,6 +1,7 @@
 <?php
 require_once 'includes/IconWidget.php';
 require_once 'includes/MobileMenuWalker.php';
+require_once 'includes/Pagination.php';
 require_once 'includes/ThemeHelper.php';
 require_once 'includes/ThemeSettings.php';
 require_once 'includes/TranslationStrings.php';

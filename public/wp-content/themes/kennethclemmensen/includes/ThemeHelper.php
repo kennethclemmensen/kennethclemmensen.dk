@@ -125,6 +125,15 @@ final class ThemeHelper {
     }
 
     /**
+     * Get the images
+     * 
+     * @return array the images
+     */
+    public static function getImages() : array {
+        return json_decode(file_get_contents(self::getApiUrl().'/galleries/'.get_the_ID()), true);
+    }
+
+    /**
      * Get the API url
      * 
      * @return string the API url

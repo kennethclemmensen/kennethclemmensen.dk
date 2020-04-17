@@ -37,7 +37,7 @@ class ApiController {
         $this->registerFilesRoute();
         $this->registerFileDownloadCounterRoute();
         $this->registerSliderRoute();
-        $this->registerGalleriesRoute();
+        $this->registerGalleriesRoutes();
     }
 
     /**
@@ -147,15 +147,38 @@ class ApiController {
     }
 
     /**
-     * Register the galleries route
+     * Register the galleries routes
      */
-    private function registerGalleriesRoute() : void {
+    private function registerGalleriesRoutes() : void {
         $gallery = new Gallery();
-        register_rest_route($this->namespace, '/galleries', [
+        $route = '/galleries';
+        register_rest_route($this->namespace, $route, [
             'methods' => [WP_REST_Server::READABLE],
             'callback' => function() use ($gallery) : WP_REST_Response {
                 return new WP_REST_Response($gallery->getGalleries(true), $this->statusCodeOk);
             },
+            'permission_callback' => function() : bool {
+                return Security::hasApiAccess();
+            }
+        ]);
+        $id = 'id';
+        register_rest_route($this->namespace, $route.'/(?P<'.$id.'>[\S]+)', [
+            'methods' => [WP_REST_Server::READABLE],
+            'callback' => function(WP_REST_Request $request) use ($id, $gallery) : WP_REST_Response {
+                $galleryId = $request->get_param($id);
+                return new WP_REST_Response($gallery->getImages($galleryId), $this->statusCodeOk);
+            },
+            'args' => [
+                $id => [
+                    'required' => true,
+                    'sanitize_callback' => function(int $value) : int {
+                        return sanitize_text_field($value);
+                    },
+                    'validate_callback' => function(int $value) : bool {
+                        return !empty($value);
+                    }
+                ]
+            ],
             'permission_callback' => function() : bool {
                 return Security::hasApiAccess();
             }

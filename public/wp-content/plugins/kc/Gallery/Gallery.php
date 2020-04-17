@@ -174,11 +174,32 @@ class Gallery {
     }
 
     /**
-     * Get the image gallery field id
-     *
-     * @return string the image gallery field id
+     * Get the images from a gallery
+     * 
+     * @param int $galleryId the gallery id
+     * @return array the images
      */
-    public function getImageGalleryFieldID() : string {
-        return $this->fieldImageGallery;
+    public function getImages(int $galleryId) : array {
+        $images = [];
+        $args = [
+            'post_type' => CustomPostType::IMAGE,
+            'posts_per_page' => -1,
+            'orderby' => 'title',
+            'order' => 'ASC',
+            'meta_key' => $this->fieldImageGallery,
+            'meta_value' => $galleryId
+        ];
+        $wpQuery = new WP_Query($args);
+        while($wpQuery->have_posts()) {
+            $wpQuery->the_post();
+            $id = get_the_ID();
+            $images[] = [
+                'title' => get_the_title(),
+                'url' => PluginHelper::getImageUrl($id),
+                'thumbnail' => PluginHelper::getImageUrl($id, Constant::THUMBNAIL),
+                'gallery' => $galleryId
+            ];
+        }
+        return $images;
     }
 }
