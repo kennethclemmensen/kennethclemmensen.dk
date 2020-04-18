@@ -59,7 +59,6 @@ final class ThemeHelper {
                 $pages[] = $page->ID;
                 $parent = $page->post_parent;
             }
-            if($post->post_type === 'gallery') $pages[] = ThemeSettings::getInstance()->getImagesPageID();
         }
         $pages[] = get_option('page_on_front');
         return array_reverse($pages);

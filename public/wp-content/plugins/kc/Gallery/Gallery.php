@@ -11,14 +11,17 @@ use \WP_Query;
  */
 class Gallery {
 
+    private $fieldParentPage;
     private $fieldImageGallery;
 
     /**
      * Initialize a new instance of the Gallery class
      */
     public function __construct() {
+        $this->fieldParentPage = 'parent_page';
         $this->fieldImageGallery = 'photo_gallery';
         $this->init();
+        $this->savePost();
         $this->afterSetupTheme();
         $this->addMetaBoxes();
         $this->adminColumns();
@@ -59,6 +62,18 @@ class Gallery {
     }
 
     /**
+     * Use the save_post_{$post->post_type} action to save a gallery 
+     */
+    private function savePost() : void {
+        add_action('save_post_'.CustomPostType::GALLERY, function(int $postID) {
+            global $wpdb;
+            update_post_meta($postID, $this->fieldParentPage, $_REQUEST[$this->fieldParentPage]);
+            $parentPage = get_post_meta($postID, $this->fieldParentPage, true);
+            $wpdb->update('kcwp_posts', ['post_parent' => $parentPage], ['ID' => $postID]);
+        });
+    }
+
+    /**
      * Use the after_setup_theme action to add post thumbnails support
      */
     private function afterSetupTheme() : void {
@@ -72,6 +87,19 @@ class Gallery {
      */
     private function addMetaBoxes() : void {
         add_filter('rwmb_meta_boxes', function(array $metaBoxes) : array {
+            $metaBoxes[] = [
+                'id' => 'gallery_informations',
+                'title' => 'Gallery informations',
+                'post_types' => [CustomPostType::GALLERY],
+                'fields' => [
+                    [
+                        'name' => 'Parent page',
+                        'id' => $this->fieldParentPage,
+                        'type' => 'select',
+                        'options' => PluginHelper::getPages()
+                    ]
+                ]
+            ];
             $metaBoxes[] = [
                 'id' => 'image_informations',
                 'title' => 'Image informations',

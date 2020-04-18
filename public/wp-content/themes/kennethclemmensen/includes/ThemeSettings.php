@@ -18,7 +18,6 @@ final class ThemeSettings {
     private $linkedIn;
     private $gitHub;
     private $imagesPerPage;
-    private $imagesPage;
     private $filesPerPage;
     private $searchResultsPerPage;
     private $scriptHeader;
@@ -47,7 +46,6 @@ final class ThemeSettings {
         $this->linkedIn = 'linkedin';
         $this->gitHub = 'github';
         $this->imagesPerPage = 'photos_per_page';
-        $this->imagesPage = 'images_page';
         $this->filesPerPage = 'files_per_page';
         $this->searchResultsPerPage = 'search_results_per_page';
         $prefix = 'scripts_';
@@ -188,15 +186,6 @@ final class ThemeSettings {
         add_settings_field($prefix.'images-per-page', 'Images per page', function() : void {
             echo '<input type="number" name="'.$this->otherOptionsName.'['.$this->imagesPerPage.']" value="'.$this->getImagesPerPage().'" min="1" max="50">';
         }, $this->otherPageSlug, $sectionID);
-        add_settings_field($prefix.'images-page', 'Images page', function() : void {
-            $html = '<select name="'.$this->otherOptionsName.'['.$this->imagesPage.']">';
-            $pages = $this->getPages();
-            foreach($pages as $id => $title) {
-                $html .= '<option value="'.$id.'" '.selected($id, $this->getImagesPageID(), false).'>'.$title.'</option>';
-            }
-            $html .= '</select>';
-            echo $html;
-        }, $this->otherPageSlug, $sectionID);
         add_settings_field($prefix.'files-per-page', 'Files per page', function() : void {
             echo '<input type="number" name="'.$this->otherOptionsName.'['.$this->filesPerPage.']" value="'.$this->getFilesPerPage().'" min="1" max="50">';
         }, $this->otherPageSlug, $sectionID);
@@ -267,26 +256,6 @@ final class ThemeSettings {
     }
 
     /**
-     * Get all pages
-     *
-     * @return array all pages
-     */
-    private function getPages() : array {
-        $pages = [];
-        $args = [
-            'post_type' => 'page',
-            'posts_per_page' => -1
-        ];
-        $wpQuery = new WP_Query($args);
-        while($wpQuery->have_posts()) {
-            $wpQuery->the_post();
-            $pages[get_the_ID()] = get_the_title();
-        }
-        wp_reset_postdata();
-        return $pages;
-    }
-
-    /**
      * Get the email
      *
      * @return string the email
@@ -347,15 +316,6 @@ final class ThemeSettings {
      */
     public function getImagesPerPage() : int {
         return intval($this->otherOptions[$this->imagesPerPage]);
-    }
-
-    /**
-     * Get the images page id
-     *
-     * @return int the images page id
-     */
-    public function getImagesPageID() : int {
-        return $this->otherOptions[$this->imagesPage];
     }
     
     /**
