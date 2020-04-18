@@ -25,7 +25,7 @@ while(have_posts()) {
                 </h2>
                 <div v-else-if="results.length > 0">
                     <h2><?php echo TranslationStrings::getSearchResultsText(); ?></h2>
-                    <search-results :results="results"
+                    <search-results :results="results" per-page="<?php echo ThemeSettings::getInstance()->getSearchResultsPerPage(); ?>"
                                     previous-text="<?php echo TranslationStrings::getPreviousText(); ?>"
                                     next-text="<?php echo TranslationStrings::getNextText(); ?>"></search-results>
                 </div>

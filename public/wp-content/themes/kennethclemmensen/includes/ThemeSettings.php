@@ -19,6 +19,8 @@ final class ThemeSettings {
     private $gitHub;
     private $imagesPerPage;
     private $imagesPage;
+    private $filesPerPage;
+    private $searchResultsPerPage;
     private $scriptHeader;
     private $scriptStartBody;
     private $scriptFooter;
@@ -46,6 +48,8 @@ final class ThemeSettings {
         $this->gitHub = 'github';
         $this->imagesPerPage = 'photos_per_page';
         $this->imagesPage = 'images_page';
+        $this->filesPerPage = 'files_per_page';
+        $this->searchResultsPerPage = 'search_results_per_page';
         $prefix = 'scripts_';
         $this->scriptHeader = $prefix.'header';
         $this->scriptStartBody = $prefix.'start_body';
@@ -192,6 +196,12 @@ final class ThemeSettings {
             }
             $html .= '</select>';
             echo $html;
+        }, $this->otherPageSlug, $sectionID);
+        add_settings_field($prefix.'files-per-page', 'Files per page', function() : void {
+            echo '<input type="number" name="'.$this->otherOptionsName.'['.$this->filesPerPage.']" value="'.$this->getFilesPerPage().'" min="1" max="50">';
+        }, $this->otherPageSlug, $sectionID);
+        add_settings_field($prefix.'search-results-per-page', 'Search results per page', function() : void {
+            echo '<input type="number" name="'.$this->otherOptionsName.'['.$this->searchResultsPerPage.']" value="'.$this->getSearchResultsPerPage().'" min="1" max="50">';
         }, $this->otherPageSlug, $sectionID);
         register_setting($this->otherOptionsName, $this->otherOptionsName, function(array $input) : array {
             return $this->validateSettingInputs($input);
@@ -346,5 +356,23 @@ final class ThemeSettings {
      */
     public function getImagesPageID() : int {
         return $this->otherOptions[$this->imagesPage];
+    }
+    
+    /**
+     * Get the number of files per page
+     *
+     * @return int the number of files per page
+     */
+    public function getFilesPerPage() : int {
+        return intval($this->otherOptions[$this->filesPerPage]);
+    }
+    
+    /**
+     * Get the number of search results per page
+     *
+     * @return int the number of search results per page
+     */
+    public function getSearchResultsPerPage() : int {
+        return intval($this->otherOptions[$this->searchResultsPerPage]);
     }
 }

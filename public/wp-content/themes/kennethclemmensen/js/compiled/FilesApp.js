@@ -43,16 +43,15 @@ export class FilesApp {
                 'files': {
                     data: () => {
                         return {
-                            offset: 0,
-                            perPage: 7
+                            offset: 0
                         };
                     },
                     methods: {
                         previousPage: function () {
-                            this.offset -= this.perPage;
+                            this.offset -= parseInt(this.perPage);
                         },
                         nextPage: function () {
-                            this.offset += this.perPage;
+                            this.offset += parseInt(this.perPage);
                         },
                         updateFileDownloads: (file) => {
                             let xhr = new XMLHttpRequest();
@@ -69,6 +68,10 @@ export class FilesApp {
                             required: true,
                             type: Array
                         },
+                        perPage: {
+                            required: true,
+                            type: Number
+                        },
                         previousText: {
                             required: true,
                             type: String
@@ -84,14 +87,14 @@ export class FilesApp {
                     },
                     template: `
                         <div>
-                            <div v-for="file in files.slice(offset, (offset + perPage))">
+                            <div v-for="file in files.slice(offset, (offset + parseInt(perPage)))">
                                 <a :href="file.url" @click="updateFileDownloads(file)" rel="nofollow" download>{{ file.fileName }}</a>
                                 <p>{{ file.description }}</p>
                                 <p>{{ numberOfDownloadsText }} {{ file.downloads }}</p>
                             </div>
                             <div class="pagination">
                                 <a href="#" @click.prevent="previousPage" v-if="offset > 0">{{ previousText }}</a>
-                                <a href="#" @click.prevent="nextPage" v-if="offset < (files.length - perPage)">{{ nextText }}</a>
+                                <a href="#" @click.prevent="nextPage" v-if="offset < (files.length - parseInt(perPage))">{{ nextText }}</a>
                             </div>
                         </div>
                     `

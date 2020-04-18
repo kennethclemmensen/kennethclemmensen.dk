@@ -55,22 +55,25 @@ export class SearchApp {
                 'search-results': {
                     data: (): object => {
                         return {
-                            offset: 0,
-                            perPage: 5
+                            offset: 0
                         };
                     },
                     methods: {
                         previousPage: function(): void {
-                            this.offset -= this.perPage;
+                            this.offset -= parseInt(this.perPage);
                         },
                         nextPage: function(): void {
-                            this.offset += this.perPage;
+                            this.offset += parseInt(this.perPage);
                         }
                     },
                     props: {
                         results: {
                             required: true,
                             type: Array
+                        },
+                        perPage: {
+                            required: true,
+                            type: Number
                         },
                         previousText: {
                             required: true,
@@ -88,13 +91,13 @@ export class SearchApp {
                     },
                     template: `
                         <div>
-                            <div v-for="result in results.slice(offset, (offset + perPage))" :key="result.id">
+                            <div v-for="result in results.slice(offset, (offset + parseInt(perPage)))" :key="result.id">
                                 <a :href="result.link">{{ result.title }}</a>
                                 <p>{{ result.excerpt }}</p>
                             </div>
                             <div class="pagination">
                                 <a href="#" @click.prevent="previousPage" v-if="offset > 0">{{ previousText }}</a>
-                                <a href="#" @click.prevent="nextPage" v-if="offset < (results.length - perPage)">{{ nextText }}</a>
+                                <a href="#" @click.prevent="nextPage" v-if="offset < (results.length - parseInt(perPage))">{{ nextText }}</a>
                             </div>
                         </div>
                     `
