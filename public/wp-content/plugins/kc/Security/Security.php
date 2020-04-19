@@ -7,20 +7,6 @@ namespace KC\Security;
 class Security {
 
     /**
-     * Validate the input
-     *
-     * @param array $input the input to validate
-     * @return array the validated input
-     */
-    public static function validateInput(array $input) : array {
-        $validatedInput = [];
-        foreach($input as $key => $value) {
-            $validatedInput[$key] = strip_tags(addslashes($value));
-        }
-        return $validatedInput;
-    }
-
-    /**
      * Escape an url
      * 
      * @param string $url the url to escape

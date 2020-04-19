@@ -5,7 +5,6 @@ use KC\Files\Files;
 use KC\Gallery\Gallery;
 use KC\Security\Security;
 use KC\Slider\Slider;
-use KC\Slider\SliderSettings;
 use KC\Utils\PluginHelper;
 use \WP_REST_Request;
 use \WP_REST_Response;
