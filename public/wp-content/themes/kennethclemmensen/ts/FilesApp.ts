@@ -20,34 +20,26 @@ export class FilesApp {
      * Setup the files app
      */
     private setupFilesApp(): void {
-        let elementId: string = 'files-app';
         new Vue({
-            el: '#' + elementId,
-            data: {
-                files: []
-            },
-            created: function(): void {
-                let element: HTMLElement | null = document.getElementById(elementId);
-                if(element) {
-                    let xhr: XMLHttpRequest = new XMLHttpRequest();
-                    xhr.open(HttpMethod.Get, Url.ApiFiles + element.dataset.type, true);
-                    xhr.addEventListener(EventType.Load, (): void => {
-                        this.files = (xhr.status === HttpStatusCode.Ok) ? JSON.parse(xhr.responseText) : [];
-                    });
-                    xhr.addEventListener(EventType.Error, (): void => {
-                        this.files = [];
-                    });
-                    xhr.send();
-                } else {
-                    this.files = [];
-                }
-            },
+            el: '#files-app',
             components: {
                 'files': {
                     data: (): object => {
                         return {
+                            files: [],
                             offset: 0
                         };
+                    },
+                    created: function(): void {
+                        let xhr: XMLHttpRequest = new XMLHttpRequest();
+                        xhr.open(HttpMethod.Get, Url.ApiFiles + this.fileTypes, true);
+                        xhr.addEventListener(EventType.Load, (): void => {
+                            this.files = (xhr.status === HttpStatusCode.Ok) ? JSON.parse(xhr.responseText) : [];
+                        });
+                        xhr.addEventListener(EventType.Error, (): void => {
+                            this.files = [];
+                        });
+                        xhr.send();
                     },
                     methods: {
                         previousPage: function(): void {
@@ -66,9 +58,9 @@ export class FilesApp {
                         }
                     },
                     props: {
-                        files: {
+                        fileTypes: {
                             required: true,
-                            type: Array
+                            type: String
                         },
                         perPage: {
                             required: true,

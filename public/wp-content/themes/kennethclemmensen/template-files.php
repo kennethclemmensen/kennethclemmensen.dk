@@ -12,8 +12,9 @@ while(have_posts()) {
         <section class="page__content">
             <h1><?php the_title(); ?></h1>
             <?php the_content(); ?>
-            <div id="files-app" data-type="<?php echo ThemeHelper::getFileTypes(); ?>">
-                <files :files="files" per-page="<?php echo ThemeSettings::getInstance()->getFilesPerPage(); ?>"
+            <div id="files-app">
+                <files file-types="<?php echo ThemeHelper::getFileTypes(); ?>"
+                    per-page="<?php echo ThemeSettings::getInstance()->getFilesPerPage(); ?>"
                     previous-text="<?php echo TranslationStrings::getPreviousText(); ?>"
                     next-text="<?php echo TranslationStrings::getNextText(); ?>" 
                     number-of-downloads-text="<?php echo TranslationStrings::getNumberOfDownloadsText(); ?>"></files>
