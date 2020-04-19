@@ -36,7 +36,7 @@ class ApiController {
         $this->registerPagesRoute();
         $this->registerFilesRoute();
         $this->registerFileDownloadCounterRoute();
-        $this->registerSliderRoute();
+        $this->registerSlidesRoute();
         $this->registerGalleriesRoutes();
     }
 
@@ -125,20 +125,14 @@ class ApiController {
     }
 
     /**
-     * Register the slider route
+     * Register the slides route
      */
-    private function registerSliderRoute() : void {
+    private function registerSlidesRoute() : void {
         $slider = new Slider();
-        $sliderSettings = new SliderSettings();
-        register_rest_route($this->namespace, '/slider', [
+        register_rest_route($this->namespace, '/slides', [
             'methods' => [WP_REST_Server::READABLE],
-            'callback' => function() use ($slider, $sliderSettings) : WP_REST_Response {
-                $data = [
-                    'delay' => $sliderSettings->getDelay(),
-                    'duration' => $sliderSettings->getDuration(),
-                    'slidesImages' => $slider->getSlidesImages()
-                ];
-                return new WP_REST_Response($data, $this->statusCodeOk);
+            'callback' => function() use ($slider) : WP_REST_Response {
+                return new WP_REST_Response($slider->getSlides(), $this->statusCodeOk);
             },
             'permission_callback' => function() : bool {
                 return Security::hasApiAccess();

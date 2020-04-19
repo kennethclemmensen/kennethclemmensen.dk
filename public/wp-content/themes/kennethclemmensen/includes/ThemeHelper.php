@@ -106,12 +106,12 @@ final class ThemeHelper {
     }
 
     /**
-     * Get the slider
+     * Get the slides
      * 
-     * @return array the slider
+     * @return array the slides
      */
-    public static function getSlider() : object {
-        return json_decode(file_get_contents(self::getApiUrl().'/slider'));
+    public static function getSlides() : array {
+        return json_decode(file_get_contents(self::getApiUrl().'/slides'), true);
     }
 
     /**

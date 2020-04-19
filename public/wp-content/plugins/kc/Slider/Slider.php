@@ -14,8 +14,6 @@ class Slider {
      * Initialize a new instance of the Slider class
      */
     public function __construct() {
-        require_once 'SliderSettings.php';
-        new SliderSettings();
         $this->init();
         $this->afterSetupTheme();
         $this->adminColumns();
@@ -69,12 +67,12 @@ class Slider {
     }
 
     /**
-     * Get the slides images
+     * Get the slides
      * 
-     * @return array the slides images
+     * @return array the slides
      */
-    public function getSlidesImages() : array {
-        $slidesImages = [];
+    public function getSlides() : array {
+        $slides = [];
         $args = [
             'post_type' => CustomPostType::SLIDES,
             'posts_per_page' => -1,
@@ -84,8 +82,10 @@ class Slider {
         $wpQuery = new WP_Query($args);
         while($wpQuery->have_posts()) {
             $wpQuery->the_post();
-            $slidesImages[] = PluginHelper::getImageUrl(get_the_ID());
+            $slides[] = [
+                'image' => PluginHelper::getImageUrl(get_the_ID())
+            ];
         }
-        return $slidesImages;
+        return $slides;
     }
 }

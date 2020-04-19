@@ -1,11 +1,11 @@
 <?php
-$slider = ThemeHelper::getSlider();
+$slider = ThemeSettings::getInstance();
 ?>
-<div id="slider" class="slider" data-delay="<?php echo $slider->delay; ?>" data-duration="<?php echo $slider->duration; ?>">
+<div id="slider" class="slider" data-delay="<?php echo $slider->getDelay(); ?>" data-duration="<?php echo $slider->getDuration(); ?>">
     <?php
-    $slidesImages = $slider->slidesImages;
-    foreach($slidesImages as $slideImage) {
-        echo '<div class="slider__image" style="background-image: url('.$slideImage.')"></div>';
+    $slides = ThemeHelper::getSlides();
+    foreach($slides as $slide) {
+        echo '<div class="slider__image" style="background-image: url('.$slide['image'].')"></div>';
     }
     ?>
 </div>

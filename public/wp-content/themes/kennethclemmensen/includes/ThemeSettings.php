@@ -7,12 +7,15 @@ final class ThemeSettings {
     private static $instance = null;
     private $contactPageSlug;
     private $scriptPageSlug;
+    private $sliderPageSlug;
     private $otherPageSlug;
     private $contactOptionsName;
     private $scriptOptionsName;
+    private $sliderOptionsName;
     private $otherOptionsName;
     private $contactOptions;
     private $scriptOptions;
+    private $sliderOptions;
     private $otherOptions;
     private $email;
     private $linkedIn;
@@ -26,6 +29,8 @@ final class ThemeSettings {
     private $emailShortcode;
     private $linkedInShortcode;
     private $gitHubShortcode;
+    private $delay;
+    private $duration;
 
     /**
      * ThemeSettings constructor
@@ -35,12 +40,15 @@ final class ThemeSettings {
         $postfix = '-options';
         $this->contactPageSlug = $prefix.'contact';
         $this->scriptPageSlug = $prefix.'scripts';
+        $this->sliderPageSlug = $prefix.'slider';
         $this->otherPageSlug = $prefix.'other';
         $this->contactOptionsName = $this->contactPageSlug.$postfix;
         $this->scriptOptionsName = $this->scriptPageSlug.$postfix;
+        $this->sliderOptionsName = $this->sliderPageSlug.$postfix;
         $this->otherOptionsName = $this->otherPageSlug.$postfix;
         $this->contactOptions = get_option($this->contactOptionsName);
         $this->scriptOptions = get_option($this->scriptOptionsName);
+        $this->sliderOptions = get_option($this->sliderOptionsName);
         $this->otherOptions = get_option($this->otherOptionsName);
         $this->email = 'email';
         $this->linkedIn = 'linkedin';
@@ -56,6 +64,9 @@ final class ThemeSettings {
         $this->emailShortcode = $prefix.$this->email;
         $this->linkedInShortcode = $prefix.$this->linkedIn;
         $this->gitHubShortcode = $prefix.$this->gitHub;
+        $prefix = 'slider_';
+        $this->delay = $prefix.'delay';
+        $this->duration = $prefix.'duration';
         $this->adminMenu();
         $this->adminInit();
         $this->addShortcodes();
@@ -88,6 +99,7 @@ final class ThemeSettings {
                         <?php
                         $contactTab = 'contact_options';
                         $scriptsTab = 'scripts_options';
+                        $sliderTab = 'slider_options';
                         $otherTab = 'other_options';
                         $activeTab = (isset($_GET['tab'])) ? $_GET['tab'] : $contactTab;
                         $currentTab = 'nav-tab-active';
@@ -96,6 +108,8 @@ final class ThemeSettings {
                            class="nav-tab <?php echo ($activeTab === $contactTab) ? $currentTab : ''; ?>">Contact</a>
                         <a href="?page=<?php echo $this->contactPageSlug; ?>&tab=<?php echo $scriptsTab; ?>"
                            class="nav-tab <?php echo ($activeTab === $scriptsTab) ? $currentTab : ''; ?>">Scripts</a>
+                        <a href="?page=<?php echo $this->contactPageSlug; ?>&tab=<?php echo $sliderTab; ?>"
+                           class="nav-tab <?php echo ($activeTab === $sliderTab) ? $currentTab : ''; ?>">Slider</a>
                         <a href="?page=<?php echo $this->contactPageSlug; ?>&tab=<?php echo $otherTab; ?>"
                            class="nav-tab <?php echo ($activeTab === $otherTab) ? $currentTab : ''; ?>">Other</a>
                     </h2>
@@ -107,6 +121,9 @@ final class ThemeSettings {
                         } else if($activeTab === $scriptsTab) {
                             settings_fields($this->scriptOptionsName);
                             do_settings_sections($this->scriptPageSlug);
+                        } else if($activeTab === $sliderTab) {
+                            settings_fields($this->sliderOptionsName);
+                            do_settings_sections($this->sliderPageSlug);
                         } else {
                             settings_fields($this->otherOptionsName);
                             do_settings_sections($this->otherPageSlug);
@@ -127,6 +144,7 @@ final class ThemeSettings {
         add_action('admin_init', function() : void {
             $this->createContactInputs();
             $this->createScriptInputs();
+            $this->createSliderInputs();
             $this->createOtherInputs();
         });
     }
@@ -168,6 +186,24 @@ final class ThemeSettings {
             echo '<textarea name="'.$this->scriptOptionsName.'['.$this->scriptFooter.']" cols="80" rows="10">'.$this->getFooterScripts().'</textarea>';
         }, $this->scriptPageSlug, $sectionID);
         register_setting($this->scriptOptionsName, $this->scriptOptionsName, function(array $input) : array {
+            return $this->validateSettingInputs($input);
+        });
+    }
+
+    /**
+     * Create the slider inputs
+     */
+    private function createSliderInputs() : void {
+        $sectionID = $this->sliderPageSlug.'-section-slider';
+        $prefix = $this->sliderPageSlug;
+        add_settings_section($sectionID, '', null, $this->sliderPageSlug);
+        add_settings_field($prefix.'delay', 'Delay', function() : void {
+            echo '<input type="number" name="'.$this->sliderOptionsName.'['.$this->delay.']" value="'.$this->getDelay().'" min="1" max="10000">';
+        }, $this->sliderPageSlug, $sectionID);
+        add_settings_field($prefix.'duration', 'Duration', function() : void {
+            echo '<input type="number" name="'.$this->sliderOptionsName.'['.$this->duration.']" value="'.$this->getDuration().'" min="1" max="10000">';
+        }, $this->sliderPageSlug, $sectionID);
+        register_setting($this->sliderOptionsName, $this->sliderOptionsName, function(array $input) : array {
             return $this->validateSettingInputs($input);
         });
     }
@@ -334,5 +370,23 @@ final class ThemeSettings {
      */
     public function getSearchResultsPerPage() : int {
         return intval($this->otherOptions[$this->searchResultsPerPage]);
+    }
+
+    /**
+     * Get the delay
+     * 
+     * @return int the delay
+     */
+    public function getDelay() : int {
+        return intval($this->sliderOptions[$this->delay]);
+    }
+
+    /**
+     * Get the duration
+     * 
+     * @return int the duration
+     */
+    public function getDuration() : int {
+        return intval($this->sliderOptions[$this->duration]);
     }
 }
