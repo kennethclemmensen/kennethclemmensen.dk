@@ -34,4 +34,14 @@ class Security {
     public static function sanitizeString(string $str) : string {
         return sanitize_text_field($str);
     }
+
+    /**
+     * Check if the value is valid
+     * 
+     * @param string $value the value to check
+     * @return bool true if the value is valid. False if it isn't valid
+     */
+    public static function isValid(string $value) : bool {
+        return !empty($value);
+    }
 }

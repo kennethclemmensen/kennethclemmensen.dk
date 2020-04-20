@@ -57,7 +57,7 @@ class ApiController {
                         return Security::sanitizeString($value);
                     },
                     'validate_callback' => function(string $value) : bool {
-                        return !empty($value);
+                        return Security::isValid($value);
                     }
                 ]
             ],
@@ -85,7 +85,7 @@ class ApiController {
                         return Security::sanitizeString($value);
                     },
                     'validate_callback' => function(string $value) : bool {
-                        return !empty($value);
+                        return Security::isValid($value);
                     }
                 ]
             ],
@@ -113,7 +113,7 @@ class ApiController {
                         return Security::sanitizeString($value);
                     },
                     'validate_callback' => function(string $value) : bool {
-                        return !empty($value);
+                        return Security::isValid($value);
                     }
                 ]
             ],
@@ -168,7 +168,7 @@ class ApiController {
                         return Security::sanitizeString($value);
                     },
                     'validate_callback' => function(string $value) : bool {
-                        return !empty($value);
+                        return Security::isValid($value);
                     }
                 ]
             ],
