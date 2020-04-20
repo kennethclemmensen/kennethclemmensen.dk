@@ -212,7 +212,7 @@ class Gallery {
         $args = [
             'post_type' => CustomPostType::IMAGE,
             'posts_per_page' => -1,
-            'orderby' => 'title',
+            'orderby' => ['title'],
             'order' => 'ASC',
             'meta_key' => $this->fieldImageGallery,
             'meta_value' => $galleryId
