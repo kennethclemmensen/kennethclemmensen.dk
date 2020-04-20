@@ -24,4 +24,14 @@ class Security {
     public static function hasApiAccess() : bool {
         return !is_user_logged_in();
     }
+
+    /**
+     * Sanitize a string
+     * 
+     * @param string $str the string to sanitize
+     * @return string the sanitized string
+     */
+    public static function sanitizeString(string $str) : string {
+        return sanitize_text_field($str);
+    }
 }

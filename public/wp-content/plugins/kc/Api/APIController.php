@@ -54,7 +54,7 @@ class ApiController {
                 $title => [
                     'required' => true,
                     'sanitize_callback' => function(string $value) : string {
-                        return sanitize_text_field($value);
+                        return Security::sanitizeString($value);
                     },
                     'validate_callback' => function(string $value) : bool {
                         return !empty($value);
@@ -82,7 +82,7 @@ class ApiController {
                 $type => [
                     'required' => true,
                     'sanitize_callback' => function(string $value) : string {
-                        return sanitize_text_field($value);
+                        return Security::sanitizeString($value);
                     },
                     'validate_callback' => function(string $value) : bool {
                         return !empty($value);
@@ -109,10 +109,10 @@ class ApiController {
             'args' => [
                 $fileId => [
                     'required' => true,
-                    'sanitize_callback' => function(int $value) : int {
-                        return sanitize_text_field($value);
+                    'sanitize_callback' => function(string $value) : string {
+                        return Security::sanitizeString($value);
                     },
-                    'validate_callback' => function(int $value) : bool {
+                    'validate_callback' => function(string $value) : bool {
                         return !empty($value);
                     }
                 ]
@@ -164,10 +164,10 @@ class ApiController {
             'args' => [
                 $id => [
                     'required' => true,
-                    'sanitize_callback' => function(int $value) : int {
-                        return sanitize_text_field($value);
+                    'sanitize_callback' => function(string $value) : string {
+                        return Security::sanitizeString($value);
                     },
-                    'validate_callback' => function(int $value) : bool {
+                    'validate_callback' => function(string $value) : bool {
                         return !empty($value);
                     }
                 ]
