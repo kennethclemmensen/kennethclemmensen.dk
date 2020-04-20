@@ -2,6 +2,6 @@
   "require-dev": {
     "codeception/codeception": "^4.1.4",
     "codeception/module-phpbrowser": "^1.0.0",
-    "codeception/module-asserts": "^1.2.0"
+    "codeception/module-asserts": "^1.2.1"
   }
 }
