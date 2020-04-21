@@ -36,7 +36,7 @@
     "gulp-shell": "^0.7.1",
     "node-sass": "^4.13.1",
     "typescript": "^3.8.3",
-    "webpack": "^4.42.1",
+    "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11"
   },
   "scripts": {
