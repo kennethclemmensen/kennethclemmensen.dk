@@ -3,13 +3,14 @@ namespace KC\Gallery;
 
 use KC\Core\Constant;
 use KC\Core\CustomPostType;
+use KC\Core\IModule;
 use KC\Utils\PluginHelper;
 use \WP_Query;
 
 /**
  * The Gallery class contains functionality to handle galleries and images
  */
-class Gallery {
+class Gallery implements IModule {
 
     private $fieldParentPage;
     private $fieldImageGallery;

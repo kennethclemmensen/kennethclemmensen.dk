@@ -2,13 +2,14 @@
 namespace KC\Slider;
 
 use KC\Core\CustomPostType;
+use KC\Core\IModule;
 use KC\Utils\PluginHelper;
 use \WP_Query;
 
 /**
  * The Slider class contains methods to handle the slides
  */
-class Slider {
+class Slider implements IModule {
 
     /**
      * Initialize a new instance of the Slider class

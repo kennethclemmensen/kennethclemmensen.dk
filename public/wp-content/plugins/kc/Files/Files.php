@@ -3,13 +3,14 @@ namespace KC\Files;
 
 use KC\Core\Constant;
 use KC\Core\CustomPostType;
+use KC\Core\IModule;
 use KC\Security\Security;
 use \WP_Query;
 
 /**
  * The Files class contains functionality to handle files
  */
-class Files {
+class Files implements IModule {
 
     private $fieldDescription;
     private $fieldFile;

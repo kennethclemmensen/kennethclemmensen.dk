@@ -1,10 +1,12 @@
 <?php
 namespace KC\Api;
 
+use KC\Core\IModule;
+
 /**
  * The Api class contains functionality to set up the API
  */
-class Api {
+class Api implements IModule {
 
     /**
      * Initialize a new instance of the Api class
