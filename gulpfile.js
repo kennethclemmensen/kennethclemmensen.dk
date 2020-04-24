@@ -1,6 +1,6 @@
 const { dest, series, src, watch } = require('gulp');
 const browserSyncPlugin = require('browser-sync');
-const cssnanoPlugin = require('gulp-cssnano');
+const cleanCssPlugin = require('gulp-clean-css');
 const imageminPlugin = require('gulp-imagemin');
 const lessPlugin = require('gulp-less');
 const packageConfig = require('./package.json');
@@ -38,7 +38,7 @@ function less() {
             console.log(error.toString());
             this.emit('end');
         })
-        .pipe(cssnanoPlugin())
+        .pipe(cleanCssPlugin())
         .pipe(dest(packageConfig.cssFolder))
         .pipe(browserSyncPlugin.reload({
             stream: true
@@ -76,7 +76,7 @@ function sass() {
             console.log(error.toString());
             this.emit('end');
         })
-        .pipe(cssnanoPlugin())
+        .pipe(cleanCssPlugin())
         .pipe(dest(packageConfig.cssFolder))
         .pipe(browserSyncPlugin.reload({
             stream: true
