@@ -12,7 +12,6 @@ class Api implements IModule {
      * Initialize a new instance of the Api class
      */
     public function __construct() {
-        require_once 'ApiController.php';
         $this->restApiInit();
     }
 

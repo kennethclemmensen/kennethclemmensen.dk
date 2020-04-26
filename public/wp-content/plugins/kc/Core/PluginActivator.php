@@ -21,16 +21,6 @@ class PluginActivator {
      * Run the plugin
      */
     public function run(): void {
-        $basePath = __DIR__.'/../';
-        require_once 'Constant.php';
-        require_once 'CustomPostType.php';
-        require_once 'IModule.php';
-        require_once $basePath.'Api/Api.php';
-        require_once $basePath.'Files/Files.php';
-        require_once $basePath.'Gallery/Gallery.php';
-        require_once $basePath.'Security/Security.php';
-        require_once $basePath.'Slider/Slider.php';
-        require_once $basePath.'Utils/PluginHelper.php';
         $modules = $this->getModules();
         foreach($modules as $module) {
             new $module;
