@@ -20,7 +20,7 @@ class PluginActivator {
     /**
      * Run the plugin
      */
-    public function run(): void {
+    public function run() : void {
         $modules = $this->getModules();
         foreach($modules as $module) {
             new $module;
