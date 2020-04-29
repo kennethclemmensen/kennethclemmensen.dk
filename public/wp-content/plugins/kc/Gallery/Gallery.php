@@ -4,6 +4,7 @@ namespace KC\Gallery;
 use KC\Core\Constant;
 use KC\Core\CustomPostType;
 use KC\Core\IModule;
+use KC\Pages\Pages;
 use KC\Utils\PluginHelper;
 use \WP_Query;
 
@@ -88,6 +89,7 @@ class Gallery implements IModule {
      */
     private function addMetaBoxes() : void {
         add_filter('rwmb_meta_boxes', function(array $metaBoxes) : array {
+            $pages = new Pages();
             $metaBoxes[] = [
                 'id' => 'gallery_informations',
                 'title' => 'Gallery informations',
@@ -97,7 +99,7 @@ class Gallery implements IModule {
                         'name' => 'Parent page',
                         'id' => $this->fieldParentPage,
                         'type' => 'select',
-                        'options' => PluginHelper::getPages()
+                        'options' => $pages->getPages()
                     ]
                 ]
             ];

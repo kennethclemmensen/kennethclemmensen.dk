@@ -3,9 +3,9 @@ namespace KC\Api;
 
 use KC\Files\Files;
 use KC\Gallery\Gallery;
+use KC\Pages\Pages;
 use KC\Security\Security;
 use KC\Slider\Slider;
-use KC\Utils\PluginHelper;
 use \WP_REST_Request;
 use \WP_REST_Response;
 use \WP_REST_Server;
@@ -43,12 +43,12 @@ class ApiController {
      * Register the pages route
      */
     private function registerPagesRoute() : void {
+        $pages = new Pages();
         $title = 'title';
         register_rest_route($this->namespace, '/pages/(?P<'.$title.'>[\S]+)', [
             'methods' => [WP_REST_Server::READABLE],
-            'callback' => function(WP_REST_Request $request) use ($title) : WP_REST_Response {
-                $pages = PluginHelper::getPagesByTitle($request->get_param($title));
-                return new WP_REST_Response($pages, $this->statusCodeOk);
+            'callback' => function(WP_REST_Request $request) use ($pages, $title) : WP_REST_Response {
+                return new WP_REST_Response($pages->getPagesByTitle($request->get_param($title)), $this->statusCodeOk);
             },
             'args' => [
                 $title => [

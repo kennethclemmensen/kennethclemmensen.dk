@@ -18,6 +18,7 @@ require_once 'Core/CustomPostType.php';
 require_once 'Core/PluginActivator.php';
 require_once 'Files/Files.php';
 require_once 'Gallery/Gallery.php';
+require_once 'Pages/Pages.php';
 require_once 'Security/Security.php';
 require_once 'Slider/Slider.php';
 require_once 'Utils/PluginHelper.php';
