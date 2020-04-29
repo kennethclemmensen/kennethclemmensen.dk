@@ -5,6 +5,7 @@ use KC\Core\Constant;
 use KC\Core\CustomPostType;
 use KC\Core\IModule;
 use KC\Security\Security;
+use KC\Utils\PluginHelper;
 use \WP_Query;
 
 /**
@@ -121,7 +122,7 @@ class Files implements IModule {
      * @return string the file url
      */
     private function getFileUrl(int $fileID) : string {
-        $attachmentID = get_post_meta($fileID, $this->fieldFile, true);
+        $attachmentID = PluginHelper::getFieldValue($this->fieldFile, $fileID);
         return Security::escapeUrl(wp_get_attachment_url($attachmentID));
     }
 
@@ -132,7 +133,7 @@ class Files implements IModule {
      * @return string the file name
      */
     private function getFileName(int $fileID) : string {
-        $attachmentID = get_post_meta($fileID, $this->fieldFile, true);
+        $attachmentID = PluginHelper::getFieldValue($this->fieldFile, $fileID);
         return basename(get_attached_file($attachmentID));
     }
 
@@ -143,7 +144,7 @@ class Files implements IModule {
      * @return string the file description
      */
     private function getFileDescription(int $fileID) : string {
-        return get_post_meta($fileID, $this->fieldDescription, true);
+        return PluginHelper::getFieldValue($this->fieldDescription, $fileID);
     }
 
     /**
@@ -153,7 +154,7 @@ class Files implements IModule {
      * @return int the number of file downloads
      */
     private function getFileDownloads(int $fileID) : int {
-        return get_post_meta($fileID, $this->fieldFileDownloadCounter, true);
+        return PluginHelper::getFieldValue($this->fieldFileDownloadCounter, $fileID);
     }
 
     /**

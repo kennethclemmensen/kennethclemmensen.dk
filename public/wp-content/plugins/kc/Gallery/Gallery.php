@@ -70,7 +70,7 @@ class Gallery implements IModule {
         add_action('save_post_'.CustomPostType::GALLERY, function(int $postID) {
             global $wpdb;
             update_post_meta($postID, $this->fieldParentPage, $_REQUEST[$this->fieldParentPage]);
-            $parentPage = get_post_meta($postID, $this->fieldParentPage, true);
+            $parentPage = PluginHelper::getFieldValue($this->fieldParentPage, $postID);
             $wpdb->update('kcwp_posts', ['post_parent' => $parentPage], ['ID' => $postID]);
         });
     }
@@ -134,7 +134,7 @@ class Gallery implements IModule {
         });
         add_action('manage_'.CustomPostType::IMAGE.'_posts_custom_column', function(string $columnName) use ($columnGalleryKey, $columnImageKey) : void {
             if($columnName === $columnGalleryKey) {
-                $galleryID = get_post_meta(get_the_ID(), $this->fieldImageGallery, true);
+                $galleryID = PluginHelper::getFieldValue($this->fieldImageGallery, get_the_ID());
                 echo get_post($galleryID)->post_title;
             } else if($columnName === $columnImageKey) {
                 echo '<img src="'.PluginHelper::getImageUrl(get_the_ID(), Constant::THUMBNAIL).'" alt="'.get_the_title().'">';

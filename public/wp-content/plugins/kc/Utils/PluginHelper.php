@@ -18,4 +18,15 @@ class PluginHelper {
     public static function getImageUrl(int $imageID, string $size = 'post-thumbnail') : string {
         return Security::escapeUrl(get_the_post_thumbnail_url($imageID, $size));
     }
+
+    /**
+     * Get the field value from a post
+     * 
+     * @param string $fieldId the id of the field
+     * @param int $postId the id of the post
+     * @return string the field value
+     */
+    public static function getFieldValue(string $fieldId, int $postId) : string {
+        return get_post_meta($postId, $fieldId, true);
+    }
 }

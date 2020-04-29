@@ -1,6 +1,7 @@
 <?php
 namespace KC\Slider;
 
+use KC\Core\Constant;
 use KC\Core\CustomPostType;
 use KC\Core\IModule;
 use KC\Utils\PluginHelper;
@@ -32,7 +33,7 @@ class Slider implements IModule {
                 ],
                 'public' => false,
                 'has_archive' => false,
-                'supports' => ['title', 'thumbnail'],
+                'supports' => ['title', Constant::THUMBNAIL],
                 'menu_icon' => 'dashicons-images-alt',
                 'publicly_queryable' => true,
                 'show_ui' => true,
