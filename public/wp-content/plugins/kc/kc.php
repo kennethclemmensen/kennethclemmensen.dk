@@ -5,7 +5,7 @@ Description: The plugin for the site
 Version: 1.0
 Author: Kenneth Clemmensen
 Author URI: https://kennethclemmensen.dk
-Requires at least: 5.4
+Requires at least: 5.4.1
 Requires PHP: 7.3
 */
 namespace KC;
@@ -13,8 +13,10 @@ if(!defined('ABSPATH')) wp_die();
 require_once 'Core/IModule.php';
 require_once 'Api/Api.php';
 require_once 'Api/ApiController.php';
+require_once 'Core/Action.php';
 require_once 'Core/Constant.php';
 require_once 'Core/CustomPostType.php';
+require_once 'Core/Filter.php';
 require_once 'Core/PluginActivator.php';
 require_once 'Files/Files.php';
 require_once 'Gallery/Gallery.php';

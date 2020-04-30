@@ -6,7 +6,13 @@ namespace KC\Core;
  */
 class Constant {
 
+    public const EDITOR = 'editor';
+
     public const PAGE = 'page';
 
+    public const POST_THUMBNAILS = 'post-thumbnails';
+
     public const THUMBNAIL = 'thumbnail';
+
+    public const TITLE = 'title';
 }

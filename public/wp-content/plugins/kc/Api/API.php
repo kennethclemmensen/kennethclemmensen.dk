@@ -1,6 +1,7 @@
 <?php
 namespace KC\Api;
 
+use KC\Core\Action;
 use KC\Core\IModule;
 
 /**
@@ -19,7 +20,7 @@ class Api implements IModule {
      * Use the rest_api_init action to register routes
      */
     private function restApiInit() : void {
-        add_action('rest_api_init', function() : void {
+        add_action(Action::API_INIT, function() : void {
             $controller = new ApiController();
             $controller->registerRoutes();
         });

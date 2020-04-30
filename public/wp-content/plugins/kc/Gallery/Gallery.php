@@ -1,8 +1,10 @@
 <?php
 namespace KC\Gallery;
 
+use KC\Core\Action;
 use KC\Core\Constant;
 use KC\Core\CustomPostType;
+use KC\Core\Filter;
 use KC\Core\IModule;
 use KC\Pages\Pages;
 use KC\Utils\PluginHelper;
@@ -33,7 +35,7 @@ class Gallery implements IModule {
      * Use the init action to register the gallery and image custom post types
      */
     private function init() : void {
-        add_action('init', function() : void {
+        add_action(Action::INIT, function() : void {
             register_post_type(CustomPostType::GALLERY, [
                 'labels' => [
                     'name' => 'Galleries',
@@ -41,7 +43,7 @@ class Gallery implements IModule {
                 ],
                 'public' => true,
                 'has_archive' => true,
-                'supports' => ['title', 'editor', 'thumbnail'],
+                'supports' => [Constant::TITLE, Constant::EDITOR, Constant::THUMBNAIL],
                 'menu_icon' => 'dashicons-format-gallery',
                 'rewrite' => ['slug' => '/billeder', 'with_front' => false]
             ]);
@@ -52,7 +54,7 @@ class Gallery implements IModule {
                 ],
                 'public' => false,
                 'has_archive' => false,
-                'supports' => ['title', 'thumbnail'],
+                'supports' => [Constant::TITLE, Constant::THUMBNAIL],
                 'menu_icon' => 'dashicons-format-image',
                 'publicly_queryable' => true,
                 'show_ui' => true,
@@ -67,7 +69,7 @@ class Gallery implements IModule {
      * Use the save_post_{$post->post_type} action to save a gallery 
      */
     private function savePost() : void {
-        add_action('save_post_'.CustomPostType::GALLERY, function(int $postID) {
+        add_action(Action::getSavePostAction(CustomPostType::GALLERY), function(int $postID) {
             global $wpdb;
             update_post_meta($postID, $this->fieldParentPage, $_REQUEST[$this->fieldParentPage]);
             $parentPage = PluginHelper::getFieldValue($this->fieldParentPage, $postID);
@@ -79,8 +81,8 @@ class Gallery implements IModule {
      * Use the after_setup_theme action to add post thumbnails support
      */
     private function afterSetupTheme() : void {
-        add_action('after_setup_theme', function() : void {
-            add_theme_support('post-thumbnails');
+        add_action(Action::SETUP_THEME, function() : void {
+            add_theme_support(Constant::POST_THUMBNAILS);
         });
     }
 
@@ -88,7 +90,7 @@ class Gallery implements IModule {
      * Use the rwmb_meta_boxes filter to add meta boxes to the gallery and image custom post types
      */
     private function addMetaBoxes() : void {
-        add_filter('rwmb_meta_boxes', function(array $metaBoxes) : array {
+        add_filter(Filter::META_BOXES, function(array $metaBoxes) : array {
             $pages = new Pages();
             $metaBoxes[] = [
                 'id' => 'gallery_informations',
@@ -127,12 +129,12 @@ class Gallery implements IModule {
         $columnGalleryKey = 'gallery';
         $columnGalleryValue = 'Gallery';
         $columnImageKey = 'image';
-        add_filter('manage_'.CustomPostType::IMAGE.'_posts_columns', function(array $columns) use ($columnGalleryKey, $columnGalleryValue, $columnImageKey) : array {
+        add_filter(Filter::getManagePostsColumnsFilter(CustomPostType::IMAGE), function(array $columns) use ($columnGalleryKey, $columnGalleryValue, $columnImageKey) : array {
             $columns[$columnGalleryKey] = $columnGalleryValue;
             $columns[$columnImageKey] = ucfirst($columnImageKey);
             return $columns;
         });
-        add_action('manage_'.CustomPostType::IMAGE.'_posts_custom_column', function(string $columnName) use ($columnGalleryKey, $columnImageKey) : void {
+        add_action(Action::getManagePostsCustomColumn(CustomPostType::IMAGE), function(string $columnName) use ($columnGalleryKey, $columnImageKey) : void {
             if($columnName === $columnGalleryKey) {
                 $galleryID = PluginHelper::getFieldValue($this->fieldImageGallery, get_the_ID());
                 echo get_post($galleryID)->post_title;
@@ -140,17 +142,17 @@ class Gallery implements IModule {
                 echo '<img src="'.PluginHelper::getImageUrl(get_the_ID(), Constant::THUMBNAIL).'" alt="'.get_the_title().'">';
             }
         });
-        add_filter('manage_edit-'.CustomPostType::IMAGE.'_sortable_columns', function(array $columns) use ($columnGalleryKey, $columnGalleryValue) : array {
+        add_filter(Filter::getSortableColumnsFilter(CustomPostType::IMAGE), function(array $columns) use ($columnGalleryKey, $columnGalleryValue) : array {
             $columns[$columnGalleryKey] = $columnGalleryValue;
             return $columns;
         });
         $columnNumberOfImagesKey = 'number_of_images';
         $columnNumberOfImagesValue = 'Images';
-        add_filter('manage_'.CustomPostType::GALLERY.'_posts_columns', function(array $columns) use ($columnNumberOfImagesKey, $columnNumberOfImagesValue) : array {
+        add_filter(Filter::getManagePostsColumnsFilter(CustomPostType::GALLERY), function(array $columns) use ($columnNumberOfImagesKey, $columnNumberOfImagesValue) : array {
             $columns[$columnNumberOfImagesKey] = $columnNumberOfImagesValue;
             return $columns;
         });
-        add_action('manage_'.CustomPostType::GALLERY.'_posts_custom_column', function(string $columnName) use ($columnNumberOfImagesKey) {
+        add_action(Action::getManagePostsCustomColumn(CustomPostType::GALLERY), function(string $columnName) use ($columnNumberOfImagesKey) {
             if($columnName === $columnNumberOfImagesKey) echo $this->getNumberOfImagesInGallery(get_the_ID());
         });
     }
@@ -215,7 +217,7 @@ class Gallery implements IModule {
         $args = [
             'post_type' => CustomPostType::IMAGE,
             'posts_per_page' => -1,
-            'orderby' => ['title'],
+            'orderby' => [Constant::TITLE],
             'order' => 'ASC',
             'meta_key' => $this->fieldImageGallery,
             'meta_value' => $galleryId

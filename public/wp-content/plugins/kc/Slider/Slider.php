@@ -1,8 +1,10 @@
 <?php
 namespace KC\Slider;
 
+use KC\Core\Action;
 use KC\Core\Constant;
 use KC\Core\CustomPostType;
+use KC\Core\Filter;
 use KC\Core\IModule;
 use KC\Utils\PluginHelper;
 use \WP_Query;
@@ -25,7 +27,7 @@ class Slider implements IModule {
      * Use the init action to register the slides custom post type
      */
     private function init() : void {
-        add_action('init', function() : void {
+        add_action(Action::INIT, function() : void {
             register_post_type(CustomPostType::SLIDES, [
                 'labels' => [
                     'name' => 'Slides',
@@ -33,7 +35,7 @@ class Slider implements IModule {
                 ],
                 'public' => false,
                 'has_archive' => false,
-                'supports' => ['title', Constant::THUMBNAIL],
+                'supports' => [Constant::TITLE, Constant::THUMBNAIL],
                 'menu_icon' => 'dashicons-images-alt',
                 'publicly_queryable' => true,
                 'show_ui' => true,
@@ -48,8 +50,8 @@ class Slider implements IModule {
      * Use the after_setup_theme action to add post thumbnails support
      */
     private function afterSetupTheme() : void {
-        add_action('after_setup_theme', function() : void {
-            add_theme_support('post-thumbnails');
+        add_action(Action::SETUP_THEME, function() : void {
+            add_theme_support(Constant::POST_THUMBNAILS);
         });
     }
 
@@ -59,11 +61,11 @@ class Slider implements IModule {
      */
     private function adminColumns() : void {
         $imageColumnKey = 'image';
-        add_filter('manage_'.CustomPostType::SLIDES.'_posts_columns', function(array $columns) use ($imageColumnKey) : array {
+        add_filter(Filter::getManagePostsColumnsFilter(CustomPostType::SLIDES), function(array $columns) use ($imageColumnKey) : array {
             $columns[$imageColumnKey] = 'Image';
             return $columns;
         });
-        add_filter('manage_'.CustomPostType::SLIDES.'_posts_custom_column', function(string $columnName) use ($imageColumnKey) : void {
+        add_action(Action::getManagePostsCustomColumn(CustomPostType::SLIDES), function(string $columnName) use ($imageColumnKey) : void {
             if($columnName === $imageColumnKey) echo '<img src="'.PluginHelper::getImageUrl(get_the_ID()).'" alt="'.get_the_title().'" style="height: 60px">';
         });
     }

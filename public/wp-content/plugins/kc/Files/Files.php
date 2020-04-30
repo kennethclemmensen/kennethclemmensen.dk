@@ -1,8 +1,10 @@
 <?php
 namespace KC\Files;
 
+use KC\Core\Action;
 use KC\Core\Constant;
 use KC\Core\CustomPostType;
+use KC\Core\Filter;
 use KC\Core\IModule;
 use KC\Security\Security;
 use KC\Utils\PluginHelper;
@@ -36,7 +38,7 @@ class Files implements IModule {
      * Use the init action to register the file custom post type and the file types taxonomy
      */
     private function init() : void {
-        add_action('init', function() : void {
+        add_action(Action::INIT, function() : void {
             register_post_type(CustomPostType::FILE, [
                 'labels' => [
                     'name' => 'Files',
@@ -45,7 +47,7 @@ class Files implements IModule {
                 'public' => true,
                 'exclude_from_search' => true,
                 'has_archive' => true,
-                'supports' => ['title']
+                'supports' => [Constant::TITLE]
             ]);
             register_taxonomy($this->fileTypeTaxonomyName, [Constant::PAGE, CustomPostType::FILE], [
                 'labels' => [
@@ -64,7 +66,7 @@ class Files implements IModule {
      * Use the rwmb_meta_boxes filter to add meta boxes to the file custom post type
      */
     private function addMetaBoxes() : void {
-        add_filter('rwmb_meta_boxes', function(array $metaBoxes) : array {
+        add_filter(Filter::META_BOXES, function(array $metaBoxes) : array {
             $metaBoxes[] = [
                 'id' => 'file_informations',
                 'title' => 'File informations',
@@ -109,7 +111,7 @@ class Files implements IModule {
      */
     private function uploadMimes() : void {
         $priority = 1;
-        add_filter('upload_mimes', function(array $mimeTypes) : array {
+        add_filter(Filter::MIMES, function(array $mimeTypes) : array {
             $mimeTypes['java'] = 'application/java';
             return $mimeTypes;
         }, $priority);
