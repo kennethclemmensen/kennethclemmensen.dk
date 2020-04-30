@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit424d5d6160c52f59ba476750c190098f
+class ComposerStaticInitd68966ec94af8b28648b9ed9a98a08f0
 {
     public static $prefixLengthsPsr4 = array (
         'C' => 
@@ -21,6 +21,10 @@ class ComposerStaticInit424d5d6160c52f59ba476750c190098f
     );
 
     public static $classMap = array (
+        'AddCollationToTables' => __DIR__ . '/../..' . '/src/config/migrations/20200408101900_AddCollationToTables.php',
+        'AddColumnsToIndexables' => __DIR__ . '/../..' . '/src/config/migrations/20200420073606_AddColumnsToIndexables.php',
+        'AddIndexableObjectIdAndTypeIndex' => __DIR__ . '/../..' . '/src/config/migrations/20200430075614_AddIndexableObjectIdAndTypeIndex.php',
+        'BreadcrumbTitleAndHierarchyReset' => __DIR__ . '/../..' . '/src/config/migrations/20200428123747_BreadcrumbTitleAndHierarchyReset.php',
         'Composer\\Installers\\AglInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/AglInstaller.php',
         'Composer\\Installers\\AimeosInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/AimeosInstaller.php',
         'Composer\\Installers\\AnnotateCmsInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/AnnotateCmsInstaller.php',
@@ -111,6 +115,8 @@ class ComposerStaticInit424d5d6160c52f59ba476750c190098f
         'Composer\\Installers\\YawikInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/YawikInstaller.php',
         'Composer\\Installers\\ZendInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/ZendInstaller.php',
         'Composer\\Installers\\ZikulaInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/ZikulaInstaller.php',
+        'ExpandIndexableColumnLengths' => __DIR__ . '/../..' . '/src/config/migrations/20200428194858_ExpandIndexableColumnLengths.php',
+        'TruncateIndexableTables' => __DIR__ . '/../..' . '/src/config/migrations/20200429105310_TruncateIndexableTables.php',
         'WPSEO_Abstract_Capability_Manager' => __DIR__ . '/../..' . '/admin/capabilities/class-abstract-capability-manager.php',
         'WPSEO_Abstract_Metabox_Tab_With_Sections' => __DIR__ . '/../..' . '/admin/metabox/class-abstract-sectioned-metabox-tab.php',
         'WPSEO_Abstract_Post_Filter' => __DIR__ . '/../..' . '/admin/filters/class-abstract-post-filter.php',
@@ -476,6 +482,10 @@ class ComposerStaticInit424d5d6160c52f59ba476750c190098f
         'WPSEO_WordPress_AJAX_Integration' => __DIR__ . '/../..' . '/inc/interface-wpseo-wordpress-ajax-integration.php',
         'WPSEO_WordPress_Integration' => __DIR__ . '/../..' . '/inc/interface-wpseo-wordpress-integration.php',
         'WPSEO_Yoast_Columns' => __DIR__ . '/../..' . '/admin/class-yoast-columns.php',
+        'WpYoastDropIndexableMetaTableIfExists' => __DIR__ . '/../..' . '/src/config/migrations/20190529075038_WpYoastDropIndexableMetaTableIfExists.php',
+        'WpYoastIndexable' => __DIR__ . '/../..' . '/src/config/migrations/20171228151840_WpYoastIndexable.php',
+        'WpYoastIndexableHierarchy' => __DIR__ . '/../..' . '/src/config/migrations/20191011111109_WpYoastIndexableHierarchy.php',
+        'WpYoastPrimaryTerm' => __DIR__ . '/../..' . '/src/config/migrations/20171228151841_WpYoastPrimaryTerm.php',
         'YoastSEO_Vendor\\GuzzleHttp\\Client' => __DIR__ . '/../..' . '/vendor_prefixed/guzzlehttp/guzzle/src/Client.php',
         'YoastSEO_Vendor\\GuzzleHttp\\ClientInterface' => __DIR__ . '/../..' . '/vendor_prefixed/guzzlehttp/guzzle/src/ClientInterface.php',
         'YoastSEO_Vendor\\GuzzleHttp\\Cookie\\CookieJar' => __DIR__ . '/../..' . '/vendor_prefixed/guzzlehttp/guzzle/src/Cookie/CookieJar.php',
@@ -545,10 +555,6 @@ class ComposerStaticInit424d5d6160c52f59ba476750c190098f
         'YoastSEO_Vendor\\GuzzleHttp\\RetryMiddleware' => __DIR__ . '/../..' . '/vendor_prefixed/guzzlehttp/guzzle/src/RetryMiddleware.php',
         'YoastSEO_Vendor\\GuzzleHttp\\TransferStats' => __DIR__ . '/../..' . '/vendor_prefixed/guzzlehttp/guzzle/src/TransferStats.php',
         'YoastSEO_Vendor\\GuzzleHttp\\UriTemplate' => __DIR__ . '/../..' . '/vendor_prefixed/guzzlehttp/guzzle/src/UriTemplate.php',
-        'YoastSEO_Vendor\\IdiormMethodMissingException' => __DIR__ . '/../..' . '/vendor_prefixed/j4mie/idiorm/idiorm.php',
-        'YoastSEO_Vendor\\IdiormResultSet' => __DIR__ . '/../..' . '/vendor_prefixed/j4mie/idiorm/idiorm.php',
-        'YoastSEO_Vendor\\IdiormString' => __DIR__ . '/../..' . '/vendor_prefixed/j4mie/idiorm/idiorm.php',
-        'YoastSEO_Vendor\\IdiormStringException' => __DIR__ . '/../..' . '/vendor_prefixed/j4mie/idiorm/idiorm.php',
         'YoastSEO_Vendor\\League\\OAuth2\\Client\\Grant\\AbstractGrant' => __DIR__ . '/../..' . '/vendor_prefixed/league/oauth2-client/src/Grant/AbstractGrant.php',
         'YoastSEO_Vendor\\League\\OAuth2\\Client\\Grant\\AuthorizationCode' => __DIR__ . '/../..' . '/vendor_prefixed/league/oauth2-client/src/Grant/AuthorizationCode.php',
         'YoastSEO_Vendor\\League\\OAuth2\\Client\\Grant\\ClientCredentials' => __DIR__ . '/../..' . '/vendor_prefixed/league/oauth2-client/src/Grant/ClientCredentials.php',
@@ -575,7 +581,6 @@ class ComposerStaticInit424d5d6160c52f59ba476750c190098f
         'YoastSEO_Vendor\\League\\OAuth2\\Client\\Tool\\QueryBuilderTrait' => __DIR__ . '/../..' . '/vendor_prefixed/league/oauth2-client/src/Tool/QueryBuilderTrait.php',
         'YoastSEO_Vendor\\League\\OAuth2\\Client\\Tool\\RequestFactory' => __DIR__ . '/../..' . '/vendor_prefixed/league/oauth2-client/src/Tool/RequestFactory.php',
         'YoastSEO_Vendor\\League\\OAuth2\\Client\\Tool\\RequiredParameterTrait' => __DIR__ . '/../..' . '/vendor_prefixed/league/oauth2-client/src/Tool/RequiredParameterTrait.php',
-        'YoastSEO_Vendor\\ORM' => __DIR__ . '/../..' . '/vendor_prefixed/j4mie/idiorm/idiorm.php',
         'YoastSEO_Vendor\\Psr\\Container\\ContainerExceptionInterface' => __DIR__ . '/../..' . '/vendor_prefixed/psr/container/src/ContainerExceptionInterface.php',
         'YoastSEO_Vendor\\Psr\\Container\\ContainerInterface' => __DIR__ . '/../..' . '/vendor_prefixed/psr/container/src/ContainerInterface.php',
         'YoastSEO_Vendor\\Psr\\Container\\NotFoundExceptionInterface' => __DIR__ . '/../..' . '/vendor_prefixed/psr/container/src/NotFoundExceptionInterface.php',
@@ -887,9 +892,9 @@ class ComposerStaticInit424d5d6160c52f59ba476750c190098f
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit424d5d6160c52f59ba476750c190098f::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit424d5d6160c52f59ba476750c190098f::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit424d5d6160c52f59ba476750c190098f::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitd68966ec94af8b28648b9ed9a98a08f0::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitd68966ec94af8b28648b9ed9a98a08f0::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitd68966ec94af8b28648b9ed9a98a08f0::$classMap;
 
         }, null, ClassLoader::class);
     }
