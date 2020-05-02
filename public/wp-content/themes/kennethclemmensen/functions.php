@@ -179,11 +179,6 @@ add_action('customize_register', function(WP_Customize_Manager $wpCustomizeManag
 });
 
 /**
- * Filters the canonical redirect url
- */
-add_filter('redirect_canonical', '__return_false');
-
-/**
  * Disallow file edit for themes and plugins
  */
 define('DISALLOW_FILE_EDIT', true);
