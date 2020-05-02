@@ -2,15 +2,17 @@
 namespace KC\Core;
 
 /**
- * The CustomPostType class defines the custom post types
+ * The PostType class defines the post types
  */
-class CustomPostType {
+class PostType {
 
     public const FILE = 'fdwc_file';
 
     public const GALLERY = 'gallery';
     
     public const IMAGE = 'photo';
+
+    public const PAGE = 'page';
 
     public const SLIDES = 'slides';
 }

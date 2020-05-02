@@ -3,9 +3,9 @@ namespace KC\Slider;
 
 use KC\Core\Action;
 use KC\Core\Constant;
-use KC\Core\CustomPostType;
 use KC\Core\Filter;
 use KC\Core\IModule;
+use KC\Core\PostType;
 use KC\Utils\PluginHelper;
 use \WP_Query;
 
@@ -27,7 +27,7 @@ class SliderModule implements IModule {
      */
     private function registerPostType() : void {
         add_action(Action::INIT, function() : void {
-            register_post_type(CustomPostType::SLIDES, [
+            register_post_type(PostType::SLIDES, [
                 'labels' => [
                     'name' => 'Slides',
                     'singular_name' => 'Slide'
@@ -50,11 +50,11 @@ class SliderModule implements IModule {
      */
     private function addAdminColumns() : void {
         $imageColumnKey = 'image';
-        add_filter(Filter::getManagePostsColumnsFilter(CustomPostType::SLIDES), function(array $columns) use ($imageColumnKey) : array {
+        add_filter(Filter::getManagePostsColumnsFilter(PostType::SLIDES), function(array $columns) use ($imageColumnKey) : array {
             $columns[$imageColumnKey] = 'Image';
             return $columns;
         });
-        add_action(Action::getManagePostsCustomColumn(CustomPostType::SLIDES), function(string $columnName) use ($imageColumnKey) : void {
+        add_action(Action::getManagePostsCustomColumn(PostType::SLIDES), function(string $columnName) use ($imageColumnKey) : void {
             if($columnName === $imageColumnKey) echo '<img src="'.PluginHelper::getImageUrl(get_the_ID()).'" alt="'.get_the_title().'" style="height: 60px">';
         });
     }
@@ -67,7 +67,7 @@ class SliderModule implements IModule {
     public function getSlides() : array {
         $slides = [];
         $args = [
-            'post_type' => CustomPostType::SLIDES,
+            'post_type' => PostType::SLIDES,
             'posts_per_page' => -1,
             'order' => Constant::ASC,
             'orderby' => 'menu_order'

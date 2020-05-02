@@ -3,9 +3,9 @@ namespace KC\Gallery;
 
 use KC\Core\Action;
 use KC\Core\Constant;
-use KC\Core\CustomPostType;
 use KC\Core\Filter;
 use KC\Core\IModule;
+use KC\Core\PostType;
 use KC\Page\PageModule;
 use KC\Utils\PluginHelper;
 use \WP_Query;
@@ -32,7 +32,7 @@ class GalleryModule implements IModule {
      */
     private function registerPostType() : void {
         add_action(Action::INIT, function() : void {
-            register_post_type(CustomPostType::GALLERY, [
+            register_post_type(PostType::GALLERY, [
                 'labels' => [
                     'name' => 'Galleries',
                     'singular_name' => 'Gallery'
@@ -50,7 +50,7 @@ class GalleryModule implements IModule {
      * Update the post_parent column in the database when saving a gallery
      */
     private function updatePostParent() : void {
-        add_action(Action::getSavePostAction(CustomPostType::GALLERY), function(int $postID) : void {
+        add_action(Action::getSavePostAction(PostType::GALLERY), function(int $postID) : void {
             global $wpdb;
             PluginHelper::setFieldValue($_REQUEST[$this->fieldParentPage], $this->fieldParentPage, $postID);
             $parentPage = PluginHelper::getFieldValue($this->fieldParentPage, $postID);
@@ -67,7 +67,7 @@ class GalleryModule implements IModule {
             $metaBoxes[] = [
                 'id' => 'gallery_informations',
                 'title' => 'Gallery informations',
-                'post_types' => [CustomPostType::GALLERY],
+                'post_types' => [PostType::GALLERY],
                 'fields' => [
                     [
                         'name' => 'Parent page',
@@ -90,7 +90,7 @@ class GalleryModule implements IModule {
     public function getGalleries(bool $isCalledFromApi = false) : array {
         $galleries = [];
         $args = [
-            'post_type' => CustomPostType::GALLERY,
+            'post_type' => PostType::GALLERY,
             'posts_per_page' => -1,
             'order' => Constant::ASC
         ];

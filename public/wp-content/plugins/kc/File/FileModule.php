@@ -3,9 +3,9 @@ namespace KC\File;
 
 use KC\Core\Action;
 use KC\Core\Constant;
-use KC\Core\CustomPostType;
 use KC\Core\Filter;
 use KC\Core\IModule;
+use KC\Core\PostType;
 use KC\Security\Security;
 use KC\Utils\PluginHelper;
 use \WP_Query;
@@ -39,7 +39,7 @@ class FileModule implements IModule {
      */
     private function registerPostTypesAndTaxonomies() : void {
         add_action(Action::INIT, function() : void {
-            register_post_type(CustomPostType::FILE, [
+            register_post_type(PostType::FILE, [
                 'labels' => [
                     'name' => 'Files',
                     'singular_name' => 'File'
@@ -49,7 +49,7 @@ class FileModule implements IModule {
                 'has_archive' => true,
                 'supports' => [Constant::TITLE]
             ]);
-            register_taxonomy($this->fileTypeTaxonomyName, [Constant::PAGE, CustomPostType::FILE], [
+            register_taxonomy($this->fileTypeTaxonomyName, [PostType::PAGE, PostType::FILE], [
                 'labels' => [
                     'name' => 'File types',
                     'singular_name' => 'File type'
@@ -68,7 +68,7 @@ class FileModule implements IModule {
             $metaBoxes[] = [
                 'id' => 'file_informations',
                 'title' => 'File informations',
-                'post_types' => [CustomPostType::FILE],
+                'post_types' => [PostType::FILE],
                 'fields' => [
                     [
                         'name' => 'Description',
@@ -177,7 +177,7 @@ class FileModule implements IModule {
     public function getFiles(array $fileTypes) : array {
         $files = [];
         $args = [
-            'post_type' => CustomPostType::FILE,
+            'post_type' => PostType::FILE,
             'posts_per_page' => -1,
             'order' => Constant::ASC,
             'tax_query' => [

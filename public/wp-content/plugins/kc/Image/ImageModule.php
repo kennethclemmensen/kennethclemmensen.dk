@@ -3,9 +3,9 @@ namespace KC\Image;
 
 use KC\Core\Action;
 use KC\Core\Constant;
-use KC\Core\CustomPostType;
 use KC\Core\Filter;
 use KC\Core\IModule;
+use KC\Core\PostType;
 use KC\Gallery\GalleryModule;
 use KC\Utils\PluginHelper;
 use \WP_Query;
@@ -32,7 +32,7 @@ class ImageModule implements IModule {
      */
     private function registerPostType() : void {
         add_action(Action::INIT, function() : void {
-            register_post_type(CustomPostType::IMAGE, [
+            register_post_type(PostType::IMAGE, [
                 'labels' => [
                     'name' => 'Images',
                     'singular_name' => 'Image'
@@ -59,7 +59,7 @@ class ImageModule implements IModule {
             $metaBoxes[] = [
                 'id' => 'image_informations',
                 'title' => 'Image informations',
-                'post_types' => [CustomPostType::IMAGE],
+                'post_types' => [PostType::IMAGE],
                 'fields' => [
                     [
                         'name' => 'Gallery',
@@ -80,12 +80,12 @@ class ImageModule implements IModule {
         $columnGalleryKey = 'gallery';
         $columnGalleryValue = 'Gallery';
         $columnImageKey = 'image';
-        add_filter(Filter::getManagePostsColumnsFilter(CustomPostType::IMAGE), function(array $columns) use ($columnGalleryKey, $columnGalleryValue, $columnImageKey) : array {
+        add_filter(Filter::getManagePostsColumnsFilter(PostType::IMAGE), function(array $columns) use ($columnGalleryKey, $columnGalleryValue, $columnImageKey) : array {
             $columns[$columnGalleryKey] = $columnGalleryValue;
             $columns[$columnImageKey] = ucfirst($columnImageKey);
             return $columns;
         });
-        add_action(Action::getManagePostsCustomColumn(CustomPostType::IMAGE), function(string $columnName) use ($columnGalleryKey, $columnImageKey) : void {
+        add_action(Action::getManagePostsCustomColumn(PostType::IMAGE), function(string $columnName) use ($columnGalleryKey, $columnImageKey) : void {
             if($columnName === $columnGalleryKey) {
                 $galleryID = PluginHelper::getFieldValue($this->fieldImageGallery, get_the_ID());
                 echo get_the_title($galleryID);
@@ -104,7 +104,7 @@ class ImageModule implements IModule {
     public function getImages(int $galleryId) : array {
         $images = [];
         $args = [
-            'post_type' => CustomPostType::IMAGE,
+            'post_type' => PostType::IMAGE,
             'posts_per_page' => -1,
             'orderby' => [Constant::TITLE],
             'order' => Constant::ASC,

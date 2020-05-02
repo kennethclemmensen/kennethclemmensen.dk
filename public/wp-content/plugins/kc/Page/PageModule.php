@@ -3,6 +3,7 @@ namespace KC\Page;
 
 use KC\Core\Constant;
 use KC\Core\IModule;
+use KC\Core\PostType;
 use \WP_Query;
 
 /**
@@ -21,7 +22,7 @@ class PageModule implements IModule {
             'order' => Constant::ASC,
             'orderby' => 'menu_order',
             'posts_per_page' => -1,
-            'post_type' => [Constant::PAGE]
+            'post_type' => [PostType::PAGE]
         ];
         $wpQuery = new WP_Query($args);
         while($wpQuery->have_posts()) {
@@ -43,7 +44,7 @@ class PageModule implements IModule {
             'order' => Constant::ASC,
             'orderby' => 'menu_order',
             'posts_per_page' => -1,
-            'post_type' => [Constant::PAGE],
+            'post_type' => [PostType::PAGE],
             's' => $title
         ];
         $wpQuery = new WP_Query($args);
