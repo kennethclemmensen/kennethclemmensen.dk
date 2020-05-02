@@ -1,5 +1,5 @@
 <?php
-namespace KC\Files;
+namespace KC\File;
 
 use KC\Core\Action;
 use KC\Core\Constant;
@@ -11,9 +11,9 @@ use KC\Utils\PluginHelper;
 use \WP_Query;
 
 /**
- * The Files class contains functionality to handle files
+ * The FileModule class contains functionality to handle files
  */
-class Files implements IModule {
+class FileModule implements IModule {
 
     private $fieldDescription;
     private $fieldFile;
@@ -21,7 +21,7 @@ class Files implements IModule {
     private $fileTypeTaxonomyName;
 
     /**
-     * Initialize a new instance of the Files class
+     * Initialize a new instance of the FileModule class
      */
     public function __construct() {
         $prefix = 'fdwc_field_';
@@ -29,15 +29,15 @@ class Files implements IModule {
         $this->fieldFile = $prefix.'file';
         $this->fieldFileDownloadCounter = $prefix.'download_counter';
         $this->fileTypeTaxonomyName = 'fdwc_tax_file_type';
-        $this->init();
+        $this->registerPostTypesAndTaxonomies();
         $this->addMetaBoxes();
-        $this->uploadMimes();
+        $this->addMimeTypes();
     }
 
     /**
-     * Use the init action to register the file custom post type and the file types taxonomy
+     * Register post types and taxonomies
      */
-    private function init() : void {
+    private function registerPostTypesAndTaxonomies() : void {
         add_action(Action::INIT, function() : void {
             register_post_type(CustomPostType::FILE, [
                 'labels' => [
@@ -57,13 +57,11 @@ class Files implements IModule {
                 'show_admin_column' => true,
                 'hierarchical' => true
             ]);
-            register_taxonomy_for_object_type($this->fileTypeTaxonomyName, Constant::PAGE);
-            register_taxonomy_for_object_type($this->fileTypeTaxonomyName, CustomPostType::FILE);
         });
     }
 
     /**
-     * Use the rwmb_meta_boxes filter to add meta boxes to the file custom post type
+     * Add meta boxes to the custom post type file
      */
     private function addMetaBoxes() : void {
         add_filter(Filter::META_BOXES, function(array $metaBoxes) : array {
@@ -107,9 +105,9 @@ class Files implements IModule {
     }
 
     /**
-     * Use the upload_mimes filter to allow java files upload
+     * Add mime types
      */
-    private function uploadMimes() : void {
+    private function addMimeTypes() : void {
         $priority = 1;
         add_filter(Filter::MIMES, function(array $mimeTypes) : array {
             $mimeTypes['java'] = 'application/java';
@@ -167,7 +165,7 @@ class Files implements IModule {
     public function updateFileDownloadCounter(int $fileID) : void {
         $downloads = $this->getFileDownloads($fileID);
         $downloads++;
-        update_post_meta($fileID, $this->fieldFileDownloadCounter, $downloads);
+        PluginHelper::setFieldValue($downloads, $this->fieldFileDownloadCounter, $fileID);
     }
 
     /**
@@ -181,7 +179,7 @@ class Files implements IModule {
         $args = [
             'post_type' => CustomPostType::FILE,
             'posts_per_page' => -1,
-            'order' => 'ASC',
+            'order' => Constant::ASC,
             'tax_query' => [
                 [
                     'taxonomy' => $this->fileTypeTaxonomyName,

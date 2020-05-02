@@ -9,7 +9,7 @@ use KC\Security\Security;
 class PluginHelper {
 
     /**
-     * Get the image url
+     * Get an image url
      * 
      * @param int $imageID the id of the image
      * @param string $size the size of the image
@@ -20,7 +20,7 @@ class PluginHelper {
     }
 
     /**
-     * Get the field value from a post
+     * Get a field value from a post
      * 
      * @param string $fieldId the id of the field
      * @param int $postId the id of the post
@@ -28,5 +28,16 @@ class PluginHelper {
      */
     public static function getFieldValue(string $fieldId, int $postId) : string {
         return get_post_meta($postId, $fieldId, true);
+    }
+
+    /**
+     * Set a field value on a post
+     * 
+     * @param string $value the value
+     * @param string $fieldId the id of the field
+     * @param int $postId the id of the post
+     */
+    public static function setFieldValue(string $value, string $fieldId, int $postId) : void {
+        update_post_meta($postId, $fieldId, $value);
     }
 }

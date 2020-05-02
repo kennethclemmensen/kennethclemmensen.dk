@@ -6,6 +6,8 @@ namespace KC\Core;
  */
 class Constant {
 
+    public const ASC = 'ASC';
+
     public const EDITOR = 'editor';
 
     public const PAGE = 'page';

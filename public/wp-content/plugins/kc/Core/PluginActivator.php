@@ -25,6 +25,7 @@ class PluginActivator {
         foreach($modules as $module) {
             new $module;
         }
+        $this->addPostThumbnailsSupport();
     }
 
     /**
@@ -35,6 +36,15 @@ class PluginActivator {
     private function getModules() : array {
         return array_filter(get_declared_classes(), function(string $className) : bool {
             return in_array(IModule::class, class_implements($className));
+        });
+    }
+
+    /**
+     * Add post thumbnails support
+     */
+    private function addPostThumbnailsSupport() : void {
+        add_action(Action::SETUP_THEME, function() : void {
+            add_theme_support(Constant::POST_THUMBNAILS);
         });
     }
 }

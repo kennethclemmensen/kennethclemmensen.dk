@@ -10,23 +10,22 @@ use KC\Utils\PluginHelper;
 use \WP_Query;
 
 /**
- * The Slider class contains methods to handle the slides
+ * The SliderModule class contains functionality to handle the slides
  */
-class Slider implements IModule {
+class SliderModule implements IModule {
 
     /**
-     * Initialize a new instance of the Slider class
+     * Initialize a new instance of the SliderModule class
      */
     public function __construct() {
-        $this->init();
-        $this->afterSetupTheme();
-        $this->adminColumns();
+        $this->registerPostType();
+        $this->addAdminColumns();
     }
 
     /**
-     * Use the init action to register the slides custom post type
+     * Register the slides custom post type
      */
-    private function init() : void {
+    private function registerPostType() : void {
         add_action(Action::INIT, function() : void {
             register_post_type(CustomPostType::SLIDES, [
                 'labels' => [
@@ -47,19 +46,9 @@ class Slider implements IModule {
     }
 
     /**
-     * Use the after_setup_theme action to add post thumbnails support
+     * Add admin columns for the custom post type slides
      */
-    private function afterSetupTheme() : void {
-        add_action(Action::SETUP_THEME, function() : void {
-            add_theme_support(Constant::POST_THUMBNAILS);
-        });
-    }
-
-    /**
-     * Use the manage_{$post_type}_posts_column and manage_{$post_type}_posts_custom_column filters to create custom
-     * columns for the slides custom post type
-     */
-    private function adminColumns() : void {
+    private function addAdminColumns() : void {
         $imageColumnKey = 'image';
         add_filter(Filter::getManagePostsColumnsFilter(CustomPostType::SLIDES), function(array $columns) use ($imageColumnKey) : array {
             $columns[$imageColumnKey] = 'Image';
@@ -80,15 +69,13 @@ class Slider implements IModule {
         $args = [
             'post_type' => CustomPostType::SLIDES,
             'posts_per_page' => -1,
-            'order' => 'ASC',
+            'order' => Constant::ASC,
             'orderby' => 'menu_order'
         ];
         $wpQuery = new WP_Query($args);
         while($wpQuery->have_posts()) {
             $wpQuery->the_post();
-            $slides[] = [
-                'image' => PluginHelper::getImageUrl(get_the_ID())
-            ];
+            $slides[] = ['image' => PluginHelper::getImageUrl(get_the_ID())];
         }
         return $slides;
     }

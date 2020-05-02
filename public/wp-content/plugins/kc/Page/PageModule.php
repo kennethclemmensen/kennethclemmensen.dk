@@ -1,14 +1,14 @@
 <?php
-namespace KC\Pages;
+namespace KC\Page;
 
 use KC\Core\Constant;
 use KC\Core\IModule;
 use \WP_Query;
 
 /**
- * The Pages class contains functionality to handle pages
+ * The PageModule class contains functionality to handle pages
  */
-class Pages implements IModule {
+class PageModule implements IModule {
 
     /**
      * Get the pages
@@ -18,7 +18,7 @@ class Pages implements IModule {
     public function getPages() : array {
         $pages = [];
         $args = [
-            'order' => 'ASC',
+            'order' => Constant::ASC,
             'orderby' => 'menu_order',
             'posts_per_page' => -1,
             'post_type' => [Constant::PAGE]
@@ -40,7 +40,7 @@ class Pages implements IModule {
     public function getPagesByTitle(string $title) : array {
         $pages = [];
         $args = [
-            'order' => 'ASC',
+            'order' => Constant::ASC,
             'orderby' => 'menu_order',
             'posts_per_page' => -1,
             'post_type' => [Constant::PAGE],

@@ -1,0 +1,127 @@
+<?php
+namespace KC\Image;
+
+use KC\Core\Action;
+use KC\Core\Constant;
+use KC\Core\CustomPostType;
+use KC\Core\Filter;
+use KC\Core\IModule;
+use KC\Gallery\GalleryModule;
+use KC\Utils\PluginHelper;
+use \WP_Query;
+
+/**
+ * The ImageModule class contains functionality to handle images
+ */
+class ImageModule implements IModule {
+
+    private $fieldImageGallery;
+
+    /**
+     * Initialize a new instance of the ImageModule class
+     */
+    public function __construct() {
+        $this->fieldImageGallery = 'photo_gallery';
+        $this->registerPostType();
+        $this->addMetaBoxes();
+        $this->addAdminColumns();
+    }
+
+    /**
+     * Register the image custom post type
+     */
+    private function registerPostType() : void {
+        add_action(Action::INIT, function() : void {
+            register_post_type(CustomPostType::IMAGE, [
+                'labels' => [
+                    'name' => 'Images',
+                    'singular_name' => 'Image'
+                ],
+                'public' => false,
+                'has_archive' => false,
+                'supports' => [Constant::TITLE, Constant::THUMBNAIL],
+                'menu_icon' => 'dashicons-format-image',
+                'publicly_queryable' => true,
+                'show_ui' => true,
+                'exclude_from_search' => true,
+                'show_in_nav_menus' => false,
+                'rewrite' => false
+            ]);
+        });
+    }
+
+    /**
+     * Add meta boxes to the image custom post type
+     */
+    private function addMetaBoxes() : void {
+        add_filter(Filter::META_BOXES, function(array $metaBoxes) : array {
+            $galleryModule = new GalleryModule();
+            $metaBoxes[] = [
+                'id' => 'image_informations',
+                'title' => 'Image informations',
+                'post_types' => [CustomPostType::IMAGE],
+                'fields' => [
+                    [
+                        'name' => 'Gallery',
+                        'id' => $this->fieldImageGallery,
+                        'type' => 'select',
+                        'options' => $galleryModule->getGalleries()
+                    ]
+                ]
+            ];
+            return $metaBoxes;
+        });
+    }
+
+    /**
+     * Add admin columns to the image custom post type
+     */
+    private function addAdminColumns() : void {
+        $columnGalleryKey = 'gallery';
+        $columnGalleryValue = 'Gallery';
+        $columnImageKey = 'image';
+        add_filter(Filter::getManagePostsColumnsFilter(CustomPostType::IMAGE), function(array $columns) use ($columnGalleryKey, $columnGalleryValue, $columnImageKey) : array {
+            $columns[$columnGalleryKey] = $columnGalleryValue;
+            $columns[$columnImageKey] = ucfirst($columnImageKey);
+            return $columns;
+        });
+        add_action(Action::getManagePostsCustomColumn(CustomPostType::IMAGE), function(string $columnName) use ($columnGalleryKey, $columnImageKey) : void {
+            if($columnName === $columnGalleryKey) {
+                $galleryID = PluginHelper::getFieldValue($this->fieldImageGallery, get_the_ID());
+                echo get_the_title($galleryID);
+            } else if($columnName === $columnImageKey) {
+                echo '<img src="'.PluginHelper::getImageUrl(get_the_ID(), Constant::THUMBNAIL).'" alt="'.get_the_title().'">';
+            }
+        });
+    }
+
+    /**
+     * Get the images from a gallery
+     * 
+     * @param int $galleryId the gallery id
+     * @return array the images
+     */
+    public function getImages(int $galleryId) : array {
+        $images = [];
+        $args = [
+            'post_type' => CustomPostType::IMAGE,
+            'posts_per_page' => -1,
+            'orderby' => [Constant::TITLE],
+            'order' => Constant::ASC,
+            'meta_key' => $this->fieldImageGallery,
+            'meta_value' => $galleryId
+        ];
+        $wpQuery = new WP_Query($args);
+        while($wpQuery->have_posts()) {
+            $wpQuery->the_post();
+            $id = get_the_ID();
+            $images[] = [
+                'title' => get_the_title(),
+                'url' => PluginHelper::getImageUrl($id),
+                'thumbnail' => PluginHelper::getImageUrl($id, Constant::THUMBNAIL),
+                'gallery' => $galleryId
+            ];
+        }
+        return $images;
+    }
+}

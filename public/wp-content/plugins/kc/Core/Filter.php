@@ -19,14 +19,4 @@ class Filter {
     public static function getManagePostsColumnsFilter(string $postType) : string {
         return 'manage_'.$postType.'_posts_columns';
     }
-
-    /**
-     * Get the manage_{$this->screen->id}_sortable_columns filter for a post type
-     * 
-     * @param string $postType the post type
-     * @return string the manage edit sortable columns filter for the post type
-     */
-    public static function getSortableColumnsFilter(string $postType) : string {
-        return 'manage_edit-'.$postType.'_sortable_columns';
-    }
 }

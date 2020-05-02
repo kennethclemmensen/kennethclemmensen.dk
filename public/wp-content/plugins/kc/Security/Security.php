@@ -17,9 +17,9 @@ class Security {
     }
 
     /**
-     * Check if the user has access to the API
+     * Check if the user has access to the Api
      * 
-     * @return bool true if the user has access to the API. False if the user doesn't have access to the API
+     * @return bool true if the user has access to the Api. False if the user doesn't have access to the Api
      */
     public static function hasApiAccess() : bool {
         return !is_user_logged_in();
@@ -39,7 +39,7 @@ class Security {
      * Check if the value is valid
      * 
      * @param string $value the value to check
-     * @return bool true if the value is valid. False if it isn't valid
+     * @return bool true if the value is valid. False if the value isn't valid
      */
     public static function isValid(string $value) : bool {
         return !empty($value);
