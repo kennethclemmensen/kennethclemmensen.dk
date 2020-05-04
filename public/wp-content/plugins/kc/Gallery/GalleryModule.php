@@ -84,10 +84,9 @@ class GalleryModule implements IModule {
     /**
      * Get the galleries
      *
-     * @param bool $isCalledFromApi a value that indicates whether the method is called from the Api
      * @return array the galleries
      */
-    public function getGalleries(bool $isCalledFromApi = false) : array {
+    public function getGalleries() : array {
         $galleries = [];
         $args = [
             'post_type' => PostType::GALLERY,
@@ -95,20 +94,13 @@ class GalleryModule implements IModule {
             'order' => Constant::ASC
         ];
         $wpQuery = new WP_Query($args);
-        if($isCalledFromApi === true) {
-            while($wpQuery->have_posts()) {
-                $wpQuery->the_post();
-                $galleries[] = [
-                    'title' => get_the_title(),
-                    'link' => get_permalink(get_the_ID()),
-                    'image' => PluginHelper::getImageUrl(get_the_ID())
-                ];
-            }
-        } else {
-            while($wpQuery->have_posts()) {
-                $wpQuery->the_post();
-                $galleries[get_the_ID()] = get_the_title();
-            }
+        while($wpQuery->have_posts()) {
+            $wpQuery->the_post();
+            $galleries[] = [
+                'title' => get_the_title(),
+                'link' => get_permalink(get_the_ID()),
+                'image' => PluginHelper::getImageUrl(get_the_ID())
+            ];
         }
         return $galleries;
     }

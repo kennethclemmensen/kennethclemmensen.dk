@@ -151,7 +151,7 @@ class ApiController {
         register_rest_route($this->namespace, $route, [
             'methods' => [WP_REST_Server::READABLE],
             'callback' => function() use ($galleryModule) : WP_REST_Response {
-                return new WP_REST_Response($galleryModule->getGalleries(true), $this->statusCodeOk);
+                return new WP_REST_Response($galleryModule->getGalleries(), $this->statusCodeOk);
             },
             'permission_callback' => function() : bool {
                 return Security::hasApiAccess();
