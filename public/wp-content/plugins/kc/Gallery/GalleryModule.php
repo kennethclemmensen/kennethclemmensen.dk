@@ -2,18 +2,18 @@
 namespace KC\Gallery;
 
 use KC\Core\Action;
+use KC\Core\BaseModule;
 use KC\Core\Constant;
 use KC\Core\Filter;
 use KC\Core\IModule;
 use KC\Core\PostType;
-use KC\Page\PageModule;
 use KC\Utils\PluginHelper;
 use \WP_Query;
 
 /**
  * The GalleryModule class contains functionality to handle galleries
  */
-class GalleryModule implements IModule {
+class GalleryModule extends BaseModule implements IModule {
 
     private $fieldParentPage;
 
@@ -63,7 +63,6 @@ class GalleryModule implements IModule {
      */
     private function addMetaBoxes() : void {
         add_filter(Filter::META_BOXES, function(array $metaBoxes) : array {
-            $pageModule = new PageModule();
             $metaBoxes[] = [
                 'id' => 'gallery_informations',
                 'title' => 'Gallery informations',
@@ -73,7 +72,7 @@ class GalleryModule implements IModule {
                         'name' => 'Parent page',
                         'id' => $this->fieldParentPage,
                         'type' => 'select',
-                        'options' => $pageModule->getPages()
+                        'options' => parent::getAllPosts(PostType::PAGE)
                     ]
                 ]
             ];

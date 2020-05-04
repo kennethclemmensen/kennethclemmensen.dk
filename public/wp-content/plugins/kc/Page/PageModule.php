@@ -12,27 +12,6 @@ use \WP_Query;
 class PageModule implements IModule {
 
     /**
-     * Get the pages
-     * 
-     * @return array the pages
-     */
-    public function getPages() : array {
-        $pages = [];
-        $args = [
-            'order' => Constant::ASC,
-            'orderby' => 'menu_order',
-            'posts_per_page' => -1,
-            'post_type' => [PostType::PAGE]
-        ];
-        $wpQuery = new WP_Query($args);
-        while($wpQuery->have_posts()) {
-            $wpQuery->the_post();
-            $pages[get_the_ID()] = get_the_title();
-        }
-        return $pages;
-    }
-
-    /**
      * Get the pages by title
      *
      * @param string $title the title to get the pages from
