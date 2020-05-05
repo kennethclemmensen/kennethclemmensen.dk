@@ -16,7 +16,7 @@
   "tsFiles": "public/wp-content/themes/kennethclemmensen/ts/**/*.ts",
   "uploadsFolder": "public/wp-content/uploads/",
   "devDependencies": {
-    "@types/jquery": "^3.3.37",
+    "@types/jquery": "^3.3.38",
     "browser-sync": "^2.26.7",
     "grunt": "^1.1.0",
     "grunt-browser-sync": "^2.2.0",
@@ -33,7 +33,7 @@
     "gulp-less": "^4.0.1",
     "gulp-sass": "^4.1.0",
     "gulp-shell": "^0.8.0",
-    "node-sass": "^4.14.0",
+    "node-sass": "^4.14.1",
     "typescript": "^3.8.3",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11"
