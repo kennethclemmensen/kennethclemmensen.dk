@@ -1,10 +1,6 @@
 <?php
-require_once 'includes/IconWidget.php';
-require_once 'includes/MobileMenuWalker.php';
-require_once 'includes/Pagination.php';
-require_once 'includes/ThemeHelper.php';
-require_once 'includes/ThemeSettings.php';
-require_once 'includes/TranslationStrings.php';
+$files = glob(__DIR__.'/includes/*.php');
+foreach($files as $file) require_once $file;
 
 /**
  * Use the wp_enqueue_scripts action to add scripts and stylesheets

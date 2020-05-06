@@ -106,42 +106,6 @@ final class ThemeHelper {
     }
 
     /**
-     * Get the slides
-     * 
-     * @return array the slides
-     */
-    public static function getSlides() : array {
-        return json_decode(file_get_contents(self::getApiUrl().'/slides'), true);
-    }
-
-    /**
-     * Get the galleries
-     * 
-     * @return array the galleries
-     */
-    public static function getGalleries() : array {
-        return json_decode(file_get_contents(self::getApiUrl().'/galleries'), true);
-    }
-
-    /**
-     * Get the images
-     * 
-     * @return array the images
-     */
-    public static function getImages() : array {
-        return json_decode(file_get_contents(self::getApiUrl().'/galleries/'.get_the_ID()), true);
-    }
-
-    /**
-     * Get the API url
-     * 
-     * @return string the API url
-     */
-    private static function getApiUrl() : string {
-        return $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].'/wp-json/kcapi/v1';
-    }
-
-    /**
      * Get the file types for the page
      * 
      * @return string the file types

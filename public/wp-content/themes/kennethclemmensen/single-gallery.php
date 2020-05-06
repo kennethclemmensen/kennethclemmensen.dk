@@ -12,7 +12,7 @@ get_header();
         <div class="gallery">
             <?php
             $perPage = ThemeSettings::getInstance()->getImagesPerPage();
-            $pagination = new Pagination(ThemeHelper::getImages(), $perPage);
+            $pagination = new Pagination(ApiClient::getImages(), $perPage);
             $images = $pagination->getItems();
             foreach($images as $image) {
                 $title = $image['title'];

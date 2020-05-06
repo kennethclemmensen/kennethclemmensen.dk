@@ -14,7 +14,7 @@ while(have_posts()) {
             <?php the_content(); ?>
             <div class="page__galleries">
                 <?php
-                $galleries = ThemeHelper::getGalleries();
+                $galleries = ApiClient::getGalleries();
                 foreach($galleries as $gallery) {
                     ?>
                     <a href="<?php echo $gallery['link']; ?>" class="page__gallery-link" style="background-image: url('<?php echo $gallery['image']; ?>')">
