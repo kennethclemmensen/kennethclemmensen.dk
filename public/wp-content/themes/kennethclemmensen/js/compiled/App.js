@@ -4,17 +4,17 @@ import { SearchApp } from './SearchApp';
 import { ShortcutController } from './ShortcutController';
 import { Slider } from './Slider';
 /**
- * The AppController class contains methods to handle the functionality of the app
+ * The App class contains methods to handle the functionality of the app
  */
-class AppController {
+class App {
     /**
-     * Initialize a new instance of the AppController class
+     * Initialize a new instance of the App class
      */
     constructor() {
         this.body = document.body;
     }
     /**
-     * Initialize the AppController
+     * Initialize the App
      */
     initialize() {
         document.addEventListener(EventType.DOMContentLoaded, () => {
@@ -73,4 +73,4 @@ class AppController {
         });
     }
 }
-new AppController().initialize();
+new App().initialize();

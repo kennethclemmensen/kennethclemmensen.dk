@@ -25,33 +25,14 @@ add_action('wp_enqueue_scripts', function() : void {
     $version = filemtime(get_template_directory().$styleFile);
     wp_enqueue_style('theme-css', get_template_directory_uri().$styleFile, [$fontAwesome, $lightbox, $ubuntu], $version);
 
-    $jquery = 'jquery';
-    $cdnFile = 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js';
-    $localFile = '/js/libraries/jquery-3.5.1.min.js';
-    $version = filemtime(get_template_directory().$localFile);
-    ThemeHelper::addScriptWithLocalFallback($jquery, $cdnFile, get_template_directory_uri().$localFile, $version);
+    $librariesJS = 'libraries-js';
+    $librariesFile = '/js/dist/libraries.min.js';
+    $version = filemtime(get_template_directory().$librariesFile);
+    wp_enqueue_script($librariesJS, get_template_directory_uri().$librariesFile, $version, [], true);
 
-    $vue = 'vue';
-    $cdnFile = 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js';
-    $localFile = '/js/libraries/vue-2.6.11.min.js';
-    $version = filemtime(get_template_directory().$localFile);
-    ThemeHelper::addScriptWithLocalFallback($vue, $cdnFile, get_template_directory_uri().$localFile, $version);
-
-    $lightbox = 'lightbox-js';
-    $cdnFile = 'https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js';
-    $localFile = '/js/libraries/lightbox-2.11.1.min.js';
-    $version = filemtime(get_template_directory().$localFile);
-    ThemeHelper::addScriptWithLocalFallback($lightbox, $cdnFile, get_template_directory_uri().$localFile, $version);
-
-    $lodash = 'lodash';
-    $cdnFile = 'https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js';
-    $localFile = '/js/libraries/lodash-4.17.15.min.js';
-    $version = filemtime(get_template_directory().$localFile);
-    ThemeHelper::addScriptWithLocalFallback($lodash, $cdnFile, get_template_directory_uri().$localFile, $version);
-
-    $scriptFile = '/js/minified/script.min.js';
-    $version = filemtime(get_template_directory().$scriptFile);
-    wp_enqueue_script('theme-js', get_template_directory_uri().$scriptFile, $version, [$jquery, $vue, $lightbox, $lodash], true);
+    $compiledFile = '/js/dist/compiled.min.js';
+    $version = filemtime(get_template_directory().$compiledFile);
+    wp_enqueue_script('compiled-js', get_template_directory_uri().$compiledFile, $version, [$librariesJS], true);
 });
 
 /**

@@ -5,21 +5,6 @@
 final class ThemeHelper {
 
     /**
-     * Add a script from a CDN with a fallback to a local file
-     *
-     * @param string $name the name of the script
-     * @param string $cdnFile the path to the CDN file
-     * @param string $localFile the path to the local file
-     * @param int $versionNumber the script version number
-     */
-    public static function addScriptWithLocalFallback(string $name, string $cdnFile, string $localFile, ?int $versionNumber = null) : void {
-        $file = @fopen($cdnFile, 'r');
-        $src = ($file) ? $cdnFile : $localFile;
-        wp_deregister_script($name);
-        wp_enqueue_script($name, $src, [], $versionNumber, true);
-    }
-
-    /**
      * Add a stylesheet from a CDN with a fallback to a local file
      *
      * @param string $name the name of the stylesheet

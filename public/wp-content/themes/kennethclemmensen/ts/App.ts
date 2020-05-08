@@ -6,21 +6,21 @@ import { ShortcutController } from './ShortcutController';
 import { Slider } from './Slider';
 
 /**
- * The AppController class contains methods to handle the functionality of the app
+ * The App class contains methods to handle the functionality of the app
  */
-class AppController implements IController {
+class App implements IController {
 
     private readonly body: HTMLElement;
 
     /**
-     * Initialize a new instance of the AppController class
+     * Initialize a new instance of the App class
      */
     public constructor() {
         this.body = document.body;
     }
 
     /**
-     * Initialize the AppController
+     * Initialize the App
      */
     public initialize(): void {
         document.addEventListener(EventType.DOMContentLoaded, (): void => {
@@ -82,4 +82,4 @@ class AppController implements IController {
     }
 }
 
-new AppController().initialize();
+new App().initialize();

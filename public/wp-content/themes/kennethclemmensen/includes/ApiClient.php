@@ -2,7 +2,7 @@
 /**
  * The ApiClient class contains methods to get data from the Api
  */
-class ApiClient {
+final class ApiClient {
 
     /**
      * Get the slides
