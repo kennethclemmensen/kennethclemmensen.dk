@@ -12,34 +12,34 @@ function browserSync() {
     browserSyncPlugin.init({
         debugInfo: true,
         files: [
-            packageConfig.cssFiles,
-            packageConfig.phpFiles,
-            packageConfig.jsDistFiles
+            packageConfig.config.cssFiles,
+            packageConfig.config.phpFiles,
+            packageConfig.config.jsDistFiles
         ],
         logConnections: true,
         notify: true,
-        proxy: packageConfig.testDomain,
+        proxy: packageConfig.config.testDomain,
         watchTask: true
     });
 }
 
 //Optimize images
 function imagemin() {
-    return src(packageConfig.uploadsFolder + '**')
+    return src(packageConfig.config.uploadsFolder + '**')
         .pipe(imageminPlugin())
-        .pipe(dest(packageConfig.uploadsFolder));
+        .pipe(dest(packageConfig.config.uploadsFolder));
 }
 
 //Translate less to css
 function less() {
-    return src(packageConfig.styleLessFile)
+    return src(packageConfig.config.styleLessFile)
         .pipe(lessPlugin())
         .on('error', (error) => {
             console.log(error.toString());
             this.emit('end');
         })
         .pipe(cleanCssPlugin())
-        .pipe(dest(packageConfig.cssFolder))
+        .pipe(dest(packageConfig.config.cssFolder))
         .pipe(browserSyncPlugin.reload({
             stream: true
         }));
@@ -47,8 +47,8 @@ function less() {
 
 //Run the npm webpack command
 function runNpmWebpackCommand() {
-    return src(packageConfig.appJsFile)
-        .pipe(shellPlugin(packageConfig.npmWebpackCommand))
+    return src(packageConfig.config.appJsFile)
+        .pipe(shellPlugin(packageConfig.config.npmWebpackCommand))
         .on('error', (error) => {
             console.log(error.toString());
             this.emit('end');
@@ -61,7 +61,7 @@ function runNpmWebpackCommand() {
 //Run the npm tsc command
 function runNpmTscCommand() {
     return src('public/wp-content/themes/kennethclemmensen/ts/App.ts')
-        .pipe(shellPlugin(packageConfig.npmTscCommand))
+        .pipe(shellPlugin(packageConfig.config.npmTscCommand))
         .on('error', (error) => {
             console.log(error.toString());
             this.emit('end');
@@ -70,14 +70,14 @@ function runNpmTscCommand() {
 
 //Translate sass to css
 function sass() {
-    return src(packageConfig.styleScssFile)
+    return src(packageConfig.config.styleScssFile)
         .pipe(sassPlugin())
         .on('error', (error) => {
             console.log(error.toString());
             this.emit('end');
         })
         .pipe(cleanCssPlugin())
-        .pipe(dest(packageConfig.cssFolder))
+        .pipe(dest(packageConfig.config.cssFolder))
         .pipe(browserSyncPlugin.reload({
             stream: true
         }));
@@ -88,7 +88,7 @@ exports.default = series(browserSync);
 exports.imagemin = imagemin;
 
 //Look for changes in files
-watch([packageConfig.jsCompiledFiles, packageConfig.jsLibrariesFiles], runNpmWebpackCommand);
-watch(packageConfig.lessFiles, less);
-watch(packageConfig.scssFiles, sass);
-watch(packageConfig.tsFiles, runNpmTscCommand);
+watch([packageConfig.config.jsCompiledFiles, packageConfig.config.jsLibrariesFiles], runNpmWebpackCommand);
+watch(packageConfig.config.lessFiles, less);
+watch(packageConfig.config.scssFiles, sass);
+watch(packageConfig.config.tsFiles, runNpmTscCommand);

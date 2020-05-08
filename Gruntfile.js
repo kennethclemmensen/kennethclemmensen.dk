@@ -6,18 +6,18 @@ module.exports = function(grunt) {
         //Setup the browserSync task to synchronize browsers on different devices
         browserSync: {
             bsFiles: {
-                src: '<%= pkg.cssFiles %>'
+                src: '<%= pkg.config.cssFiles %>'
             },
             options: {
                 debugInfo: true,
                 files: [
-                    '<%= pkg.cssFiles %>',
-                    '<%= pkg.phpFiles %>',
-                    '<%= pkg.jsDistFiles %>'
+                    '<%= pkg.config.cssFiles %>',
+                    '<%= pkg.config.phpFiles %>',
+                    '<%= pkg.config.jsDistFiles %>'
                 ],
                 logConnections: true,
                 notify: true,
-                proxy: '<%= pkg.testDomain %>',
+                proxy: '<%= pkg.config.testDomain %>',
                 watchTask: true
             }
         },
@@ -26,9 +26,9 @@ module.exports = function(grunt) {
             dynamic: {
                 files: [{
                     expand: true,
-                    cwd: '<%= pkg.uploadsFolder %>',
+                    cwd: '<%= pkg.config.uploadsFolder %>',
                     src: ['**/*.{png,jpg,gif}'],
-                    dest: '<%= pkg.uploadsFolder %>'
+                    dest: '<%= pkg.config.uploadsFolder %>'
                 }]
             }
         },
@@ -36,7 +36,7 @@ module.exports = function(grunt) {
         less: {
             development: {
                 files: {
-                    '<%= pkg.styleCssFile %>': '<%= pkg.styleLessFile %>'
+                    '<%= pkg.config.styleCssFile %>': '<%= pkg.config.styleLessFile %>'
                 },
                 options: {
                     compress: true,
@@ -52,17 +52,17 @@ module.exports = function(grunt) {
             },
             dist: {
                 files: {
-                    '<%= pkg.styleCssFile %>': '<%= pkg.styleScssFile %>'
+                    '<%= pkg.config.styleCssFile %>': '<%= pkg.config.styleScssFile %>'
                 }
             }
         },
         //Use the grunt-shell plugin to run a npm command
         shell: {
             npm_run_tsc: {
-                command: '<%= pkg.npmTscCommand %>'
+                command: '<%= pkg.config.npmTscCommand %>'
             },
             npm_run_webpack: {
-                command: '<%= pkg.npmWebpackCommand %>'
+                command: '<%= pkg.config.npmWebpackCommand %>'
             }
         },
         //Setup the watch task to look for changes in files
@@ -71,28 +71,28 @@ module.exports = function(grunt) {
                 livereload: true
             },
             javascript: {
-                files: ['<%= pkg.jsCompiledFiles %>', '<%= pkg.jsLibrariesFiles %>'],
+                files: ['<%= pkg.config.jsCompiledFiles %>', '<%= pkg.config.jsLibrariesFiles %>'],
                 options: {
                     spawn: false
                 },
                 tasks: ['shell:npm_run_webpack']
             },
             less: {
-                files: ['<%= pkg.lessFiles %>'],
+                files: ['<%= pkg.config.lessFiles %>'],
                 options: {
                     spawn: false
                 },
                 tasks: ['less']
             },
             sass: {
-                files: ['<%= pkg.scssFiles %>'],
+                files: ['<%= pkg.config.scssFiles %>'],
                 options: {
                     spawn: false
                 },
                 tasks: ['sass']
             },
             typescript: {
-                files: ['<%= pkg.tsFiles %>'],
+                files: ['<%= pkg.config.tsFiles %>'],
                 options: {
                     spawn: false
                 },
