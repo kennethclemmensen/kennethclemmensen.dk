@@ -1,13 +1,11 @@
 const { dest, series, src, watch } = require('gulp');
 const browserSyncPlugin = require('browser-sync');
-const concatPlugin = require('gulp-concat');
 const cleanCssPlugin = require('gulp-clean-css');
 const imageminPlugin = require('gulp-imagemin');
 const lessPlugin = require('gulp-less');
 const packageConfig = require('./package.json');
 const sassPlugin = require('gulp-sass');
 const shellPlugin = require('gulp-shell');
-const terserPlugin = require('gulp-terser');
 
 //Setup the browserSync task to synchronize browsers on different devices
 function browserSync() {
@@ -30,21 +28,6 @@ function imagemin() {
     return src(packageConfig.uploadsFolder + '**')
         .pipe(imageminPlugin())
         .pipe(dest(packageConfig.uploadsFolder));
-}
-
-//Uglify the JavaScript libraries files
-function javascript() {
-    return src(packageConfig.jsLibrariesFiles)
-        .pipe(concatPlugin(packageConfig.jsLibrariesFile))
-        .pipe(terserPlugin())
-        .on('error', (error) => {
-            console.log(error.toString());
-            this.emit('end');
-        })
-        .pipe(dest(packageConfig.jsDistFolder))
-        .pipe(browserSyncPlugin.reload({
-            stream: true
-        }));
 }
 
 //Translate less to css
@@ -77,7 +60,7 @@ function runNpmWebpackCommand() {
 
 //Run the npm tsc command
 function runNpmTscCommand() {
-    return src(packageConfig.appTsFile)
+    return src('public/wp-content/themes/kennethclemmensen/ts/App.ts')
         .pipe(shellPlugin(packageConfig.npmTscCommand))
         .on('error', (error) => {
             console.log(error.toString());
@@ -105,8 +88,7 @@ exports.default = series(browserSync);
 exports.imagemin = imagemin;
 
 //Look for changes in files
-watch(packageConfig.jsCompiledFiles, runNpmWebpackCommand);
-watch(packageConfig.jsLibrariesFiles, javascript);
+watch([packageConfig.jsCompiledFiles, packageConfig.jsLibrariesFiles], runNpmWebpackCommand);
 watch(packageConfig.lessFiles, less);
 watch(packageConfig.scssFiles, sass);
 watch(packageConfig.tsFiles, runNpmTscCommand);

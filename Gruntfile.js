@@ -65,32 +65,17 @@ module.exports = function(grunt) {
                 command: '<%= pkg.npmWebpackCommand %>'
             }
         },
-        //Uglify the JavaScript libraries files
-        terser: {
-            your_target: {
-                files: {
-                    '<%= pkg.jsDistFolder %>/<%= pkg.jsLibrariesFile %>': ['<%= pkg.jsLibrariesFiles %>']
-                }
-            }
-        },
         //Setup the watch task to look for changes in files
         watch: {
             options: {
                 livereload: true
             },
             javascript: {
-                files: ['<%= pkg.jsCompiledFiles %>'],
+                files: ['<%= pkg.jsCompiledFiles %>', '<%= pkg.jsLibrariesFiles %>'],
                 options: {
                     spawn: false
                 },
                 tasks: ['shell:npm_run_webpack']
-            },
-            javascriptLibraries: {
-                files: ['<%= pkg.jsLibrariesFiles %>'],
-                options: {
-                    spawn: false
-                },
-                tasks: ['terser']
             },
             less: {
                 files: ['<%= pkg.lessFiles %>'],
@@ -123,7 +108,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-sass');
     grunt.loadNpmTasks('grunt-shell');
-    grunt.loadNpmTasks('grunt-terser');
 
     //Register the default tasks
     grunt.registerTask('default', ['browserSync', 'watch']);
