@@ -70,32 +70,24 @@ module.exports = function(grunt) {
             options: {
                 livereload: true
             },
+            css: {
+                files: ['<%= pkg.config.cssCompiledFiles %>', '<%= pkg.config.cssLibrariesFiles %>'],
+                tasks: ['shell:npm_run_webpack']
+            },
             javascript: {
                 files: ['<%= pkg.config.jsCompiledFiles %>', '<%= pkg.config.jsLibrariesFiles %>'],
-                options: {
-                    spawn: false
-                },
                 tasks: ['shell:npm_run_webpack']
             },
             less: {
                 files: ['<%= pkg.config.lessFiles %>'],
-                options: {
-                    spawn: false
-                },
                 tasks: ['less']
             },
             sass: {
                 files: ['<%= pkg.config.scssFiles %>'],
-                options: {
-                    spawn: false
-                },
                 tasks: ['sass']
             },
             typescript: {
                 files: ['<%= pkg.config.tsFiles %>'],
-                options: {
-                    spawn: false
-                },
                 tasks: ['shell:npm_run_tsc']
             }
         }

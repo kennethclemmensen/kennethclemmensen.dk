@@ -6,24 +6,12 @@ foreach($files as $file) require_once $file;
  * Use the wp_enqueue_scripts action to add scripts and stylesheets
  */
 add_action('wp_enqueue_scripts', function() : void {
-    $fontAwesome = 'font-awesome';
-    $cdnFile = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css';
-    $localFile = '/css/fontawesome-5.13.0.min.css';
-    $version = filemtime(get_template_directory().$localFile);
-    ThemeHelper::addStyleWithLocalFallback($fontAwesome, $cdnFile, get_template_directory_uri().$localFile, $version);
-
-    $lightbox = 'lightbox';
-    $cdnFile = 'https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css';
-    $localFile = '/css/lightbox-2.11.1.min.css';
-    $version = filemtime(get_template_directory().$localFile);
-    ThemeHelper::addStyleWithLocalFallback($lightbox, $cdnFile, get_template_directory_uri().$localFile, $version);
-
     $ubuntu = 'ubuntu';
     wp_enqueue_style($ubuntu, 'https://fonts.googleapis.com/css?family=Ubuntu');
 
-    $styleFile = '/css/style.css';
+    $styleFile = '/css/style.min.css';
     $version = filemtime(get_template_directory().$styleFile);
-    wp_enqueue_style('theme-css', get_template_directory_uri().$styleFile, [$fontAwesome, $lightbox, $ubuntu], $version);
+    wp_enqueue_style('theme-css', get_template_directory_uri().$styleFile, [$ubuntu], $version);
 
     $librariesJS = 'libraries-js';
     $librariesFile = '/js/dist/libraries.min.js';

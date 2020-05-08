@@ -5,21 +5,6 @@
 final class ThemeHelper {
 
     /**
-     * Add a stylesheet from a CDN with a fallback to a local file
-     *
-     * @param string $name the name of the stylesheet
-     * @param string $cdnFile the path to the CDN file
-     * @param string $localFile the path to the local file
-     * @param int $versionNumber the stylesheet version number
-     */
-    public static function addStyleWithLocalFallback(string $name, string $cdnFile, string $localFile, ?int $versionNumber = null) : void {
-        $file = @fopen($cdnFile, 'r');
-        $src = ($file) ? $cdnFile : $localFile;
-        wp_deregister_style($name);
-        wp_enqueue_style($name, $src, [], $versionNumber);
-    }
-
-    /**
      * Remove the version query string from the source
      *
      * @param string $src the source to remove the version query string from
