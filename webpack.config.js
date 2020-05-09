@@ -5,8 +5,8 @@ const mergeIntoSingleFilePlugin = require('webpack-merge-and-include-globally');
 module.exports = {
     entry: './' + packageConfig.config.appJsFile,
     output: {
-        filename: 'js/dist/compiled.min.js',
-        path: path.resolve(__dirname, 'public/wp-content/themes/kennethclemmensen/')
+        filename: 'compiled.min.js',
+        path: path.resolve(__dirname, 'public/wp-content/themes/kennethclemmensen/js/dist/')
     },
     mode: 'production',
     performance: {
@@ -18,13 +18,7 @@ module.exports = {
                 src: [
                     packageConfig.config.jsLibrariesFiles
                 ],
-                dest: 'js/dist/libraries.min.js'
-            }, {
-                src: [
-                    packageConfig.config.cssLibrariesFiles,
-                    packageConfig.config.cssCompiledFiles
-                ],
-                dest: 'css/style.min.css'
+                dest: 'libraries.min.js'
             }]
         })
     ]

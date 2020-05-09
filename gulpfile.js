@@ -47,8 +47,21 @@ function less() {
 
 //Run the npm webpack command
 function runNpmWebpackCommand() {
-    return src([packageConfig.config.appJsFile, packageConfig.config.styleCssFile])
+    return src(packageConfig.config.appJsFile)
         .pipe(shellPlugin(packageConfig.config.npmWebpackCommand))
+        .on('error', (error) => {
+            console.log(error.toString());
+            this.emit('end');
+        })
+        .pipe(browserSyncPlugin.reload({
+            stream: true
+        }));
+}
+
+//Run the npm webpack css command
+function runNpmWebpackCssCommand() {
+    return src(packageConfig.config.styleCssFile)
+        .pipe(shellPlugin(packageConfig.config.npmWebpackCssCommand))
         .on('error', (error) => {
             console.log(error.toString());
             this.emit('end');
@@ -88,7 +101,7 @@ exports.default = series(browserSync);
 exports.imagemin = imagemin;
 
 //Look for changes in files
-watch([packageConfig.config.cssCompiledFiles, packageConfig.config.cssLibrariesFiles], runNpmWebpackCommand);
+watch([packageConfig.config.cssCompiledFiles, packageConfig.config.cssLibrariesFiles], runNpmWebpackCssCommand);
 watch([packageConfig.config.jsCompiledFiles, packageConfig.config.jsLibrariesFiles], runNpmWebpackCommand);
 watch(packageConfig.config.lessFiles, less);
 watch(packageConfig.config.scssFiles, sass);

@@ -63,6 +63,9 @@ module.exports = function(grunt) {
             },
             npm_run_webpack: {
                 command: '<%= pkg.config.npmWebpackCommand %>'
+            },
+            npm_run_webpack_css: {
+                command: '<%= pkg.config.npmWebpackCssCommand %>'
             }
         },
         //Setup the watch task to look for changes in files
@@ -72,7 +75,7 @@ module.exports = function(grunt) {
             },
             css: {
                 files: ['<%= pkg.config.cssCompiledFiles %>', '<%= pkg.config.cssLibrariesFiles %>'],
-                tasks: ['shell:npm_run_webpack']
+                tasks: ['shell:npm_run_webpack_css']
             },
             javascript: {
                 files: ['<%= pkg.config.jsCompiledFiles %>', '<%= pkg.config.jsLibrariesFiles %>'],
