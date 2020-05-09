@@ -3,14 +3,14 @@
  */
 export class Slider {
 
-    private readonly sliderImages: JQuery;
+    private readonly slides: JQuery;
     private currentRandomNumber: number;
 
     /**
      * Initialize a new instance of the Slider class
      */
     public constructor() {
-        this.sliderImages = $('.slider__image');
+        this.slides = $('.slider__slides');
         this.currentRandomNumber = -1;
     }
 
@@ -20,7 +20,7 @@ export class Slider {
      * @returns a random number
      */
     private getRandomNumber(): number {
-        let randomNumber: number = Math.floor(Math.random() * this.sliderImages.length);
+        let randomNumber: number = Math.floor(Math.random() * this.slides.length);
         if(this.currentRandomNumber === randomNumber) return this.getRandomNumber();
         this.currentRandomNumber = randomNumber;
         return this.currentRandomNumber;
@@ -34,12 +34,26 @@ export class Slider {
      */
     public showSlides(delay: number, duration: number): void {
         let randomNumber: number = this.getRandomNumber();
-        this.sliderImages.eq(randomNumber).show();
+        let sliderImage: JQuery = $('.slider__image');
+        let key: string = 'slide-image';
+        this.setBackgroundImage(sliderImage, this.slides.eq(randomNumber).data(key));
+        sliderImage.show();
         setInterval((): void => {
-            this.sliderImages.eq(randomNumber).fadeOut(delay, (): void => {
+            sliderImage.fadeOut(delay, (): void => {
                 randomNumber = this.getRandomNumber();
-                this.sliderImages.eq(randomNumber).fadeIn(delay);
+                this.setBackgroundImage(sliderImage, this.slides.eq(randomNumber).data(key));
+                sliderImage.fadeIn(delay);
             });
         }, duration);
+    }
+
+    /**
+     * Set a background image on an element
+     * 
+     * @param element the element to set the background image on
+     * @param backgroundImageUrl the background image url
+     */
+    private setBackgroundImage(element: JQuery, backgroundImageUrl: string): void {
+        element.css('background-image', 'url('+ backgroundImageUrl + ')');
     }
 }

@@ -6,7 +6,7 @@ export class Slider {
      * Initialize a new instance of the Slider class
      */
     constructor() {
-        this.sliderImages = $('.slider__image');
+        this.slides = $('.slider__slides');
         this.currentRandomNumber = -1;
     }
     /**
@@ -15,7 +15,7 @@ export class Slider {
      * @returns a random number
      */
     getRandomNumber() {
-        let randomNumber = Math.floor(Math.random() * this.sliderImages.length);
+        let randomNumber = Math.floor(Math.random() * this.slides.length);
         if (this.currentRandomNumber === randomNumber)
             return this.getRandomNumber();
         this.currentRandomNumber = randomNumber;
@@ -29,12 +29,25 @@ export class Slider {
      */
     showSlides(delay, duration) {
         let randomNumber = this.getRandomNumber();
-        this.sliderImages.eq(randomNumber).show();
+        let sliderImage = $('.slider__image');
+        let key = 'slide-image';
+        this.setBackgroundImage(sliderImage, this.slides.eq(randomNumber).data(key));
+        sliderImage.show();
         setInterval(() => {
-            this.sliderImages.eq(randomNumber).fadeOut(delay, () => {
+            sliderImage.fadeOut(delay, () => {
                 randomNumber = this.getRandomNumber();
-                this.sliderImages.eq(randomNumber).fadeIn(delay);
+                this.setBackgroundImage(sliderImage, this.slides.eq(randomNumber).data(key));
+                sliderImage.fadeIn(delay);
             });
         }, duration);
+    }
+    /**
+     * Set a background image on an element
+     *
+     * @param element the element to set the background image on
+     * @param backgroundImageUrl the background image url
+     */
+    setBackgroundImage(element, backgroundImageUrl) {
+        element.css('background-image', 'url(' + backgroundImageUrl + ')');
     }
 }

@@ -5,7 +5,8 @@ $slider = ThemeSettings::getInstance();
     <?php
     $slides = ApiClient::getSlides();
     foreach($slides as $slide) {
-        echo '<div class="slider__image" style="background-image: url('.$slide['image'].')"></div>';
+        echo '<div class="slider__slides" data-slide-image="'.$slide['image'].'"></div>';
     }
     ?>
+    <div class="slider__image"></div>
 </div>
