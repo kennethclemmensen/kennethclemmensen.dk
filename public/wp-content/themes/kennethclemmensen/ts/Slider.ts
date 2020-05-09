@@ -10,7 +10,7 @@ export class Slider {
      * Initialize a new instance of the Slider class
      */
     public constructor() {
-        this.slides = $('.slider__slides');
+        this.slides = $('.slider__slide');
         this.currentRandomNumber = -1;
     }
 
