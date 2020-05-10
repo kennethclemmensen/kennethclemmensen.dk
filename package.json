@@ -54,7 +54,7 @@
     "grunt": "grunt",
     "gulp": "gulp",
     "tsc": "tsc",
-    "webpack": "webpack",
-    "webpackCss": "webpack --config webpack.config.css.js"
+    "webpack": "webpack --config webpack.js.js",
+    "webpackCss": "webpack --config webpack.css.js"
   }
 }
