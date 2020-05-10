@@ -1,8 +1,10 @@
+const merge = require('webpack-merge');
+const common = require('./webpack.common.js');
 const packageConfig = require('./package.json');
 const path = require('path');
 const mergeIntoSingleFilePlugin = require('webpack-merge-and-include-globally');
 
-module.exports = {
+module.exports = merge(common, {
     entry: './' + packageConfig.config.styleCssFile,
     output: {
         filename: 'style.min.css',
@@ -13,7 +15,6 @@ module.exports = {
             { test: /\.css$/, use: 'css-loader' }
         ]
     },
-    mode: 'production',
     plugins: [
         new mergeIntoSingleFilePlugin({
             files: [{
@@ -25,4 +26,4 @@ module.exports = {
             }]
         })
     ]
-};
+});

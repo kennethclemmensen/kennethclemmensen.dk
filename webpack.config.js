@@ -1,14 +1,15 @@
+const merge = require('webpack-merge');
+const common = require('./webpack.common.js');
 const packageConfig = require('./package.json');
 const path = require('path');
 const mergeIntoSingleFilePlugin = require('webpack-merge-and-include-globally');
 
-module.exports = {
+module.exports = merge(common, {
     entry: './' + packageConfig.config.appJsFile,
     output: {
         filename: 'compiled.min.js',
         path: path.resolve(__dirname, 'public/wp-content/themes/kennethclemmensen/js/dist/')
     },
-    mode: 'production',
     performance: {
         maxAssetSize: 275000
     },
@@ -22,4 +23,4 @@ module.exports = {
             }]
         })
     ]
-};
+});
