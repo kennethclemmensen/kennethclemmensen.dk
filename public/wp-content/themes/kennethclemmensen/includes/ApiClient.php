@@ -39,6 +39,7 @@ final class ApiClient {
      */
     private static function getData(string $apiUrl) : array {
         $url = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].'/wp-json/kcapi/v1';
-        return json_decode(file_get_contents($url.$apiUrl), true);
+        $data = @json_decode(file_get_contents($url.$apiUrl), true);
+        return ($data != null) ? $data : [];
     }
 }
