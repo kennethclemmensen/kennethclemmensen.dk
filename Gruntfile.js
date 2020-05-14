@@ -21,6 +21,15 @@ module.exports = function(grunt) {
                 watchTask: true
             }
         },
+        //Use the grunt-concurrent plugin to run multiple tasks at once
+        concurrent: {
+            target: {
+                tasks: ['shell:npm_run_tsc', 'watch'],
+                options: {
+                    logConcurrentOutput: true
+                }
+            }
+        },
         //Optimize images
         imagemin: {
             dynamic: {
@@ -88,16 +97,13 @@ module.exports = function(grunt) {
             sass: {
                 files: ['<%= pkg.config.scssFiles %>'],
                 tasks: ['sass']
-            },
-            typescript: {
-                files: ['<%= pkg.config.tsFiles %>'],
-                tasks: ['shell:npm_run_tsc']
             }
         }
     });
 
     //Load all tasks
     grunt.loadNpmTasks('grunt-browser-sync');
+    grunt.loadNpmTasks('grunt-concurrent');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-watch');
@@ -105,5 +111,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-shell');
 
     //Register the default tasks
-    grunt.registerTask('default', ['browserSync', 'watch']);
+    grunt.registerTask('default', ['browserSync', 'concurrent:target']);
 };

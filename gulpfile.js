@@ -1,4 +1,4 @@
-const { dest, series, src, watch } = require('gulp');
+const { dest, parallel, src, watch } = require('gulp');
 const browserSyncPlugin = require('browser-sync');
 const cleanCssPlugin = require('gulp-clean-css');
 const imageminPlugin = require('gulp-imagemin');
@@ -97,7 +97,7 @@ function sass() {
 }
 
 //Register the tasks
-exports.default = series(browserSync);
+exports.default = parallel(browserSync, runNpmTscCommand);
 exports.imagemin = imagemin;
 
 //Look for changes in files
@@ -105,4 +105,3 @@ watch([packageConfig.config.cssCompiledFiles, packageConfig.config.cssLibrariesF
 watch([packageConfig.config.jsCompiledFiles, packageConfig.config.jsLibrariesFiles], runNpmWebpackCommand);
 watch(packageConfig.config.lessFiles, less);
 watch(packageConfig.config.scssFiles, sass);
-watch(packageConfig.config.tsFiles, runNpmTscCommand);
