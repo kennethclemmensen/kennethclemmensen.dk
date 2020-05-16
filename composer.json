@@ -1,8 +1,13 @@
 {
   "require-dev": {
-    "codeception/codeception": "^4.1.4",
-    "codeception/module-phpbrowser": "^1.0.0",
+    "lucatume/wp-browser": "^2.5.3",
     "codeception/module-asserts": "^1.2.1",
-    "codeception/module-rest": "^1.2.0"
+    "codeception/module-phpbrowser": "^1.0.0",
+    "codeception/module-rest": "^1.2.0",
+    "codeception/module-webdriver": "^1.0.8",
+    "codeception/module-db": "^1.0.1",
+    "codeception/module-filesystem": "^1.0.2",
+    "codeception/module-cli": "^1.0.2",
+    "codeception/util-universalframework": "^1.0.0"
   }
 }
