@@ -1,5 +1,4 @@
 import { EventType } from './enums/EventType';
-import { IController } from './interfaces/IController';
 import { FilesApp } from './FilesApp';
 import { SearchApp } from './SearchApp';
 import { ShortcutController } from './ShortcutController';
@@ -8,7 +7,7 @@ import { Slider } from './Slider';
 /**
  * The App class contains methods to handle the functionality of the app
  */
-class App implements IController {
+class App {
 
     private readonly body: HTMLElement;
 
@@ -17,12 +16,6 @@ class App implements IController {
      */
     public constructor() {
         this.body = document.body;
-    }
-
-    /**
-     * Initialize the App
-     */
-    public initialize(): void {
         document.addEventListener(EventType.DOMContentLoaded, (): void => {
             this.setupSlider();
             this.setupMobileMenu();
@@ -82,4 +75,4 @@ class App implements IController {
     }
 }
 
-new App().initialize();
+new App();

@@ -12,11 +12,6 @@ class App {
      */
     constructor() {
         this.body = document.body;
-    }
-    /**
-     * Initialize the App
-     */
-    initialize() {
         document.addEventListener(EventType.DOMContentLoaded, () => {
             this.setupSlider();
             this.setupMobileMenu();
@@ -73,4 +68,4 @@ class App {
         });
     }
 }
-new App().initialize();
+new App();
