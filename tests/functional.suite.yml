@@ -8,24 +8,26 @@ modules:
     enabled:
         - WPDb
         - WPBrowser
-        # - WPFilesystem
         - Asserts
         - \Helper\Functional
     config:
         WPDb:
             #dsn: '%TEST_SITE_DB_DSN%'
-            dsn: 'mysql:host=localhost;dbname=kennethclemmensen_dk_db'
+            dsn: 'mysql:host=localhost;dbname=kennethclemmensen_test_db'
             #user: '%TEST_SITE_DB_USER%'
             user: 'TestUser'
             #password: '%TEST_SITE_DB_PASSWORD%'
             password: 'TestUserForLocalhost'
             dump: 'tests/_data/dump.sql'
-            populate: false
-            cleanup: false
+            populate: true
+            cleanup: true
             waitlock: 10
-            url: '%TEST_SITE_WP_URL%'
+            #url: '%TEST_SITE_WP_URL%'
+            url: 'http://kennethclemmensen.test'
             urlReplacement: true
-            tablePrefix: '%TEST_SITE_TABLE_PREFIX%'
+            #tablePrefix: '%TEST_SITE_TABLE_PREFIX%'
+            tablePrefix: 'kcwp_'
+            originalUrl: 'http://kennethclemmensen.test'
         WPBrowser:
             #url: '%TEST_SITE_WP_URL%'
             url: 'http://kennethclemmensen.test'
@@ -35,10 +37,3 @@ modules:
             headers:
                 X_TEST_REQUEST: 1
                 X_WPBROWSER_REQUEST: 1
-
-        WPFilesystem:
-            wpRootFolder: '%WP_ROOT_FOLDER%'
-            plugins: '/wp-content/plugins'
-            mu-plugins: '/wp-content/mu-plugins'
-            themes: '/wp-content/themes'
-            uploads: '/wp-content/uploads'

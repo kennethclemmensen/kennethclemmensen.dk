@@ -14,20 +14,23 @@ modules:
     config:
         WPDb:
             #dsn: '%TEST_SITE_DB_DSN%'
-            dsn: 'mysql:host=localhost;dbname=kennethclemmensen_dk_db'
+            dsn: 'mysql:host=localhost;dbname=kennethclemmensen_test_db'
             #user: '%TEST_SITE_DB_USER%'
             user: 'TestUser'
             #password: '%TEST_SITE_DB_PASSWORD%'
             password: 'TestUserForLocalhost'
             dump: 'tests/_data/dump.sql'
             #import the dump before the tests; this means the test site database will be repopulated before the tests.
-            populate: false
+            populate: true
             # re-import the dump between tests; this means the test site database will be repopulated between the tests.
-            cleanup: false
+            cleanup: true
             waitlock: 10
-            url: '%TEST_SITE_WP_URL%'
+            #url: '%TEST_SITE_WP_URL%'
+            url: 'http://kennethclemmensen.test'
             urlReplacement: true #replace the hardcoded dump URL with the one above
-            tablePrefix: '%TEST_SITE_TABLE_PREFIX%'
+            #tablePrefix: '%TEST_SITE_TABLE_PREFIX%'
+            tablePrefix: 'kcwp_'
+            originalUrl: 'http://kennethclemmensen.test'
         WPBrowser:
             #url: '%TEST_SITE_WP_URL%'
             url: 'http://kennethclemmensen.test'
