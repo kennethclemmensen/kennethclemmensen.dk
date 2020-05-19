@@ -4,7 +4,7 @@ The repository for my personal website https://kennethclemmensen.dk/
 
 The website is created using [WordPress](https://wordpress.org/) and a number of other technologies.
 These technologies includes:
-* [Codeception](http://codeception.com/)
+* [Codeception](http://codeception.com/)/[wp-browser](https://wpbrowser.wptestkit.dev/)
 * [Composer](https://getcomposer.org/)
 * CSS3
 * [Grunt](https://gruntjs.com/)
