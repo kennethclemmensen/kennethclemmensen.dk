@@ -3,11 +3,12 @@ const common = require('./webpack.common.js');
 const packageConfig = require('./package.json');
 const path = require('path');
 const mergeIntoSingleFilePlugin = require('webpack-merge-and-include-globally');
+const cssFile = 'style.min.css';
 
 module.exports = merge(common, {
     entry: './' + packageConfig.config.styleCssFile,
     output: {
-        filename: 'style.min.css',
+        filename: cssFile,
         path: path.resolve(__dirname, 'public/wp-content/themes/kennethclemmensen/css/')
     },
     module: {
@@ -22,7 +23,7 @@ module.exports = merge(common, {
                     packageConfig.config.cssLibrariesFiles,
                     packageConfig.config.cssCompiledFiles
                 ],
-                dest: 'style.min.css'
+                dest: cssFile
             }]
         })
     ]
