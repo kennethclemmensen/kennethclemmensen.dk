@@ -6,12 +6,9 @@ foreach($files as $file) require_once $file;
  * Use the wp_enqueue_scripts action to add scripts and stylesheets
  */
 add_action('wp_enqueue_scripts', function() : void {
-    $ubuntu = 'ubuntu';
-    wp_enqueue_style($ubuntu, 'https://fonts.googleapis.com/css?family=Ubuntu');
-
     $styleFile = '/css/style.min.css';
     $version = filemtime(get_template_directory().$styleFile);
-    wp_enqueue_style('theme-css', get_template_directory_uri().$styleFile, [$ubuntu], $version);
+    wp_enqueue_style('theme-css', get_template_directory_uri().$styleFile, [], $version);
 
     $librariesJS = 'libraries-js';
     $librariesFile = '/js/dist/libraries.min.js';
