@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "21d93148bdba3235a3bb3fe4d5874e01",
+    "content-hash": "dd54dddff645d27421037143f41f0db9",
     "packages": [],
     "packages-dev": [
         {
@@ -1711,16 +1711,16 @@
         },
         {
             "name": "lucatume/wp-browser",
-            "version": "2.5.3",
+            "version": "2.5.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lucatume/wp-browser.git",
-                "reference": "cfbb9f225693aff2b5237c3cfd4b9ba3b12e4186"
+                "reference": "44b2b7b3f6339ae1f96bd26330ada0d2f330262c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lucatume/wp-browser/zipball/cfbb9f225693aff2b5237c3cfd4b9ba3b12e4186",
-                "reference": "cfbb9f225693aff2b5237c3cfd4b9ba3b12e4186",
+                "url": "https://api.github.com/repos/lucatume/wp-browser/zipball/44b2b7b3f6339ae1f96bd26330ada0d2f330262c",
+                "reference": "44b2b7b3f6339ae1f96bd26330ada0d2f330262c",
                 "shasum": ""
             },
             "require": {
@@ -1744,7 +1744,8 @@
                 "gumlet/php-image-resize": "^1.6",
                 "lucatume/codeception-snapshot-assertions": "^0.2",
                 "mikey179/vfsstream": "^1.6",
-                "victorjonsson/markdowndocs": "dev-master"
+                "victorjonsson/markdowndocs": "dev-master",
+                "vlucas/phpdotenv": "^3.0"
             },
             "suggest": {
                 "codeception/module-asserts": "Codeception 4.0 compatibility.",
@@ -1789,7 +1790,7 @@
                 "codeception",
                 "wordpress"
             ],
-            "time": "2020-05-15T10:20:55+00:00"
+            "time": "2020-05-22T10:08:17+00:00"
         },
         {
             "name": "mck89/peast",
@@ -2762,16 +2763,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "9.1.4",
+            "version": "9.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "2d7080c622cf7884992e7c3cf87853877bae8ff4"
+                "reference": "1b570cd7edbe136055bf5f651857dc8af6b829d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/2d7080c622cf7884992e7c3cf87853877bae8ff4",
-                "reference": "2d7080c622cf7884992e7c3cf87853877bae8ff4",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/1b570cd7edbe136055bf5f651857dc8af6b829d2",
+                "reference": "1b570cd7edbe136055bf5f651857dc8af6b829d2",
                 "shasum": ""
             },
             "require": {
@@ -2856,7 +2857,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-04-30T06:32:53+00:00"
+            "time": "2020-05-22T13:54:05+00:00"
         },
         {
             "name": "psr/container",
