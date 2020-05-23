@@ -3,14 +3,14 @@
  */
 export class Slider {
 
-    private readonly slides: JQuery;
+    private readonly slides: HTMLCollectionOf<Element>;
     private currentRandomNumber: number;
 
     /**
      * Initialize a new instance of the Slider class
      */
     public constructor() {
-        this.slides = $('.slider__slide');
+        this.slides = document.getElementsByClassName('slider__slide');
         this.currentRandomNumber = -1;
     }
 
@@ -33,18 +33,30 @@ export class Slider {
      * @param duration the duration of a slide
      */
     public showSlides(delay: number, duration: number): void {
+        let sliderImage: HTMLElement | null = document.getElementById('slider-image');
         let randomNumber: number = this.getRandomNumber();
-        let sliderImage: JQuery = $('.slider__image');
-        let key: string = 'slide-image';
-        this.setBackgroundImage(sliderImage, this.slides.eq(randomNumber).data(key));
-        sliderImage.show();
-        setInterval((): void => {
-            sliderImage.fadeOut(delay, (): void => {
-                randomNumber = this.getRandomNumber();
-                this.setBackgroundImage(sliderImage, this.slides.eq(randomNumber).data(key));
-                sliderImage.fadeIn(delay);
-            });
-        }, duration);
+        let name: string = 'data-slide-image';
+        let backgroundImageUrl: string | null = this.slides[randomNumber].getAttribute(name);
+        if(sliderImage && backgroundImageUrl) {
+            this.setBackgroundImage(sliderImage, backgroundImageUrl);
+            sliderImage.style.display = 'block';
+            setInterval((): void => {
+                if(sliderImage) {
+                    sliderImage.animate([{ opacity: 1 }, { opacity: 0 }], {
+                        duration: delay
+                    }).onfinish = () => {
+                        randomNumber = this.getRandomNumber();
+                        backgroundImageUrl = this.slides[randomNumber].getAttribute(name);
+                        if(sliderImage && backgroundImageUrl) {
+                            this.setBackgroundImage(sliderImage, backgroundImageUrl);
+                            sliderImage.animate([{ opacity: 0 }, { opacity: 1 }], {
+                                duration: delay
+                            });
+                        }
+                    };
+                }
+            }, duration);
+        }
     }
 
     /**
@@ -53,7 +65,7 @@ export class Slider {
      * @param element the element to set the background image on
      * @param backgroundImageUrl the background image url
      */
-    private setBackgroundImage(element: JQuery, backgroundImageUrl: string): void {
-        element.css('background-image', 'url('+ backgroundImageUrl + ')');
+    private setBackgroundImage(element: HTMLElement, backgroundImageUrl: string): void {
+        element.style.backgroundImage = 'url("' + backgroundImageUrl + '")';
     }
 }

@@ -6,7 +6,7 @@ export class Slider {
      * Initialize a new instance of the Slider class
      */
     constructor() {
-        this.slides = $('.slider__slide');
+        this.slides = document.getElementsByClassName('slider__slide');
         this.currentRandomNumber = -1;
     }
     /**
@@ -28,18 +28,30 @@ export class Slider {
      * @param duration the duration of a slide
      */
     showSlides(delay, duration) {
+        let sliderImage = document.getElementById('slider-image');
         let randomNumber = this.getRandomNumber();
-        let sliderImage = $('.slider__image');
-        let key = 'slide-image';
-        this.setBackgroundImage(sliderImage, this.slides.eq(randomNumber).data(key));
-        sliderImage.show();
-        setInterval(() => {
-            sliderImage.fadeOut(delay, () => {
-                randomNumber = this.getRandomNumber();
-                this.setBackgroundImage(sliderImage, this.slides.eq(randomNumber).data(key));
-                sliderImage.fadeIn(delay);
-            });
-        }, duration);
+        let name = 'data-slide-image';
+        let backgroundImageUrl = this.slides[randomNumber].getAttribute(name);
+        if (sliderImage && backgroundImageUrl) {
+            this.setBackgroundImage(sliderImage, backgroundImageUrl);
+            sliderImage.style.display = 'block';
+            setInterval(() => {
+                if (sliderImage) {
+                    sliderImage.animate([{ opacity: 1 }, { opacity: 0 }], {
+                        duration: delay
+                    }).onfinish = () => {
+                        randomNumber = this.getRandomNumber();
+                        backgroundImageUrl = this.slides[randomNumber].getAttribute(name);
+                        if (sliderImage && backgroundImageUrl) {
+                            this.setBackgroundImage(sliderImage, backgroundImageUrl);
+                            sliderImage.animate([{ opacity: 0 }, { opacity: 1 }], {
+                                duration: delay
+                            });
+                        }
+                    };
+                }
+            }, duration);
+        }
     }
     /**
      * Set a background image on an element
@@ -48,6 +60,6 @@ export class Slider {
      * @param backgroundImageUrl the background image url
      */
     setBackgroundImage(element, backgroundImageUrl) {
-        element.css('background-image', 'url(' + backgroundImageUrl + ')');
+        element.style.backgroundImage = 'url("' + backgroundImageUrl + '")';
     }
 }

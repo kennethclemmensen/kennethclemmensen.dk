@@ -8,5 +8,5 @@ $slider = ThemeSettings::getInstance();
         echo '<div class="slider__slide" data-slide-image="'.$slide['image'].'"></div>';
     }
     ?>
-    <div class="slider__image"></div>
+    <div id="slider-image" class="slider__image"></div>
 </div>
