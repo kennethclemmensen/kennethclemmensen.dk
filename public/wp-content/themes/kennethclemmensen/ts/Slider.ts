@@ -37,26 +37,22 @@ export class Slider {
         let randomNumber: number = this.getRandomNumber();
         let name: string = 'data-slide-image';
         let backgroundImageUrl: string | null = this.slides[randomNumber].getAttribute(name);
-        if(sliderImage && backgroundImageUrl) {
-            this.setBackgroundImage(sliderImage, backgroundImageUrl);
-            sliderImage.style.display = 'block';
-            setInterval((): void => {
-                if(sliderImage) {
-                    sliderImage.animate([{ opacity: 1 }, { opacity: 0 }], {
-                        duration: delay
-                    }).onfinish = (): void => {
-                        randomNumber = this.getRandomNumber();
-                        backgroundImageUrl = this.slides[randomNumber].getAttribute(name);
-                        if(sliderImage && backgroundImageUrl) {
-                            this.setBackgroundImage(sliderImage, backgroundImageUrl);
-                            sliderImage.animate([{ opacity: 0 }, { opacity: 1 }], {
-                                duration: delay
-                            });
-                        }
-                    };
-                }
-            }, duration);
-        }
+        if(!sliderImage || !backgroundImageUrl) return;
+        this.setBackgroundImage(sliderImage, backgroundImageUrl);
+        setInterval((): void => {
+            if(!sliderImage) return;
+            sliderImage.animate([{ opacity: 1 }, { opacity: 0 }], {
+                duration: delay
+            }).onfinish = (): void => {
+                randomNumber = this.getRandomNumber();
+                backgroundImageUrl = this.slides[randomNumber].getAttribute(name);
+                if(!sliderImage || !backgroundImageUrl) return;
+                this.setBackgroundImage(sliderImage, backgroundImageUrl);
+                sliderImage.animate([{ opacity: 0 }, { opacity: 1 }], {
+                    duration: delay
+                });
+            };
+        }, duration);
     }
 
     /**

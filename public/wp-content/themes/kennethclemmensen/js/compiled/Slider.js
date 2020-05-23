@@ -32,26 +32,25 @@ export class Slider {
         let randomNumber = this.getRandomNumber();
         let name = 'data-slide-image';
         let backgroundImageUrl = this.slides[randomNumber].getAttribute(name);
-        if (sliderImage && backgroundImageUrl) {
-            this.setBackgroundImage(sliderImage, backgroundImageUrl);
-            sliderImage.style.display = 'block';
-            setInterval(() => {
-                if (sliderImage) {
-                    sliderImage.animate([{ opacity: 1 }, { opacity: 0 }], {
-                        duration: delay
-                    }).onfinish = () => {
-                        randomNumber = this.getRandomNumber();
-                        backgroundImageUrl = this.slides[randomNumber].getAttribute(name);
-                        if (sliderImage && backgroundImageUrl) {
-                            this.setBackgroundImage(sliderImage, backgroundImageUrl);
-                            sliderImage.animate([{ opacity: 0 }, { opacity: 1 }], {
-                                duration: delay
-                            });
-                        }
-                    };
-                }
-            }, duration);
-        }
+        if (!sliderImage || !backgroundImageUrl)
+            return;
+        this.setBackgroundImage(sliderImage, backgroundImageUrl);
+        setInterval(() => {
+            if (!sliderImage)
+                return;
+            sliderImage.animate([{ opacity: 1 }, { opacity: 0 }], {
+                duration: delay
+            }).onfinish = () => {
+                randomNumber = this.getRandomNumber();
+                backgroundImageUrl = this.slides[randomNumber].getAttribute(name);
+                if (!sliderImage || !backgroundImageUrl)
+                    return;
+                this.setBackgroundImage(sliderImage, backgroundImageUrl);
+                sliderImage.animate([{ opacity: 0 }, { opacity: 1 }], {
+                    duration: delay
+                });
+            };
+        }, duration);
     }
     /**
      * Set a background image on an element
