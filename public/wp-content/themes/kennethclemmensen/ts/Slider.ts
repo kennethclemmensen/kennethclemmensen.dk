@@ -44,7 +44,7 @@ export class Slider {
                 if(sliderImage) {
                     sliderImage.animate([{ opacity: 1 }, { opacity: 0 }], {
                         duration: delay
-                    }).onfinish = () => {
+                    }).onfinish = (): void => {
                         randomNumber = this.getRandomNumber();
                         backgroundImageUrl = this.slides[randomNumber].getAttribute(name);
                         if(sliderImage && backgroundImageUrl) {
