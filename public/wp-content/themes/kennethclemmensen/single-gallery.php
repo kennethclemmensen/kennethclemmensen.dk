@@ -15,10 +15,15 @@ get_header();
             $pagination = new Pagination(ApiClient::getImages(), $perPage);
             $images = $pagination->getItems();
             foreach($images as $image) {
+                $url = $image['url'];
                 $title = $image['title'];
+                $gallery = $image['gallery'];
+                $thumbnail = $image['thumbnail'];
+                $width = $image['width'];
+                $height = $image['height'];
                 ?>
-                <a href="<?php echo $image['url']; ?>" data-title="<?php echo $title; ?>" data-lightbox="<?php echo $image['gallery']; ?>" class="gallery__link">
-                    <img src="<?php echo $image['thumbnail']; ?>" alt="<?php echo $title; ?>" class="gallery__image">
+                <a href="<?php echo $url; ?>" data-title="<?php echo $title; ?>" data-lightbox="<?php echo $gallery; ?>" class="gallery__link">
+                    <img src="<?php echo $thumbnail; ?>" alt="<?php echo $title; ?>" class="gallery__image" width="<?php echo $width; ?>" height="<?php echo $height; ?>">
                 </a>
                 <?php
             }

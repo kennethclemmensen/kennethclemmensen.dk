@@ -114,11 +114,15 @@ class ImageModule extends BaseModule implements IModule {
         while($wpQuery->have_posts()) {
             $wpQuery->the_post();
             $id = get_the_ID();
+            $url = PluginHelper::getImageUrl($id);
+            $imageInfo = wp_get_attachment_image_src(attachment_url_to_postid($url));
             $images[] = [
                 'title' => get_the_title(),
-                'url' => PluginHelper::getImageUrl($id),
+                'url' => $url,
                 'thumbnail' => PluginHelper::getImageUrl($id, Constant::THUMBNAIL),
-                'gallery' => $galleryId
+                'gallery' => $galleryId,
+                'width' => $imageInfo[1].'px',
+                'height' => $imageInfo[2].'px'
             ];
         }
         return $images;
