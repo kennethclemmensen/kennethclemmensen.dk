@@ -31,6 +31,7 @@ final class ThemeSettings {
     private $gitHubShortcode;
     private $delay;
     private $duration;
+    private $animation;
 
     /**
      * ThemeSettings constructor
@@ -67,6 +68,7 @@ final class ThemeSettings {
         $prefix = 'slider_';
         $this->delay = $prefix.'delay';
         $this->duration = $prefix.'duration';
+        $this->animation = $prefix.'animation';
         $this->adminMenu();
         $this->adminInit();
         $this->addShortcodes();
@@ -202,6 +204,18 @@ final class ThemeSettings {
         }, $this->sliderPageSlug, $sectionID);
         add_settings_field($prefix.'duration', 'Duration', function() : void {
             echo '<input type="number" name="'.$this->sliderOptionsName.'['.$this->duration.']" value="'.$this->getDuration().'" min="1" max="10000">';
+        }, $this->sliderPageSlug, $sectionID);
+        add_settings_field($prefix.'animation', 'Animation', function() : void {
+            ?>
+            <select name="<?php echo $this->sliderOptionsName.'['.$this->animation.']'; ?>">
+                <?php
+                $animations = ['fade' => 'Fade', 'slide_down' => 'Slide down', 'slide_right' => 'Slide right'];
+                foreach($animations as $key => $value) {
+                    echo '<option value="'.$key.'" '.selected($this->getAnimation(), $key).'>'.$value.'</option>';
+                }
+                ?>
+            </select>
+            <?php
         }, $this->sliderPageSlug, $sectionID);
         register_setting($this->sliderOptionsName, $this->sliderOptionsName, function(array $input) : array {
             return $this->validateSettingInputs($input);
@@ -388,5 +402,14 @@ final class ThemeSettings {
      */
     public function getDuration() : int {
         return intval($this->sliderOptions[$this->duration]);
+    }
+
+    /**
+     * Get the animation
+     * 
+     * @return string the animation
+     */
+    public function getAnimation() : string {
+        return ($this->sliderOptions) ? stripslashes($this->sliderOptions[$this->animation]) : '';
     }
 }

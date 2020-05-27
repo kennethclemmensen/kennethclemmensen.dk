@@ -1,4 +1,5 @@
 import { EventType } from './enums/EventType';
+import { SliderAnimation } from './enums/SliderAnimation';
 import { FilesApp } from './FilesApp';
 import { SearchApp } from './SearchApp';
 import { ShortcutController } from './ShortcutController';
@@ -39,7 +40,8 @@ class App {
             let delay: number = (dataset.delay) ? parseInt(dataset.delay) : defaultDelay;
             let defaultDuration: number = 8000;
             let duration: number = (dataset.duration) ? parseInt(dataset.duration) : defaultDuration;
-            new Slider().showSlides(delay, duration);
+            let animation: string = (dataset.animation) ? dataset.animation : SliderAnimation.Fade;
+            new Slider().showSlides(delay, duration, animation);
         }
     }
 

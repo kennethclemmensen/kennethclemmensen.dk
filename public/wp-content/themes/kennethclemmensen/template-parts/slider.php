@@ -1,7 +1,11 @@
 <?php
 $slider = ThemeSettings::getInstance();
+$delay = $slider->getDelay();
+$duration = $slider->getDuration();
+$animation = $slider->getAnimation();
 ?>
-<div id="slider" class="slider" data-delay="<?php echo $slider->getDelay(); ?>" data-duration="<?php echo $slider->getDuration(); ?>">
+<div id="slider" class="slider" data-delay="<?php echo $delay; ?>" 
+    data-duration="<?php echo $duration; ?>" data-animation="<?php echo $animation; ?>">
     <?php
     $slides = ApiClient::getSlides();
     foreach($slides as $slide) {
