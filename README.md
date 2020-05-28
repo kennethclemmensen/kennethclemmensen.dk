@@ -9,9 +9,9 @@ These technologies includes:
 * CSS3
 * [Grunt](https://gruntjs.com/)
 * [Gulp](https://gulpjs.com/)
-* HTML5
-* JavaScript/[jQuery](https://jquery.com/)
+* [HTML5](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
 * [LESS](http://lesscss.org/)
+* [Lightbox](https://lokeshdhakar.com/projects/lightbox2/)
 * [Lodash](https://lodash.com/)
 * [NodeJS](https://nodejs.org/en/)/[NPM](https://npmjs.com/)
 * [PHP](http://php.net/)
