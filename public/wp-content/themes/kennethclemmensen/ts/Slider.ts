@@ -30,33 +30,43 @@ export class Slider {
         let backgroundImageUrl: string | null = this.slides[randomNumber].getAttribute(name);
         if(!sliderImage || !backgroundImageUrl) return;
         this.setBackgroundImage(sliderImage, backgroundImageUrl);
-        let keyframes: Keyframe[];
-        let lastKeyframes: Keyframe[];
+        let startKeyframes: Keyframe[];
+        let endKeyframes: Keyframe[];
         let px: string = 'px';
+        let width: number = sliderImage.clientWidth;
+        let height: number = sliderImage.clientHeight;
         switch(animation) {
             case SliderAnimation.SlideDown:
-                keyframes = [{ backgroundPositionY: 0 }, { backgroundPositionY: sliderImage.clientHeight + px }];
-                lastKeyframes = [{ backgroundPositionY: sliderImage.clientHeight + px }, { backgroundPositionY: 0 }];
+                startKeyframes = [{ backgroundPositionY: 0 }, { backgroundPositionY: height + px }];
+                endKeyframes = [{ backgroundPositionY: height + px }, { backgroundPositionY: 0 }];
+                break;
+            case SliderAnimation.SlideLeft:
+                startKeyframes = [{ backgroundPositionX: 0 }, { backgroundPositionX: -width + px }];
+                endKeyframes = [{ backgroundPositionX: -width + px }, { backgroundPositionX: 0 }];
                 break;
             case SliderAnimation.SlideRight:
-                keyframes = [{ backgroundPositionX: 0 }, { backgroundPositionX: sliderImage.clientWidth + px }];
-                lastKeyframes = [{ backgroundPositionX: sliderImage.clientWidth + px }, { backgroundPositionX: 0 }];
+                startKeyframes = [{ backgroundPositionX: 0 }, { backgroundPositionX: width + px }];
+                endKeyframes = [{ backgroundPositionX: width + px }, { backgroundPositionX: 0 }];
+                break;
+            case SliderAnimation.SlideUp:
+                startKeyframes = [{ backgroundPositionY: 0 }, { backgroundPositionY: -height + px }];
+                endKeyframes = [{ backgroundPositionY: -height + px }, { backgroundPositionY: 0 }];
                 break;
             default:
-                keyframes = [{ opacity: 1 }, { opacity: 0 }];
-                lastKeyframes = [{ opacity: 0 }, { opacity: 1 }];
+                startKeyframes = [{ opacity: 1 }, { opacity: 0 }];
+                endKeyframes = [{ opacity: 0 }, { opacity: 1 }];
                 break;
         }
         setInterval((): void => {
             if(sliderImage) {
-                sliderImage.animate(keyframes, {
+                sliderImage.animate(startKeyframes, {
                     duration: delay
                 }).onfinish = (): void => {
                     randomNumber = this.getRandomNumber();
                     backgroundImageUrl = this.slides[randomNumber].getAttribute(name);
                     if(sliderImage && backgroundImageUrl) {
                         this.setBackgroundImage(sliderImage, backgroundImageUrl);
-                        sliderImage.animate(lastKeyframes, {
+                        sliderImage.animate(endKeyframes, {
                             duration: delay
                         });
                     }

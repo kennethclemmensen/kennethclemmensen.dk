@@ -209,7 +209,7 @@ final class ThemeSettings {
             ?>
             <select name="<?php echo $this->sliderOptionsName.'['.$this->animation.']'; ?>">
                 <?php
-                $animations = ['fade' => 'Fade', 'slide_down' => 'Slide down', 'slide_right' => 'Slide right'];
+                $animations = $this->getSliderAnimations();
                 foreach($animations as $key => $value) {
                     echo '<option value="'.$key.'" '.selected($this->getAnimation(), $key).'>'.$value.'</option>';
                 }
@@ -357,6 +357,21 @@ final class ThemeSettings {
      */
     private function getFooterScripts() : string {
         return ($this->scriptOptions) ? stripslashes($this->scriptOptions[$this->scriptFooter]) : '';
+    }
+
+    /**
+     * Get the slider animations
+     * 
+     * @return array the slider animations
+     */
+    private function getSliderAnimations() : array {
+        return [
+            'fade' => 'Fade',
+            'slide_down' => 'Slide down',
+            'slide_left' => 'Slide left',
+            'slide_right' => 'Slide right',
+            'slide_up' => 'Slide up'
+        ];
     }
 
     /**

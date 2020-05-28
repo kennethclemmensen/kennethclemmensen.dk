@@ -4,5 +4,7 @@
 export enum SliderAnimation {
     Fade = 'fade',
     SlideDown = 'slide_down',
-    SlideRight = 'slide_right'
+    SlideLeft = 'slide_left',
+    SlideRight = 'slide_right',
+    SlideUp = 'slide_up'
 }
