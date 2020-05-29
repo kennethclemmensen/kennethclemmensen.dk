@@ -8,6 +8,7 @@ export class Slider {
      */
     constructor() {
         this.slides = document.getElementsByClassName('slider__slide');
+        this.sliderImage = document.getElementById('slider-image');
         this.currentRandomNumber = -1;
     }
     /**
@@ -18,50 +19,24 @@ export class Slider {
      * @param animation the animation for the slides
      */
     showSlides(delay, duration, animation) {
-        let sliderImage = document.getElementById('slider-image');
         let randomNumber = this.getRandomNumber();
         let name = 'data-slide-image';
         let backgroundImageUrl = this.slides[randomNumber].getAttribute(name);
-        if (!sliderImage || !backgroundImageUrl)
+        if (!backgroundImageUrl)
             return;
-        this.setBackgroundImage(sliderImage, backgroundImageUrl);
-        let startKeyframes;
-        let endKeyframes;
-        let px = 'px';
-        let width = sliderImage.clientWidth;
-        let height = sliderImage.clientHeight;
-        switch (animation) {
-            case SliderAnimation.SlideDown:
-                startKeyframes = [{ backgroundPositionY: 0 }, { backgroundPositionY: height + px }];
-                endKeyframes = [{ backgroundPositionY: height + px }, { backgroundPositionY: 0 }];
-                break;
-            case SliderAnimation.SlideLeft:
-                startKeyframes = [{ backgroundPositionX: 0 }, { backgroundPositionX: -width + px }];
-                endKeyframes = [{ backgroundPositionX: -width + px }, { backgroundPositionX: 0 }];
-                break;
-            case SliderAnimation.SlideRight:
-                startKeyframes = [{ backgroundPositionX: 0 }, { backgroundPositionX: width + px }];
-                endKeyframes = [{ backgroundPositionX: width + px }, { backgroundPositionX: 0 }];
-                break;
-            case SliderAnimation.SlideUp:
-                startKeyframes = [{ backgroundPositionY: 0 }, { backgroundPositionY: -height + px }];
-                endKeyframes = [{ backgroundPositionY: -height + px }, { backgroundPositionY: 0 }];
-                break;
-            default:
-                startKeyframes = [{ opacity: 1 }, { opacity: 0 }];
-                endKeyframes = [{ opacity: 0 }, { opacity: 1 }];
-                break;
-        }
+        this.setBackgroundImage(backgroundImageUrl);
+        let startKeyframes = this.getStartKeyframes(animation);
+        let endKeyframes = this.getEndKeyframes(animation);
         setInterval(() => {
-            if (sliderImage) {
-                sliderImage.animate(startKeyframes, {
+            if (this.sliderImage) {
+                this.sliderImage.animate(startKeyframes, {
                     duration: delay
                 }).onfinish = () => {
                     randomNumber = this.getRandomNumber();
                     backgroundImageUrl = this.slides[randomNumber].getAttribute(name);
-                    if (sliderImage && backgroundImageUrl) {
-                        this.setBackgroundImage(sliderImage, backgroundImageUrl);
-                        sliderImage.animate(endKeyframes, {
+                    if (this.sliderImage && backgroundImageUrl) {
+                        this.setBackgroundImage(backgroundImageUrl);
+                        this.sliderImage.animate(endKeyframes, {
                             duration: delay
                         });
                     }
@@ -82,12 +57,76 @@ export class Slider {
         return this.currentRandomNumber;
     }
     /**
-     * Set a background image on an element
+     * Set a background image on the slider image
      *
-     * @param element the element to set the background image on
      * @param backgroundImageUrl the background image url
      */
-    setBackgroundImage(element, backgroundImageUrl) {
-        element.style.backgroundImage = 'url("' + backgroundImageUrl + '")';
+    setBackgroundImage(backgroundImageUrl) {
+        if (this.sliderImage)
+            this.sliderImage.style.backgroundImage = 'url("' + backgroundImageUrl + '")';
+    }
+    /**
+     * Get the start keyframes based on the animation
+     *
+     * @param animation the animation
+     * @return the start keyframes
+     */
+    getStartKeyframes(animation) {
+        let startKeyframes = [];
+        if (this.sliderImage) {
+            let width = this.sliderImage.clientWidth;
+            let height = this.sliderImage.clientHeight;
+            let px = 'px';
+            switch (animation) {
+                case SliderAnimation.SlideDown:
+                    startKeyframes = [{ backgroundPositionY: 0 }, { backgroundPositionY: height + px }];
+                    break;
+                case SliderAnimation.SlideLeft:
+                    startKeyframes = [{ backgroundPositionX: 0 }, { backgroundPositionX: -width + px }];
+                    break;
+                case SliderAnimation.SlideRight:
+                    startKeyframes = [{ backgroundPositionX: 0 }, { backgroundPositionX: width + px }];
+                    break;
+                case SliderAnimation.SlideUp:
+                    startKeyframes = [{ backgroundPositionY: 0 }, { backgroundPositionY: -height + px }];
+                    break;
+                default:
+                    startKeyframes = [{ opacity: 1 }, { opacity: 0 }];
+                    break;
+            }
+        }
+        return startKeyframes;
+    }
+    /**
+     * Get the end keyframes based on the animation
+     *
+     * @param animation the animation
+     * @return the end keyframes
+     */
+    getEndKeyframes(animation) {
+        let endKeyframes = [];
+        if (this.sliderImage) {
+            let width = this.sliderImage.clientWidth;
+            let height = this.sliderImage.clientHeight;
+            let px = 'px';
+            switch (animation) {
+                case SliderAnimation.SlideDown:
+                    endKeyframes = [{ backgroundPositionY: height + px }, { backgroundPositionY: 0 }];
+                    break;
+                case SliderAnimation.SlideLeft:
+                    endKeyframes = [{ backgroundPositionX: -width + px }, { backgroundPositionX: 0 }];
+                    break;
+                case SliderAnimation.SlideRight:
+                    endKeyframes = [{ backgroundPositionX: width + px }, { backgroundPositionX: 0 }];
+                    break;
+                case SliderAnimation.SlideUp:
+                    endKeyframes = [{ backgroundPositionY: -height + px }, { backgroundPositionY: 0 }];
+                    break;
+                default:
+                    endKeyframes = [{ opacity: 0 }, { opacity: 1 }];
+                    break;
+            }
+        }
+        return endKeyframes;
     }
 }
