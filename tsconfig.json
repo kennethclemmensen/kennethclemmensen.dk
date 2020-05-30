@@ -1,7 +1,5 @@
 {
   "compilerOptions": {
-    "allowUnreachableCode": false,
-    "allowUnusedLabels": false,
     "incremental": true,
     "noEmitOnError": true,
     "noFallthroughCasesInSwitch": true,
@@ -10,10 +8,9 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "outDir": "./public/wp-content/themes/kennethclemmensen/js/compiled",
-    "sourceMap": false,
     "strict": true,
     "target": "es2020",
-    "tsBuildInfoFile": "./tsc/.tsbuildinfo"
+    "tsBuildInfoFile": "./.tsbuildinfo"
   },
   "include": [
     "./public/wp-content/themes/kennethclemmensen/ts/**/*.ts"
