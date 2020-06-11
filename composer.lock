@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "034d6f6579506bac734cbafda15f7552",
+    "content-hash": "77ad9b8cbbe4e9128b20705915639f1b",
     "packages": [],
     "packages-dev": [
         {
@@ -1737,16 +1737,16 @@
         },
         {
             "name": "lucatume/wp-browser",
-            "version": "2.6.0",
+            "version": "2.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lucatume/wp-browser.git",
-                "reference": "39cf1ee99153ce5141c9bd843a11f448fa9d21c2"
+                "reference": "96085964d4f92ef9c5db05876977cc652353fc40"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lucatume/wp-browser/zipball/39cf1ee99153ce5141c9bd843a11f448fa9d21c2",
-                "reference": "39cf1ee99153ce5141c9bd843a11f448fa9d21c2",
+                "url": "https://api.github.com/repos/lucatume/wp-browser/zipball/96085964d4f92ef9c5db05876977cc652353fc40",
+                "reference": "96085964d4f92ef9c5db05876977cc652353fc40",
                 "shasum": ""
             },
             "require": {
@@ -1816,7 +1816,7 @@
                 "codeception",
                 "wordpress"
             ],
-            "time": "2020-06-08T12:27:12+00:00"
+            "time": "2020-06-11T09:31:08+00:00"
         },
         {
             "name": "mck89/peast",
