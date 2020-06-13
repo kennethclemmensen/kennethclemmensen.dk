@@ -6,7 +6,7 @@ The website is created using [WordPress](https://wordpress.org/) and a number of
 These technologies includes:
 * [Codeception](http://codeception.com/)/[wp-browser](https://wpbrowser.wptestkit.dev/)
 * [Composer](https://getcomposer.org/)
-* CSS3
+* [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS)
 * [Grunt](https://gruntjs.com/)
 * [Gulp](https://gulpjs.com/)
 * [HTML5](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
