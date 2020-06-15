@@ -15,7 +15,7 @@ class BaseModule {
      * @param string $postType the post type
      * @return array all the posts
      */
-    public function getAllPosts(string $postType) : array {
+    protected function getAllPosts(string $postType) : array {
         $posts = [];
         $args = [
             'post_type' => $postType,
