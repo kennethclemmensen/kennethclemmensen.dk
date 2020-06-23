@@ -19,7 +19,7 @@ class Security {
     /**
      * Check if the user has access to the Api
      * 
-     * @return bool true if the user has access to the Api. False if the user doesn't have access to the Api
+     * @return bool true if the user has access to the Api. False if the user doesn't has access to the Api
      */
     public static function hasApiAccess() : bool {
         return !is_user_logged_in();
