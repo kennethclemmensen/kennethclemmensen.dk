@@ -24,7 +24,7 @@
     "uploadsFolder": "public/wp-content/uploads/"
   },
   "devDependencies": {
-    "browser-sync": "^2.26.7",
+    "browser-sync": "^2.26.10",
     "css-loader": "^3.6.0",
     "grunt": "^1.2.1",
     "grunt-browser-sync": "^2.2.0",
@@ -56,6 +56,6 @@
     "webpackCss": "webpack --config webpack.css.js"
   },
   "dependencies": {
-    "typescript": "^4.0.0-dev.20200712"
+    "typescript": "^4.0.0-dev.20200718"
   }
 }
