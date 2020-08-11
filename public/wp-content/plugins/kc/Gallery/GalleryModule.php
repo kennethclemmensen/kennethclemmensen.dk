@@ -15,7 +15,7 @@ use \WP_Query;
  */
 class GalleryModule extends BaseModule implements IModule {
 
-    private $fieldParentPage;
+    private string $fieldParentPage;
 
     /**
      * Initialize a new instance of the GalleryModule class

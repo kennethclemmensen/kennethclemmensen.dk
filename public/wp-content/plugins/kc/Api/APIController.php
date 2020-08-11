@@ -16,9 +16,9 @@ use \WP_REST_Server;
  */
 class ApiController {
 
-    private $namespace;
-    private $statusCodeOk;
-    private $fileModule;
+    private string $namespace;
+    private int $statusCodeOk;
+    private FileModule $fileModule;
 
     /**
      * Initialize a new instance of the ApiController class

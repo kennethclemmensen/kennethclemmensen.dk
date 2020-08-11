@@ -4,10 +4,10 @@
  */
 final class Pagination {
 
-    private $items;
-    private $perPage;
-    private $urlParameterName;
-    private $offset;
+    private array $items;
+    private int $perPage;
+    private string $urlParameterName;
+    private int $offset;
 
     /**
      * Initialize a new instance of the Pagination class with the items and the number of items per page

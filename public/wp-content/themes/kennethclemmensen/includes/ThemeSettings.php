@@ -4,34 +4,34 @@
  */
 final class ThemeSettings {
 
-    private static $instance = null;
-    private $contactPageSlug;
-    private $scriptPageSlug;
-    private $sliderPageSlug;
-    private $otherPageSlug;
-    private $contactOptionsName;
-    private $scriptOptionsName;
-    private $sliderOptionsName;
-    private $otherOptionsName;
+    private static ?ThemeSettings $instance = null;
+    private string $contactPageSlug;
+    private string $scriptPageSlug;
+    private string $sliderPageSlug;
+    private string $otherPageSlug;
+    private string $contactOptionsName;
+    private string $scriptOptionsName;
+    private string $sliderOptionsName;
+    private string $otherOptionsName;
     private $contactOptions;
     private $scriptOptions;
     private $sliderOptions;
     private $otherOptions;
-    private $email;
-    private $linkedIn;
-    private $gitHub;
-    private $imagesPerPage;
-    private $filesPerPage;
-    private $searchResultsPerPage;
-    private $scriptHeader;
-    private $scriptStartBody;
-    private $scriptFooter;
-    private $emailShortcode;
-    private $linkedInShortcode;
-    private $gitHubShortcode;
-    private $delay;
-    private $duration;
-    private $animation;
+    private string $email;
+    private string $linkedIn;
+    private string $gitHub;
+    private string $imagesPerPage;
+    private string $filesPerPage;
+    private string $searchResultsPerPage;
+    private string $scriptHeader;
+    private string $scriptStartBody;
+    private string $scriptFooter;
+    private string $emailShortcode;
+    private string $linkedInShortcode;
+    private string $gitHubShortcode;
+    private string $delay;
+    private string $duration;
+    private string $animation;
 
     /**
      * ThemeSettings constructor

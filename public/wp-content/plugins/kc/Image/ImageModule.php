@@ -15,7 +15,7 @@ use \WP_Query;
  */
 class ImageModule extends BaseModule implements IModule {
 
-    private $fieldImageGallery;
+    private string $fieldImageGallery;
 
     /**
      * Initialize a new instance of the ImageModule class

@@ -4,10 +4,10 @@
  */
 final class IconWidget extends WP_Widget {
 
-    private $icon;
-    private $link;
-    private $target;
-    private $checkboxCheckedValue;
+    private string $icon;
+    private string $link;
+    private string $target;
+    private string $checkboxCheckedValue;
 
     /**
      * IconWidget constructor

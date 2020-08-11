@@ -15,10 +15,10 @@ use \WP_Query;
  */
 class FileModule implements IModule {
 
-    private $fieldDescription;
-    private $fieldFile;
-    private $fieldFileDownloadCounter;
-    private $fileTypeTaxonomyName;
+    private string $fieldDescription;
+    private string $fieldFile;
+    private string $fieldFileDownloadCounter;
+    private string $fileTypeTaxonomyName;
 
     /**
      * Initialize a new instance of the FileModule class

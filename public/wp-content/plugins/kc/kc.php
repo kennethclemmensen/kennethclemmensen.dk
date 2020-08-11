@@ -6,7 +6,7 @@ Version: 1.0
 Author: Kenneth Clemmensen
 Author URI: https://kennethclemmensen.dk
 Requires at least: 5.4.2
-Requires PHP: 7.3
+Requires PHP: 7.4
 */
 namespace KC;
 if(!defined('ABSPATH')) wp_die();
