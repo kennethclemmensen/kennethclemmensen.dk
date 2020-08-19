@@ -4,6 +4,6 @@
     "codeception/module-db": "^1.0.1",
     "codeception/module-phpbrowser": "^1.0.1",
     "codeception/module-rest": "^1.2.1",  
-    "lucatume/wp-browser": "^2.6.7"
+    "lucatume/wp-browser": "^2.6.8"
   }
 }
