@@ -1,12 +1,11 @@
 import { EventType } from './enums/EventType';
 import { KeyCode } from './enums/KeyCode';
 import { Url } from './enums/Url';
-import { IController } from './interfaces/IController';
 
 /**
  * The ShortcutController class contains methods to handle shortcuts
  */
-export class ShortcutController implements IController {
+export class ShortcutController {
 
     /**
      * Initialize the ShortcutController
