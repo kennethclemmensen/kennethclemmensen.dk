@@ -16,8 +16,7 @@ export class FilesApp {
      * Setup the files app
      */
     setupFilesApp() {
-        new Vue({
-            el: '#files-app',
+        const filesApp = {
             components: {
                 'files': {
                     data: () => {
@@ -91,6 +90,7 @@ export class FilesApp {
                     `
                 }
             }
-        });
+        };
+        Vue.createApp(filesApp).mount('#files-app');
     }
 }

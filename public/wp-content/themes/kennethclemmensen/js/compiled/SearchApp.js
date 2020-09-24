@@ -16,11 +16,12 @@ export class SearchApp {
      * Setup the search app
      */
     setupSearchApp() {
-        new Vue({
-            el: '#search-app',
-            data: {
-                searchString: '',
-                results: []
+        const searchApp = {
+            data() {
+                return {
+                    searchString: '',
+                    results: []
+                };
             },
             watch: {
                 searchString: function () {
@@ -100,6 +101,7 @@ export class SearchApp {
                     `
                 }
             }
-        });
+        };
+        Vue.createApp(searchApp).mount('#search-app');
     }
 }

@@ -19,11 +19,12 @@ export class SearchApp {
      * Setup the search app
      */
     private setupSearchApp(): void {
-        new Vue({
-            el: '#search-app',
-            data: {
-                searchString: '',
-                results: []
+        const searchApp = {
+            data(): object {
+                return {
+                    searchString: '',
+                    results: []
+                };
             },
             watch: {
                 searchString: function(): void {
@@ -103,6 +104,7 @@ export class SearchApp {
                     `
                 }
             }
-        });
+        };
+        Vue.createApp(searchApp).mount('#search-app');
     }
 }
