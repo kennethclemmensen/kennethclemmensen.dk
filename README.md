@@ -17,5 +17,5 @@ These technologies includes:
 * [PHP](http://php.net/)
 * [SASS](https://sass-lang.com/)
 * [TypeScript](https://www.typescriptlang.org/)
-* [Vue](https://vuejs.org/)
+* [Vue](https://v3.vuejs.org/)
 * [Webpack](https://webpack.js.org/)
