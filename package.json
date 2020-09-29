@@ -47,7 +47,7 @@
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
     "webpack-merge": "^5.1.4",
-    "webpack-merge-and-include-globally": "^2.1.25"
+    "webpack-merge-and-include-globally": "^2.1.26"
   },
   "scripts": {
     "grunt": "grunt",
