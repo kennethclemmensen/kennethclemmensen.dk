@@ -28,6 +28,7 @@ class App {
      * Setup the slider
      */
     setupSlider() {
+        var _a;
         let slider = document.getElementById('slider');
         if (slider) {
             let dataset = slider.dataset;
@@ -35,7 +36,7 @@ class App {
             let delay = (dataset.delay) ? parseInt(dataset.delay) : defaultDelay;
             let defaultDuration = 8000;
             let duration = (dataset.duration) ? parseInt(dataset.duration) : defaultDuration;
-            let animation = (dataset.animation) ? dataset.animation : SliderAnimation.Fade;
+            let animation = (_a = dataset.animation) !== null && _a !== void 0 ? _a : SliderAnimation.Fade;
             new Slider().showSlides(delay, duration, animation);
         }
     }

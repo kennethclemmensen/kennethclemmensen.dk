@@ -40,7 +40,7 @@ class App {
             let delay: number = (dataset.delay) ? parseInt(dataset.delay) : defaultDelay;
             let defaultDuration: number = 8000;
             let duration: number = (dataset.duration) ? parseInt(dataset.duration) : defaultDuration;
-            let animation: string = (dataset.animation) ? dataset.animation : SliderAnimation.Fade;
+            let animation: string = dataset.animation ?? SliderAnimation.Fade;
             new Slider().showSlides(delay, duration, animation);
         }
     }
