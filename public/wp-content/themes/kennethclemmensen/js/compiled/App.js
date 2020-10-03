@@ -21,7 +21,7 @@ class App {
             });
             new FilesApp();
             new SearchApp();
-            new ShortcutController().initialize();
+            new ShortcutController();
         });
     }
     /**

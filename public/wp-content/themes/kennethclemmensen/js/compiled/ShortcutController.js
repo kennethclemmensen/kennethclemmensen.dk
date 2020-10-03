@@ -6,9 +6,9 @@ import { Url } from './enums/Url';
  */
 export class ShortcutController {
     /**
-     * Initialize the ShortcutController
+     * Initialize a new instance of the ShortcutController class
      */
-    initialize() {
+    constructor() {
         this.setupKeypressEventListener();
         this.setupKeydownEventListener();
     }
@@ -18,7 +18,7 @@ export class ShortcutController {
     setupKeypressEventListener() {
         document.addEventListener(EventType.Keypress, (event) => {
             if (event.shiftKey) {
-                switch (event.keyCode) {
+                switch (event.key) {
                     case KeyCode.B:
                         this.redirectToUrl(Url.ImagesPage);
                         break;
@@ -47,7 +47,7 @@ export class ShortcutController {
     setupKeydownEventListener() {
         document.addEventListener(EventType.Keydown, (event) => {
             if (event.ctrlKey && event.shiftKey) {
-                switch (event.keyCode) {
+                switch (event.key) {
                     case KeyCode.F:
                         this.redirectToUrl(Url.MoviePage);
                         break;
