@@ -22,9 +22,15 @@ class ImageModule extends BaseModule implements IModule {
      */
     public function __construct() {
         $this->fieldImageGallery = 'photo_gallery';
+    }
+
+    /**
+     * Setup the image module
+     */
+    public function setupModule() : void {
         $this->registerPostType();
         $this->addMetaBoxes();
-        $this->addAdminColumns();
+        $this->addAdminColumns();        
     }
 
     /**

@@ -23,7 +23,8 @@ class PluginActivator {
     public function run() : void {
         $modules = $this->getModules();
         foreach($modules as $module) {
-            new $module;
+            $m = new $module;
+            $m->setupModule();
         }
         $this->addPostThumbnailsSupport();
     }

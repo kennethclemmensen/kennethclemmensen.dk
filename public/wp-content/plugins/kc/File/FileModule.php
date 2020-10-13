@@ -29,9 +29,15 @@ class FileModule implements IModule {
         $this->fieldFile = $prefix.'file';
         $this->fieldFileDownloadCounter = $prefix.'download_counter';
         $this->fileTypeTaxonomyName = 'fdwc_tax_file_type';
+    }
+
+    /**
+     * Setup the file module
+     */
+    public function setupModule() : void {
         $this->registerPostTypesAndTaxonomies();
         $this->addMetaBoxes();
-        $this->addMimeTypes();
+        $this->addMimeTypes();        
     }
 
     /**

@@ -10,9 +10,9 @@ use KC\Core\IModule;
 class ApiModule implements IModule {
 
     /**
-     * Initialize a new instance of the ApiModule class
+     * Setup the api module
      */
-    public function __construct() {
+    public function setupModule() : void {
         $this->setupApiRoutes();
     }
 

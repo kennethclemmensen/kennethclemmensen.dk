@@ -22,9 +22,15 @@ class GalleryModule extends BaseModule implements IModule {
      */
     public function __construct() {
         $this->fieldParentPage = 'parent_page';
+    }
+
+    /**
+     * Setup the gallery module
+     */
+    public function setupModule() : void {
         $this->registerPostType();
         $this->updatePostParent();
-        $this->addMetaBoxes();
+        $this->addMetaBoxes();        
     }
 
     /**

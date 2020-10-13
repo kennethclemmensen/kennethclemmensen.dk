@@ -15,11 +15,11 @@ use \WP_Query;
 class SliderModule implements IModule {
 
     /**
-     * Initialize a new instance of the SliderModule class
+     * Setup the slider module
      */
-    public function __construct() {
+    public function setupModule() : void {
         $this->registerPostType();
-        $this->addAdminColumns();
+        $this->addAdminColumns();        
     }
 
     /**

@@ -12,6 +12,11 @@ use \WP_Query;
 class PageModule implements IModule {
 
     /**
+     * Setup the page module
+     */
+    public function setupModule() : void { }
+
+    /**
      * Get the pages by title
      *
      * @param string $title the title to get the pages from
