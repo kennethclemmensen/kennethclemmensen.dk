@@ -70,8 +70,8 @@ module.exports = function(grunt) {
             npm_run_tsc: {
                 command: '<%= pkg.config.npmTscCommand %>'
             },
-            npm_run_webpack: {
-                command: '<%= pkg.config.npmWebpackCommand %>'
+            npm_run_webpack_js: {
+                command: '<%= pkg.config.npmWebpackJsCommand %>'
             },
             npm_run_webpack_css: {
                 command: '<%= pkg.config.npmWebpackCssCommand %>'
@@ -88,7 +88,7 @@ module.exports = function(grunt) {
             },
             javascript: {
                 files: ['<%= pkg.config.jsCompiledFiles %>', '<%= pkg.config.jsLibrariesFiles %>'],
-                tasks: ['shell:npm_run_webpack']
+                tasks: ['shell:npm_run_webpack_js']
             },
             less: {
                 files: ['<%= pkg.config.lessFiles %>'],

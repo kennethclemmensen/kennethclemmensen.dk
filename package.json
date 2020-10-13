@@ -13,7 +13,7 @@
     "jsLibrariesFiles": "public/wp-content/themes/kennethclemmensen/js/libraries/**/*.js",
     "lessFiles": "public/wp-content/themes/kennethclemmensen/less/**/*.less",
     "npmTscCommand": "npm run tsc",
-    "npmWebpackCommand": "npm run webpack",
+    "npmWebpackJsCommand": "npm run webpackJs",
     "npmWebpackCssCommand": "npm run webpackCss",
     "phpFiles": "public/wp-content/themes/kennethclemmensen/**/*.php",
     "scssFiles": "public/wp-content/themes/kennethclemmensen/sass/**/*.scss",
@@ -44,8 +44,8 @@
     "gulp-shell": "^0.8.0",
     "node-sass": "^4.14.1",
     "typescript": "^4.0.3",
-    "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12",
+    "webpack": "^5.1.0",
+    "webpack-cli": "^4.0.0",
     "webpack-merge": "^5.2.0",
     "webpack-merge-and-include-globally": "^2.1.26"
   },
@@ -53,7 +53,7 @@
     "grunt": "grunt",
     "gulp": "gulp",
     "tsc": "tsc -w",
-    "webpack": "webpack --config webpack.js.js",
-    "webpackCss": "webpack --config webpack.css.js"
+    "webpackCss": "webpack --config webpack.css.js",
+    "webpackJs": "webpack --config webpack.js.js"
   }
 }
