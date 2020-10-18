@@ -24,7 +24,7 @@
     "uploadsFolder": "public/wp-content/uploads/"
   },
   "devDependencies": {
-    "browser-sync": "^2.26.12",
+    "browser-sync": "^2.26.13",
     "css-loader": "^4.3.0",
     "grunt": "^1.3.0",
     "grunt-browser-sync": "^2.2.0",
