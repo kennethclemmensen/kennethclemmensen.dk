@@ -2,7 +2,7 @@
 get_header();
 ?>
     <div class="page">
-        <?php ThemeHelper::loadSliderTemplatePart(); ?>
+        <?php ThemeHelper::loadSliderTemplate(); ?>
         <section class="page__content">
             <?php dynamic_sidebar(ThemeHelper::getPageNotFoundSidebarID()); ?>
         </section>

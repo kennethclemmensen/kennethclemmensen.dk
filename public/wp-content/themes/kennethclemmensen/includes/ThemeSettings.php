@@ -29,9 +29,9 @@ final class ThemeSettings {
     private string $emailShortcode;
     private string $linkedInShortcode;
     private string $gitHubShortcode;
-    private string $delay;
-    private string $duration;
-    private string $animation;
+    private string $sliderDelay;
+    private string $sliderDuration;
+    private string $sliderAnimation;
 
     /**
      * ThemeSettings constructor
@@ -66,11 +66,11 @@ final class ThemeSettings {
         $this->linkedInShortcode = $prefix.$this->linkedIn;
         $this->gitHubShortcode = $prefix.$this->gitHub;
         $prefix = 'slider_';
-        $this->delay = $prefix.'delay';
-        $this->duration = $prefix.'duration';
-        $this->animation = $prefix.'animation';
-        $this->adminMenu();
-        $this->adminInit();
+        $this->sliderDelay = $prefix.'delay';
+        $this->sliderDuration = $prefix.'duration';
+        $this->sliderAnimation = $prefix.'animation';
+        $this->createSettingsPage();
+        $this->registerSettingInputs();
         $this->addShortcodes();
         $this->addHeaderScripts();
         $this->addAfterStartBodyScripts();
@@ -90,7 +90,7 @@ final class ThemeSettings {
     /**
      * Use the admin_menu action to create a settings page
      */
-    private function adminMenu() : void {
+    private function createSettingsPage() : void {
         add_action('admin_menu', function() : void {
             $title = __('Settings');
             add_theme_page($title, $title, 'administrator', $this->contactPageSlug, function() : void {
@@ -140,9 +140,9 @@ final class ThemeSettings {
     }
 
     /**
-     * Use the admin_init action to register the settings inputs
+     * Use the admin_init action to register the setting inputs
      */
-    private function adminInit() : void {
+    private function registerSettingInputs() : void {
         add_action('admin_init', function() : void {
             $this->createContactInputs();
             $this->createScriptInputs();
@@ -199,19 +199,19 @@ final class ThemeSettings {
         $sectionID = $this->sliderPageSlug.'-section-slider';
         $prefix = $this->sliderPageSlug;
         add_settings_section($sectionID, '', null, $this->sliderPageSlug);
-        add_settings_field($prefix.'delay', 'Delay', function() : void {
-            echo '<input type="number" name="'.$this->sliderOptionsName.'['.$this->delay.']" value="'.$this->getDelay().'" min="1" max="10000">';
+        add_settings_field($prefix.'sliderDelay', 'Delay', function() : void {
+            echo '<input type="number" name="'.$this->sliderOptionsName.'['.$this->sliderDelay.']" value="'.$this->getSliderDelay().'" min="1" max="10000">';
         }, $this->sliderPageSlug, $sectionID);
-        add_settings_field($prefix.'duration', 'Duration', function() : void {
-            echo '<input type="number" name="'.$this->sliderOptionsName.'['.$this->duration.']" value="'.$this->getDuration().'" min="1" max="10000">';
+        add_settings_field($prefix.'sliderDuration', 'Duration', function() : void {
+            echo '<input type="number" name="'.$this->sliderOptionsName.'['.$this->sliderDuration.']" value="'.$this->getSliderDuration().'" min="1" max="10000">';
         }, $this->sliderPageSlug, $sectionID);
-        add_settings_field($prefix.'animation', 'Animation', function() : void {
+        add_settings_field($prefix.'sliderAnimation', 'Animation', function() : void {
             ?>
-            <select name="<?php echo $this->sliderOptionsName.'['.$this->animation.']'; ?>">
+            <select name="<?php echo $this->sliderOptionsName.'['.$this->sliderAnimation.']'; ?>">
                 <?php
                 $animations = $this->getSliderAnimations();
                 foreach($animations as $key => $value) {
-                    echo '<option value="'.$key.'" '.selected($this->getAnimation(), $key).'>'.$value.'</option>';
+                    echo '<option value="'.$key.'" '.selected($this->getSliderAnimation(), $key).'>'.$value.'</option>';
                 }
                 ?>
             </select>
@@ -273,7 +273,7 @@ final class ThemeSettings {
     }
 
     /**
-     * Use the wp_body_open action to add script snippets after the start body tag
+     * Use the wp_body_open action to add scripts after the start body tag
      */
     private function addAfterStartBodyScripts() : void {
         add_action('wp_body_open', function() : void {
@@ -282,7 +282,7 @@ final class ThemeSettings {
     }
 
     /**
-     * Use the wp_footer action to add script snippets to the footer
+     * Use the wp_footer action to add scripts to the footer
      */
     private function addFooterScripts() : void {
         $priority = 100;
@@ -402,29 +402,29 @@ final class ThemeSettings {
     }
 
     /**
-     * Get the delay
+     * Get the slider sliderDelay
      * 
-     * @return int the delay
+     * @return int the slider sliderDelay
      */
-    public function getDelay() : int {
-        return intval($this->sliderOptions[$this->delay]);
+    public function getSliderDelay() : int {
+        return intval($this->sliderOptions[$this->sliderDelay]);
     }
 
     /**
-     * Get the duration
+     * Get the slider sliderDuration
      * 
-     * @return int the duration
+     * @return int the slider sliderDuration
      */
-    public function getDuration() : int {
-        return intval($this->sliderOptions[$this->duration]);
+    public function getSliderDuration() : int {
+        return intval($this->sliderOptions[$this->sliderDuration]);
     }
 
     /**
-     * Get the animation
+     * Get the slider sliderAnimation
      * 
-     * @return string the animation
+     * @return string the slider sliderAnimation
      */
-    public function getAnimation() : string {
-        return ($this->sliderOptions) ? stripslashes($this->sliderOptions[$this->animation]) : '';
+    public function getSliderAnimation() : string {
+        return ($this->sliderOptions) ? stripslashes($this->sliderOptions[$this->sliderAnimation]) : '';
     }
 }

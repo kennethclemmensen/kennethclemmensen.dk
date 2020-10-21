@@ -9,10 +9,8 @@
 </head>
 
 <body <?php body_class(); ?> data-image-text="<?php echo TranslationStrings::getImageText(); ?>"
-                             data-of-text="<?php echo TranslationStrings::getOfText(); ?>">
-<?php
-wp_body_open();
-?>
+    data-of-text="<?php echo TranslationStrings::getOfText(); ?>">
+<?php wp_body_open(); ?>
 <header class="header">
     <a href="<?php bloginfo('url'); ?>" class="header__site-name">
         <?php bloginfo('name'); ?>

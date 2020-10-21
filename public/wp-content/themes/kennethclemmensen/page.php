@@ -5,8 +5,8 @@ while(have_posts()) {
     ?>
     <div class="page">
         <?php
-        ThemeHelper::loadSliderTemplatePart();
-        ThemeHelper::loadBreadcrumbTemplatePart();
+        ThemeHelper::loadSliderTemplate();
+        ThemeHelper::loadBreadcrumbTemplate();
         ?>
         <section class="page__content">
             <h1><?php the_title(); ?></h1>

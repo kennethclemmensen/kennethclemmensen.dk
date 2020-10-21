@@ -62,16 +62,16 @@ final class ThemeHelper {
     }
 
     /**
-     * Load the breadcrumb template part
+     * Load the breadcrumb template
      */
-    public static function loadBreadcrumbTemplatePart() : void {
+    public static function loadBreadcrumbTemplate() : void {
         get_template_part('template-parts/breadcrumb');
     }
 
     /**
-     * Load the slider template part
+     * Load the slider template
      */
-    public static function loadSliderTemplatePart() : void {
+    public static function loadSliderTemplate() : void {
         get_template_part('template-parts/slider');
     }
 
@@ -82,7 +82,7 @@ final class ThemeHelper {
      */
     public static function getFileTypes() : string {
         $fileTypes = [];
-        $terms = get_the_terms(get_the_ID(), 'fdwc_tax_file_type');
+        $terms = get_the_terms(get_the_ID(), 'kc_tax_file_type');
         foreach($terms as $term) $fileTypes[] = $term->term_id;
         return implode(',', $fileTypes);
     }

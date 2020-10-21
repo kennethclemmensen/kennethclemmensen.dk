@@ -6,6 +6,8 @@ foreach($files as $file) require_once $file;
  * Use the wp_enqueue_scripts action to add scripts and stylesheets
  */
 add_action('wp_enqueue_scripts', function() : void {
+    wp_dequeue_script('jquery');
+
     $styleFile = '/css/style.min.css';
     $version = filemtime(get_template_directory().$styleFile);
     wp_enqueue_style('theme-css', get_template_directory_uri().$styleFile, [], $version);

@@ -24,11 +24,11 @@ class FileModule implements IModule {
      * Initialize a new instance of the FileModule class
      */
     public function __construct() {
-        $prefix = 'fdwc_field_';
+        $prefix = 'field_';
         $this->fieldDescription = $prefix.'description';
         $this->fieldFile = $prefix.'file';
         $this->fieldFileDownloadCounter = $prefix.'download_counter';
-        $this->fileTypeTaxonomyName = 'fdwc_tax_file_type';
+        $this->fileTypeTaxonomyName = 'kc_tax_file_type';
     }
 
     /**
