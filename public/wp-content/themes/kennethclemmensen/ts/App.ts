@@ -34,15 +34,13 @@ class App {
      */
     private setupSlider(): void {
         let slider: HTMLElement | null = document.getElementById('slider');
-        if(slider) {
-            let dataset: DOMStringMap = slider.dataset;
-            let defaultDelay: number = 500;
-            let delay: number = (dataset.delay) ? parseInt(dataset.delay) : defaultDelay;
-            let defaultDuration: number = 8000;
-            let duration: number = (dataset.duration) ? parseInt(dataset.duration) : defaultDuration;
-            let animation: string = dataset.animation ?? SliderAnimation.Fade;
-            new Slider().showSlides(delay, duration, animation);
-        }
+        let dataset: DOMStringMap | undefined = slider?.dataset;
+        let defaultDelay: number = 500;
+        let delay: number = (dataset?.delay) ? parseInt(dataset.delay) : defaultDelay;
+        let defaultDuration: number = 8000;
+        let duration: number = (dataset?.duration) ? parseInt(dataset.duration) : defaultDuration;
+        let animation: string = dataset?.animation ?? SliderAnimation.Fade;
+        new Slider().showSlides(delay, duration, animation);
     }
 
     /**
@@ -52,26 +50,20 @@ class App {
         let mobileMenuTrigger: HTMLElement | null = document.getElementById('mobile-menu-trigger');
         let mobileMenu: HTMLElement | null = document.getElementById('mobile-menu');
         let showMobileMenuClass: string = 'show-mobile-menu';
-        if(mobileMenuTrigger) {
-            mobileMenuTrigger.addEventListener(EventType.Click, (event: Event): void => {
-                event.preventDefault();
-                if(mobileMenuTrigger && mobileMenu) {
-                    mobileMenuTrigger.classList.toggle('header__nav-trigger--active');
-                    mobileMenu.classList.toggle('mobile-menu--active');
-                    document.documentElement.classList.toggle(showMobileMenuClass);
-                    this.body.classList.toggle(showMobileMenuClass);
-                }
-            });
-        }
+        mobileMenuTrigger?.addEventListener(EventType.Click, (event: Event): void => {
+            event.preventDefault();
+            mobileMenuTrigger?.classList.toggle('header__nav-trigger--active');
+            mobileMenu?.classList.toggle('mobile-menu--active');
+            document.documentElement.classList.toggle(showMobileMenuClass);
+            this.body.classList.toggle(showMobileMenuClass);
+        });
         let mobileMenuArrows: NodeListOf<HTMLElement> = document.querySelectorAll('.mobile-menu__arrow');
         mobileMenuArrows.forEach((arrow: HTMLElement): void => {
             arrow.addEventListener(EventType.Click, (event: Event): void => {
                 event.preventDefault();
-                if(arrow.parentNode && arrow.parentNode.parentElement) {
-                    arrow.classList.toggle('mobile-menu__arrow--rotated');
-                    let subMenu: Element = arrow.parentNode.parentElement.getElementsByClassName('sub-menu')[0];
-                    subMenu.classList.toggle('show');
-                }
+                arrow.classList.toggle('mobile-menu__arrow--rotated');
+                let subMenu: Element | undefined = arrow.parentNode?.parentElement?.getElementsByClassName('sub-menu')[0];
+                subMenu?.classList.toggle('show');
             });
         });
     }

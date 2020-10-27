@@ -32,14 +32,12 @@ export class Slider {
                 this.sliderImage.animate(startKeyframes, {
                     duration: delay
                 }).onfinish = () => {
+                    var _a;
                     randomNumber = this.getRandomNumber();
                     backgroundImageUrl = this.slides[randomNumber].getAttribute(name);
-                    if (this.sliderImage && backgroundImageUrl) {
+                    if (backgroundImageUrl)
                         this.setBackgroundImage(backgroundImageUrl);
-                        this.sliderImage.animate(endKeyframes, {
-                            duration: delay
-                        });
-                    }
+                    (_a = this.sliderImage) === null || _a === void 0 ? void 0 : _a.animate(endKeyframes, { duration: delay });
                 };
             }
         }, duration);

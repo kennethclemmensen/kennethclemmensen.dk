@@ -40,12 +40,8 @@ export class Slider {
                 }).onfinish = (): void => {
                     randomNumber = this.getRandomNumber();
                     backgroundImageUrl = this.slides[randomNumber].getAttribute(name);
-                    if(this.sliderImage && backgroundImageUrl) {
-                        this.setBackgroundImage(backgroundImageUrl);
-                        this.sliderImage.animate(endKeyframes, {
-                            duration: delay
-                        });
-                    }
+                    if(backgroundImageUrl) this.setBackgroundImage(backgroundImageUrl);
+                    this.sliderImage?.animate(endKeyframes, { duration: delay });
                 };
             }
         }, duration);
