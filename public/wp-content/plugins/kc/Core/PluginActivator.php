@@ -30,7 +30,7 @@ class PluginActivator {
     }
 
     /**
-     * Get the modules which are the classes that implements the IModule interface
+     * Get the modules which is the classes that implements the IModule interface
      * 
      * @return array the modules
      */
