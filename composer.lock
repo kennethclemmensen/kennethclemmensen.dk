@@ -498,23 +498,23 @@
         },
         {
             "name": "codeception/module-rest",
-            "version": "1.2.5",
+            "version": "1.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/module-rest.git",
-                "reference": "15e16e4a9973ffaeffc39208787e60e5d8316788"
+                "reference": "77cba3dc52aeac75493c7ed9ebdb2de74cfb52cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/module-rest/zipball/15e16e4a9973ffaeffc39208787e60e5d8316788",
-                "reference": "15e16e4a9973ffaeffc39208787e60e5d8316788",
+                "url": "https://api.github.com/repos/Codeception/module-rest/zipball/77cba3dc52aeac75493c7ed9ebdb2de74cfb52cf",
+                "reference": "77cba3dc52aeac75493c7ed9ebdb2de74cfb52cf",
                 "shasum": ""
             },
             "require": {
                 "codeception/codeception": "^4.0",
-                "flow/jsonpath": "^0.5",
                 "justinrainbow/json-schema": "~5.2.9",
-                "php": ">=5.6.0 <9.0"
+                "php": ">=5.6.0 <9.0",
+                "softcreatr/jsonpath": "^0.5 || ^0.7"
             },
             "require-dev": {
                 "codeception/lib-innerbrowser": "^1.0",
@@ -546,9 +546,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Codeception/module-rest/issues",
-                "source": "https://github.com/Codeception/module-rest/tree/1.2.5"
+                "source": "https://github.com/Codeception/module-rest/tree/1.2.6"
             },
-            "time": "2020-10-24T15:20:26+00:00"
+            "time": "2020-11-03T07:04:43+00:00"
         },
         {
             "name": "codeception/phpunit-wrapper",
@@ -1289,52 +1289,6 @@
             "time": "2020-05-29T17:27:14+00:00"
         },
         {
-            "name": "flow/jsonpath",
-            "version": "0.5.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/FlowCommunications/JSONPath.git",
-                "reference": "b9738858c75d008c1211612b973e9510f8b7f8ea"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/FlowCommunications/JSONPath/zipball/b9738858c75d008c1211612b973e9510f8b7f8ea",
-                "reference": "b9738858c75d008c1211612b973e9510f8b7f8ea",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "peekmo/jsonpath": "dev-master",
-                "phpunit/phpunit": "^7.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Flow\\JSONPath": "src/",
-                    "Flow\\JSONPath\\Test": "tests/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Stephen Frank",
-                    "email": "stephen@flowsa.com"
-                }
-            ],
-            "description": "JSONPath implementation for parsing, searching and flattening arrays",
-            "support": {
-                "issues": "https://github.com/FlowCommunications/JSONPath/issues",
-                "source": "https://github.com/FlowCommunications/JSONPath/tree/0.5.0"
-            },
-            "abandoned": "softcreatr/jsonpath",
-            "time": "2019-07-15T17:23:22+00:00"
-        },
-        {
             "name": "gettext/gettext",
             "version": "v4.8.2",
             "source": {
@@ -1748,7 +1702,7 @@
         },
         {
             "name": "illuminate/collections",
-            "version": "v8.12.3",
+            "version": "v8.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/collections.git",
@@ -1802,7 +1756,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v8.12.3",
+            "version": "v8.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -1850,7 +1804,7 @@
         },
         {
             "name": "illuminate/macroable",
-            "version": "v8.12.3",
+            "version": "v8.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/macroable.git",
@@ -1896,16 +1850,16 @@
         },
         {
             "name": "illuminate/support",
-            "version": "v8.12.3",
+            "version": "v8.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "4f8b2d2589dec51b3fb9844e35606a1f1a7536e8"
+                "reference": "21ca3da65ffb4efbaa489aee9c36d01ab6d0c3e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/4f8b2d2589dec51b3fb9844e35606a1f1a7536e8",
-                "reference": "4f8b2d2589dec51b3fb9844e35606a1f1a7536e8",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/21ca3da65ffb4efbaa489aee9c36d01ab6d0c3e2",
+                "reference": "21ca3da65ffb4efbaa489aee9c36d01ab6d0c3e2",
                 "shasum": ""
             },
             "require": {
@@ -1959,7 +1913,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2020-10-29T15:17:19+00:00"
+            "time": "2020-11-03T13:46:08+00:00"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -4782,6 +4736,73 @@
             "time": "2020-07-07T18:42:57+00:00"
         },
         {
+            "name": "softcreatr/jsonpath",
+            "version": "0.7.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SoftCreatR/JSONPath.git",
+                "reference": "46689608586a8081be399342755c36e179f3b5fc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SoftCreatR/JSONPath/zipball/46689608586a8081be399342755c36e179f3b5fc",
+                "reference": "46689608586a8081be399342755c36e179f3b5fc",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": ">=7.1"
+            },
+            "conflict": {
+                "phpunit/phpunit": "<7.0 || >= 10.0"
+            },
+            "replace": {
+                "flow/jsonpath": "*"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=7.0",
+                "roave/security-advisories": "dev-master",
+                "squizlabs/php_codesniffer": "^3.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Flow\\JSONPath\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Stephen Frank",
+                    "email": "stephen@flowsa.com",
+                    "homepage": "https://prismaticbytes.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Sascha Greuel",
+                    "email": "hello@1-2.dev",
+                    "homepage": "http://1-2.dev",
+                    "role": "Developer"
+                }
+            ],
+            "description": "JSONPath implementation for parsing, searching and flattening arrays",
+            "support": {
+                "email": "hello@1-2.dev",
+                "issues": "https://github.com/SoftCreatR/JSONPath/issues",
+                "source": "https://github.com/SoftCreatR/JSONPath"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/softcreatr",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-10-27T11:37:08+00:00"
+        },
+        {
             "name": "symfony/browser-kit",
             "version": "v5.1.8",
             "source": {
@@ -6752,16 +6773,16 @@
         },
         {
             "name": "wp-cli/config-command",
-            "version": "v2.0.6",
+            "version": "v2.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-cli/config-command.git",
-                "reference": "f204bc62c557adb08f32a84683cc1dbfd23e6d96"
+                "reference": "6468e97ab2ace5b0a448d9e19091d42f6461b466"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-cli/config-command/zipball/f204bc62c557adb08f32a84683cc1dbfd23e6d96",
-                "reference": "f204bc62c557adb08f32a84683cc1dbfd23e6d96",
+                "url": "https://api.github.com/repos/wp-cli/config-command/zipball/6468e97ab2ace5b0a448d9e19091d42f6461b466",
+                "reference": "6468e97ab2ace5b0a448d9e19091d42f6461b466",
                 "shasum": ""
             },
             "require": {
@@ -6819,9 +6840,9 @@
             "homepage": "https://github.com/wp-cli/config-command",
             "support": {
                 "issues": "https://github.com/wp-cli/config-command/issues",
-                "source": "https://github.com/wp-cli/config-command/tree/v2.0.6"
+                "source": "https://github.com/wp-cli/config-command/tree/v2.0.7"
             },
-            "time": "2020-06-11T00:17:12+00:00"
+            "time": "2020-10-31T11:20:34+00:00"
         },
         {
             "name": "wp-cli/core-command",
@@ -8334,16 +8355,16 @@
         },
         {
             "name": "wp-cli/shell-command",
-            "version": "v2.0.5",
+            "version": "v2.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-cli/shell-command.git",
-                "reference": "f655611701ed331c336932091860e66839a535f3"
+                "reference": "d29fceda4c79b2e6e4295b563427f76e3b7bc1ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-cli/shell-command/zipball/f655611701ed331c336932091860e66839a535f3",
-                "reference": "f655611701ed331c336932091860e66839a535f3",
+                "url": "https://api.github.com/repos/wp-cli/shell-command/zipball/d29fceda4c79b2e6e4295b563427f76e3b7bc1ba",
+                "reference": "d29fceda4c79b2e6e4295b563427f76e3b7bc1ba",
                 "shasum": ""
             },
             "require": {
@@ -8386,9 +8407,9 @@
             "homepage": "https://github.com/wp-cli/shell-command",
             "support": {
                 "issues": "https://github.com/wp-cli/shell-command/issues",
-                "source": "https://github.com/wp-cli/shell-command/tree/master"
+                "source": "https://github.com/wp-cli/shell-command/tree/v2.0.6"
             },
-            "time": "2020-06-12T00:17:09+00:00"
+            "time": "2020-10-31T08:19:44+00:00"
         },
         {
             "name": "wp-cli/super-admin-command",
