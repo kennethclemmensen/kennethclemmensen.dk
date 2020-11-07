@@ -12,7 +12,7 @@ class FilterTest extends WPTestCase {
      * Test the getManagePostsColumnsFilter method
      */
     public function testGetManagePostsColumnsFilter() : void {
-        $expected = 'manage_photo_posts_columns';
+        $expected = 'manage_kc_image_posts_columns';
         $this->assertEquals($expected, Filter::getManagePostsColumnsFilter(PostType::IMAGE));
     }
 }

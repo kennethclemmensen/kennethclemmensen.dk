@@ -24,3 +24,6 @@ public/wp-content/aiowps_backups
 
 #TypeScript
 .tsbuildinfo
+
+#Test data
+tests/_data/dump.sql

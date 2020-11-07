@@ -12,7 +12,7 @@ class ActionTest extends WPTestCase {
      * Test the getSavePostAction method
      */
     public function testGetSavePostAction() : void {
-        $expected = 'save_post_gallery';
+        $expected = 'save_post_kc_gallery';
         $this->assertEquals($expected, Action::getSavePostAction(PostType::GALLERY));
     }
 
@@ -20,7 +20,7 @@ class ActionTest extends WPTestCase {
      * Test the getManagePostsCustomColumn method
      */
     public function testGetManagePostsCustomColumn() : void {
-        $expected = 'manage_photo_posts_custom_column';
+        $expected = 'manage_kc_image_posts_custom_column';
         $this->assertEquals($expected, Action::getManagePostsCustomColumn(PostType::IMAGE));
     }
 }
