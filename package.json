@@ -54,6 +54,5 @@
     "tsc": "tsc -w",
     "webpackCss": "webpack --config webpack.css.js",
     "webpackJs": "webpack --config webpack.js.js"
-  },
-  "dependencies": {}
+  }
 }
