@@ -30,6 +30,17 @@ module.exports = function(grunt) {
                 }
             }
         },
+        //Translate sass to css
+        'dart-sass': {
+            target: {
+                options: {
+                    outputStyle: 'compressed'
+                },
+                files: {
+                    '<%= pkg.config.styleCssFile %>': '<%= pkg.config.styleScssFile %>'
+                }
+            }
+        },
         //Optimize images
         imagemin: {
             dynamic: {
@@ -50,18 +61,6 @@ module.exports = function(grunt) {
                 options: {
                     compress: true,
                     optimization: 1
-                }
-            }
-        },
-        //Translate sass to css
-        sass: {
-            options: {
-                implementation: require('node-sass'),
-                outputStyle: 'compressed'
-            },
-            dist: {
-                files: {
-                    '<%= pkg.config.styleCssFile %>': '<%= pkg.config.styleScssFile %>'
                 }
             }
         },
@@ -96,7 +95,7 @@ module.exports = function(grunt) {
             },
             sass: {
                 files: ['<%= pkg.config.scssFiles %>'],
-                tasks: ['sass']
+                tasks: ['dart-sass']
             }
         }
     });
@@ -107,7 +106,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-sass');
+    grunt.loadNpmTasks('grunt-dart-sass');
     grunt.loadNpmTasks('grunt-shell');
 
     //Register the default tasks
