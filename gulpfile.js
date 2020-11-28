@@ -4,7 +4,7 @@ const cleanCssPlugin = require('gulp-clean-css');
 const imageminPlugin = require('gulp-imagemin');
 const lessPlugin = require('gulp-less');
 const package = require('./package.json');
-const sassPlugin = require('gulp-sass');
+const sassPlugin = require('gulp-dart-sass');
 const shellPlugin = require('gulp-shell');
 
 //Setup the browserSync task to synchronize browsers on different devices
