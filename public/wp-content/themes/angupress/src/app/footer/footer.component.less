@@ -1,0 +1,45 @@
+@import url('../../less/color.less');
+@import url('../../less/media-query.less');
+@import url('../../less/mixin.less');
+@import url('../../less/variable.less');
+
+.footer {
+    display: flex;
+    justify-content: center;
+    background-color: @color-blue--darker;
+    height: @footer-height;
+    padding: 8px;
+    border-top: 1px solid @color-gray;
+    text-align: center;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    @media @tablet {
+        width: @page-width-tablet;
+        height: @footer-height-tablet;
+        border-left: 1px solid @color-gray;
+        border-right: 1px solid @color-gray;
+        .border-radius(8px, 8px, 0, 0);
+        left: 50%;
+        right: initial;
+        .translateX(-50%);
+    }
+    @media @desktop {
+        width: @page-width-desktop;
+    }
+}
+  
+.footer__widget {
+    padding: 0 8px;
+    border-right: 1px solid @color-white;
+    &:last-child {
+        border-right: none;
+    }
+    p {
+        margin-bottom: 0;
+    }
+    a {
+        text-decoration: none;
+    }
+}
