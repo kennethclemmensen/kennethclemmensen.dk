@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.less', 'menu.less']
+  styleUrls: ['./header.component.less', 'menu.less', 'mobile-menu.less']
 })
 export class HeaderComponent implements OnInit {
 
