@@ -163,13 +163,14 @@ abstract class PLL_Translated_Object {
 
 		if ( ! empty( $term ) ) {
 			$d = maybe_unserialize( $term->description );
-			$slug = array_search( $id, $this->get_translations( $id ) ); // in case some plugin stores the same value with different key
-			unset( $d[ $slug ] );
+			if ( is_array( $d ) ) {
+				$slug = array_search( $id, $this->get_translations( $id ) ); // In case some plugin stores the same value with different key.
+				unset( $d[ $slug ] );
+			}
 
 			if ( empty( $d ) ) {
 				wp_delete_term( (int) $term->term_id, $this->tax_translations );
-			}
-			else {
+			} else {
 				wp_update_term( (int) $term->term_id, $this->tax_translations, array( 'description' => maybe_serialize( $d ) ) );
 			}
 		}
@@ -279,7 +280,23 @@ abstract class PLL_Translated_Object {
 	public function get_objects_in_language( $lang ) {
 		global $wpdb;
 		$tt_id = $this->tax_tt;
-		return $wpdb->get_col( $wpdb->prepare( "SELECT object_id FROM $wpdb->term_relationships WHERE term_taxonomy_id = %d", $lang->$tt_id ) );
+
+		$last_changed = wp_cache_get_last_changed( 'terms' );
+		$cache_key    = "polylang:get_objects_in_language:{$lang->$tt_id}:{$last_changed}";
+		$cache        = wp_cache_get( $cache_key, 'terms' );
+
+		if ( false === $cache ) {
+			$object_ids = $wpdb->get_col( $wpdb->prepare( "SELECT object_id FROM $wpdb->term_relationships WHERE term_taxonomy_id = %d", $lang->$tt_id ) );
+			wp_cache_set( $cache_key, $object_ids, 'terms' );
+		} else {
+			$object_ids = (array) $cache;
+		}
+
+		if ( ! $object_ids ) {
+			return array();
+		}
+
+		return $object_ids;
 	}
 
 	/**

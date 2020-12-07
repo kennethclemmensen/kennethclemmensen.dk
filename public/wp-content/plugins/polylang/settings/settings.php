@@ -305,7 +305,7 @@ class PLL_Settings extends PLL_Admin_Base {
 		// Handle user input
 		$action = isset( $_REQUEST['pll_action'] ) ? sanitize_key( $_REQUEST['pll_action'] ) : ''; // phpcs:ignore WordPress.Security.NonceVerification
 		if ( 'edit' === $action && ! empty( $_GET['lang'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification
-			// phpcs:ignore WordPress.Security.NonceVerification, WordPressVIPMinimum.Variables.VariableAnalysis.UnusedVariable
+			// phpcs:ignore WordPress.Security.NonceVerification, VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
 			$edit_lang = $this->model->get_language( (int) $_GET['lang'] );
 		} else {
 			$this->handle_actions( $action );
@@ -387,7 +387,7 @@ class PLL_Settings extends PLL_Admin_Base {
 		 *
 		 * @since 1.7.10
 		 * @since 2.3 The languages arrays use associative keys instead of numerical keys
-		 * @see settings/languages.php
+		 * @see https://github.com/polylang/polylang/blob/2.8.2/settings/languages.php the list of predefined languages
 		 *
 		 * @param array $languages
 		 */

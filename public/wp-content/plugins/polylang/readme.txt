@@ -2,10 +2,10 @@
 Contributors: Chouby, manooweb, raaaahman, marianne38, sebastienserre
 Donate link: https://polylang.pro
 Tags: multilingual, bilingual, translate, translation, language, multilanguage, international, localization
-Requires at least: 4.9
-Tested up to: 5.5
+Requires at least: 5.1
+Tested up to: 5.6
 Requires PHP: 5.6
-Stable tag: 2.8.4
+Stable tag: 2.9
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -43,7 +43,7 @@ Don't hesitate to [give your feedback](http://wordpress.org/support/view/plugin-
 
 == Installation ==
 
-1. Make sure you are using WordPress 4.9 or later and that your server is running PHP 5.6 or later (same requirement as WordPress itself)
+1. Make sure you are using WordPress 5.1 or later and that your server is running PHP 5.6 or later (same requirement as WordPress itself)
 1. If you tried other multilingual plugins, deactivate them before activating Polylang, otherwise, you may get unexpected results!
 1. Install and activate the plugin as usual from the 'Plugins' menu in WordPress.
 1. Go to the languages settings page and create the languages you need
@@ -77,6 +77,27 @@ Don't hesitate to [give your feedback](http://wordpress.org/support/view/plugin-
 4. The Edit Post screen with the Languages metabox
 
 == Changelog ==
+
+= 2.9 (2020-12-07) =
+
+* Add compatibility with WordPress 5.6
+* Pro: Add locale fallback used when the theme or plugins translations are not available
+* Pro: Fix SSO and browser preferred language redirect when using multiple domains
+* Pro: Fix post slugs for German and Danish in the REST API
+* Pro: Fix a fatal error in ACF integration when saving url modifications with multiple domains
+* Pro: Fix a deprecated notice fired by ACF since the version 5.9.2
+* Pro: Fix ACF relationship fields not reloaded when changing the language in the classic editor
+* Update plugin updater to version 1.8
+* Add Lower Sorbian to the list of predefined language
+* Options are now translated on backend when using the admin language filter
+* Keep previous translations when modifying an option value
+* Add navigation markup to the language switcher widget
+* Fix canonical redirect for taxonomy terms
+* Fix a fatal error when deleting a post with a translation group corrupted in the database
+* Fix a fatal error when switching to plain permalinks and using multiple domains
+* Fix a conflict with WP Sweep which could corrupt languages
+* Fix title displayed instead of meta description with Yoast SEO > 14.0
+* Fix PHP Notice: Undefined index: wp_the_query in /frontend/choose-lang-content.php on line 92
 
 = 2.8.4 (2020-11-03) =
 

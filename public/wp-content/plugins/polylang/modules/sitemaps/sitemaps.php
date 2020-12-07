@@ -69,7 +69,7 @@ class PLL_Sitemaps {
 			add_filter( 'pll_set_language_from_query', array( $this, 'set_language_from_query' ), 10, 2 );
 			add_filter( 'rewrite_rules_array', array( $this, 'rewrite_rules' ) );
 			add_filter( 'wp_sitemaps_add_provider', array( $this, 'replace_provider' ) );
-		} else {
+		} elseif ( method_exists( $this->links_model, 'site_url' ) ) {
 			add_filter( 'wp_sitemaps_index_entry', array( $this, 'index_entry' ) );
 			add_filter( 'wp_sitemaps_stylesheet_url', array( $this->links_model, 'site_url' ) );
 			add_filter( 'wp_sitemaps_stylesheet_index_url', array( $this->links_model, 'site_url' ) );
@@ -118,16 +118,19 @@ class PLL_Sitemaps {
 	public function rewrite_rules( $rules ) {
 		global $wp_rewrite;
 
-		$newrules = array();
-
 		$languages = $this->model->get_languages_list( array( 'fields' => 'slug' ) );
+
+		if ( empty( $languages ) ) {
+			return $rules;
+		}
+
 		if ( $this->options['hide_default'] ) {
 			$languages = array_diff( $languages, array( $this->options['default_lang'] ) );
 		}
 
-		if ( ! empty( $languages ) ) {
-			$slug = $wp_rewrite->root . ( $this->options['rewrite'] ? '^' : '^language/' ) . '(' . implode( '|', $languages ) . ')/';
-		}
+		$slug = $wp_rewrite->root . ( $this->options['rewrite'] ? '^' : '^language/' ) . '(' . implode( '|', $languages ) . ')/';
+
+		$newrules = array();
 
 		foreach ( $rules as $key => $rule ) {
 			if ( isset( $slug ) && false !== strpos( $rule, 'sitemap=$matches[1]' ) ) {

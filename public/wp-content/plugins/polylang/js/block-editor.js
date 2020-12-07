@@ -11,7 +11,7 @@ wp.apiFetch.use(
 	function( options, next ) {
 		// If options.url is defined, this is not a REST request but a direct call to post.php for legacy metaboxes.
 		if ( 'undefined' === typeof options.url ) {
-			if ( 'undefined' === typeof options.data ) {
+			if ( 'undefined' === typeof options.data || null === options.data ) {
 				// GET
 				options.path += ( ( options.path.indexOf( '?' ) >= 0 ) ? '&lang=' : '?lang=' ) + getCurrentLanguage();
 			} else {
@@ -39,10 +39,11 @@ function getCurrentLanguage() {
  *
  * @since 2.5
  */
-jQuery( document ).ready(
+jQuery(
 	function( $ ) {
 		// savePost after changing the post's language and reload page for refreshing post translated data
-		$( '.post_lang_choice' ).change(
+		$( '.post_lang_choice' ).on(
+			'change',
 			function() {
 				const select = wp.data.select;
 				const dispatch = wp.data.dispatch;
@@ -117,10 +118,11 @@ jQuery( document ).ready(
  *
  * @since 1.5
  */
-jQuery( document ).ready(
+jQuery(
 	function( $ ) {
 		// Ajax for changing the post's language in the languages metabox
-		$( '.post_lang_choice' ).change(
+		$( '.post_lang_choice' ).on(
+			'change',
 			function() {
 				var data = {
 					action:     'post_lang_choice',
@@ -182,7 +184,8 @@ jQuery( document ).ready(
 					);
 
 					// When the input box is emptied
-					$( this ).blur(
+					$( this ).on(
+						'blur',
 						function() {
 							if ( ! $( this ).val() ) {
 								$( '#htr_lang_' + tr_lang ).val( 0 );

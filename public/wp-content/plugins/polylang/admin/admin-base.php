@@ -22,9 +22,6 @@ class PLL_Admin_Base extends PLL_Base {
 	public function __construct( &$links_model ) {
 		parent::__construct( $links_model );
 
-		// Plugin i18n, only needed for backend
-		load_plugin_textdomain( 'polylang' );
-
 		// Adds the link to the languages panel in the WordPress admin menu
 		add_action( 'admin_menu', array( $this, 'add_menus' ) );
 
@@ -219,32 +216,34 @@ class PLL_Admin_Base extends PLL_Base {
 		?>
 		<script type="text/javascript">
 			if (typeof jQuery != 'undefined') {
-				(function($){
-					$.ajaxPrefilter(function (options, originalOptions, jqXHR) {
-						if ( -1 != options.url.indexOf( ajaxurl ) || -1 != ajaxurl.indexOf( options.url ) ) {
-							if ( 'undefined' === typeof options.data ) {
-								options.data = ( 'get' === options.type.toLowerCase() ) ? '<?php echo $str; // phpcs:ignore WordPress.Security.EscapeOutput ?>' : <?php echo $arr; // phpcs:ignore WordPress.Security.EscapeOutput ?>;
-							} else {
-								if ( 'string' === typeof options.data ) {
-									if ( '' === options.data && 'get' === options.type.toLowerCase() ) {
-										options.url = options.url+'&<?php echo $str; // phpcs:ignore WordPress.Security.EscapeOutput ?>';
-									} else {
-										try {
-											var o = $.parseJSON(options.data);
-											o = $.extend(o, <?php echo $arr; // phpcs:ignore WordPress.Security.EscapeOutput ?>);
-											options.data = JSON.stringify(o);
-										}
-										catch(e) {
-											options.data = '<?php echo $str; // phpcs:ignore WordPress.Security.EscapeOutput ?>&'+options.data;
-										}
-									}
+				jQuery(
+					function($){
+						$.ajaxPrefilter(function (options, originalOptions, jqXHR) {
+							if ( -1 != options.url.indexOf( ajaxurl ) || -1 != ajaxurl.indexOf( options.url ) ) {
+								if ( 'undefined' === typeof options.data ) {
+									options.data = ( 'get' === options.type.toLowerCase() ) ? '<?php echo $str; // phpcs:ignore WordPress.Security.EscapeOutput ?>' : <?php echo $arr; // phpcs:ignore WordPress.Security.EscapeOutput ?>;
 								} else {
-									options.data = $.extend(options.data, <?php echo $arr; // phpcs:ignore WordPress.Security.EscapeOutput ?>);
+									if ( 'string' === typeof options.data ) {
+										if ( '' === options.data && 'get' === options.type.toLowerCase() ) {
+											options.url = options.url+'&<?php echo $str; // phpcs:ignore WordPress.Security.EscapeOutput ?>';
+										} else {
+											try {
+												var o = JSON.parse(options.data);
+												o = $.extend(o, <?php echo $arr; // phpcs:ignore WordPress.Security.EscapeOutput ?>);
+												options.data = JSON.stringify(o);
+											}
+											catch(e) {
+												options.data = '<?php echo $str; // phpcs:ignore WordPress.Security.EscapeOutput ?>&'+options.data;
+											}
+										}
+									} else {
+										options.data = $.extend(options.data, <?php echo $arr; // phpcs:ignore WordPress.Security.EscapeOutput ?>);
+									}
 								}
 							}
-						}
-					});
-				})(jQuery)
+						});
+					}
+				);
 			}
 		</script>
 		<?php
@@ -284,6 +283,15 @@ class PLL_Admin_Base extends PLL_Base {
 		if ( wp_doing_ajax() && ! empty( $_REQUEST['lang'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification
 			$this->curlang = $this->model->get_language( sanitize_key( $_REQUEST['lang'] ) ); // phpcs:ignore WordPress.Security.NonceVerification
 		}
+
+		// Inform that the admin language has been set.
+		if ( $this->curlang ) {
+			/** This action is documented in frontend/choose-lang.php */
+			do_action( 'pll_language_defined', $this->curlang->slug, $this->curlang );
+		} else {
+			/** This action is documented in include/class-polylang.php */
+			do_action( 'pll_no_language_defined' ); // To load overridden textdomains.
+		}
 	}
 
 	/**
@@ -316,22 +324,15 @@ class PLL_Admin_Base extends PLL_Base {
 
 		$this->set_current_language();
 
-		// Inform that the admin language has been set
-		// Only if the admin language is one of the Polylang defined language
-		if ( $curlang = $this->model->get_language( get_user_locale() ) ) {
-			/** This action is documented in frontend/choose-lang.php */
-			do_action( 'pll_language_defined', $curlang->slug, $curlang );
-		} else {
-			/** This action is documented in include/class-polylang.php */
-			do_action( 'pll_no_language_defined' ); // to load overridden textdomains
-		}
+		// Plugin i18n, only needed for backend.
+		load_plugin_textdomain( 'polylang' );
 	}
 
 	/**
 	 * Avoids parsing a tax query when all languages are requested
 	 * Fixes https://wordpress.org/support/topic/notice-undefined-offset-0-in-wp-includesqueryphp-on-line-3877 introduced in WP 4.1
 	 *
-	 * @see the suggestion of @boonebgorges, https://core.trac.wordpress.org/ticket/31246
+	 * @see https://core.trac.wordpress.org/ticket/31246 the suggestion of @boonebgorges.
 	 *
 	 * @since 1.6.5
 	 *
