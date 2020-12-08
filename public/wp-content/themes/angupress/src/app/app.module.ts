@@ -6,7 +6,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SliderComponent } from './slider/slider.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
-import { PageComponent } from './page/page.component';
+import { FrontPageComponent } from './page/front-page/front-page.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +15,7 @@ import { PageComponent } from './page/page.component';
     FooterComponent,
     SliderComponent,
     BreadcrumbComponent,
-    PageComponent
+    FrontPageComponent
   ],
   imports: [
     BrowserModule,
