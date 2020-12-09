@@ -5,8 +5,8 @@ Description: The plugin for the site
 Version: 1.0
 Author: Kenneth Clemmensen
 Author URI: https://kennethclemmensen.dk
-Requires at least: 5.5.3
-Requires PHP: 7.4
+Requires at least: 5.6
+Requires PHP: 8.0
 */
 namespace KC;
 if(!defined('ABSPATH')) wp_die();
