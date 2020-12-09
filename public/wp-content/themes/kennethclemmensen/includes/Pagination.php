@@ -4,8 +4,6 @@
  */
 final class Pagination {
 
-    private array $items;
-    private int $perPage;
     private string $urlParameterName;
     private int $offset;
 
@@ -15,7 +13,7 @@ final class Pagination {
      * @param array $items the items
      * @param int $perPage the number of items per page
      */
-    public function __construct(array $items, int $perPage) {
+    public function __construct(private array $items, private int $perPage) {
         $this->items = $items;
         $this->perPage = $perPage;
         $this->urlParameterName = 'offset';
