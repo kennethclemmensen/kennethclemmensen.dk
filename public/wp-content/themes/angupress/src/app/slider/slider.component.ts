@@ -12,6 +12,8 @@ export class SliderComponent implements OnInit {
   private currentRandomNumber: number;
 
   public constructor() {
+    this.slides = HTMLCollection.prototype;
+    this.sliderImage = null;
     this.currentRandomNumber = -1;
   }
 
