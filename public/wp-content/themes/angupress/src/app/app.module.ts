@@ -29,6 +29,7 @@ import { OtherLinksPageComponent } from './page/other-links-page/other-links-pag
 import { AboutPageComponent } from './page/about-page/about-page.component';
 import { SearchPageComponent } from './page/search-page/search-page.component';
 import { SitemapPageComponent } from './page/sitemap-page/sitemap-page.component';
+import { PageNotFoundComponent } from './page/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { SitemapPageComponent } from './page/sitemap-page/sitemap-page.component
     OtherLinksPageComponent,
     AboutPageComponent,
     SearchPageComponent,
-    SitemapPageComponent
+    SitemapPageComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

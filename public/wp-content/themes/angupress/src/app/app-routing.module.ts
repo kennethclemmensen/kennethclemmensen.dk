@@ -20,6 +20,7 @@ import { JavaPageComponent } from './page/java-page/java-page.component';
 import { LinksPageComponent } from './page/links-page/links-page.component';
 import { MoviePageComponent } from './page/movie-page/movie-page.component';
 import { OtherLinksPageComponent } from './page/other-links-page/other-links-page.component';
+import { PageNotFoundComponent } from './page/page-not-found/page-not-found.component';
 import { PhpPageComponent } from './page/php-page/php-page.component';
 import { SearchPageComponent } from './page/search-page/search-page.component';
 import { SitemapPageComponent } from './page/sitemap-page/sitemap-page.component';
@@ -47,7 +48,8 @@ const routes: Routes = [
   { path: 'om-mig', component: AboutPageComponent },
   { path: 'soeg', component: SearchPageComponent },
   { path: 'sitemap', component: SitemapPageComponent },
-  { path: '**', component: FrontPageComponent }
+  { path: '', component: FrontPageComponent },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({

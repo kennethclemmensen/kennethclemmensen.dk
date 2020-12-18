@@ -23,9 +23,10 @@ import { OtherLinksPageComponent } from './other-links-page/other-links-page.com
 import { AboutPageComponent } from './about-page/about-page.component';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { SitemapPageComponent } from './sitemap-page/sitemap-page.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
-  declarations: [FrontPageComponent, ImagesPageComponent, MoviePageComponent, GalleryFynComponent, GalleryHimmelbjergetComponent, GalleryKoldingComponent, GalleryKoldingFjordComponent, GalleryCopenhagenComponent, GalleryLillebaeltComponent, GallerySilkeborgComponent, GalleryStorebaeltComponent, GalleryTurenTilJyllandComponent, GalleryTurenTilLangelandComponent, GalleryTurenTilSkagenComponent, GalleryTurenTilTysklandComponent, GalleryOestjyllandComponent, PhpPageComponent, JavaPageComponent, LinksPageComponent, OtherLinksPageComponent, AboutPageComponent, SearchPageComponent, SitemapPageComponent],
+  declarations: [FrontPageComponent, ImagesPageComponent, MoviePageComponent, GalleryFynComponent, GalleryHimmelbjergetComponent, GalleryKoldingComponent, GalleryKoldingFjordComponent, GalleryCopenhagenComponent, GalleryLillebaeltComponent, GallerySilkeborgComponent, GalleryStorebaeltComponent, GalleryTurenTilJyllandComponent, GalleryTurenTilLangelandComponent, GalleryTurenTilSkagenComponent, GalleryTurenTilTysklandComponent, GalleryOestjyllandComponent, PhpPageComponent, JavaPageComponent, LinksPageComponent, OtherLinksPageComponent, AboutPageComponent, SearchPageComponent, SitemapPageComponent, PageNotFoundComponent],
   imports: [
     CommonModule
   ]
