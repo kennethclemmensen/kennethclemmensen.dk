@@ -3,6 +3,7 @@ import { HttpMethod } from './enums/HttpMethod';
 import { HttpStatusCode } from './enums/HttpStatusCode';
 import { Url } from './enums/Url';
 import { IFile } from './interfaces/IFile';
+import { File } from './types/File';
 
 /**
  * The FilesApp class contains methods to handle the functionality of the files
@@ -47,7 +48,7 @@ export class FilesApp {
                         nextPage: function(): void {
                             this.offset += parseInt(this.perPage);
                         },
-                        updateFileDownloads: (file: IFile): void => {
+                        updateFileDownloads: (file: File | IFile): void => {
                             let xhr: XMLHttpRequest = new XMLHttpRequest();
                             xhr.open(HttpMethod.Put, Url.ApiFileDownloads + file.id, true);
                             xhr.addEventListener(EventType.Load, (): void => {
