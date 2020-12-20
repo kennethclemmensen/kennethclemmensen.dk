@@ -8,6 +8,7 @@ final class IconWidget extends WP_Widget {
     private string $link;
     private string $target;
     private string $checkboxCheckedValue;
+    private string $defaultTarget;
 
     /**
      * IconWidget constructor
@@ -21,6 +22,7 @@ final class IconWidget extends WP_Widget {
         $this->link = 'link';
         $this->target = 'target';
         $this->checkboxCheckedValue = 'on';
+        $this->defaultTarget = '_self';
     }
 
     /**
@@ -33,7 +35,7 @@ final class IconWidget extends WP_Widget {
         echo $args['before_widget'].'<div class="iconwidget">';
         $icon = '<i class="'.$instance[$this->icon].'"></i>';
         $link = $instance[$this->link];
-        $target = (isset($instance[$this->target]) && $instance[$this->target] === $this->checkboxCheckedValue) ? '_blank' : '_self';
+        $target = (isset($instance[$this->target]) && $instance[$this->target] === $this->checkboxCheckedValue) ? '_blank' : $this->defaultTarget;
         echo ($link !== '') ? '<a href="'.esc_url(do_shortcode($link)).'" target="'.$target.'">'.$icon.'</a>' : $icon;
         echo '</div>'.$args['after_widget'];
     }
@@ -51,7 +53,7 @@ final class IconWidget extends WP_Widget {
         $iconFieldID = esc_attr($this->get_field_id($this->icon));
         $link = $instance[$this->link];
         $linkFieldID = esc_attr($this->get_field_id($this->link));
-        $target = $instance[$this->target];
+        $target = (isset($instance[$this->target])) ? $instance[$this->target] : $this->defaultTarget;
         $targetFieldID = esc_attr($this->get_field_id($this->target));
         ?>
         <p>
