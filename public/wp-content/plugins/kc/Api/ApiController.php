@@ -8,6 +8,7 @@ use KC\Image\ImageModule;
 use KC\Page\PageModule;
 use KC\Security\Security;
 use KC\Slider\SliderModule;
+use \WP_REST_Controller;
 use \WP_REST_Request;
 use \WP_REST_Response;
 use \WP_REST_Server;
@@ -15,9 +16,8 @@ use \WP_REST_Server;
 /**
  * The ApiController contains methods to register routes and handle requests and responses
  */
-class ApiController {
+class ApiController extends WP_REST_Controller {
 
-    private string $namespace;
     private int $statusCodeOk;
     private IModule $fileModule;
 
