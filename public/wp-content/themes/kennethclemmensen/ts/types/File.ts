@@ -27,4 +27,4 @@ export type File = {
      * The number of downloads
      */
     downloads: number;
-}
+};
