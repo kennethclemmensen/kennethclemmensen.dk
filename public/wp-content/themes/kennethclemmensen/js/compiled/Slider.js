@@ -19,9 +19,10 @@ export class Slider {
      * @param animation the animation for the slides
      */
     showSlides(delay, duration, animation) {
+        var _a;
         let randomNumber = this.getRandomNumber();
         let name = 'data-slide-image';
-        let backgroundImageUrl = this.slides[randomNumber].getAttribute(name);
+        let backgroundImageUrl = (_a = this.slides[randomNumber]) === null || _a === void 0 ? void 0 : _a.getAttribute(name);
         if (!backgroundImageUrl)
             return;
         this.setBackgroundImage(backgroundImageUrl);
@@ -32,12 +33,12 @@ export class Slider {
                 this.sliderImage.animate(startKeyframes, {
                     duration: delay
                 }).onfinish = () => {
-                    var _a;
+                    var _a, _b;
                     randomNumber = this.getRandomNumber();
-                    backgroundImageUrl = this.slides[randomNumber].getAttribute(name);
+                    backgroundImageUrl = (_a = this.slides[randomNumber]) === null || _a === void 0 ? void 0 : _a.getAttribute(name);
                     if (backgroundImageUrl)
                         this.setBackgroundImage(backgroundImageUrl);
-                    (_a = this.sliderImage) === null || _a === void 0 ? void 0 : _a.animate(endKeyframes, { duration: delay });
+                    (_b = this.sliderImage) === null || _b === void 0 ? void 0 : _b.animate(endKeyframes, { duration: delay });
                 };
             }
         }, duration);

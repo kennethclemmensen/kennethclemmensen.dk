@@ -28,7 +28,7 @@ export class Slider {
     public showSlides(delay: number, duration: number, animation: string): void {
         let randomNumber: number = this.getRandomNumber();
         let name: string = 'data-slide-image';
-        let backgroundImageUrl: string | null = this.slides[randomNumber].getAttribute(name);
+        let backgroundImageUrl: string | null | undefined = this.slides[randomNumber]?.getAttribute(name);
         if(!backgroundImageUrl) return;
         this.setBackgroundImage(backgroundImageUrl);
         let startKeyframes: Keyframe[] = this.getStartKeyframes(animation);
@@ -39,7 +39,7 @@ export class Slider {
                     duration: delay
                 }).onfinish = (): void => {
                     randomNumber = this.getRandomNumber();
-                    backgroundImageUrl = this.slides[randomNumber].getAttribute(name);
+                    backgroundImageUrl = this.slides[randomNumber]?.getAttribute(name);
                     if(backgroundImageUrl) this.setBackgroundImage(backgroundImageUrl);
                     this.sliderImage?.animate(endKeyframes, { duration: delay });
                 };
