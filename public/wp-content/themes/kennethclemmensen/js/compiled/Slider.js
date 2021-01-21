@@ -1,3 +1,17 @@
+var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (receiver, privateMap, value) {
+    if (!privateMap.has(receiver)) {
+        throw new TypeError("attempted to set private field on non-instance");
+    }
+    privateMap.set(receiver, value);
+    return value;
+};
+var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, privateMap) {
+    if (!privateMap.has(receiver)) {
+        throw new TypeError("attempted to get private field on non-instance");
+    }
+    return privateMap.get(receiver);
+};
+var _slides, _sliderImage, _currentRandomNumber;
 import { SliderAnimation } from './enums/SliderAnimation';
 /**
  * The Slider class contains methods to handle the functionality of the slider
@@ -7,9 +21,12 @@ export class Slider {
      * Initialize a new instance of the Slider class
      */
     constructor() {
-        this.slides = document.getElementsByClassName('slider__slide');
-        this.sliderImage = document.getElementById('slider-image');
-        this.currentRandomNumber = -1;
+        _slides.set(this, void 0);
+        _sliderImage.set(this, void 0);
+        _currentRandomNumber.set(this, void 0);
+        __classPrivateFieldSet(this, _slides, document.getElementsByClassName('slider__slide'));
+        __classPrivateFieldSet(this, _sliderImage, document.getElementById('slider-image'));
+        __classPrivateFieldSet(this, _currentRandomNumber, -1);
     }
     /**
      * Show the slides
@@ -22,23 +39,23 @@ export class Slider {
         var _a;
         let randomNumber = this.getRandomNumber();
         let name = 'data-slide-image';
-        let backgroundImageUrl = (_a = this.slides[randomNumber]) === null || _a === void 0 ? void 0 : _a.getAttribute(name);
+        let backgroundImageUrl = (_a = __classPrivateFieldGet(this, _slides)[randomNumber]) === null || _a === void 0 ? void 0 : _a.getAttribute(name);
         if (!backgroundImageUrl)
             return;
         this.setBackgroundImage(backgroundImageUrl);
         let startKeyframes = this.getStartKeyframes(animation);
         let endKeyframes = this.getEndKeyframes(animation);
         setInterval(() => {
-            if (this.sliderImage) {
-                this.sliderImage.animate(startKeyframes, {
+            if (__classPrivateFieldGet(this, _sliderImage)) {
+                __classPrivateFieldGet(this, _sliderImage).animate(startKeyframes, {
                     duration: delay
                 }).onfinish = () => {
                     var _a, _b;
                     randomNumber = this.getRandomNumber();
-                    backgroundImageUrl = (_a = this.slides[randomNumber]) === null || _a === void 0 ? void 0 : _a.getAttribute(name);
+                    backgroundImageUrl = (_a = __classPrivateFieldGet(this, _slides)[randomNumber]) === null || _a === void 0 ? void 0 : _a.getAttribute(name);
                     if (backgroundImageUrl)
                         this.setBackgroundImage(backgroundImageUrl);
-                    (_b = this.sliderImage) === null || _b === void 0 ? void 0 : _b.animate(endKeyframes, { duration: delay });
+                    (_b = __classPrivateFieldGet(this, _sliderImage)) === null || _b === void 0 ? void 0 : _b.animate(endKeyframes, { duration: delay });
                 };
             }
         }, duration);
@@ -49,11 +66,11 @@ export class Slider {
      * @returns a random number
      */
     getRandomNumber() {
-        let randomNumber = Math.floor(Math.random() * this.slides.length);
-        if (this.currentRandomNumber === randomNumber)
+        let randomNumber = Math.floor(Math.random() * __classPrivateFieldGet(this, _slides).length);
+        if (__classPrivateFieldGet(this, _currentRandomNumber) === randomNumber)
             return this.getRandomNumber();
-        this.currentRandomNumber = randomNumber;
-        return this.currentRandomNumber;
+        __classPrivateFieldSet(this, _currentRandomNumber, randomNumber);
+        return __classPrivateFieldGet(this, _currentRandomNumber);
     }
     /**
      * Set a background image on the slider image
@@ -61,8 +78,8 @@ export class Slider {
      * @param backgroundImageUrl the background image url
      */
     setBackgroundImage(backgroundImageUrl) {
-        if (this.sliderImage)
-            this.sliderImage.style.backgroundImage = 'url("' + backgroundImageUrl + '")';
+        if (__classPrivateFieldGet(this, _sliderImage))
+            __classPrivateFieldGet(this, _sliderImage).style.backgroundImage = 'url("' + backgroundImageUrl + '")';
     }
     /**
      * Get the start keyframes based on the animation
@@ -72,9 +89,9 @@ export class Slider {
      */
     getStartKeyframes(animation) {
         let startKeyframes = [];
-        if (this.sliderImage) {
-            let width = this.sliderImage.clientWidth;
-            let height = this.sliderImage.clientHeight;
+        if (__classPrivateFieldGet(this, _sliderImage)) {
+            let width = __classPrivateFieldGet(this, _sliderImage).clientWidth;
+            let height = __classPrivateFieldGet(this, _sliderImage).clientHeight;
             let px = 'px';
             switch (animation) {
                 case SliderAnimation.SlideDown:
@@ -104,9 +121,9 @@ export class Slider {
      */
     getEndKeyframes(animation) {
         let endKeyframes = [];
-        if (this.sliderImage) {
-            let width = this.sliderImage.clientWidth;
-            let height = this.sliderImage.clientHeight;
+        if (__classPrivateFieldGet(this, _sliderImage)) {
+            let width = __classPrivateFieldGet(this, _sliderImage).clientWidth;
+            let height = __classPrivateFieldGet(this, _sliderImage).clientHeight;
             let px = 'px';
             switch (animation) {
                 case SliderAnimation.SlideDown:
@@ -129,3 +146,4 @@ export class Slider {
         return endKeyframes;
     }
 }
+_slides = new WeakMap(), _sliderImage = new WeakMap(), _currentRandomNumber = new WeakMap();

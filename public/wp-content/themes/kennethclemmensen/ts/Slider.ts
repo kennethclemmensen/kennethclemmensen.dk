@@ -5,17 +5,17 @@ import { SliderAnimation } from './enums/SliderAnimation';
  */
 export class Slider {
 
-    private readonly slides: HTMLCollectionOf<Element>;
-    private readonly sliderImage: HTMLElement | null;
-    private currentRandomNumber: number;
+    readonly #slides: HTMLCollectionOf<Element>;
+    readonly #sliderImage: HTMLElement | null;
+    #currentRandomNumber: number;
 
     /**
      * Initialize a new instance of the Slider class
      */
     public constructor() {
-        this.slides = document.getElementsByClassName('slider__slide');
-        this.sliderImage = document.getElementById('slider-image');
-        this.currentRandomNumber = -1;
+        this.#slides = document.getElementsByClassName('slider__slide');
+        this.#sliderImage = document.getElementById('slider-image');
+        this.#currentRandomNumber = -1;
     }
 
     /**
@@ -28,20 +28,20 @@ export class Slider {
     public showSlides(delay: number, duration: number, animation: string): void {
         let randomNumber: number = this.getRandomNumber();
         let name: string = 'data-slide-image';
-        let backgroundImageUrl: string | null | undefined = this.slides[randomNumber]?.getAttribute(name);
+        let backgroundImageUrl: string | null | undefined = this.#slides[randomNumber]?.getAttribute(name);
         if(!backgroundImageUrl) return;
         this.setBackgroundImage(backgroundImageUrl);
         let startKeyframes: Keyframe[] = this.getStartKeyframes(animation);
         let endKeyframes: Keyframe[] = this.getEndKeyframes(animation);
         setInterval((): void => {
-            if(this.sliderImage) {
-                this.sliderImage.animate(startKeyframes, {
+            if(this.#sliderImage) {
+                this.#sliderImage.animate(startKeyframes, {
                     duration: delay
                 }).onfinish = (): void => {
                     randomNumber = this.getRandomNumber();
-                    backgroundImageUrl = this.slides[randomNumber]?.getAttribute(name);
+                    backgroundImageUrl = this.#slides[randomNumber]?.getAttribute(name);
                     if(backgroundImageUrl) this.setBackgroundImage(backgroundImageUrl);
-                    this.sliderImage?.animate(endKeyframes, { duration: delay });
+                    this.#sliderImage?.animate(endKeyframes, { duration: delay });
                 };
             }
         }, duration);
@@ -53,10 +53,10 @@ export class Slider {
      * @returns a random number
      */
     private getRandomNumber(): number {
-        let randomNumber: number = Math.floor(Math.random() * this.slides.length);
-        if(this.currentRandomNumber === randomNumber) return this.getRandomNumber();
-        this.currentRandomNumber = randomNumber;
-        return this.currentRandomNumber;
+        let randomNumber: number = Math.floor(Math.random() * this.#slides.length);
+        if(this.#currentRandomNumber === randomNumber) return this.getRandomNumber();
+        this.#currentRandomNumber = randomNumber;
+        return this.#currentRandomNumber;
     }
 
     /**
@@ -65,7 +65,7 @@ export class Slider {
      * @param backgroundImageUrl the background image url
      */
     private setBackgroundImage(backgroundImageUrl: string): void {
-        if(this.sliderImage) this.sliderImage.style.backgroundImage = 'url("' + backgroundImageUrl + '")';
+        if(this.#sliderImage) this.#sliderImage.style.backgroundImage = 'url("' + backgroundImageUrl + '")';
     }
 
     /**
@@ -76,9 +76,9 @@ export class Slider {
      */
     private getStartKeyframes(animation: string) : Keyframe[] {
         let startKeyframes: Keyframe[] = [];
-        if(this.sliderImage) {
-            let width: number = this.sliderImage.clientWidth;
-            let height: number = this.sliderImage.clientHeight;
+        if(this.#sliderImage) {
+            let width: number = this.#sliderImage.clientWidth;
+            let height: number = this.#sliderImage.clientHeight;
             let px: string = 'px';
             switch(animation) {
                 case SliderAnimation.SlideDown:
@@ -109,9 +109,9 @@ export class Slider {
      */
     private getEndKeyframes(animation: string) : Keyframe[] {
         let endKeyframes: Keyframe[] = [];
-        if(this.sliderImage) {
-            let width: number = this.sliderImage.clientWidth;
-            let height: number = this.sliderImage.clientHeight;
+        if(this.#sliderImage) {
+            let width: number = this.#sliderImage.clientWidth;
+            let height: number = this.#sliderImage.clientHeight;
             let px: string = 'px';
             switch(animation) {
                 case SliderAnimation.SlideDown:

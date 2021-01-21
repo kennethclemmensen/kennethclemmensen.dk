@@ -1,3 +1,17 @@
+var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (receiver, privateMap, value) {
+    if (!privateMap.has(receiver)) {
+        throw new TypeError("attempted to set private field on non-instance");
+    }
+    privateMap.set(receiver, value);
+    return value;
+};
+var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, privateMap) {
+    if (!privateMap.has(receiver)) {
+        throw new TypeError("attempted to get private field on non-instance");
+    }
+    return privateMap.get(receiver);
+};
+var _body;
 import { EventType } from './enums/EventType';
 import { SliderAnimation } from './enums/SliderAnimation';
 import { FilesApp } from './FilesApp';
@@ -12,12 +26,13 @@ class App {
      * Initialize a new instance of the App class
      */
     constructor() {
-        this.body = document.body;
+        _body.set(this, void 0);
+        __classPrivateFieldSet(this, _body, document.body);
         document.addEventListener(EventType.DOMContentLoaded, () => {
             this.setupSlider();
             this.setupMobileMenu();
             lightbox.option({
-                'albumLabel': this.body.dataset.imageText + ' %1 ' + this.body.dataset.ofText + ' %2'
+                'albumLabel': __classPrivateFieldGet(this, _body).dataset.imageText + ' %1 ' + __classPrivateFieldGet(this, _body).dataset.ofText + ' %2'
             });
             new FilesApp();
             new SearchApp();
@@ -50,7 +65,7 @@ class App {
             mobileMenuTrigger === null || mobileMenuTrigger === void 0 ? void 0 : mobileMenuTrigger.classList.toggle('header__nav-trigger--active');
             mobileMenu === null || mobileMenu === void 0 ? void 0 : mobileMenu.classList.toggle('mobile-menu--active');
             document.documentElement.classList.toggle(showMobileMenuClass);
-            this.body.classList.toggle(showMobileMenuClass);
+            __classPrivateFieldGet(this, _body).classList.toggle(showMobileMenuClass);
         });
         let mobileMenuArrows = document.querySelectorAll('.mobile-menu__arrow');
         mobileMenuArrows.forEach((arrow) => {
@@ -64,4 +79,5 @@ class App {
         });
     }
 }
+_body = new WeakMap();
 new App();

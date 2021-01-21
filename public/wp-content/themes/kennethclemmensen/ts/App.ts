@@ -10,18 +10,18 @@ import { Slider } from './Slider';
  */
 class App {
 
-    private readonly body: HTMLElement;
+    readonly #body: HTMLElement;
 
     /**
      * Initialize a new instance of the App class
      */
     public constructor() {
-        this.body = document.body;
+        this.#body = document.body;
         document.addEventListener(EventType.DOMContentLoaded, (): void => {
             this.setupSlider();
             this.setupMobileMenu();
             lightbox.option({
-                'albumLabel': this.body.dataset.imageText + ' %1 ' + this.body.dataset.ofText + ' %2'
+                'albumLabel': this.#body.dataset.imageText + ' %1 ' + this.#body.dataset.ofText + ' %2'
             });
             new FilesApp();
             new SearchApp();
@@ -55,7 +55,7 @@ class App {
             mobileMenuTrigger?.classList.toggle('header__nav-trigger--active');
             mobileMenu?.classList.toggle('mobile-menu--active');
             document.documentElement.classList.toggle(showMobileMenuClass);
-            this.body.classList.toggle(showMobileMenuClass);
+            this.#body.classList.toggle(showMobileMenuClass);
         });
         let mobileMenuArrows: NodeListOf<HTMLElement> = document.querySelectorAll('.mobile-menu__arrow');
         mobileMenuArrows.forEach((arrow: HTMLElement): void => {
