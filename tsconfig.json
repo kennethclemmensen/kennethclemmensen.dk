@@ -13,7 +13,10 @@
     "outDir": "./public/wp-content/themes/kennethclemmensen/js/compiled",
     "strict": true,
     "target": "ES2019",
-    "tsBuildInfoFile": "./.tsbuildinfo"
+    "tsBuildInfoFile": "./.tsbuildinfo",
+    "types": [
+      "lodash"
+    ]
   },
   "include": [
     "./public/wp-content/themes/kennethclemmensen/ts/**/*.ts"
