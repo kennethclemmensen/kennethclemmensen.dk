@@ -77,7 +77,7 @@ class FileModule implements IModule {
                 'post_types' => [PostType::FILE],
                 'fields' => [
                     [
-                        'name' => 'Description',
+                        'name' => __('Description'),
                         'id' => $this->fieldDescription,
                         'type' => 'textarea'
                     ],

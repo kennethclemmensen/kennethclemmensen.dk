@@ -40,8 +40,8 @@ class ImageModule extends BaseModule implements IModule {
         add_action(Action::INIT, function() : void {
             register_post_type(PostType::IMAGE, [
                 'labels' => [
-                    'name' => 'Images',
-                    'singular_name' => 'Image'
+                    'name' => __('Images'),
+                    'singular_name' => __('Image')
                 ],
                 'public' => false,
                 'has_archive' => false,
@@ -67,7 +67,7 @@ class ImageModule extends BaseModule implements IModule {
                 'post_types' => [PostType::IMAGE],
                 'fields' => [
                     [
-                        'name' => 'Gallery',
+                        'name' => __('Gallery'),
                         'id' => $this->fieldImageGallery,
                         'type' => 'select',
                         'options' => parent::getAllPosts(PostType::GALLERY)
