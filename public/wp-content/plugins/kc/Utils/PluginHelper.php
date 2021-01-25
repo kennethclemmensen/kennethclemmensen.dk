@@ -40,4 +40,14 @@ class PluginHelper {
     public static function setFieldValue(string $value, string $fieldId, int $postId) : void {
         update_post_meta($postId, $fieldId, $value);
     }
+
+    /**
+     * Get a translated string
+     * 
+     * @param string $str the string to translate
+     * @return string the translated string
+     */
+    public static function getTranslatedString(string $str) : string {
+        return __($str);
+    }
 }

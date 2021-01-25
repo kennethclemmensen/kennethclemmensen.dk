@@ -51,7 +51,7 @@ class SliderModule implements IModule {
     private function addAdminColumns() : void {
         $imageColumnKey = 'image';
         add_filter(Filter::getManagePostsColumnsFilter(PostType::SLIDES), function(array $columns) use ($imageColumnKey) : array {
-            $columns[$imageColumnKey] = __('Image');
+            $columns[$imageColumnKey] = PluginHelper::getTranslatedString('Image');
             return $columns;
         });
         add_action(Action::getManagePostsCustomColumn(PostType::SLIDES), function(string $columnName) use ($imageColumnKey) : void {

@@ -41,7 +41,7 @@ class GalleryModule extends BaseModule implements IModule {
             register_post_type(PostType::GALLERY, [
                 'labels' => [
                     'name' => 'Galleries',
-                    'singular_name' => __('Gallery')
+                    'singular_name' => PluginHelper::getTranslatedString('Gallery')
                 ],
                 'public' => true,
                 'has_archive' => true,
