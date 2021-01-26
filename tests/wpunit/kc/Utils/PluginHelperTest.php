@@ -24,4 +24,12 @@ class PluginHelperTest extends WPTestCase {
         $expected = '';
         $this->assertEquals($expected, PluginHelper::getFieldValue('', 0));
     }
+
+    /**
+     * Test the getTranslatedString method
+     */
+    public function testGetTranslatedString() : void {
+        $expected = 'Image';
+        $this->assertEquals($expected, PluginHelper::getTranslatedString('Image'));
+    }
 }
