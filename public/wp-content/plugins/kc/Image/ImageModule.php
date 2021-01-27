@@ -7,6 +7,7 @@ use KC\Core\Constant;
 use KC\Core\Filter;
 use KC\Core\IModule;
 use KC\Core\PostType;
+use KC\Core\TranslationString;
 use KC\Utils\PluginHelper;
 use \WP_Query;
 
@@ -40,8 +41,8 @@ class ImageModule extends BaseModule implements IModule {
         add_action(Action::INIT, function() : void {
             register_post_type(PostType::IMAGE, [
                 'labels' => [
-                    'name' => PluginHelper::getTranslatedString('Images'),
-                    'singular_name' => PluginHelper::getTranslatedString('Image')
+                    'name' => PluginHelper::getTranslatedString(TranslationString::IMAGES),
+                    'singular_name' => PluginHelper::getTranslatedString(TranslationString::IMAGE)
                 ],
                 'public' => false,
                 'has_archive' => false,
@@ -63,11 +64,11 @@ class ImageModule extends BaseModule implements IModule {
         add_filter(Filter::META_BOXES, function(array $metaBoxes) : array {
             $metaBoxes[] = [
                 'id' => 'image_informations',
-                'title' => PluginHelper::getTranslatedString('Image informations'),
+                'title' => PluginHelper::getTranslatedString(TranslationString::IMAGE_INFORMATIONS),
                 'post_types' => [PostType::IMAGE],
                 'fields' => [
                     [
-                        'name' => PluginHelper::getTranslatedString('Gallery'),
+                        'name' => PluginHelper::getTranslatedString(TranslationString::GALLERY),
                         'id' => $this->fieldImageGallery,
                         'type' => 'select',
                         'options' => parent::getAllPosts(PostType::GALLERY)
@@ -85,8 +86,8 @@ class ImageModule extends BaseModule implements IModule {
         $columnGalleryKey = 'gallery';
         $columnImageKey = 'image';
         add_filter(Filter::getManagePostsColumnsFilter(PostType::IMAGE), function(array $columns) use ($columnGalleryKey, $columnImageKey) : array {
-            $columns[$columnGalleryKey] = PluginHelper::getTranslatedString('Gallery');
-            $columns[$columnImageKey] = PluginHelper::getTranslatedString('Image');
+            $columns[$columnGalleryKey] = PluginHelper::getTranslatedString(TranslationString::GALLERY);
+            $columns[$columnImageKey] = PluginHelper::getTranslatedString(TranslationString::IMAGE);
             return $columns;
         });
         add_action(Action::getManagePostsCustomColumn(PostType::IMAGE), function(string $columnName) use ($columnGalleryKey, $columnImageKey) : void {

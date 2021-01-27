@@ -1,6 +1,7 @@
 <?php
 namespace KC\Core;
 
+use KC\Core\TranslationString;
 use KC\Utils\PluginHelper;
 
 /**
@@ -15,7 +16,8 @@ class PluginActivator {
      */
     public function activate(string $mainPluginFile) : void {
         register_activation_hook($mainPluginFile, function() : void {
-            if(!class_exists('RW_Meta_Box')) wp_die(PluginHelper::getTranslatedString('Meta Box is not activated'));
+            if(!class_exists('RW_Meta_Box'))
+                wp_die(PluginHelper::getTranslatedString(TranslationString::META_BOX_IS_NOT_ACTIVATED));
         });
     }
 

@@ -6,6 +6,7 @@ use KC\Core\Constant;
 use KC\Core\Filter;
 use KC\Core\IModule;
 use KC\Core\PostType;
+use KC\Core\TranslationString;
 use KC\Utils\PluginHelper;
 use \WP_Query;
 
@@ -29,8 +30,8 @@ class SliderModule implements IModule {
         add_action(Action::INIT, function() : void {
             register_post_type(PostType::SLIDES, [
                 'labels' => [
-                    'name' => PluginHelper::getTranslatedString('Slides'),
-                    'singular_name' => PluginHelper::getTranslatedString('Slide')
+                    'name' => PluginHelper::getTranslatedString(TranslationString::SLIDES),
+                    'singular_name' => PluginHelper::getTranslatedString(TranslationString::SLIDE)
                 ],
                 'public' => false,
                 'has_archive' => false,
@@ -51,7 +52,7 @@ class SliderModule implements IModule {
     private function addAdminColumns() : void {
         $imageColumnKey = 'image';
         add_filter(Filter::getManagePostsColumnsFilter(PostType::SLIDES), function(array $columns) use ($imageColumnKey) : array {
-            $columns[$imageColumnKey] = PluginHelper::getTranslatedString('Image');
+            $columns[$imageColumnKey] = PluginHelper::getTranslatedString(TranslationString::IMAGE);
             return $columns;
         });
         add_action(Action::getManagePostsCustomColumn(PostType::SLIDES), function(string $columnName) use ($imageColumnKey) : void {

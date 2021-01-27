@@ -6,6 +6,7 @@ use KC\Core\Constant;
 use KC\Core\Filter;
 use KC\Core\IModule;
 use KC\Core\PostType;
+use KC\Core\TranslationString;
 use KC\Security\Security;
 use KC\Utils\PluginHelper;
 use \WP_Query;
@@ -47,8 +48,8 @@ class FileModule implements IModule {
         add_action(Action::INIT, function() : void {
             register_post_type(PostType::FILE, [
                 'labels' => [
-                    'name' => PluginHelper::getTranslatedString('Files'),
-                    'singular_name' => PluginHelper::getTranslatedString('File')
+                    'name' => PluginHelper::getTranslatedString(TranslationString::FILES),
+                    'singular_name' => PluginHelper::getTranslatedString(TranslationString::FILE)
                 ],
                 'public' => true,
                 'exclude_from_search' => true,
@@ -57,8 +58,8 @@ class FileModule implements IModule {
             ]);
             register_taxonomy($this->fileTypeTaxonomyName, [PostType::PAGE, PostType::FILE], [
                 'labels' => [
-                    'name' => PluginHelper::getTranslatedString('File types'),
-                    'singular_name' => PluginHelper::getTranslatedString('File type')
+                    'name' => PluginHelper::getTranslatedString(TranslationString::FILE_TYPES),
+                    'singular_name' => PluginHelper::getTranslatedString(TranslationString::FILE_TYPE)
                 ],
                 'show_admin_column' => true,
                 'hierarchical' => true
@@ -73,22 +74,22 @@ class FileModule implements IModule {
         add_filter(Filter::META_BOXES, function(array $metaBoxes) : array {
             $metaBoxes[] = [
                 'id' => 'file_informations',
-                'title' => PluginHelper::getTranslatedString('File informations'),
+                'title' => PluginHelper::getTranslatedString(TranslationString::FILE_INFORMATIONS),
                 'post_types' => [PostType::FILE],
                 'fields' => [
                     [
-                        'name' => PluginHelper::getTranslatedString('Description'),
+                        'name' => PluginHelper::getTranslatedString(TranslationString::DESCRIPTION),
                         'id' => $this->fieldDescription,
                         'type' => 'textarea'
                     ],
                     [
-                        'name' => PluginHelper::getTranslatedString('File'),
+                        'name' => PluginHelper::getTranslatedString(TranslationString::FILE),
                         'id' => $this->fieldFile,
                         'type' => 'file_advanced',
                         'max_file_uploads' => 1
                     ],
                     [
-                        'name' => PluginHelper::getTranslatedString('Download counter'),
+                        'name' => PluginHelper::getTranslatedString(TranslationString::DOWNLOAD_COUNTER),
                         'id' => $this->fieldFileDownloadCounter,
                         'type' => 'number',
                         'std' => 0

@@ -7,6 +7,7 @@ use KC\Core\Constant;
 use KC\Core\Filter;
 use KC\Core\IModule;
 use KC\Core\PostType;
+use KC\Core\TranslationString;
 use KC\Utils\PluginHelper;
 use \WP_Query;
 
@@ -40,8 +41,8 @@ class GalleryModule extends BaseModule implements IModule {
         add_action(Action::INIT, function() : void {
             register_post_type(PostType::GALLERY, [
                 'labels' => [
-                    'name' => PluginHelper::getTranslatedString('Galleries'),
-                    'singular_name' => PluginHelper::getTranslatedString('Gallery')
+                    'name' => PluginHelper::getTranslatedString(TranslationString::GALLERIES),
+                    'singular_name' => PluginHelper::getTranslatedString(TranslationString::GALLERY)
                 ],
                 'public' => true,
                 'has_archive' => true,
@@ -71,11 +72,11 @@ class GalleryModule extends BaseModule implements IModule {
         add_filter(Filter::META_BOXES, function(array $metaBoxes) : array {
             $metaBoxes[] = [
                 'id' => 'gallery_informations',
-                'title' => PluginHelper::getTranslatedString('Gallery informations'),
+                'title' => PluginHelper::getTranslatedString(TranslationString::GALLERY_INFORMATIONS),
                 'post_types' => [PostType::GALLERY],
                 'fields' => [
                     [
-                        'name' => PluginHelper::getTranslatedString('Parent page'),
+                        'name' => PluginHelper::getTranslatedString(TranslationString::PARENT_PAGE),
                         'id' => $this->fieldParentPage,
                         'type' => 'select',
                         'options' => parent::getAllPosts(PostType::PAGE)
