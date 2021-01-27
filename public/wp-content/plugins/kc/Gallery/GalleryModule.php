@@ -40,7 +40,7 @@ class GalleryModule extends BaseModule implements IModule {
         add_action(Action::INIT, function() : void {
             register_post_type(PostType::GALLERY, [
                 'labels' => [
-                    'name' => 'Galleries',
+                    'name' => PluginHelper::getTranslatedString('Galleries'),
                     'singular_name' => PluginHelper::getTranslatedString('Gallery')
                 ],
                 'public' => true,
@@ -71,11 +71,11 @@ class GalleryModule extends BaseModule implements IModule {
         add_filter(Filter::META_BOXES, function(array $metaBoxes) : array {
             $metaBoxes[] = [
                 'id' => 'gallery_informations',
-                'title' => 'Gallery informations',
+                'title' => PluginHelper::getTranslatedString('Gallery informations'),
                 'post_types' => [PostType::GALLERY],
                 'fields' => [
                     [
-                        'name' => 'Parent page',
+                        'name' => PluginHelper::getTranslatedString('Parent page'),
                         'id' => $this->fieldParentPage,
                         'type' => 'select',
                         'options' => parent::getAllPosts(PostType::PAGE)

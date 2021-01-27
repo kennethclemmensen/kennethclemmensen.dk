@@ -20,7 +20,7 @@ class ApiModule implements IModule {
      * Setup the Api routes
      */
     private function setupApiRoutes() : void {
-        add_action(Action::API_INIT, function() : void {
+        add_action(Action::REST_API_INIT, function() : void {
             $controller = new ApiController();
             $controller->registerApiRoutes();
         });

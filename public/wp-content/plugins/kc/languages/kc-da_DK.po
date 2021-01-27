@@ -1,0 +1,65 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2021-01-27 17:53+0100\n"
+"PO-Revision-Date: 2021-01-27 17:55+0100\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.2\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Last-Translator: \n"
+"Language: da_DK\n"
+
+msgid "Description"
+msgstr "Beskrivelse"
+
+msgid "Download counter"
+msgstr "Download tæller"
+
+msgid "File"
+msgstr "Fil"
+
+msgid "Files"
+msgstr "Filer"
+
+msgid "File informations"
+msgstr "Filoplysninger"
+
+msgid "File type"
+msgstr "Filtype"
+
+msgid "File types"
+msgstr "Filtyper"
+
+msgid "Galleries"
+msgstr "Gallerier"
+
+msgid "Gallery"
+msgstr "Galleri"
+
+msgid "Gallery informations"
+msgstr "Gallerioplysninger"
+
+msgid "Image"
+msgstr "Billede"
+
+msgid "Images"
+msgstr "Billeder"
+
+msgid "Image informations"
+msgstr "Billedeoplysninger"
+
+msgid "Meta Box is not activated"
+msgstr "Meta Box er ikke aktiveret"
+
+msgid "Parent page"
+msgstr "Forælderside"
+
+msgid "Slide"
+msgstr "Slide"
+
+msgid "Slides"
+msgstr "Slides"

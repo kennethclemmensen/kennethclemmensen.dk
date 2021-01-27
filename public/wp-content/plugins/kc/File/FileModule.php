@@ -47,8 +47,8 @@ class FileModule implements IModule {
         add_action(Action::INIT, function() : void {
             register_post_type(PostType::FILE, [
                 'labels' => [
-                    'name' => 'Files',
-                    'singular_name' => 'File'
+                    'name' => PluginHelper::getTranslatedString('Files'),
+                    'singular_name' => PluginHelper::getTranslatedString('File')
                 ],
                 'public' => true,
                 'exclude_from_search' => true,
@@ -57,8 +57,8 @@ class FileModule implements IModule {
             ]);
             register_taxonomy($this->fileTypeTaxonomyName, [PostType::PAGE, PostType::FILE], [
                 'labels' => [
-                    'name' => 'File types',
-                    'singular_name' => 'File type'
+                    'name' => PluginHelper::getTranslatedString('File types'),
+                    'singular_name' => PluginHelper::getTranslatedString('File type')
                 ],
                 'show_admin_column' => true,
                 'hierarchical' => true
@@ -73,7 +73,7 @@ class FileModule implements IModule {
         add_filter(Filter::META_BOXES, function(array $metaBoxes) : array {
             $metaBoxes[] = [
                 'id' => 'file_informations',
-                'title' => 'File informations',
+                'title' => PluginHelper::getTranslatedString('File informations'),
                 'post_types' => [PostType::FILE],
                 'fields' => [
                     [
@@ -82,13 +82,13 @@ class FileModule implements IModule {
                         'type' => 'textarea'
                     ],
                     [
-                        'name' => 'File',
+                        'name' => PluginHelper::getTranslatedString('File'),
                         'id' => $this->fieldFile,
                         'type' => 'file_advanced',
                         'max_file_uploads' => 1
                     ],
                     [
-                        'name' => 'Download counter',
+                        'name' => PluginHelper::getTranslatedString('Download counter'),
                         'id' => $this->fieldFileDownloadCounter,
                         'type' => 'number',
                         'std' => 0

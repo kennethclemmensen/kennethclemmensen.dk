@@ -63,7 +63,7 @@ class ImageModule extends BaseModule implements IModule {
         add_filter(Filter::META_BOXES, function(array $metaBoxes) : array {
             $metaBoxes[] = [
                 'id' => 'image_informations',
-                'title' => 'Image informations',
+                'title' => PluginHelper::getTranslatedString('Image informations'),
                 'post_types' => [PostType::IMAGE],
                 'fields' => [
                     [
@@ -83,11 +83,10 @@ class ImageModule extends BaseModule implements IModule {
      */
     private function addAdminColumns() : void {
         $columnGalleryKey = 'gallery';
-        $columnGalleryValue = 'Gallery';
         $columnImageKey = 'image';
-        add_filter(Filter::getManagePostsColumnsFilter(PostType::IMAGE), function(array $columns) use ($columnGalleryKey, $columnGalleryValue, $columnImageKey) : array {
-            $columns[$columnGalleryKey] = $columnGalleryValue;
-            $columns[$columnImageKey] = ucfirst($columnImageKey);
+        add_filter(Filter::getManagePostsColumnsFilter(PostType::IMAGE), function(array $columns) use ($columnGalleryKey, $columnImageKey) : array {
+            $columns[$columnGalleryKey] = PluginHelper::getTranslatedString('Gallery');
+            $columns[$columnImageKey] = PluginHelper::getTranslatedString('Image');
             return $columns;
         });
         add_action(Action::getManagePostsCustomColumn(PostType::IMAGE), function(string $columnName) use ($columnGalleryKey, $columnImageKey) : void {

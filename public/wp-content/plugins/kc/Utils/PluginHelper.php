@@ -1,6 +1,7 @@
 <?php
 namespace KC\Utils;
 
+use KC\Core\Constant;
 use KC\Security\Security;
 
 /**
@@ -48,6 +49,6 @@ class PluginHelper {
      * @return string the translated string
      */
     public static function getTranslatedString(string $str) : string {
-        return __($str);
+        return __($str, Constant::TEXT_DOMAIN);
     }
 }

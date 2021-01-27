@@ -7,6 +7,8 @@ Author: Kenneth Clemmensen
 Author URI: https://kennethclemmensen.dk
 Requires at least: 5.6
 Requires PHP: 8.0
+Text Domain: kc
+Domain Path: /languages
 */
 namespace KC;
 if(!defined('ABSPATH')) wp_die();

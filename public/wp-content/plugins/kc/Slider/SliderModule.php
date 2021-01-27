@@ -29,8 +29,8 @@ class SliderModule implements IModule {
         add_action(Action::INIT, function() : void {
             register_post_type(PostType::SLIDES, [
                 'labels' => [
-                    'name' => 'Slides',
-                    'singular_name' => 'Slide'
+                    'name' => PluginHelper::getTranslatedString('Slides'),
+                    'singular_name' => PluginHelper::getTranslatedString('Slide')
                 ],
                 'public' => false,
                 'has_archive' => false,

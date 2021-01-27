@@ -6,11 +6,13 @@ namespace KC\Core;
  */
 class Action {
 
-    public const API_INIT = 'rest_api_init';
+    public const AFTER_SETUP_THEME = 'after_setup_theme';
 
     public const INIT = 'init';
 
-    public const SETUP_THEME = 'after_setup_theme';
+    public const PLUGINS_LOADED = 'plugins_loaded';
+
+    public const REST_API_INIT = 'rest_api_init';
 
     /**
      * Get the save_post_{$post->post_type} action for a post type
