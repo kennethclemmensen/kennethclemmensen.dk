@@ -1,7 +1,6 @@
 <?php
 namespace KC\Core;
 
-use KC\Core\TranslationString;
 use KC\Utils\PluginHelper;
 
 /**
@@ -31,7 +30,6 @@ class PluginActivator {
             $m->setupModule();
         }
         $this->addPostThumbnailsSupport();
-        $this->loadLanguages();
     }
 
     /**
@@ -51,15 +49,6 @@ class PluginActivator {
     private function addPostThumbnailsSupport() : void {
         add_action(Action::AFTER_SETUP_THEME, function() : void {
             add_theme_support(Constant::POST_THUMBNAILS);
-        });
-    }
-
-    /**
-     * Load the languages
-     */
-    private function loadLanguages() : void {
-        add_action(Action::PLUGINS_LOADED, function() {
-            load_plugin_textdomain(Constant::TEXT_DOMAIN, false, 'kc/languages/');
         });
     }
 }
