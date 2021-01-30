@@ -366,11 +366,11 @@ final class ThemeSettings {
      */
     private function getSliderAnimations() : array {
         return [
-            'fade' => 'Fade',
-            'slide_down' => 'Slide down',
-            'slide_left' => 'Slide left',
-            'slide_right' => 'Slide right',
-            'slide_up' => 'Slide up'
+            'fade' => TranslationStrings::getFadeText(),
+            'slide_down' => TranslationStrings::getSlideDownText(),
+            'slide_left' => TranslationStrings::getSlideLeftText(),
+            'slide_right' => TranslationStrings::getSlideRightText(),
+            'slide_up' => TranslationStrings::getSlideUpText()
         ];
     }
 

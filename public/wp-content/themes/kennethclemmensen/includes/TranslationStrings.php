@@ -14,6 +14,11 @@ final class TranslationStrings {
     private const PREVIOUS = 'Previous';
     private const NEXT = 'Next';
     private const NUMBER_OF_DOWNLOADS = 'Number of downloads:';
+    private const FADE = 'Fade';
+    private const SLIDE_DOWN = 'Slide down';
+    private const SLIDE_LEFT = 'Slide left';
+    private const SLIDE_RIGHT = 'Slide right';
+    private const SLIDE_UP = 'Slide up';
 
     /**
      * The TranslationStrings constructor register the strings that should be translated
@@ -31,6 +36,11 @@ final class TranslationStrings {
             pll_register_string(self::PREVIOUS, self::PREVIOUS, $context);
             pll_register_string(self::NEXT, self::NEXT, $context);
             pll_register_string(self::NUMBER_OF_DOWNLOADS, self::NUMBER_OF_DOWNLOADS, $context);
+            pll_register_string(self::FADE, self::FADE, $context);
+            pll_register_string(self::SLIDE_DOWN, self::SLIDE_DOWN, $context);
+            pll_register_string(self::SLIDE_LEFT, self::SLIDE_LEFT, $context);
+            pll_register_string(self::SLIDE_RIGHT, self::SLIDE_RIGHT, $context);
+            pll_register_string(self::SLIDE_UP, self::SLIDE_UP, $context);
         }
     }
 
@@ -122,6 +132,51 @@ final class TranslationStrings {
      */
     public static function getNumberOfDownloadsText() : string {
         return (self::isPolylangActivated()) ? pll__(self::NUMBER_OF_DOWNLOADS) : self::NUMBER_OF_DOWNLOADS;
+    }
+
+    /**
+     * Get the fade text
+     * 
+     * @return string the fade text
+     */
+    public static function getFadeText() : string {
+        return (self::isPolylangActivated()) ? pll__(self::FADE) : self::FADE;
+    }
+
+    /**
+     * Get the slide down text
+     * 
+     * @return string the slide down text
+     */
+    public static function getSlideDownText() : string {
+        return (self::isPolylangActivated()) ? pll__(self::SLIDE_DOWN) : self::SLIDE_DOWN;
+    }
+
+    /**
+     * Get the slide left text
+     * 
+     * @return string the slide left text
+     */
+    public static function getSlideLeftText() : string {
+        return (self::isPolylangActivated()) ? pll__(self::SLIDE_LEFT) : self::SLIDE_LEFT;
+    }
+
+    /**
+     * Get the slide right text
+     * 
+     * @return string the slide right text
+     */
+    public static function getSlideRightText() : string {
+        return (self::isPolylangActivated()) ? pll__(self::SLIDE_RIGHT) : self::SLIDE_RIGHT;
+    }
+
+    /**
+     * Get the slide up text
+     * 
+     * @return string the slide up text
+     */
+    public static function getSlideUpText() : string {
+        return (self::isPolylangActivated()) ? pll__(self::SLIDE_UP) : self::SLIDE_UP;
     }
 
     /**
