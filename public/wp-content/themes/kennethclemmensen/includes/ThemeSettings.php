@@ -13,10 +13,10 @@ final class ThemeSettings {
     private string $scriptOptionsName;
     private string $sliderOptionsName;
     private string $otherOptionsName;
-    private $contactOptions;
-    private $scriptOptions;
-    private $sliderOptions;
-    private $otherOptions;
+    private array | bool $contactOptions;
+    private array | bool $scriptOptions;
+    private array | bool $sliderOptions;
+    private array | bool $otherOptions;
     private string $email;
     private string $linkedIn;
     private string $gitHub;
@@ -92,28 +92,36 @@ final class ThemeSettings {
      */
     private function createSettingsPage() : void {
         add_action('admin_menu', function() : void {
-            $title = __('Settings');
+            $title = TranslationStrings::getSettingsText();
             add_theme_page($title, $title, 'administrator', $this->contactPageSlug, function() : void {
                 settings_errors();
                 ?>
                 <div class="wrap">
                     <h2 class="nav-tab-wrapper">
                         <?php
-                        $contactTab = 'contact_options';
-                        $scriptsTab = 'scripts_options';
-                        $sliderTab = 'slider_options';
-                        $otherTab = 'other_options';
+                        $contactTab = 'contact';
+                        $scriptsTab = 'scripts';
+                        $sliderTab = 'slider';
+                        $otherTab = 'other';
                         $activeTab = (isset($_GET['tab'])) ? $_GET['tab'] : $contactTab;
                         $currentTab = 'nav-tab-active';
                         ?>
                         <a href="?page=<?php echo $this->contactPageSlug; ?>&tab=<?php echo $contactTab; ?>"
-                           class="nav-tab <?php echo ($activeTab === $contactTab) ? $currentTab : ''; ?>">Contact</a>
+                           class="nav-tab <?php echo ($activeTab === $contactTab) ? $currentTab : ''; ?>">
+                           <?php echo TranslationStrings::getContactText(); ?>
+                        </a>
                         <a href="?page=<?php echo $this->contactPageSlug; ?>&tab=<?php echo $scriptsTab; ?>"
-                           class="nav-tab <?php echo ($activeTab === $scriptsTab) ? $currentTab : ''; ?>">Scripts</a>
+                           class="nav-tab <?php echo ($activeTab === $scriptsTab) ? $currentTab : ''; ?>">
+                           <?php echo TranslationStrings::getScriptsText(); ?>
+                        </a>
                         <a href="?page=<?php echo $this->contactPageSlug; ?>&tab=<?php echo $sliderTab; ?>"
-                           class="nav-tab <?php echo ($activeTab === $sliderTab) ? $currentTab : ''; ?>">Slider</a>
+                           class="nav-tab <?php echo ($activeTab === $sliderTab) ? $currentTab : ''; ?>">
+                           <?php echo TranslationStrings::getSliderText(); ?>
+                        </a>
                         <a href="?page=<?php echo $this->contactPageSlug; ?>&tab=<?php echo $otherTab; ?>"
-                           class="nav-tab <?php echo ($activeTab === $otherTab) ? $currentTab : ''; ?>">Other</a>
+                           class="nav-tab <?php echo ($activeTab === $otherTab) ? $currentTab : ''; ?>">
+                           <?php echo TranslationStrings::getOtherText(); ?>
+                        </a>
                     </h2>
                     <form action="options.php" method="post">
                         <?php
@@ -158,11 +166,11 @@ final class ThemeSettings {
         $sectionID = $this->contactPageSlug.'-section-contact';
         $prefix = $this->contactPageSlug;
         add_settings_section($sectionID, '', null, $this->contactPageSlug);
-        add_settings_field($prefix.'email', 'Email', function() : void {
+        add_settings_field($prefix.'email', TranslationStrings::getEmailText(), function() : void {
             echo '<input type="email" name="'.$this->contactOptionsName.'['.$this->email.']" value="'.$this->getEmail().'" class="regular-text" required> ';
             echo '['.$this->emailShortcode.']';
         }, $this->contactPageSlug, $sectionID);
-        add_settings_field($prefix.'linkedin', 'LinkedIn', function() : void {
+        add_settings_field($prefix.'linkedin', TranslationStrings::getLinkedInText(), function() : void {
             echo '<input type="url" name="'.$this->contactOptionsName.'['.$this->linkedIn.']" value="'.$this->getLinkedInUrl().'" class="regular-text" required> ';
             echo '['.$this->linkedInShortcode.']';
         }, $this->contactPageSlug, $sectionID);
@@ -178,13 +186,13 @@ final class ThemeSettings {
         $sectionID = $this->scriptPageSlug.'-section-scripts';
         $prefix = $this->scriptPageSlug;
         add_settings_section($sectionID, '', null, $this->scriptPageSlug);
-        add_settings_field($prefix.'header', 'Header', function() : void {
+        add_settings_field($prefix.'header', TranslationStrings::getHeaderText(), function() : void {
             echo '<textarea name="'.$this->scriptOptionsName.'['.$this->scriptHeader.']" cols="80" rows="10">'.$this->getHeaderScripts().'</textarea>';
         }, $this->scriptPageSlug, $sectionID);
-        add_settings_field($prefix.'start-body', 'Start body', function() : void {
+        add_settings_field($prefix.'start-body', TranslationStrings::getStartBodyText(), function() : void {
             echo '<textarea name="'.$this->scriptOptionsName.'['.$this->scriptStartBody.']" cols="80" rows="10">'.$this->getStartBodyScripts().'</textarea>';
         }, $this->scriptPageSlug, $sectionID);
-        add_settings_field($prefix.'footer', 'Footer', function() : void {
+        add_settings_field($prefix.'footer', TranslationStrings::getFooterText(), function() : void {
             echo '<textarea name="'.$this->scriptOptionsName.'['.$this->scriptFooter.']" cols="80" rows="10">'.$this->getFooterScripts().'</textarea>';
         }, $this->scriptPageSlug, $sectionID);
         register_setting($this->scriptOptionsName, $this->scriptOptionsName, function(array $input) : array {
@@ -199,13 +207,13 @@ final class ThemeSettings {
         $sectionID = $this->sliderPageSlug.'-section-slider';
         $prefix = $this->sliderPageSlug;
         add_settings_section($sectionID, '', null, $this->sliderPageSlug);
-        add_settings_field($prefix.'sliderDelay', 'Delay', function() : void {
+        add_settings_field($prefix.'sliderDelay', TranslationStrings::getDelayText(), function() : void {
             echo '<input type="number" name="'.$this->sliderOptionsName.'['.$this->sliderDelay.']" value="'.$this->getSliderDelay().'" min="1" max="10000">';
         }, $this->sliderPageSlug, $sectionID);
-        add_settings_field($prefix.'sliderDuration', 'Duration', function() : void {
+        add_settings_field($prefix.'sliderDuration', TranslationStrings::getDurationText(), function() : void {
             echo '<input type="number" name="'.$this->sliderOptionsName.'['.$this->sliderDuration.']" value="'.$this->getSliderDuration().'" min="1" max="10000">';
         }, $this->sliderPageSlug, $sectionID);
-        add_settings_field($prefix.'sliderAnimation', 'Animation', function() : void {
+        add_settings_field($prefix.'sliderAnimation', TranslationStrings::getAnimationText(), function() : void {
             ?>
             <select name="<?php echo $this->sliderOptionsName.'['.$this->sliderAnimation.']'; ?>">
                 <?php
@@ -229,17 +237,17 @@ final class ThemeSettings {
         $sectionID = $this->otherPageSlug.'-section-other';
         $prefix = $this->otherPageSlug;
         add_settings_section($sectionID, '', null, $this->otherPageSlug);
-        add_settings_field($prefix.'github', 'GitHub', function() : void {
+        add_settings_field($prefix.'github', TranslationStrings::getGitHubText(), function() : void {
             echo '<input type="url" name="'.$this->otherOptionsName.'['.$this->gitHub.']" value="'.$this->getGitHubUrl().'" class="regular-text" required> ';
             echo '['.$this->gitHubShortcode.']';
         }, $this->otherPageSlug, $sectionID);
-        add_settings_field($prefix.'images-per-page', 'Images per page', function() : void {
+        add_settings_field($prefix.'images-per-page', TranslationStrings::getImagesPerPageText(), function() : void {
             echo '<input type="number" name="'.$this->otherOptionsName.'['.$this->imagesPerPage.']" value="'.$this->getImagesPerPage().'" min="1" max="50">';
         }, $this->otherPageSlug, $sectionID);
-        add_settings_field($prefix.'files-per-page', 'Files per page', function() : void {
+        add_settings_field($prefix.'files-per-page', TranslationStrings::getFilesPerPageText(), function() : void {
             echo '<input type="number" name="'.$this->otherOptionsName.'['.$this->filesPerPage.']" value="'.$this->getFilesPerPage().'" min="1" max="50">';
         }, $this->otherPageSlug, $sectionID);
-        add_settings_field($prefix.'search-results-per-page', 'Search results per page', function() : void {
+        add_settings_field($prefix.'search-results-per-page', TranslationStrings::getSearchResultsPerPageText(), function() : void {
             echo '<input type="number" name="'.$this->otherOptionsName.'['.$this->searchResultsPerPage.']" value="'.$this->getSearchResultsPerPage().'" min="1" max="50">';
         }, $this->otherPageSlug, $sectionID);
         register_setting($this->otherOptionsName, $this->otherOptionsName, function(array $input) : array {
