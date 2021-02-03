@@ -8,8 +8,8 @@
     <?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?> data-image-text="<?php echo TranslationStrings::getImageText(); ?>"
-    data-of-text="<?php echo TranslationStrings::getOfText(); ?>">
+<body <?php body_class(); ?> data-image-text="<?php echo TranslationStrings::getTranslatedString(TranslationStrings::IMAGE); ?>"
+    data-of-text="<?php echo TranslationStrings::getTranslatedString(TranslationStrings::OF); ?>">
 <?php wp_body_open(); ?>
 <header class="header">
     <a href="<?php bloginfo('url'); ?>" class="header__site-name">

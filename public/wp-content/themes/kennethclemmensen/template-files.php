@@ -8,6 +8,9 @@ while(have_posts()) {
         <?php
         ThemeHelper::loadSliderTemplate();
         ThemeHelper::loadBreadcrumbTemplate();
+        $previousText = TranslationStrings::getTranslatedString(TranslationStrings::PREVIOUS);
+        $nextText = TranslationStrings::getTranslatedString(TranslationStrings::NEXT);
+        $downloadsText = TranslationStrings::getTranslatedString(TranslationStrings::NUMBER_OF_DOWNLOADS);
         ?>
         <section class="page__content">
             <h1><?php the_title(); ?></h1>
@@ -15,9 +18,9 @@ while(have_posts()) {
             <div id="files-app">
                 <files file-types="<?php echo ThemeHelper::getFileTypes(); ?>"
                     per-page="<?php echo ThemeSettings::getInstance()->getFilesPerPage(); ?>"
-                    previous-text="<?php echo TranslationStrings::getPreviousText(); ?>"
-                    next-text="<?php echo TranslationStrings::getNextText(); ?>" 
-                    number-of-downloads-text="<?php echo TranslationStrings::getNumberOfDownloadsText(); ?>"></files>
+                    previous-text="<?php echo $previousText; ?>"
+                    next-text="<?php echo $nextText; ?>" 
+                    number-of-downloads-text="<?php echo $downloadsText; ?>"></files>
             </div>
         </section>
     </div>

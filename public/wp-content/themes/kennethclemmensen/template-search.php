@@ -13,7 +13,9 @@ while(have_posts()) {
             <h1><?php the_title(); ?></h1>
             <?php
             the_content();
-            $searchText = TranslationStrings::getSearchText();
+            $searchText = TranslationStrings::getTranslatedString(TranslationStrings::SEARCH);
+            $previousText = TranslationStrings::getTranslatedString(TranslationStrings::PREVIOUS);
+            $nextText = TranslationStrings::getTranslatedString(TranslationStrings::NEXT);
             ?>
             <div id="search-app">
                 <form method="post" action="<?php echo $_SERVER['REQUEST_URI']; ?>" @submit.prevent="search">
@@ -21,13 +23,13 @@ while(have_posts()) {
                     <input type="submit" value="<?php echo $searchText; ?>">
                 </form>
                 <h2 v-if="results.length === 0 && searchString !== ''">
-                    <?php echo TranslationStrings::getNoResultsText(); ?>
+                    <?php echo TranslationStrings::getTranslatedString(TranslationStrings::NO_RESULTS); ?>
                 </h2>
                 <div v-else-if="results.length > 0">
-                    <h2><?php echo TranslationStrings::getSearchResultsText(); ?></h2>
+                    <h2><?php echo TranslationStrings::getTranslatedString(TranslationStrings::SEARCH_RESULTS); ?></h2>
                     <search-results :results="results" per-page="<?php echo ThemeSettings::getInstance()->getSearchResultsPerPage(); ?>"
-                                    previous-text="<?php echo TranslationStrings::getPreviousText(); ?>"
-                                    next-text="<?php echo TranslationStrings::getNextText(); ?>"></search-results>
+                                    previous-text="<?php echo $previousText; ?>"
+                                    next-text="<?php echo $nextText; ?>"></search-results>
                 </div>
             </div>
         </section>

@@ -16,7 +16,7 @@ final class IconWidget extends WP_Widget {
     public function __construct() {
         parent::__construct(self::class, 'Icon', [
             'classname' => self::class,
-            'description' => 'Add an icon'
+            'description' => TranslationStrings::getTranslatedString(TranslationStrings::ADD_AN_ICON)
         ]);
         $this->icon = 'icon';
         $this->link = 'link';
@@ -55,13 +55,17 @@ final class IconWidget extends WP_Widget {
         $linkFieldID = esc_attr($this->get_field_id($this->link));
         $target = (isset($instance[$this->target])) ? $instance[$this->target] : $this->defaultTarget;
         $targetFieldID = esc_attr($this->get_field_id($this->target));
+        $titleText = TranslationStrings::getTranslatedString(TranslationStrings::TITLE);
+        $iconText = TranslationStrings::getTranslatedString(TranslationStrings::ICON);
+        $linkText = TranslationStrings::getTranslatedString(TranslationStrings::LINK);
+        $tabText = TranslationStrings::getTranslatedString(TranslationStrings::OPEN_IN_A_NEW_TAB);
         ?>
         <p>
-            <label for="<?php echo $titleFieldID; ?>"><?php echo TranslationStrings::getTitleText(); ?></label>
+            <label for="<?php echo $titleFieldID; ?>"><?php echo $titleText; ?></label>
             <input type="text" id="<?php echo $titleFieldID; ?>" class="widefat"
                    name="<?php echo esc_attr($this->get_field_name($titleKey)); ?>"
                    value="<?php echo esc_attr($title); ?>">
-            <label for="<?php echo $iconFieldID; ?>"><?php echo TranslationStrings::getIconText(); ?></label>
+            <label for="<?php echo $iconFieldID; ?>"><?php echo $icon; ?></label>
             <select id="<?php echo $iconFieldID; ?>" class="widefat"
                     name="<?php echo esc_attr($this->get_field_name($this->icon)); ?>">
                 <?php
@@ -71,11 +75,11 @@ final class IconWidget extends WP_Widget {
                 }
                 ?>
             </select>
-            <label for="<?php echo $linkFieldID; ?>"><?php echo TranslationStrings::getLinkText(); ?></label>
+            <label for="<?php echo $linkFieldID; ?>"><?php echo $linkText; ?></label>
             <input type="text" id="<?php echo $linkFieldID; ?>" class="widefat"
                    name="<?php echo esc_attr($this->get_field_name($this->link)); ?>"
                    value="<?php echo esc_attr($link); ?>">
-            <label for="<?php echo $targetFieldID; ?>"><?php echo TranslationStrings::getOpenInANewTabText(); ?></label>
+            <label for="<?php echo $targetFieldID; ?>"><?php echo $tabText; ?></label>
             <input type="checkbox"
                    id="<?php echo $targetFieldID; ?>" <?php checked($target, $this->checkboxCheckedValue); ?>
                    name="<?php echo esc_attr($this->get_field_name($this->target)); ?>">

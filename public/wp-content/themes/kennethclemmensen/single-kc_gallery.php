@@ -29,7 +29,11 @@ get_header();
             }
             ?>
             <div class="pagination">
-                <?php echo $pagination->getPaginationLinks(TranslationStrings::getPreviousText(), TranslationStrings::getNextText()); ?>
+                <?php
+                $previousText = TranslationStrings::getTranslatedString(TranslationStrings::PREVIOUS);
+                $nextText = TranslationStrings::getTranslatedString(TranslationStrings::NEXT);
+                echo $pagination->getPaginationLinks($previousText, $nextText);
+                ?>
             </div>
         </div>
     </section>

@@ -4,42 +4,43 @@
  */
 final class TranslationStrings {
 
-    private const ANIMATION = 'Animation';
-    private const CONTACT = 'Contact';
-    private const DELAY = 'Delay';
-    private const DURATION = 'Duration';
-    private const EMAIL = 'Email';
-    private const FADE = 'Fade';
-    private const FILES_PER_PAGE = 'Files per page';
-    private const FOOTER = 'Footer';
-    private const FRONT_PAGE = 'Front page';
-    private const GITHUB = 'GitHub';
-    private const HEADER = 'Header';
-    private const ICON = 'Icon';
-    private const IMAGE = 'Image';
-    private const IMAGES_PER_PAGE = 'Images per page';
-    private const LINK = 'Link';
-    private const LINKEDIN = 'LinkedIn';
-    private const NEXT = 'Next';
-    private const NO_RESULTS = 'Your search returned no results';
-    private const NUMBER_OF_DOWNLOADS = 'Number of downloads:';
-    private const OF = 'of';
-    private const OPEN_IN_A_NEW_TAB = 'Open in a new tab';
-    private const OTHER = 'Other';
-    private const PREVIOUS = 'Previous';
-    private const SCRIPTS = 'Scripts';
-    private const SEARCH = 'Search';
-    private const SEARCH_RESULTS = 'Search results';
-    private const SEARCH_RESULTS_PER_PAGE = 'Search results per page';
-    private const SETTINGS = 'Settings';
-    private const SLIDER = 'Slider';
-    private const SLIDE_DOWN = 'Slide down';
-    private const SLIDE_LEFT = 'Slide left';
-    private const SLIDE_RIGHT = 'Slide right';
-    private const SLIDE_UP = 'Slide up';
-    private const START_BODY = 'Start body';
-    private const TITLE = 'Title';
-    private const YOU_ARE_HERE = 'You are here:';
+    public const ADD_AN_ICON = 'Add an icon';
+    public const ANIMATION = 'Animation';
+    public const CONTACT = 'Contact';
+    public const DELAY = 'Delay';
+    public const DURATION = 'Duration';
+    public const EMAIL = 'Email';
+    public const FADE = 'Fade';
+    public const FILES_PER_PAGE = 'Files per page';
+    public const FOOTER = 'Footer';
+    public const FRONT_PAGE = 'Front page';
+    public const GITHUB = 'GitHub';
+    public const HEADER = 'Header';
+    public const ICON = 'Icon';
+    public const IMAGE = 'Image';
+    public const IMAGES_PER_PAGE = 'Images per page';
+    public const LINK = 'Link';
+    public const LINKEDIN = 'LinkedIn';
+    public const NEXT = 'Next';
+    public const NO_RESULTS = 'Your search returned no results';
+    public const NUMBER_OF_DOWNLOADS = 'Number of downloads:';
+    public const OF = 'of';
+    public const OPEN_IN_A_NEW_TAB = 'Open in a new tab';
+    public const OTHER = 'Other';
+    public const PREVIOUS = 'Previous';
+    public const SCRIPTS = 'Scripts';
+    public const SEARCH = 'Search';
+    public const SEARCH_RESULTS = 'Search results';
+    public const SEARCH_RESULTS_PER_PAGE = 'Search results per page';
+    public const SETTINGS = 'Settings';
+    public const SLIDER = 'Slider';
+    public const SLIDE_DOWN = 'Slide down';
+    public const SLIDE_LEFT = 'Slide left';
+    public const SLIDE_RIGHT = 'Slide right';
+    public const SLIDE_UP = 'Slide up';
+    public const START_BODY = 'Start body';
+    public const TITLE = 'Title';
+    public const YOU_ARE_HERE = 'You are here:';
 
     /**
      * The TranslationStrings constructor register the strings that should be translated
@@ -47,6 +48,7 @@ final class TranslationStrings {
     public function __construct() {
         if(self::isPolylangActivated()) {
             $context = 'Theme';            
+            pll_register_string(self::ADD_AN_ICON, self::ADD_AN_ICON, $context);
             pll_register_string(self::ANIMATION, self::ANIMATION, $context);
             pll_register_string(self::CONTACT, self::CONTACT, $context);
             pll_register_string(self::DELAY, self::DELAY, $context);
@@ -87,327 +89,13 @@ final class TranslationStrings {
     }
 
     /**
-     * Get the animation text
+     * Get a translated string
      * 
-     * @return string the animation text
+     * @param string $str the string to translate
+     * @return string the translated string
      */
-    public static function getAnimationText() : string {
-        return (self::isPolylangActivated()) ? pll__(self::ANIMATION) : self::ANIMATION;
-    }
-
-    /**
-     * Get the contact text
-     * 
-     * @return string the contact text
-     */
-    public static function getContactText() : string {
-        return (self::isPolylangActivated()) ? pll__(self::CONTACT) : self::CONTACT;
-    }
-
-    /**
-     * Get the delay text
-     * 
-     * @return string the delay text
-     */
-    public static function getDelayText() : string {
-        return (self::isPolylangActivated()) ? pll__(self::DELAY) : self::DELAY;
-    }
-
-    /**
-     * Get the duration text
-     * 
-     * @return string the duration text
-     */
-    public static function getDurationText() : string {
-        return (self::isPolylangActivated()) ? pll__(self::DURATION) : self::DURATION;
-    }
-
-    /**
-     * Get the email text
-     * 
-     * @return string the email text
-     */
-    public static function getEmailText() : string {
-        return (self::isPolylangActivated()) ? pll__(self::EMAIL) : self::EMAIL;
-    }
-
-    /**
-     * Get the fade text
-     * 
-     * @return string the fade text
-     */
-    public static function getFadeText() : string {
-        return (self::isPolylangActivated()) ? pll__(self::FADE) : self::FADE;
-    }
-
-    /**
-     * Get the files per page text
-     * 
-     * @return string the files per page text
-     */
-    public static function getFilesPerPageText() : string {
-        return (self::isPolylangActivated()) ? pll__(self::FILES_PER_PAGE) : self::FILES_PER_PAGE;
-    }
-
-    /**
-     * Get the footer text
-     * 
-     * @return string the footer text
-     */
-    public static function getFooterText() : string {
-        return (self::isPolylangActivated()) ? pll__(self::FOOTER) : self::FOOTER;
-    }
-
-    /**
-     * Get the front page text
-     *
-     * @return string the front page text
-     */
-    public static function getFrontPageText() : string {
-        return (self::isPolylangActivated()) ? pll__(self::FRONT_PAGE) : self::FRONT_PAGE;
-    }
-
-    /**
-     * Get the GitHub text
-     * 
-     * @return string the GitHub text
-     */
-    public static function getGitHubText() : string {
-        return (self::isPolylangActivated()) ? pll__(self::GITHUB) : self::GITHUB;
-    }
-
-    /**
-     * Get the header text
-     * 
-     * @return string the header text
-     */
-    public static function getHeaderText() : string {
-        return (self::isPolylangActivated()) ? pll__(self::HEADER) : self::HEADER;
-    }
-
-    /**
-     * Get the icon text
-     * 
-     * @return string the icon text
-     */
-    public static function getIconText() : string {
-        return (self::isPolylangActivated()) ? pll__(self::ICON) : self::ICON;
-    }
-
-    /**
-     * Get the image text
-     *
-     * @return string the image text
-     */
-    public static function getImageText() : string {
-        return (self::isPolylangActivated()) ? pll__(self::IMAGE) : self::IMAGE;
-    }
-
-    /**
-     * Get the images per page text
-     * 
-     * @return string the images per page text
-     */
-    public static function getImagesPerPageText() : string {
-        return (self::isPolylangActivated()) ? pll__(self::IMAGES_PER_PAGE) : self::IMAGES_PER_PAGE;
-    }
-
-    /**
-     * Get the link text
-     * 
-     * @return string the link text
-     */
-    public static function getLinkText() : string {
-        return (self::isPolylangActivated()) ? pll__(self::LINK) : self::LINK;
-    }
-
-    /**
-     * Get the LinkedIn text
-     * 
-     * @return string the LinkedIn text
-     */
-    public static function getLinkedInText() : string {
-        return (self::isPolylangActivated()) ? pll__(self::LINKEDIN) : self::LINKEDIN;
-    }
-
-    /**
-     * Get the next text
-     *
-     * @return string the next text
-     */
-    public static function getNextText() : string {
-        return (self::isPolylangActivated()) ? pll__(self::NEXT) : self::NEXT;
-    }
-
-    /**
-     * Get the no results text
-     *
-     * @return string the no results text
-     */
-    public static function getNoResultsText() : string {
-        return (self::isPolylangActivated()) ? pll__(self::NO_RESULTS) : self::NO_RESULTS;
-    }
-
-    /**
-     * Get the number of downloads text
-     * 
-     * @return string the number of downloads text
-     */
-    public static function getNumberOfDownloadsText() : string {
-        return (self::isPolylangActivated()) ? pll__(self::NUMBER_OF_DOWNLOADS) : self::NUMBER_OF_DOWNLOADS;
-    }
-
-    /**
-     * Get the of text
-     *
-     * @return string the of text
-     */
-    public static function getOfText() : string {
-        return (self::isPolylangActivated()) ? pll__(self::OF) : self::OF;
-    }
-
-    /**
-     * Get the open in a new tab text
-     * 
-     * @return string the open in a new tab text
-     */
-    public static function getOpenInANewTabText() : string {
-        return (self::isPolylangActivated()) ? pll__(self::OPEN_IN_A_NEW_TAB) : self::OPEN_IN_A_NEW_TAB;
-    }
-
-    /**
-     * Get the other text
-     * 
-     * @return string the other text
-     */
-    public static function getOtherText() : string {
-        return (self::isPolylangActivated()) ? pll__(self::OTHER) : self::OTHER;
-    }
-
-    /**
-     * Get the previous text
-     *
-     * @return string the previous text
-     */
-    public static function getPreviousText() : string {
-        return (self::isPolylangActivated()) ? pll__(self::PREVIOUS) : self::PREVIOUS;
-    }
-
-    /**
-     * Get the scripts text
-     * 
-     * @return string the scripts text
-     */
-    public static function getScriptsText() : string {
-        return (self::isPolylangActivated()) ? pll__(self::SCRIPTS) : self::SCRIPTS;
-    }
-
-    /**
-     * Get the search text
-     *
-     * @return string the search text
-     */
-    public static function getSearchText() : string {
-        return (self::isPolylangActivated()) ? pll__(self::SEARCH) : self::SEARCH;
-    }
-
-    /**
-     * Get the search results text
-     *
-     * @return string the search results text
-     */
-    public static function getSearchResultsText() : string {
-        return (self::isPolylangActivated()) ? pll__(self::SEARCH_RESULTS) : self::SEARCH_RESULTS;
-    }
-
-    /**
-     * Get the search results per page text
-     * 
-     * @return string the search results per page text
-     */
-    public static function getSearchResultsPerPageText() : string {
-        return (self::isPolylangActivated()) ? pll__(self::SEARCH_RESULTS_PER_PAGE) : self::SEARCH_RESULTS_PER_PAGE;
-    }
-
-    /**
-     * Get the settings text
-     * 
-     * @return string the settings text
-     */
-    public static function getSettingsText() : string {
-        return (self::isPolylangActivated()) ? pll__(self::SETTINGS) : self::SETTINGS;
-    }
-
-    /**
-     * Get the slider text
-     * 
-     * @return string the slider text
-     */
-    public static function getSliderText() : string {
-        return (self::isPolylangActivated()) ? pll__(self::SLIDER) : self::SLIDER;
-    }
-
-    /**
-     * Get the slide down text
-     * 
-     * @return string the slide down text
-     */
-    public static function getSlideDownText() : string {
-        return (self::isPolylangActivated()) ? pll__(self::SLIDE_DOWN) : self::SLIDE_DOWN;
-    }
-
-    /**
-     * Get the slide left text
-     * 
-     * @return string the slide left text
-     */
-    public static function getSlideLeftText() : string {
-        return (self::isPolylangActivated()) ? pll__(self::SLIDE_LEFT) : self::SLIDE_LEFT;
-    }
-
-    /**
-     * Get the slide right text
-     * 
-     * @return string the slide right text
-     */
-    public static function getSlideRightText() : string {
-        return (self::isPolylangActivated()) ? pll__(self::SLIDE_RIGHT) : self::SLIDE_RIGHT;
-    }
-
-    /**
-     * Get the slide up text
-     * 
-     * @return string the slide up text
-     */
-    public static function getSlideUpText() : string {
-        return (self::isPolylangActivated()) ? pll__(self::SLIDE_UP) : self::SLIDE_UP;
-    }
-
-    /**
-     * Get the start body text
-     * 
-     * @return string the start body text
-     */
-    public static function getStartBodyText() : string {
-        return (self::isPolylangActivated()) ? pll__(self::START_BODY) : self::START_BODY;
-    }
-
-    /**
-     * Get the title text
-     * 
-     * @return string the title text
-     */
-    public static function getTitleText() : string {
-        return (self::isPolylangActivated()) ? pll__(self::TITLE) : self::TITLE;
-    }
-
-    /**
-     * Get the You are here text
-     *
-     * @return string the You are here text
-     */
-    public static function getYouAreHereText() : string {
-        return (self::isPolylangActivated()) ? pll__(self::YOU_ARE_HERE) : self::YOU_ARE_HERE;
+    public static function getTranslatedString(string $str) : string {
+        return (self::isPolylangActivated()) ? pll__($str) : $str;
     }
 
     /**
