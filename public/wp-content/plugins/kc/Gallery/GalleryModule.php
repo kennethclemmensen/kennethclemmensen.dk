@@ -79,7 +79,7 @@ class GalleryModule extends BaseModule implements IModule {
                         'name' => PluginHelper::getTranslatedString(TranslationString::PARENT_PAGE),
                         'id' => $this->fieldParentPage,
                         'type' => 'select',
-                        'options' => parent::getAllPosts(PostType::PAGE)
+                        'options' => $this->getAllPosts(PostType::PAGE)
                     ]
                 ]
             ];

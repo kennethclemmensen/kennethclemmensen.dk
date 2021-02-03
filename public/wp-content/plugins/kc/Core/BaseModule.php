@@ -1,7 +1,6 @@
 <?php
 namespace KC\Core;
 
-use KC\Core\Constant;
 use \WP_Query;
 
 /**

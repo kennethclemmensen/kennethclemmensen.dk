@@ -71,7 +71,7 @@ class ImageModule extends BaseModule implements IModule {
                         'name' => PluginHelper::getTranslatedString(TranslationString::GALLERY),
                         'id' => $this->fieldImageGallery,
                         'type' => 'select',
-                        'options' => parent::getAllPosts(PostType::GALLERY)
+                        'options' => $this->getAllPosts(PostType::GALLERY)
                     ]
                 ]
             ];
