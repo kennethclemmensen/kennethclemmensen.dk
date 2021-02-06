@@ -24,7 +24,6 @@
     "uploadsFolder": "public/wp-content/uploads/"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.168",
     "browser-sync": "^2.26.14",
     "css-loader": "^5.0.1",
     "grunt": "^1.3.0",
