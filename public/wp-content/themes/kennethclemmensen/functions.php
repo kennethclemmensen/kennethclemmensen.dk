@@ -10,16 +10,20 @@ add_action('wp_enqueue_scripts', function() : void {
 
     $styleFile = '/css/style.min.css';
     $version = filemtime(get_template_directory().$styleFile);
-    wp_enqueue_style('theme-css', get_template_directory_uri().$styleFile, [], $version);
+    wp_enqueue_style('theme', get_template_directory_uri().$styleFile, [], $version);
 
-    $librariesJS = 'libraries-js';
+    wp_dequeue_style('wp-block-library');
+
+    $libraries = 'libraries';
     $librariesFile = '/js/dist/libraries.min.js';
     $version = filemtime(get_template_directory().$librariesFile);
-    wp_enqueue_script($librariesJS, get_template_directory_uri().$librariesFile, $version, [], true);
+    wp_enqueue_script($libraries, get_template_directory_uri().$librariesFile, $version, [], true);
 
     $compiledFile = '/js/dist/compiled.min.js';
     $version = filemtime(get_template_directory().$compiledFile);
-    wp_enqueue_script('compiled-js', get_template_directory_uri().$compiledFile, $version, [$librariesJS], true);
+    wp_enqueue_script('compiled', get_template_directory_uri().$compiledFile, $version, [$libraries], true);
+
+    wp_deregister_script('wp-embed');
 });
 
 /**
@@ -124,7 +128,7 @@ add_filter('style_loader_src', function(string $src) : string {
 });
 
 /**
- * Use the script_loader_tag action to add the defer attribute and remove the type attribute
+ * Use the script_loader_tag filter to add the defer attribute and remove the type attribute
  *
  * @param string $tag the tag to add and remove the attributes from
  * @return string the tag
