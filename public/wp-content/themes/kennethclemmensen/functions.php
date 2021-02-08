@@ -3,26 +3,15 @@ $files = glob(__DIR__.'/includes/*.php');
 foreach($files as $file) require_once $file;
 
 /**
- * Use the wp_enqueue_scripts action to add scripts and stylesheets
+ * Use the wp_enqueue_scripts action to add and remove scripts and stylesheets
  */
 add_action('wp_enqueue_scripts', function() : void {
-    wp_dequeue_script('jquery');
-
-    $styleFile = '/css/style.min.css';
-    $version = filemtime(get_template_directory().$styleFile);
-    wp_enqueue_style('theme', get_template_directory_uri().$styleFile, [], $version);
-
+    wp_enqueue_style('theme', get_template_directory_uri().'/css/style.min.css');
     wp_dequeue_style('wp-block-library');
-
     $libraries = 'libraries';
-    $librariesFile = '/js/dist/libraries.min.js';
-    $version = filemtime(get_template_directory().$librariesFile);
-    wp_enqueue_script($libraries, get_template_directory_uri().$librariesFile, $version, [], true);
-
-    $compiledFile = '/js/dist/compiled.min.js';
-    $version = filemtime(get_template_directory().$compiledFile);
-    wp_enqueue_script('compiled', get_template_directory_uri().$compiledFile, $version, [$libraries], true);
-
+    wp_enqueue_script($libraries, get_template_directory_uri().'/js/dist/libraries.min.js', in_footer: true);
+    wp_enqueue_script('compiled', get_template_directory_uri().'/js/dist/compiled.min.js', deps: [$libraries], in_footer: true);
+    wp_dequeue_script('jquery');
     wp_deregister_script('wp-embed');
 });
 
