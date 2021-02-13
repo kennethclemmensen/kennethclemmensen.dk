@@ -23,15 +23,18 @@ final class ThemeSettings {
     private string $imagesPerPage;
     private string $filesPerPage;
     private string $searchResultsPerPage;
+    private string $allowFileEditing;
     private string $scriptHeader;
     private string $scriptStartBody;
     private string $scriptFooter;
+    private string $removeVersionQueryString;
     private string $emailShortcode;
     private string $linkedInShortcode;
     private string $gitHubShortcode;
     private string $sliderDelay;
     private string $sliderDuration;
     private string $sliderAnimation;
+    private string $checkboxCheckedValue;
 
     /**
      * ThemeSettings constructor
@@ -57,10 +60,12 @@ final class ThemeSettings {
         $this->imagesPerPage = 'photos_per_page';
         $this->filesPerPage = 'files_per_page';
         $this->searchResultsPerPage = 'search_results_per_page';
+        $this->allowFileEditing = 'allow_file_editing';
         $prefix = 'scripts_';
         $this->scriptHeader = $prefix.'header';
         $this->scriptStartBody = $prefix.'start_body';
         $this->scriptFooter = $prefix.'footer';
+        $this->removeVersionQueryString = $prefix.'remove_version_query_string';
         $prefix = 'kc-';
         $this->emailShortcode = $prefix.$this->email;
         $this->linkedInShortcode = $prefix.$this->linkedIn;
@@ -69,12 +74,15 @@ final class ThemeSettings {
         $this->sliderDelay = $prefix.'delay';
         $this->sliderDuration = $prefix.'duration';
         $this->sliderAnimation = $prefix.'animation';
+        $this->checkboxCheckedValue = 'on';
         $this->createSettingsPage();
         $this->registerSettingInputs();
         $this->addShortcodes();
         $this->addHeaderScripts();
         $this->addAfterStartBodyScripts();
         $this->addFooterScripts();
+        $this->scriptLoaderSrc();
+        $this->styleLoaderSrc();
     }
 
     /**
@@ -156,6 +164,7 @@ final class ThemeSettings {
             $this->createScriptInputs();
             $this->createSliderInputs();
             $this->createOtherInputs();
+            define('DISALLOW_FILE_EDIT', !$this->isFileEditingAllowed());
         });
     }
 
@@ -194,6 +203,10 @@ final class ThemeSettings {
         }, $this->scriptPageSlug, $sectionID);
         add_settings_field($prefix.'footer', TranslationStrings::getTranslatedString(TranslationStrings::FOOTER), function() : void {
             echo '<textarea name="'.$this->scriptOptionsName.'['.$this->scriptFooter.']" cols="80" rows="10">'.$this->getFooterScripts().'</textarea>';
+        }, $this->scriptPageSlug, $sectionID);
+        add_settings_field($prefix.'remove-version-query-string', TranslationStrings::getTranslatedString(TranslationStrings::REMOVE_VERSION_QUERY_STRING), function() : void {
+            $checked = (isset($this->scriptOptions[$this->removeVersionQueryString])) ? $this->scriptOptions[$this->removeVersionQueryString] : '';
+            echo '<input type="checkbox" name="'.$this->scriptOptionsName.'['.$this->removeVersionQueryString.']" '.checked($checked, $this->checkboxCheckedValue, false).' >';
         }, $this->scriptPageSlug, $sectionID);
         register_setting($this->scriptOptionsName, $this->scriptOptionsName, function(array $input) : array {
             return $this->validateSettingInputs($input);
@@ -250,6 +263,10 @@ final class ThemeSettings {
         add_settings_field($prefix.'search-results-per-page', TranslationStrings::getTranslatedString(TranslationStrings::SEARCH_RESULTS_PER_PAGE), function() : void {
             echo '<input type="number" name="'.$this->otherOptionsName.'['.$this->searchResultsPerPage.']" value="'.$this->getSearchResultsPerPage().'" min="1" max="50">';
         }, $this->otherPageSlug, $sectionID);
+        add_settings_field($prefix.'allow-file-editing', TranslationStrings::getTranslatedString(TranslationStrings::ALLOW_FILE_EDITING), function() : void {            
+            $checked = (isset($this->otherOptions[$this->allowFileEditing])) ? $this->otherOptions[$this->allowFileEditing] : '';
+            echo '<input type="checkbox" name="'.$this->otherOptionsName.'['.$this->allowFileEditing.']" '.checked($checked, $this->checkboxCheckedValue, false).' >';
+        }, $this->otherPageSlug, $sectionID);
         register_setting($this->otherOptionsName, $this->otherOptionsName, function(array $input) : array {
             return $this->validateSettingInputs($input);
         });
@@ -297,6 +314,24 @@ final class ThemeSettings {
         add_action('wp_footer', function() : void {
             echo $this->getFooterScripts();
         }, $priority);
+    }
+
+    /**
+     * Use the script_loader_src filter to remove the version query string from scripts
+     */
+    private function scriptLoaderSrc() : void {
+        add_filter('script_loader_src', function(string $src) : string {
+            return ($this->mustVersionQueryStringBeRemoved()) ? $this->removeVersionQueryString($src) : $src;
+        });
+    }
+    
+    /**
+     * Use the style_loader_src filter to remove the version query string from stylesheets
+     */
+    private function styleLoaderSrc() : void {
+        add_filter('style_loader_src', function(string $src) : string {
+            return ($this->mustVersionQueryStringBeRemoved()) ? $this->removeVersionQueryString($src) : $src;
+        });
     }
 
     /**
@@ -380,6 +415,34 @@ final class ThemeSettings {
             'slide_right' => TranslationStrings::getTranslatedString(TranslationStrings::SLIDE_RIGHT),
             'slide_up' => TranslationStrings::getTranslatedString(TranslationStrings::SLIDE_UP)
         ];
+    }
+
+    /**
+     * Check whether file editing is allowed
+     *
+     * @return bool true if file editing is allowed. False if it isn't allowed
+     */
+    private function isFileEditingAllowed() : bool {
+        return isset($this->otherOptions[$this->allowFileEditing]) && $this->otherOptions[$this->allowFileEditing] === $this->checkboxCheckedValue;
+    }
+
+    /**
+     * Check whether the version query string must be removed
+     *
+     * @return bool true if the version query string must be removed. False if it must not be removed
+     */
+    private function mustVersionQueryStringBeRemoved() : bool {
+        return isset($this->scriptOptions[$this->removeVersionQueryString]) && $this->scriptOptions[$this->removeVersionQueryString] === $this->checkboxCheckedValue;
+    }
+
+    /**
+     * Remove the version query string from the source
+     *
+     * @param string $src the source to remove the version query string from
+     * @return string the source without the version query string
+     */
+    private function removeVersionQueryString(string $src) : string {
+        return explode('?ver', $src)[0];
     }
 
     /**

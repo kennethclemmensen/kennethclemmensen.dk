@@ -5,6 +5,7 @@
 final class TranslationStrings {
 
     public const ADD_AN_ICON = 'Add an icon';
+    public const ALLOW_FILE_EDITING = 'Allow file editing';
     public const ANIMATION = 'Animation';
     public const CONTACT = 'Contact';
     public const DELAY = 'Delay';
@@ -28,6 +29,7 @@ final class TranslationStrings {
     public const OPEN_IN_A_NEW_TAB = 'Open in a new tab';
     public const OTHER = 'Other';
     public const PREVIOUS = 'Previous';
+    public const REMOVE_VERSION_QUERY_STRING = 'Remove version query string';
     public const SCRIPTS = 'Scripts';
     public const SEARCH = 'Search';
     public const SEARCH_RESULTS = 'Search results';
@@ -47,8 +49,9 @@ final class TranslationStrings {
      */
     public function __construct() {
         if(self::isPolylangActivated()) {
-            $context = 'Theme';            
+            $context = 'Theme';
             pll_register_string(self::ADD_AN_ICON, self::ADD_AN_ICON, $context);
+            pll_register_string(self::ALLOW_FILE_EDITING, self::ALLOW_FILE_EDITING, $context);
             pll_register_string(self::ANIMATION, self::ANIMATION, $context);
             pll_register_string(self::CONTACT, self::CONTACT, $context);
             pll_register_string(self::DELAY, self::DELAY, $context);
@@ -72,6 +75,7 @@ final class TranslationStrings {
             pll_register_string(self::OPEN_IN_A_NEW_TAB, self::OPEN_IN_A_NEW_TAB, $context);
             pll_register_string(self::OTHER, self::OTHER, $context);
             pll_register_string(self::PREVIOUS, self::PREVIOUS, $context);
+            pll_register_string(self::REMOVE_VERSION_QUERY_STRING, self::REMOVE_VERSION_QUERY_STRING, $context);
             pll_register_string(self::SCRIPTS, self::SCRIPTS, $context);
             pll_register_string(self::SEARCH, self::SEARCH, $context);
             pll_register_string(self::SEARCH_RESULTS, self::SEARCH_RESULTS, $context);

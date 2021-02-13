@@ -10,7 +10,7 @@ add_action('wp_enqueue_scripts', function() : void {
     wp_dequeue_style('wp-block-library');
     $libraries = 'libraries';
     wp_enqueue_script($libraries, get_template_directory_uri().'/js/dist/libraries.min.js', in_footer: true);
-    wp_enqueue_script('compiled', get_template_directory_uri().'/js/dist/compiled.min.js', deps: [$libraries], in_footer: true);
+    wp_enqueue_script('compiled', get_template_directory_uri().'/js/dist/compiled.min.js', [$libraries], in_footer: true);
     wp_dequeue_script('jquery');
     wp_deregister_script('wp-embed');
 });
@@ -97,26 +97,6 @@ add_filter('excerpt_more', function() : string {
 remove_action('wp_head', 'wp_generator');
 
 /**
- * Use the script_loader_src filter to remove the version query string from scripts
- *
- * @param string $src the source to remove the version query string from
- * @return string the source without the version query string
- */
-add_filter('script_loader_src', function(string $src) : string {
-    return ThemeHelper::removeVersionQueryString($src);
-});
-
-/**
- * Use the style_loader_src filter to remove the version query string from stylesheets
- *
- * @param string $src the source to remove the version query string from
- * @return string the source without the version query string
- */
-add_filter('style_loader_src', function(string $src) : string {
-    return ThemeHelper::removeVersionQueryString($src);
-});
-
-/**
  * Use the script_loader_tag filter to add the defer attribute and remove the type attribute
  *
  * @param string $tag the tag to add and remove the attributes from
@@ -134,8 +114,3 @@ add_filter('script_loader_tag', function(string $tag) : string {
 add_action('customize_register', function(WP_Customize_Manager $wpCustomizeManager) : void {
     $wpCustomizeManager->remove_section('custom_css');
 });
-
-/**
- * Disallow file edit for themes and plugins
- */
-define('DISALLOW_FILE_EDIT', true);

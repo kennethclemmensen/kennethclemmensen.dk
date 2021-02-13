@@ -65,7 +65,7 @@ final class IconWidget extends WP_Widget {
             <input type="text" id="<?php echo $titleFieldID; ?>" class="widefat"
                    name="<?php echo esc_attr($this->get_field_name($titleKey)); ?>"
                    value="<?php echo esc_attr($title); ?>">
-            <label for="<?php echo $iconFieldID; ?>"><?php echo $icon; ?></label>
+            <label for="<?php echo $iconFieldID; ?>"><?php echo $iconText; ?></label>
             <select id="<?php echo $iconFieldID; ?>" class="widefat"
                     name="<?php echo esc_attr($this->get_field_name($this->icon)); ?>">
                 <?php
