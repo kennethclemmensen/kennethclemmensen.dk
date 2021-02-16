@@ -1,8 +1,5 @@
-# This is a basic workflow to help you get started with Actions
+name: deploy-kc-plugin
 
-name: deploy-kc-plugin-action
-
-# Controls when the action will run. 
 on:
   # Triggers the workflow on the push event but only for the master branch
   push:
