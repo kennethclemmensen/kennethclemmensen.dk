@@ -31,3 +31,5 @@ jobs:
         password: ${{ secrets.password }}
         protocol: ftps
         port: 21
+        local-dir: public/wp-content/plugins/kc/
+        server-dir: public_html/wp-content/plugins/kc/
