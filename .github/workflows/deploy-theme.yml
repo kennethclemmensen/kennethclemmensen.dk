@@ -30,7 +30,7 @@ jobs:
         port: 21
         local-dir: public/wp-content/themes/kennethclemmensen/
         server-dir: public_html/wp-content/themes/kennethclemmensen/
-        exclude:
+        exclude: .git*
           - public/wp-content/themes/kennethclemmensen/css/compiled/**
           - public/wp-content/themes/kennethclemmensen/css/libraries/**
           - public/wp-content/themes/kennethclemmensen/js/compiled/**
