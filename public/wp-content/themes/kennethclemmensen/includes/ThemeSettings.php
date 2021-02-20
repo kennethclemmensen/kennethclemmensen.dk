@@ -1,6 +1,6 @@
 <?php
 /**
- * The ThemeSettings class contains methods to setup and retrieve the theme settings
+ * The ThemeSettings class contains methods to handle the theme settings
  */
 final class ThemeSettings {
 
@@ -42,11 +42,11 @@ final class ThemeSettings {
     private function __construct() {
         $prefix = 'kc-theme-settings-';
         $postfix = '-options';
-        $this->contactPageSlug = $prefix.'contact';
+        $this->contactPageSlug = substr($prefix, 0, strlen($prefix) - 1);
         $this->scriptPageSlug = $prefix.'scripts';
         $this->sliderPageSlug = $prefix.'slider';
         $this->otherPageSlug = $prefix.'other';
-        $this->contactOptionsName = $this->contactPageSlug.$postfix;
+        $this->contactOptionsName = $prefix.'contact'.$postfix;
         $this->scriptOptionsName = $this->scriptPageSlug.$postfix;
         $this->sliderOptionsName = $this->sliderPageSlug.$postfix;
         $this->otherOptionsName = $this->otherPageSlug.$postfix;
@@ -115,7 +115,7 @@ final class ThemeSettings {
                         $currentTab = 'nav-tab-active';
                         ?>
                         <a href="?page=<?php echo $this->contactPageSlug; ?>&tab=<?php echo $contactTab; ?>"
-                           class="nav-tab <?php echo ($activeTab === $contactTab) ? $currentTab : ''; ?>">
+                           class="nav-tab <?php echo (!in_array($activeTab, [$scriptsTab, $sliderTab, $otherTab])) ? $currentTab : ''; ?>">
                            <?php echo TranslationStrings::getTranslatedString(TranslationStrings::CONTACT); ?>
                         </a>
                         <a href="?page=<?php echo $this->contactPageSlug; ?>&tab=<?php echo $scriptsTab; ?>"
@@ -133,18 +133,23 @@ final class ThemeSettings {
                     </h2>
                     <form action="options.php" method="post">
                         <?php
-                        if($activeTab === $contactTab) {
-                            settings_fields($this->contactOptionsName);
-                            do_settings_sections($this->contactPageSlug);
-                        } else if($activeTab === $scriptsTab) {
-                            settings_fields($this->scriptOptionsName);
-                            do_settings_sections($this->scriptPageSlug);
-                        } else if($activeTab === $sliderTab) {
-                            settings_fields($this->sliderOptionsName);
-                            do_settings_sections($this->sliderPageSlug);
-                        } else {
-                            settings_fields($this->otherOptionsName);
-                            do_settings_sections($this->otherPageSlug);
+                        switch($activeTab) {
+                            case $scriptsTab:
+                                settings_fields($this->scriptOptionsName);
+                                do_settings_sections($this->scriptPageSlug);
+                                break;
+                            case $sliderTab:
+                                settings_fields($this->sliderOptionsName);
+                                do_settings_sections($this->sliderPageSlug);
+                                break;
+                            case $otherTab:
+                                settings_fields($this->otherOptionsName);
+                                do_settings_sections($this->otherPageSlug);
+                                break;
+                            default:
+                                settings_fields($this->contactOptionsName);
+                                do_settings_sections($this->contactPageSlug);                            
+                                break;
                         }
                         submit_button();
                         ?>
