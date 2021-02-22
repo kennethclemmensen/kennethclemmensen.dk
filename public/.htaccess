@@ -287,7 +287,8 @@ RewriteRule \.(gif|jpe?g?|png)$ - [F,NC,L]
 #AIOWPS_PREVENT_IMAGE_HOTLINKS_END
 # END All In One WP Security
 
-AddType application/x-httpd-php-latest .php
+#AddType application/x-httpd-php-latest .php
+AddType application/x-httpd-php80 .php
 
 # BEGIN HTTPS Redirection Plugin
 <IfModule mod_rewrite.c>

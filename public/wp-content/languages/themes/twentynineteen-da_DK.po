@@ -7,7 +7,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: GlotPress/3.0.0-alpha\n"
+"X-Generator: GlotPress/3.0.0-alpha.2\n"
 "Language: da_DK\n"
 "Project-Id-Version: Themes - Twenty Nineteen\n"
 
@@ -31,9 +31,9 @@ msgstr "Menu til sociale links"
 msgid "Skip to content"
 msgstr "Videre til indhold"
 
-#: image.php:52 template-parts/content/content-page.php:27
-#: template-parts/content/content.php:49
+#: image.php:52 template-parts/content/content.php:49
 #: template-parts/content/content-single.php:40
+#: template-parts/content/content-page.php:27
 msgid "Pages:"
 msgstr "Sider:"
 
