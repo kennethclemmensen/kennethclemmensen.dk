@@ -111,7 +111,7 @@ class ImageModule extends BaseModule implements IModule {
         $args = [
             'post_type' => PostType::IMAGE,
             'posts_per_page' => -1,
-            'orderby' => [Constant::TITLE],
+            'orderby' => Constant::TITLE,
             'order' => Constant::ASC,
             'meta_key' => $this->fieldImageGallery,
             'meta_value' => $galleryId
