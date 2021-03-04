@@ -1,1 +1,13 @@
-<p>header works!</p>
+<header class="header">
+    <a href="/" class="header__site-name">Kennethclemmensen.dk</a>
+    <a href="#" class="header__nav-trigger" id="mobile-menu-trigger">
+        <span class="header__nav-icon"></span>
+    </a>
+    <nav class="header__menu">
+        <ul>
+            <li *ngFor="let menuItem of menuItems">
+                <a href="{{ menuItem.url }}">{{ menuItem.title }}</a>
+            </li>
+        </ul>
+    </nav>
+</header>
