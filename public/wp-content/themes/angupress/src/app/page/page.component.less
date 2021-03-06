@@ -1,0 +1,22 @@
+@import url('../../less/media-query.less');
+@import url('../../less/variable.less');
+
+.page {
+    padding: @header-height 15px 0 15px;
+    @media @tablet {
+        width: @page-width-tablet;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+    @media @desktop {
+        width: @page-width-desktop;
+        padding: 0;
+    }
+}
+  
+.page__content {
+    padding: 20px 0 (@footer-height + 20px) 0;
+    @media @tablet {
+        padding: 0 0 (@footer-height-tablet + 20px) 0;
+    }
+}

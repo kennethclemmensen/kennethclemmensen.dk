@@ -1,25 +1,24 @@
 @import url('../../less/color.less');
 @import url('../../less/media-query.less');
 @import url('../../less/mixin.less');
+@import url('../../less/variable.less');
 
 .slider {
-    height: 12px;
-    margin: 0 -15px;
+    height: 129px;
+    margin-top: @header-height;
     border-bottom: 2px solid @color-gray;
     @media @tablet {
-        margin: 25px 0;
+        width: @page-width-tablet;
+        margin: 25px auto;
         border: 2px solid @color-gray;
         .box-shadow(4px, 4px, 6px, @color-black);
     }
     @media @desktop {
+        width: @page-width-desktop;
         height: 160px;
     }
 }
-  
-.slider__slide {
-    display: none;
-}
-  
+
 .slider__image {
     background: no-repeat center;
     background-size: cover;
