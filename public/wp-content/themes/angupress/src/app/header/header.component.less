@@ -120,3 +120,41 @@
     }
   }
 }
+
+.mobile-menu {
+  background: @color-blue--darker;
+  width: 100%;
+  padding: 25px 0;
+  position: fixed;
+  top: @header-height;
+  bottom: @footer-height;
+  z-index: 1;
+  .translateX(-100%);
+  .transition();
+  overflow-y: auto;
+  @media @tablet {
+    display: none;
+  }
+  &--active {
+    .translateX(0);
+  }
+}
+
+.mobile-menu__content {
+  overflow-y: auto;
+  ul {
+    margin-left: 0;
+    list-style: none;
+    li {
+      a {
+        display: block;
+        height: 40px;
+        padding: 5px 15px;
+        text-decoration: none;
+        &:hover {
+          background: @color-blue--dark;
+        }
+      }
+    }
+  }
+}

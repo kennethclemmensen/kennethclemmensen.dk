@@ -9,9 +9,11 @@ import { MenuItem } from '../types/MenuItem';
 export class HeaderComponent implements OnInit {
 
   public menuItems: MenuItem[];
+  public showMobileMenu: boolean;
 
   public constructor() { 
     this.menuItems = [];
+    this.showMobileMenu = false;
   }
 
   public ngOnInit(): void {
@@ -45,4 +47,8 @@ export class HeaderComponent implements OnInit {
     }];
   }
 
+  public toggleMobileMenu(event: Event): void {
+    event.preventDefault();
+    this.showMobileMenu = !this.showMobileMenu;
+  }
 }

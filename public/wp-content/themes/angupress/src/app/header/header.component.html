@@ -1,13 +1,22 @@
 <header class="header">
     <a href="/" class="header__site-name">Kennethclemmensen.dk</a>
-    <a href="#" class="header__nav-trigger" id="mobile-menu-trigger">
+    <a href="#" class="header__nav-trigger" [ngClass]="{'header__nav-trigger--active': showMobileMenu}" (click)="toggleMobileMenu($event)">
         <span class="header__nav-icon"></span>
     </a>
     <nav class="header__menu">
         <ul>
             <li *ngFor="let menuItem of menuItems">
-                <a href="{{ menuItem.url }}">{{ menuItem.title }}</a>
+                <a [href]="menuItem.url">{{ menuItem.title }}</a>
             </li>
         </ul>
     </nav>
 </header>
+<nav class="mobile-menu" [ngClass]="{'mobile-menu--active': showMobileMenu}">
+    <div class="mobile-menu__content">
+        <ul>
+            <li *ngFor="let menuItem of menuItems">
+                <a [href]="menuItem.url">{{ menuItem.title }}</a>
+            </li>
+        </ul>
+    </div>
+</nav>
