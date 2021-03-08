@@ -3,9 +3,9 @@ Contributors: Chouby, manooweb, raaaahman, marianne38, sebastienserre
 Donate link: https://polylang.pro
 Tags: multilingual, bilingual, translate, translation, language, multilanguage, international, localization
 Requires at least: 5.1
-Tested up to: 5.6
+Tested up to: 5.7
 Requires PHP: 5.6
-Stable tag: 2.9.2
+Stable tag: 3.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -77,6 +77,34 @@ Don't hesitate to [give your feedback](http://wordpress.org/support/view/plugin-
 4. The Edit Post screen with the Languages metabox
 
 == Changelog ==
+
+= 3.0 (2021-03-08) =
+
+* Add compatibility with WordPress 5.7
+* Remove upgrades from Polylang older than 1.8
+* Remove deprecated class PLL_Pointer
+* Pro: Hide the license keys
+* Pro: Fix redirect to the home page of a deactivated language
+* Pro: Fix synchronization of post status not working
+* Pro: Fix language switcher block not working in a post retrieved in REST API
+* Pro: Fix PO export of strings with line breaks
+* Pro: Fix file block title customization lost
+* Add a dialog box to ask a confirmation about a language change in classic and block editors
+* Improve browser language detection #591
+* Improve robustness and documentation of code
+* Fix media library after the language has been chnaged in the editor metabox
+* Fix duplicated title attribute on flag link in posts list
+* Fix legacy block editor language metabox compatibility with WordPress 5.6
+* Fix uploaded theme and plugin files in media library
+* Fix site title not translated in email change confirmation email
+* Fix remaining deprecated jQuery notices #741
+* Fix compatibility with GN publisher
+* Fix compatibility with Woodmart theme search form
+* Fix compatibility issue with 3rd party ajax requests since jQuery 3.3 #744
+* Fix CSS conflict with WooCommerce Bookings
+* Fix browser error when displaying an embed and using a cache plugin #757
+* Fix post type archive title and metadesc not translated in Yoast SEO
+* Fix PHP notice in REST API
 
 = 2.9.2 (2021-02-02) =
 

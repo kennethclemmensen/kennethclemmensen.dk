@@ -84,6 +84,7 @@ class PLL_WPSEO {
 		}
 
 		if ( ! empty( $keys ) ) {
+			WPSEO_Options::clear_cache();
 			new PLL_Translate_Option( 'wpseo_titles', array_fill_keys( $keys, 1 ), array( 'context' => 'wordpress-seo' ) );
 		}
 	}
@@ -195,11 +196,11 @@ class PLL_WPSEO {
 	}
 
 	/**
-	 * Add filters before the sitemap is evaluated and outputed
+	 * Add filters before the sitemap is evaluated and outputed.
 	 *
 	 * @since 2.6
 	 *
-	 * @param object $query Instance of WP_Query being filtered.
+	 * @param WP_Query $query Instance of WP_Query being filtered.
 	 */
 	public function before_sitemap( $query ) {
 		$type = $query->get( 'sitemap' );
