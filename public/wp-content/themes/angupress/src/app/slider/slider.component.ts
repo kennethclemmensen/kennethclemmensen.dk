@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SliderService } from './slider.service';
 
 @Component({
   selector: 'app-slider',
@@ -7,21 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SliderComponent implements OnInit {
 
-  //@ts-ignore
   private slides: string[];
   private sliderImage: HTMLElement | null;
   private currentRandomNumber: number;
 
-  public constructor() {
-    this.slides = [
-      'assets/images/image_1.jpg',
-      'assets/images/image_2.jpg'
-    ];
+  public constructor(private sliderService: SliderService) {
+    this.slides = [];
     this.sliderImage = null;
     this.currentRandomNumber = -1;
   }
 
   public ngOnInit(): void {
+    this.slides = this.sliderService.getSlides();
     this.sliderImage = document.getElementById('slider-image');
     this.showSlides();
   }
