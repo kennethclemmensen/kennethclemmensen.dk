@@ -23,7 +23,7 @@ msgstr "Hov! Den side findes ikke."
 msgid "Comments are closed."
 msgstr "Lukket for kommentarer."
 
-#: functions.php:61 template-parts/header/site-branding.php:46
+#: template-parts/header/site-branding.php:46 functions.php:61
 msgid "Social Links Menu"
 msgstr "Menu til sociale links"
 
@@ -31,15 +31,16 @@ msgstr "Menu til sociale links"
 msgid "Skip to content"
 msgstr "Videre til indhold"
 
-#: image.php:52 template-parts/content/content.php:49
-#: template-parts/content/content-single.php:40
+#: template-parts/content/content.php:49
 #: template-parts/content/content-page.php:27
+#: template-parts/content/content-single.php:40 image.php:52
 msgid "Pages:"
 msgstr "Sider:"
 
 #. translators: %s: Post title. Only visible to screen readers.
+#. translators: %s: Post title.
 #: template-parts/content/content.php:36
-#: template-parts/content/content-single.php:27
+#: template-parts/content/content-single.php:27 functions.php:225
 msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
 msgstr "Læs videre<span class=\"screen-reader-text\"> \"%s\"</span>"
 
@@ -58,11 +59,6 @@ msgstr "Forrige indlæg"
 #: template-parts/content/content-none.php:16
 msgid "Nothing Found"
 msgstr "Intet fundet"
-
-#. translators: 1: Link to WP admin new post page.
-#: template-parts/content/content-none.php:26
-msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
-msgstr "Klar til at udgive dit første indlæg? <a href=\"%1$s\">Start her</a>."
 
 #: template-parts/content/content-none.php:39
 msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
