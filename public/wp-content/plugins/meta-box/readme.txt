@@ -1,11 +1,11 @@
 === Meta Box - WordPress Custom Fields Framework ===
 Contributors: elightup, metabox, rilwis, fitwp, f-j-kaiser, funkatronic, PerWiklander, ruanmer, Omnicia
 Donate link: https://metabox.io/pricing/
-Tags: meta-box, custom fields, custom field, meta, meta-boxes, admin, advanced, custom, edit, field, file, image, magic fields, post type, post types, more fields, Post, repeater, simple fields, text, textarea, type, cms, fields post
+Tags: meta box, custom fields, custom post types, custom taxonomies, cpt, meta boxes, custom field, post type, taxonomy, meta, admin, advanced, custom, edit, field, file, image, magic fields, post types, more fields, post, repeater, simple fields, text, textarea, type, cms, fields post
 Requires at least: 4.3
-Requires PHP: 5.3
-Tested up to: 5.6
-Stable tag: 5.3.8
+Requires PHP: 5.6
+Tested up to: 5.7
+Stable tag: 5.3.9
 License: GPLv2 or later
 
 Meta Box plugin is a powerful, professional developer toolkit to create custom meta boxes and custom fields for your custom post types in WordPress.
@@ -167,6 +167,12 @@ To getting started with the plugin, please read the [Quick Start Guide](https://
 1. Post Taxonomy Fields
 
 == Changelog ==
+
+= 5.3.9 - 2021-03-10 =
+- Fix taxonomy_advanced doesn't load options in attachment with media_modal set to true.
+- Fix `rwmb_{$field_id}_choice_label` not working for checkbox_list field type
+- Fix clone_default not working for switch if set std = true
+- Update jQueryUI styles to 1.12.1
 
 = 5.3.8 - 2021-01-28 =
 - Fix value not available when loaded in `map` and `osm` fields.
