@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from '../types/MenuItem';
+import { HeaderService } from './header.service';
 
 @Component({
   selector: 'app-header',
@@ -11,40 +12,13 @@ export class HeaderComponent implements OnInit {
   public menuItems: MenuItem[];
   public showMobileMenu: boolean;
 
-  public constructor() { 
+  public constructor(private headerService: HeaderService) { 
     this.menuItems = [];
     this.showMobileMenu = false;
   }
 
   public ngOnInit(): void {
-    this.menuItems = [{
-      url: '/',
-      title: 'Forside'
-    }, {
-      url: '/billeder',
-      title: 'Billeder'
-    }, {
-      url: '/film',
-      title: 'Film'
-    }, {
-      url: '/php',
-      title: 'PHP'
-    }, {
-      url: '/java',
-      title: 'Java'
-    }, {
-      url: '/links',
-      title: 'Links'
-    }, {
-      url: '/om-mig',
-      title: 'Om mig'
-    }, {
-      url: '/soeg',
-      title: 'Søg'
-    }, {
-      url: '/sitemap',
-      title: 'Sitemap'
-    }];
+    this.menuItems = this.headerService.getMenuItems();
   }
 
   public toggleMobileMenu(event: Event): void {
