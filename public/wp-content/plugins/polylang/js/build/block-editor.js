@@ -5,14 +5,14 @@
  * @package Polylang
  */
 
-// We can't use underscore or lodash in this common code because it depends of the context classic or block editor.
-// Classic editor underscore is loaded, Block editor lodash is loaded.
-const { __ } = wp.i18n;
-
 const languagesList = jQuery( '.post_lang_choice' );
 
 // Dialog box for alerting the user about a risky changing.
 const initializeConfimationModal = () => {
+	// We can't use underscore or lodash in this common code because it depends of the context classic or block editor.
+	// Classic editor underscore is loaded, Block editor lodash is loaded.
+	const { __ } = wp.i18n;
+
 	// Create dialog container.
 	const dialogContainer = jQuery(
 		'<div/>',
