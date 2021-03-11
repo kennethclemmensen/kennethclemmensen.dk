@@ -38,13 +38,13 @@ export class Slider {
     showSlides(delay, duration, animation) {
         var _a;
         let randomNumber = this.getRandomNumber();
-        let name = 'data-slide-image';
+        const name = 'data-slide-image';
         let backgroundImageUrl = (_a = __classPrivateFieldGet(this, _slides)[randomNumber]) === null || _a === void 0 ? void 0 : _a.getAttribute(name);
         if (!backgroundImageUrl)
             return;
         this.setBackgroundImage(backgroundImageUrl);
-        let startKeyframes = this.getStartKeyframes(animation);
-        let endKeyframes = this.getEndKeyframes(animation);
+        const startKeyframes = this.getStartKeyframes(animation);
+        const endKeyframes = this.getEndKeyframes(animation);
         setInterval(() => {
             if (__classPrivateFieldGet(this, _sliderImage)) {
                 __classPrivateFieldGet(this, _sliderImage).animate(startKeyframes, {
@@ -66,7 +66,7 @@ export class Slider {
      * @returns a random number
      */
     getRandomNumber() {
-        let randomNumber = Math.floor(Math.random() * __classPrivateFieldGet(this, _slides).length);
+        const randomNumber = Math.floor(Math.random() * __classPrivateFieldGet(this, _slides).length);
         if (__classPrivateFieldGet(this, _currentRandomNumber) === randomNumber)
             return this.getRandomNumber();
         __classPrivateFieldSet(this, _currentRandomNumber, randomNumber);
@@ -90,9 +90,9 @@ export class Slider {
     getStartKeyframes(animation) {
         let startKeyframes = [];
         if (__classPrivateFieldGet(this, _sliderImage)) {
-            let width = __classPrivateFieldGet(this, _sliderImage).clientWidth;
-            let height = __classPrivateFieldGet(this, _sliderImage).clientHeight;
-            let px = 'px';
+            const width = __classPrivateFieldGet(this, _sliderImage).clientWidth;
+            const height = __classPrivateFieldGet(this, _sliderImage).clientHeight;
+            const px = 'px';
             switch (animation) {
                 case SliderAnimation.SlideDown:
                     startKeyframes = [{ backgroundPositionY: 0 }, { backgroundPositionY: height + px }];
@@ -122,9 +122,9 @@ export class Slider {
     getEndKeyframes(animation) {
         let endKeyframes = [];
         if (__classPrivateFieldGet(this, _sliderImage)) {
-            let width = __classPrivateFieldGet(this, _sliderImage).clientWidth;
-            let height = __classPrivateFieldGet(this, _sliderImage).clientHeight;
-            let px = 'px';
+            const width = __classPrivateFieldGet(this, _sliderImage).clientWidth;
+            const height = __classPrivateFieldGet(this, _sliderImage).clientHeight;
+            const px = 'px';
             switch (animation) {
                 case SliderAnimation.SlideDown:
                     endKeyframes = [{ backgroundPositionY: height + px }, { backgroundPositionY: 0 }];

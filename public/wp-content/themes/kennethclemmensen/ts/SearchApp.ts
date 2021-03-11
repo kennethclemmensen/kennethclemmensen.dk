@@ -32,7 +32,7 @@ export class SearchApp {
                 }
             },
             created: function(): void {
-                let delay: number = 500;
+                const delay: number = 500;
                 this.debouncedSearch = _.debounce(this.search, delay);
             },
             methods: {
@@ -41,7 +41,7 @@ export class SearchApp {
                         this.results = [];
                         return;
                     }
-                    let xhr: XMLHttpRequest = new XMLHttpRequest();
+                    const xhr: XMLHttpRequest = new XMLHttpRequest();
                     xhr.open(HttpMethod.Get, Url.ApiPages + this.searchString, true);
                     xhr.addEventListener(EventType.Load, (): void => {
                         this.results = (xhr.status === HttpStatusCode.Ok) ? JSON.parse(xhr.responseText) : [];

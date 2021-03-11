@@ -31,7 +31,7 @@ export class FilesApp {
                         };
                     },
                     created: function(): void {
-                        let xhr: XMLHttpRequest = new XMLHttpRequest();
+                        const xhr: XMLHttpRequest = new XMLHttpRequest();
                         xhr.open(HttpMethod.Get, Url.ApiFiles + this.fileTypes, true);
                         xhr.addEventListener(EventType.Load, (): void => {
                             this.files = (xhr.status === HttpStatusCode.Ok) ? JSON.parse(xhr.responseText) : [];
@@ -49,7 +49,7 @@ export class FilesApp {
                             this.offset += parseInt(this.perPage);
                         },
                         updateFileDownloads: (file: File | IFile): void => {
-                            let xhr: XMLHttpRequest = new XMLHttpRequest();
+                            const xhr: XMLHttpRequest = new XMLHttpRequest();
                             xhr.open(HttpMethod.Put, Url.ApiFileDownloads + file.id, true);
                             xhr.addEventListener(EventType.Load, (): void => {
                                 if(xhr.status === HttpStatusCode.Ok) file.downloads++;

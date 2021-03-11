@@ -29,7 +29,7 @@ export class SearchApp {
                 }
             },
             created: function () {
-                let delay = 500;
+                const delay = 500;
                 this.debouncedSearch = _.debounce(this.search, delay);
             },
             methods: {
@@ -38,7 +38,7 @@ export class SearchApp {
                         this.results = [];
                         return;
                     }
-                    let xhr = new XMLHttpRequest();
+                    const xhr = new XMLHttpRequest();
                     xhr.open(HttpMethod.Get, Url.ApiPages + this.searchString, true);
                     xhr.addEventListener(EventType.Load, () => {
                         this.results = (xhr.status === HttpStatusCode.Ok) ? JSON.parse(xhr.responseText) : [];

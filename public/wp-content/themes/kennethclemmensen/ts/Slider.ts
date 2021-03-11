@@ -27,12 +27,12 @@ export class Slider {
      */
     public showSlides(delay: number, duration: number, animation: string): void {
         let randomNumber: number = this.getRandomNumber();
-        let name: string = 'data-slide-image';
+        const name: string = 'data-slide-image';
         let backgroundImageUrl: string | null | undefined = this.#slides[randomNumber]?.getAttribute(name);
         if(!backgroundImageUrl) return;
         this.setBackgroundImage(backgroundImageUrl);
-        let startKeyframes: Keyframe[] = this.getStartKeyframes(animation);
-        let endKeyframes: Keyframe[] = this.getEndKeyframes(animation);
+        const startKeyframes: Keyframe[] = this.getStartKeyframes(animation);
+        const endKeyframes: Keyframe[] = this.getEndKeyframes(animation);
         setInterval((): void => {
             if(this.#sliderImage) {
                 this.#sliderImage.animate(startKeyframes, {
@@ -53,7 +53,7 @@ export class Slider {
      * @returns a random number
      */
     private getRandomNumber(): number {
-        let randomNumber: number = Math.floor(Math.random() * this.#slides.length);
+        const randomNumber: number = Math.floor(Math.random() * this.#slides.length);
         if(this.#currentRandomNumber === randomNumber) return this.getRandomNumber();
         this.#currentRandomNumber = randomNumber;
         return this.#currentRandomNumber;
@@ -77,9 +77,9 @@ export class Slider {
     private getStartKeyframes(animation: string) : Keyframe[] {
         let startKeyframes: Keyframe[] = [];
         if(this.#sliderImage) {
-            let width: number = this.#sliderImage.clientWidth;
-            let height: number = this.#sliderImage.clientHeight;
-            let px: string = 'px';
+            const width: number = this.#sliderImage.clientWidth;
+            const height: number = this.#sliderImage.clientHeight;
+            const px: string = 'px';
             switch(animation) {
                 case SliderAnimation.SlideDown:
                     startKeyframes = [{ backgroundPositionY: 0 }, { backgroundPositionY: height + px }];
@@ -110,9 +110,9 @@ export class Slider {
     private getEndKeyframes(animation: string) : Keyframe[] {
         let endKeyframes: Keyframe[] = [];
         if(this.#sliderImage) {
-            let width: number = this.#sliderImage.clientWidth;
-            let height: number = this.#sliderImage.clientHeight;
-            let px: string = 'px';
+            const width: number = this.#sliderImage.clientWidth;
+            const height: number = this.#sliderImage.clientHeight;
+            const px: string = 'px';
             switch(animation) {
                 case SliderAnimation.SlideDown:
                     endKeyframes = [{ backgroundPositionY: height + px }, { backgroundPositionY: 0 }];

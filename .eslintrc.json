@@ -15,6 +15,7 @@
     "rules": {
         "no-undef": "off",
         "no-unused-vars": "off",
+        "prefer-const": "warn",
         "semi": ["error", "always"],
         "quotes": ["error", "single"]
     }

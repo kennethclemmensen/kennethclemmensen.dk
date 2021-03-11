@@ -33,13 +33,13 @@ class App {
      * Setup the slider
      */
     private setupSlider(): void {
-        let slider: HTMLElement | null = document.getElementById('slider');
-        let dataset: DOMStringMap | undefined = slider?.dataset;
-        let defaultDelay: number = 500;
-        let delay: number = (dataset?.delay) ? parseInt(dataset.delay) : defaultDelay;
-        let defaultDuration: number = 8000;
-        let duration: number = (dataset?.duration) ? parseInt(dataset.duration) : defaultDuration;
-        let animation: string = dataset?.animation ?? SliderAnimation.Fade;
+        const slider: HTMLElement | null = document.getElementById('slider');
+        const dataset: DOMStringMap | undefined = slider?.dataset;
+        const defaultDelay: number = 500;
+        const delay: number = (dataset?.delay) ? parseInt(dataset.delay) : defaultDelay;
+        const defaultDuration: number = 8000;
+        const duration: number = (dataset?.duration) ? parseInt(dataset.duration) : defaultDuration;
+        const animation: string = dataset?.animation ?? SliderAnimation.Fade;
         new Slider().showSlides(delay, duration, animation);
     }
 
@@ -47,9 +47,9 @@ class App {
      * Setup the event listeners for the mobile menu
      */
     private setupMobileMenu(): void {
-        let mobileMenuTrigger: HTMLElement | null = document.getElementById('mobile-menu-trigger');
-        let mobileMenu: HTMLElement | null = document.getElementById('mobile-menu');
-        let showMobileMenuClass: string = 'show-mobile-menu';
+        const mobileMenuTrigger: HTMLElement | null = document.getElementById('mobile-menu-trigger');
+        const mobileMenu: HTMLElement | null = document.getElementById('mobile-menu');
+        const showMobileMenuClass: string = 'show-mobile-menu';
         mobileMenuTrigger?.addEventListener(EventType.Click, (event: Event): void => {
             event.preventDefault();
             mobileMenuTrigger?.classList.toggle('header__nav-trigger--active');
@@ -57,12 +57,12 @@ class App {
             document.documentElement.classList.toggle(showMobileMenuClass);
             this.#body.classList.toggle(showMobileMenuClass);
         });
-        let mobileMenuArrows: NodeListOf<HTMLElement> = document.querySelectorAll('.mobile-menu__arrow');
+        const mobileMenuArrows: NodeListOf<HTMLElement> = document.querySelectorAll('.mobile-menu__arrow');
         mobileMenuArrows.forEach((arrow: HTMLElement): void => {
             arrow.addEventListener(EventType.Click, (event: Event): void => {
                 event.preventDefault();
                 arrow.classList.toggle('mobile-menu__arrow--rotated');
-                let subMenu: Element | undefined = arrow.parentNode?.parentElement?.getElementsByClassName('sub-menu')[0];
+                const subMenu: Element | undefined = arrow.parentNode?.parentElement?.getElementsByClassName('sub-menu')[0];
                 subMenu?.classList.toggle('show');
             });
         });
