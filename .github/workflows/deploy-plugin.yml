@@ -1,4 +1,4 @@
-name: deploy-kc-plugin
+name: deploy-plugin
 
 on:
   # Triggers the workflow on the push event but only for the master branch
