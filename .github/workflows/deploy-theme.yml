@@ -23,8 +23,8 @@ jobs:
     - name: Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:
-        server: linux75.unoeuro.com
-        username: kennethclemmense.dk
+        server: ${{ secrets.server }}
+        username: ${{ secrets.username }}
         password: ${{ secrets.password }}
         protocol: ftps
         port: 21
