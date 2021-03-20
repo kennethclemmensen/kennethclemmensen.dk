@@ -28,14 +28,14 @@ export class SliderComponent implements OnInit {
    * Show the slides
    */
   private showSlides(): void {
-    let delay: number = 500;
-    let duration: number = 8000;
+    const delay: number = 500;
+    const duration: number = 8000;
     let randomNumber: number = this.getRandomNumber();
     let backgroundImageUrl: string | null = this.slides[randomNumber];
     if (!backgroundImageUrl) return;
     this.setBackgroundImage(backgroundImageUrl);
-    let startKeyframes: Keyframe[] = [{ opacity: 1 }, { opacity: 0 }];
-    let endKeyframes: Keyframe[] = [{ opacity: 0 }, { opacity: 1 }];
+    const startKeyframes: Keyframe[] = [{ opacity: 1 }, { opacity: 0 }];
+    const endKeyframes: Keyframe[] = [{ opacity: 0 }, { opacity: 1 }];
     setInterval((): void => {
       if (this.sliderImage) {
         this.sliderImage.animate(startKeyframes, {
@@ -56,7 +56,7 @@ export class SliderComponent implements OnInit {
    * @returns a random number
    */
   private getRandomNumber(): number {
-    let randomNumber: number = Math.floor(Math.random() * this.slides.length);
+    const randomNumber: number = Math.floor(Math.random() * this.slides.length);
     if (this.currentRandomNumber === randomNumber) return this.getRandomNumber();
     this.currentRandomNumber = randomNumber;
     return this.currentRandomNumber;
