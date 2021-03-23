@@ -24,7 +24,6 @@
     "uploadsFolder": "public/wp-content/uploads/"
   },
   "devDependencies": {
-    "@babel/runtime": "^7.13.10",
     "@typescript-eslint/eslint-plugin": "^4.19.0",
     "@typescript-eslint/parser": "^4.19.0",
     "browser-sync": "^2.26.14",
@@ -53,7 +52,7 @@
     "webpack": "^5.27.2",
     "webpack-cli": "^4.5.0",
     "webpack-merge": "^5.7.3",
-    "webpack-merge-and-include-globally": "^2.3.4"
+    "webpack-merge-and-include-globally": "2.1.26"
   },
   "scripts": {
     "grunt": "grunt",
