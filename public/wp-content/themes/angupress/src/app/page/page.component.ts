@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Page } from '../types/Page';
 import { PageService } from './page.service';
 
 @Component({
@@ -17,7 +18,8 @@ export class PageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.title = this.pageService.getPageTitle();
-    this.content = this.pageService.getPageContent();
+    const page: Page = this.pageService.getPage();
+    this.title = page.title;
+    this.content = page.content;
   }
 }
