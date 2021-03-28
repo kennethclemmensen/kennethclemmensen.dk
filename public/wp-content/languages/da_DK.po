@@ -2088,9 +2088,9 @@ msgid "Sorry, you are not allowed to delete revisions of this post."
 msgstr "Beklager, du har ikke tilladelse til at slette revisioner af dette indlæg. "
 
 #. translators: %s: Custom field key.
-#: wp-includes/rest-api/fields/class-wp-rest-meta-fields.php:320
-#: wp-includes/rest-api/fields/class-wp-rest-meta-fields.php:334
-#: wp-includes/rest-api/fields/class-wp-rest-meta-fields.php:384
+#: wp-includes/rest-api/fields/class-wp-rest-meta-fields.php:324
+#: wp-includes/rest-api/fields/class-wp-rest-meta-fields.php:338
+#: wp-includes/rest-api/fields/class-wp-rest-meta-fields.php:388
 msgid "Could not update the meta value of %s in database."
 msgstr "Kunne ikke opdatere metaværdi for %s i database."
 
@@ -5425,8 +5425,8 @@ msgstr "Om dette websted"
 
 #. translators: %s: Custom field key.
 #: wp-includes/rest-api/fields/class-wp-rest-meta-fields.php:227
-#: wp-includes/rest-api/fields/class-wp-rest-meta-fields.php:269
-#: wp-includes/rest-api/fields/class-wp-rest-meta-fields.php:364
+#: wp-includes/rest-api/fields/class-wp-rest-meta-fields.php:273
+#: wp-includes/rest-api/fields/class-wp-rest-meta-fields.php:368
 msgid "Sorry, you are not allowed to edit the %s custom field."
 msgstr "Beklager, men du har ikke rettigheder til at rette det brugerdefinerede felt %s."
 
@@ -5750,11 +5750,11 @@ msgstr "%1$s er ikke af typen %2$s."
 msgid "%1$s is not one of %2$s."
 msgstr "%1$s er ikke en af %2$s."
 
-#: wp-includes/rest-api/fields/class-wp-rest-meta-fields.php:501
+#: wp-includes/rest-api/fields/class-wp-rest-meta-fields.php:505
 msgid "Meta fields."
 msgstr "Metafelter."
 
-#: wp-includes/rest-api/fields/class-wp-rest-meta-fields.php:238
+#: wp-includes/rest-api/fields/class-wp-rest-meta-fields.php:242
 msgid "Could not delete meta value from database."
 msgstr "Kunne ikke slette metaværdi fra database."
 
