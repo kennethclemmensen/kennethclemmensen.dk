@@ -13,15 +13,15 @@ modules:
     config:
         WPDb:
             dsn: '%TEST_SITE_DB_DSN%'
-            user: '%TEST_SITE_DB_USER%'
-            password: '%TEST_SITE_DB_PASSWORD%'
+            user: '%TEST_DB_USER%'
+            password: '%TEST_DB_PASSWORD%'
             dump: 'tests/_data/dump.sql'
             populate: true
             cleanup: true
             waitlock: 10
             url: '%TEST_SITE_WP_URL%'
             urlReplacement: true
-            tablePrefix: '%TEST_SITE_TABLE_PREFIX%'
+            tablePrefix: '%TEST_TABLE_PREFIX%'
             originalUrl: '%TEST_SITE_WP_URL%'
         WPBrowser:
             url: '%TEST_SITE_WP_URL%'
