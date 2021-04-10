@@ -67,7 +67,7 @@ msgstr "PHP er det programmeringssprog, der bruges til at opbygge og vedligehold
 msgid "Your website appears to use Basic Authentication, which is not currently compatible with Application Passwords."
 msgstr "Dit websted ser ud til at bruge basisbekræftelse, hvilket i øjeblikket ikke er foreneligt med med applikation adgangskoder."
 
-#: wp-admin/includes/class-wp-site-health.php:2255
+#: wp-admin/includes/class-wp-site-health.php:2225
 msgid "https://developer.wordpress.org/rest-api/frequently-asked-questions/#why-is-authentication-not-working"
 msgstr "https://developer.wordpress.org/rest-api/frequently-asked-questions/#why-is-authentication-not-working"
 
@@ -329,31 +329,31 @@ msgstr "- %1$s (fra version %2$s til %3$s)"
 msgid "Current Header Video"
 msgstr "Nuværende headervideo"
 
-#: wp-admin/includes/class-wp-site-health.php:2367
+#: wp-admin/includes/class-wp-site-health.php:2337
 msgid "Authorization header"
 msgstr "Godkendelse mislykkedes"
 
-#: wp-admin/includes/class-wp-site-health.php:2256
+#: wp-admin/includes/class-wp-site-health.php:2226
 msgid "Learn how to configure the Authorization header."
 msgstr "Lær hvordan du konfigurerer autorisations-headeren."
 
-#: wp-admin/includes/class-wp-site-health.php:2250
+#: wp-admin/includes/class-wp-site-health.php:2220
 msgid "Flush permalinks"
 msgstr "Flush permalinks"
 
-#: wp-admin/includes/class-wp-site-health.php:2235
+#: wp-admin/includes/class-wp-site-health.php:2205
 msgid "The authorization header is invalid."
 msgstr "Autorisation-headeren er ugyldig."
 
-#: wp-admin/includes/class-wp-site-health.php:2233
+#: wp-admin/includes/class-wp-site-health.php:2203
 msgid "The authorization header is missing."
 msgstr "Autorisation-headeren mangler."
 
-#: wp-admin/includes/class-wp-site-health.php:2226
+#: wp-admin/includes/class-wp-site-health.php:2196
 msgid "The Authorization header comes from the third-party applications you approve. Without it, those apps cannot connect to your site."
 msgstr "Autorisation-headeren kommer fra de tredjepartsprogrammer du godkender. Uden den kan disse apps ikke oprette forbindelse til dit websted."
 
-#: wp-admin/includes/class-wp-site-health.php:2218
+#: wp-admin/includes/class-wp-site-health.php:2188
 msgid "The Authorization header is working as expected."
 msgstr "Autorisation-header fungerer som forventet."
 
@@ -463,7 +463,7 @@ msgid "You can choose whether or not your site will be crawled by robots, ping s
 msgstr "Du kan vælge om robotter, ping-services og spiders skal gennemgå din side. Hvis du vil udelukke dem, skal du bare aktivere den anden mulighed her: Fortæl søgemaskinerne at de ikke skal indeksere dette websted. Derefter skal du vælge Gem ændringer nederst. Dette forhindrer dog ikke dit websted i at være synlig på internettet."
 
 #. translators: 1: post_max_size, 2: upload_max_filesize
-#: wp-admin/includes/class-wp-site-health.php:2175
+#: wp-admin/includes/class-wp-site-health.php:2145
 msgid "The \"%1$s\" value is smaller than \"%2$s\"."
 msgstr "\"%1$s\" værdien er mindre end \"%2$s\"."
 
@@ -495,39 +495,39 @@ msgstr "Denne opdatering virker ikke med dine versioner af WordPress og PHP."
 msgid "Disallowed Comment Keys"
 msgstr "Ikke-tilladte ord i kommentarer"
 
-#: wp-admin/includes/class-wp-site-health.php:2337
+#: wp-admin/includes/class-wp-site-health.php:2307
 msgid "Plugin and theme auto-updates"
 msgstr "Plugin og tema autoopdateringer"
 
-#: wp-admin/includes/class-wp-site-health.php:2635
+#: wp-admin/includes/class-wp-site-health.php:2605
 msgid "There appear to be no issues with plugin and theme auto-updates."
 msgstr "Der ser ikke ud til at være nogen problemer med autoopdateringer til plugins og temaer."
 
-#: wp-admin/includes/class-wp-site-health.php:2629
+#: wp-admin/includes/class-wp-site-health.php:2599
 msgid "Auto-updates for themes appear to be disabled. This will prevent your site from receiving new versions automatically when available."
 msgstr "Autoopdateringer til temaer ser ud til at være deaktiveret. Dette forhindrer dit websted i at modtage nye versioner automatisk, når de er tilgængelige."
 
-#: wp-admin/includes/class-wp-site-health.php:2624
+#: wp-admin/includes/class-wp-site-health.php:2594
 msgid "Auto-updates for plugins appear to be disabled. This will prevent your site from receiving new versions automatically when available."
 msgstr "Autoopdateringer til plugins ser ud til at være deaktiveret. Dette forhindrer dit websted i at modtage nye versioner automatisk, når de er tilgængelige."
 
-#: wp-admin/includes/class-wp-site-health.php:2619
+#: wp-admin/includes/class-wp-site-health.php:2589
 msgid "Auto-updates for plugins and themes appear to be disabled. This will prevent your site from receiving new versions automatically when available."
 msgstr "Autoopdateringer til plugins og temaer ser ud til at være deaktiveret. Dette forhindrer dit websted i at modtage nye versioner automatisk, når de er tilgængelige."
 
-#: wp-admin/includes/class-wp-site-health.php:2610
+#: wp-admin/includes/class-wp-site-health.php:2580
 msgid "Auto-updates for plugins and/or themes appear to be disabled, but settings are still set to be displayed. This could cause auto-updates to not work as expected."
 msgstr "Autoopdateringer til plugins og/eller temaer ser ud til at være deaktiverede, men indstillingerne er stadig indstillet til at blive vist. Dette kan medføre, at automatiske opdateringer ikke fungerer som forventet."
 
-#: wp-admin/includes/class-wp-site-health.php:1885
+#: wp-admin/includes/class-wp-site-health.php:1855
 msgid "Your site may have problems auto-updating plugins and themes"
 msgstr "Dit websted kan have problemer med automatisk opdatering af plugins og temaer"
 
-#: wp-admin/includes/class-wp-site-health.php:1874
+#: wp-admin/includes/class-wp-site-health.php:1844
 msgid "Plugin and theme auto-updates ensure that the latest versions are always installed."
 msgstr "Plugin og tema autoopdateringer sikrer, at de nyeste versioner altid er installeret."
 
-#: wp-admin/includes/class-wp-site-health.php:1866
+#: wp-admin/includes/class-wp-site-health.php:1836
 msgid "Plugin and theme auto-updates appear to be configured correctly"
 msgstr "Plugin og tema autoopdateringer ser ud til at være indstillet korrekt"
 
@@ -544,26 +544,26 @@ msgid "Sorry, you are not allowed to modify plugins."
 msgstr "Beklager, du har ikke tilladelse til at ændre plugins."
 
 #. translators: 1: post_max_size, 2: upload_max_filesize
-#: wp-admin/includes/class-wp-site-health.php:2196
+#: wp-admin/includes/class-wp-site-health.php:2166
 msgid "The setting for %1$s is smaller than %2$s, this could cause some problems when trying to upload files."
 msgstr "Indstillingen for %1$s er mindre end %2$s, dette kan medføre nogle problemer, når du prøver at uploade filer."
 
 #. translators: 1: file_uploads, 2: 0
-#: wp-admin/includes/class-wp-site-health.php:2161
+#: wp-admin/includes/class-wp-site-health.php:2131
 msgid "%1$s is set to %2$s. You won't be able to upload files on your site."
 msgstr "%1$s er indstillet til %2$s. Du kan ikke uploade filer til dit websted."
 
 #. translators: %s: ini_get()
-#: wp-admin/includes/class-wp-site-health.php:2149
+#: wp-admin/includes/class-wp-site-health.php:2119
 msgid "The %s function has been disabled, some media settings are unavailable because of this."
 msgstr "%s funktionen er blevet deaktiveret, nogle medieindstillinger er ikke tilgængelige på grund af dette."
 
 #. translators: 1: file_uploads, 2: php.ini
-#: wp-admin/includes/class-wp-site-health.php:2136
+#: wp-admin/includes/class-wp-site-health.php:2106
 msgid "The %1$s directive in %2$s determines if uploading files is allowed on your site."
 msgstr "%1$s direktivet i %2$s bestemmer om overførsel af filer til dit websted er tilladt."
 
-#: wp-admin/includes/class-wp-site-health.php:2126
+#: wp-admin/includes/class-wp-site-health.php:2096
 msgid "Files can be uploaded."
 msgstr "Filer kan uploades."
 
@@ -584,7 +584,7 @@ msgid "Max size of post data allowed"
 msgstr "Maks. tilladte størrelse af indlægsdata"
 
 #: wp-admin/includes/class-wp-debug-data.php:553
-#: wp-admin/includes/class-wp-site-health.php:2333
+#: wp-admin/includes/class-wp-site-health.php:2303
 msgid "File uploads"
 msgstr "Filoverførsel"
 
@@ -929,7 +929,7 @@ msgctxt "comment"
 msgid "Not spam"
 msgstr "Ikke spam"
 
-#: wp-admin/includes/class-wp-site-health.php:2305
+#: wp-admin/includes/class-wp-site-health.php:2275
 msgid "PHP Sessions"
 msgstr "PHP-sessioner"
 
@@ -1356,14 +1356,14 @@ msgstr "Ingen kommentarer fundet i papirkurven."
 msgid "File is empty. Please upload something more substantial. This error could also be caused by uploads being disabled in your %1$s file or by %2$s being defined as smaller than %3$s in %1$s."
 msgstr "Filen er tom. Upload venligst noget mere indholdsrigt. Fejlen kan også skyldes at uploads er slået fra i din %1$s-fil eller fordi %2$s bliver defineret som mindre end %3$s i %1$s."
 
-#: wp-admin/includes/class-wp-site-health.php:2811
+#: wp-admin/includes/class-wp-site-health.php:2781
 #: wp-admin/js/site-health.js:336
 msgid "A test is unavailable"
 msgstr "En test er ikke tilgængelig"
 
 #. translators: 1: The WordPress error message. 2: The WordPress error code.
-#: wp-admin/includes/class-wp-site-health.php:2075
-#: wp-admin/includes/class-wp-site-health.php:2686
+#: wp-admin/includes/class-wp-site-health.php:2045
+#: wp-admin/includes/class-wp-site-health.php:2656
 msgid "Error: %1$s (%2$s)"
 msgstr "Fejl: %1$s (%2$s)"
 
@@ -1450,7 +1450,7 @@ msgstr "Slet forespørgsler"
 msgid "Table prefix"
 msgstr "Tabelpræfiks"
 
-#: wp-admin/includes/class-wp-site-health.php:2301
+#: wp-admin/includes/class-wp-site-health.php:2271
 msgid "PHP Default Timezone"
 msgstr "PHP standard tidszone"
 
@@ -1758,11 +1758,11 @@ msgid "Password protected"
 msgstr "Adgangskodebeskyttet"
 
 #. translators: %s: The name of the late cron event.
-#: wp-admin/includes/class-wp-site-health.php:1774
+#: wp-admin/includes/class-wp-site-health.php:1744
 msgid "The scheduled event, %s, is late to run. Your site still works, but this may indicate that scheduling posts or automated updates may not work as intended."
 msgstr "Den planlagte begivenhed, %s, er forsinket. Dit websted fungerer stadig, men dette kan indikere, at planlægning af indlæg eller automatiske opdateringer muligvis ikke fungerer efter hensigten."
 
-#: wp-admin/includes/class-wp-site-health.php:1768
+#: wp-admin/includes/class-wp-site-health.php:1738
 msgid "A scheduled event is late"
 msgstr "En planlagt begivenhed er forsinket"
 
@@ -2202,12 +2202,12 @@ msgid "Sorry, you are not allowed to perform this action."
 msgstr "Du har desværre ikke rettigheder til at udføre denne handling."
 
 #. translators: 1: Name of the constant used. 2: List of allowed hostnames.
-#: wp-admin/includes/class-wp-site-health.php:2001
+#: wp-admin/includes/class-wp-site-health.php:1971
 msgid "HTTP requests have been blocked by the %1$s constant, with some allowed hosts: %2$s."
 msgstr "HTTP-anmodninger er blevet blokeret af konstanten %1$s, mens nogle udbydere er hvidlistede: %2$s."
 
 #. translators: %s: Name of the constant used.
-#: wp-admin/includes/class-wp-site-health.php:1986
+#: wp-admin/includes/class-wp-site-health.php:1956
 msgid "HTTP requests have been blocked by the %s constant, with no allowed hosts."
 msgstr "HTTP-anmodninger er blevet blokeret af %s konstanten, uden tilladte værter."
 
@@ -2234,11 +2234,11 @@ msgstr "WordPress' hostingteam opretholder en liste over de moduler, både anbef
 #: wp-admin/includes/class-wp-site-health.php:1105
 #: wp-admin/includes/class-wp-site-health.php:1155
 #: wp-admin/includes/class-wp-site-health.php:1246
-#: wp-admin/includes/class-wp-site-health.php:1726
-#: wp-admin/includes/class-wp-site-health.php:1912
-#: wp-admin/includes/class-wp-site-health.php:1955
-#: wp-admin/includes/class-wp-site-health.php:2026
-#: wp-admin/includes/class-wp-site-health.php:2129
+#: wp-admin/includes/class-wp-site-health.php:1696
+#: wp-admin/includes/class-wp-site-health.php:1882
+#: wp-admin/includes/class-wp-site-health.php:1925
+#: wp-admin/includes/class-wp-site-health.php:1996
+#: wp-admin/includes/class-wp-site-health.php:2099
 msgid "Performance"
 msgstr "Ydeevne"
 
@@ -2290,10 +2290,10 @@ msgstr[1] "Dit websted har %d inaktive plugins."
 #: wp-admin/includes/class-wp-site-health.php:1361
 #: wp-admin/includes/class-wp-site-health.php:1430
 #: wp-admin/includes/class-wp-site-health.php:1511
-#: wp-admin/includes/class-wp-site-health.php:1680
-#: wp-admin/includes/class-wp-site-health.php:1799
-#: wp-admin/includes/class-wp-site-health.php:1869
-#: wp-admin/includes/class-wp-site-health.php:2221
+#: wp-admin/includes/class-wp-site-health.php:1650
+#: wp-admin/includes/class-wp-site-health.php:1769
+#: wp-admin/includes/class-wp-site-health.php:1839
+#: wp-admin/includes/class-wp-site-health.php:2191
 msgid "Security"
 msgstr "Sikkerhed"
 
@@ -2396,200 +2396,200 @@ msgstr "Godt arbejde!"
 msgid "Secondary menu"
 msgstr "Sekundær menu"
 
-#: wp-admin/includes/class-wp-site-health.php:2707
+#: wp-admin/includes/class-wp-site-health.php:2677
 msgid "The loopback request to your site completed successfully."
 msgstr "Tilbagekaldsanmodningen til dit websted blev gennemført uden problemer."
 
 #. translators: %d: The HTTP response code returned.
-#: wp-admin/includes/class-wp-site-health.php:2699
+#: wp-admin/includes/class-wp-site-health.php:2669
 msgid "The loopback request returned an unexpected http status code, %d, it was not possible to determine if this will prevent features from working as expected."
 msgstr "Tilbagekaldsanmodningen tilbagesendte en uventet http statuskode, %d, det var ikke muligt at afgøre, om dette vil forhindre, at funktioner fungerer som forventet."
 
-#: wp-admin/includes/class-wp-site-health.php:2683
+#: wp-admin/includes/class-wp-site-health.php:2653
 msgid "The loopback request to your site failed, this means features relying on them are not currently working as expected."
 msgstr "Tilbagekaldsanmodningen til dit websted mislykkedes, det betyder, at funktioner, der er afhængige af dem, ikke fungerer som forventet."
 
-#: wp-admin/includes/class-wp-site-health.php:2475
+#: wp-admin/includes/class-wp-site-health.php:2445
 msgid "No scheduled events exist on this site."
 msgstr "Der findes ingen planlagte begivenheder på dette websted."
 
-#: wp-admin/includes/class-wp-site-health.php:2379
+#: wp-admin/includes/class-wp-site-health.php:2349
 msgid "REST API availability"
 msgstr "REST API-tilgængelighed"
 
-#: wp-admin/includes/class-wp-site-health.php:2355
+#: wp-admin/includes/class-wp-site-health.php:2325
 msgid "Loopback request"
 msgstr "Loopback-anmodning"
 
-#: wp-admin/includes/class-wp-site-health.php:2329
+#: wp-admin/includes/class-wp-site-health.php:2299
 msgid "Debugging enabled"
 msgstr "Fejlsøgning aktiveret"
 
-#: wp-admin/includes/class-wp-site-health.php:2325
+#: wp-admin/includes/class-wp-site-health.php:2295
 msgid "HTTP Requests"
 msgstr "HTTP-forespørgsler"
 
-#: wp-admin/includes/class-wp-site-health.php:2321
+#: wp-admin/includes/class-wp-site-health.php:2291
 msgid "Scheduled events"
 msgstr "Planlagte begivenheder"
 
-#: wp-admin/includes/class-wp-site-health.php:2317
+#: wp-admin/includes/class-wp-site-health.php:2287
 msgid "Secure communication"
 msgstr "Sikker kommunikation"
 
-#: wp-admin/includes/class-wp-site-health.php:2361
+#: wp-admin/includes/class-wp-site-health.php:2331
 msgid "HTTPS status"
 msgstr "HTTPS-status"
 
-#: wp-admin/includes/class-wp-site-health.php:2313
+#: wp-admin/includes/class-wp-site-health.php:2283
 msgid "MySQL utf8mb4 support"
 msgstr "MySQL utf8mb4 understøttelse"
 
-#: wp-admin/includes/class-wp-site-health.php:2297
+#: wp-admin/includes/class-wp-site-health.php:2267
 msgid "PHP Extensions"
 msgstr "PHP-udvidelser"
 
-#: wp-admin/includes/class-wp-site-health.php:2309
+#: wp-admin/includes/class-wp-site-health.php:2279
 msgid "Database Server version"
 msgstr "Database serverversion"
 
-#: wp-admin/includes/class-wp-site-health.php:2293
+#: wp-admin/includes/class-wp-site-health.php:2263
 msgid "PHP Version"
 msgstr "PHP-version"
 
-#: wp-admin/includes/class-wp-site-health.php:2289
+#: wp-admin/includes/class-wp-site-health.php:2259
 msgid "Theme Versions"
 msgstr "Tema-versioner"
 
-#: wp-admin/includes/class-wp-site-health.php:2285
+#: wp-admin/includes/class-wp-site-health.php:2255
 msgid "Plugin Versions"
 msgstr "Plugin-versioner"
 
-#: wp-admin/includes/class-wp-site-health.php:2281
+#: wp-admin/includes/class-wp-site-health.php:2251
 msgid "WordPress Version"
 msgstr "WordPress-version"
 
 #. translators: %s: The name of the query parameter being tested.
-#: wp-admin/includes/class-wp-site-health.php:2107
+#: wp-admin/includes/class-wp-site-health.php:2077
 msgid "The REST API did not process the %s query parameter correctly."
 msgstr "REST API'et udførte ikke %s-parametret til forespørgslen korrekt."
 
-#: wp-admin/includes/class-wp-site-health.php:2101
+#: wp-admin/includes/class-wp-site-health.php:2071
 msgid "The REST API did not behave correctly"
 msgstr "REST API'et opførte sig ikke som forventet"
 
 #. translators: 1: The HTTP error code. 2: The HTTP error message.
-#: wp-admin/includes/class-wp-site-health.php:2090
+#: wp-admin/includes/class-wp-site-health.php:2060
 msgid "The REST API call gave the following unexpected result: (%1$d) %2$s."
 msgstr "REST API-forespørgslen gav følgende uventede resultat: (%1$d) %2$s."
 
-#: wp-admin/includes/class-wp-site-health.php:2084
+#: wp-admin/includes/class-wp-site-health.php:2054
 msgid "The REST API encountered an unexpected result"
 msgstr "REST API'et stødte på et uventet resultat"
 
-#: wp-admin/includes/class-wp-site-health.php:2072
+#: wp-admin/includes/class-wp-site-health.php:2042
 msgid "The REST API request failed due to an error."
 msgstr "REST API-forespørgslen mislykkedes pga. en fejl."
 
-#: wp-admin/includes/class-wp-site-health.php:2066
+#: wp-admin/includes/class-wp-site-health.php:2036
 msgid "The REST API encountered an error"
 msgstr "REST API'et stødte på en fejl"
 
-#: wp-admin/includes/class-wp-site-health.php:2031
+#: wp-admin/includes/class-wp-site-health.php:2001
 msgid "The REST API is one way WordPress, and other applications, communicate with the server. One example is the block editor screen, which relies on this to display, and save, your posts and pages."
 msgstr "REST API'et er en måde hvorpå WordPress og andre applikationer kommunikerer med serveren. Et eksempel er blokeditor skærmbilledet, som er afhængig af API'et for at kunne vise og gemme dine indlæg og sider."
 
-#: wp-admin/includes/class-wp-site-health.php:2023
+#: wp-admin/includes/class-wp-site-health.php:1993
 msgid "The REST API is available"
 msgstr "REST API'et er tilgængeligt"
 
-#: wp-admin/includes/class-wp-site-health.php:1995
+#: wp-admin/includes/class-wp-site-health.php:1965
 msgid "HTTP requests are partially blocked"
 msgstr "HTTP-forespørgsler er delvist blokeret"
 
-#: wp-admin/includes/class-wp-site-health.php:1980
+#: wp-admin/includes/class-wp-site-health.php:1950
 msgid "HTTP requests are blocked"
 msgstr "HTTP-forespørgsler er blokeret"
 
-#: wp-admin/includes/class-wp-site-health.php:1960
+#: wp-admin/includes/class-wp-site-health.php:1930
 msgid "It is possible for site maintainers to block all, or some, communication to other sites and services. If set up incorrectly, this may prevent plugins and themes from working as intended."
 msgstr "Der er muligt for dem, der vedligeholder webstedet, at blokere al eller noget kommunikation til andre websteder og services. Hvis dette ikke er opsat korrekt, kan det forhindre plugins og temaer i at virke efter hensigten."
 
-#: wp-admin/includes/class-wp-site-health.php:1952
+#: wp-admin/includes/class-wp-site-health.php:1922
 msgid "HTTP requests seem to be working as expected"
 msgstr "HTTP-forespørgsler ser ud til at virke som forventet"
 
-#: wp-admin/includes/class-wp-site-health.php:1928
+#: wp-admin/includes/class-wp-site-health.php:1898
 msgid "Your site could not complete a loopback request"
 msgstr "Dit websted kunne ikke færdiggøre en loopback-anmodning"
 
-#: wp-admin/includes/class-wp-site-health.php:1917
+#: wp-admin/includes/class-wp-site-health.php:1887
 msgid "Loopback requests are used to run scheduled events, and are also used by the built-in editors for themes and plugins to verify code stability."
 msgstr "Loopback-anmodninger bliver brugt til at køre planlagte handlinger og bliver også brugt  til at verificere kodestabilitet af de indbyggede editors til temaer og plugins."
 
-#: wp-admin/includes/class-wp-site-health.php:1909
+#: wp-admin/includes/class-wp-site-health.php:1879
 msgid "Your site can perform loopback requests"
 msgstr "Dit websted kan lave loopback-anmodninger"
 
-#: wp-admin/includes/class-wp-site-health.php:1833
+#: wp-admin/includes/class-wp-site-health.php:1803
 msgid "Background updates may not be working properly"
 msgstr "Baggrundsopdateringer virker muligvis ikke korrekt"
 
-#: wp-admin/includes/class-wp-site-health.php:1825
+#: wp-admin/includes/class-wp-site-health.php:1795
 msgid "Background updates are not working as expected"
 msgstr "Opdateringer, der kører i baggrunden, virker ikke som forventet"
 
-#: wp-admin/includes/class-wp-site-health.php:1822
+#: wp-admin/includes/class-wp-site-health.php:1792
 msgid "Passed"
 msgstr "Bestået"
 
-#: wp-admin/includes/class-wp-site-health.php:1804
+#: wp-admin/includes/class-wp-site-health.php:1774
 msgid "Background updates ensure that WordPress can auto-update if a security update is released for the version you are currently using."
 msgstr "Baggrundsopdateringer sikrer, at WordPress kan opdateres automatisk, hvis der bliver udgivet en sikkerhedsopdatering til den version, du benytter."
 
-#: wp-admin/includes/class-wp-site-health.php:1796
+#: wp-admin/includes/class-wp-site-health.php:1766
 msgid "Background updates are working"
 msgstr "Backgrundsopdateringer er igang"
 
 #. translators: %s: The name of the failed cron event.
-#: wp-admin/includes/class-wp-site-health.php:1761
+#: wp-admin/includes/class-wp-site-health.php:1731
 msgid "The scheduled event, %s, failed to run. Your site still works, but this may indicate that scheduling posts or automated updates may not work as intended."
 msgstr "Den planlagte begivenhed,%s, kunne ikke køres. Dit websted virker stadig, men det kan tyde på, at planlagte indlæg eller automatiske opdateringer muligvis ikke fungerer som forventet."
 
-#: wp-admin/includes/class-wp-site-health.php:1755
+#: wp-admin/includes/class-wp-site-health.php:1725
 msgid "A scheduled event has failed"
 msgstr "En planlagt begivenhed mislykkedes"
 
 #. translators: %s: The error message returned while from the cron scheduler.
-#: wp-admin/includes/class-wp-site-health.php:1748
+#: wp-admin/includes/class-wp-site-health.php:1718
 msgid "While trying to test your site&#8217;s scheduled events, the following error was returned: %s"
 msgstr "Under testen af dit websteds planlagte begivenheder, blev følgende fejl sendt tilbage: %s"
 
-#: wp-admin/includes/class-wp-site-health.php:1742
+#: wp-admin/includes/class-wp-site-health.php:1712
 msgid "It was not possible to check your scheduled events"
 msgstr "Det var ikke muligt at kontrollere dine planlagte begivenheder"
 
-#: wp-admin/includes/class-wp-site-health.php:1731
+#: wp-admin/includes/class-wp-site-health.php:1701
 msgid "Scheduled events are what periodically looks for updates to plugins, themes and WordPress itself. It is also what makes sure scheduled posts are published on time. It may also be used by various plugins to make sure that planned actions are executed."
 msgstr "Planlagte begivenheder vil regelmæssigt søge efter opdateringer til plugins, temaer og WordPress selv. Det er også det, der sikrer, at planlagte indlæg offentliggøres til tiden. Det kan også bruges af forskellige plugins for at sikre at planlagte handlinger udføres."
 
-#: wp-admin/includes/class-wp-site-health.php:1723
+#: wp-admin/includes/class-wp-site-health.php:1693
 msgid "Scheduled events are running"
 msgstr "Planlagte begivenheder kører"
 
-#: wp-admin/includes/class-wp-site-health.php:1704
+#: wp-admin/includes/class-wp-site-health.php:1674
 msgid "Talk to your web host about OpenSSL support for PHP."
 msgstr "Tal med din webudbyder om OpenSSL-understøttelse til PHP."
 
-#: wp-admin/includes/class-wp-site-health.php:1700
+#: wp-admin/includes/class-wp-site-health.php:1670
 msgid "Your site is unable to communicate securely with other services"
 msgstr "Dit websted kan ikke kommunikere sikkert med andre tjenester"
 
-#: wp-admin/includes/class-wp-site-health.php:1696
+#: wp-admin/includes/class-wp-site-health.php:1666
 msgid "Your site can communicate securely with other services"
 msgstr "Dit websted kan kommunikere sikkert med andre services"
 
-#: wp-admin/includes/class-wp-site-health.php:1685
+#: wp-admin/includes/class-wp-site-health.php:1655
 msgid "Securely communicating between servers are needed for transactions such as fetching files, conducting sales on store sites, and much more."
 msgstr "Sikker kommunikation imellem servere er nødvendig for handlinger som hentning af filer, gennemførelse af salg fra websteder og meget mere."
 
@@ -2705,7 +2705,7 @@ msgstr "Det nødvendige modul %s, er ikke installeret, eller er ikke blevet akti
 
 #: wp-admin/includes/class-wp-site-health.php:1001
 #: wp-admin/includes/class-wp-site-health.php:1389
-#: wp-admin/includes/class-wp-site-health.php:1829
+#: wp-admin/includes/class-wp-site-health.php:1799
 msgid "Error"
 msgstr "Fejl"
 
@@ -3159,7 +3159,7 @@ msgstr "Kan forbinde til WordPress.org"
 
 #: wp-admin/includes/class-wp-debug-data.php:421
 #: wp-admin/includes/class-wp-debug-data.php:427
-#: wp-admin/includes/class-wp-site-health.php:2343
+#: wp-admin/includes/class-wp-site-health.php:2313
 msgid "Communication with WordPress.org"
 msgstr "Kommunikation med WordPress.org"
 
@@ -6208,7 +6208,7 @@ msgid "The %1$s plugin header is deprecated. Use %2$s instead."
 msgstr "%1$s plugin-headeren er afviklet. Brug %2$s i stedet."
 
 #: wp-admin/includes/class-wp-site-health.php:1009
-#: wp-admin/includes/class-wp-site-health.php:1837
+#: wp-admin/includes/class-wp-site-health.php:1807
 msgid "Warning"
 msgstr "Advarsel"
 
@@ -7838,7 +7838,7 @@ msgstr "Opdaterer oversættelser for %1$s (%2$s)&#8230;"
 msgid "Update Translations"
 msgstr "Opdater oversættelser"
 
-#: wp-admin/includes/class-wp-site-health.php:2349
+#: wp-admin/includes/class-wp-site-health.php:2319
 msgid "Background updates"
 msgstr "Baggrundsopdateringer"
 
