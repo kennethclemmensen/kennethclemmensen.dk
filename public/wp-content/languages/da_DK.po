@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.7.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-04-09 15:15:53+0000\n"
+"PO-Revision-Date: 2021-04-10 09:14:23+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -97,6 +97,19 @@ msgstr ","
 #: wp-includes/js/dist/edit-post.js:4103 wp-admin/includes/upgrade.php:158
 msgid "Uncategorized"
 msgstr "Ikke-kategoriseret"
+
+#: wp-includes/https-detection.php:139
+msgid "SSL verification failed."
+msgstr "SSL verificering mislykkedes."
+
+#: wp-includes/https-detection.php:134
+msgid "HTTPS request failed."
+msgstr "HTTPS forespørgsel mislykkedes."
+
+#. translators: 1: $l10n, 2: wp_add_inline_script()
+#: wp-includes/class.wp-scripts.php:492
+msgid "The %1$s parameter must be an array. To pass arbitrary data to scripts, use the %2$s function instead."
+msgstr "Parameteren %1$s skal være en array. For at sende vilkårlige data til scripts, brug i stedet %2$s funktionen."
 
 #. translators: 1: Parameter, 2: Valid values.
 #: wp-includes/rest-api.php:1967
@@ -298,10 +311,20 @@ msgid_plural "%1$s must contain at least %2$s properties."
 msgstr[0] "%1$s skal mindst indeholde %2$s egenskab."
 msgstr[1] "%1$s skal mindst indeholde %2$s egenskaber."
 
+#. translators: %s: Parameter.
+#: wp-includes/rest-api.php:1893
+msgid "%s matches more than one of the expected formats."
+msgstr "%s passer til mere end et af de forventede formater."
+
 #. translators: 1: Parameter, 2: Schema titles.
 #: wp-includes/rest-api.php:1885
 msgid "%1$s matches %2$l, but should match only one."
 msgstr "%1$s passer til %2$l, men bør kun passe til et."
+
+#. translators: %s: Parameter.
+#: wp-includes/rest-api.php:1789
+msgid "%s does not match any of the expected formats."
+msgstr "%s passer ikke til nogen af de forventede formater."
 
 #. translators: 1: Parameter, 2: Schema titles.
 #: wp-includes/rest-api.php:1785
@@ -749,6 +772,11 @@ msgstr "Håndter indlejring"
 msgid "Read the <a href=\"%s\" target=\"_blank\">Debugging a WordPress Network</a> article. Some of the suggestions there may help you figure out what went wrong."
 msgstr "Læs <a href=\"%s\" target=\"_blank\">Debug et WordPress Netværk</a> artiklen. Nogle af forslagene der kunne hjælpe dig med at regne det ud."
 
+#. translators: %s: Block pattern name.
+#: wp-includes/class-wp-block-pattern-categories-registry.php:64
+msgid "Block pattern category \"%s\" not found."
+msgstr "Blokmønster kategori \"%s\" blev ikke fundet."
+
 #: wp-includes/class-wp-block-pattern-categories-registry.php:41
 msgid "Block pattern category name must be a string."
 msgstr "Blok mønsterkategoriens navn skal være en tekststreng."
@@ -878,6 +906,11 @@ msgstr "<strong>Fejl</strong>: Der opstod et problem under oprettelsen af webste
 msgid "<strong>Error</strong>: Site URL you&#8217;ve entered is already taken."
 msgstr "<strong>Fejl</strong>: Den URL, du har skrevet, er allerede i brug."
 
+#. translators: %s: Pattern name.
+#: wp-includes/class-wp-block-patterns-registry.php:77
+msgid "Pattern \"%s\" not found."
+msgstr "Mønstret \"%s\" blev ikke fundet."
+
 #: wp-includes/class-wp-block-patterns-registry.php:54
 msgid "Pattern content must be a string."
 msgstr "Indholdet skal være en tekststreng."
@@ -943,6 +976,11 @@ msgstr[1] " %1$s skal mindst være %2$s tegn."
 #: wp-includes/rest-api.php:2238 wp-includes/rest-api.php:2248
 msgid "%1$s is a required property of %2$s."
 msgstr "%1$s er en påkrævet egenskab af %2$s."
+
+#. translators: %s: Parameter.
+#: wp-includes/rest-api.php:2390 wp-includes/rest-api.php:2692
+msgid "%s has duplicate items."
+msgstr "%s har dublerede elementer."
 
 #. translators: 1: Parameter, 2: Number.
 #: wp-includes/rest-api.php:2377
@@ -2504,6 +2542,10 @@ msgstr "Administrator"
 #: wp-includes/customize/class-wp-customize-media-control.php:246
 msgid "Select site icon"
 msgstr "Vælg ikon for webstedet"
+
+#: wp-includes/user.php:3994
+msgid "An incomplete personal data request for this email address already exists."
+msgstr "En ufuldstændig anmodning for denne e-mailadresse eksisterer allerede."
 
 #: wp-includes/class-wp-customize-widgets.php:778
 msgid "Keep widget settings and move it to the inactive widgets"
@@ -5902,6 +5944,11 @@ msgstr "Status er forbudt."
 #: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2778
 msgid "Limit result set to items that are sticky."
 msgstr "Begræns svaret til elementer, der er fastgjorte."
+
+#. translators: %s: Taxonomy name.
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2983
+msgid "Limit result set to items except those with specific terms assigned in the %s taxonomy."
+msgstr "Begræns svar til alle elementer, der har en specifik term tildelt i %s klassiferingen."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2745
 msgid "Limit result set to all items except those of a particular parent ID."
