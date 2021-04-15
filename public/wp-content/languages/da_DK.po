@@ -701,7 +701,7 @@ msgid "This theme doesn&#8217;t work with your versions of WordPress and PHP."
 msgstr "Dette tema virker ikke med dine versioner af WordPress og PHP."
 
 #. translators: %s: register_rest_field
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2479
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2526
 msgid "Please use %s to add new schema properties."
 msgstr "Brug venligst %s til at tilføje nye schema-egenskaber."
 
@@ -1774,13 +1774,13 @@ msgstr "Som svar til: %s"
 msgid "HTTP redirect status code must be a redirection code, 3xx."
 msgstr "HTTP redirect statuskode skal være en redirection kode, 3xx."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2933
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2980
 msgid "Limit result set based on relationship between multiple taxonomies."
 msgstr "Begræns resultatet ud fra relationen mellem flere taksonomier."
 
 #. translators: 1: The taxonomy name, 2: The property name, either 'rest_base'
 #. or 'name', 3: The conflicting value.
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2431
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2478
 msgid "The \"%1$s\" taxonomy \"%2$s\" property (%3$s) conflicts with an existing property on the REST API Posts Controller. Specify a custom \"rest_base\" when registering the taxonomy to avoid this error."
 msgstr "\"%1$s\" taksonomiens \"%2$s\" egenskab (%3$s) kommer i konflikt med en eksisterende egenskab i REST API indlægskontrol. Specificer en \"rest_base\" når taksonomien registreres for at undgå denne fejl."
 
@@ -3017,19 +3017,19 @@ msgstr "Intern søgehåndteringsfejl."
 msgid "REST search handlers must extend the %s class."
 msgstr "REST-baserede søgehåndteringer skal udvide %s klassen."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2523
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2570
 msgid "The current user can post unfiltered HTML markup and JavaScript."
 msgstr "Den nuværende bruger kan udgive ufiltreret HTML og JavaScript."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2299
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2346
 msgid "Version of the content block format used by the object."
 msgstr "Versionen af indholdsblok formatet brugt af objektet."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2184
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2231
 msgid "Slug automatically generated from the object title."
 msgstr "Korttitel automatisk genereret ud fra objektets titel."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2177
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2224
 msgid "Permalink template for the object."
 msgstr "Permalink skabelon for objektet."
 
@@ -3142,24 +3142,24 @@ msgid "[%1$s] Action Confirmed: %2$s"
 msgstr "[%1$s] Handling bekræftet: %2$s"
 
 #. translators: %s: Taxonomy name.
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2577
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2624
 msgid "The current user can create terms in the %s taxonomy."
 msgstr "Denne bruger kan oprette termer i %s-klassificeringen."
 
 #. translators: %s: Taxonomy name.
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2575
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2622
 msgid "The current user can assign terms in the %s taxonomy."
 msgstr "Denne bruger kan tildele termer i %s-klassificeringen."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2556
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2603
 msgid "The current user can change the author on this post."
 msgstr "Denne bruger kan ændre forfatteren på dette indlæg."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2540
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2587
 msgid "The current user can sticky this post."
 msgstr "Denne bruger kan fastgøre dette indlæg."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2507
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2554
 msgid "The current user can publish this post."
 msgstr "Denne bruger kan udgive dette indlæg."
 
@@ -4877,13 +4877,13 @@ msgid "Limit result set to terms with one or more specific slugs."
 msgstr "Begræns svar til en eller flere specifikke korttitler."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:312
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:353
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:393
 #: wp-includes/rest-api/endpoints/class-wp-rest-search-controller.php:160
 msgid "The page number requested is larger than the number of pages available."
 msgstr "Det forespurgte sidenummer er større end antallet af tilgængelige sider."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:237
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:174
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:214
 msgid "You need to define an include parameter to order by include."
 msgstr "Du skal definere et inkluderingsparameter for at sortere efter inkludering."
 
@@ -5484,14 +5484,14 @@ msgstr "Om dette websted"
 msgid "Sorry, you are not allowed to edit the %s custom field."
 msgstr "Beklager, men du har ikke rettigheder til at rette det brugerdefinerede felt %s."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:560
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:733
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:606
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:779
 msgid "Sorry, you are not allowed to assign the provided terms."
 msgstr "Beklager, men du har ikke rettigheder til at tilknytte de tildelte termer."
 
 #: wp-includes/class-wp-xmlrpc-server.php:1344
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:544
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:725
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:590
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:771
 msgid "Sorry, you are not allowed to make posts sticky."
 msgstr "Beklager, men du har ikke rettigheder til at gøre indlægget fastgjort."
 
@@ -5701,7 +5701,7 @@ msgid "Revisions do not support trashing. Set '%s' to delete."
 msgstr "Versioner understøtter ikke papirkurven. Sæt '%s' for at slette."
 
 #. translators: %s: force=true
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:929
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:975
 msgid "The post does not support trashing. Set '%s' to delete."
 msgstr "Dette indlæg understøtter ikke papirkurven. Sæt '%s' for at slette."
 
@@ -5718,7 +5718,7 @@ msgstr "Eller indtast en YouTube-URL:"
 msgid "Invalid JSON body passed."
 msgstr "Ugyldig JSON body sendt."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2765
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2812
 msgid "Limit result set to posts assigned one or more statuses."
 msgstr "Begræns svaret til indlæg tildelt en eller flere statusser."
 
@@ -5731,7 +5731,7 @@ msgstr "Kommentarfeltet overskrider den tilladte længde."
 msgid "Taxonomies associated with post type."
 msgstr "Klassificeringer forbundet med denne indholdstype."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2755
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2802
 msgid "Limit result set to posts with one or more specific slugs."
 msgstr "Begræns svaret til indlæg med en eller flere korttitler."
 
@@ -5804,7 +5804,7 @@ msgid "%1$s is not of type %2$s."
 msgstr "%1$s er ikke af typen %2$s."
 
 #. translators: 1: Parameter, 2: List of valid values.
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1401
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1447
 msgid "%1$s is not one of %2$s."
 msgstr "%1$s er ikke en af %2$s."
 
@@ -5936,194 +5936,194 @@ msgstr "%s egenskaben har en ugyldig gemt værdi og kan ikke opdateres til null.
 msgid "Invalid revision ID."
 msgstr "Ugyldig versions-ID."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2834
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2881
 #: wp-includes/class-wp-customize-nav-menus.php:952
 msgid "Status is forbidden."
 msgstr "Status er forbudt."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2778
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2825
 msgid "Limit result set to items that are sticky."
 msgstr "Begræns svaret til elementer, der er fastgjorte."
 
 #. translators: %s: Taxonomy name.
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2983
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:3030
 msgid "Limit result set to items except those with specific terms assigned in the %s taxonomy."
 msgstr "Begræns svar til alle elementer, der har en specifik term tildelt i %s klassiferingen."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2745
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2792
 msgid "Limit result set to all items except those of a particular parent ID."
 msgstr "Begræns svaret til alle elementer, bortset fra dem med en specifik overordnet ID."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2737
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2784
 msgid "Limit result set to items with particular parent IDs."
 msgstr "Begræns svar til elementer med en bestemt overordnet ID."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1599
 #: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:785
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2700
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2747
 #: wp-includes/rest-api/endpoints/class-wp-rest-users-controller.php:1510
 #: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:1030
 msgid "Offset the result set by a specific number of items."
 msgstr "Forskyd svaret med en specifikt antal elementer."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2694
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2741
 msgid "Limit result set to posts with a specific menu_order value."
 msgstr "Begræns svaret til indlæg med en specifik menu_order-værdi."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2653
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2700
 msgid "Ensure result set excludes posts assigned to specific authors."
 msgstr "Sørg for, at resultatsættet udelukker indlæg fra specifikke forfattere."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2645
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2692
 msgid "Limit result set to posts assigned to specific authors."
 msgstr "Begræns resultatsættet til indlæg fra specifikke forfattere."
 
 #. translators: %s: Taxonomy name.
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2442
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2489
 msgid "The terms assigned to the object in the %s taxonomy."
 msgstr "Termerne knyttet til objektet i %s-klassificering."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2412
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2459
 msgid "The theme file to use to display the object."
 msgstr "Temafilen, som skal bruges for at vise objektet."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2167
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2214
 msgid "A password to protect access to the content and excerpt."
 msgstr "En adgangskode til at beskytte adgangen til indhold og uddrag."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2405
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2452
 msgid "Whether or not the object should be treated as sticky."
 msgstr "Om objektet skal behandles som fastgjort eller ej."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2389
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2436
 msgid "The format for the object."
 msgstr "Formatet for objektet."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2378
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2425
 msgid "The order of the object in relation to other object of its type."
 msgstr "Objektets rækkefølge i forhold til andre objekter af samme type."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2369
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2416
 msgid "Whether or not the object can be pinged."
 msgstr "Om objektet kan pinges eller ej."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2363
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2410
 msgid "Whether or not comments are open on the object."
 msgstr "Om objektet er åbent for kommentarer eller ej."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2355
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2402
 msgid "The ID of the featured media for the object."
 msgstr "ID'et for objektets udvalgte medie."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2344
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2391
 msgid "Whether the excerpt is protected with a password."
 msgstr "Om uddraget er beskyttet med en adgangskode."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2338
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2385
 msgid "HTML excerpt for the object, transformed for display."
 msgstr "HTML-uddrag for objektet, transformeret for visning."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2333
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2380
 msgid "Excerpt for the object, as it exists in the database."
 msgstr "Uddrag for objektet, som det eksisterer i databasen."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2324
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2371
 msgid "The excerpt for the object."
 msgstr "Uddrag for objektet."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:678
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2316
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2363
 msgid "The ID for the author of the object."
 msgstr "ID'et for objektets forfatter."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2305
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2352
 msgid "Whether the content is protected with a password."
 msgstr "Om indholdet er beskyttet af en adgangskode."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2268
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2315
 msgid "HTML title for the object, transformed for display."
 msgstr "HTML-titel for objektet, transformeret for visning."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2263
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2310
 msgid "Title for the object, as it exists in the database."
 msgstr "Titel for objektet, som det eksisterer i databasen."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2254
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2301
 #: wp-includes/rest-api/endpoints/class-wp-rest-search-controller.php:254
 msgid "The title for the object."
 msgstr "Objektets titel."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2161
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2208
 msgid "Type of Post for the object."
 msgstr "Objektets indholdstype."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2152
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2199
 msgid "A named status for the object."
 msgstr "En navngivet status for objektet."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:722
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2144
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2191
 msgid "An alphanumeric identifier for the object unique to its type."
 msgstr "En alfanumerisk identifikator, unik for dets indholdstype, for objektet."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:711
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2137
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2184
 msgid "The date the object was last modified, as GMT."
 msgstr "Datoobjektet blev senest ændret, i GMT-tid."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:705
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2130
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2177
 msgid "The date the object was last modified, in the site's timezone."
 msgstr "Datoen, objektet senest blev ændret, i webstedets tidszone."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2109
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2156
 msgid "GUID for the object, transformed for display."
 msgstr "GUID for objektet, transformeret for visning."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:695
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2103
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2150
 msgid "GUID for the object, as it exists in the database."
 msgstr "GUID for objektet, som det eksisterer i databasen."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2097
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2144
 msgid "The globally unique identifier for the object."
 msgstr "Den globalt unikke identifikator for objektet."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1461
 #: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:689
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2091
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2138
 msgid "The date the object was published, as GMT."
 msgstr "Dato objektet blev udgivet, i GMT-tid."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1455
 #: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:683
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2085
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2132
 msgid "The date the object was published, in the site's timezone."
 msgstr "Datoen objektet blev udgivet, i webstedets tidszone."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1353
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1399
 msgid "Invalid featured media ID."
 msgstr "Ugyldigt udvalgt medie-ID."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:143
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1220
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1266
 #: wp-includes/rest-api/endpoints/class-wp-rest-autosaves-controller.php:259
 msgid "Invalid post parent ID."
 msgstr "Ugyldig ID for overordnet indlæg."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1204
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1250
 msgid "A password protected post can not be set to sticky."
 msgstr "Et adgangskodebeskyttet indlæg kan ikke fastgøres."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1193
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1239
 msgid "A sticky post can not be password protected."
 msgstr "Et fastgjort indlæg kan ikke beskyttes med adgangskode."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1185
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1231
 msgid "A post can not be sticky and have a password."
 msgstr "Et indlæg kan ikke være fastgjort og have adgangskode."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:938
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:984
 msgid "The post has already been deleted."
 msgstr "Indlægget er allerede blevet slettet."
 
@@ -6137,8 +6137,8 @@ msgstr "Beklager, du har ikke tilladelse til at redigere kommentarer."
 msgid "Sorry, you are not allowed to manage this plugin."
 msgstr "Beklager, du har ikke tilladelse til at administrere dette plugin."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:526
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:580
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:572
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:626
 msgid "Cannot create existing post."
 msgstr "Kan ikke oprette eksisterende indlæg."
 
@@ -6146,17 +6146,17 @@ msgstr "Kan ikke oprette eksisterende indlæg."
 msgid "Sorry, you are not allowed to create new users."
 msgstr "Beklager, du har ikke tilladelse til at oprette nye brugere."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:440
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:480
 msgid "Incorrect post password."
 msgstr "Forkert adgangskode for indlæg."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:228
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:165
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:205
 msgid "You need to define a search term to order by relevance."
 msgstr "Du skal definere en søgeterm, hvis du vil sortere efter relevans."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1672
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:85
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:93
 msgid "The password for the post if it is password protected."
 msgstr "Adgangskode for indlægget, hvis det er adgangskodebeskyttet."
 
@@ -6258,14 +6258,14 @@ msgstr "Begræns svaret til kommentarer fra specifikke overordnede ID'er."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1614
 #: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:797
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2712
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2759
 #: wp-includes/rest-api/endpoints/class-wp-rest-users-controller.php:1523
 msgid "Sort collection by object attribute."
 msgstr "Sorter samling efter enhedsattribut."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1604
 #: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:790
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2705
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2752
 #: wp-includes/rest-api/endpoints/class-wp-rest-users-controller.php:1516
 #: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:1036
 msgid "Order sort attribute ascending or descending."
@@ -6273,7 +6273,7 @@ msgstr "Rækkefølge for sorteringsattribut stigende eller faldende."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1590
 #: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:776
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2684
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2731
 #: wp-includes/rest-api/endpoints/class-wp-rest-users-controller.php:1501
 #: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:1020
 msgid "Limit result set to specific IDs."
@@ -6281,13 +6281,13 @@ msgstr "Begræns svaret til specifikke ID'er."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1581
 #: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:767
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2675
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2722
 #: wp-includes/rest-api/endpoints/class-wp-rest-users-controller.php:1492
 #: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:1011
 msgid "Ensure result set excludes specific IDs."
 msgstr "Sørg for at svaret ekskluderer specifikke ID'er."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2663
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2710
 msgid "Limit response to posts published before a given ISO8601 compliant date."
 msgstr "Begræns svaret til indlæg udgivet før en given ISO8601-kompatibel dato."
 
@@ -6303,7 +6303,7 @@ msgstr "Sørg for at svaret ekskluderer kommentarer tildelt specifikke brugeres 
 msgid "Limit result set to comments assigned to specific user IDs. Requires authorization."
 msgstr "Begræns svaret til kommentarer tildelt specifikke bruger ID'er. Kræver godkendelse."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2632
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2679
 msgid "Limit response to posts published after a given ISO8601 compliant date."
 msgstr "Begræns svaret til indlæg udgivet efter en given ISO8601 kompatibel dato."
 
@@ -6333,30 +6333,30 @@ msgstr "ID på det tilknyttede indlægs element."
 #: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:78
 #: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:98
 #: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:717
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2193
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2240
 #: wp-includes/rest-api/endpoints/class-wp-rest-autosaves-controller.php:89
 #: wp-includes/rest-api/endpoints/class-wp-rest-autosaves-controller.php:115
 msgid "The ID for the parent of the object."
 msgstr "ID for objektets overordnede element."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1467
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2123
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2170
 #: wp-includes/rest-api/endpoints/class-wp-rest-search-controller.php:260
 msgid "URL to the object."
 msgstr "URL for objektet."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1447
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2293
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2340
 msgid "HTML content for the object, transformed for display."
 msgstr "HTML indhold for objektet, tilpasset visning."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1442
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2288
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2335
 msgid "Content for the object, as it exists in the database."
 msgstr "Objektets indhold, som det findes i databasen."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1433
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2279
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2326
 msgid "The content for the object."
 msgstr "Objektets indhold."
 
@@ -6388,8 +6388,8 @@ msgstr "ID for brugerobjektet, hvis forfatter var en bruger."
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1384
 #: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:102
 #: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:700
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:95
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2117
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:103
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2164
 #: wp-includes/rest-api/endpoints/class-wp-rest-search-controller.php:248
 #: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:37
 msgid "Unique identifier for the object."
@@ -6440,7 +6440,7 @@ msgid "Query parameter not permitted: %s"
 msgstr "Forespørgselsparameter er ikke tilladt: %s"
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:104
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:119
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:127
 msgid "Whether to bypass Trash and force deletion."
 msgstr "Hvorvidt sletning skal forbigå papirkurv og slette permanent."
 
@@ -7078,8 +7078,8 @@ msgstr "Du har desværre ikke tilladelse til at slette denne side."
 
 #: wp-includes/class-wp-xmlrpc-server.php:1784
 #: wp-includes/class-wp-xmlrpc-server.php:5218
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:857
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:905
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:903
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:951
 msgid "Sorry, you are not allowed to delete this post."
 msgstr "Du har desværre ikke tilladelse til at slette dette indlæg."
 
@@ -11410,8 +11410,8 @@ msgstr "Standard billede-link"
 #: wp-includes/class-wp-xmlrpc-server.php:6383
 #: wp-includes/class-wp-xmlrpc-server.php:6572
 #: wp-includes/class-wp-xmlrpc-server.php:6630
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:430
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:709
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:470
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:755
 #: wp-admin/includes/post.php:267 wp-admin/includes/post.php:1891
 #: wp-admin/includes/post.php:1895 wp-admin/includes/media.php:3768
 #: wp-admin/includes/ajax-actions.php:1997
@@ -11432,7 +11432,7 @@ msgstr ","
 
 #: wp-includes/class-wp-xmlrpc-server.php:1951
 #: wp-includes/class-wp-xmlrpc-server.php:4512
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:143
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:151
 #: wp-includes/rest-api/endpoints/class-wp-rest-post-types-controller.php:95
 #: wp-includes/rest-api/endpoints/class-wp-rest-post-types-controller.php:157
 #: wp-admin/post.php:135 wp-admin/edit.php:17 wp-admin/edit.php:42
@@ -11440,7 +11440,7 @@ msgid "Sorry, you are not allowed to edit posts in this post type."
 msgstr "Du har desværre ikke tilladelse til at redigere indlæg af denne indholdstype."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:484
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:953
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:999
 msgid "The post cannot be deleted."
 msgstr "Indlægget kan ikke slettes."
 
@@ -11473,14 +11473,14 @@ msgstr "Du har desværre ikke tilladelse til at se dette emne."
 
 #: wp-includes/class-wp-xmlrpc-server.php:1452
 #: wp-includes/class-wp-xmlrpc-server.php:5403
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1168
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1214
 msgid "Invalid author ID."
 msgstr "Ugyldigt forfatter-ID."
 
 #: wp-includes/class-wp-xmlrpc-server.php:1446
 #: wp-includes/class-wp-xmlrpc-server.php:5390
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:536
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:552
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:582
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:598
 #: wp-admin/includes/post.php:42 wp-admin/includes/post.php:87
 #: wp-admin/press-this.php:20 wp-admin/post-new.php:61
 msgid "Sorry, you are not allowed to create posts as this user."
@@ -11491,7 +11491,7 @@ msgid "Sorry, you are not allowed to create password protected posts in this pos
 msgstr "Du har desværre ikke tilladelse til at oprette adgangskodebeskyttede indlæg af denne indholdstype."
 
 #: wp-includes/class-wp-xmlrpc-server.php:1423
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1309
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1355
 msgid "Sorry, you are not allowed to create private posts in this post type."
 msgstr "Du har desværre ikke tilladelse til at oprette private indlæg af denne indholdstype."
 
@@ -12688,7 +12688,7 @@ msgstr "Du har desværre ikke tilladelse til at ændre sideforfatteren som denne
 msgid "Sorry, you are not allowed to change the post author as this user."
 msgstr "Du har desværre ikke tilladelse til at ændre indlægsforfatteren som denne bruger."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:717
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:763
 msgid "Sorry, you are not allowed to update posts as this user."
 msgstr "Du har ikke tilladelse til at opdatere indlæg som denne bruger."
 
@@ -12709,7 +12709,7 @@ msgid "Invalid post type."
 msgstr "Ugyldig indholdstype."
 
 #: wp-includes/class-wp-xmlrpc-server.php:1429
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1319
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1365
 msgid "Sorry, you are not allowed to publish posts in this post type."
 msgstr "Du har desværre ikke tilladelse til at udgive indlæg af denne indholdstype."
 
@@ -12767,7 +12767,7 @@ msgstr "Kommentarforfatteren skal udfylde navn og e-mail."
 #: wp-includes/class-wp-xmlrpc-server.php:6751
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:361
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:828
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:397
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:437
 #: wp-includes/comment.php:2458 wp-includes/post.php:3800
 #: wp-includes/post.php:4433 wp-includes/revision.php:324
 msgid "Invalid post ID."
