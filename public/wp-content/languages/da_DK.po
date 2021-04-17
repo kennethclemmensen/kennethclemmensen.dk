@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.7.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-04-10 09:14:23+0000\n"
+"PO-Revision-Date: 2021-04-16 06:48:49+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -98,6 +98,11 @@ msgstr ","
 msgid "Uncategorized"
 msgstr "Ikke-kategoriseret"
 
+#: wp-includes/blocks/latest-posts.php:138
+#: wp-includes/blocks/latest-posts.php:153
+msgid "This content is password protected."
+msgstr "Dette indhold er adgangskodebeskyttet"
+
 #: wp-includes/https-detection.php:139
 msgid "SSL verification failed."
 msgstr "SSL verificering mislykkedes."
@@ -111,10 +116,67 @@ msgstr "HTTPS forespørgsel mislykkedes."
 msgid "The %1$s parameter must be an array. To pass arbitrary data to scripts, use the %2$s function instead."
 msgstr "Parameteren %1$s skal være en array. For at sende vilkårlige data til scripts, brug i stedet %2$s funktionen."
 
+#: wp-includes/query.php:909
+msgid "https://developer.wordpress.org/reference/functions/is_main_query/"
+msgstr "https://developer.wordpress.org/reference/functions/is_main_query/"
+
+#: wp-includes/taxonomy.php:610
+msgid "Filter by category"
+msgstr "Sorter efter kategori"
+
+#. translators: Documentation explaining HTTPS and why it should be used.
+#: wp-includes/functions.php:7635
+msgid "https://wordpress.org/support/article/why-should-i-use-https/"
+msgstr "https://wordpress.org/support/article/why-should-i-use-https/"
+
+#: wp-includes/class-wp-fatal-error-handler.php:196
+msgid "Learn more about troubleshooting WordPress."
+msgstr "Lær mere om fejlsøgning i WordPress."
+
+#. translators: Documentation about troubleshooting.
+#: wp-includes/class-wp-fatal-error-handler.php:195
+msgid "https://wordpress.org/support/article/faq-troubleshooting/"
+msgstr "https://wordpress.org/support/article/faq-troubleshooting/"
+
+#: wp-includes/user.php:4062 wp-includes/user.php:4250
+#: wp-admin/includes/privacy-tools.php:23
+#: wp-admin/includes/privacy-tools.php:52
+msgid "Invalid personal data request."
+msgstr "Ugyldig anmodning om personlige data."
+
+#: wp-includes/user.php:3973
+msgid "Invalid request status."
+msgstr "Ugyldig anmodningsstatus."
+
+#: wp-includes/class-wp-application-passwords.php:78
+msgid "Each application name should be unique."
+msgstr "Hvert applikationsnavn bør være entydigt."
+
+#: wp-includes/https-detection.php:150
+msgid "It looks like the response did not come from this site."
+msgstr "Det ser ud til svaret ikke kom fra dette websted."
+
+#. translators: 1: Parameter, 2: List of valid values.
+#: wp-includes/rest-api.php:1971
+msgid "%1$s is not one of %2$l."
+msgstr "%1$s er ikke en af %2$l."
+
 #. translators: 1: Parameter, 2: Valid values.
 #: wp-includes/rest-api.php:1967
 msgid "%1$s is not %2$s."
 msgstr "%1$s er ikke %2$s."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-themes-controller.php:161
+msgid "Theme not found."
+msgstr "Tema ikke fundet."
+
+#: wp-login.php:903
+msgid "Save Password"
+msgstr "Gem adgangskode"
+
+#: wp-login.php:902
+msgid "Generate Password"
+msgstr "Generer adgangskode"
 
 #: wp-includes/block-patterns/large-header-button.php:10
 msgid "Thou hast seen<br>nothing yet"
