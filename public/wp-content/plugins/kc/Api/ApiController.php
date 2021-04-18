@@ -37,7 +37,6 @@ class ApiController extends WP_REST_Controller {
         $this->registerFileDownloadCounterRoute();
         $this->registerSlidesRoute();
         $this->registerGalleriesRoutes();
-        $this->registerBackupRoutes();
     }
 
     /**
