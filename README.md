@@ -8,6 +8,7 @@ These technologies includes:
 * [Codeception](http://codeception.com/)/[wp-browser](https://wpbrowser.wptestkit.dev/)
 * [Composer](https://getcomposer.org/)
 * [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+* [Docker](https://docker.com)
 * [ESLint](https://eslint.org/)
 * [Grunt](https://gruntjs.com/)
 * [Gulp](https://gulpjs.com/)

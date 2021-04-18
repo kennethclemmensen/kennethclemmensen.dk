@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  server:
+    build: .
+    hostname: kennethclemmensen.test
+    ports:
+      - "80:80"
+    volumes:
+      - ./public:/var/www/html/
+
+  db:
+    image: mysql:8.0.23
+    environment:
+      MYSQL_USER: TestUser
+      MYSQL_ROOT_PASSWORD: TestUserForLocalhost
+      MYSQL_DATABASE: kennethclemmensen_dk_db
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d
