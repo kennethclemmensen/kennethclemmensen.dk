@@ -18,7 +18,6 @@ use \WP_REST_Server;
  */
 class ApiController extends WP_REST_Controller {
 
-    private int $statusCodeOk;
     private IModule $fileModule;
 
     /**
@@ -26,7 +25,6 @@ class ApiController extends WP_REST_Controller {
      */
     public function __construct() {
         $this->namespace = 'kcapi/v1';
-        $this->statusCodeOk = 200;
         $this->fileModule = new FileModule();
     }
 
@@ -39,6 +37,7 @@ class ApiController extends WP_REST_Controller {
         $this->registerFileDownloadCounterRoute();
         $this->registerSlidesRoute();
         $this->registerGalleriesRoutes();
+        $this->registerBackupRoutes();
     }
 
     /**
@@ -51,7 +50,7 @@ class ApiController extends WP_REST_Controller {
             'methods' => [WP_REST_Server::READABLE],
             'callback' => function(WP_REST_Request $request) use ($pageModule, $title) : WP_REST_Response {
                 $pages = $pageModule->getPagesByTitle($request->get_param($title));
-                return new WP_REST_Response($pages, $this->statusCodeOk);
+                return new WP_REST_Response($pages);
             },
             'args' => [
                 $title => [
@@ -79,7 +78,7 @@ class ApiController extends WP_REST_Controller {
             'methods' => [WP_REST_Server::READABLE],
             'callback' => function(WP_REST_Request $request) use ($type) : WP_REST_Response {
                 $fileTypes = explode(',', $request->get_param($type));
-                return new WP_REST_Response($this->fileModule->getFiles($fileTypes), $this->statusCodeOk);
+                return new WP_REST_Response($this->fileModule->getFiles($fileTypes));
             },
             'args' => [
                 $type => [
@@ -107,7 +106,7 @@ class ApiController extends WP_REST_Controller {
             'methods' => ['PUT'],
             'callback' => function(WP_REST_Request $request) use ($fileId) : WP_REST_Response {
                 $this->fileModule->updateFileDownloadCounter($request->get_param($fileId));
-                return new WP_REST_Response($this->statusCodeOk);
+                return new WP_REST_Response();
             },
             'args' => [
                 $fileId => [
@@ -134,7 +133,7 @@ class ApiController extends WP_REST_Controller {
         register_rest_route($this->namespace, '/slides', [
             'methods' => [WP_REST_Server::READABLE],
             'callback' => function() use ($sliderModule) : WP_REST_Response {
-                return new WP_REST_Response($sliderModule->getSlides(), $this->statusCodeOk);
+                return new WP_REST_Response($sliderModule->getSlides());
             },
             'permission_callback' => function() : bool {
                 return Security::hasApiAccess();
@@ -152,7 +151,7 @@ class ApiController extends WP_REST_Controller {
         register_rest_route($this->namespace, $route, [
             'methods' => [WP_REST_Server::READABLE],
             'callback' => function() use ($galleryModule) : WP_REST_Response {
-                return new WP_REST_Response($galleryModule->getGalleries(), $this->statusCodeOk);
+                return new WP_REST_Response($galleryModule->getGalleries());
             },
             'permission_callback' => function() : bool {
                 return Security::hasApiAccess();
@@ -163,7 +162,7 @@ class ApiController extends WP_REST_Controller {
             'methods' => [WP_REST_Server::READABLE],
             'callback' => function(WP_REST_Request $request) use ($id, $imageModule) : WP_REST_Response {
                 $galleryId = $request->get_param($id);
-                return new WP_REST_Response($imageModule->getImages($galleryId), $this->statusCodeOk);
+                return new WP_REST_Response($imageModule->getImages($galleryId));
             },
             'args' => [
                 $id => [
