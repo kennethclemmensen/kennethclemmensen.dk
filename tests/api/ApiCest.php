@@ -34,7 +34,6 @@ class ApiCest {
     public function updateFileDownloadsCounter(\ApiTester $I) : void {
         $I->sendPUT('/fileDownloads', ['fileid' => 1558]);
         $I->seeResponseCodeIs(200);
-        $I->seeResponseIsJson();
     }    
 
     /**
