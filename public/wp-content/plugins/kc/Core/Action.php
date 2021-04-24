@@ -6,6 +6,8 @@ namespace KC\Core;
  */
 class Action {
 
+    public const ADMIN_MENU = 'admin_menu';
+
     public const AFTER_SETUP_THEME = 'after_setup_theme';
 
     public const INIT = 'init';

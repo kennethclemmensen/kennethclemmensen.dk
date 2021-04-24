@@ -6,6 +6,10 @@ namespace KC\Core;
  */
 class TranslationString {
 
+    public const BACKUP = 'Backup';
+
+    public const CREATE_BACKUP = 'Create backup';
+
     public const DESCRIPTION = 'Description';
 
     public const DOWNLOAD_COUNTER = 'Download counter';
