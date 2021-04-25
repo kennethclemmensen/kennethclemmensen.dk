@@ -5,6 +5,7 @@ use KC\Core\Action;
 use KC\Core\IModule;
 use KC\Core\TranslationString;
 use KC\Data\DatabaseManager;
+use KC\Data\FileManager;
 use KC\Utils\PluginHelper;
 
 /**
@@ -46,10 +47,9 @@ class BackupModule implements IModule {
      */
     private function createDatabaseBackupFile() : void {
         $dbManager = new DatabaseManager();
-        $pathname = WP_CONTENT_DIR.'/kc_backup';
-        @mkdir($pathname);
-        $file = fopen($pathname.'/backup_'.time().'.sql', 'w');
-        fwrite($file, $dbManager->getDatabaseStructure());
-        fclose($file);
+        $fileManager = new FileManager();
+        $fileName = 'backup_'.time().'.sql';
+        $content = $dbManager->getDatabaseStructure();
+        $fileManager->createFile($fileName, $content, WP_CONTENT_DIR.'/kc_backup');
     }
 }
