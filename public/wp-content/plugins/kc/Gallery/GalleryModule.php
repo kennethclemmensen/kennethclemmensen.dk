@@ -8,6 +8,7 @@ use KC\Core\Filter;
 use KC\Core\IModule;
 use KC\Core\PostType;
 use KC\Core\TranslationString;
+use KC\Data\DatabaseManager;
 use KC\Utils\PluginHelper;
 use \WP_Query;
 
@@ -58,10 +59,10 @@ class GalleryModule extends BaseModule implements IModule {
      */
     private function updatePostParent() : void {
         add_action(Action::getSavePostAction(PostType::GALLERY), function(int $postID) : void {
-            global $wpdb;
             PluginHelper::setFieldValue($_REQUEST[$this->fieldParentPage], $this->fieldParentPage, $postID);
             $parentPage = PluginHelper::getFieldValue($this->fieldParentPage, $postID);
-            $wpdb->update($wpdb->prefix.'posts', ['post_parent' => $parentPage], ['ID' => $postID]);
+            $dbManager = new DatabaseManager();
+            $dbManager->updatePostParent($postID, $parentPage);
         });
     }
 
