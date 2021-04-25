@@ -10,10 +10,10 @@ services:
       - ./public:/var/www/html/
 
   db:
-    image: mysql:8.0.23
+    image: mysql:8.0.24
     environment:
       MYSQL_USER: TestUser
       MYSQL_ROOT_PASSWORD: TestUserForLocalhost
-      MYSQL_DATABASE: kennethclemmensen_dk_db
+      MYSQL_DATABASE: kennethclemmensen_test_db
     volumes:
-      - ./db:/docker-entrypoint-initdb.d
+      - ./tests/_data:/docker-entrypoint-initdb.d
