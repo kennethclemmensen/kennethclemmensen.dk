@@ -7,9 +7,6 @@ db
 #Node
 node_modules
 
-#WP-Config
-public/wp-config.php
-
 #Uploads
 public/wp-content/uploads
 
