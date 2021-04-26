@@ -66,7 +66,7 @@ class DatabaseManager {
                 $values = '(';
                 $c = count($tableRow);
                 foreach($tableRow as $k => $data) {
-                    $values .= ($data === null) ? 'NULL' : "'".preg_replace('~[[:cntrl:]]~', '', addslashes($data))."'";
+                    $values .= ($data === null) ? 'NULL' : "'".addslashes($data)."'";
                     if($k !== $c - 1) $values .= ',';
                 }
                 $content .= $values.')';
