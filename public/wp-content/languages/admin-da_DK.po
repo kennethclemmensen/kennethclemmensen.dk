@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.7.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-04-20 06:42:13+0000\n"
+"PO-Revision-Date: 2021-05-05 10:02:38+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -857,7 +857,7 @@ msgstr "Se venligst dit websted nu. Det er muligt, at alt fungerer. Hvis det for
 #. translators: %s: Home URL.
 #: wp-admin/includes/class-wp-automatic-updater.php:1065
 msgid "Howdy! Themes failed to update on your site at %s."
-msgstr "Hejsa. Temaerne kunne ikke opdateres på dit websted på %s."
+msgstr "Hejsa. Temaerne kunne ikke opdateres på dit websted %s."
 
 #. translators: %s: Site title.
 #: wp-admin/includes/class-wp-automatic-updater.php:1062
@@ -877,7 +877,7 @@ msgstr "[%s] Nogle plugins kunne ikke opdateres"
 #. translators: %s: Home URL.
 #: wp-admin/includes/class-wp-automatic-updater.php:1049
 msgid "Howdy! Plugins and themes failed to update on your site at %s."
-msgstr "Hejsa! Plugins og temaer kunne ikke opdateres på dit websted på %s."
+msgstr "Hejsa! Plugins og temaer kunne ikke opdateres på dit websted %s."
 
 #. translators: %s: Site title.
 #: wp-admin/includes/class-wp-automatic-updater.php:1046
@@ -887,7 +887,7 @@ msgstr "[%s] Nogle plugins og temaer kunne ikke opdateres"
 #. translators: %s: Home URL.
 #: wp-admin/includes/class-wp-automatic-updater.php:1036
 msgid "Howdy! Some themes have automatically updated to their latest versions on your site at %s. No further action is needed on your part."
-msgstr "Hejsa! Nogle temaer er automatisk blevet opdateret til deres nyeste versioner på dit websted på %s. Der er ikke behov for yderligere handlinger fra dig."
+msgstr "Hejsa! Nogle temaer er automatisk blevet opdateret til deres nyeste versioner på dit websted %s. Der er ikke behov for yderligere handlinger fra dig."
 
 #. translators: %s: Site title.
 #: wp-admin/includes/class-wp-automatic-updater.php:1033
@@ -897,7 +897,7 @@ msgstr "[%s] Nogle temaer blev automatisk opdateret"
 #. translators: %s: Home URL.
 #: wp-admin/includes/class-wp-automatic-updater.php:1028
 msgid "Howdy! Some plugins have automatically updated to their latest versions on your site at %s. No further action is needed on your part."
-msgstr "Hejsa! Nogle plugins er automatisk blevet opdateret til deres nyeste versioner på dit websted på %s. Der er ikke behov for yderligere handlinger fra dig."
+msgstr "Hejsa! Nogle plugins er automatisk blevet opdateret til deres nyeste versioner på dit websted %s. Der er ikke behov for yderligere handlinger fra dig."
 
 #. translators: %s: Site title.
 #: wp-admin/includes/class-wp-automatic-updater.php:1025
@@ -907,7 +907,7 @@ msgstr "[%s] Nogle plugins blev automatisk opdateret"
 #. translators: %s: Home URL.
 #: wp-admin/includes/class-wp-automatic-updater.php:1020
 msgid "Howdy! Some plugins and themes have automatically updated to their latest versions on your site at %s. No further action is needed on your part."
-msgstr "Hejsa! Nogle plugins er automatisk blevet opdateret til deres nyeste versioner på dit websted på %s. Der er ikke behov for yderligere handlinger fra dig."
+msgstr "Hejsa! Nogle plugins er automatisk blevet opdateret til deres nyeste versioner på dit websted %s. Der er ikke behov for yderligere handlinger fra dig."
 
 #. translators: %s: Site title.
 #: wp-admin/includes/class-wp-automatic-updater.php:1017
@@ -7803,7 +7803,7 @@ msgstr "Du behøver ikke gøre mere."
 #. translators: 1: Home URL, 2: WordPress version.
 #: wp-admin/includes/class-wp-automatic-updater.php:723
 msgid "Howdy! Your site at %1$s has been updated automatically to WordPress %2$s."
-msgstr "Hejsa! Dit websted på %1$s er automatisk blevet opdateret til WordPress %2$s."
+msgstr "Hejsa! Dit websted %1$s er automatisk blevet opdateret til WordPress %2$s."
 
 #. translators: Site down notification email subject. 1: Site title.
 #: wp-admin/includes/class-wp-automatic-updater.php:706
