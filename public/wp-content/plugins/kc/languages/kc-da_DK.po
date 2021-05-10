@@ -18,8 +18,14 @@ msgstr "Backup"
 msgid "Create backup"
 msgstr "Opret backup"
 
+msgid "Delete"
+msgstr "Slet"
+
 msgid "Description"
 msgstr "Beskrivelse"
+
+msgid "Download"
+msgstr "Download"
 
 msgid "Download counter"
 msgstr "Download tæller"

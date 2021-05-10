@@ -10,7 +10,11 @@ class TranslationString {
 
     public const CREATE_BACKUP = 'Create backup';
 
+    public const DELETE = 'Delete';
+
     public const DESCRIPTION = 'Description';
+
+    public const DOWNLOAD = 'Download';
 
     public const DOWNLOAD_COUNTER = 'Download counter';
 

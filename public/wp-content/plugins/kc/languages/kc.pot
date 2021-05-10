@@ -17,7 +17,13 @@ msgstr ""
 msgid "Create backup"
 msgstr ""
 
+msgid "Delete"
+msgstr ""
+
 msgid "Description"
+msgstr ""
+
+msgid "Download"
 msgstr ""
 
 msgid "Download counter"
