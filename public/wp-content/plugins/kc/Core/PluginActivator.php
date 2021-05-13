@@ -30,6 +30,7 @@ class PluginActivator {
             $m->setupModule();
         }
         $this->addPostThumbnailsSupport();
+        $this->loadAssets();
     }
 
     /**
@@ -49,6 +50,15 @@ class PluginActivator {
     private function addPostThumbnailsSupport() : void {
         add_action(Action::AFTER_SETUP_THEME, function() : void {
             add_theme_support(Constant::POST_THUMBNAILS);
+        });
+    }
+
+    /**
+     * Load the assets
+     */
+    private function loadAssets() : void {
+        add_action(Action::ADMIN_ENQUEUE_SCRIPTS, function() : void {
+            wp_enqueue_style('kc', plugin_dir_url(__FILE__).'../assets/css/style.css');
         });
     }
 }

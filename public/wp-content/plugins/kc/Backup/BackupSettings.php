@@ -36,8 +36,8 @@ class BackupSettings {
                 $name = 'createBackup';
                 if(isset($_POST[$name])) $this->createDatabaseBackupFile();
                 ?>
-                <div class="wrap">
-                    <h1 class="wp-heading-inline"><?php echo $title; ?></h1>
+                <div class="kc-settings">
+                    <h1 class="kc-settings__heading"><?php echo $title; ?></h1>
                     <form action="" method="post">
                         <input type="submit" value="<?php echo $createBackup; ?>" name="<?php echo $name; ?>">
                     </form>
