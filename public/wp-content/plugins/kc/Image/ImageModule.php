@@ -5,6 +5,7 @@ use KC\Core\Action;
 use KC\Core\BaseModule;
 use KC\Core\Constant;
 use KC\Core\Filter;
+use KC\Core\ImageSize;
 use KC\Core\IModule;
 use KC\Core\PostType;
 use KC\Core\TranslationString;
@@ -31,7 +32,7 @@ class ImageModule extends BaseModule implements IModule {
     public function setupModule() : void {
         $this->registerPostType();
         $this->addMetaBoxes();
-        $this->addAdminColumns();        
+        $this->addAdminColumns();
     }
 
     /**
@@ -95,7 +96,7 @@ class ImageModule extends BaseModule implements IModule {
                 $galleryID = PluginHelper::getFieldValue($this->fieldImageGallery, get_the_ID());
                 echo get_the_title($galleryID);
             } else if($columnName === $columnImageKey) {
-                echo '<img src="'.PluginHelper::getImageUrl(get_the_ID(), Constant::THUMBNAIL).'" alt="'.get_the_title().'">';
+                echo '<img src="'.PluginHelper::getImageUrl(get_the_ID(), ImageSize::THUMBNAIL).'" alt="'.get_the_title().'">';
             }
         });
     }
@@ -124,8 +125,8 @@ class ImageModule extends BaseModule implements IModule {
             $imageInfo = wp_get_attachment_image_src(attachment_url_to_postid($url));
             $images[] = [
                 'title' => get_the_title(),
-                'url' => $url,
-                'thumbnail' => PluginHelper::getImageUrl($id, Constant::THUMBNAIL),
+                'url' => PluginHelper::getImageUrl($id, ImageSize::LARGE),
+                'thumbnail' => PluginHelper::getImageUrl($id, ImageSize::THUMBNAIL),
                 'gallery' => $galleryId,
                 'width' => $imageInfo[1].'px',
                 'height' => $imageInfo[2].'px'
