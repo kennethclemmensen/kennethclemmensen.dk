@@ -10,7 +10,7 @@ services:
       - ./public:/var/www/html/
 
   db:
-    image: mysql:8.0.24
+    image: mysql:8.0.25
     environment:
       MYSQL_USER: TestUser
       MYSQL_ROOT_PASSWORD: TestUserForLocalhost
