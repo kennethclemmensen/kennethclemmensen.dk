@@ -31,7 +31,7 @@ class FileManager {
         $files = [];
         if(file_exists($folder)) {
             $dir = opendir($folder);
-            while(($file = readdir($dir))) {
+            while($file = readdir($dir)) {
                 if($file !== '.' && $file !== '..') {
                     $files[] = $file;
                 }

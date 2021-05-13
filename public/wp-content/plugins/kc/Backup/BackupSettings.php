@@ -13,13 +13,13 @@ use KC\Utils\PluginHelper;
 class BackupSettings {
 
     private const BACKUP_FOLDER = WP_CONTENT_DIR.'/kc_backup';
-    private FileManager $fileManager;
 
     /**
      * BackupSettings constructor
+     * 
+     * @param FileManager $fileManager the file manager
      */
-    public function __construct() {        
-        $this->fileManager = new FileManager();
+    public function __construct(private FileManager $fileManager) {
         $this->handleBackups();
     }
 
