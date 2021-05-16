@@ -8,12 +8,30 @@ use \Codeception\TestCase\WPTestCase;
  */
 class GalleryModuleTest extends WPTestCase {
 
+    private GalleryModule $galleryModule;
+
+    /**
+     * The _before method is executed before each test
+     */
+    protected function _before() {
+        $this->galleryModule = new GalleryModule();
+    }
+
     /**
      * Test the getGalleries method
      */
     public function testGetGalleries() : void {
-        $galleryModule = new GalleryModule();
         $expected = 0;
-        $this->assertEquals($expected, count($galleryModule->getGalleries()));
+        $this->assertEquals($expected, count($this->galleryModule->getGalleries()));
+    }
+
+    /**
+     * Test the getImages method
+     */
+    public function testGetImages() : void {
+        $galleryModule = new GalleryModule();
+        $galleryId = 0;
+        $expected = 0;
+        $this->assertEquals($expected, count($this->galleryModule->getImages($galleryId)));
     }
 }

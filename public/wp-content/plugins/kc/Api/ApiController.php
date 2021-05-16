@@ -4,7 +4,6 @@ namespace KC\Api;
 use KC\Core\IModule;
 use KC\File\FileModule;
 use KC\Gallery\GalleryModule;
-use KC\Image\ImageModule;
 use KC\Page\PageModule;
 use KC\Security\Security;
 use KC\Slider\SliderModule;
@@ -145,7 +144,6 @@ class ApiController extends WP_REST_Controller {
      */
     private function registerGalleriesRoutes() : void {
         $galleryModule = new GalleryModule();
-        $imageModule = new ImageModule();
         $route = '/galleries';
         register_rest_route($this->namespace, $route, [
             'methods' => [WP_REST_Server::READABLE],
@@ -159,9 +157,9 @@ class ApiController extends WP_REST_Controller {
         $id = 'id';
         register_rest_route($this->namespace, $route.'/(?P<'.$id.'>[\S]+)', [
             'methods' => [WP_REST_Server::READABLE],
-            'callback' => function(WP_REST_Request $request) use ($id, $imageModule) : WP_REST_Response {
+            'callback' => function(WP_REST_Request $request) use ($id, $galleryModule) : WP_REST_Response {
                 $galleryId = $request->get_param($id);
-                return new WP_REST_Response($imageModule->getImages($galleryId));
+                return new WP_REST_Response($galleryModule->getImages($galleryId));
             },
             'args' => [
                 $id => [
