@@ -34,7 +34,11 @@ class BackupSettings {
                 $download = PluginHelper::getTranslatedString(TranslationString::DOWNLOAD);
                 $delete = PluginHelper::getTranslatedString(TranslationString::DELETE);
                 $name = 'createBackup';
-                if(isset($_POST[$name])) $this->createDatabaseBackupFile();
+                if(isset($_POST[$name])) {
+                    $this->createDatabaseBackupFile();
+                    $sourceFolder = WP_CONTENT_DIR.'/uploads';
+                    $this->fileManager->createZipFile('uploads_'.time().'.zip', $sourceFolder.'/**/**/*.*', $sourceFolder, self::BACKUP_FOLDER);
+                }
                 ?>
                 <div class="kc-settings">
                     <h1 class="kc-settings__heading"><?php echo $title; ?></h1>
