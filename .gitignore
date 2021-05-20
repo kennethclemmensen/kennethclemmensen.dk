@@ -1,9 +1,6 @@
 #Visual Studio Code
 .vscode
 
-#Database
-db
-
 #Node
 node_modules
 
@@ -21,3 +18,6 @@ public/wp-content/aiowps_backups
 
 #TypeScript
 .tsbuildinfo
+
+#Backup
+public/wp-content/kc_backup
