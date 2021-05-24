@@ -8,6 +8,8 @@ class Action {
 
     public const ADMIN_ENQUEUE_SCRIPTS = 'admin_enqueue_scripts';
 
+    public const ADMIN_INIT = 'admin_init';
+
     public const ADMIN_MENU = 'admin_menu';
 
     public const AFTER_SETUP_THEME = 'after_setup_theme';

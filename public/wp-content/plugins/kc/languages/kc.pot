@@ -53,6 +53,9 @@ msgstr ""
 msgid "Gallery informations"
 msgstr ""
 
+msgid "Height"
+msgstr ""
+
 msgid "Image"
 msgstr ""
 
@@ -68,8 +71,14 @@ msgstr ""
 msgid "Parent page"
 msgstr ""
 
+msgid "Settings"
+msgstr ""
+
 msgid "Slide"
 msgstr ""
 
 msgid "Slides"
+msgstr ""
+
+msgid "Width"
 msgstr ""

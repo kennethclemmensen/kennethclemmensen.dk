@@ -4,9 +4,11 @@ namespace KC\Slider;
 use KC\Core\Action;
 use KC\Core\Constant;
 use KC\Core\Filter;
+use KC\Core\ImageSize;
 use KC\Core\IModule;
 use KC\Core\PostType;
 use KC\Core\TranslationString;
+use KC\Slider\Settings\SliderSettings;
 use KC\Utils\PluginHelper;
 use \WP_Query;
 
@@ -19,6 +21,9 @@ class SliderModule implements IModule {
      * Setup the slider module
      */
     public function setupModule() : void {
+        require_once 'Settings/SliderSettings.php';
+        $sliderSettings = new SliderSettings();
+        $sliderSettings->createSettingsPage();
         $this->registerPostType();
         $this->addAdminColumns();        
     }
@@ -76,7 +81,7 @@ class SliderModule implements IModule {
         $wpQuery = new WP_Query($args);
         while($wpQuery->have_posts()) {
             $wpQuery->the_post();
-            $slides[] = ['image' => PluginHelper::getImageUrl(get_the_ID())];
+            $slides[] = ['image' => PluginHelper::getImageUrl(get_the_ID(), ImageSize::KC_SLIDES)];
         }
         return $slides;
     }

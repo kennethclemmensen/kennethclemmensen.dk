@@ -54,6 +54,9 @@ msgstr "Galleri"
 msgid "Gallery informations"
 msgstr "Gallerioplysninger"
 
+msgid "Height"
+msgstr "Højde"
+
 msgid "Image"
 msgstr "Billede"
 
@@ -69,8 +72,14 @@ msgstr "Meta Box er ikke aktiveret"
 msgid "Parent page"
 msgstr "Forælderside"
 
+msgid "Settings"
+msgstr "Indstillinger"
+
 msgid "Slide"
 msgstr "Slide"
 
 msgid "Slides"
 msgstr "Slides"
+
+msgid "Width"
+msgstr "Bredde"

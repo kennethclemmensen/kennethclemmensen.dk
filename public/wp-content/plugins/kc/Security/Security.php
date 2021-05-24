@@ -44,4 +44,18 @@ class Security {
     public static function isValid(string $value) : bool {
         return !empty($value);
     }
+
+    /**
+     * Validate setting inputs
+     *
+     * @param array $inputs the inputs to validate
+     * @return array the validated inputs
+     */
+    public static function validateSettingInputs(array $inputs) : array {
+        $output = [];
+        foreach($inputs as $key => $value) {
+            $output[$key] = strip_tags(addslashes($inputs[$key]));
+        }
+        return $output;
+    }
 }
