@@ -5,6 +5,7 @@
     "incremental": true,
     "noEmitOnError": true,
     "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
     "noImplicitReturns": true,
     "noImplicitThis": false,
     "noUncheckedIndexedAccess": true,
