@@ -1,5 +1,5 @@
 <?php
-namespace KC\Slider\Settings;
+namespace KC\Gallery\Settings;
 
 use KC\Core\Action;
 use KC\Core\Capability;
@@ -11,26 +11,26 @@ use KC\Security\Security;
 use KC\Utils\PluginHelper;
 
 /**
- * The SliderSettings class contains methods to handle the slider settings
+ * The GallerySettings class contains methods to handle the gallery settings
  */
-class SliderSettings implements ISettings {
+class GallerySettings implements ISettings {
 
     private string $settingOptionsName;
     private array | bool $settingsOption;
     private string $settingsPageSlug;
-    private string $slideWidth;
-    private string $slideHeight;
+    private string $galleryImageWidth;
+    private string $galleryImageHeight;
 
     /**
-     * SliderSettings constructor
+     * GallerySettings constructor
      */
     public function __construct() {
-        $this->settingOptionsName = 'kc-slides-settings-options';
+        $this->settingOptionsName = 'kc-gallery-settings-options';
         $this->settingsOption = get_option($this->settingOptionsName);
-        $this->settingsPageSlug = 'kc-slides-settings';
-        $prefix = 'slide_';
-        $this->slideWidth = $prefix.'width';
-        $this->slideHeight = $prefix.'height';
+        $this->settingsPageSlug = 'kc-gallery-settings';
+        $prefix = 'gallery_image_';
+        $this->galleryImageWidth = $prefix.'width';
+        $this->galleryImageHeight = $prefix.'height';
     }
 
     /**
@@ -39,7 +39,7 @@ class SliderSettings implements ISettings {
     public function createSettingsPage() : void {
         add_action(Action::ADMIN_MENU, function() : void {
             $title = PluginHelper::getTranslatedString(TranslationString::SETTINGS);
-            add_submenu_page('edit.php?post_type='.PostType::SLIDES, $title, $title, Capability::ADMINISTRATOR, $this->settingsPageSlug, function() : void {
+            add_submenu_page('edit.php?post_type='.PostType::GALLERY, $title, $title, Capability::ADMINISTRATOR, $this->settingsPageSlug, function() : void {
                 settings_errors();
                 ?>
                 <form action="options.php" method="post">
@@ -61,14 +61,14 @@ class SliderSettings implements ISettings {
      */
     private function registerSettingInputs() : void {
         add_action(Action::ADMIN_INIT, function() : void {
-            $sectionID = $this->settingsPageSlug.'-section-slider';
-            $prefix = $this->settingsPageSlug;
+            $sectionID = $this->settingsPageSlug.'-section-gallery';
+            $prefix = $this->settingsPageSlug.'galleryImage';
             add_settings_section($sectionID, '', null, $this->settingsPageSlug);
-            add_settings_field($prefix.'slideWidth', PluginHelper::getTranslatedString(TranslationString::WIDTH), function() : void {
-                echo '<input type="number" name="'.$this->settingOptionsName.'['.$this->slideWidth.']" value="'.$this->getSlideWidth().'" min="1">';
+            add_settings_field($prefix.'Width', PluginHelper::getTranslatedString(TranslationString::WIDTH), function() : void {
+                echo '<input type="number" name="'.$this->settingOptionsName.'['.$this->galleryImageWidth.']" value="'.$this->getGalleryImageWidth().'" min="1">';
             }, $this->settingsPageSlug, $sectionID);
-            add_settings_field($prefix.'slideHeight', PluginHelper::getTranslatedString(TranslationString::HEIGHT), function() : void {
-                echo '<input type="number" name="'.$this->settingOptionsName.'['.$this->slideHeight.']" value="'.$this->getSlideHeight().'" min="1">';
+            add_settings_field($prefix.'Height', PluginHelper::getTranslatedString(TranslationString::HEIGHT), function() : void {
+                echo '<input type="number" name="'.$this->settingOptionsName.'['.$this->galleryImageHeight.']" value="'.$this->getGalleryImageHeight().'" min="1">';
             }, $this->settingsPageSlug, $sectionID);
             register_setting($this->settingOptionsName, $this->settingOptionsName, function(array $input) : array {
                 return Security::validateSettingInputs($input);
@@ -81,27 +81,27 @@ class SliderSettings implements ISettings {
      */
     private function addImageSize() : void {
         add_action(Action::INIT, function() : void {
-            $width = $this->getSlideWidth();
-            $height = $this->getSlideHeight();
-            add_image_size(ImageSize::KC_SLIDES, $width, $height, true);
+            $width = $this->getGalleryImageWidth();
+            $height = $this->getGalleryImageHeight();
+            add_image_size(ImageSize::KC_GALLERY_IMAGE, $width, $height, true);
         });
     }
 
     /**
-     * Get the slide width
+     * Get the gallery image width
      * 
-     * @return int the slide width
+     * @return int the gallery image width
      */
-    private function getSlideWidth() : int {
-        return $this->settingsOption[$this->slideWidth] ?? 1;
+    private function getGalleryImageWidth() : int {
+        return $this->settingsOption[$this->galleryImageWidth] ?? 1;
     }
 
     /**
-     * Get the slide height
+     * Get the gallery image height
      * 
-     * @return int the slide height
+     * @return int the gallery image height
      */
-    private function getSlideHeight() : int {
-        return $this->settingsOption[$this->slideHeight] ?? 1;
+    private function getGalleryImageHeight() : int {
+        return $this->settingsOption[$this->galleryImageHeight] ?? 1;
     }
 }

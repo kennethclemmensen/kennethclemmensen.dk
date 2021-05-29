@@ -10,6 +10,7 @@ use KC\Core\IModule;
 use KC\Core\PostType;
 use KC\Core\TranslationString;
 use KC\Data\DatabaseManager;
+use KC\Gallery\Settings\GallerySettings;
 use KC\Utils\PluginHelper;
 use \WP_Query;
 
@@ -33,6 +34,9 @@ class GalleryModule extends BaseModule implements IModule {
      * Setup the gallery module
      */
     public function setupModule() : void {
+        require_once 'Settings/GallerySettings.php';
+        $gallerySettings = new GallerySettings();
+        $gallerySettings->createSettingsPage();
         $this->registerPostTypes();
         $this->updatePostParent();
         $this->addMetaBoxes();
@@ -159,7 +163,7 @@ class GalleryModule extends BaseModule implements IModule {
             $galleries[] = [
                 'title' => get_the_title(),
                 'link' => get_permalink(get_the_ID()),
-                'image' => PluginHelper::getImageUrl(get_the_ID())
+                'image' => PluginHelper::getImageUrl(get_the_ID(), ImageSize::KC_GALLERY_IMAGE)
             ];
         }
         return $galleries;

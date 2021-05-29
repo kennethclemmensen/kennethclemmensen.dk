@@ -6,6 +6,8 @@ namespace KC\Core;
  */
 class ImageSize {
 
+    public const KC_GALLERY_IMAGE = 'kc-gallery-image';
+
     public const KC_SLIDES = 'kc-slides';
 
     public const LARGE = 'large';

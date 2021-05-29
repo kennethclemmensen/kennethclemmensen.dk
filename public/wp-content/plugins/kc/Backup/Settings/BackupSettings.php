@@ -3,6 +3,7 @@ namespace KC\Backup\Settings;
 
 use KC\Core\Action;
 use KC\Core\Capability;
+use KC\Core\ISettings;
 use KC\Core\TranslationString;
 use KC\Data\DatabaseManager;
 use KC\Data\FileManager;
@@ -11,7 +12,7 @@ use KC\Utils\PluginHelper;
 /**
  * The BackupSettings class contains methods to handle the backup settings
  */
-class BackupSettings {
+class BackupSettings implements ISettings {
 
     private const BACKUP_FOLDER = WP_CONTENT_DIR.'/kc_backup';
 
