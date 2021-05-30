@@ -7,9 +7,7 @@ use KC\Core\Filter;
 use KC\Core\IModule;
 use KC\Core\PostType;
 use KC\Core\TranslationString;
-use KC\Security\Security;
 use KC\Utils\PluginHelper;
-use \WP_Query;
 
 /**
  * The FileModule class contains functionality to handle files
@@ -120,92 +118,5 @@ class FileModule implements IModule {
             $mimeTypes['java'] = 'application/java';
             return $mimeTypes;
         }, $priority);
-    }
-
-    /**
-     * Get the file url
-     *
-     * @param int $fileID the id of the file
-     * @return string the file url
-     */
-    private function getFileUrl(int $fileID) : string {
-        $attachmentID = PluginHelper::getFieldValue($this->fieldFile, $fileID);
-        return Security::escapeUrl(wp_get_attachment_url($attachmentID));
-    }
-
-    /**
-     * Get the file name
-     *
-     * @param int $fileID the id of the file
-     * @return string the file name
-     */
-    private function getFileName(int $fileID) : string {
-        $attachmentID = PluginHelper::getFieldValue($this->fieldFile, $fileID);
-        return basename(get_attached_file($attachmentID));
-    }
-
-    /**
-     * Get the file description
-     *
-     * @param int $fileID the id of the file
-     * @return string the file description
-     */
-    private function getFileDescription(int $fileID) : string {
-        return PluginHelper::getFieldValue($this->fieldDescription, $fileID);
-    }
-
-    /**
-     * Get the number of file downloads for a file
-     *
-     * @param int $fileID the id of the file
-     * @return int the number of file downloads
-     */
-    private function getFileDownloads(int $fileID) : int {
-        return PluginHelper::getFieldValue($this->fieldFileDownloadCounter, $fileID);
-    }
-
-    /**
-     * Update the download counter for a file
-     *
-     * @param int $fileID the id of the file
-     */
-    public function updateFileDownloadCounter(int $fileID) : void {
-        $downloads = $this->getFileDownloads($fileID);
-        $downloads++;
-        PluginHelper::setFieldValue($downloads, $this->fieldFileDownloadCounter, $fileID);
-    }
-
-    /**
-     * Get the files based on the file types
-     * 
-     * @param array $fileTypes the file types
-     * @return array the files
-     */
-    public function getFiles(array $fileTypes) : array {
-        $files = [];
-        $args = [
-            'post_type' => PostType::FILE,
-            'posts_per_page' => -1,
-            'order' => Constant::ASC,
-            'tax_query' => [
-                [
-                    'taxonomy' => $this->fileTypeTaxonomyName,
-                    'terms' => $fileTypes
-                ]
-            ]
-        ];
-        $wpQuery = new WP_Query($args);
-        while($wpQuery->have_posts()) {
-            $wpQuery->the_post();
-            $id = get_the_ID();
-            $files[] = [
-                'id' => $id,
-                'fileName' => $this->getFileName($id), 
-                'url' => $this->getFileUrl($id),
-                'description' => $this->getFileDescription($id),
-                'downloads' => $this->getFileDownloads($id)
-            ];
-        }
-        return $files;
     }
 }

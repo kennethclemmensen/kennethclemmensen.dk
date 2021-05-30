@@ -12,7 +12,6 @@ use KC\Core\TranslationString;
 use KC\Data\DatabaseManager;
 use KC\Gallery\Settings\GallerySettings;
 use KC\Utils\PluginHelper;
-use \WP_Query;
 
 /**
  * The GalleryModule class contains functionality to handle galleries
@@ -143,63 +142,5 @@ class GalleryModule extends BaseModule implements IModule {
                 echo '<img src="'.PluginHelper::getImageUrl(get_the_ID(), ImageSize::THUMBNAIL).'" alt="'.get_the_title().'">';
             }
         });
-    }
-
-    /**
-     * Get the galleries
-     *
-     * @return array the galleries
-     */
-    public function getGalleries() : array {
-        $galleries = [];
-        $args = [
-            'post_type' => PostType::GALLERY,
-            'posts_per_page' => -1,
-            'order' => Constant::ASC
-        ];
-        $wpQuery = new WP_Query($args);
-        while($wpQuery->have_posts()) {
-            $wpQuery->the_post();
-            $galleries[] = [
-                'title' => get_the_title(),
-                'link' => get_permalink(get_the_ID()),
-                'image' => PluginHelper::getImageUrl(get_the_ID(), ImageSize::KC_GALLERY_IMAGE)
-            ];
-        }
-        return $galleries;
-    }
-
-    /**
-     * Get the images from a gallery
-     * 
-     * @param int $galleryId the gallery id
-     * @return array the images
-     */
-    public function getImages(int $galleryId) : array {
-        $images = [];
-        $args = [
-            'post_type' => PostType::IMAGE,
-            'posts_per_page' => -1,
-            'orderby' => Constant::TITLE,
-            'order' => Constant::ASC,
-            'meta_key' => $this->fieldImageGallery,
-            'meta_value' => $galleryId
-        ];
-        $wpQuery = new WP_Query($args);
-        while($wpQuery->have_posts()) {
-            $wpQuery->the_post();
-            $id = get_the_ID();
-            $url = PluginHelper::getImageUrl($id);
-            $imageInfo = wp_get_attachment_image_src(attachment_url_to_postid($url));
-            $images[] = [
-                'title' => get_the_title(),
-                'url' => PluginHelper::getImageUrl($id, ImageSize::LARGE),
-                'thumbnail' => PluginHelper::getImageUrl($id, ImageSize::THUMBNAIL),
-                'gallery' => $galleryId,
-                'width' => $imageInfo[1].'px',
-                'height' => $imageInfo[2].'px'
-            ];
-        }
-        return $images;
     }
 }

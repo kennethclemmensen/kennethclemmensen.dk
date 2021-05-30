@@ -4,13 +4,11 @@ namespace KC\Slider;
 use KC\Core\Action;
 use KC\Core\Constant;
 use KC\Core\Filter;
-use KC\Core\ImageSize;
 use KC\Core\IModule;
 use KC\Core\PostType;
 use KC\Core\TranslationString;
 use KC\Slider\Settings\SliderSettings;
 use KC\Utils\PluginHelper;
-use \WP_Query;
 
 /**
  * The SliderModule class contains functionality to handle the slides
@@ -63,26 +61,5 @@ class SliderModule implements IModule {
         add_action(Action::getManagePostsCustomColumn(PostType::SLIDES), function(string $columnName) use ($imageColumnKey) : void {
             if($columnName === $imageColumnKey) echo '<img src="'.PluginHelper::getImageUrl(get_the_ID()).'" alt="'.get_the_title().'" style="height: 60px">';
         });
-    }
-
-    /**
-     * Get the slides
-     * 
-     * @return array the slides
-     */
-    public function getSlides() : array {
-        $slides = [];
-        $args = [
-            'post_type' => PostType::SLIDES,
-            'posts_per_page' => -1,
-            'order' => Constant::ASC,
-            'orderby' => 'menu_order'
-        ];
-        $wpQuery = new WP_Query($args);
-        while($wpQuery->have_posts()) {
-            $wpQuery->the_post();
-            $slides[] = ['image' => PluginHelper::getImageUrl(get_the_ID(), ImageSize::KC_SLIDES)];
-        }
-        return $slides;
     }
 }
