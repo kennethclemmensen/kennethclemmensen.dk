@@ -24,23 +24,23 @@ class PluginHelper {
     /**
      * Get a field value from a post
      * 
-     * @param string $fieldId the id of the field
+     * @param string $fieldName the name of the field
      * @param int $postId the id of the post
      * @return string the field value
      */
-    public static function getFieldValue(string $fieldId, int $postId) : string {
-        return get_post_meta($postId, $fieldId, true);
+    public static function getFieldValue(string $fieldName, int $postId) : string {
+        return get_post_meta($postId, $fieldName, true);
     }
 
     /**
      * Set a field value on a post
      * 
-     * @param string $value the value
-     * @param string $fieldId the id of the field
+     * @param mixed $value the value
+     * @param string $fieldName the name of the field
      * @param int $postId the id of the post
      */
-    public static function setFieldValue(string $value, string $fieldId, int $postId) : void {
-        update_post_meta($postId, $fieldId, $value);
+    public static function setFieldValue(string | int $value, string $fieldName, int $postId) : void {
+        update_post_meta($postId, $fieldName, $value);
     }
 
     /**
