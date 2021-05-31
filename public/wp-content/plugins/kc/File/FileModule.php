@@ -3,9 +3,11 @@ namespace KC\File;
 
 use KC\Core\Action;
 use KC\Core\Constant;
+use KC\Core\FieldName;
 use KC\Core\Filter;
 use KC\Core\IModule;
 use KC\Core\PostType;
+use KC\Core\TaxonomyName;
 use KC\Core\TranslationString;
 use KC\Utils\PluginHelper;
 
@@ -13,22 +15,6 @@ use KC\Utils\PluginHelper;
  * The FileModule class contains functionality to handle files
  */
 class FileModule implements IModule {
-
-    private string $fieldDescription;
-    private string $fieldFile;
-    private string $fieldFileDownloadCounter;
-    private string $fileTypeTaxonomyName;
-
-    /**
-     * Initialize a new instance of the FileModule class
-     */
-    public function __construct() {
-        $prefix = 'field_';
-        $this->fieldDescription = $prefix.'description';
-        $this->fieldFile = $prefix.'file';
-        $this->fieldFileDownloadCounter = $prefix.'download_counter';
-        $this->fileTypeTaxonomyName = 'kc_tax_file_type';
-    }
 
     /**
      * Setup the file module
@@ -54,7 +40,7 @@ class FileModule implements IModule {
                 'has_archive' => true,
                 'supports' => [Constant::TITLE]
             ]);
-            register_taxonomy($this->fileTypeTaxonomyName, [PostType::PAGE, PostType::FILE], [
+            register_taxonomy(TaxonomyName::FILE_TYPE, [PostType::PAGE, PostType::FILE], [
                 'labels' => [
                     'name' => PluginHelper::getTranslatedString(TranslationString::FILE_TYPES),
                     'singular_name' => PluginHelper::getTranslatedString(TranslationString::FILE_TYPE)
@@ -77,28 +63,28 @@ class FileModule implements IModule {
                 'fields' => [
                     [
                         'name' => PluginHelper::getTranslatedString(TranslationString::DESCRIPTION),
-                        'id' => $this->fieldDescription,
+                        'id' => FieldName::FILE_DESCRIPTION,
                         'type' => 'textarea'
                     ],
                     [
                         'name' => PluginHelper::getTranslatedString(TranslationString::FILE),
-                        'id' => $this->fieldFile,
+                        'id' => FieldName::FILE,
                         'type' => 'file_advanced',
                         'max_file_uploads' => 1
                     ],
                     [
                         'name' => PluginHelper::getTranslatedString(TranslationString::DOWNLOAD_COUNTER),
-                        'id' => $this->fieldFileDownloadCounter,
+                        'id' => FieldName::FILE_DOWNLOADS,
                         'type' => 'number',
                         'std' => 0
                     ]
                 ],
                 'validation' => [
                     'rules' => [
-                        $this->fieldDescription => [
+                        FieldName::FILE_DESCRIPTION => [
                             'required' => true
                         ],
-                        $this->fieldFileDownloadCounter => [
+                        FieldName::FILE_DOWNLOADS => [
                             'required' => true,
                             'min' => 0
                         ]

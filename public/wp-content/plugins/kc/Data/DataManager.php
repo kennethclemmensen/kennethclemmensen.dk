@@ -2,8 +2,10 @@
 namespace KC\Data;
 
 use KC\Core\Constant;
+use KC\Core\FieldName;
 use KC\Core\ImageSize;
 use KC\Core\PostType;
+use KC\Core\TaxonomyName;
 use KC\Security\Security;
 use KC\Utils\PluginHelper;
 use \WP_Query;
@@ -98,7 +100,7 @@ class DataManager {
             'posts_per_page' => -1,
             'orderby' => Constant::TITLE,
             'order' => Constant::ASC,
-            'meta_key' => 'photo_gallery',
+            'meta_key' => FieldName::IMAGE_GALLERY,
             'meta_value' => $galleryId
         ];
         $wpQuery = new WP_Query($args);
@@ -127,7 +129,7 @@ class DataManager {
     public function updateFileDownloadCounter(int $fileID) : void {
         $downloads = $this->getFileDownloads($fileID);
         $downloads++;
-        PluginHelper::setFieldValue($downloads, 'field_download_counter', $fileID);
+        PluginHelper::setFieldValue($downloads, FieldName::FILE_DOWNLOADS, $fileID);
     }
 
     /**
@@ -144,7 +146,7 @@ class DataManager {
             'order' => Constant::ASC,
             'tax_query' => [
                 [
-                    'taxonomy' => 'kc_tax_file_type',
+                    'taxonomy' => TaxonomyName::FILE_TYPE,
                     'terms' => $fileTypes
                 ]
             ]
@@ -171,7 +173,7 @@ class DataManager {
      * @return string the file url
      */
     private function getFileUrl(int $fileID) : string {
-        $attachmentID = PluginHelper::getFieldValue('field_file', $fileID);
+        $attachmentID = PluginHelper::getFieldValue(FieldName::FILE, $fileID);
         return Security::escapeUrl(wp_get_attachment_url($attachmentID));
     }
 
@@ -182,7 +184,7 @@ class DataManager {
      * @return string the file name
      */
     private function getFileName(int $fileID) : string {
-        $attachmentID = PluginHelper::getFieldValue('field_file', $fileID);
+        $attachmentID = PluginHelper::getFieldValue(FieldName::FILE, $fileID);
         return basename(get_attached_file($attachmentID));
     }
 
@@ -193,7 +195,7 @@ class DataManager {
      * @return string the file description
      */
     private function getFileDescription(int $fileID) : string {
-        return PluginHelper::getFieldValue('field_description', $fileID);
+        return PluginHelper::getFieldValue(FieldName::FILE_DESCRIPTION, $fileID);
     }
 
     /**
@@ -203,6 +205,6 @@ class DataManager {
      * @return int the number of file downloads
      */
     private function getFileDownloads(int $fileID) : int {
-        return PluginHelper::getFieldValue('field_download_counter', $fileID);
+        return PluginHelper::getFieldValue(FieldName::FILE_DOWNLOADS, $fileID);
     }
 }

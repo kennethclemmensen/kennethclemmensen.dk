@@ -4,6 +4,7 @@ namespace KC\Gallery;
 use KC\Core\Action;
 use KC\Core\BaseModule;
 use KC\Core\Constant;
+use KC\Core\FieldName;
 use KC\Core\Filter;
 use KC\Core\ImageSize;
 use KC\Core\IModule;
@@ -19,14 +20,12 @@ use KC\Utils\PluginHelper;
 class GalleryModule extends BaseModule implements IModule {
 
     private string $fieldParentPage;
-    private string $fieldImageGallery;
 
     /**
      * Initialize a new instance of the GalleryModule class
      */
     public function __construct() {
-        $this->fieldParentPage = 'parent_page';
-        $this->fieldImageGallery = 'photo_gallery';
+        $this->fieldParentPage = FieldName::PARENT_PAGE;
     }
 
     /**
@@ -113,7 +112,7 @@ class GalleryModule extends BaseModule implements IModule {
                 'fields' => [
                     [
                         'name' => PluginHelper::getTranslatedString(TranslationString::GALLERY),
-                        'id' => $this->fieldImageGallery,
+                        'id' => FieldName::IMAGE_GALLERY,
                         'type' => 'select',
                         'options' => $this->getAllPosts(PostType::GALLERY)
                     ]
@@ -136,7 +135,7 @@ class GalleryModule extends BaseModule implements IModule {
         });
         add_action(Action::getManagePostsCustomColumn(PostType::IMAGE), function(string $columnName) use ($columnGalleryKey, $columnImageKey) : void {
             if($columnName === $columnGalleryKey) {
-                $galleryID = PluginHelper::getFieldValue($this->fieldImageGallery, get_the_ID());
+                $galleryID = PluginHelper::getFieldValue(FieldName::IMAGE_GALLERY, get_the_ID());
                 echo get_the_title($galleryID);
             } else if($columnName === $columnImageKey) {
                 echo '<img src="'.PluginHelper::getImageUrl(get_the_ID(), ImageSize::THUMBNAIL).'" alt="'.get_the_title().'">';
