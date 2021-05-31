@@ -13,14 +13,13 @@ use \WP_REST_Server;
  */
 class ApiController extends WP_REST_Controller {
 
-    private DataManager $dataManager;
-
     /**
      * Initialize a new instance of the ApiController class
+     * 
+     * @param DataManager $dataManager the data manager
      */
-    public function __construct() {
+    public function __construct(private DataManager $dataManager) {
         $this->namespace = 'kcapi/v1';
-        $this->dataManager = new DataManager();
     }
 
     /**
