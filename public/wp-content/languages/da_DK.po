@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.7.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-05-31 12:14:03+0000\n"
+"PO-Revision-Date: 2021-06-01 06:17:31+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -247,6 +247,10 @@ msgstr "Rediger billede."
 msgid "Array of image edits."
 msgstr "Array af billederedigeringer."
 
+#: wp-includes/rest-api/endpoints/class-wp-rest-application-passwords-controller.php:431
+msgid "Sorry, you are not allowed to delete this application password."
+msgstr "Du har desværre ikke tilladelse til at slette applikationskodeordet."
+
 #: wp-includes/rest-api/endpoints/class-wp-rest-themes-controller.php:161
 msgid "Theme not found."
 msgstr "Tema ikke fundet."
@@ -258,6 +262,10 @@ msgstr "Gem adgangskode"
 #: wp-login.php:902
 msgid "Generate Password"
 msgstr "Generer adgangskode"
+
+#: wp-login.php:855
+msgid "Enter your new password below or generate one."
+msgstr "Indtast din nye adgangskode nedenfor eller dan en ny."
 
 #: wp-includes/block-patterns/large-header-button.php:10
 msgid "Thou hast seen<br>nothing yet"
@@ -7285,7 +7293,7 @@ msgstr "Forhåndsvisning af billedets beskæringsområde. Kræver interaktion me
 #. translators: %s: Documentation URL.
 #: wp-includes/formatting.php:4864
 msgid "A structure tag is required when using custom permalinks. <a href=\"%s\">Learn more</a>"
-msgstr "Et strukturtag er krævet når der bruges brugerdefinerede permanente links. <a href=\"%s\">Lær mere</a>"
+msgstr "Et strukturtag er krævet når der bruges brugerdefinerede permalinks. <a href=\"%s\">Lær mere</a>"
 
 #: wp-includes/class-wp-xmlrpc-server.php:4353
 #: wp-includes/class-wp-xmlrpc-server.php:4406
