@@ -19,12 +19,15 @@ use KC\Utils\PluginHelper;
  */
 class GalleryModule extends BaseModule implements IModule {
 
+    private GallerySettings $gallerySettings;
     private string $fieldParentPage;
 
     /**
      * Initialize a new instance of the GalleryModule class
      */
     public function __construct() {
+        require_once 'Settings/GallerySettings.php';
+        $this->gallerySettings = new GallerySettings();
         $this->fieldParentPage = FieldName::PARENT_PAGE;
     }
 
@@ -32,9 +35,7 @@ class GalleryModule extends BaseModule implements IModule {
      * Setup the gallery module
      */
     public function setupModule() : void {
-        require_once 'Settings/GallerySettings.php';
-        $gallerySettings = new GallerySettings();
-        $gallerySettings->createSettingsPage();
+        $this->gallerySettings->createSettingsPage();
         $this->registerPostTypes();
         $this->updatePostParent();
         $this->addMetaBoxes();
@@ -55,7 +56,7 @@ class GalleryModule extends BaseModule implements IModule {
                 'has_archive' => true,
                 'supports' => [Constant::TITLE, Constant::EDITOR, Constant::THUMBNAIL],
                 'menu_icon' => 'dashicons-format-gallery',
-                'rewrite' => ['slug' => '/billeder', 'with_front' => false]
+                'rewrite' => ['slug' => $this->gallerySettings->getParentPagePath(), 'with_front' => false]
             ]);
             register_post_type(PostType::IMAGE, [
                 'labels' => [

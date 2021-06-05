@@ -53,13 +53,16 @@ msgstr ""
 msgid "Gallery informations"
 msgstr ""
 
-msgid "Height"
-msgstr ""
-
 msgid "Image"
 msgstr ""
 
 msgid "Images"
+msgstr ""
+
+msgid "Image height"
+msgstr ""
+
+msgid "Image width"
 msgstr ""
 
 msgid "Image informations"
@@ -78,7 +81,4 @@ msgid "Slide"
 msgstr ""
 
 msgid "Slides"
-msgstr ""
-
-msgid "Width"
 msgstr ""

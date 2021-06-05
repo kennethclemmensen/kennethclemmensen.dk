@@ -34,11 +34,13 @@ class TranslationString {
 
     public const GALLERY_INFORMATIONS = 'Gallery informations';
 
-    public const HEIGHT = 'Height';
-
     public const IMAGE = 'Image';
 
     public const IMAGES = 'Images';
+
+    public const IMAGE_HEIGHT = 'Image height';
+
+    public const IMAGE_WIDTH = 'Image width';
 
     public const IMAGE_INFORMATIONS = 'Image informations';
 
@@ -51,6 +53,4 @@ class TranslationString {
     public const SLIDE = 'Slide';
 
     public const SLIDES = 'Slides';
-
-    public const WIDTH = 'Width';
 }

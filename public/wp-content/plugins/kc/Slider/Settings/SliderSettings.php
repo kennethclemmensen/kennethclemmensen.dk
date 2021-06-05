@@ -64,10 +64,10 @@ class SliderSettings implements ISettings {
             $sectionID = $this->settingsPageSlug.'-section-slider';
             $prefix = $this->settingsPageSlug;
             add_settings_section($sectionID, '', null, $this->settingsPageSlug);
-            add_settings_field($prefix.'slideWidth', PluginHelper::getTranslatedString(TranslationString::WIDTH), function() : void {
+            add_settings_field($prefix.'slideWidth', PluginHelper::getTranslatedString(TranslationString::IMAGE_WIDTH), function() : void {
                 echo '<input type="number" name="'.$this->settingOptionsName.'['.$this->slideWidth.']" value="'.$this->getSlideWidth().'" min="1">';
             }, $this->settingsPageSlug, $sectionID);
-            add_settings_field($prefix.'slideHeight', PluginHelper::getTranslatedString(TranslationString::HEIGHT), function() : void {
+            add_settings_field($prefix.'slideHeight', PluginHelper::getTranslatedString(TranslationString::IMAGE_HEIGHT), function() : void {
                 echo '<input type="number" name="'.$this->settingOptionsName.'['.$this->slideHeight.']" value="'.$this->getSlideHeight().'" min="1">';
             }, $this->settingsPageSlug, $sectionID);
             register_setting($this->settingOptionsName, $this->settingOptionsName, function(array $input) : array {
