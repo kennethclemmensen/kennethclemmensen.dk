@@ -1,17 +1,15 @@
-var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (receiver, privateMap, value) {
-    if (!privateMap.has(receiver)) {
-        throw new TypeError("attempted to set private field on non-instance");
-    }
-    privateMap.set(receiver, value);
-    return value;
+var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (receiver, state, value, kind, f) {
+    if (kind === "m") throw new TypeError("Private method is not writable");
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
+    return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
 };
-var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, privateMap) {
-    if (!privateMap.has(receiver)) {
-        throw new TypeError("attempted to get private field on non-instance");
-    }
-    return privateMap.get(receiver);
+var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, state, kind, f) {
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
+    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
 };
-var _body;
+var _App_body;
 import { EventType } from './enums/EventType';
 import { SliderAnimation } from './enums/SliderAnimation';
 import { FilesApp } from './FilesApp';
@@ -26,13 +24,13 @@ class App {
      * Initialize a new instance of the App class
      */
     constructor() {
-        _body.set(this, void 0);
-        __classPrivateFieldSet(this, _body, document.body);
+        _App_body.set(this, void 0);
+        __classPrivateFieldSet(this, _App_body, document.body, "f");
         document.addEventListener(EventType.DOMContentLoaded, () => {
             this.setupSlider();
             this.setupMobileMenu();
             lightbox.option({
-                'albumLabel': __classPrivateFieldGet(this, _body).dataset.imageText + ' %1 ' + __classPrivateFieldGet(this, _body).dataset.ofText + ' %2'
+                'albumLabel': __classPrivateFieldGet(this, _App_body, "f").dataset.imageText + ' %1 ' + __classPrivateFieldGet(this, _App_body, "f").dataset.ofText + ' %2'
             });
             new FilesApp();
             new SearchApp();
@@ -65,7 +63,7 @@ class App {
             mobileMenuTrigger === null || mobileMenuTrigger === void 0 ? void 0 : mobileMenuTrigger.classList.toggle('header__nav-trigger--active');
             mobileMenu === null || mobileMenu === void 0 ? void 0 : mobileMenu.classList.toggle('mobile-menu--active');
             document.documentElement.classList.toggle(showMobileMenuClass);
-            __classPrivateFieldGet(this, _body).classList.toggle(showMobileMenuClass);
+            __classPrivateFieldGet(this, _App_body, "f").classList.toggle(showMobileMenuClass);
         });
         const mobileMenuArrows = document.querySelectorAll('.mobile-menu__arrow');
         mobileMenuArrows.forEach((arrow) => {
@@ -79,5 +77,5 @@ class App {
         });
     }
 }
-_body = new WeakMap();
+_App_body = new WeakMap();
 new App();
