@@ -32,20 +32,10 @@ class DataManager {
         while($wpQuery->have_posts()) {
             $wpQuery->the_post();
             $relativeLink = wp_make_link_relative(get_permalink(get_the_ID()));
-            $url = $this->removeLastCharacter($relativeLink);
+            $url = PluginHelper::removeLastCharacter($relativeLink);
             $pages[$url] = get_the_title();
         }
         return $pages;
-    }
-
-    /**
-     * Remove the last character from a string
-     * 
-     * @param string $str the string to remove the last character from
-     * @return string the string without the last character
-     */
-    private function removeLastCharacter(string $str) : string {
-        return (strlen($str) <= 1) ? $str : substr_replace($str, '', -1);
     }
 
     /**

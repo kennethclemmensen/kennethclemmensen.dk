@@ -52,4 +52,23 @@ class PluginHelper {
     public static function getTranslatedString(string $str) : string {
         return __($str, Constant::TEXT_DOMAIN);
     }
+
+    /**
+     * Append a slash to a string
+     * 
+     * @param string $str the string to append the slash to
+     */
+    public static function appendSlash(string &$str) : void {
+        $str .= '/';
+    }
+
+    /**
+     * Remove the last character from a string
+     * 
+     * @param string $str the string to remove the last character from
+     * @return string the string without the last character
+     */
+    public static function removeLastCharacter(string $str) : string {
+        return (strlen($str) <= 1) ? $str : substr_replace($str, '', -1);
+    }
 }
