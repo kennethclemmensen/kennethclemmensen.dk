@@ -32,4 +32,21 @@ class PluginHelperTest extends WPTestCase {
         $expected = 'Image';
         $this->assertEquals($expected, PluginHelper::getTranslatedString('Image'));
     }
+
+    /**
+     * Test the appendSlash method
+     */
+    public function testAppendSlash() : void {
+        $str = 'test';
+        PluginHelper::appendSlash($str);
+        $this->assertEquals('test/', $str);
+    }
+
+    /**
+     * Test the removeLastCharacter method
+     */
+    public function testRemoveLastCharacter() : void {
+        $str = 'test';
+        $this->assertEquals('tes', PluginHelper::removeLastCharacter($str));
+    }
 }
