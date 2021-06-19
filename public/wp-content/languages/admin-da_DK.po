@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.7.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-05-05 10:02:38+0000\n"
+"PO-Revision-Date: 2021-06-18 02:04:16+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -26,6 +26,26 @@ msgstr "Europe/Copenhagen"
 #: wp-admin/upgrade.php:154
 msgid "Continue"
 msgstr "Fortsæt"
+
+#: wp-admin/about.php:191
+msgid "Dashboard with new color scheme."
+msgstr "Kontrolpanel med nyt farveskema."
+
+#: wp-admin/about.php:189
+msgid "Dashboard with old color scheme."
+msgstr "Kontrolpanel med gammelt farveskema."
+
+#: wp-admin/about.php:259
+msgid "Lazy-load your iframes"
+msgstr "Lazy-load dine iframes"
+
+#: wp-admin/about.php:248
+msgid "New Robots API"
+msgstr "Nyt Robots-API"
+
+#: wp-admin/about.php:246
+msgid "From HTTP to HTTPS in a single click"
+msgstr "Fra HTTP til HTTPS med et enkelt klik"
 
 #: wp-admin/options-privacy.php:253
 msgid "Create"
@@ -2596,6 +2616,14 @@ msgstr "Sikker kommunikation imellem servere er nødvendig for handlinger som he
 #: wp-admin/includes/class-wp-site-health.php:1521
 msgid "Learn more about why you should use HTTPS"
 msgstr "Lær mere om, hvorfor du bør benytte HTTPS"
+
+#: wp-admin/includes/class-wp-site-health.php:1532
+msgid "Your website does not use HTTPS"
+msgstr "Dit websted benytter ikke HTTPS"
+
+#: wp-admin/includes/class-wp-site-health.php:1508
+msgid "Your website is using an active HTTPS connection"
+msgstr "Dit websted benytter en aktiv HTTPS-forbindelse."
 
 #: wp-admin/includes/class-wp-site-health.php:1465
 msgid "Your site is set to display errors to site visitors"
