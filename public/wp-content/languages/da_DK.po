@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.8.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-08-01 10:59:36+0000\n"
+"PO-Revision-Date: 2021-08-19 22:07:46+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -6337,11 +6337,11 @@ msgstr "En alfanumerisk identifikator for denne status."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1575
 msgid "Limit response to comments published before a given ISO8601 compliant date."
-msgstr "Begræns resultatet til kommentarer udgivet før en ISO8601-kompatibel dato."
+msgstr "Begræns svar til kommentarer udgivet før en given ISO8601-kompatibel dato."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1546
 msgid "Limit response to comments published after a given ISO8601 compliant date."
-msgstr "Begræns resultatet til kommentarer udgivet efter en ISO8601-kompatibel dato."
+msgstr "Begræns svar til kommentarer udgivet efter en given ISO8601-kompatibel dato."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-users-controller.php:1464
 msgid "Avatar URLs for the user."
@@ -7485,7 +7485,7 @@ msgstr "Sørg for at svaret ekskluderer specifikke ID'er."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2734
 msgid "Limit response to posts published before a given ISO8601 compliant date."
-msgstr "Begræns svaret til indlæg udgivet før en given ISO8601-kompatibel dato."
+msgstr "Begræns svar til indlæg udgivet før en given ISO8601-kompatibel dato."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1569
 msgid "Limit result set to that from a specific author email. Requires authorization."
@@ -7501,7 +7501,7 @@ msgstr "Begræns svaret til kommentarer tildelt specifikke bruger ID'er. Kræver
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2703
 msgid "Limit response to posts published after a given ISO8601 compliant date."
-msgstr "Begræns svaret til indlæg udgivet efter en given ISO8601 kompatibel dato."
+msgstr "Begræns svar til indlæg udgivet efter en given ISO8601 kompatibel dato."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1518
 msgid "Avatar URLs for the comment author."
@@ -9812,7 +9812,7 @@ msgid "Home"
 msgstr "Forside"
 
 #: wp-includes/customize/class-wp-customize-new-menu-control.php:59
-#: wp-admin/nav-menus.php:961 wp-admin/nav-menus.php:1118
+#: wp-admin/nav-menus.php:961 wp-admin/nav-menus.php:1126
 msgid "Create Menu"
 msgstr "Opret menu"
 
@@ -9860,7 +9860,7 @@ msgid "Navigation Label"
 msgstr "Menutitel"
 
 #: wp-includes/customize/class-wp-customize-nav-menu-auto-add-control.php:46
-#: wp-admin/nav-menus.php:1045
+#: wp-admin/nav-menus.php:1053
 msgid "Automatically add new top-level pages to this menu"
 msgstr "Tilføj automatisk nye sider uden forældre til denne menu"
 
@@ -9870,7 +9870,7 @@ msgid "Menu Location"
 msgstr "Menu-placeringer"
 
 #: wp-includes/class-wp-customize-nav-menus.php:1105
-#: wp-admin/nav-menus.php:1112
+#: wp-admin/nav-menus.php:1120
 msgid "Delete Menu"
 msgstr "Slet menu"
 
@@ -16383,7 +16383,7 @@ msgstr "Indhold"
 #: wp-admin/includes/media.php:1744 wp-admin/includes/media.php:2279
 #: wp-admin/includes/meta-boxes.php:155 wp-admin/includes/meta-boxes.php:208
 #: wp-admin/includes/template.php:498 wp-admin/includes/template.php:741
-#: wp-admin/includes/template.php:862 wp-admin/nav-menus.php:1093
+#: wp-admin/includes/template.php:862 wp-admin/nav-menus.php:1101
 #: wp-admin/options-general.php:129 wp-admin/user-edit.php:531
 #: wp-admin/user-edit.php:645 wp-admin/widgets-form.php:337
 #: wp-admin/widgets-form.php:340 wp-admin/widgets-form.php:553

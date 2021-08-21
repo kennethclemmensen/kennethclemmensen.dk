@@ -4944,7 +4944,7 @@ msgstr "Skjul knapper"
 msgid "Expand Sidebar"
 msgstr "Udfold sidebar"
 
-#: wp-admin/nav-menus.php:1052
+#: wp-admin/nav-menus.php:1060
 msgid "Display location"
 msgstr "Visningsplacering"
 
@@ -5881,7 +5881,7 @@ msgid "Send User Notification"
 msgstr "Send brugernotifikation"
 
 #. translators: %s: Menu name.
-#: wp-admin/nav-menus.php:1072
+#: wp-admin/nav-menus.php:1080
 msgctxt "menu location"
 msgid "(Currently set to: %s)"
 msgstr "(på nuværende tidspunkt sat til: %s)"
@@ -8334,7 +8334,7 @@ msgstr "Nægtet: %s"
 msgid "Capabilities"
 msgstr "Rettigheder"
 
-#: wp-admin/nav-menus.php:1027 wp-admin/network/settings.php:490
+#: wp-admin/nav-menus.php:1035 wp-admin/network/settings.php:490
 msgid "Menu Settings"
 msgstr "Menu indstillinger"
 
@@ -8390,11 +8390,11 @@ msgstr "Sådan, mester! Du har klaret dig igennem denne første del af installat
 msgid "Client version"
 msgstr "Klientversion"
 
-#: wp-admin/nav-menus.php:1043
+#: wp-admin/nav-menus.php:1051
 msgid "Auto add pages"
 msgstr "Tilføj automatisk sider"
 
-#: wp-admin/nav-menus.php:1001
+#: wp-admin/nav-menus.php:1005
 msgid "Give your menu a name, then click Create Menu."
 msgstr "Giv din menu et navn og klik derefter Opret menu."
 
@@ -11397,7 +11397,7 @@ msgstr "CSS klasser (valgfri)"
 msgid "Link Target"
 msgstr "Linkmål"
 
-#: wp-admin/nav-menus.php:961 wp-admin/nav-menus.php:1118
+#: wp-admin/nav-menus.php:961 wp-admin/nav-menus.php:1126
 msgid "Save Menu"
 msgstr "Gem menu"
 
