@@ -143,7 +143,7 @@ msgstr "Tilføj en nyt applikation adgangskode"
 msgid "Required to create an Application Password, but not to update the user."
 msgstr "Kræves for at oprette en applikation adgangskode, men ikke for at opdatere brugeren."
 
-#: wp-admin/about.php:251
+#: wp-admin/about.php:284
 msgid "Go to Updates"
 msgstr "Gå til opdateringer"
 
@@ -462,7 +462,7 @@ msgstr "\"%1$s\" værdien er mindre end \"%2$s\"."
 msgid "Environment type"
 msgstr "Miljøtype"
 
-#: wp-admin/about.php:233
+#: wp-admin/about.php:266
 msgid "Check the Field Guide for more!"
 msgstr "Se feltguiden for mere!"
 
@@ -752,7 +752,7 @@ msgstr "Automatiske opdateringer kan aktiveres eller deaktiveres for hovedversio
 msgid "<strong>Important:</strong> Before updating, please <a href=\"%1$s\">back up your database and files</a>. For help with updates, visit the <a href=\"%2$s\">Updating WordPress</a> documentation page."
 msgstr "<strong>Vigtigt:</strong> Før du opdaterer, skal du <a href=\"%1$s\">sikkerhedskopiere databasen og filerne</a>. Du kan få hjælp til opdateringer på dokumentationssiden <a href=\"%2$s\">Opdatering af WordPress</a>."
 
-#: wp-admin/customize.php:203 wp-admin/theme-install.php:389
+#: wp-admin/customize.php:207 wp-admin/theme-install.php:389
 #: wp-admin/theme-install.php:436 wp-admin/themes.php:554
 #: wp-admin/themes.php:912 wp-admin/themes.php:1128
 msgctxt "theme"
@@ -1586,7 +1586,7 @@ msgstr "<a href=\"https://wordpress.org/support/article/settings-permalinks-scre
 msgid "<a href=\"https://wordpress.org/support/article/dashboard-updates-screen/\">Documentation on Updating WordPress</a>"
 msgstr "<a href=\"https://wordpress.org/support/article/dashboard-updates-screen/\">Dokumentation om Opdatering af WordPress</a>"
 
-#: wp-admin/nav-menus.php:653
+#: wp-admin/nav-menus.php:663
 msgid "<a href=\"https://wordpress.org/support/article/appearance-menus-screen/\">Documentation on Menus</a>"
 msgstr "<a href=\"https://wordpress.org/support/article/appearance-menus-screen/\">Dokumentation om Menuer</a>"
 
@@ -2335,7 +2335,7 @@ msgid "Great job!"
 msgstr "Godt arbejde!"
 
 #: wp-admin/about.php:33 wp-admin/credits.php:34 wp-admin/freedoms.php:37
-#: wp-admin/includes/ms.php:1122 wp-admin/nav-menus.php:691
+#: wp-admin/includes/ms.php:1122 wp-admin/nav-menus.php:701
 #: wp-admin/options-privacy.php:143 wp-admin/privacy-policy-guide.php:41
 #: wp-admin/privacy.php:31 wp-admin/site-health.php:115
 msgid "Secondary menu"
@@ -3342,29 +3342,29 @@ msgstr "Du kan ikke opdatere fordi <a href=\"%1$s\">WordPress %2$s</a> kræver M
 msgid "You cannot update because <a href=\"%1$s\">WordPress %2$s</a> requires PHP version %3$s or higher. You are running version %4$s."
 msgstr "Du kan ikke opdatere fordi <a href=\"%1$s\">WordPress %2$s</a> kræver PHP-version %3$s eller højere. Du bruger version %4$s."
 
-#: wp-admin/nav-menus.php:927
+#: wp-admin/nav-menus.php:937
 msgid "Add menu items"
 msgstr "Tilføj menuelementer"
 
 #. translators: %s: URL to create a new menu.
-#: wp-admin/nav-menus.php:893
+#: wp-admin/nav-menus.php:903
 msgid "or <a href=\"%s\">create a new menu</a>. Don&#8217;t forget to save your changes!"
 msgstr "eller <a href=\"%s\">opret en ny menu</a>. Glem ikke at gemme dine ændringer!"
 
-#: wp-admin/nav-menus.php:840 wp-admin/nav-menus.php:905
+#: wp-admin/nav-menus.php:850 wp-admin/nav-menus.php:915
 msgid "Click the Save Menu button to save your changes."
 msgstr "Klik på Gem menu-knappen for at gemme dine ændringer."
 
 #. translators: %s: URL to create a new menu.
-#: wp-admin/nav-menus.php:828
+#: wp-admin/nav-menus.php:838
 msgid "Edit your menu below, or <a href=\"%s\">create a new menu</a>. Don&#8217;t forget to save your changes!"
 msgstr "Rediger din menu herunder, eller <a href=\"%s\">opret en ny menu</a>. Glem ikke at gemme dine ændringer!"
 
-#: wp-admin/nav-menus.php:821
+#: wp-admin/nav-menus.php:831
 msgid "Fill in the Menu Name and click the Create Menu button to create your first menu."
 msgstr "Udfyld Menunavnet og klik på Opret menu-knappen for at oprette din første menu."
 
-#: wp-admin/nav-menus.php:820
+#: wp-admin/nav-menus.php:830
 msgid "Create your first menu below."
 msgstr "Opret din første menu herunder."
 
@@ -3476,9 +3476,10 @@ msgctxt "plugin"
 msgid "Cannot Install"
 msgstr "Kan ikke installere"
 
+#. translators: %s: WordPress version
 #. translators: %s: WordPress version.
-#: wp-admin/includes/update.php:302 wp-admin/install.php:238
-#: wp-admin/update-core.php:92 wp-admin/upgrade.php:80
+#: wp-admin/about.php:65 wp-admin/includes/update.php:302
+#: wp-admin/install.php:238 wp-admin/update-core.php:92 wp-admin/upgrade.php:80
 msgid "https://wordpress.org/support/wordpress-version/version-%s/"
 msgstr "https://wordpress.org/support/wordpress-version/version-%s/"
 
@@ -4931,11 +4932,11 @@ msgstr "Du har desværre ikke tilladelse til at slette brugere."
 msgid "Sorry, you are not allowed to create users."
 msgstr "Beklager, du har ikke tilladelse til at oprette brugere."
 
-#: wp-admin/customize.php:241
+#: wp-admin/customize.php:245
 msgid "The Customizer allows you to preview changes to your site before publishing them. You can navigate to different pages on your site within the preview. Edit shortcuts are shown for some editable elements."
 msgstr "Tilpasseren tillader dig at gennemse ændringer på dit websted før du udgiver dem. Du kan navigere til forskellige sider på dit websted, men du gennemser. Genveje til redigering vises for nogle redigerbare elementer."
 
-#: wp-admin/customize.php:255
+#: wp-admin/customize.php:259
 msgctxt "short (~12 characters) label for hide controls button"
 msgid "Hide Controls"
 msgstr "Skjul knapper"
@@ -4944,7 +4945,7 @@ msgstr "Skjul knapper"
 msgid "Expand Sidebar"
 msgstr "Udfold sidebar"
 
-#: wp-admin/nav-menus.php:1060
+#: wp-admin/nav-menus.php:1070
 msgid "Display location"
 msgstr "Visningsplacering"
 
@@ -5037,7 +5038,7 @@ msgstr "Gentag"
 #: wp-admin/includes/class-custom-background.php:100
 #: wp-admin/includes/class-custom-image-header.php:137 wp-admin/index.php:112
 #: wp-admin/link-manager.php:79 wp-admin/media-new.php:61 wp-admin/media.php:97
-#: wp-admin/my-sites.php:52 wp-admin/nav-menus.php:654
+#: wp-admin/my-sites.php:52 wp-admin/nav-menus.php:664
 #: wp-admin/options-discussion.php:32 wp-admin/options-general.php:49
 #: wp-admin/options-media.php:41 wp-admin/options-permalink.php:62
 #: wp-admin/options-reading.php:53 wp-admin/options-writing.php:53
@@ -5212,7 +5213,7 @@ msgstr "Du har desværre ikke tilladelse til at ændre uregistrerede indstilling
 msgid "Sorry, you are not allowed to manage options for this site."
 msgstr "Du har desværre ikke tilladelse til at administrere indstillinger på dette websted."
 
-#: wp-admin/nav-menus.php:676 wp-admin/widgets-form.php:393
+#: wp-admin/nav-menus.php:686 wp-admin/widgets-form.php:393
 msgid "Manage with Live Preview"
 msgstr "Håndter i Live forhåndsvisning"
 
@@ -5431,7 +5432,7 @@ msgstr "Du har desværre ikke tilladelse til at eksportere indholdet på dette w
 msgid "You can filter the list of posts by post status using the text links above the posts list to only show posts with that status. The default view is to show all posts."
 msgstr "Du kan filtrere listen af indlæg efter indlægstatus ved at bruge tekstlinks ovenover indlægslisten , så der kun vises indlæg med den status. Standardvisningen er at alle indlæg vises."
 
-#: wp-admin/customize.php:214
+#: wp-admin/customize.php:218
 msgid "Close the Customizer and go back to the previous page"
 msgstr "Luk Tilpasseren og gå tilbage til forrige side"
 
@@ -5881,13 +5882,13 @@ msgid "Send User Notification"
 msgstr "Send brugernotifikation"
 
 #. translators: %s: Menu name.
-#: wp-admin/nav-menus.php:1080
+#: wp-admin/nav-menus.php:1090
 msgctxt "menu location"
 msgid "(Currently set to: %s)"
 msgstr "(på nuværende tidspunkt sat til: %s)"
 
 #. translators: %s: WordPress version number.
-#: wp-admin/about.php:275
+#: wp-admin/about.php:308
 msgid "<strong>Version %s</strong> addressed one security issue."
 msgstr "<strong>Version %s</strong> tog hånd om ét sikkerhedsproblem."
 
@@ -5899,15 +5900,15 @@ msgstr "https://da.gravatar.com/"
 msgid "Profile Picture"
 msgstr "Profilbillede"
 
-#: wp-admin/about.php:272
+#: wp-admin/about.php:45 wp-admin/about.php:305
 msgid "Maintenance and Security Releases"
 msgstr "Vedligeholdelses- og sikkerhedsudgivelser"
 
-#: wp-admin/about.php:269
+#: wp-admin/about.php:302
 msgid "Security Releases"
 msgstr "Sikkerhedsudgivelser"
 
-#: wp-admin/about.php:266
+#: wp-admin/about.php:299
 msgid "Maintenance Releases"
 msgstr "Vedligeholdelsesudgivelser"
 
@@ -6566,7 +6567,7 @@ msgid "Show more details"
 msgstr "Vis for flere detaljer"
 
 #. translators: %s: Number of menus.
-#: wp-admin/nav-menus.php:720
+#: wp-admin/nav-menus.php:730
 msgid "Your theme supports %s menu. Select which menu appears in each location."
 msgid_plural "Your theme supports %s menus. Select which menu appears in each location."
 msgstr[0] "Dit tema understøtter %s menu. Vælg hvilken menu, der skal vises ved hvert sted."
@@ -6764,7 +6765,7 @@ msgctxt "timezone date format"
 msgid "Y-m-d H:i:s"
 msgstr "Y-m-d H:i:s"
 
-#: wp-admin/nav-menus.php:625
+#: wp-admin/nav-menus.php:635
 msgid "To add a custom link, <strong>expand the Custom Links section, enter a URL and link text, and click Add to Menu</strong>"
 msgstr "For at tilføje dit tilpasset link <strong>udvid sektionen Egne links, indtast en URL og link-tekst og klik på Tilføj til menu</strong>"
 
@@ -7837,18 +7838,18 @@ msgstr "Disse størrelser angiver de maksimale dimensioner i pixel, der kan brug
 msgid "Comment must be manually approved"
 msgstr "Kommentarer skal godkendes manuelt"
 
-#: wp-admin/nav-menus.php:623
+#: wp-admin/nav-menus.php:633
 msgid "<strong>Clicking the arrow to the right of any menu item</strong> in the editor will reveal a standard group of settings. Additional settings such as link target, CSS classes, link relationships, and link descriptions can be enabled and disabled via the Screen Options tab."
 msgstr "<strong>Ved at klikke på pilen til højre for et menupunkt</strong> i editoren vil du få vist en række standardindstillinger. Yderligere indstillinger såsom link target, CSS-klasser, link-relationer, og link-beskrivelser kan aktiveres og deaktiveres via fanebladet Skærmindstillinger."
 
 #. translators: 1: URL to Widgets screen, 2 and 3: The names of the default
 #. themes.
-#: wp-admin/nav-menus.php:592
+#: wp-admin/nav-menus.php:602
 msgid "Menus can be displayed in locations defined by your theme, even used in sidebars by adding a &#8220;Navigation Menu&#8221; widget on the <a href=\"%1$s\">Widgets</a> screen. If your theme does not support the navigation menus feature (the default themes, %2$s and %3$s, do), you can learn about adding this support by following the Documentation link to the side."
 msgstr "Menuer kan vises på steder defineret af dit tema, endda også i sidebars ved at tilføje en &#8220;Brugerdefineret menu#8221; widget i <a href=\"%1$s\">Widgets</a> skærmbilledet. Hvis dit tema ikke understøtter den brugerdefinerede menufunktionen (standard temaerne, %2$s og %3$s gør), kan du lære om at tilføje dette ved at følge Dokumentations-linket ude i siden."
 
 #. translators: %s: URL to Widgets screen.
-#: wp-admin/nav-menus.php:583
+#: wp-admin/nav-menus.php:593
 msgid "Your theme does not natively support menus, but you can use them in sidebars by adding a &#8220;Navigation Menu&#8221; widget on the <a href=\"%s\">Widgets</a> screen."
 msgstr "Dit tema understøtter som udgangspunkt ikke menuer, men du kan bruge dem i sidebars ved at tilføje en &#8220;Brugerdefineret menu&#8221; widget i <a href=\"%s\">Widgets</a> skærmbilledet."
 
@@ -8125,7 +8126,7 @@ msgstr "Pakken indeholder ingen filer."
 msgid "To navigate between revisions, <strong>drag the slider handle left or right</strong> or <strong>use the Previous or Next buttons</strong>."
 msgstr "For at navigere mellem revisionerne, så <strong>træk skydehåndtaget til venstre eller højre</strong> eller <strong>brug Forrige- og Næste knapperne</strong>."
 
-#: wp-admin/customize.php:147 wp-admin/includes/class-wp-debug-data.php:440
+#: wp-admin/customize.php:151 wp-admin/includes/class-wp-debug-data.php:440
 #: wp-admin/includes/dashboard.php:1140 wp-admin/includes/dashboard.php:1339
 msgid "Loading&hellip;"
 msgstr "Indlæser&hellip;"
@@ -8142,11 +8143,11 @@ msgstr "Emnet du prøver at gendanne fra papirkurven findes ikke længere."
 msgid "The item you are trying to move to the Trash no longer exists."
 msgstr "Emnet du prøver at flytte til papirkurven findes ikke længere."
 
-#: wp-admin/nav-menus.php:978
+#: wp-admin/nav-menus.php:988
 msgid "Drag the items into the order you prefer. Click the arrow on the right of the item to reveal additional configuration options."
 msgstr "Træk hvert emne i den rækkefølge, du foretrækker. Klik på pilen til højre for emnet for at afsløre yderligere indstillinger."
 
-#: wp-admin/nav-menus.php:611
+#: wp-admin/nav-menus.php:621
 msgid "If you haven&#8217;t yet created any menus, <strong>click the &#8217;create a new menu&#8217; link</strong> to get started"
 msgstr "Du har endnu ikke oprettet nogen menuer, <strong>klik på &#8217;Tilføj ny menu&#8217; linket</strong> for at komme i gang"
 
@@ -8186,105 +8187,105 @@ msgctxt "Followed by post revision info"
 msgid "From:"
 msgstr "Fra:"
 
-#: wp-admin/nav-menus.php:794
+#: wp-admin/nav-menus.php:804
 msgctxt "menu"
 msgid "Use new menu"
 msgstr "Brug ny menu"
 
-#: wp-admin/nav-menus.php:775
+#: wp-admin/nav-menus.php:785
 msgctxt "menu"
 msgid "Edit"
 msgstr "Rediger"
 
-#: wp-admin/nav-menus.php:744
+#: wp-admin/nav-menus.php:754
 msgid "Select a Menu"
 msgstr "Vælg en menu"
 
-#: wp-admin/nav-menus.php:735
+#: wp-admin/nav-menus.php:745
 msgid "Assigned Menu"
 msgstr "Tildelt menu"
 
-#: wp-admin/nav-menus.php:734
+#: wp-admin/nav-menus.php:744
 msgid "Theme Location"
 msgstr "Temaområde"
 
-#: wp-admin/nav-menus.php:703
+#: wp-admin/nav-menus.php:713
 msgid "Manage Locations"
 msgstr "Håndter områder"
 
-#: wp-admin/nav-menus.php:692
+#: wp-admin/nav-menus.php:702
 msgid "Edit Menus"
 msgstr "Rediger menuer"
 
-#: wp-admin/nav-menus.php:640
+#: wp-admin/nav-menus.php:650
 msgid "To add a new menu instead of assigning an existing one, <strong>click the &#8217;Use new menu&#8217; link</strong>. Your new menu will be automatically assigned to that theme location"
 msgstr "For at tilføje en ny menu i stedet for at tildele en eksiterende, så <strong>klik på Brug ny menu linket</strong>"
 
-#: wp-admin/nav-menus.php:639
+#: wp-admin/nav-menus.php:649
 msgid "To edit a menu currently assigned to a theme location, <strong>click the adjacent &#8217;Edit&#8217; link</strong>"
 msgstr "For at redigere en menu, der er tildelt et temaområde, så <strong>klik det tilstødende Rediger link</strong>"
 
-#: wp-admin/nav-menus.php:638
+#: wp-admin/nav-menus.php:648
 msgid "To assign menus to one or more theme locations, <strong>select a menu from each location&#8217;s drop down.</strong> When you&#8217;re finished, <strong>click Save Changes</strong>"
 msgstr "For at tildele menuer til et eller flere temaområder, så <strong>vælg en menu fra hvert områdes rullemenu.</strong> Når du er færdig, så klik <strong>Gem ændringer</strong>"
 
-#: wp-admin/nav-menus.php:637
+#: wp-admin/nav-menus.php:647
 msgid "This screen is used for globally assigning menus to locations defined by your theme."
 msgstr "Dette skærmbillede bruges til at tildele overordnede menuer til områder, der er defineret i dit tema."
 
-#: wp-admin/nav-menus.php:632
+#: wp-admin/nav-menus.php:642
 msgid "Editing Menus"
 msgstr "Redigering af menuer"
 
-#: wp-admin/nav-menus.php:627
+#: wp-admin/nav-menus.php:637
 msgid "Delete a menu item by <strong>expanding it and clicking the Remove link</strong>"
 msgstr "Slet en menu ved at <strong>udvide det og klikke på Fjern linket</strong>"
 
-#: wp-admin/nav-menus.php:626
+#: wp-admin/nav-menus.php:636
 msgid "To reorganize menu items, <strong>drag and drop items with your mouse or use your keyboard</strong>. Drag or move a menu item a little to the right to make it a submenu"
 msgstr "For at omorganisere, så <strong>træk og slip elementer med musen eller brug tastaturet</strong>. Træk eller flyt et element en smule til højre for at gøre det til en undermenu"
 
-#: wp-admin/nav-menus.php:624
+#: wp-admin/nav-menus.php:634
 msgid "Add one or several items at once by <strong>selecting the checkbox next to each item and clicking Add to Menu</strong>"
 msgstr "Tilføj en eller flere elementer på én gang ved at <strong>sætte flueben i afkrydsningsfeltet ved siden af hvert element og klikke Tilføj til menu</strong>"
 
-#: wp-admin/nav-menus.php:622
+#: wp-admin/nav-menus.php:632
 msgid "Each navigation menu may contain a mix of links to pages, categories, custom URLs or other content types. Menu links are added by selecting items from the expanding boxes in the left-hand column below."
 msgstr "Menuer kan indeholde links til sider, kategorier, brugerdefinerede links eller andre indholdstyper. Menulinks tilføjes ved at vælge elementer fra boksene i venstre kolonne nedenfor."
 
-#: wp-admin/nav-menus.php:617
+#: wp-admin/nav-menus.php:627
 msgid "Menu Management"
 msgstr "Menuhåndtering"
 
-#: wp-admin/nav-menus.php:612
+#: wp-admin/nav-menus.php:622
 msgid "You can assign theme locations to individual menus by <strong>selecting the desired settings</strong> at the bottom of the menu editor. To assign menus to all theme locations at once, <strong>visit the Manage Locations tab</strong> at the top of the screen."
 msgstr "Du kan tildele temaområder til individuelle menuer ved at <strong>vælge de ønskede indstillinger</strong> i bunden af menu-editoren. For at tildele menuer til alle temaområder på én gang, så <strong>spring til Håndter menuområder-fanebladet</strong> øverst i skærmbilledet."
 
-#: wp-admin/nav-menus.php:610
+#: wp-admin/nav-menus.php:620
 msgid "To edit an existing menu, <strong>choose a menu from the drop down and click Select</strong>"
 msgstr "For at redigere en menu, så <strong>vælg en menu fra dropdown-muligheden og klik Vælg</strong>"
 
-#: wp-admin/nav-menus.php:609
+#: wp-admin/nav-menus.php:619
 msgid "The menu management box at the top of the screen is used to control which menu is opened in the editor below."
 msgstr "Menuhåndteringsboksen øverst i skærmbilledet bruges til at kontrollere hvilken menu, der er åben i editoren nedenunder."
 
-#: wp-admin/nav-menus.php:599
+#: wp-admin/nav-menus.php:609
 msgid "Add, organize, and modify individual menu items"
 msgstr "Tilføj, organiser og lav ændringer i individuelle menuelementer"
 
-#: wp-admin/nav-menus.php:598
+#: wp-admin/nav-menus.php:608
 msgid "Create, edit, and delete menus"
 msgstr "Opret, rediger og slet menuer"
 
-#: wp-admin/nav-menus.php:597 wp-admin/themes.php:132
+#: wp-admin/nav-menus.php:607 wp-admin/themes.php:132
 msgid "From this screen you can:"
 msgstr "I dette skærmbillede kan du:"
 
-#: wp-admin/nav-menus.php:589
+#: wp-admin/nav-menus.php:599
 msgid "This screen is used for managing your navigation menus."
 msgstr "Dette skærmbillede bruges til at håndtere dine brugerdefinerede menuer."
 
-#: wp-admin/nav-menus.php:442
+#: wp-admin/nav-menus.php:452
 msgid "Menu locations updated."
 msgstr "Menuområder opdateret."
 
@@ -8334,11 +8335,11 @@ msgstr "Nægtet: %s"
 msgid "Capabilities"
 msgstr "Rettigheder"
 
-#: wp-admin/nav-menus.php:1035 wp-admin/network/settings.php:490
+#: wp-admin/nav-menus.php:1045 wp-admin/network/settings.php:490
 msgid "Menu Settings"
 msgstr "Menu indstillinger"
 
-#: wp-admin/nav-menus.php:935
+#: wp-admin/nav-menus.php:945
 msgid "Menu structure"
 msgstr "Menustruktur"
 
@@ -8373,7 +8374,7 @@ msgstr "Du kan ikke flytte dette emne til papirkurven. %s redigerer det i øjebl
 msgid "%s has taken over and is currently editing."
 msgstr "%s har taget over og redigerer i øjeblikket."
 
-#: wp-admin/nav-menus.php:845
+#: wp-admin/nav-menus.php:855
 msgid "Select a menu to edit:"
 msgstr "Vælg en menu du vil redigere:"
 
@@ -8390,15 +8391,15 @@ msgstr "Sådan, mester! Du har klaret dig igennem denne første del af installat
 msgid "Client version"
 msgstr "Klientversion"
 
-#: wp-admin/nav-menus.php:1051
+#: wp-admin/nav-menus.php:1061
 msgid "Auto add pages"
 msgstr "Tilføj automatisk sider"
 
-#: wp-admin/nav-menus.php:1005
+#: wp-admin/nav-menus.php:1015
 msgid "Give your menu a name, then click Create Menu."
 msgstr "Giv din menu et navn og klik derefter Opret menu."
 
-#: wp-admin/nav-menus.php:976
+#: wp-admin/nav-menus.php:986
 msgid "Edit your default menu by adding or removing items. Drag the items into the order you prefer. Click Create Menu to save your changes."
 msgstr "Rediger din standardmenu ved at tilføje eller fjerne elementer. Træk hvert element i den rækkefølge du foretrækker. Klik på Opret menu for at gemme dine ændringer."
 
@@ -9351,29 +9352,31 @@ msgstr "Skriv e-mailadressen eller brugernavnet på en eksisterende bruger på n
 msgid "Show Toolbar when viewing site"
 msgstr "Vis værktøjslinje på webstedet"
 
+#. translators: %s: HelpHub URL
 #. translators: %s: Documentation URL.
-#: wp-admin/about.php:298
+#: wp-admin/about.php:62 wp-admin/about.php:331
 msgid "For more information, see <a href=\"%s\">the release notes</a>."
 msgstr "Hvis du vil vide mere, så læs <a href=\"%s\">udgivelsesnoterne</a>."
 
 #. translators: 1: WordPress version number, 2: Plural number of bugs. More
 #. than one security issue.
-#: wp-admin/about.php:292
+#: wp-admin/about.php:325
 msgid "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bugs."
 msgstr[0] "<strong>Version %1$s</strong> lukkede nogle sikkerhedshuller og rettede %2$s fejl."
 msgstr[1] "<strong>Version %1$s</strong> lukkede nogle sikkerhedshuller og rettede %2$s fejl."
 
+#. translators: 1: WordPress version number, 2: plural number of bugs.
 #. translators: 1: WordPress version number, 2: Plural number of bugs. Singular
 #. security issue.
-#: wp-admin/about.php:286
+#: wp-admin/about.php:50 wp-admin/about.php:319
 msgid "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bugs."
 msgstr[0] "<strong>Version %1$s</strong> lukkede et sikkerhedshul og rettede %2$s fejl."
 msgstr[1] "<strong>Version %1$s</strong> lukkede et sikkerhedshul og rettede %2$s fejl."
 
 #. translators: 1: WordPress version number, 2: Plural number of bugs.
-#: wp-admin/about.php:280
+#: wp-admin/about.php:313
 msgid "<strong>Version %1$s</strong> addressed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed %2$s bugs."
 msgstr[0] "<strong>Version %1$s</strong> rettede %2$s fejl."
@@ -9384,19 +9387,19 @@ msgid "Welcome to your WordPress Dashboard! This is the screen you will see when
 msgstr "Velkommen til dit WordPress kontrolpanel! Det her er det skærmbillede, du vil se, når du logger ind på dit websted, og det giver dig adgang til alle administationsmulighederne i WordPress. Du kan få hjælp til alle skærmbilleder ved at klikke på Hjælp-fanebladet ovenover skærmbilledets titel."
 
 #. translators: %s: WordPress version number.
-#: wp-admin/about.php:277
+#: wp-admin/about.php:310
 msgid "<strong>Version %s</strong> addressed some security issues."
 msgstr "<strong>Version %s</strong> tog sig af nogle sikkerhedsproblemer."
 
-#: wp-admin/about.php:271
+#: wp-admin/about.php:304
 msgid "Maintenance and Security Release"
 msgstr "Vedligeholdelse- og sikkerhedsudgivelse"
 
-#: wp-admin/about.php:268
+#: wp-admin/about.php:301
 msgid "Security Release"
 msgstr "Sikkerhedsudgivelse"
 
-#: wp-admin/about.php:265
+#: wp-admin/about.php:298
 msgid "Maintenance Release"
 msgstr "Vedligeholdelsesudgivelse"
 
@@ -9681,11 +9684,11 @@ msgstr "<strong>Rediger</strong> tager dig til redigeringsskærmbilledet for ind
 msgid "Because this is a multisite installation, you may add accounts that already exist on the Network by specifying a username or email, and defining a role. For more options, such as specifying a password, you have to be a Network Administrator and use the hover link under an existing user&#8217;s name to Edit the user profile under Network Admin > All Users."
 msgstr "Da dette er en Multisite-installation, kan du tilføje konti, der allerede findes på netværket, ved at angive et brugernavn eller e-mailadresse, og tildele brugeren en rolle. For at få flere muligheder, såsom at angive en adgangskode, skal du være en netværksadministrator og føre markøren over linket til en eksisterende brugers navn. Derefter kan du gå til Rediger brugerprofil under Netværkadministrator > Alle brugere."
 
-#: wp-admin/about.php:254
+#: wp-admin/about.php:287
 msgid "Go to Dashboard &rarr; Home"
 msgstr "Gå til Kontrolpanel &rarr; Forside"
 
-#: wp-admin/about.php:251
+#: wp-admin/about.php:284
 msgid "Go to Dashboard &rarr; Updates"
 msgstr "Tilbage til Kontrolpanel &rarr; Opdateringer"
 
@@ -9832,8 +9835,8 @@ msgstr "Navigationsmenuen i venstre side indeholder links til alle sider i admin
 #: wp-admin/includes/class-custom-image-header.php:99
 #: wp-admin/includes/class-wp-screen.php:853 wp-admin/includes/ms.php:1137
 #: wp-admin/index.php:42 wp-admin/link-manager.php:56 wp-admin/media-new.php:48
-#: wp-admin/media.php:85 wp-admin/my-sites.php:43 wp-admin/nav-menus.php:604
-#: wp-admin/nav-menus.php:645 wp-admin/options-discussion.php:23
+#: wp-admin/media.php:85 wp-admin/my-sites.php:43 wp-admin/nav-menus.php:614
+#: wp-admin/nav-menus.php:655 wp-admin/options-discussion.php:23
 #: wp-admin/options-general.php:41 wp-admin/options-media.php:33
 #: wp-admin/options-permalink.php:22 wp-admin/options-reading.php:24
 #: wp-admin/options-writing.php:22 wp-admin/plugin-editor.php:124
@@ -10027,7 +10030,7 @@ msgstr "Indstillinger gemt."
 #: wp-admin/includes/class-custom-image-header.php:135
 #: wp-admin/includes/ms.php:1159 wp-admin/index.php:110
 #: wp-admin/link-manager.php:77 wp-admin/media-new.php:59 wp-admin/media.php:95
-#: wp-admin/my-sites.php:50 wp-admin/nav-menus.php:652
+#: wp-admin/my-sites.php:50 wp-admin/nav-menus.php:662
 #: wp-admin/options-discussion.php:30 wp-admin/options-general.php:47
 #: wp-admin/options-media.php:39 wp-admin/options-permalink.php:59
 #: wp-admin/options-reading.php:51 wp-admin/options-writing.php:51
@@ -11056,7 +11059,7 @@ msgstr "Du kan tilpasse visningen af dette skærmbillede på en række måder:"
 msgid "Search Installed Plugins"
 msgstr "Søg i installerede plugins"
 
-#: wp-admin/nav-menus.php:716
+#: wp-admin/nav-menus.php:726
 msgid "Your theme supports one menu. Select which menu you would like to use."
 msgstr "Dit tema understøtter en menu. Vælg hvilken menu du ønsker at bruge."
 
@@ -11397,7 +11400,7 @@ msgstr "CSS klasser (valgfri)"
 msgid "Link Target"
 msgstr "Linkmål"
 
-#: wp-admin/nav-menus.php:961 wp-admin/nav-menus.php:1126
+#: wp-admin/nav-menus.php:971 wp-admin/nav-menus.php:1136
 msgid "Save Menu"
 msgstr "Gem menu"
 
@@ -11489,7 +11492,7 @@ msgstr "WordPress-opdateringer"
 msgid "Edit menu item"
 msgstr "Rediger menupunkt"
 
-#: wp-admin/about.php:254 wp-admin/includes/network.php:148
+#: wp-admin/about.php:287 wp-admin/includes/network.php:148
 msgid "Go to Dashboard"
 msgstr "Gå til kontrolpanelet"
 
@@ -11543,7 +11546,7 @@ msgstr "Denne adresse bruges til administrative formål. Hvis du ændrer adresse
 msgid "View All"
 msgstr "Vis alle"
 
-#: wp-admin/nav-menus.php:374 wp-admin/nav-menus.php:396
+#: wp-admin/nav-menus.php:384 wp-admin/nav-menus.php:406
 msgid "Please enter a valid menu name."
 msgstr "Indtast venligst navnet på en eksisterende menu."
 
@@ -14500,7 +14503,7 @@ msgstr "Header opdateret. <a href=\"%s\">Besøg din side</a> for at se hvordan d
 msgid "Custom Header"
 msgstr "Egen header"
 
-#: wp-admin/includes/template.php:2487 wp-admin/nav-menus.php:803
+#: wp-admin/includes/template.php:2487 wp-admin/nav-menus.php:813
 #: wp-admin/options.php:402
 msgid "Save Changes"
 msgstr "Gem ændringer"
