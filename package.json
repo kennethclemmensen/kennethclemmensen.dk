@@ -24,12 +24,12 @@
     "uploadsFolder": "public/wp-content/uploads/"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.33.0",
-    "@typescript-eslint/parser": "^4.33.0",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
     "browser-sync": "^2.27.5",
     "css-loader": "^6.4.0",
     "eslint": "^7.32.0",
-    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-import": "^2.25.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0",
     "grunt": "^1.4.1",
