@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.8.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-10-07 08:20:41+0000\n"
+"PO-Revision-Date: 2021-10-27 08:10:37+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -464,6 +464,11 @@ msgstr "Beskriv med få ord, hvad dette websted handler om. Sloganlinjen kan bru
 msgctxt "block title"
 msgid "Site Tagline"
 msgstr "Webstedets sloganlinje"
+
+#: wp-includes/blocks/site-logo/block.json
+msgctxt "block description"
+msgid "Useful for displaying a graphic mark, design, or symbol to represent the site. Once a site logo is set, it can be reused in different places and templates. It should not be confused with the site icon, which is the small image used in the dashboard, browser tabs, public search results, etc, to help recognize a site."
+msgstr "Især brugbart til at vise et grafisk mærke, design eller symbol som repræsenterer webstedet. Når et webstedslogo er angivet, kan det genbruges på forskellige placeringer og skabeloner. Det må ikke forveksles med webstedsikon (også kaldet favicon), der er det lille billede, der vises på Skrivebord, i browserfaner, søgeresultater osv. for bedre at kunne genkende webstedet."
 
 #: wp-includes/blocks/site-logo/block.json
 msgctxt "block title"
