@@ -1,27 +1,27 @@
 .breadcrumb {
-  display: none;
-  @media #{$tablet} {
-    display: block;
-    margin: -20px 0 25px;
-  }
+	display: none;
+	@media #{$tablet} {
+		display: block;
+		margin: -20px 0 25px;
+	}
 }
 
 .breadcrumb__title {
-  font-size: 0.8em;
+	font-size: 0.8em;
 }
 
 .breadcrumb__list {
-  display: inline-block;
-  margin-left: 10px;
+	display: inline-block;
+	margin-left: 10px;
 }
 
 .breadcrumb__list-item {
-  display: inline-block;
-  font-size: 0.8em;
-  &:not(:last-child)::after {
-    display: inline-block;
-    @extend .font-awesome-solid;
-    content: '\f105';
-    margin: 0 7px;
-  }
+	display: inline-block;
+	font-size: 0.8em;
+	&:not(:last-child)::after {
+		display: inline-block;
+		@extend .font-awesome-solid;
+		content: '\f105';
+		margin: 0 7px;
+	}
 }

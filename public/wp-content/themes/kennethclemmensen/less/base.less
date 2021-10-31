@@ -1,24 +1,24 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  &:focus {
-    outline: 0;
-  }
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	&:focus {
+		outline: 0;
+	}
 }
 
 html, body {
-  &.show-mobile-menu {
-    height: 100%;
-    overflow: hidden;
-    @media @tablet {
-      height: initial;
-      overflow: initial;
-    }
-  }
+	&.show-mobile-menu {
+		height: 100%;
+		overflow: hidden;
+		@media @tablet {
+			height: initial;
+			overflow: initial;
+		}
+	}
 }
 
 body {
-  background: @color-blue--dark;
-  min-width: 320px;
+	background: @color-blue--dark;
+	min-width: 320px;
 }

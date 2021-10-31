@@ -6,13 +6,13 @@ namespace KC\Core;
  */
 class PostType {
 
-    public const FILE = 'kc_file';
+	public const FILE = 'kc_file';
 
-    public const GALLERY = 'kc_gallery';
-    
-    public const IMAGE = 'kc_image';
+	public const GALLERY = 'kc_gallery';
+	
+	public const IMAGE = 'kc_image';
 
-    public const PAGE = 'page';
+	public const PAGE = 'page';
 
-    public const SLIDES = 'kc_slides';
+	public const SLIDES = 'kc_slides';
 }

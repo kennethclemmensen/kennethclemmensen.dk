@@ -1,75 +1,75 @@
 .mobile-menu {
-  background: @color-blue--darker;
-  width: 100%;
-  padding: 25px 0;
-  position: fixed;
-  top: @header-height;
-  bottom: @footer-height;
-  z-index: 1;
-  .translateX(-100%);
-  .transition();
-  overflow-y: auto;
-  @media @tablet {
-    display: none;
-  }
-  &--active {
-    .translateX(0);
-  }
+	background: @color-blue--darker;
+	width: 100%;
+	padding: 25px 0;
+	position: fixed;
+	top: @header-height;
+	bottom: @footer-height;
+	z-index: 1;
+	.translateX(-100%);
+	.transition();
+	overflow-y: auto;
+	@media @tablet {
+		display: none;
+	}
+	&--active {
+		.translateX(0);
+	}
 }
 
 .mobile-menu__content {
-  overflow-y: auto;
-  ul {
-    margin-left: 0;
-    list-style: none;
-    &.sub-menu {
-      display: none;
-      margin-left: 20px;
-    }
-    &.show {
-      display: block;
-    }
-    li {
-      a {
-        display: block;
-        height: 40px;
-        padding: 5px 15px;
-        text-decoration: none;
-        &:hover {
-          background: @color-blue--dark;
-        }
-      }
-    }
-  }
+	overflow-y: auto;
+	ul {
+		margin-left: 0;
+		list-style: none;
+		&.sub-menu {
+			display: none;
+			margin-left: 20px;
+		}
+		&.show {
+			display: block;
+		}
+		li {
+			a {
+				display: block;
+				height: 40px;
+				padding: 5px 15px;
+				text-decoration: none;
+				&:hover {
+					background: @color-blue--dark;
+				}
+			}
+		}
+	}
 }
 
 .mobile-menu__link {
-  position: relative;
-  &--current {
-    background: @color-blue--dark;
-    font-weight: 600;
-  }
+	position: relative;
+	&--current {
+		background: @color-blue--dark;
+		font-weight: 600;
+	}
 }
 
 .mobile-menu__arrow {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 50px;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  &::after {
-    display: inline-block;
-    .font-awesome-solid;
-    content: '\f107';
-    width: 35px;
-    height: 25px;
-    text-align: center;
-    .transition();
-  }
-  &--rotated::after {
-    .rotate(-180deg);
-  }
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 50px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	&::after {
+		display: inline-block;
+		.font-awesome-solid;
+		content: '\f107';
+		width: 35px;
+		height: 25px;
+		text-align: center;
+		.transition();
+	}
+	&--rotated::after {
+		.rotate(-180deg);
+	}
 }

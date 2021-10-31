@@ -6,8 +6,8 @@ namespace KC\Core;
  */
 interface IModule {
 
-    /**
-     * Setup the module
-     */
-    public function setupModule() : void;
+	/**
+	 * Setup the module
+	 */
+	public function setupModule() : void;
 }

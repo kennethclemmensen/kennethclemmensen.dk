@@ -6,5 +6,5 @@ namespace KC\Core;
  */
 class Capability {
 
-    public const ADMINISTRATOR = 'administrator';
+	public const ADMINISTRATOR = 'administrator';
 }

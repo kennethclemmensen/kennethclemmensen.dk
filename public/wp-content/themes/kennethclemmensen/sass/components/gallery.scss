@@ -1,28 +1,28 @@
 .gallery {
-  padding-top: 20px;
+	padding-top: 20px;
 }
 
 .gallery__link {
-  text-decoration: none;
+	text-decoration: none;
 }
 
 .gallery__image {
-  display: inline-block;
-  margin: 0 10px 10px 0;
-  border: 1px solid $color-gray;
+	display: inline-block;
+	margin: 0 10px 10px 0;
+	border: 1px solid $color-gray;
 }
 
 .lb-dataContainer {
-  padding-top: 15px !important;
+	padding-top: 15px !important;
 }
 
 .lb-caption {
-  display: inline-block;
-  margin-bottom: 10px;
-  font-size: 1.2em !important;
-  color: $color-white;
+	display: inline-block;
+	margin-bottom: 10px;
+	font-size: 1.2em !important;
+	color: $color-white;
 }
 
 .lb-number {
-  font-size: 1em !important;
+	font-size: 1em !important;
 }

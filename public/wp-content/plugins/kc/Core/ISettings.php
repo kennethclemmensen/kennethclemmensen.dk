@@ -6,8 +6,8 @@ namespace KC\Core;
  */
 interface ISettings {
 
-    /**
-     * Create a settings page
-     */
-    public function createSettingsPage() : void;
+	/**
+	 * Create a settings page
+	 */
+	public function createSettingsPage() : void;
 }

@@ -1,21 +1,21 @@
 input[type='search'] {
-  width: 250px;
-  height: 30px;
-  margin: 0 15px 15px 0;
-  border: 2px inset $color-gray;
-  color: $color-black;
-  @include placeholder-color($color-gray--dark);
+	width: 250px;
+	height: 30px;
+	margin: 0 15px 15px 0;
+	border: 2px inset $color-gray;
+	color: $color-black;
+	@include placeholder-color($color-gray--dark);
 }
 
 input[type='submit'] {
-  background: $color-blue;
-  padding: 6px 15px;
-  border: 2px outset $color-gray;
-  @include border-radius(4px);
-  color: $color-white;
-  cursor: pointer;
-  @include transition();
-  &:hover {
-    background: darken($color-blue, 10%);
-  }
+	background: $color-blue;
+	padding: 6px 15px;
+	border: 2px outset $color-gray;
+	@include border-radius(4px);
+	color: $color-white;
+	cursor: pointer;
+	@include transition();
+	&:hover {
+		background: darken($color-blue, 10%);
+	}
 }

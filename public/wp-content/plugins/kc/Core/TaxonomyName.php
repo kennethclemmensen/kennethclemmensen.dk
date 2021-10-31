@@ -6,5 +6,5 @@ namespace KC\Core;
  */
 class TaxonomyName {
 
-    public const FILE_TYPE = 'kc_tax_file_type';
+	public const FILE_TYPE = 'kc_tax_file_type';
 }

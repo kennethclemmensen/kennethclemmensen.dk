@@ -10,20 +10,20 @@ use KC\Data\DataManager;
  */
 class ApiModule implements IModule {
 
-    /**
-     * Setup the api module
-     */
-    public function setupModule() : void {
-        $this->setupApiRoutes();
-    }
+	/**
+	 * Setup the api module
+	 */
+	public function setupModule() : void {
+		$this->setupApiRoutes();
+	}
 
-    /**
-     * Setup the Api routes
-     */
-    private function setupApiRoutes() : void {
-        add_action(Action::REST_API_INIT, function() : void {
-            $controller = new ApiController(new DataManager());
-            $controller->registerApiRoutes();
-        });
-    }
+	/**
+	 * Setup the Api routes
+	 */
+	private function setupApiRoutes() : void {
+		add_action(Action::REST_API_INIT, function() : void {
+			$controller = new ApiController(new DataManager());
+			$controller->registerApiRoutes();
+		});
+	}
 }

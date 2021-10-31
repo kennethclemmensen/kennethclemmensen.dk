@@ -1,23 +1,23 @@
 .slider {
-  height: 129px;
-  margin: 0 -15px;
-  border-bottom: 2px solid $color-gray;
-  @media #{$tablet} {
-    margin: 25px 0;
-    border: 2px solid $color-gray;
-    @include box-shadow(4px, 4px, 6px, $color-black);
-  }
-  @media #{$desktop} {
-    height: 160px;
-  }
+	height: 129px;
+	margin: 0 -15px;
+	border-bottom: 2px solid $color-gray;
+	@media #{$tablet} {
+		margin: 25px 0;
+		border: 2px solid $color-gray;
+		@include box-shadow(4px, 4px, 6px, $color-black);
+	}
+	@media #{$desktop} {
+		height: 160px;
+	}
 }
 
 .slider__slide {
-  display: none;
+	display: none;
 }
 
 .slider__image {
-  background: no-repeat center;
-  background-size: cover;
-  height: 100%;
+	background: no-repeat center;
+	background-size: cover;
+	height: 100%;
 }
