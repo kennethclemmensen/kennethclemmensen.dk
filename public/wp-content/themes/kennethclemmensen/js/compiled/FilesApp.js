@@ -76,18 +76,18 @@ export class FilesApp {
                         }
                     },
                     template: `
-                        <div>
-                            <div v-for="file in files.slice(offset, (offset + parseInt(perPage)))">
-                                <a :href="file.url" @click="updateFileDownloads(file)" rel="nofollow" download>{{ file.fileName }}</a>
-                                <p>{{ file.description }}</p>
-                                <p>{{ numberOfDownloadsText }} {{ file.downloads }}</p>
-                            </div>
-                            <div class="pagination">
-                                <a href="#" @click.prevent="previousPage" v-if="offset > 0">{{ previousText }}</a>
-                                <a href="#" @click.prevent="nextPage" v-if="offset < (files.length - parseInt(perPage))">{{ nextText }}</a>
-                            </div>
-                        </div>
-                    `
+						<div>
+							<div v-for="file in files.slice(offset, (offset + parseInt(perPage)))">
+								<a :href="file.url" @click="updateFileDownloads(file)" rel="nofollow" download>{{ file.fileName }}</a>
+								<p>{{ file.description }}</p>
+								<p>{{ numberOfDownloadsText }} {{ file.downloads }}</p>
+							</div>
+							<div class="pagination">
+								<a href="#" @click.prevent="previousPage" v-if="offset > 0">{{ previousText }}</a>
+								<a href="#" @click.prevent="nextPage" v-if="offset < (files.length - parseInt(perPage))">{{ nextText }}</a>
+							</div>
+						</div>
+					`
                 }
             }
         };
