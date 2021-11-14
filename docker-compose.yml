@@ -1,8 +1,10 @@
 version: "3.8"
 
 services:
-  server:
+  app:
     build: .
+    depends_on:
+      - db
     hostname: kennethclemmensen.test
     ports:
       - "80:80"
