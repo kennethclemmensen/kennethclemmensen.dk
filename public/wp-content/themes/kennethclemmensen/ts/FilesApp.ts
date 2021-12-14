@@ -2,7 +2,6 @@ import { EventType } from './enums/EventType';
 import { HttpMethod } from './enums/HttpMethod';
 import { HttpStatusCode } from './enums/HttpStatusCode';
 import { Url } from './enums/Url';
-import { IFile } from './interfaces/IFile';
 import { File } from './types/File';
 
 /**
@@ -48,7 +47,7 @@ export class FilesApp {
 						nextPage: function(): void {
 							this.offset += parseInt(this.perPage);
 						},
-						updateFileDownloads: (file: File | IFile): void => {
+						updateFileDownloads: (file: File): void => {
 							const xhr: XMLHttpRequest = new XMLHttpRequest();
 							xhr.open(HttpMethod.Put, Url.ApiFileDownloads + file.id, true);
 							xhr.addEventListener(EventType.Load, (): void => {
