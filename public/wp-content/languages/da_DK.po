@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.8.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-11-01 02:04:03+0000\n"
+"PO-Revision-Date: 2021-12-12 13:35:53+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1071,17 +1071,323 @@ msgstr "Vis et månedligt arkiv over dine indlæg."
 msgid "Select %s"
 msgstr "Vælg %s"
 
+#: wp-includes/js/dist/block-editor.js:23885
+#: wp-includes/js/dist/block-library.js:2126 wp-admin/edit-form-blocks.php:175
+msgid "Type / to choose a block"
+msgstr "Tryk / for at vælge en blok"
+
+#: wp-includes/js/dist/block-editor.js:17434
+#: wp-admin/includes/class-wp-screen.php:1207 wp-admin/includes/theme.php:342
+#: wp-admin/includes/theme.php:378 wp-admin/index.php:68
+msgid "Layout"
+msgstr "Layout"
+
+#: wp-login.php:1263
+msgid "<strong>Error</strong>: User registration is currently not allowed."
+msgstr "<strong>Fejl</strong>: Det er ikke muligt at registrere en bruger lige nu."
+
 #: wp-login.php:845
 msgid "<strong>Error</strong>: The passwords do not match."
 msgstr "<strong>Fejl</strong>: Adgangskoderne er ikke ens. "
+
+#: wp-login.php:729
+msgid "<strong>Error</strong>: Your password reset link has expired. Please request a new link below."
+msgstr "<strong>Fejl</strong>: Dit link til at nulstille din adgangskode er forældet. Du kan bede om et nyt link nedenfor."
+
+#: wp-login.php:727
+msgid "<strong>Error</strong>: Your password reset link appears to be invalid. Please request a new link below."
+msgstr "<strong>Fejl</strong>: Dit link til at nulstille din adgangskode er ugyldigt. Du kan bede om et nyt link nedenfor."
 
 #: wp-includes/widgets/class-wp-widget-block.php:205
 msgid "Block HTML:"
 msgstr "Blok HTML:"
 
+#: wp-includes/widgets/class-wp-widget-block.php:37
+msgid "A widget containing a block."
+msgstr "En widget, der indeholder en blok."
+
+#. translators: 1 & 2: Deprecation replacement options.
+#: wp-includes/user.php:3733 wp-includes/user.php:3975
+msgid "%1$s or %2$s"
+msgstr "%1$s eller %2$s"
+
+#: wp-includes/user.php:359
+msgid "<strong>Error</strong>: Unknown username. Check again or try your email address."
+msgstr "<strong>Fejl</strong>: Ukendt brugernavn. Tjek igen eller prøv med din email."
+
+#: wp-includes/user.php:354
+msgid "<strong>Error</strong>: Unknown email address. Check again or try your username."
+msgstr "<strong>Fejl</strong>: Ukendt mail. Tjek igen eller prøv med dit brugernavn."
+
+#. translators: %s: User name.
+#: wp-includes/user.php:154
+msgid "<strong>Error</strong>: The username <strong>%s</strong> is not registered on this site. If you are unsure of your username, try your email address instead."
+msgstr "<strong>Fejl</strong>: Brugernavnet <strong>%s</strong> er ikke oprettet på dette websted. Er du usikker på dit brugernavn, så prøv med din email i stedet."
+
+#. translators: %s: Theme name.
+#: wp-includes/theme.php:919
+msgctxt "theme"
+msgid "<strong>Error:</strong> This theme (%s) uses Full Site Editing, which requires the Gutenberg plugin to be activated."
+msgstr "<strong>Fejl:</strong> Dette tema (%s) bruger Webstedsredigering, der kræver at Gutenberg plugin er aktiveret."
+
+#: wp-includes/taxonomy.php:646
+msgctxt "navigation link block description"
+msgid "A link to a category."
+msgstr "Et link til en kategori."
+
+#: wp-includes/taxonomy.php:645
+msgctxt "navigation link block description"
+msgid "A link to a tag."
+msgstr "Et link til et emneord."
+
+#: wp-includes/taxonomy.php:642
+msgctxt "navigation link block description"
+msgid "Category Link"
+msgstr "Kategorilink"
+
+#: wp-includes/taxonomy.php:641
+msgctxt "navigation link block title"
+msgid "Tag Link"
+msgstr "Emneordslink"
+
+#: wp-includes/script-loader.php:890
+msgid "This image cannot be processed by the web server. Convert it to JPEG or PNG before uploading."
+msgstr "Dette billede kan ikke håndteres af serveren. Konverter til JPEG eller PNG før overførsel."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-widgets-controller.php:791
+msgid "URL-encoded form data from the widget admin form. Used to update a widget that does not support instance. Write only."
+msgstr "URL-encoded formulardata fra widget'en adminformular. Bruges til at opdatere en widget, der ikke understøtter instance. Write only."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-widgets-controller.php:784
+msgid "Unencoded instance settings, if supported."
+msgstr "Unencoded instance indstillinger, hvis understøttet."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-widgets-controller.php:779
+msgid "Cryptographic hash of the instance settings."
+msgstr "Kryptografisk hash af instance indstillinger."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-widgets-controller.php:774
+msgid "Base64 encoded representation of the instance settings."
+msgstr "Base64 encoded præstentation af instance indstillinger."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-widgets-controller.php:768
+msgid "Instance settings of the widget, if supported."
+msgstr "Instance indstillinger for widget, hvis understøttet."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-widgets-controller.php:762
+msgid "HTML representation of the widget admin form."
+msgstr "HTML præsentation af widget'en admin-formular."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-widgets-controller.php:756
+msgid "HTML representation of the widget."
+msgstr "HTML præsentation af widget."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-widgets-controller.php:749
+msgid "The sidebar the widget belongs to."
+msgstr "Det sidepanel, widget'en tilhører."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-widgets-controller.php:744
+msgid "The type of the widget. Corresponds to ID in widget-types endpoint."
+msgstr "Typen af widget. Svarer til ID i widget-typers endpoint."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-widgets-controller.php:739
+msgid "Unique identifier for the widget."
+msgstr "Unik identifikator for widget."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-widgets-controller.php:715
+msgid "The sidebar to return widgets for."
+msgstr "Det sidepanel, der ønskes vist widgets fra."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-widgets-controller.php:608
+msgid "The requested widget is invalid."
+msgstr "Den forespurgte widget er ugyldig."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-widgets-controller.php:521
+msgid "The provided instance is invalid. Must contain raw OR encoded and hash."
+msgstr "Den givne instance er ugyldig. Skal indeholde raw OR eller encoded og hash."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-widgets-controller.php:503
+msgid "Widget type does not support raw instances."
+msgstr "Widget-typen understøtter ikke raw instances."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-widgets-controller.php:494
+msgid "Cannot set instance on a widget that does not extend WP_Widget."
+msgstr "Kan ikke sætte instance på en widget, der ikke extend'er WP_Widget."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-widgets-controller.php:485
+msgid "The provided widget type (id_base) cannot be updated."
+msgstr "Den givne widget-type (id_base) kan ikke opdateres."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-widgets-controller.php:477
+msgid "Widget type (id_base) is required."
+msgstr "Widget-type (id-base) er påkrævet."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-widgets-controller.php:162
+#: wp-includes/rest-api/endpoints/class-wp-rest-widgets-controller.php:262
+#: wp-includes/rest-api/endpoints/class-wp-rest-widgets-controller.php:335
+msgid "No widget was found with that id."
+msgstr "Ingen widget med dette id blev fundet."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-widgets-controller.php:80
+msgid "Whether to force removal of the widget, or move it to the inactive sidebar."
+msgstr "Om der skal bruges force removal af widget eller flytte den til det inaktive sidepanel."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-widget-types-controller.php:450
+#: wp-includes/rest-api/endpoints/class-wp-rest-widgets-controller.php:513
+msgid "The provided instance is malformed."
+msgstr "Den givne instance er misdannet."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-widget-types-controller.php:432
+msgid "Cannot preview a widget that does not extend WP_Widget."
+msgstr "Kan ikke forhåndsvise widget, der ikke extend'er WP_Widget."
+
 #: wp-includes/rest-api/endpoints/class-wp-rest-widget-types-controller.php:386
 msgid "Class name"
 msgstr "Class navn"
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-widget-types-controller.php:380
+msgid "Whether the widget supports multiple instances"
+msgstr "Om widget understøtter flere instances"
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-widget-types-controller.php:374
+msgid "Description of the widget."
+msgstr "Beskrivelse af widget'en."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-widget-types-controller.php:367
+msgid "Human-readable name identifying the widget type."
+msgstr "Menneskeligt læsbart navn til identifikation af widget-typen."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-widget-types-controller.php:361
+msgid "Unique slug identifying the widget type."
+msgstr "Entydig slug, der identificerer widget-typen."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-widget-types-controller.php:192
+msgid "Invalid widget type."
+msgstr "Ugyldig widget-type."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-widget-types-controller.php:86
+msgid "Serialized widget form data to encode into instance settings."
+msgstr "Serialisereret formulardata fra widget til encode til instance indstillinger."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-widget-types-controller.php:82
+msgid "Current instance settings of the widget."
+msgstr "Nuværende instance indstillinger for widget."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-widget-types-controller.php:57
+#: wp-includes/rest-api/endpoints/class-wp-rest-widget-types-controller.php:77
+msgid "The widget type id."
+msgstr "Widget-type id."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-users-controller.php:1523
+msgid "Sort collection by user attribute."
+msgstr "Sort samling efter brugeregenskab."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-templates-controller.php:588
+msgid "Theme file exists."
+msgstr "Temafil findes."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-templates-controller.php:582
+msgid "Post ID."
+msgstr "Post ID."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-templates-controller.php:576
+msgid "Status of template."
+msgstr "Status på skabelon."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-templates-controller.php:570
+msgid "Description of template."
+msgstr "Beskrivelse af skabelon."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-templates-controller.php:564
+msgid "Title of template."
+msgstr "Titel på skabelon."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-templates-controller.php:558
+msgid "Content of template."
+msgstr "Indhold i skabelon."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-templates-controller.php:552
+msgid "Source of template"
+msgstr "Kilde til skabelon."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-templates-controller.php:547
+msgid "Theme identifier for the template."
+msgstr "Tema identifikator for skabelon."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-templates-controller.php:539
+msgid "Unique slug identifying the template."
+msgstr "Entydig slug for identifikation af skabelon."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-templates-controller.php:533
+msgid "ID of template."
+msgstr "ID for skabelon."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-templates-controller.php:509
+msgid "Limit to the specified post id."
+msgstr "Begræns til specifik post-ID."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-templates-controller.php:343
+msgid "The template has already been deleted."
+msgstr "Denne skabelon er allerede slettet."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-templates-controller.php:318
+msgid "Templates based on theme files can't be removed."
+msgstr "Skabelon baseret på temafiler kan ikke fjernes."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-templates-controller.php:193
+#: wp-includes/rest-api/endpoints/class-wp-rest-templates-controller.php:222
+#: wp-includes/rest-api/endpoints/class-wp-rest-templates-controller.php:277
+#: wp-includes/rest-api/endpoints/class-wp-rest-templates-controller.php:315
+msgid "No templates exist with that id."
+msgstr "Ingen skabeloner med dette ID fundet."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-templates-controller.php:121
+msgid "Sorry, you are not allowed to access the templates on this site."
+msgstr "Beklager, du har ikke lov til at tilgå skabeloner på dette websted."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-templates-controller.php:79
+msgid "The id of a template"
+msgstr "ID for en skabelon"
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-sidebars-controller.php:440
+msgid "Nested widgets."
+msgstr "Indlejrede widgets."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-sidebars-controller.php:433
+msgid "Status of sidebar."
+msgstr "Status på sidepanel."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-sidebars-controller.php:426
+msgid "HTML content to append to the sidebar title when displayed. Default is a closing h2 element."
+msgstr "HTML indhold som efterfølger sidepanelets titel ved visning. Standard er afslutning på H2 element."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-sidebars-controller.php:419
+msgid "HTML content to prepend to the sidebar title when displayed. Default is an opening h2 element."
+msgstr "HTML indhold som foranstilles sidepanelets titel ved visning. Standard er begyndelse på H2 element."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-sidebars-controller.php:412
+msgid "HTML content to append to each widget's HTML output when assigned to this sidebar. Default is a closing list item element."
+msgstr "HTML indhold som efterfølger hver widgets HTML outoput ved tildeling til dette sidepanel. Standard er afslutning på et liste-element."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-sidebars-controller.php:405
+msgid "HTML content to prepend to each widget's HTML output when assigned to this sidebar. Default is an opening list item element."
+msgstr "HTML indhold som foranstilles hver widgets HTML outoput ved tildeling til dette sidepanel. Standard er begyndelsen til et liste-element."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-sidebars-controller.php:399
+msgid "Extra CSS class to assign to the sidebar in the Widgets interface."
+msgstr "Ekstra CSS-class som tildeles sidepanelet i widget interface."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-sidebars-controller.php:393
+msgid "Description of sidebar."
+msgstr "Beskrivelse af sidepanel."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-sidebars-controller.php:387
+msgid "Unique name identifying the sidebar."
+msgstr "Entydigt navn, der identificerer sidepanelet."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-sidebars-controller.php:381
+msgid "ID of sidebar."
+msgstr "Sidepanelets ID."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-sidebars-controller.php:254
 msgid "Inactive widgets"
@@ -1093,9 +1399,184 @@ msgstr "Inaktive widgets"
 msgid "Sorry, you are not allowed to manage widgets on this site."
 msgstr "Beklager, du har ikke tilladelse til at håndtere widgets på dette websted."
 
+#: wp-includes/rest-api/endpoints/class-wp-rest-sidebars-controller.php:145
+msgid "No sidebar exists with that id."
+msgstr "Ingen sidepanel med dette ID fundet."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-sidebars-controller.php:63
+msgid "The id of a registered sidebar"
+msgstr "ID på et registreret sidepanel."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:678
+msgid "The ID for the author of the revision."
+msgstr "ID på forfatter til versionen."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:102
+#: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:700
+msgid "Unique identifier for the revision."
+msgstr "Entydig identifikator på versionen."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:3059
+msgid "Whether items must be assigned all or any of the specified terms."
+msgstr "Om elementer skal tildeles alle eller kun nogle af de angivne termer."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2783
+msgid "Sort collection by post attribute."
+msgstr "Sorter samling efter indlægsegenskab."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2449
+msgid "The order of the post in relation to other posts."
+msgstr "Placering af indlæg i relation til andre indlæg."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2325
+msgid "The title for the post."
+msgstr "Indlæggets titel."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2232
+msgid "Type of post."
+msgstr "Indholdstype."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2194
+msgid "URL to the post."
+msgstr "URL til indlægget."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:103
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2188
+msgid "Unique identifier for the post."
+msgstr "Entydig identifikator for indlægget."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-pattern-directory-controller.php:330
+msgid "Limit results to those matching a keyword ID."
+msgstr "Afgræns søgeresultater til dem, der matcher et nøgleords-ID."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-pattern-directory-controller.php:324
+msgid "Limit results to those matching a category ID."
+msgstr "Afgræns søgeresultater til dem, der matcher et kategori-ID."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-pattern-directory-controller.php:296
+msgid "The preferred width of the viewport when previewing a pattern, in pixels."
+msgstr "Den foretrukne bredde på viewport ved forhåndsvisning af blokgruppe, i pixels."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-pattern-directory-controller.php:289
+msgid "A description of the pattern."
+msgstr "En beskrivelse af blokgruppen."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-pattern-directory-controller.php:281
+msgid "The pattern's keyword slugs."
+msgstr "En blokgruppes keyword slugs."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-pattern-directory-controller.php:273
+msgid "The pattern's category slugs."
+msgstr "En blokgruppes kategori-slugs."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-pattern-directory-controller.php:266
+msgid "The pattern content."
+msgstr "Blokgruppens indhold."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-pattern-directory-controller.php:259
+msgid "The pattern title, in human readable format."
+msgstr "Titel på blokgruppen, i læsbart format."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-pattern-directory-controller.php:252
+msgid "The pattern ID."
+msgstr "Blokgruppens ID."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-pattern-directory-controller.php:74
+msgid "Sorry, you are not allowed to browse the local block pattern directory."
+msgstr "Beklager, men du har ikke rettigheder til at gennemse det lokale blokgruppe-bibliotek."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1614
+msgid "Sort collection by comment attribute."
+msgstr "Sorter samling efter kommentar-egenskab."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1494
+msgid "Type of the comment."
+msgstr "Typen af kommentar."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1467
+msgid "URL to the comment."
+msgstr "URL til kommentaren."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:74
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1384
+msgid "Unique identifier for the comment."
+msgstr "Entydig identifikator for kommentar."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-block-types-controller.php:605
+msgid "The list of scopes where the variation is applicable. When not provided, it assumes all available scopes."
+msgstr "Liste over scopes hvor variationen kan bruges. Hvis ikke angivet, antages alle tilgængelige scopes."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-block-types-controller.php:599
+msgid "The initial values for attributes."
+msgstr "Startværdier for egenskaber."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-block-types-controller.php:593
+msgid "Indicates whether the current variation is the default one."
+msgstr "Angiver om den nuværende variation er standard."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-block-types-controller.php:586
+msgid "A detailed variation description."
+msgstr "En detaljeret beskrivelse af variation."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-block-types-controller.php:581
+msgid "A human-readable variation title."
+msgstr "En læsbar titel for variation."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-block-types-controller.php:576
+msgid "The unique and machine-readable name."
+msgstr "Entydigt og maskinel læsbart navn."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-block-types-controller.php:570
+msgid "Block variations."
+msgstr "Blokvariationer."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-autosaves-controller.php:119
+msgid "The ID for the autosave."
+msgstr "ID for autogem."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:37
+msgid "Unique identifier for the attachment."
+msgstr "Entydig identifikator for vedhæftning."
+
+#: wp-includes/rest-api.php:1031
+msgid "Cookie check failed"
+msgstr "Cookie-tjek mislykkedes."
+
+#: wp-includes/post.php:1826
+msgctxt "navigation link block description"
+msgid "A link to a page."
+msgstr "Et link til en side."
+
+#: wp-includes/post.php:1825
+msgctxt "navigation link block description"
+msgid "A link to a post."
+msgstr "Et link til et indlæg."
+
+#: wp-includes/post.php:1822
+msgctxt "navigation link block title"
+msgid "Page Link"
+msgstr "Sidelink."
+
+#: wp-includes/post.php:1821
+msgctxt "navigation link block title"
+msgid "Post Link"
+msgstr "Indlægslink"
+
+#: wp-includes/post.php:332
+msgid "Templates to include in your theme."
+msgstr "Skabeloner til inkludering i dit tema."
+
 #: wp-includes/post.php:330
 msgid "Templates list"
 msgstr "Skabelonliste"
+
+#: wp-includes/post.php:329
+msgid "Templates list navigation"
+msgstr "Navigation for skabelonliste"
+
+#: wp-includes/post.php:328
+msgid "Filter templates list"
+msgstr "Filtrér skabelonliste"
 
 #: wp-includes/post.php:327
 msgid "Uploaded to this template"
@@ -1162,6 +1643,16 @@ msgstr "%1$s: %2$s"
 #: wp-includes/blocks/site-logo.php:76
 msgid "Site logo."
 msgstr "Websted logo."
+
+#: wp-includes/blocks/site-logo.php:42
+msgid "(Home link, opens in a new tab)"
+msgstr "(Forsidelink, åbner i ny fane)"
+
+#. translators: 1: Block type, 2: Typography supports key, e.g: fontSize,
+#. lineHeight, etc. 3: block.json, 4: Old metadata key, 5: New metadata key.
+#: wp-includes/blocks.php:1035
+msgid "Block \"%1$s\" is declaring %2$s support in %3$s file under %4$s. %2$s support is now declared under %5$s."
+msgstr "Blok \"%1$s\" angiver %2$s support i %3$s-fil under %4$s. %2$s support angives nu under %5$s."
 
 #: wp-includes/block-template.php:164
 msgid "No matching template found"
@@ -5919,7 +6410,7 @@ msgstr "Forsideindstillinger"
 #. translators: %s: Site icon size in pixels.
 #: wp-includes/class-wp-customize-manager.php:5167
 msgid "Site Icons should be square and at least %s pixels."
-msgstr "Webstedsikoner skal være firkantede og mindst %s pixels."
+msgstr "Webstedsikoner skal være kvadratiske og mindst %s pixels."
 
 #: wp-includes/class-wp-customize-manager.php:5165
 msgid "Site Icons are what you see in browser tabs, bookmark bars, and within the WordPress mobile apps. Upload one here!"
