@@ -2,12 +2,12 @@
 namespace KC\Gallery;
 
 use KC\Core\Action;
-use KC\Core\BaseModule;
+use KC\Core\Modules\BaseModule;
 use KC\Core\Constant;
 use KC\Core\FieldName;
 use KC\Core\Filter;
 use KC\Core\ImageSize;
-use KC\Core\IModule;
+use KC\Core\Modules\IModule;
 use KC\Core\PostType;
 use KC\Core\TranslationString;
 use KC\Data\DatabaseManager;

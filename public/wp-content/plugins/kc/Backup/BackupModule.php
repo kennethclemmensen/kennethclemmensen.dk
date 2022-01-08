@@ -2,7 +2,7 @@
 namespace KC\Backup;
 
 use KC\Backup\Settings\BackupSettings;
-use KC\Core\IModule;
+use KC\Core\Modules\IModule;
 use KC\Data\FileManager;
 
 /**

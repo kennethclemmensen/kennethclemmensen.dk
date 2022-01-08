@@ -12,7 +12,9 @@ Domain Path: /languages
 */
 namespace KC;
 if(!defined('ABSPATH')) wp_die();
-require_once 'Core/IModule.php';
+require_once 'Core/Modules/BaseModule.php';
+require_once 'Core/Modules/IModule.php';
+require_once 'Core/Settings/ISettings.php';
 $files = glob(__DIR__.'/**/*.php');
 foreach($files as $file) require_once $file;
 $pluginActivator = new Core\PluginActivator();

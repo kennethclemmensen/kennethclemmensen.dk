@@ -5,7 +5,7 @@ use KC\Core\Action;
 use KC\Core\Constant;
 use KC\Core\FieldName;
 use KC\Core\Filter;
-use KC\Core\IModule;
+use KC\Core\Modules\IModule;
 use KC\Core\PostType;
 use KC\Core\TaxonomyName;
 use KC\Core\TranslationString;

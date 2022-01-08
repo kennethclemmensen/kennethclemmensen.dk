@@ -2,7 +2,7 @@
 namespace KC\Api;
 
 use KC\Core\Action;
-use KC\Core\IModule;
+use KC\Core\Modules\IModule;
 use KC\Data\DataManager;
 
 /**

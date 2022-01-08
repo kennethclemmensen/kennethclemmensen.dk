@@ -3,7 +3,7 @@ namespace KC\Translation;
 
 use KC\Core\Action;
 use KC\Core\Constant;
-use KC\Core\IModule;
+use KC\Core\Modules\IModule;
 
 /**
  * The TranslationModule class contains functionality to handle translations

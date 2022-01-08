@@ -1,5 +1,5 @@
 <?php
-namespace KC\Core;
+namespace KC\Core\Modules;
 
 /**
  * The IModule interface defines a module

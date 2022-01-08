@@ -1,6 +1,7 @@
 <?php
 namespace KC\Core;
 
+use KC\Core\Modules\IModule;
 use KC\Utils\PluginHelper;
 
 /**

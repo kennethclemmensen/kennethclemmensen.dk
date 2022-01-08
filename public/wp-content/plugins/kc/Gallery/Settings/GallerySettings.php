@@ -4,7 +4,7 @@ namespace KC\Gallery\Settings;
 use KC\Core\Action;
 use KC\Core\Capability;
 use KC\Core\ImageSize;
-use KC\Core\ISettings;
+use KC\Core\Settings\ISettings;
 use KC\Core\PostType;
 use KC\Core\TranslationString;
 use KC\Data\DataManager;

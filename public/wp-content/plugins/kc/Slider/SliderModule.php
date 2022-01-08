@@ -4,7 +4,7 @@ namespace KC\Slider;
 use KC\Core\Action;
 use KC\Core\Constant;
 use KC\Core\Filter;
-use KC\Core\IModule;
+use KC\Core\Modules\IModule;
 use KC\Core\PostType;
 use KC\Core\TranslationString;
 use KC\Slider\Settings\SliderSettings;

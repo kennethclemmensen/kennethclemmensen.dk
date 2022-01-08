@@ -1,5 +1,5 @@
 <?php
-namespace KC\Core;
+namespace KC\Core\Settings;
 
 /**
  * The ISettings interface defines methods to handle settings
