@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "19201c6204873de6e91fafe155d8df5b",
+    "content-hash": "4977e17e2b01c67c92947e5533cd90de",
     "packages": [],
     "packages-dev": [
         {
@@ -663,16 +663,16 @@
         },
         {
             "name": "codeception/stub",
-            "version": "4.0.0",
+            "version": "4.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/Stub.git",
-                "reference": "4c9cf3e19bd5f064e08e7f3ba6be651c218dc6ae"
+                "reference": "ce0a9e418c775ca8b737d50c2b4ac1132f3990d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/Stub/zipball/4c9cf3e19bd5f064e08e7f3ba6be651c218dc6ae",
-                "reference": "4c9cf3e19bd5f064e08e7f3ba6be651c218dc6ae",
+                "url": "https://api.github.com/repos/Codeception/Stub/zipball/ce0a9e418c775ca8b737d50c2b4ac1132f3990d8",
+                "reference": "ce0a9e418c775ca8b737d50c2b4ac1132f3990d8",
                 "shasum": ""
             },
             "require": {
@@ -695,9 +695,9 @@
             "description": "Flexible Stub wrapper for PHPUnit's Mock Builder",
             "support": {
                 "issues": "https://github.com/Codeception/Stub/issues",
-                "source": "https://github.com/Codeception/Stub/tree/4.0.0"
+                "source": "https://github.com/Codeception/Stub/tree/4.0.1"
             },
-            "time": "2021-12-07T14:39:17+00:00"
+            "time": "2022-01-08T09:35:36+00:00"
         },
         {
             "name": "dg/mysql-dump",
@@ -1409,16 +1409,16 @@
         },
         {
             "name": "lucatume/wp-browser",
-            "version": "3.0.19",
+            "version": "3.0.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lucatume/wp-browser.git",
-                "reference": "4f4c11f11305418e150f0ef1f4909c45f585b39f"
+                "reference": "5ab64406424d881bece302515fa00104ae224c45"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lucatume/wp-browser/zipball/4f4c11f11305418e150f0ef1f4909c45f585b39f",
-                "reference": "4f4c11f11305418e150f0ef1f4909c45f585b39f",
+                "url": "https://api.github.com/repos/lucatume/wp-browser/zipball/5ab64406424d881bece302515fa00104ae224c45",
+                "reference": "5ab64406424d881bece302515fa00104ae224c45",
                 "shasum": ""
             },
             "require": {
@@ -1499,7 +1499,7 @@
             ],
             "support": {
                 "issues": "https://github.com/lucatume/wp-browser/issues",
-                "source": "https://github.com/lucatume/wp-browser/tree/3.0.19"
+                "source": "https://github.com/lucatume/wp-browser/tree/3.0.21"
             },
             "funding": [
                 {
@@ -1507,7 +1507,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-01-06T09:42:39+00:00"
+            "time": "2022-01-11T10:33:03+00:00"
         },
         {
             "name": "mikehaertl/php-shellcommand",
