@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Yoast SEO - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-01-11 06:07:17+0000\n"
+"PO-Revision-Date: 2022-01-14 10:44:02+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,143 @@ msgstr ""
 "X-Generator: GlotPress/3.0.0-alpha.2\n"
 "Language: da_DK\n"
 "Project-Id-Version: Plugins - Yoast SEO - Stable (latest release)\n"
+
+#: src/integrations/admin/installation-success-integration.php:101
+msgid "Installation Successful"
+msgstr "Installationen lykkedes"
+
+#: src/config/schema-types.php:131
+msgid "Blog Post"
+msgstr "Blogindlæg"
+
+#: languages/yoast-seo-js.php:469 js/dist/externals/analysis.js:268
+msgid "For the best SEO results include all words of your keyphrase in the SEO title, and put the keyphrase at the beginning of the title"
+msgstr "For de bedste SEO-resultater skal du inkludere alle ord i din søgesætning i SEO-titlen og sætte søgesætningen i begyndelsen af ​​titlen"
+
+#: languages/yoast-seo-js.php:466 js/dist/externals/analysis.js:268
+msgid "For the best SEO results write the exact match of your keyphrase in the SEO title, and put the keyphrase at the beginning of the title"
+msgstr "For de bedste SEO-resultater, skriv det nøjagtige match af din søgesætning i SEO-titlen, og sæt søgesætningen i begyndelsen af ​​titlen"
+
+#. Translators: %1$s and %2$s expand to a link on yoast.com, %3$s expands to
+#. the anchor end tag, %4$s expands to the keyword of the article, %5$s expands
+#. to the call to action text.
+#: languages/yoast-seo-js.php:463 js/dist/externals/analysis.js:289
+msgid "%1$sKeyphrase in title%3$s: Not all the words from your keyphrase \"%4$s\" appear in the SEO title. %2$s%5$s%3$s."
+msgstr "%1$sNøglesætning i titlen%3$s: Ikke alle ordene fra din søgesætning \"%4$s\" vises i SEO-titlen. %2$s%5$s%3$s."
+
+#. Translators: %1$s and %2$s expand to a link on yoast.com, %3$s expands to
+#. the anchor end tag.
+#: languages/yoast-seo-js.php:455 js/dist/externals/analysis.js:280
+msgid "%1$sKeyphrase in title%3$s: Title does not begin with the focus keyphrase. %2$sMove your focus keyphrase to the beginning of the title%3$s."
+msgstr "%1$sNøglesætning i titlen%3$s: Titlen begynder ikke med fokusnøglesætningen. %2$sFlyt din fokusnøglesætning til begyndelsen af ​​titlen%3$s."
+
+#. Translators: %1$s expands to a link on yoast.com, %2$s expands to the anchor
+#. end tag.
+#: languages/yoast-seo-js.php:451 js/dist/externals/analysis.js:277
+msgid "%1$sKeyphrase in title%2$s: The focus keyphrase appears at the beginning of the SEO title. Good job!"
+msgstr "%1$sNøglesætning i titlen%2$s: Fokusnøglesætningen vises i begyndelsen af ​​SEO-titlen. Godt arbejde!"
+
+#. Translators: %1$d expands to the number of words / characters in the text,
+#. %2$s expands to a link on yoast.com, %3$s expands to a link on yoast.com,
+#. %4$s expands to the anchor end tag, %5$d expands to the recommended minimum
+#. of words / characters, %6$s expands to the word 'words' or 'characters'.
+#: languages/yoast-seo-js.php:439 js/dist/externals/analysis.js:263
+#: js/dist/externals/analysis.js:268
+msgid "%2$sText length%4$s: The text contains %1$d %6$s. This is below the recommended minimum of %5$d %6$s. %3$sAdd more content%4$s."
+msgstr "%2$sTekstlængde%4$s: Teksten indeholder %1$d %6$s. Dette er under det anbefalede minimum på %5$d %6$s. %3$sTilføj mere indhold%4$s."
+
+#. Translators: %1$d expands to the number of words / characters in the text,
+#. %2$s expands to a link on yoast.com, %3$s expands to a link on yoast.com,
+#. %4$s expands to the anchor end tag, %5$d expands to the recommended minimum
+#. of words / characters, %6$s expands to the word 'words' or 'characters'.
+#: languages/yoast-seo-js.php:435 js/dist/externals/analysis.js:258
+msgid "%2$sText length%4$s: The text contains %1$d %6$s. This is slightly below the recommended minimum of %5$d %6$s. %3$sAdd a bit more copy%4$s."
+msgstr "%2$sTekstlængde%4$s: Teksten indeholder %1$d %6$s. Dette er lidt under det anbefalede minimum på %5$d %6$s. %3$sTilføj en smule mere kopi%4$s."
+
+#. Translators: %1$d expands to the number of words / characters in the text,
+#. %2$s expands to a link on yoast.com, %3$s expands to a link on yoast.com,
+#. %4$s expands to the anchor end tag, %5$d expands to the recommended minimum
+#. of words / characters, %6$s expands to the word 'word' or 'character', %7$s
+#. expands to the word 'words' or 'characters'.
+#: languages/yoast-seo-js.php:431 js/dist/externals/analysis.js:253
+msgid "%2$sText length%4$s: The text contains %1$d %6$s. This is far below the recommended minimum of %5$d %7$s. %3$sAdd more content%4$s."
+msgid_plural "%2$sText length%4$s: The text contains %1$d %7$s. This is far below the recommended minimum of %5$d %7$s. %3$sAdd more content%4$s."
+msgstr[0] "%2$sTekstlængde%4$s: Teksten indeholder %1$d %6$s. Dette er langt under det anbefalede minimum på %5$d %7$s. %3$sTilføj mere indhold%4$s."
+msgstr[1] "%2$sTekstlængde%4$s: Teksten indeholder %1$d %7$s. Dette er langt under det anbefalede minimum på %5$d %7$s. %3$sTilføj mere indhold%4$s."
+
+#: languages/yoast-seo-js.php:321 js/dist/externals/analysis.js:103
+#: js/dist/externals/analysis.js:244
+msgid "character"
+msgstr "Tegn"
+
+#: languages/yoast-seo-js.php:317 js/dist/externals/analysis.js:103
+#: js/dist/externals/analysis.js:244
+msgid "word"
+msgstr "Ord"
+
+#: languages/yoast-seo-js.php:74 js/dist/externals/analysis.js:19
+#: js/dist/externals/analysis.js:36 js/dist/externals/analysis.js:42
+#: js/dist/externals/analysis.js:103 js/dist/externals/analysis.js:244
+msgid "words"
+msgstr "Ord"
+
+#: languages/yoast-seo-js.php:67 js/dist/externals/analysis.js:25
+#: js/dist/externals/analysis.js:36 js/dist/externals/analysis.js:42
+#: js/dist/externals/analysis.js:103 js/dist/externals/analysis.js:244
+msgid "characters"
+msgstr "Tegn"
+
+#: languages/wordpress-seojs.php:776 js/dist/installation-success.js:9
+msgid "Start configuration workout!"
+msgstr "Start konfigurationstræning!"
+
+#. translators: %s expands to Yoast SEO.
+#: languages/wordpress-seojs.php:773 js/dist/installation-success.js:9
+msgid "Set the essential %s settings in a few steps."
+msgstr "Indstil de væsentlige %s-indstillinger med nogle få trin."
+
+#. translators: %s expands to Yoast SEO.
+#: languages/wordpress-seojs.php:769 js/dist/installation-success.js:7
+msgid "Configure %s!"
+msgstr "Konfigurer %s!"
+
+#: languages/wordpress-seojs.php:765 js/dist/installation-success.js:5
+msgid "Man holding a tablet."
+msgstr "Mand med en tablet."
+
+#. translators: %s expands to Yoast SEO.
+#: languages/wordpress-seojs.php:762 js/dist/installation-success.js:5
+msgid "%s rolls out the red carpet for the search bots, which helps your site perform better in search engines."
+msgstr "%s ruller den røde løber ud for søgerobotterne, hvilket hjælper dit websted med at præstere bedre i søgemaskiner."
+
+#: languages/wordpress-seojs.php:758 js/dist/installation-success.js:3
+msgid "Your site is now easy to find for search engines!"
+msgstr "Dit websted er nu nemt at finde for søgemaskiner!"
+
+#. translators: %s expands to Yoast SEO.
+#: languages/wordpress-seojs.php:755 js/dist/installation-success.js:3
+msgid "You've successfully installed %s!"
+msgstr "Du har installeret %s!"
+
+#. translators: %s expands to ' »'.
+#: languages/wordpress-seojs.php:751 js/dist/installation-success.js:11
+msgid "Skip%s"
+msgstr "Spring over%s"
+
+#. translators: %s: Expands to "Wincher".
+#: languages/wordpress-seojs.php:595 js/dist/dashboard-widget.js:5
+msgid "Your %s account does not contain any keyphrases for this website yet. You can track keyphrases by using the \"Track SEO Performance\" button in the post editor."
+msgstr "Din %s konto indeholder endnu ingen søgesætninger for denne hjemmeside. Du kan spore nøglesætninger ved at bruge knappen \"Spor SEO Performance\" i indlægseditoren."
+
+#. translators: %s : Expands to "Wincher".
+#: languages/wordpress-seojs.php:297 js/dist/dashboard-widget.js:11
+msgid "%s account"
+msgstr "%s konto"
+
+#. translators: %s expands to a link to Wincher login
+#: languages/wordpress-seojs.php:293 js/dist/dashboard-widget.js:9
+msgid "This overview only shows you keyphrases added to Yoast SEO. There may be other keyphrases added to your %s."
+msgstr "Denne oversigt viser dig kun nøglesætninger tilføjet til Yoast SEO. Der kan være tilføjet andre søgesætninger til din %s."
 
 #: languages/wordpress-seojs.php:1255 js/dist/admin-modules.js:4
 #: js/dist/workouts.js:4
@@ -716,6 +853,34 @@ msgstr "Få %s for at låse op for sociale forhåndsvisninger!"
 #: js/dist/classic-editor.js:13 js/dist/elementor.js:17
 msgid "Want to see how your content will look when it’s shared on %s?"
 msgstr "Vil du se, hvordan dit indhold vil se ud, når det deles på %s?"
+
+#. Translators: %1$d expands to the number of words / characters in the
+#. keyphrase, %2$d expands to the recommended maximum of words / characters in
+#. the keyphrase, %3$s and %4$s expand to links on yoast.com, %5$s expands to
+#. the anchor end tag, %6$s expands to the word 'words' or 'characters'.
+#: languages/yoast-seo-js.php:289 js/dist/externals/analysis.js:127
+msgid "%3$sKeyphrase length%5$s: The keyphrase is %1$d %6$s long. That's slightly shorter than the recommended minimum of %2$d %6$s. %4$sMake it longer%5$s!"
+msgstr "%3$sSøgeordsfrasens længde%5$s: Søgeordsfrasen er %1$d ord lang. Det er lidt mindre end det anbefalede minimum på %2$d ord. %4$sForlæng den%5$s!"
+
+#. Translators: %1$d expands to the number of words / characters in the
+#. keyphrase, %2$d expands to the recommended maximum of words / characters in
+#. the keyphrase, %3$s and %4$s expand to links on yoast.com, %5$s expands to
+#. the anchor end tag, %6$s expands to the word 'words' or 'characters'.
+#: languages/yoast-seo-js.php:293 js/dist/externals/analysis.js:120
+#: js/dist/externals/analysis.js:134
+msgid "%3$sKeyphrase length%5$s: The keyphrase is %1$d %6$s long. That's longer than the recommended maximum of %2$d %6$s. %4$sMake it shorter%5$s!"
+msgstr "%3$sSøgeordsfrasens længde%5$s: Søgeordsfrasen er %1$d lang. Det er længere end det anbefalede maksimum på %2$d ord. %4$sForkort den%5$s!"
+
+#. Translators: %1$d expands to the number of words / characters in the
+#. keyphrase, %2$d expands to the recommended maximum of words / characters in
+#. the keyphrase, %3$s and %4$s expand to links on yoast.com, %5$s expands to
+#. the anchor end tag, %6$s expands to the word 'word' or 'character', %7$s
+#. expands to the word 'words or 'characters'.
+#: languages/yoast-seo-js.php:285 js/dist/externals/analysis.js:113
+msgid "%3$sKeyphrase length%5$s: The keyphrase is %1$d %6$s long. That's shorter than the recommended minimum of %2$d %7$s. %4$sMake it longer%5$s!"
+msgid_plural "%3$sKeyphrase length%5$s: The keyphrase is %1$d %7$s long. That's shorter than the recommended minimum of %2$d %7$s. %4$sMake it longer%5$s!"
+msgstr[0] "%3$sSøgeordsfrasens længde%5$s: Søgeordsfrasen er %1$d ord lang. Det er kortere end det anbefalede minimum på %2$d ord. %4$sGør den længere%5$s!"
+msgstr[1] "%3$sSøgeordsfrasens længde%5$s: Søgeordsfrasen er %1$d ord lang. Det er kortere end det anbefalede minimum på %2$d ord. %4$sGør den længere%5$s!"
 
 #. Translators: %1$s expands to a link on yoast.com, %2$s expands to the anchor
 #. end tag.
@@ -3108,6 +3273,13 @@ msgstr "%1$sAlt-attributter på billeder%3$s: Der er ingen billeder på denne si
 msgid "%1$sLink keyphrase%3$s: You're linking to another page with the words you want this page to rank for. %2$sDon't do that%3$s!"
 msgstr "%1$sLink med nøglefrase%3$s: Du linker til en anden side med netop de ord du ønske at denne side skal SEO-score på. %2$sDet må du ikke gøre%3$s!"
 
+#. Translators: %1$d expands to the number of words / characters in the text,
+#. %2$s expands to a link on yoast.com, %3$s expands to the anchor end tag,
+#. %4$s expands to the word 'words' or 'characters'.
+#: languages/yoast-seo-js.php:427 js/dist/externals/analysis.js:248
+msgid "%2$sText length%3$s: The text contains %1$d %4$s. Good job!"
+msgstr "%2$sTekstlængde%3$s: Teksten indeholder %1$d ord. Det er fint!"
+
 #. Translators: %1$s and %2$s expand to links on yoast.com, %3$s expands to the
 #. anchor end tag
 #: languages/yoast-seo-js.php:399 js/dist/externals/analysis.js:228
@@ -3205,6 +3377,22 @@ msgstr "%1$sSøgeordsfrase i meta-beskrivelsen%2$s: Meta-beskrivelsen indeholder
 #: languages/yoast-seo-js.php:348 js/dist/externals/analysis.js:186
 msgid "%1$sKeyphrase in meta description%2$s: Keyphrase or synonym appear in the meta description. Well done!"
 msgstr "%1$sSøgeordsfrasen i meta-beskrivelsen%2$s: Søgeordsfrase eller synonym forekommer i meta-beskrivelsen! Fint!"
+
+#. Translators: %1$d expands to the number of words / characters in the
+#. keyphrase, %2$d expands to the recommended maximum of words / characters in
+#. the keyphrase, %3$s and %4$s expand to links on yoast.com, %5$s expands to
+#. the anchor end tag, %6$s expands to the word 'words' or 'characters'.
+#: languages/yoast-seo-js.php:313 js/dist/externals/analysis.js:156
+msgid "%3$sKeyphrase length%5$s: The keyphrase is %1$d %6$s long. That's way more than the recommended maximum of %2$d %6$s. %4$sMake it shorter%5$s!"
+msgstr "%3$sSøgeordsfrasens længde%5$s: Søgeordsfrasen indeholder %1$d ord. Det er over det anbefalede maksimum på %2$d ord. %4$sForkort den%5$s!"
+
+#. Translators: %1$d expands to the number of words / characters in the
+#. keyphrase, %2$d expands to the recommended maximum of words / characters in
+#. the keyphrase, %3$s and %4$s expand to links on yoast.com, %5$s expands to
+#. the anchor end tag, %6$s expands to the word 'words' or 'characters'.
+#: languages/yoast-seo-js.php:309 js/dist/externals/analysis.js:149
+msgid "%3$sKeyphrase length%5$s: The keyphrase is %1$d %6$s long. That's more than the recommended maximum of %2$d %6$s. %4$sMake it shorter%5$s!"
+msgstr "%3$sSøgeordsfrasens længde%5$s: Søgeordsfrasen indeholder %1$d ord. Det er mere end det anbefalede maksimum på %2$d ord. %4$sForkort den%5$s!"
 
 #. Translators: %1$s expands to a link on yoast.com, %2$s expands to the anchor
 #. end tag.
@@ -3336,12 +3524,36 @@ msgstr "%1$sBrug af underoverskrifter%2$s: Du bruger ikke underoverskrifter, men
 msgid "%1$sSubheading distribution%2$s: You are not using any subheadings, although your text is rather long. %3$sTry and add some subheadings%2$s."
 msgstr "%1$sBrug af underoverskrifter%2$s: Du bruger ingen underoverskrifter, men din tekst er temmelig lang. %3$sPrøv at tilføje nogle underoverskrifter%2$s."
 
+#. Translators: %1$s and %5$s expand to a link on yoast.com, %3$d to the number
+#. of text sections not separated by subheadings, %4$d expands to the
+#. recommended number of words following a subheading, %6$s expands to the word
+#. 'words' or 'characters', %2$s expands to the link closing tag.
+#. Translators: %1$s and %5$s expand to a link on yoast.com, %3$d to the number
+#. of text sections not separated by subheadings, %4$d expands to the
+#. recommended number of words or characters following a subheading, %6$s
+#. expands to the word 'words' or 'characters', %2$s expands to the link
+#. closing tag.
+#: languages/yoast-seo-js.php:102 js/dist/externals/analysis.js:49
+#: js/dist/externals/analysis.js:53
+msgid "%1$sSubheading distribution%2$s: %3$d section of your text is longer than %4$d %6$s and is not separated by any subheadings. %5$sAdd subheadings to improve readability%2$s."
+msgid_plural "%1$sSubheading distribution%2$s: %3$d sections of your text are longer than %4$d %6$s and are not separated by any subheadings. %5$sAdd subheadings to improve readability%2$s."
+msgstr[0] "%1$sBrug af underoverskrifter%2$s: %3$d afsnit er længere end %4$d ord og har ingen underoverskrifter. %5$sTilføj underoverskrifter for at forbedre læsbarheden%2$s."
+msgstr[1] "%1$sBrug af underoverskrifter%2$s: %3$d afsnit er længere end %4$d ord og har ingen underoverskrifter. %5$sTilføj underoverskrifter for at forbedre læsbarheden%2$s."
+
 #. Translators: %1$s expands to a link to https://yoa.st/headings, %2$s expands
 #. to the link closing tag.
 #: languages/yoast-seo-js.php:110 js/dist/externals/analysis.js:43
 #: js/dist/externals/analysis.js:57
 msgid "%1$sSubheading distribution%2$s: Great job!"
 msgstr "%1$sBrug af underoverskrifter%2$s: Fint!"
+
+#. Translators: %1$s and %6$s expand to a link on yoast.com, %2$s expands to
+#. the anchor end tag, %3$d expands to percentage of sentences, %4$s expands to
+#. the recommended maximum sentence length, %5$s expands to the recommended
+#. maximum percentage, %7$s expands to the word 'words' or 'characters'.
+#: languages/yoast-seo-js.php:98 js/dist/externals/analysis.js:42
+msgid "%1$sSentence length%2$s: %3$s of the sentences contain more than %4$s %7$s, which is more than the recommended maximum of %5$s. %6$sTry to shorten the sentences%2$s."
+msgstr "%1$sSætningslængde%2$s: %3$s af dine sætninger indeholder mere end %4$s ord, hvilket er over det anbefalede maksimum på %5$s. %6$sPrøv at forkorte sætningerne%2$s."
 
 #. Translators: %1$s expands to a link on yoast.com, %2$s expands to the anchor
 #. end tag
@@ -3377,6 +3589,16 @@ msgstr "%1$sPassiv%2$s: %3$s af dine sætninger indeholder passiv hvilket er mer
 #: languages/yoast-seo-js.php:78 js/dist/externals/analysis.js:27
 msgid "%1$sPassive voice%2$s: You're using enough active voice. That's great!"
 msgstr "%1$sPassiv%2$s: Din brug af aktiv er tilstrækkelig. Flot!"
+
+#. Translators: %1$s and %5$s expand to a link on yoast.com, %2$s expands to
+#. the anchor end tag, %3$d expands to the number of paragraphs over the
+#. recommended word / character limit, %4$d expands to the word / character
+#. limit, %6$s expands to the word 'words' or 'characters'.
+#: languages/yoast-seo-js.php:60 js/dist/externals/analysis.js:25
+msgid "%1$sParagraph length%2$s: %3$d of the paragraphs contains more than the recommended maximum of %4$d %6$s. %5$sShorten your paragraphs%2$s!"
+msgid_plural "%1$sParagraph length%2$s: %3$d of the paragraphs contain more than the recommended maximum of %4$d %6$s. %5$sShorten your paragraphs%2$s!"
+msgstr[0] "%1$sAfsnitslængde%2$s: %3$d afsnit indeholder mere end det anbefalede maksimum på %4$d words. %5$sForkort dine afsnit%2$s!"
+msgstr[1] "%1$sAfsnitslængde%2$s: %3$d af afsnittene indeholder mere end det anbefalede maksimum på %4$d words. %5$sForkort dine afsnit%2$s!"
 
 #. Translators:  %1$s expands to a link on yoast.com, %2$s expands to the
 #. anchor end tag
