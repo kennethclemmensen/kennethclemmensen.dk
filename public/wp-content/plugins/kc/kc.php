@@ -12,11 +12,17 @@ Domain Path: /languages
 */
 namespace KC;
 if(!defined('ABSPATH')) wp_die();
-require_once 'Core/Modules/BaseModule.php';
 require_once 'Core/Modules/IModule.php';
 require_once 'Core/Settings/ISettings.php';
-$files = glob(__DIR__.'/**/*.php');
-foreach($files as $file) require_once $file;
+$directoryIterator = new \RecursiveDirectoryIterator(__DIR__);
+$iteratorIterator = new \RecursiveIteratorIterator($directoryIterator);
+$files = new \RegexIterator($iteratorIterator, '/^.+\.php$/i');
+foreach($files as $file) {
+	$fileName = $file->getFilename();
+	if($fileName !== 'kc.php' && $fileName !== 'uninstall.php') {
+		require_once $file->getPathname();
+	}
+}
 $pluginActivator = new Core\PluginActivator();
 $pluginActivator->activate(__FILE__);
 $pluginActivator->run();

@@ -19,7 +19,6 @@ class SliderModule implements IModule {
 	 * Setup the slider module
 	 */
 	public function setupModule() : void {
-		require_once 'Settings/SliderSettings.php';
 		$sliderSettings = new SliderSettings();
 		$sliderSettings->createSettingsPage();
 		$this->registerPostType();

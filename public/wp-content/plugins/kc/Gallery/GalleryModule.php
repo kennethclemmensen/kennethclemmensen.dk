@@ -26,7 +26,6 @@ class GalleryModule extends BaseModule implements IModule {
 	 * Initialize a new instance of the GalleryModule class
 	 */
 	public function __construct() {
-		require_once 'Settings/GallerySettings.php';
 		$this->gallerySettings = new GallerySettings();
 		$this->fieldParentPage = FieldName::PARENT_PAGE;
 	}
