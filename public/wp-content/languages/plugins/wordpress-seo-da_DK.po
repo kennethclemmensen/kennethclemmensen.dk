@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Yoast SEO - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-01-14 10:44:02+0000\n"
+"PO-Revision-Date: 2022-01-25 08:29:45+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -11,7 +11,11 @@ msgstr ""
 "Language: da_DK\n"
 "Project-Id-Version: Plugins - Yoast SEO - Stable (latest release)\n"
 
-#: src/integrations/admin/installation-success-integration.php:101
+#: src/integrations/admin/import-integration.php:104
+msgid "The import can take a long time depending on your site's size"
+msgstr "Importen kan tage lang tid afhængigt af dit websteds størrelse"
+
+#: src/integrations/admin/installation-success-integration.php:102
 msgid "Installation Successful"
 msgstr "Installationen lykkedes"
 
@@ -2541,7 +2545,7 @@ msgstr "ingen titel"
 
 #. translators: 1: Start of a paragraph beginning with the Yoast icon, 2:
 #. Expands to 'Yoast SEO', 3: Paragraph closing tag.
-#: inc/health-check.php:208
+#: inc/health-check.php:209
 msgid "%1$sThis was reported by the %2$s plugin%3$s"
 msgstr "%1$sDette blev rapporteret af %2$s pluginet%3$s"
 
@@ -6979,7 +6983,7 @@ msgstr "Social"
 #: admin/menu/class-network-admin-menu.php:35
 #: admin/metabox/class-metabox.php:411
 #: admin/taxonomy/class-taxonomy-metabox.php:132
-#: inc/class-wpseo-admin-bar-menu.php:471 inc/health-check.php:173
+#: inc/class-wpseo-admin-bar-menu.php:471 inc/health-check.php:174
 #: languages/wordpress-seojs.php:792
 #: src/presenters/meta-description-presenter.php:36
 #: js/dist/structured-data-blocks.js:9
