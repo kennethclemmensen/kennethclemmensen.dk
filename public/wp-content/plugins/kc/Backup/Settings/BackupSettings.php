@@ -2,7 +2,7 @@
 namespace KC\Backup\Settings;
 
 use KC\Core\Action;
-use KC\Core\Capability;
+use KC\Core\Users\UserRole;
 use KC\Core\Settings\ISettings;
 use KC\Core\TranslationString;
 use KC\Data\DatabaseManager;
@@ -31,7 +31,7 @@ class BackupSettings implements ISettings {
 	public function createSettingsPage() : void {
 		add_action(Action::ADMIN_MENU, function() : void {
 			$title = PluginHelper::getTranslatedString(TranslationString::BACKUP);
-			add_management_page($title, $title, Capability::ADMINISTRATOR, 'kc-backup', function() use ($title) : void {
+			add_management_page($title, $title, UserRole::ADMINISTRATOR, 'kc-backup', function() use ($title) : void {
 				$createBackup = PluginHelper::getTranslatedString(TranslationString::CREATE_BACKUP);
 				$download = PluginHelper::getTranslatedString(TranslationString::DOWNLOAD);
 				$delete = PluginHelper::getTranslatedString(TranslationString::DELETE);

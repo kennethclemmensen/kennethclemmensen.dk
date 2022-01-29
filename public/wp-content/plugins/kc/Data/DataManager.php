@@ -3,7 +3,7 @@ namespace KC\Data;
 
 use KC\Core\Constant;
 use KC\Core\FieldName;
-use KC\Core\ImageSize;
+use KC\Core\Images\ImageSize;
 use KC\Core\PostType;
 use KC\Core\TaxonomyName;
 use KC\Security\Security;

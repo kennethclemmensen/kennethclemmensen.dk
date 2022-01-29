@@ -2,7 +2,7 @@
 namespace KC\Utils;
 
 use KC\Core\Constant;
-use KC\Core\ImageSize;
+use KC\Core\Images\ImageSize;
 use KC\Security\Security;
 
 /**

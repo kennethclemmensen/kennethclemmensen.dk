@@ -1,5 +1,5 @@
 <?php
-namespace KC\Core;
+namespace KC\Core\Images;
 
 /**
  * The ImageSize class defines the image sizes

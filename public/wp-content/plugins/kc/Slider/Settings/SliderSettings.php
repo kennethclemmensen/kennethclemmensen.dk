@@ -2,8 +2,8 @@
 namespace KC\Slider\Settings;
 
 use KC\Core\Action;
-use KC\Core\Capability;
-use KC\Core\ImageSize;
+use KC\Core\Users\UserRole;
+use KC\Core\Images\ImageSize;
 use KC\Core\Settings\ISettings;
 use KC\Core\PostType;
 use KC\Core\TranslationString;
@@ -39,7 +39,7 @@ class SliderSettings implements ISettings {
 	public function createSettingsPage() : void {
 		add_action(Action::ADMIN_MENU, function() : void {
 			$title = PluginHelper::getTranslatedString(TranslationString::SETTINGS);
-			add_submenu_page('edit.php?post_type='.PostType::SLIDES, $title, $title, Capability::ADMINISTRATOR, $this->settingsPageSlug, function() : void {
+			add_submenu_page('edit.php?post_type='.PostType::SLIDES, $title, $title, UserRole::ADMINISTRATOR, $this->settingsPageSlug, function() : void {
 				settings_errors();
 				?>
 				<form action="options.php" method="post">

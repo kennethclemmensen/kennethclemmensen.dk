@@ -5,13 +5,14 @@ Description: The plugin for the site
 Version: 1.0
 Author: Kenneth Clemmensen
 Author URI: https://kennethclemmensen.dk
-Requires at least: 5.8
+Requires at least: 5.9
 Requires PHP: 8.0
 Text Domain: kc
 Domain Path: /languages
 */
 namespace KC;
 if(!defined('ABSPATH')) wp_die();
+require_once 'Core/Modules/BaseModule.php';
 require_once 'Core/Modules/IModule.php';
 require_once 'Core/Settings/ISettings.php';
 $directoryIterator = new \RecursiveDirectoryIterator(__DIR__);
