@@ -2,6 +2,7 @@
 namespace KC\Core\Modules;
 
 use KC\Core\Constant;
+use KC\Core\PostType;
 use \WP_Query;
 
 /**
@@ -12,13 +13,13 @@ class BaseModule {
 	/**
 	 * Get all the posts from a post type
 	 * 
-	 * @param string $postType the post type
+	 * @param PostType $postType the post type
 	 * @return array all the posts
 	 */
-	protected function getAllPosts(string $postType) : array {
+	protected function getAllPosts(PostType $postType) : array {
 		$posts = [];
 		$args = [
-			'post_type' => $postType,
+			'post_type' => $postType->value,
 			'posts_per_page' => -1,
 			'order' => Constant::ASC
 		];

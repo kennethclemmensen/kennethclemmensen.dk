@@ -23,20 +23,20 @@ class Action {
 	/**
 	 * Get the save_post_{$post->post_type} action for a post type
 	 * 
-	 * @param string $postType the post type
+	 * @param PostType $postType the post type
 	 * @return string the save post action for the post type
 	 */
-	public static function getSavePostAction(string $postType) : string {
-		return 'save_post_'.$postType;
+	public static function getSavePostAction(PostType $postType) : string {
+		return 'save_post_'.$postType->value;
 	}
 
 	/**
 	 * Get the manage_{$post->post_type}_posts_custom_column action for a post type
 	 * 
-	 * @param string $postType the post type
+	 * @param PostType $postType the post type
 	 * @return string the manage posts custom column action for the post type
 	 */
-	public static function getManagePostsCustomColumn(string $postType) : string {
-		return 'manage_'.$postType.'_posts_custom_column';
+	public static function getManagePostsCustomColumn(PostType $postType) : string {
+		return 'manage_'.$postType->value.'_posts_custom_column';
 	}
 }

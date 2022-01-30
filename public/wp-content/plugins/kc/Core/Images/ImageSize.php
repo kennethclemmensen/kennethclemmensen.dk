@@ -2,17 +2,12 @@
 namespace KC\Core\Images;
 
 /**
- * The ImageSize class defines the image sizes
+ * The ImageSize enum defines the image sizes
  */
-class ImageSize {
-
-	public const KC_GALLERY_IMAGE = 'kc-gallery-image';
-
-	public const KC_SLIDES = 'kc-slides';
-
-	public const LARGE = 'large';
-
-	public const POST_THUMBNAIL = 'post-thumbnail';
-
-	public const THUMBNAIL = 'thumbnail';
+enum ImageSize: string {
+	case GalleryImage = 'kc-gallery-image';
+	case Large = 'large';
+	case PostThumbnail = 'post-thumbnail';
+	case Slides = 'kc-slides';
+	case Thumbnail = 'thumbnail';
 }

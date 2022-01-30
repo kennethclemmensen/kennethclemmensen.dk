@@ -2,9 +2,8 @@
 namespace KC\Core;
 
 /**
- * The TaxonomyName class defines the taxonomy names
+ * The TaxonomyName enum defines the taxonomy names
  */
-class TaxonomyName {
-
-	public const FILE_TYPE = 'kc_tax_file_type';
+enum TaxonomyName: string {
+	case FileType = 'kc_tax_file_type';
 }

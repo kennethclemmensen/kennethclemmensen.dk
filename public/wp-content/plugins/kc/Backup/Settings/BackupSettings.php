@@ -30,11 +30,11 @@ class BackupSettings implements ISettings {
 	 */
 	public function createSettingsPage() : void {
 		add_action(Action::ADMIN_MENU, function() : void {
-			$title = PluginHelper::getTranslatedString(TranslationString::BACKUP);
-			add_management_page($title, $title, UserRole::ADMINISTRATOR, 'kc-backup', function() use ($title) : void {
-				$createBackup = PluginHelper::getTranslatedString(TranslationString::CREATE_BACKUP);
-				$download = PluginHelper::getTranslatedString(TranslationString::DOWNLOAD);
-				$delete = PluginHelper::getTranslatedString(TranslationString::DELETE);
+			$title = PluginHelper::getTranslatedString(TranslationString::Backup);
+			add_management_page($title, $title, UserRole::Administrator->value, 'kc-backup', function() use ($title) : void {
+				$createBackup = PluginHelper::getTranslatedString(TranslationString::CreateBackup);
+				$download = PluginHelper::getTranslatedString(TranslationString::Download);
+				$delete = PluginHelper::getTranslatedString(TranslationString::Delete);
 				$name = 'createBackup';
 				if(isset($_POST[$name])) {
 					$this->createDatabaseBackupFile();

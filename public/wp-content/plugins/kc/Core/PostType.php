@@ -2,17 +2,12 @@
 namespace KC\Core;
 
 /**
- * The PostType class defines the post types
+ * The PostType enum defines the post types
  */
-class PostType {
-
-	public const FILE = 'kc_file';
-
-	public const GALLERY = 'kc_gallery';
-	
-	public const IMAGE = 'kc_image';
-
-	public const PAGE = 'page';
-
-	public const SLIDES = 'kc_slides';
+enum PostType: string {
+	case File = 'kc_file';
+	case Gallery = 'kc_gallery';
+	case Image = 'kc_image';
+	case Page = 'page';
+	case Slides = 'kc_slides';
 }

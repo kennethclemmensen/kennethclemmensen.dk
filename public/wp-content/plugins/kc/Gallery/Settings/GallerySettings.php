@@ -16,12 +16,12 @@ use KC\Utils\PluginHelper;
  */
 class GallerySettings implements ISettings {
 
-	private string $settingOptionsName;
-	private array | bool $settingsOption;
-	private string $settingsPageSlug;
-	private string $galleryImageWidth;
-	private string $galleryImageHeight;
-	private string $galleryParentPage;
+	private readonly string $settingOptionsName;
+	private readonly array | bool $settingsOption;
+	private readonly string $settingsPageSlug;
+	private readonly string $galleryImageWidth;
+	private readonly string $galleryImageHeight;
+	private readonly string $galleryParentPage;
 
 	/**
 	 * GallerySettings constructor
@@ -41,8 +41,8 @@ class GallerySettings implements ISettings {
 	 */
 	public function createSettingsPage() : void {
 		add_action(Action::ADMIN_MENU, function() : void {
-			$title = PluginHelper::getTranslatedString(TranslationString::SETTINGS);
-			add_submenu_page('edit.php?post_type='.PostType::GALLERY, $title, $title, UserRole::ADMINISTRATOR, $this->settingsPageSlug, function() : void {
+			$title = PluginHelper::getTranslatedString(TranslationString::Settings);
+			add_submenu_page('edit.php?post_type='.PostType::Gallery->value, $title, $title, UserRole::Administrator->value, $this->settingsPageSlug, function() : void {
 				settings_errors();
 				?>
 				<form action="options.php" method="post">
@@ -76,13 +76,13 @@ class GallerySettings implements ISettings {
 			$sectionID = $this->settingsPageSlug.'-section-gallery';
 			$prefix = $this->settingsPageSlug.'galleryImage';
 			add_settings_section($sectionID, '', null, $this->settingsPageSlug);
-			add_settings_field($prefix.'Width', PluginHelper::getTranslatedString(TranslationString::IMAGE_WIDTH), function() : void {
+			add_settings_field($prefix.'Width', PluginHelper::getTranslatedString(TranslationString::ImageWidth), function() : void {
 				echo '<input type="number" name="'.$this->settingOptionsName.'['.$this->galleryImageWidth.']" value="'.$this->getGalleryImageWidth().'" min="1">';
 			}, $this->settingsPageSlug, $sectionID);
-			add_settings_field($prefix.'Height', PluginHelper::getTranslatedString(TranslationString::IMAGE_HEIGHT), function() : void {
+			add_settings_field($prefix.'Height', PluginHelper::getTranslatedString(TranslationString::ImageHeight), function() : void {
 				echo '<input type="number" name="'.$this->settingOptionsName.'['.$this->galleryImageHeight.']" value="'.$this->getGalleryImageHeight().'" min="1">';
 			}, $this->settingsPageSlug, $sectionID);
-			add_settings_field($this->settingsPageSlug.'parentPage', PluginHelper::getTranslatedString(TranslationString::PARENT_PAGE), function() : void {
+			add_settings_field($this->settingsPageSlug.'parentPage', PluginHelper::getTranslatedString(TranslationString::ParentPage), function() : void {
 				?>
 				<select name="<?php echo $this->settingOptionsName.'['.$this->galleryParentPage.']'; ?>">
 					<?php
@@ -108,7 +108,7 @@ class GallerySettings implements ISettings {
 		add_action(Action::INIT, function() : void {
 			$width = $this->getGalleryImageWidth();
 			$height = $this->getGalleryImageHeight();
-			add_image_size(ImageSize::KC_GALLERY_IMAGE, $width, $height, true);
+			add_image_size(ImageSize::GalleryImage->value, $width, $height, true);
 		});
 	}
 

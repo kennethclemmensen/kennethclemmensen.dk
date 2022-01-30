@@ -6,7 +6,7 @@ Version: 1.0
 Author: Kenneth Clemmensen
 Author URI: https://kennethclemmensen.dk
 Requires at least: 5.9
-Requires PHP: 8.0
+Requires PHP: 8.1
 Text Domain: kc
 Domain Path: /languages
 */

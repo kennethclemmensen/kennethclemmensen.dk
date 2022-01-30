@@ -13,10 +13,10 @@ class Filter {
 	/**
 	 * Get the manage_{$post_type}_posts_columns filter for a post type
 	 * 
-	 * @param string $postType the post type
+	 * @param PostType $postType the post type
 	 * @return string the manage posts columns filter for the post type
 	 */
-	public static function getManagePostsColumnsFilter(string $postType) : string {
-		return 'manage_'.$postType.'_posts_columns';
+	public static function getManagePostsColumnsFilter(PostType $postType) : string {
+		return 'manage_'.$postType->value.'_posts_columns';
 	}
 }

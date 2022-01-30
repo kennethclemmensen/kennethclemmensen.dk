@@ -15,11 +15,11 @@ use KC\Utils\PluginHelper;
  */
 class SliderSettings implements ISettings {
 
-	private string $settingOptionsName;
-	private array | bool $settingsOption;
-	private string $settingsPageSlug;
-	private string $slideWidth;
-	private string $slideHeight;
+	private readonly string $settingOptionsName;
+	private readonly array | bool $settingsOption;
+	private readonly string $settingsPageSlug;
+	private readonly string $slideWidth;
+	private readonly string $slideHeight;
 
 	/**
 	 * SliderSettings constructor
@@ -38,8 +38,8 @@ class SliderSettings implements ISettings {
 	 */
 	public function createSettingsPage() : void {
 		add_action(Action::ADMIN_MENU, function() : void {
-			$title = PluginHelper::getTranslatedString(TranslationString::SETTINGS);
-			add_submenu_page('edit.php?post_type='.PostType::SLIDES, $title, $title, UserRole::ADMINISTRATOR, $this->settingsPageSlug, function() : void {
+			$title = PluginHelper::getTranslatedString(TranslationString::Settings);
+			add_submenu_page('edit.php?post_type='.PostType::Slides->value, $title, $title, UserRole::Administrator->value, $this->settingsPageSlug, function() : void {
 				settings_errors();
 				?>
 				<form action="options.php" method="post">
@@ -64,10 +64,10 @@ class SliderSettings implements ISettings {
 			$sectionID = $this->settingsPageSlug.'-section-slider';
 			$prefix = $this->settingsPageSlug;
 			add_settings_section($sectionID, '', null, $this->settingsPageSlug);
-			add_settings_field($prefix.'slideWidth', PluginHelper::getTranslatedString(TranslationString::IMAGE_WIDTH), function() : void {
+			add_settings_field($prefix.'slideWidth', PluginHelper::getTranslatedString(TranslationString::ImageWidth), function() : void {
 				echo '<input type="number" name="'.$this->settingOptionsName.'['.$this->slideWidth.']" value="'.$this->getSlideWidth().'" min="1">';
 			}, $this->settingsPageSlug, $sectionID);
-			add_settings_field($prefix.'slideHeight', PluginHelper::getTranslatedString(TranslationString::IMAGE_HEIGHT), function() : void {
+			add_settings_field($prefix.'slideHeight', PluginHelper::getTranslatedString(TranslationString::ImageHeight), function() : void {
 				echo '<input type="number" name="'.$this->settingOptionsName.'['.$this->slideHeight.']" value="'.$this->getSlideHeight().'" min="1">';
 			}, $this->settingsPageSlug, $sectionID);
 			register_setting($this->settingOptionsName, $this->settingOptionsName, function(array $input) : array {
@@ -83,7 +83,7 @@ class SliderSettings implements ISettings {
 		add_action(Action::INIT, function() : void {
 			$width = $this->getSlideWidth();
 			$height = $this->getSlideHeight();
-			add_image_size(ImageSize::KC_SLIDES, $width, $height, true);
+			add_image_size(ImageSize::Slides->value, $width, $height, true);
 		});
 	}
 

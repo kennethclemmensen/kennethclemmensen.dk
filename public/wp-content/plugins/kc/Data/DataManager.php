@@ -26,7 +26,7 @@ class DataManager {
 			'order' => Constant::ASC,
 			'orderby' => 'menu_order',
 			'posts_per_page' => -1,
-			'post_type' => [PostType::PAGE]
+			'post_type' => [PostType::Page->value]
 		];
 		$wpQuery = new WP_Query($args);
 		while($wpQuery->have_posts()) {
@@ -50,7 +50,7 @@ class DataManager {
 			'order' => Constant::ASC,
 			'orderby' => 'menu_order',
 			'posts_per_page' => -1,
-			'post_type' => [PostType::PAGE],
+			'post_type' => [PostType::Page->value],
 			's' => $title
 		];
 		$wpQuery = new WP_Query($args);
@@ -73,7 +73,7 @@ class DataManager {
 	public function getSlides() : array {
 		$slides = [];
 		$args = [
-			'post_type' => PostType::SLIDES,
+			'post_type' => PostType::Slides->value,
 			'posts_per_page' => -1,
 			'order' => Constant::ASC,
 			'orderby' => 'menu_order'
@@ -81,7 +81,7 @@ class DataManager {
 		$wpQuery = new WP_Query($args);
 		while($wpQuery->have_posts()) {
 			$wpQuery->the_post();
-			$slides[] = ['image' => PluginHelper::getImageUrl(get_the_ID(), ImageSize::KC_SLIDES)];
+			$slides[] = ['image' => PluginHelper::getImageUrl(get_the_ID(), ImageSize::Slides)];
 		}
 		return $slides;
 	}
@@ -94,7 +94,7 @@ class DataManager {
 	public function getGalleries() : array {
 		$galleries = [];
 		$args = [
-			'post_type' => PostType::GALLERY,
+			'post_type' => PostType::Gallery->value,
 			'posts_per_page' => -1,
 			'order' => Constant::ASC
 		];
@@ -104,7 +104,7 @@ class DataManager {
 			$galleries[] = [
 				'title' => get_the_title(),
 				'link' => get_permalink(get_the_ID()),
-				'image' => PluginHelper::getImageUrl(get_the_ID(), ImageSize::KC_GALLERY_IMAGE)
+				'image' => PluginHelper::getImageUrl(get_the_ID(), ImageSize::GalleryImage)
 			];
 		}
 		return $galleries;
@@ -119,11 +119,11 @@ class DataManager {
 	public function getImages(int $galleryId) : array {
 		$images = [];
 		$args = [
-			'post_type' => PostType::IMAGE,
+			'post_type' => PostType::Image->value,
 			'posts_per_page' => -1,
 			'orderby' => Constant::TITLE,
 			'order' => Constant::ASC,
-			'meta_key' => FieldName::IMAGE_GALLERY,
+			'meta_key' => FieldName::ImageGallery->value,
 			'meta_value' => $galleryId
 		];
 		$wpQuery = new WP_Query($args);
@@ -134,8 +134,8 @@ class DataManager {
 			$imageInfo = wp_get_attachment_image_src(attachment_url_to_postid($url));
 			$images[] = [
 				'title' => get_the_title(),
-				'url' => PluginHelper::getImageUrl($id, ImageSize::LARGE),
-				'thumbnail' => PluginHelper::getImageUrl($id, ImageSize::THUMBNAIL),
+				'url' => PluginHelper::getImageUrl($id, ImageSize::Large),
+				'thumbnail' => PluginHelper::getImageUrl($id, ImageSize::Thumbnail),
 				'gallery' => $galleryId,
 				'width' => $imageInfo[1].'px',
 				'height' => $imageInfo[2].'px'
@@ -152,7 +152,7 @@ class DataManager {
 	public function updateFileDownloadCounter(int $fileID) : void {
 		$downloads = $this->getFileDownloads($fileID);
 		$downloads++;
-		PluginHelper::setFieldValue($downloads, FieldName::FILE_DOWNLOADS, $fileID);
+		PluginHelper::setFieldValue($downloads, FieldName::FileDownloads, $fileID);
 	}
 
 	/**
@@ -164,12 +164,12 @@ class DataManager {
 	public function getFiles(array $fileTypes) : array {
 		$files = [];
 		$args = [
-			'post_type' => PostType::FILE,
+			'post_type' => PostType::File->value,
 			'posts_per_page' => -1,
 			'order' => Constant::ASC,
 			'tax_query' => [
 				[
-					'taxonomy' => TaxonomyName::FILE_TYPE,
+					'taxonomy' => TaxonomyName::FileType->value,
 					'terms' => $fileTypes
 				]
 			]
@@ -196,7 +196,7 @@ class DataManager {
 	 * @return string the file url
 	 */
 	private function getFileUrl(int $fileID) : string {
-		$attachmentID = PluginHelper::getFieldValue(FieldName::FILE, $fileID);
+		$attachmentID = PluginHelper::getFieldValue(FieldName::File, $fileID);
 		return Security::escapeUrl(wp_get_attachment_url($attachmentID));
 	}
 
@@ -207,7 +207,7 @@ class DataManager {
 	 * @return string the file name
 	 */
 	private function getFileName(int $fileID) : string {
-		$attachmentID = PluginHelper::getFieldValue(FieldName::FILE, $fileID);
+		$attachmentID = PluginHelper::getFieldValue(FieldName::File, $fileID);
 		return basename(get_attached_file($attachmentID));
 	}
 
@@ -218,7 +218,7 @@ class DataManager {
 	 * @return string the file description
 	 */
 	private function getFileDescription(int $fileID) : string {
-		return PluginHelper::getFieldValue(FieldName::FILE_DESCRIPTION, $fileID);
+		return PluginHelper::getFieldValue(FieldName::FileDescription, $fileID);
 	}
 
 	/**
@@ -228,6 +228,6 @@ class DataManager {
 	 * @return int the number of file downloads
 	 */
 	private function getFileDownloads(int $fileID) : int {
-		return PluginHelper::getFieldValue(FieldName::FILE_DOWNLOADS, $fileID);
+		return PluginHelper::getFieldValue(FieldName::FileDownloads, $fileID);
 	}
 }

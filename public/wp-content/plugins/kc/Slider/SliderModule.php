@@ -30,10 +30,10 @@ class SliderModule implements IModule {
 	 */
 	private function registerPostType() : void {
 		add_action(Action::INIT, function() : void {
-			register_post_type(PostType::SLIDES, [
+			register_post_type(PostType::Slides->value, [
 				'labels' => [
-					'name' => PluginHelper::getTranslatedString(TranslationString::SLIDES),
-					'singular_name' => PluginHelper::getTranslatedString(TranslationString::SLIDE)
+					'name' => PluginHelper::getTranslatedString(TranslationString::Slides),
+					'singular_name' => PluginHelper::getTranslatedString(TranslationString::Slide)
 				],
 				'public' => false,
 				'has_archive' => false,
@@ -53,11 +53,11 @@ class SliderModule implements IModule {
 	 */
 	private function addAdminColumns() : void {
 		$imageColumnKey = 'image';
-		add_filter(Filter::getManagePostsColumnsFilter(PostType::SLIDES), function(array $columns) use ($imageColumnKey) : array {
-			$columns[$imageColumnKey] = PluginHelper::getTranslatedString(TranslationString::IMAGE);
+		add_filter(Filter::getManagePostsColumnsFilter(PostType::Slides), function(array $columns) use ($imageColumnKey) : array {
+			$columns[$imageColumnKey] = PluginHelper::getTranslatedString(TranslationString::Image);
 			return $columns;
 		});
-		add_action(Action::getManagePostsCustomColumn(PostType::SLIDES), function(string $columnName) use ($imageColumnKey) : void {
+		add_action(Action::getManagePostsCustomColumn(PostType::Slides), function(string $columnName) use ($imageColumnKey) : void {
 			if($columnName === $imageColumnKey) echo '<img src="'.PluginHelper::getImageUrl(get_the_ID()).'" alt="'.get_the_title().'" style="height: 60px">';
 		});
 	}

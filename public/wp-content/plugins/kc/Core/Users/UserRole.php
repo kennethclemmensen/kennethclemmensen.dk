@@ -2,9 +2,8 @@
 namespace KC\Core\Users;
 
 /**
- * The UserRole class defines the user roles
+ * The UserRole enum defines the user roles
  */
-class UserRole {
-
-	public const ADMINISTRATOR = 'administrator';
+enum UserRole: string {
+	case Administrator = 'administrator';
 }

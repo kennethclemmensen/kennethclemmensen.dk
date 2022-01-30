@@ -2,6 +2,8 @@
 namespace KC\Utils;
 
 use KC\Core\Constant;
+use KC\Core\FieldName;
+use KC\Core\TranslationString;
 use KC\Core\Images\ImageSize;
 use KC\Security\Security;
 
@@ -14,43 +16,43 @@ class PluginHelper {
 	 * Get an image url
 	 * 
 	 * @param int $imageID the id of the image
-	 * @param string $size the size of the image
+	 * @param ImageSize $size the size of the image
 	 * @return string the image url
 	 */
-	public static function getImageUrl(int $imageID, string $size = ImageSize::POST_THUMBNAIL) : string {
-		return Security::escapeUrl(get_the_post_thumbnail_url($imageID, $size));
+	public static function getImageUrl(int $imageID, ImageSize $size = ImageSize::PostThumbnail) : string {
+		return Security::escapeUrl(get_the_post_thumbnail_url($imageID, $size->value));
 	}
 
 	/**
 	 * Get a field value from a post
 	 * 
-	 * @param string $fieldName the name of the field
+	 * @param FieldName $fieldName the name of the field
 	 * @param int $postId the id of the post
 	 * @return string the field value
 	 */
-	public static function getFieldValue(string $fieldName, int $postId) : string {
-		return get_post_meta($postId, $fieldName, true);
+	public static function getFieldValue(FieldName $fieldName, int $postId) : string {
+		return get_post_meta($postId, $fieldName->value, true);
 	}
 
 	/**
 	 * Set a field value on a post
 	 * 
 	 * @param mixed $value the value
-	 * @param string $fieldName the name of the field
+	 * @param FieldName $fieldName the name of the field
 	 * @param int $postId the id of the post
 	 */
-	public static function setFieldValue(string | int $value, string $fieldName, int $postId) : void {
-		update_post_meta($postId, $fieldName, $value);
+	public static function setFieldValue(string | int $value, FieldName $fieldName, int $postId) : void {
+		update_post_meta($postId, $fieldName->value, $value);
 	}
 
 	/**
 	 * Get a translated string
 	 * 
-	 * @param string $str the string to translate
+	 * @param TranslationString $str the string to translate
 	 * @return string the translated string
 	 */
-	public static function getTranslatedString(string $str) : string {
-		return __($str, Constant::TEXT_DOMAIN);
+	public static function getTranslatedString(TranslationString $str) : string {
+		return __($str->value, Constant::TEXT_DOMAIN);
 	}
 
 	/**
