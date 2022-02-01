@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.9.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-01-27 17:48:11+0000\n"
+"PO-Revision-Date: 2022-01-29 22:31:21+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -264,9 +264,845 @@ msgstr "Vis indhold i flere kolonner med blokke tilføjet til hver kolonne."
 msgid "Editor (beta)"
 msgstr "Editor (beta)"
 
+#: wp-includes/js/dist/block-library.js:21847 wp-admin/network/sites.php:122
+#: wp-admin/network/sites.php:209
+msgid "Confirm"
+msgstr "Bekræft"
+
+#: wp-includes/wp-db.php:3353
+msgid "Could not strip invalid text."
+msgstr "Den ugyldige tekst kunne ikke fjernes."
+
+#: wp-includes/wp-db.php:2911
+msgid "Could not retrieve table charset."
+msgstr "Tabeltegnsættet kunne ikke hentes."
+
+#. translators: %s: Database fields where the error occurred.
+#: wp-includes/wp-db.php:2584
+msgid "WordPress database error: Processing the values for the following fields failed: %s. The supplied values may be too long or contain invalid data."
+msgstr "WordPress-databasefejl: Behandlingen af værdierne for følgende felter mislykkedes: %s. De angivne værdier kan være for lange eller indeholde ugyldige data."
+
+#. translators: %s: Database field where the error occurred.
+#: wp-includes/wp-db.php:2578
+msgid "WordPress database error: Processing the value for the following field failed: %s. The supplied value may be too long or contains invalid data."
+msgstr "WordPress databasefejl: Behandlingen af værdien for følgende felt mislykkedes: %s. Den angivne værdi kan være for lang eller indeholder ugyldige data."
+
+#: wp-includes/wp-db.php:2040
+msgid "WordPress database error: Could not perform query because it contains invalid data."
+msgstr "WordPress databasefejl: Forespørgslen kunne ikke udføres, fordi den indeholder ugyldige data."
+
+#. translators: 1: 'wp-edit-post', 2: 'wp-edit-widgets', 3:
+#. 'wp-customize-widgets'.
+#: wp-includes/widgets.php:2098
+msgid "\"%1$s\" style should not be enqueued together with the new widgets editor (%2$s or %3$s)."
+msgstr "\"%1$s\" designs bør ikke sættes sammen med den nye widgets editor (%2$s eller %3$s)."
+
+#. translators: 1: 'wp-editor', 2: 'wp-edit-widgets', 3:
+#. 'wp-customize-widgets'.
+#: wp-includes/widgets.php:2085
+msgid "\"%1$s\" script should not be enqueued together with the new widgets editor (%2$s or %3$s)."
+msgstr "\"%1$s\" script bør ikke sættes sammen med den nye widgets editor (%2$s eller %3$s)."
+
+#: wp-includes/taxonomy.php:665
+msgid "The description is not prominent by default; however, some themes may show it."
+msgstr "Beskrivelsen bliver som standard ikke vist. Nogle temaer kan dog vise det."
+
+#: wp-includes/taxonomy.php:664
+msgid "Assign a parent term to create a hierarchy. The term Jazz, for example, would be the parent of Bebop and Big Band."
+msgstr "Tildel et overordnet udtryk for at oprette et hierarki. Udtrykket Jazz, for eksempel, ville være forælder til Bebop og Big Band."
+
+#: wp-includes/taxonomy.php:663
+msgid "The &#8220;slug&#8221; is the URL-friendly version of the name. It is usually all lowercase and contains only letters, numbers, and hyphens."
+msgstr "Det kortlink (eller slug), er den URL-venlig version af navnet. Det er normalt med små bogstaver og indeholder kun bogstaver, tal og bindestreger."
+
+#: wp-includes/taxonomy.php:662
+msgid "The name is how it appears on your site."
+msgstr "Navnet som det vises på din websted."
+
+#: wp-includes/taxonomy.php:213
+msgid "Template Part Area"
+msgstr "Skabelondelsområde"
+
+#: wp-includes/taxonomy.php:212
+msgid "Template Part Areas"
+msgstr "Områder for skabeloner"
+
+#: wp-includes/script-loader.php:886
+msgid "The server cannot process the image. This can happen if the server is busy or does not have enough resources to complete the task. Uploading a smaller image may help. Suggested maximum size is 2560 pixels."
+msgstr "Serveren kan ikke behandle billedet. Dette kan ske, hvis serveren er optaget eller ikke har tilstrækkelige ressourcer til at fuldføre opgaven. Det kan hjælpe at uploade et mindre billede. Den foreslåede maksimale størrelse er 2560 pixel."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-users-controller.php:1590
+msgid "Limit result set to users who have published posts."
+msgstr "Begræns resultatet til brugere, der har udgivet indlæg."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-users-controller.php:1574
+msgid "Limit result set to users matching at least one specific capability provided. Accepts csv list or single capability."
+msgstr "Begræns resultat til brugere, der matcher mindst én bestemt egenskab. Accepterer csv-liste eller enkeltfunktion."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-users-controller.php:205
+msgid "Sorry, you are not allowed to filter users by capability."
+msgstr "Du må desværre ikke filtrere brugere efter funktion."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-url-details-controller.php:270
+msgid "Unable to retrieve body from response at this URL."
+msgstr "Brødteksten kunne ikke hentes fra svaret på denne URL-adresse."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-url-details-controller.php:260
+msgid "URL not found. Response returned a non-200 status code for this URL."
+msgstr "URL-adressen blev ikke fundet. Svaret returnerede en statuskode, der ikke er 200, for denne URL-adresse."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-url-details-controller.php:210
+msgid "Sorry, you are not allowed to process remote urls."
+msgstr "Beklager, men du må ikke behandle fjernwebadresser."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-url-details-controller.php:138
+msgid "Invalid URL"
+msgstr "Ugyldig url"
+
+#. translators: 1: HTML meta tag, 2: HTML meta tag.
+#: wp-includes/rest-api/endpoints/class-wp-rest-url-details-controller.php:111
+msgid "The Open Graph image link of the %1$s or %2$s element from the URL."
+msgstr "Open Graph-linket i %1$s eller %2$s-elementet fra URL-adressen."
+
+#. translators: %s: HTML meta tag.
+#: wp-includes/rest-api/endpoints/class-wp-rest-url-details-controller.php:101
+msgid "The content of the %s element from the URL."
+msgstr "Indholdet af %s-elementet fra URL-adressen."
+
+#. translators: %s: HTML link tag.
+#: wp-includes/rest-api/endpoints/class-wp-rest-url-details-controller.php:90
+msgid "The favicon image link of the %s element from the URL."
+msgstr "Favicon-billedlinket for det %s element fra URL-adressen."
+
+#. translators: %s: HTML title tag.
+#: wp-includes/rest-api/endpoints/class-wp-rest-url-details-controller.php:80
+msgid "The contents of the %s element from the URL."
+msgstr "Indholdet af %s-elementet fra URL-adressen."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-url-details-controller.php:46
+msgid "The URL to process."
+msgstr "Den URL-adresse, der skal behandles."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-templates-controller.php:890
+msgid "Where the template part is intended for use (header, footer, etc.)"
+msgstr "Hvor skabelondelen er beregnet til brug (sidehoved, sidefod osv.)"
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-templates-controller.php:881
+msgid "Whether a template is a custom template."
+msgstr "Angiver om en skabelon er en brugerdefineret skabelon."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-templates-controller.php:872
+msgid "The ID for the author of the template."
+msgstr "ID for forfatteren af skabelonen."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-templates-controller.php:839
+msgid "HTML title for the template, transformed for display."
+msgstr "HTML-titel til skabelonen, transformeret til visning."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-templates-controller.php:834
+msgid "Title for the template, as it exists in the database."
+msgstr "Titel på skabelonen, som den findes i databasen."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-templates-controller.php:820
+msgid "Version of the content block format used by the template."
+msgstr "Version af det indholdsblokformat, der bruges af skabelonen."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-templates-controller.php:815
+msgid "Content for the template, as it exists in the database."
+msgstr "Indhold til skabelonen, som den findes i databasen."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-templates-controller.php:803
+msgid "Source of a customized template"
+msgstr "Kilden til en tilpasset skabelon"
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-templates-controller.php:792
+msgid "Type of template."
+msgstr "Skabelontype."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-templates-controller.php:748
+msgid "Post type to get the templates for."
+msgstr "Indlægstype som skabelonerne skal bruges til."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-templates-controller.php:744
+msgid "Limit to the specified template part area."
+msgstr "Begræns til det angivne skabelondelsområde."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-taxonomies-controller.php:377
+msgid "REST namespace route for the taxonomy."
+msgstr "REST navneområde rute for taksonomi."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-post-types-controller.php:371
+msgid "Whether to make the post type is available for selection in navigation menus."
+msgstr "Om indlægstypen skal oprettes, kan vælges i navigationsmenuer."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-post-types-controller.php:367
+msgid "Whether to generate a default UI for managing this post type."
+msgstr "Angiver om der skal oprettes en standardbrugergrænseflade til administration af denne indlægstype."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-post-types-controller.php:361
+msgid "The visibility settings for the post type."
+msgstr "Synlighedsindstillingerne for indlægstypen."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-post-types-controller.php:355
+msgid "REST route's namespace for the post type."
+msgstr "REST-rutens navneområde for indlægstypen."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-menus-controller.php:561
+msgid "Whether to automatically add top level pages to this menu."
+msgstr "Om sider på øverste niveau automatisk skal føjes til denne menu."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-menus-controller.php:527
+msgid "The locations assigned to the menu."
+msgstr "De placeringer, der er tildelt menuen."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-menus-controller.php:383
+msgid "The menu cannot be deleted."
+msgstr "Menuen kan ikke slettes."
+
+#. translators: %s: force=true
+#: wp-includes/rest-api/endpoints/class-wp-rest-menus-controller.php:373
+msgid "Menus do not support trashing. Set '%s' to delete."
+msgstr "Menuer understøtter ikke papirkurven. Angiv '%s' for at slette."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-menus-controller.php:103
+msgid "Sorry, you are not allowed to view menus."
+msgstr "Beklager, men du må ikke se menuer."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-menu-locations-controller.php:240
+msgid "The ID of the assigned menu."
+msgstr "ID for den tildelte menu."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-menu-locations-controller.php:234
+msgid "The description of the menu location."
+msgstr "Beskrivelsen af menuplaceringen."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-menu-locations-controller.php:228
+msgid "The name of the menu location."
+msgstr "Navnet på menuplaceringen."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-menu-locations-controller.php:148
+#: wp-includes/rest-api/endpoints/class-wp-rest-menus-controller.php:494
+#: wp-includes/rest-api/endpoints/class-wp-rest-menus-controller.php:547
+msgid "Invalid menu location."
+msgstr "Ugyldig menuplacering."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-menu-locations-controller.php:86
+#: wp-includes/rest-api/endpoints/class-wp-rest-menu-locations-controller.php:129
+msgid "Sorry, you are not allowed to view menu locations."
+msgstr "Beklager, men du må ikke se menuplaceringer."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-menu-locations-controller.php:57
+msgid "An alphanumeric identifier for the menu location."
+msgstr "Et alfanumerisk ID for menuplaceringen."
+
+#. translators: %s: taxonomy name
+#: wp-includes/rest-api/endpoints/class-wp-rest-menu-items-controller.php:902
+msgid "The terms assigned to the object in the %s taxonomy."
+msgstr "De vilkår, der er tildelt objektet i %s taksonomi."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-menu-items-controller.php:890
+msgid "Whether the menu item represents an object that no longer exists."
+msgstr "Angiver om menupunktet repræsenterer et objekt, der ikke længere findes."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-menu-items-controller.php:876
+msgid "The XFN relationship expressed in the link of this menu item."
+msgstr "XFN-relationen udtrykt i linket til dette menupunkt."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-menu-items-controller.php:853
+msgid "The URL to which this menu item points."
+msgstr "Den URL-adresse, som dette menuelement peger på."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-menu-items-controller.php:846
+msgid "The singular label used to describe this type of menu item."
+msgstr "Den etiket, der bruges til at beskrive denne type menupunkt."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-menu-items-controller.php:836
+msgid "The target attribute of the link element for this menu item."
+msgstr "Destinationsattributten for linkelementet for dette menuelement."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-menu-items-controller.php:828
+msgid "The database ID of the original object this menu item represents, for example the ID for posts or the term_id for categories."
+msgstr "Database-ID for det oprindelige objekt, som dette menupunkt repræsenterer, f.eks. ID for indlæg eller term_id for kategorier."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-menu-items-controller.php:819
+msgid "The type of object originally represented, such as \"category\", \"post\", or \"attachment\"."
+msgstr "Den objekttype, der oprindeligt var repræsenteret, såsom “kategori”, “indlæg” eller “vedhæftning”."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-menu-items-controller.php:811
+msgid "The DB ID of the nav_menu_item that is this item's menu parent, if any, otherwise 0."
+msgstr "DB ID for det nav_menu_item, der eventuelt er dette elements overordnede menu, ellers 0."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-menu-items-controller.php:802
+msgid "The description of this menu item."
+msgstr "Beskrivelsen af dette menuelement."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-menu-items-controller.php:788
+msgid "Class names for the link element of this menu item."
+msgstr "Klassenavne for linket i dette menuelement."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-menu-items-controller.php:779
+msgid "Text for the title attribute of the link element for this menu item."
+msgstr "Tekst til titelattributten for linket for dette menuelement."
+
 #: wp-includes/rest-api/endpoints/class-wp-rest-menu-items-controller.php:771
 msgid "The ID for the parent of the object."
 msgstr "ID'et for forældren af objektet."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-menu-items-controller.php:763
+msgid "A named status for the object."
+msgstr "En navngivet status for objektet."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-menu-items-controller.php:755
+msgid "The family of objects originally represented, such as \"post_type\" or \"taxonomy\"."
+msgstr "Familien af objekter oprindeligt repræsenteret, såsom \"post_type\" eller \"taksonomi\"."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-menu-items-controller.php:748
+msgid "Name of type."
+msgstr "Navn på type."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-menu-items-controller.php:730
+msgid "HTML title for the object, transformed for display."
+msgstr "HTML-titel for objektet, transformeret til visning."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-menu-items-controller.php:725
+msgid "Title for the object, as it exists in the database."
+msgstr "Titel på objektet, som det findes i databasen."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-menu-items-controller.php:690
+msgid "Get linked object."
+msgstr "Hent sammenkædet objekt."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-menu-items-controller.php:454
+msgid "The url is required when using a custom menu item type."
+msgstr "URL-adressen kræves, når du bruger en brugerdefineret menuelementtype."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-menu-items-controller.php:451
+msgid "The title is required when using a custom menu item type."
+msgstr "Titlen er påkrævet, når du bruger en brugerdefineret menuelementtype."
+
+#. translators: %s: force=true
+#: wp-includes/rest-api/endpoints/class-wp-rest-menu-items-controller.php:288
+msgid "Menu items do not support trashing. Set '%s' to delete."
+msgstr "Menuelementer understøttes ikke af papirkurven. Angiv '%s' for at slette."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-global-styles-controller.php:529
+msgid "Sorry, you are not allowed to access the global styles on this site."
+msgstr "Beklager, men du har ikke adgang til de globale typografier på dette websted."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-global-styles-controller.php:495
+msgid "Title for the global styles variation, as it exists in the database."
+msgstr "Titel for den globale typografivariation, som den findes i databasen."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-global-styles-controller.php:489
+msgid "Title of the global styles variation."
+msgstr "Titlen på den globale typografivariation."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-global-styles-controller.php:484
+msgid "Global settings."
+msgstr "Globale indstillinger."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-global-styles-controller.php:479
+msgid "Global styles."
+msgstr "Globale designs."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-global-styles-controller.php:473
+msgid "ID of global styles config."
+msgstr "ID for global typografikonfiguration."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-global-styles-controller.php:373
+msgid "No global styles config exist with that id."
+msgstr "Der findes ingen global typografikonfiguration med det pågældende ID."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-global-styles-controller.php:135
+msgid "Sorry, you are not allowed to view this global style."
+msgstr ""
+"Beklager, men du må ikke se dette globale design.\n"
+"."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-global-styles-controller.php:127
+#: wp-includes/rest-api/endpoints/class-wp-rest-global-styles-controller.php:190
+msgid "Sorry, you are not allowed to edit this global style."
+msgstr "Beklager, men du må ikke redigere denne globale typografi."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-global-styles-controller.php:59
+msgid "The theme identifier"
+msgstr "Tema ID"
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-edit-site-export-controller.php:59
+msgid "Sorry, you are not allowed to export templates and template parts."
+msgstr "Beklager, men du må ikke eksportere skabeloner og skabelondele."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-block-types-controller.php:544
+msgid "Public facing and editor style handle."
+msgstr "Offentlig synlig og editor stil håndtering."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-block-types-controller.php:523
+msgid "Public facing and editor script handle."
+msgstr "Offentligt synlig og editor script håndtering."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-block-directory-controller.php:277
+msgid "The date when the block was last updated."
+msgstr "Den dato, hvor blokken sidst blev opdateret."
+
+#: wp-includes/post.php:3153
+msgctxt "file type group"
+msgid "Video"
+msgstr "Video"
+
+#: wp-includes/post.php:3144
+msgctxt "file type group"
+msgid "Audio"
+msgstr "Lyd"
+
+#: wp-includes/post.php:502
+msgid "Navigation menus that can be inserted into your site."
+msgstr "Navigationsmenuer der kan indsættes på webstedet."
+
+#: wp-includes/post.php:500
+msgid "Navigation Menus list"
+msgstr "Liste over navigationsmenuer"
+
+#: wp-includes/post.php:499
+msgid "Navigation Menus list navigation"
+msgstr "Navigationsmenuernes listenavigation"
+
+#: wp-includes/post.php:498
+msgid "Filter Navigation Menu list"
+msgstr "Filter for Navigationsmenulisten"
+
+#: wp-includes/post.php:497
+msgid "Uploaded to this Navigation Menu"
+msgstr "Overført til denne navigationsmenu"
+
+#: wp-includes/post.php:496
+msgid "Insert into Navigation Menu"
+msgstr "Indsæt i navigationsmenuen"
+
+#: wp-includes/post.php:495
+msgid "Navigation Menu archives"
+msgstr "Arkiv for navigationsmenuen"
+
+#: wp-includes/post.php:494
+msgid "No Navigation Menu found in Trash."
+msgstr "Der blev ikke fundet nogen navigationsmenu i papirkurven."
+
+#: wp-includes/post.php:493
+msgid "No Navigation Menu found."
+msgstr "Der blev ikke fundet nogen navigationsmenu."
+
+#: wp-includes/post.php:492
+msgid "Parent Navigation Menu:"
+msgstr "Overordnet navigationsmenu:"
+
+#: wp-includes/post.php:491
+msgid "Search Navigation Menus"
+msgstr "Søg i navigationsmenuer"
+
+#: wp-includes/post.php:489
+msgid "View Navigation Menu"
+msgstr "Vis navigationsmenu"
+
+#: wp-includes/post.php:488
+msgid "Edit Navigation Menu"
+msgstr "Rediger navigationsmenu"
+
+#: wp-includes/post.php:487
+msgid "New Navigation Menu"
+msgstr "Ny navigationsmenu"
+
+#: wp-includes/post.php:486
+msgid "Add New Navigation Menu"
+msgstr "Tilføj ny navigationsmenu"
+
+#: wp-includes/post.php:485
+msgctxt "Navigation Menu"
+msgid "Add New"
+msgstr "Tilføj ny"
+
+#: wp-includes/post.php:484
+msgctxt "post type singular name"
+msgid "Navigation Menu"
+msgstr "Hovedmenu"
+
+#: wp-includes/post.php:483
+msgctxt "post type general name"
+msgid "Navigation Menus"
+msgstr "Navigationsmenuer"
+
+#: wp-includes/post.php:455
+msgid "Global styles to include in themes."
+msgstr "Globale typografier, der skal medtages i temaer."
+
+#: wp-includes/post.php:454
+msgctxt "post type general name"
+msgid "Global Styles"
+msgstr "Globale typografier"
+
+#: wp-includes/post.php:415
+msgid "Template parts to include in your templates."
+msgstr "Skabelondele der skal medtages i skabelonerne."
+
+#: wp-includes/post.php:413
+msgid "Template parts list"
+msgstr "Liste over skabelondele"
+
+#: wp-includes/post.php:412
+msgid "Template parts list navigation"
+msgstr "Navigation af liste over skabelondele"
+
+#: wp-includes/post.php:411
+msgid "Filter template parts list"
+msgstr "Liste med filter for skabelondele"
+
+#: wp-includes/post.php:410
+msgid "Uploaded to this template part"
+msgstr "Overført til denne skabelondel"
+
+#: wp-includes/post.php:409
+msgid "Insert into template part"
+msgstr "Indsæt i skabelondelen"
+
+#: wp-includes/post.php:408
+msgid "Template part archives"
+msgstr "Arkiv for skabelondele"
+
+#: wp-includes/post.php:407
+msgid "No template parts found in Trash."
+msgstr "Der blev ikke fundet nogen skabelondele i papirkurven."
+
+#: wp-includes/post.php:406
+msgid "No template parts found."
+msgstr "Der blev ikke fundet nogen skabelondele."
+
+#: wp-includes/post.php:405
+msgid "Parent Template Part:"
+msgstr "Del af overordnet skabelon:"
+
+#: wp-includes/post.php:404
+msgid "Search Template Parts"
+msgstr "Dele til søgeskabelon"
+
+#: wp-includes/post.php:403 wp-includes/js/dist/edit-site.js:5541
+msgid "Template Parts"
+msgstr "Skabelondele"
+
+#: wp-includes/post.php:402
+msgid "View Template Part"
+msgstr "Vis skabelondel"
+
+#: wp-includes/post.php:401
+msgid "Edit Template Part"
+msgstr "Rediger skabelondel"
+
+#: wp-includes/post.php:400
+msgid "New Template Part"
+msgstr "Ny skabelondel"
+
+#: wp-includes/post.php:399
+msgid "Add New Template Part"
+msgstr "Tilføj ny skabelondel"
+
+#: wp-includes/post.php:398
+msgctxt "Template Part"
+msgid "Add New"
+msgstr "Tilføj ny"
+
+#: wp-includes/post.php:397
+msgctxt "post type singular name"
+msgid "Template Part"
+msgstr "Skabelondel"
+
+#: wp-includes/post.php:396
+msgctxt "post type general name"
+msgid "Template Parts"
+msgstr "Skabelondele"
+
+#: wp-includes/post.php:337
+msgctxt "post type singular name"
+msgid "Template"
+msgstr "Skabelon"
+
+#: wp-includes/post.php:336
+msgctxt "post type general name"
+msgid "Templates"
+msgstr "Skabeloner"
+
+#. translators: %s: Link to the login page.
+#: wp-includes/ms-functions.php:545 wp-includes/user.php:3117
+msgid "<strong>Error:</strong> This email address is already registered. <a href=\"%s\">Log in</a> with this address or choose another one."
+msgstr "<strong>Fejl:</strong> Denne e-mail-adresse er allerede registreret. <a href=\"%s\">Log på</a> med denne adresse, eller vælg en anden."
+
+#: wp-includes/media.php:4474
+#: wp-admin/includes/class-wp-media-list-table.php:154
+msgctxt "media items"
+msgid "Unattached"
+msgstr "Ikke vedhæftet"
+
+#. translators: 1: Function name, 2: A variable type, like "boolean" or
+#. "integer".
+#: wp-includes/functions.php:8299
+msgid "%1$s only accepts a non-empty path string, received %2$s."
+msgstr "%1$s accepterer kun en ikke-tom stistreng, der er modtaget %2$s."
+
+#. translators: 1: Path to the JSON file, 2: Error message.
+#: wp-includes/functions.php:4494
+msgid "Error when decoding a JSON file at path %1$s: %2$s"
+msgstr "Der opstod en fejl under afkodning af en JSON-fil ved stien %1$s: %2$s"
+
+#. translators: %s: Path to the JSON file.
+#: wp-includes/functions.php:4480
+msgid "File %s doesn't exist!"
+msgstr "Fil %s findes ikke!"
+
+#: wp-includes/functions.php:2850 wp-includes/script-loader.php:878
+#: wp-includes/js/dist/media-utils.js:664 wp-admin/includes/file.php:934
+msgid "Sorry, you are not allowed to upload this file type."
+msgstr "Beklager, men du må ikke overføre denne filtype."
+
+#. translators: 1: Option name, 2: Error code.
+#: wp-includes/formatting.php:4957
+msgid "Could not sanitize the %1$s option. Error code: %2$s"
+msgstr "Indstillingen %1$s kunne ikke renses. Fejlkode: %2$s"
+
+#. translators: %s: URL to the themes page (also it activates the theme).
+#: wp-includes/customize/class-wp-customize-theme-control.php:267
+#: wp-admin/includes/theme.php:1017
+msgid "However, you can still <a href=\"%s\">activate this theme</a>, and use the Site Editor to customize it."
+msgstr "Du kan dog stadig <a href=\"%s\">aktivere dette tema</a> og bruge Webstedseditoren til at tilpasse det."
+
+#: wp-includes/customize/class-wp-customize-theme-control.php:260
+#: wp-admin/includes/theme.php:1011
+msgid "This theme doesn't support Customizer."
+msgstr "Dette tema understøtter ikke Tilpasseren."
+
+#: wp-includes/comment.php:3552
+msgid "<strong>Error</strong>: Please fill the required fields."
+msgstr "<strong>Fejl</strong>: Udfyld de obligatoriske felter."
+
+#: wp-includes/class-wp-block-styles-registry.php:68
+msgid "Block style name must not contain any spaces."
+msgstr "Blokformatnavnet må ikke indeholde mellemrum."
+
+#. translators: %s: Template part slug.
+#. translators: %s: Template part slug
+#: wp-includes/blocks/template-part.php:113
+#: wp-includes/js/dist/block-library.js:39387
+msgid "Template part has been deleted or is unavailable: %s"
+msgstr "Skabelondelen er blevet slettet eller er ikke tilgængelig: %s"
+
+#: wp-includes/blocks/post-navigation-link.php:64
+msgctxt "label before the title of the previous post"
+msgid "Previous:"
+msgstr "Forrige:"
+
+#: wp-includes/blocks/post-navigation-link.php:64
+msgctxt "label before the title of the next post"
+msgid "Next:"
+msgstr "Næste:"
+
+#: wp-includes/blocks/post-navigation-link.php:34
+msgctxt "label for previous post link"
+msgid "Previous"
+msgstr "Forrige"
+
+#: wp-includes/blocks/post-navigation-link.php:34
+msgctxt "label for next post link"
+msgid "Next"
+msgstr "Næste"
+
+#: wp-includes/blocks/navigation.php:555
+#: wp-includes/js/dist/block-library.js:21495
+msgid "Close menu"
+msgstr "Luk menu"
+
+#: wp-includes/blocks/navigation.php:554
+#: wp-includes/js/dist/block-library.js:21465
+msgid "Open menu"
+msgstr "Åbn menu"
+
+#. translators: Accessibility text. %s: Parent page title.
+#: wp-includes/blocks/navigation-submenu.php:193
+#: wp-includes/blocks/page-list.php:179
+msgid "%s submenu"
+msgstr "%s undermenu"
+
+#: wp-includes/blocks/navigation-link.php:286
+msgid "A link to a post format"
+msgstr "Et link til et indlægsformat"
+
+#: wp-includes/blocks/navigation-link.php:285
+msgid "Post Format Link"
+msgstr "Link til indlægsformat"
+
+#: wp-includes/blocks/calendar.php:22
+msgid "The calendar block is hidden because there are no published posts."
+msgstr "Kalenderblokken er skjult, fordi der ikke er nogen publicerede indlæg."
+
+#: wp-includes/block-template-utils.php:924
+msgid "Unable to open export file (archive) for writing."
+msgstr "Eksportfilen (arkiv) kan ikke åbnes til skrivning."
+
+#: wp-includes/block-template-utils.php:916
+msgid "Zip Export not supported."
+msgstr "Zip-eksport understøttes ikke."
+
+#. translators: %1$s: Template area type, %2$s: the uncategorized template area
+#. value.
+#: wp-includes/block-template-utils.php:216
+msgid "\"%1$s\" is not a supported wp_template_part area value and has been added as \"%2$s\"."
+msgstr "\"%1$s\" er ikke en understøttet wp_template_part områdeværdi og er blevet tilføjet som \"%2$s\"."
+
+#: wp-includes/block-template-utils.php:178
+msgid "Displays when no content is found."
+msgstr "Viser hvornår der ikke findes noget indhold."
+
+#: wp-includes/block-template-utils.php:177
+msgctxt "Template name"
+msgid "404"
+msgstr "404"
+
+#: wp-includes/block-template-utils.php:174
+msgid "Displays the privacy policy page."
+msgstr "Viser siden til politik om beskyttelse af personlige oplysninger."
+
+#: wp-includes/block-template-utils.php:170
+msgid "Template used to display search results."
+msgstr "Skabelon der bruges til at vise søgeresultater."
+
+#: wp-includes/block-template-utils.php:169
+msgctxt "Template name"
+msgid "Search"
+msgstr "Søg"
+
+#: wp-includes/block-template-utils.php:166
+msgid "Displays individual media items or attachments."
+msgstr "Viser individuelle medieelementer eller vedhæftede filer."
+
+#: wp-includes/block-template-utils.php:162
+msgid "Displays latest posts with single post tag."
+msgstr "Viser seneste indlæg med enkeltindlæg tag."
+
+#: wp-includes/block-template-utils.php:161
+msgctxt "Template name"
+msgid "Tag"
+msgstr "Tag"
+
+#: wp-includes/block-template-utils.php:158
+msgid "Displays posts from a specific date."
+msgstr "Viser indlæg fra en bestemt dato."
+
+#: wp-includes/block-template-utils.php:157
+msgctxt "Template name"
+msgid "Date"
+msgstr "Dato"
+
+#: wp-includes/block-template-utils.php:154
+msgid "Displays latest posts from a single post taxonomy."
+msgstr "Viser seneste indlæg fra en enkelt indlægstaksonomi."
+
+#: wp-includes/block-template-utils.php:153
+msgctxt "Template name"
+msgid "Taxonomy"
+msgstr "Taksonomi"
+
+#: wp-includes/block-template-utils.php:150
+msgid "Displays latest posts in single post category."
+msgstr "Viser de seneste indlæg i en enkelt indlægskategori."
+
+#: wp-includes/block-template-utils.php:149
+msgctxt "Template name"
+msgid "Category"
+msgstr "Kategori"
+
+#: wp-includes/block-template-utils.php:146
+msgid "Displays latest posts written by a single author."
+msgstr "Viser seneste indlæg skrevet af en enkelt forfatter."
+
+#: wp-includes/block-template-utils.php:145
+msgctxt "Template name"
+msgid "Author"
+msgstr "Forfatter"
+
+#: wp-includes/block-template-utils.php:142
+msgid "Displays post categories, tags, and other archives."
+msgstr "Viser indlægskategorier, tags og andre arkiver."
+
+#: wp-includes/block-template-utils.php:141
+msgctxt "Template name"
+msgid "Archive"
+msgstr "Arkiv"
+
+#: wp-includes/block-template-utils.php:138
+msgid "Displays a single page."
+msgstr "Viser en enkelt side."
+
+#: wp-includes/block-template-utils.php:137
+msgctxt "Template name"
+msgid "Page"
+msgstr "Side"
+
+#: wp-includes/block-template-utils.php:134
+msgid "Displays a single post."
+msgstr "Viser et enkelt indlæg."
+
+#: wp-includes/block-template-utils.php:133
+msgctxt "Template name"
+msgid "Single Post"
+msgstr "Enkeltindlæg"
+
+#: wp-includes/block-template-utils.php:130
+msgid "Displays a single post or page."
+msgstr "Viser et enkelt indlæg eller en enkelt side."
+
+#: wp-includes/block-template-utils.php:129
+msgctxt "Template name"
+msgid "Singular"
+msgstr "Ental"
+
+#: wp-includes/block-template-utils.php:126
+msgid "Displays as the site's home page."
+msgstr "Vises som webstedets forside."
+
+#: wp-includes/block-template-utils.php:125
+msgctxt "Template name"
+msgid "Front Page"
+msgstr "Forside"
+
+#: wp-includes/block-template-utils.php:122
+msgid "Displays as the site's home page, or as the Posts page when a static home page isn't set."
+msgstr "Vises som webstedets forside eller som Indlægsiden, når en statisk startside ikke er angivet."
+
+#: wp-includes/block-template-utils.php:121
+msgctxt "Template name"
+msgid "Home"
+msgstr "Forside"
+
+#: wp-includes/block-template-utils.php:118
+msgid "Displays posts."
+msgstr "Viser indlæg."
+
+#: wp-includes/block-template-utils.php:117
+msgctxt "Template name"
+msgid "Index"
+msgstr "Indeks"
+
+#: wp-includes/block-template-utils.php:87
+#: wp-includes/js/dist/block-library.js:39473
+msgid "The Footer template defines a page area that typically contains site credits, social links, or any other combination of blocks."
+msgstr "Sidefod skabelonen definerer et sideområde, der typisk indeholder webstedets kreditering, sociale links eller en eller anden kombination af blokke."
+
+#: wp-includes/block-template-utils.php:78
+#: wp-includes/js/dist/block-library.js:39464
+msgid "The Header template defines a page area that typically contains a title, logo, and main navigation."
+msgstr "Sidehoved skabelonen definerer et sideområde, der typisk indeholder en titel, et logo og en hovednavigation."
+
+#: wp-includes/block-template-utils.php:69
+msgid "General templates often perform a specific role like displaying post content, and are not tied to any particular area."
+msgstr "Generelle skabeloner udfører ofte en bestemt rolle såsom visning af indlægsindhold og er ikke knyttet til et bestemt område."
+
+#: wp-includes/admin-bar.php:432
+msgid "Edit site"
+msgstr "Rediger websted"
 
 #: wp-includes/theme.json
 msgctxt "Duotone name"
@@ -7962,6 +8798,10 @@ msgstr "Antal udgivne indlæg for denne term."
 msgid "Unique identifier for the user."
 msgstr "Unik identifikator for brugeren."
 
+#: wp-includes/rest-api/endpoints/class-wp-rest-templates-controller.php:464
+msgid "The template cannot be deleted."
+msgstr "Skabelonen kan ikke slettes."
+
 #: wp-includes/rest-api/endpoints/class-wp-rest-users-controller.php:100
 #: wp-includes/rest-api/endpoints/class-wp-rest-users-controller.php:140
 msgid "Required to be true, as users do not support trashing."
@@ -12308,6 +13148,10 @@ msgstr "https://wordpress.org/support/forum/requests-and-feedback"
 msgid "https://wordpress.org/support/"
 msgstr "https://wordpress.org/support/"
 
+#: wp-login.php:370 wp-admin/includes/class-wp-users-list-table.php:306
+msgid "Change"
+msgstr "Skift"
+
 #: wp-includes/js/dist/editor.js:6931 wp-admin/includes/ajax-actions.php:2192
 #: wp-admin/includes/class-wp-posts-list-table.php:1909
 #: wp-admin/includes/class-wp-privacy-requests-table.php:44
@@ -13567,6 +14411,10 @@ msgstr "Y"
 msgctxt "monthly archives date format"
 msgid "F Y"
 msgstr "F Y"
+
+#: wp-includes/block-patterns.php:108
+msgid "Featured"
+msgstr "Udvalgt"
 
 #. translators: Double prime, for example in 9" (nine inches).
 #: wp-includes/formatting.php:94

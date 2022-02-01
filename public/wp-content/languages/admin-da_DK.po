@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.9.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-01-25 08:26:43+0000\n"
+"PO-Revision-Date: 2022-01-31 16:45:34+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -31,26 +31,516 @@ msgstr "Europe/Copenhagen"
 msgid "Continue"
 msgstr "Fortsæt"
 
+#. translators: %s: Learn WordPress link.
+#: wp-admin/about.php:273
+msgid "Want to dive into 5.9 but don&#8217;t know where to start? Visit <a href=\"%s\">learn.wordpress.org</a> for expanding resources on new features in WordPress 5.9."
+msgstr "Vil du dykke ned i 5.9, men ved ikke, hvor du skal starte? Besøg <a href=\"%s\">learn.wordpress.org</a>, hvor du finder kurser, der gennemgår de nye funktioner i WordPress 5.9."
+
+#: wp-admin/includes/dashboard.php:2044
+msgid "Learn about block themes"
+msgstr "Få mere at vide om bloktemaer"
+
+#: wp-admin/includes/dashboard.php:2043
+msgid "There&#8217;s a new kind of WordPress theme, called a block theme, that lets you build the site you&#8217;ve always wanted &#8212; with blocks and styles."
+msgstr "Der er en ny slags WordPress-tema, kaldet et bloktema, der giver dig mulighed for at bygge det websted, du altid har ønsket - med blokke og typografier."
+
+#: wp-admin/includes/dashboard.php:2042
+msgid "Discover a new way to build your site."
+msgstr "Opdag en ny måde at bygge dit websted på."
+
+#: wp-admin/includes/dashboard.php:2040
+msgid "Edit styles"
+msgstr "Rediger typografier"
+
+#: wp-admin/includes/dashboard.php:2039
+msgid "Tweak your site, or give it a whole new look! Get creative &#8212; how about a new color palette or font?"
+msgstr "Juster dit websted, eller giv det et helt nyt udseende! Vær kreativ – hvad med en ny farvepalet eller skrifttype?"
+
+#: wp-admin/includes/dashboard.php:2038
+msgid "Switch up your site&#8217;s look & feel with Styles"
+msgstr "Skift dit websteds udseende med Typografier"
+
+#: wp-admin/includes/dashboard.php:2029
+msgid "Open the Customizer"
+msgstr "Åbn Tilpasseren"
+
+#: wp-admin/includes/dashboard.php:2027
+msgid "Configure your site&#8217;s logo, header, menus, and more in the Customizer."
+msgstr "Indstil webstedets logo, overskrift, menuer og meget mere i Tilpasseren."
+
+#: wp-admin/includes/dashboard.php:2026
+msgid "Start Customizing"
+msgstr "Begynd at tilpasse"
+
+#: wp-admin/includes/dashboard.php:2024
+msgid "Open site editor"
+msgstr "Åbn webstedseditor"
+
+#: wp-admin/includes/dashboard.php:2023
+msgid "Design everything on your site &#8212; from the header down to the footer, all using blocks and patterns."
+msgstr "Design alt på dit websted - fra overskriften ned til sidefoden, det hele ved hjælp af blokke og mønstre."
+
+#: wp-admin/includes/dashboard.php:2022
+msgid "Customize your entire site with block themes"
+msgstr "Tilpas hele webstedet med bloktemaer"
+
+#: wp-admin/includes/dashboard.php:2015
+msgid "Add a new page"
+msgstr "Tilføj en ny side"
+
+#: wp-admin/includes/dashboard.php:2014
+msgid "Block patterns are pre-configured block layouts. Use them to get inspired or create new pages in a flash."
+msgstr "Blokmønstre er forudindstillede bloklayouts. Brug dem til at blive inspireret eller oprette nye sider i en fart."
+
+#: wp-admin/includes/dashboard.php:2013
+msgid "Author rich content with blocks and patterns"
+msgstr "Opret rigt indhold med blokke og mønstre"
+
+#. translators: %s: Current WordPress version.
+#: wp-admin/includes/dashboard.php:2004
+msgid "Learn more about the %s version."
+msgstr "Få mere at vide om den %s versionen."
+
+#: wp-admin/freedoms.php:35
+msgid "WordPress is free and open source software"
+msgstr "WordPress er gratis og open source software"
+
+#: wp-admin/about.php:268
+msgid "Learn more about the new features in 5.9"
+msgstr "Få mere at vide om de nye funktioner i 5.9"
+
+#. translators: %s: Gallery Refactor dev note link.
+#: wp-admin/about.php:253
+msgid "The changes to the Gallery block listed above are the result of a near-complete refactoring. Have you built a plugin or theme on the Gallery block functionality? Be sure to read the <a href=\"%s\">Gallery block compatibility dev note</a>."
+msgstr "Ændringerne i galleriblokken, der er angivet ovenfor, er resultatet af en næsten fuldstændig genopbygning. Har du bygget et plugin eller tema baseret på Galleriblok funktionalitetet? Sørg for at læse <a href=\"%s\">galleriblokkens udviklingsnoter om kompatibilitetsskabeloner</a>."
+
+#: wp-admin/about.php:247
+msgid "A refactored Gallery block"
+msgstr "En genopbygget Galleri blok"
+
+#: wp-admin/about.php:242
+msgid "Now you can lock any block (or a few of them) in a pattern, just by adding a lock attribute to its settings in block.json &#8212; leaving the rest of the pattern free for site editors to adapt to their content."
+msgstr "Nu kan du låse enhver blok (eller et par af dem) i et mønster, bare ved at tilføje en låseattribut til dets indstillinger i block.json - det efterlader resten af mønsteret gratis for webstedsredaktører til at tilpasse sig deres indhold."
+
+#: wp-admin/about.php:239
+msgid "Block&#8209;level locking"
+msgstr "Låsning på blokniveau"
+
+#. translators: %s: Multiple stylesheets dev note link.
+#: wp-admin/about.php:229
+msgid "Now you can register more than one stylesheet per block. You can use this to share styles across blocks you write, or to load styles for individual blocks, so your styles are only loaded when the block is used. Find out more about <a href=\"%s\">using multiple stylesheets in a block</a>."
+msgstr "Nu kan du registrere mere end ét typografiark pr. blok. Du kan bruge dette til at dele typografier på tværs af blokke, du skriver, eller til at indlæse typografier for individuelle blokke, så dine typografier kun indlæses, når blokken bruges. Få mere at vide om <a href=\"%s\">brug af flere typografiark i en blok</a>."
+
+#: wp-admin/about.php:223
+msgid "Multiple stylesheets for a block"
+msgstr "Flere typografiark til en blok"
+
+#. translators: %s: Block-based themes dev note link.
+#: wp-admin/about.php:215
+msgid "A new way to build themes: Block themes use blocks to define the templates that structure your entire site. The new templates and template parts are defined in HTML and use the custom styling offered in theme.json. More information is available in the <a href=\"%s\">block themes dev note</a>."
+msgstr "En ny måde at opbygge temaer på: Bloktemaer bruger blokke til at definere de skabeloner, der strukturerer hele dit websted. De nye skabeloner og skabelondele er defineret i HTML og bruger det brugerdefinerede design, der tilbydes i theme.json. Du kan finde flere oplysninger i <a href=\"%s\">blokktemaer udviklingsnoter</a>."
+
+#: wp-admin/about.php:209
+msgid "Introducing block themes"
+msgstr "Introduktion til bloktemaer"
+
+#. translators: %s: Version number.
+#: wp-admin/about.php:199
+msgid "WordPress %s for developers"
+msgstr "WordPress %s til udviklere"
+
+#: wp-admin/about.php:184
+msgid "Style every image in your gallery differently from the next (with different crops, or duotones, for instance) or make them all the same. And change the layout with drag-and-drop."
+msgstr "Design hvert billede i dit galleri forskelligt fra det næste (med forskellige beskæringer, eller duotoner, for eksempel) eller gør dem alle ens. Og du kan ændre layoutet med træk og slip."
+
+#: wp-admin/about.php:181
+msgid "Treat every image in a Gallery block the same way you would treat it in the Image block."
+msgstr "Du kan behandle hvert billede i en galleriblok på samme måde, som du ville behandle det i billedblokken."
+
+#: wp-admin/about.php:178
+msgid "A better Gallery block"
+msgstr "En bedre galleriblok"
+
+#: wp-admin/about.php:170
+msgid "In 5.9, the List View lets you drag and drop your content exactly where you want it. Managing complex documents is easier, too: simple controls let you expand and collapse sections as you build your site &#8212; and add HTML anchors to your blocks to help users get around the page."
+msgstr "I 5.9 giver listevisningen dig mulighed for at trække og slippe dit indhold præcis, hvor du vil have det. Det er også nemmere at administrere komplekse dokumenter: Enkle kontrolelementer giver dig mulighed for at udvide og skjule sektioner, når du bygger dit websted – og føje HTML-ankre til dine blokke for at hjælpe brugerne med at komme rundt på siden."
+
+#: wp-admin/about.php:167
+msgid "A revamped List View"
+msgstr "En ombygget listevisning"
+
+#: wp-admin/about.php:153
+msgid "With a near full-screen view that draws you in to see fine details, the Pattern Explorer makes it easy to compare patterns and choose the one your users will expect."
+msgstr "Med en næsten fuldskærmsvisning, der lader dig se de fine detaljer, gør Mønsterstifinderen det nemt at sammenligne mønstre og vælge det mønster, som dine brugere forventer."
+
+#: wp-admin/about.php:150
+msgid "The WordPress Pattern Directory is the home of a wide range of block patterns built to save you time and add core site functionality. And you can edit them as you see fit. Need something different in the header or footer for your theme? Swap it out with a new one in a few clicks."
+msgstr "WordPress mønsterbiblioteket er hjemsted for en bred vifte af blokmønstre, der er bygget til at spare dig for tid og tilføje kernewebstedsfunktionalitet. Og du kan redigere dem, som du vil. Har du brug for noget andet i sidehovedet eller sidefoden til dit tema? Byt det ud med en ny med et par klik."
+
+#: wp-admin/about.php:147
+msgid "The power of patterns"
+msgstr "Kraften i mønstre"
+
+#: wp-admin/about.php:139
+msgid "WordPress 5.9 features new typography tools, flexible layout controls, and finer control over details like spacing, borders, and more &#8212; to help you get not just the look, but the polish that says you care about details."
+msgstr "WordPress 5.9 indeholder nye typografiværktøjer, fleksible layoutkontroller og finere kontrol over detaljer som afstand, kanter og meget mere – for at hjælpe dig med at få ikke bare udseendet, men den lækre overflade, der siger, at du bekymrer dig om detaljer."
+
+#: wp-admin/about.php:136
+msgid "Better block controls"
+msgstr "Bedre blokkontrolelementer"
+
+#: wp-admin/about.php:124
+msgid "Do you love to blog or produce content? New tweaks to the publishing flow help you say more, faster."
+msgstr "Elsker du at blogge eller producere indhold? Nye tweaks til udgivelsesflowet hjælper dig med at sige mere, hurtigere."
+
+#: wp-admin/about.php:121
+msgid "More improvements and updates"
+msgstr "Flere forbedringer og opdateringer"
+
+#: wp-admin/about.php:112
+msgid "The new Navigation block gives you the power to choose: an always-on responsive menu or one that adapts to your user&#8217;s screen size. Whatever you create, know it&#8217;s there to reuse wherever you like, whether in a brand new template or after switching themes."
+msgstr "Den nye navigationsblok giver dig mulighed for at vælge: en altid aktiveret responsiv menu eller en menu, der tilpasser sig brugerens skærmstørrelse. Uanset hvad du opretter, skal du vide, at det er der for at blive genbrugt, hvor du vil, og uanset om det er i en helt ny skabelon eller efter at have skiftet tema."
+
+#: wp-admin/about.php:109
+msgid "Blocks come to site navigation, the heart of user experience."
+msgstr "Blokke er kommet til webstedets navigation, hjertet af brugeroplevelsen."
+
+#: wp-admin/about.php:106
+msgid "The Navigation block"
+msgstr "Navigationsblokken"
+
+#: wp-admin/about.php:92
+msgid "When you use any of those new themes, you no longer need the Customizer. Instead, you have all the power of the Styles interface inside the Site Editor. Just as in Twenty Twenty&#8209;Two, you build your site&#8217;s look and feel there, with the tools you need for the job in a fluid interface that practically comes alive in your hands."
+msgstr "Når du bruger et af disse nye temaer, har du ikke længere brug for tilpasseren. I stedet har du al kraften i typografigrænsefladen i Webstedseditoren. Ligesom i Twenty Twenty-Two bygger du dit websteds udseende med de værktøjer, du har brug for til jobbet, i en flydende grænseflade, der praktisk talt kommer til live i dine hænder."
+
 #: wp-admin/about.php:89
 msgid "More block themes built for full site editing features are in the Theme Directory alongside the Twenty Twenty&#8209;Two theme, just waiting to be explored. Expect more to come!"
 msgstr "Der er flere temaer bygget til at bruge komplet webstedsredigering i Temabiblioteket sammen Twenty Twenty&#8209;Two temaet, der bare venter på at blive prøvet af. Og der er flere på vej!"
+
+#: wp-admin/about.php:86
+msgid "Your personal paintbox awaits"
+msgstr "Din personlige malerkasse venter"
+
+#. translators: %s: Link to Themes screen.
+#: wp-admin/about.php:74
+msgid "The Twenty Twenty&#8209;Two theme is already available to you. It came installed with WordPress 5.9, and you will find it with <a href=\"%s\">your other installed themes</a>."
+msgstr "Twenty Twenty&#8209;Two temaet er allerede tilgængeligt for dig. Det kom lagt ind med WordPress 5.9, og du vil finde det sammen med <a href=\"%s\">dine andre installerede temaer</a>."
+
+#: wp-admin/about.php:67
+msgid "Block themes put a wide array of visual choices in your hands, from color schemes and typeface combinations to page templates and image filters &#8212; all together, in the site editing interface. By making changes in one place, you can give Twenty Twenty&#8209;Two the same look and feel as your brand or other websites &#8212; or take your site&#8217;s look in another direction."
+msgstr "Bloktemaer der lægger en bred vifte af visuelle valg i dine hænder, fra farveskemaer og skrifttypekombinationer til sideskabeloner og billedfiltre – alt sammen i grænsefladen til redigering af websteder. Ved at foretage ændringer på ét sted kan du give Twenty Twenty-Two det samme udseende som dit brand eller andre websteder - eller tage dit websteds udseende i en anden retning."
+
+#: wp-admin/about.php:64
+msgid "And say hello to the first default block theme in the history of WordPress. This is more than just a new default theme. It&#8217;s a brand-new way to work with WordPress themes."
+msgstr "Og sig hej til det første standard bloktema i WordPress’ historie. Dette er mere end blot et nyt standardtema. Det er en helt ny måde at arbejde med WordPress’ temaer på."
+
+#: wp-admin/about.php:61
+msgid "Say hello to Twenty Twenty&#8209;Two"
+msgstr "Sig goddag til Twenty Twenty-Two"
+
+#: wp-admin/about.php:49
+msgid "It puts you in control of your whole site, right in the WordPress Admin."
+msgstr "Det giver dig kontrol over hele dit websted, lige her i WordPress Admin."
 
 #: wp-admin/about.php:46
 msgid "Full Site Editing is here"
 msgstr "Komplet webstedsredigering er her"
 
+#: wp-admin/about.php:31
+msgid "Build the site you&#8217;ve always wanted &#8212; with blocks"
+msgstr "Byg det websted, du altid har ønsket dig – med blokke"
+
+#: wp-admin/menu.php:282 wp-admin/menu.php:283 wp-admin/menu.php:313
+#: wp-admin/network/menu.php:107
+msgid "Plugin File Editor"
+msgstr "Editor til pluginfiler"
+
+#: wp-admin/menu.php:262 wp-admin/menu.php:263 wp-admin/network/menu.php:82
+msgid "Theme File Editor"
+msgstr "Editor til temafiler"
+
+#: wp-admin/user-edit.php:807
+msgid "https://wordpress.org/support/article/editing-wp-config-php/#wp_environment_type"
+msgstr "https://wordpress.org/support/article/editing-wp-config-php/#wp_environment_type"
+
+#. translators: %s: Documentation URL.
+#: wp-admin/user-edit.php:806
+msgid "If this is a development website you can <a href=\"%s\" target=\"_blank\">set the environment type accordingly</a> to enable application passwords."
+msgstr "Hvis dette er et udviklingswebsted, kan du <a href=\"%s\" target=\"_blank\">angive miljøet i overensstemmelse hermed</a> for at aktivere programadgangskoder."
+
+#: wp-admin/user-edit.php:801
+msgid "The application password feature requires HTTPS, which is not enabled on this site."
+msgstr "Funktionen med programadgangskode kræver HTTPS, som ikke er aktiveret på dette websted."
+
+#. translators: 1: Date, 2: Time.
+#: wp-admin/update-core.php:1049
+msgid "g:i a T"
+msgstr "H:i T"
+
+#: wp-admin/theme-editor.php:53
+msgid "<a href=\"https://wordpress.org/support/article/appearance-editor-screen/\">Documentation on Editing Themes</a>"
+msgstr "<a href=\"https://wordpress.org/support/article/appearance-editor-screen/\">Dokumentation om redigering af temaer</a>"
+
+#: wp-admin/site-health.php:90
+msgid "<a href=\"https://wordpress.org/support/article/site-health-screen/\">Documentation on Site Health tool</a>"
+msgstr "<a href=\"https://wordpress.org/support/article/site-health-screen/\">Dokumentation om værktøjet Webstedshelbred</a>"
+
+#: wp-admin/site-health.php:84
+msgid "In the Info tab, you will find all the details about the configuration of your WordPress site, server, and database. There is also an export feature that allows you to copy all of the information about your site to the clipboard, to help solve problems on your site when obtaining support."
+msgstr "Under fanen Info finder du alle detaljer om konfigurationen af dit WordPress-websted, din server og database. Der er også en eksportfunktion, der giver dig mulighed for at kopiere alle oplysninger om dit websted til Udklipsholderen for at hjælpe med at løse problemer på dit websted, når du får support."
+
+#: wp-admin/site-health.php:83
+msgid "In the Status tab, you can see critical information about your WordPress configuration, along with anything else that requires your attention."
+msgstr "Under fanen Status kan du se vigtige oplysninger om din WordPress-konfiguration sammen med alt andet, der kræver din opmærksomhed."
+
+#: wp-admin/site-health.php:82
+msgid "This screen allows you to obtain a health diagnosis of your site, and displays an overall rating of the status of your installation."
+msgstr "Denne skærm giver dig mulighed for at få en sundhedsdiagnose på dit websted og viser en samlet vurdering af status for din installation."
+
 #: wp-admin/site-editor.php:23
 msgid "The theme you are currently using is not compatible with Full Site Editing."
 msgstr "Dit nuværende tema er ikke kompatibelt med komplet webstedsredigering."
+
+#: wp-admin/options-privacy.php:44
+msgid "<a href=\"https://wordpress.org/support/article/settings-privacy-screen/\">Documentation on Privacy Settings</a>"
+msgstr "<a href=\"https://wordpress.org/support/article/settings-privacy-screen/\">Dokumentation om privatlivsindstillinger</a>"
+
+#: wp-admin/options-privacy.php:38
+msgid "This screen includes suggestions to help you write your own privacy policy. However, it is your responsibility to use these resources correctly, to provide the information required by your privacy policy, and to keep this information current and accurate."
+msgstr "Denne skærm indeholder forslag, der kan hjælpe dig med at skrive din egen privatlivspolitik. Det er dog dit ansvar at bruge disse ressourcer korrekt, at give de oplysninger, der kræves i din privatlivspolitik, og at holde disse oplysninger aktuelle og nøjagtige."
+
+#: wp-admin/options-privacy.php:37
+msgid "The Privacy screen lets you either build a new privacy-policy page or choose one you already have to show."
+msgstr "På skærmbilledet Privatliv kan du enten oprette en ny side med privatlivspolitik eller vælge en side, som du allerede har lavet."
+
+#: wp-admin/options-discussion.php:61
+msgid "Individual posts may override these settings. Changes here will only be applied to new posts."
+msgstr "Individuelle indlæg kan tilsidesætte disse indstillinger. Ændringer her vil kun blive anvendt på nye indlæg."
+
+#: wp-admin/nav-menus.php:506
+msgid "Menu item moved to the top"
+msgstr "Menuelement flyttet til toppen"
+
+#: wp-admin/nav-menus.php:503
+msgid "Menu item removed"
+msgstr "Menuelement fjernet"
+
+#: wp-admin/menu.php:210
+msgid "beta"
+msgstr "beta"
+
+#. translators: %s: "beta" label
+#: wp-admin/menu.php:209
+msgid "Editor %s"
+msgstr "Redaktør %s"
+
+#: wp-admin/index.php:37
+msgid "The Dashboard is the first place you will come to every time you log into your site. It is where you will find all your WordPress tools. If you need help, just click the &#8220;Help&#8221; tab above the screen title."
+msgstr "Kontrolpanelet er det første sted, du kommer til, hver gang du logger ind på dit websted. Det er her, du finder alle dine WordPress-værktøjer. Hvis du har brug for hjælp, skal du blot klikke på fanen \"Hjælp\" over skærmtitlen."
+
+#: wp-admin/index.php:36
+msgid "Welcome to your WordPress Dashboard!"
+msgstr "Velkommen til dit WordPress’ kontrolpanel!"
+
+#: wp-admin/includes/user.php:642
+msgid "The application ID must be a UUID."
+msgstr "Program-ID skal være et UUID."
+
+#: wp-admin/includes/dashboard.php:1355
+msgid "Select location"
+msgstr "Vælg placering"
+
+#. translators: %s: Plugin name.
+#: wp-admin/includes/class-wp-plugins-list-table.php:1082
+msgid "Visit plugin site for %s"
+msgstr "Besøg pluginwebstedet for %s"
+
+#: wp-admin/includes/class-wp-plugin-install-list-table.php:620
+#: wp-admin/includes/class-wp-plugins-list-table.php:813
+#: wp-admin/includes/class-wp-plugins-list-table.php:874
+msgctxt "plugin"
+msgid "Cannot Activate"
+msgstr "Kan ikke aktiveres"
+
+#: wp-admin/includes/class-wp-debug-data.php:932
+msgid "Max connections number"
+msgstr "Maksimale antal forbindelser"
+
+#: wp-admin/includes/class-wp-debug-data.php:927
+msgid "Max allowed packet size"
+msgstr "Maksimale tilladte pakkestørrelse"
+
+#: wp-admin/customize.php:243
+msgid "<a href=\"https://wordpress.org/support/article/appearance-customize-screen/\">Documentation on Customizer</a>"
+msgstr "<a href=\"https://wordpress.org/support/article/appearance-customize-screen/\">Dokumentation om tilpasseren</a>"
+
+#: wp-admin/authorize-application.php:94
+msgid "Your website appears to use Basic Authentication, which is not currently compatible with application passwords."
+msgstr "Dit websted ser ud til at bruge basisgodkendelse, som i øjeblikket ikke er kompatibelt med programadgangskoder."
+
+#. translators: Editor admin screen title. 1: "Edit item" text for the post
+#. type, 2: Post title.
+#: wp-admin/admin-header.php:60
+msgid "%1$s &#8220;%2$s&#8221;"
+msgstr "%1$s &#8220;%2$s&#8221;"
+
+#: wp-admin/includes/theme.php:338
+msgid "Template Editing"
+msgstr "Redigering af skabelon"
+
+#. translators: %s: https://wordpress.org/about/license
+#: wp-admin/freedoms.php:51
+msgid "WordPress comes with some awesome, worldview-changing rights courtesy of its <a href=\"%s\">license</a>, the GPL."
+msgstr "WordPress kommer med nogle fantastiske, verdenssynsændrende rettigheder på grund af dets <a href=\"%s\">licens</a>, GPL."
+
+#: wp-admin/credits.php:68
+msgid "Want to see your name in lights on this page?"
+msgstr "Vil du se dit navn lyse op på denne side?"
+
+#: wp-admin/credits.php:62 wp-admin/credits.php:70
+msgid "Get involved in WordPress."
+msgstr "Bliv involveret i WordPress."
+
+#. translators: 1: https://wordpress.org/about
+#: wp-admin/credits.php:57
+msgid "WordPress is created by a <a href=\"%1$s\">worldwide team</a> of passionate individuals."
+msgstr "WordPress er skabt af et <a href=\"%1$s\">verdensomspændende team</a> af lidenskabelige individer."
+
+#. translators: %s: Name of deactivated plugin.
+#: wp-admin/includes/plugin.php:2548
+msgid "%s plugin deactivated during WordPress upgrade."
+msgstr "%s plugin deaktiveret under WordPress-opgradering."
+
+#. translators: 1: Name of deactivated plugin, 2: Plugin version deactivated,
+#. 3: Current WP version.
+#: wp-admin/includes/plugin.php:2536
+msgid "%1$s %2$s was deactivated due to incompatibility with WordPress %3$s."
+msgstr "%1$s %2$s blev deaktiveret på grund af uforenelighed med WordPress %3$s."
+
+#. translators: 1: Name of deactivated plugin, 2: Plugin version deactivated,
+#. 3: Current WP version, 4: Compatible plugin version.
+#: wp-admin/includes/plugin.php:2527
+msgid "%1$s %2$s was deactivated due to incompatibility with WordPress %3$s, please upgrade to %1$s %4$s or later."
+msgstr "%1$s %2$s blev deaktiveret på grund af uforenelighed med WordPress %3$s, du skal opgradere til %1$s %4$s eller nyere."
+
+#: wp-admin/privacy.php:29
+msgid "We take privacy and transparency very seriously"
+msgstr "Vi tager privatlivets fred og gennemsigtighed meget alvorligt"
+
+#: wp-admin/freedoms.php:30
+msgid "The Four Freedoms"
+msgstr "De fire friheder"
+
+#. translators: %s: Version number.
+#: wp-admin/credits.php:35
+msgid "WordPress %s was created by a worldwide team of passionate individuals"
+msgstr "WordPress %s er blevet skabt af et verdensomspændende team af lidenskabelige individer"
+
+#. translators: %s: Theme name.
+#: wp-admin/themes.php:1154
+#: wp-admin/includes/class-wp-ms-themes-list-table.php:627
+msgctxt "theme"
+msgid "Delete %s"
+msgstr "Slet %s"
+
+#. translators: %s: Theme name.
+#: wp-admin/themes.php:554 wp-admin/themes.php:914
+msgctxt "theme"
+msgid "Live Preview %s"
+msgstr "Live forhåndsvisning %s"
+
+#. translators: %s: Theme name.
+#: wp-admin/themes.php:541 wp-admin/themes.php:900
+msgctxt "theme"
+msgid "Customize %s"
+msgstr "Tilpas %s"
+
+#. translators: %s: Theme name.
+#: wp-admin/themes.php:517 wp-admin/themes.php:876
+msgctxt "theme"
+msgid "View Theme Details for %s"
+msgstr "Vis temadetaljer for %s"
+
+#: wp-admin/site-health.php:163
+msgid "Toggle extra menu items"
+msgstr "Slå ekstra menupunkter til og fra"
+
+#. translators: %s: The currently displayed tab.
+#: wp-admin/site-health.php:43
+msgid "Site Health - %s"
+msgstr "Webstedets sundhed - %s"
+
+#. translators: 1: wp-config.php, 2: Documentation URL.
+#: wp-admin/setup-config.php:454
+msgid "You need to make the file %1$s writable before you can save your changes. See <a href=\"%2$s\">Changing File Permissions</a> for more information."
+msgstr "Du skal gøre filen %1$s skrivbar, før du kan gemme ændringerne. Yderligere oplysninger <a href=\"%2$s\">finder du under Ændring af filtilladelser</a>."
+
+#: wp-admin/options-permalink.php:381 wp-admin/options-permalink.php:406
+#: wp-admin/options-permalink.php:436
+msgid "Rewrite rules:"
+msgstr "Omskrivningsregler:"
+
+#: wp-admin/nav-menus.php:1045
+msgid "List of menu items selected for deletion:"
+msgstr "Liste over menupunkter, der er valgt til sletning:"
+
+#: wp-admin/nav-menus.php:1043
+msgid "Remove Selected Items"
+msgstr "Fjern markerede elementer"
 
 #: wp-admin/nav-menus.php:1006 wp-admin/nav-menus.php:1041
 msgid "Bulk Select"
 msgstr "Vælg flere"
 
+#. translators: %s: Item name.
+#: wp-admin/nav-menus.php:501
+msgid "Deleted menu item: %s."
+msgstr "Slettet menupunkt: %s."
+
+#. translators: %s: Item name.
+#: wp-admin/nav-menus.php:499
+msgid "item %s"
+msgstr "Eeement %s"
+
 #. translators: %s: Number of available theme updates.
 #: wp-admin/menu.php:203 wp-admin/network/menu.php:63
 msgid "Themes %s"
 msgstr "Temaer %s"
+
+#. translators: %s: Error message.
+#: wp-admin/includes/privacy-tools.php:419
+msgid "Unable to encode the personal data for export. Error: %s"
+msgstr "Personoplysningerne kan ikke kodes til eksport. Fejl: %s"
+
+#. translators: %s: Post meta key.
+#: wp-admin/includes/privacy-tools.php:404
+msgid "The %s post meta must be an array."
+msgstr "Den %s postmeta skal være en matrice."
+
+#: wp-admin/includes/dashboard.php:1950
+msgid "Your site&#8217;s health is looking good, but there is still one thing you can do to improve its performance and security."
+msgstr "Dit websteds helbred ser godt ud, men der er stadig én ting, som du kan gøre for at forbedre dets ydeevne og sikkerhed."
+
+#: wp-admin/includes/dashboard.php:1946
+msgid "Your site has a critical issue that should be addressed as soon as possible to improve its performance and security."
+msgstr "Dit websted har et kritisk problem, der skal løses så hurtigt som muligt for at forbedre dets ydeevne og sikkerhed."
+
+#. translators: %s: Browse Happy URL.
+#: wp-admin/includes/dashboard.php:1707
+msgid "Learn how to <a href=\"%s\" class=\"update-browser-link\">browse happy</a>"
+msgstr "Se hvordan du kan <a href=\"%s\" class=\"update-browser-link\">browse happy</a>"
+
+#: wp-admin/includes/dashboard.php:1674
+msgid "Internet Explorer does not give you the best WordPress experience. Switch to Microsoft Edge, or another more modern browser to get the most from your site."
+msgstr "Internet Explorer giver dig ikke den bedste WordPress-oplevelse. Skift til Microsoft Edge eller en anden mere moderne browser for at få mest muligt ud af dit websted."
+
+#: wp-admin/includes/class-wp-debug-data.php:654
+msgid "GD supported file formats"
+msgstr "GD-understøttede filformater"
+
+#: wp-admin/includes/class-wp-debug-data.php:614
+msgid "Unable to determine"
+msgstr "Det er ikke muligt at fastslå"
 
 #: wp-admin/includes/class-wp-debug-data.php:613
 msgid "ImageMagick supported file formats"
@@ -70,18 +560,349 @@ msgctxt "theme"
 msgid "Current"
 msgstr "Nuværende"
 
+#: wp-admin/includes/class-plugin-installer-skin.php:313
+msgctxt "plugin"
+msgid "Replace current with uploaded"
+msgstr "Erstat aktuelle med det oploadet"
+
+#: wp-admin/includes/class-plugin-installer-skin.php:225
+msgctxt "plugin"
+msgid "Uploaded"
+msgstr "Uploadet"
+
+#: wp-admin/includes/class-plugin-installer-skin.php:224
+msgctxt "plugin"
+msgid "Current"
+msgstr "Nuværende"
+
+#. translators: %s: A link to activate the Link Manager plugin.
+#: wp-admin/includes/bookmark.php:372
+msgid "Please activate the <a href=\"%s\">Link Manager plugin</a> to use the link manager."
+msgstr "Aktiver <a href=\"%s\">linkstyrings-pluginet</a> for at bruge linkadministratoren."
+
+#: wp-admin/options-privacy.php:256
+msgid "Create a new Privacy Policy Page"
+msgstr "Opret en ny side til privatlivspolitik"
+
+#: wp-admin/export-personal-data.php:129
+msgid "Send personal data export confirmation email."
+msgstr "Send e-mail om eksport af personoplysninger."
+
+#: wp-admin/export-personal-data.php:105
+msgid "This tool helps site owners comply with local laws and regulations by exporting known data for a given user in a .zip file."
+msgstr "Dette værktøj hjælper webstedsejere med at overholde lokale love og bestemmelser ved at eksportere kendte data for en given bruger i en .zip-fil."
+
+#: wp-admin/export-personal-data.php:62
+msgid "<a href=\"https://wordpress.org/support/article/tools-export-personal-data-screen/\">Documentation on Export Personal Data</a>"
+msgstr "<a href=\"https://wordpress.org/support/article/tools-export-personal-data-screen/\">Dokumentation om eksport af personoplysninger</a>"
+
+#: wp-admin/export-personal-data.php:55
+msgid "Plugin authors can <a href=\"https://developer.wordpress.org/plugins/privacy/adding-the-personal-data-exporter-to-your-plugin/\" target=\"_blank\">learn more about how to add the Personal Data Exporter to a plugin here</a>."
+msgstr "Plugin-forfattere kan <a href=\"https://developer.wordpress.org/plugins/privacy/adding-the-personal-data-exporter-to-your-plugin/\" target=\"_blank\">lære mere om, hvordan du tilføjer de personlige data eksportfunktion til et plugin her</a>."
+
+#: wp-admin/export-personal-data.php:54
+msgid "Many plugins may collect or store personal data either in the WordPress database or remotely. Any Export Personal Data request should include data from plugins as well."
+msgstr "Mange plugins kan indsamle eller gemme personlige data enten i WordPress-databasen eller eksternt. Enhver anmodning om eksport af personoplysninger bør også indeholde data fra plugins."
+
+#. translators: %s: URL to Privacy Policy Guide screen.
+#: wp-admin/export-personal-data.php:45
+msgid "If you are not sure, check the plugin documentation or contact the plugin author to see if the plugin collects data and if it supports the Data Exporter tool. This information may be available in the <a href=\"%s\">Privacy Policy Guide</a>."
+msgstr "Hvis du ikke er sikker, skal du kontrollere plugin-dokumentationen eller kontakte plugin-forfatteren for at se, om pluginet indsamler data, og om det understøtter dataeksportværktøjet. Disse oplysninger kan være tilgængelige i <a href=\"%s\">vejledningen til beskyttelse af personlige oplysninger</a>."
+
+#: wp-admin/export-personal-data.php:38
+msgid "<strong>Comments</strong> &mdash; For any comments made by the user, Email Address, IP Address, User Agent (Browser/OS), Date/Time, Comment Content, and Content URL."
+msgstr "<strong>Kommentarer</strong> – For eventuelle kommentarer fra brugeren, e-mailadresse, IP-adresse, brugeragent (browser/os), dato/klokkeslæt, kommentarindhold og URL-adresse til indhold."
+
+#: wp-admin/export-personal-data.php:36
+msgid "<strong>Community Events Location</strong> &mdash; The IP Address of the user used for the Upcoming Community Events shown in the dashboard widget."
+msgstr "<strong>Placering af begiveheder</strong> – IP-adressen på den bruger, der bruges til de kommende begivenheder i fællesskabet, der vises i en widget i kontrolpanelet."
+
+#: wp-admin/export-personal-data.php:34
+msgid "Personal data that is collected by WordPress and is displayed in the export files include:"
+msgstr "Personlige data, der indsamles af WordPress og vises i eksportfilerne, omfatter:"
+
+#: wp-admin/export-personal-data.php:25
+msgid "Note: As this tool only gathers data from WordPress and participating plugins, you may need to do more to comply with export requests. You should also send the requestor any data collected by or stored with any 3rd party services used by your business or site."
+msgstr "Bemærk: Da dette værktøj kun indsamler data fra WordPress og brugte plugins, skal du muligvis gøre mere for at overholde eksportanmodninger. Du bør også sende anmoderen alle data, der indsamles af eller gemmes med tredjepartstjenester, der bruges af din virksomhed eller dit websted."
+
+#: wp-admin/export-personal-data.php:23
+msgid "Providing an export of all data that a business or website has collected about an individual is a requirement of many Privacy Laws around the world, and is sometimes referred to as the \"Right To Data Portability\"."
+msgstr "At levere en eksport af alle data, som en virksomhed eller hjemmeside har indsamlet om en person, er et krav i mange love om beskyttelse af personlige oplysninger rundt om i verden og kaldes undertiden \"Retten til dataportabilitet\"."
+
+#: wp-admin/export-personal-data.php:22
+msgid "This screen allows you to manage requests for an export of personal data."
+msgstr "På dette skærmbillede kan du administrere anmodninger om eksport af personoplysninger."
+
+#: wp-admin/site-health.php:113
+msgid "Site URLs could not be switched to HTTPS."
+msgstr "URL-adresser til webstedet kunne ikke skiftes til HTTPS."
+
+#: wp-admin/site-health.php:109
+msgid "Site URLs switched to HTTPS."
+msgstr "URL-adresser til webstedet skiftede til HTTPS."
+
+#: wp-admin/site-health.php:66
+msgid "It looks like HTTPS is not supported for your website at this point."
+msgstr "Det ser ud til, at HTTPS ikke understøttes på dit websted på dette tidspunkt."
+
+#: wp-admin/site-health.php:62
+msgid "Sorry, you are not allowed to update this site to HTTPS."
+msgstr "Du må desværre ikke opdatere dette websted til HTTPS."
+
+#. translators: %s: Number of users.
+#: wp-admin/users.php:566
+msgid "Password reset links sent to %s user."
+msgid_plural "Password reset links sent to %s users."
+msgstr[0] "Link til nulstilling af adgangskode, der sendes til %s bruger."
+msgstr[1] "Links til nulstilling af adgangskode, der sendes til %s brugere."
+
+#: wp-admin/users.php:563
+msgid "Password reset link sent."
+msgstr "Link til nulstilling af adgangskode er sendt."
+
+#. translators: %s: User's display name.
+#: wp-admin/user-edit.php:690
+msgid "Send %s a link to reset their password. This will not change their password, nor will it force a change."
+msgstr "Send %s et link for at nulstille deres adgangskode. Dette vil ikke ændre deres adgangskode, og det vil heller ikke fremtvinge en ændring."
+
+#: wp-admin/user-edit.php:684
+msgid "Send Reset Link"
+msgstr "Send link til nulstilling"
+
 #: wp-admin/privacy-policy-guide.php:86
 msgid "Policies"
 msgstr "Politikker"
+
+#: wp-admin/options-privacy.php:178 wp-admin/privacy-policy-guide.php:61
+msgid "The Privacy Settings require JavaScript."
+msgstr "Indstillingerne for beskyttelse af personlige oplysninger kræver JavaScript."
+
+#. translators: Tab heading for Site Health Status page.
+#: wp-admin/options-privacy.php:169 wp-admin/privacy-policy-guide.php:52
+msgctxt "Privacy Settings"
+msgid "Policy Guide"
+msgstr "Vejledning til privatlivspolitikker"
+
+#. translators: Tab heading for Site Health Status page.
+#: wp-admin/options-privacy.php:162 wp-admin/privacy-policy-guide.php:45
+msgctxt "Privacy Settings"
+msgid "Settings"
+msgstr "Indstillinger"
 
 #. translators: %s: WordPress version.
 #: wp-admin/update-core.php:82
 msgid "Re-install version %s"
 msgstr "Geninstaller version %s"
 
+#. translators: %s: WordPress version.
+#: wp-admin/update-core.php:71
+msgid "Update to latest %s nightly"
+msgstr "Opdater til seneste %s nightly build"
+
+#: wp-admin/erase-personal-data.php:129
+msgid "Send personal data erasure confirmation email."
+msgstr "Send bekræftelsesmail til sletning af personoplysninger."
+
+#: wp-admin/erase-personal-data.php:124 wp-admin/export-personal-data.php:124
+msgid "Confirmation email"
+msgstr "Bekræftelsesmail"
+
+#: wp-admin/erase-personal-data.php:105
+msgid "This tool helps site owners comply with local laws and regulations by deleting or anonymizing known data for a given user."
+msgstr "Dette værktøj hjælper webstedsejere med at overholde lokale love og bestemmelser ved at slette eller anonymisere kendte data for en given bruger."
+
+#: wp-admin/erase-personal-data.php:62
+msgid "<a href=\"https://wordpress.org/support/article/tools-erase-personal-data-screen/\">Documentation on Erase Personal Data</a>"
+msgstr "<a href=\"https://wordpress.org/support/article/tools-erase-personal-data-screen/\">Dokumentation om Sletning af personoplysninger</a>"
+
+#: wp-admin/erase-personal-data.php:55
+msgid "Plugin authors can <a href=\"https://developer.wordpress.org/plugins/privacy/adding-the-personal-data-eraser-to-your-plugin/\" target=\"_blank\">learn more about how to add support for the Personal Data Eraser to a plugin here</a>."
+msgstr "Pluginforfattere kan <a href=\"https://developer.wordpress.org/plugins/privacy/adding-the-personal-data-eraser-to-your-plugin/\" target=\"_blank\">lære mere om, hvordan du understøtter personlige data sletning til et plugin her</a>."
+
+#: wp-admin/erase-personal-data.php:54
+msgid "Many plugins may collect or store personal data either in the WordPress database or remotely. Any Erase Personal Data request should delete data from plugins as well."
+msgstr "Mange plugins kan indsamle eller gemme personlige data enten i WordPress-databasen eller eksternt. Enhver Slet personlige data anmodning bør slette data fra plugins også."
+
+#: wp-admin/erase-personal-data.php:52 wp-admin/export-personal-data.php:52
+msgid "Plugin Data"
+msgstr "Plugin-data"
+
+#. translators: %s: URL to Privacy Policy Guide screen.
+#: wp-admin/erase-personal-data.php:45
+msgid "If you are not sure, check the plugin documentation or contact the plugin author to see if the plugin collects data and if it supports the Data Eraser tool. This information may be available in the <a href=\"%s\">Privacy Policy Guide</a>."
+msgstr "Hvis du ikke er sikker, skal du kontrollere plugin-dokumentationen eller kontakte plugin-forfatteren for at se, om pluginet indsamler data, og om det understøtter værktøjet Data sletning. Disse oplysninger kan være tilgængelige i <a href=\"%s\">vejledningen til beskyttelse af personlige oplysninger</a>."
+
+#: wp-admin/erase-personal-data.php:39 wp-admin/export-personal-data.php:39
+msgid "<strong>Media</strong> &mdash; A list of URLs for all media file uploads made by the user."
+msgstr "<strong>Medier</strong> – En liste over URL-adresser for alle overførsler af mediefiler, som brugeren har foretaget."
+
+#: wp-admin/erase-personal-data.php:38
+msgid "<strong>Comments</strong> &mdash; Comments are not deleted, but user data is anonymized, including Email Address, IP Address, and User Agent (Browser/OS)."
+msgstr "<strong>Kommentarer</strong> – Kommentarer slettes ikke, men brugerdata anonymiseres, herunder e-mailadresse, IP-adresse og brugeragent (browser/os)."
+
+#: wp-admin/erase-personal-data.php:37 wp-admin/export-personal-data.php:37
+msgid "<strong>Session Tokens</strong> &mdash; User login information, IP Addresses, Expiration Date, User Agent (Browser/OS), and Last Login."
+msgstr "<strong>Sessionstokens</strong> – Brugerlogonoplysninger, IP-adresser, udløbsdato, brugeragent (browser/os) og sidste login."
+
+#: wp-admin/erase-personal-data.php:36
+msgid "<strong>Community Events Location</strong> &mdash; The IP Address of the user which is used for the Upcoming Community Events shown in the dashboard widget."
+msgstr "<strong>Placering af begivenheder</strong> – IP-adressen på den bruger, der bruges til de kommende begiverheder i fællesskabet, der vises i en widget i kontrolpanelet."
+
+#: wp-admin/erase-personal-data.php:35 wp-admin/export-personal-data.php:35
+msgid "<strong>Profile Information</strong> &mdash; user email address, username, display name, nickname, first name, last name, description/bio, and registration date."
+msgstr "<strong>Profiloplysninger</strong> – brugermailadresse, brugernavn, vist navn, kaldenavn, fornavn, efternavn, beskrivelse/bio og oprettelsesdato."
+
+#: wp-admin/erase-personal-data.php:34
+msgid "Personal data that is collected by WordPress and is deleted or anonymized include:"
+msgstr "Personoplysninger, der indsamles af WordPress og slettes eller anonymiseres, omfatter:"
+
+#: wp-admin/erase-personal-data.php:32 wp-admin/export-personal-data.php:32
+msgid "Default Data"
+msgstr "Standarddata"
+
+#: wp-admin/erase-personal-data.php:25
+msgid "Note: As this tool only gathers data from WordPress and participating plugins, you may need to do more to comply with erasure requests. You should also delete any data collected by or stored with any 3rd party services used by your business or site."
+msgstr "Bemærk: Da dette værktøj kun indsamler data fra WordPress og brugte plugins, skal du muligvis gøre mere for at overholde sletningsanmodninger. Du bør også slette alle data, der indsamles af eller gemmes hos tredjepartstjenester, der bruges af din virksomhed eller dit websted."
+
+#: wp-admin/erase-personal-data.php:24 wp-admin/export-personal-data.php:24
+msgid "The tool associates data stored in WordPress by a supplied email address, including profile data and comments."
+msgstr "Værktøjet knytter data, der er gemt i WordPress, til en medfølgende e-mail-adresse, herunder profildata og kommentarer."
+
+#: wp-admin/erase-personal-data.php:23
+msgid "Deleting, anonymizing, or forgetting all data that a business or website has collected about an individual is a requirement of many Privacy Laws around the world, and is sometimes referred to as the \"Right To Be Forgotten\"."
+msgstr "Sletning, anonymisering eller at glemme al data, som en virksomhed eller et websted har indsamlet om en person, er et krav i mange love om beskyttelse af personlige oplysninger rundt om i verden og kaldes undertiden \"Retten til at blive glemt\"."
+
+#: wp-admin/erase-personal-data.php:22
+msgid "This screen allows you to manage requests to erase or delete personal data."
+msgstr "På dette skærmbillede kan du administrere anmodninger om sletning eller sletning af personlige data."
+
+#: wp-admin/includes/dashboard.php:1451
+msgid "https://make.wordpress.org/community/organize-event-landing-page/"
+msgstr "https://make.wordpress.org/community/organize-event-landing-page/"
+
+#. translators: %s: Localized meetup organization documentation URL.
+#: wp-admin/includes/dashboard.php:1450
+msgid "Want more events? <a href=\"%s\">Help organize the next one</a>!"
+msgstr "Vil du have flere begivenheder? <a href=\"%s\">Hjælp med at planlægge den næste</a>!"
+
+#. translators: %s: User's display name.
+#: wp-admin/includes/ajax-actions.php:5460
+msgid "A password reset link was emailed to %s."
+msgstr "Der blev sendt en mail til et link til nulstilling af adgangskode til %s."
+
+#: wp-admin/includes/ajax-actions.php:5450
+msgid "Cannot send password reset, permission denied."
+msgstr "Der kan ikke sendes nulstilling af adgangskode, da tilladelsen er nægtet."
+
+#. translators: 1: post_max_size, 2: upload_max_filesize
+#: wp-admin/includes/class-wp-site-health.php:2175
+msgid "The setting for %1$s is currently configured as 0, this could cause some problems when trying to upload files through plugin or theme features that rely on various upload methods. It is recommended to configure this setting to a fixed value, ideally matching the value of %2$s, as some upload methods read the value 0 as either unlimited, or disabled."
+msgstr "Indstillingen for %1$s er i øjeblikket konfigureret som 0, og det kan forårsage nogle problemer, når de forsøger at uploade filer via plugin eller temafunktioner, der er afhængige af forskellige uploadmetoder. Det anbefales at konfigurere denne indstilling til en fast værdi, der ideelt set svarer til værdien af %2$s, da nogle overførselsmetoder læser værdien 0 som enten ubegrænset eller deaktiveret."
+
+#: wp-admin/includes/class-wp-site-health.php:1641
+#: wp-admin/includes/class-wp-site-health.php:1648
+msgid "Talk to your web host about supporting HTTPS for your website."
+msgstr "Tal med din webhotel om understøttelse af HTTPS på dit websted."
+
+#: wp-admin/includes/class-wp-site-health.php:1622
+#: wp-admin/includes/class-wp-site-health.php:1630
+msgid "Update your site to use HTTPS"
+msgstr "Opdater webstedet, så det bruger HTTPS"
+
+#. translators: 1: wp-config.php, 2: WP_HOME, 3: WP_SITEURL
+#: wp-admin/includes/class-wp-site-health.php:1608
+msgid "However, your WordPress Address is currently controlled by a PHP constant and therefore cannot be updated. You need to edit your %1$s and remove or update the definitions of %2$s and %3$s."
+msgstr "Din WordPress-adresse styres dog i øjeblikket af en PHP-konstant og kan derfor ikke opdateres. Du skal redigere din %1$s og fjerne eller opdatere definitionerne af %2$s og %3$s."
+
+#: wp-admin/includes/class-wp-site-health.php:1600
+msgid "HTTPS is already supported for your website."
+msgstr "HTTPS understøttes allerede på dit websted."
+
+#. translators: 1: URL to Settings > General > WordPress Address, 2: URL to
+#. Settings > General > Site Address.
+#: wp-admin/includes/class-wp-site-health.php:1589
+msgid "Your <a href=\"%1$s\">WordPress Address</a> and <a href=\"%2$s\">Site Address</a> are not set up to use HTTPS."
+msgstr "<a href=\"%1$s\">WordPress-adressen</a> og <a href=\"%2$s\">webstedsadressen</a> er ikke sat op til at bruge HTTPS."
+
+#. translators: 1: URL to Settings > General > WordPress Address, 2: URL to
+#. Settings > General > Site Address.
+#: wp-admin/includes/class-wp-site-health.php:1579
+msgid "You are accessing this website using HTTPS, but your <a href=\"%1$s\">WordPress Address</a> and <a href=\"%2$s\">Site Address</a> are not set up to use HTTPS by default."
+msgstr "Du får adgang til dette websted ved hjælp af HTTPS, men din <a href=\"%1$s\">WordPress-adresse</a> og <a href=\"%2$s\">webstedsadresse</a> er ikke sat op til at bruge HTTPS som standard."
+
+#. translators: %s: URL to Settings > General > Site Address.
+#: wp-admin/includes/class-wp-site-health.php:1568
+msgid "Your <a href=\"%s\">Site Address</a> is not set up to use HTTPS."
+msgstr "<a href=\"%s\">Webstedsadressen</a> er ikke sat op til at bruge HTTPS."
+
+#: wp-admin/includes/class-wp-site-health.php:1460
+msgid "Learn more about debugging in WordPress."
+msgstr "Få mere at vide om fejlfinding i WordPress."
+
 #: wp-admin/includes/revision.php:96
 msgid "Added"
 msgstr "Tilføjet"
+
+#: wp-admin/includes/class-wp-users-list-table.php:279
+#: wp-admin/includes/class-wp-users-list-table.php:480
+msgid "Send password reset"
+msgstr "Send nulstilling af adgangskode"
+
+#. translators: Default privacy policy heading.
+#: wp-admin/includes/class-wp-privacy-policy-content.php:608
+msgid "Contact information"
+msgstr "Kontaktoplysninger"
+
+#: wp-admin/includes/class-wp-privacy-policy-content.php:427
+msgid "Copy suggested policy text to clipboard"
+msgstr "Kopier foreslået politiktekst til udklipsholder"
+
+#: wp-admin/includes/file.php:1894 wp-admin/includes/update-core.php:1491
+msgid "Directory listing failed."
+msgstr "Oplistning af mappe mislykkedes."
+
+#: wp-admin/includes/class-wp-plugin-install-list-table.php:106
+#: wp-admin/includes/class-wp-theme-install-list-table.php:61
+#: wp-admin/includes/file.php:32 wp-admin/js/updates.js:2551
+msgid "Search Results"
+msgstr "Søgeresultater"
+
+#: wp-admin/includes/privacy-tools.php:946
+msgid "Invalid request ID when processing personal data to erase."
+msgstr "Ugyldigt anmodnings-id ved behandling af personoplysninger, der skal slettes."
+
+#: wp-admin/includes/privacy-tools.php:795
+msgid "Invalid request ID when merging personal data to export."
+msgstr "Ugyldigt anmodnings-id ved fletning af personoplysninger, der skal eksporteres."
+
+#: wp-admin/includes/privacy-tools.php:545
+msgid "Unable to archive the personal data export file (HTML format)."
+msgstr "Eksportfilen til personoplysninger (HTML-format) kan ikke arkiveres."
+
+#: wp-admin/includes/privacy-tools.php:541
+msgid "Unable to archive the personal data export file (JSON format)."
+msgstr "Eksportfilen til personoplysninger kan ikke arkiveres (JSON-format)."
+
+#: wp-admin/includes/privacy-tools.php:447
+msgid "Unable to open personal data export (HTML report) for writing."
+msgstr "Eksport af personlige data (HTML-rapport) kan ikke åbnes til skrivning."
+
+#: wp-admin/includes/privacy-tools.php:333
+msgid "Unable to create personal data export folder."
+msgstr "Eksportmappen for personlige data kunne ikke oprettes."
+
+#: wp-admin/includes/privacy-tools.php:173
+msgid "Request added successfully."
+msgstr "Anmodningen blev tilføjet."
+
+#: wp-admin/includes/privacy-tools.php:107
+#: wp-admin/includes/privacy-tools.php:124
+msgid "Invalid personal data action."
+msgstr "Ugyldig handling for personoplysninger."
+
+#: wp-admin/includes/privacy-tools.php:31
+msgid "Unable to initiate confirmation for personal data request."
+msgstr "Bekræftelsen af anmodningen om personoplysninger kan ikke startes."
 
 #: wp-admin/options-writing.php:211 wp-admin/options-writing.php:225
 msgid "https://wordpress.org/support/article/update-services/"
@@ -114,6 +935,11 @@ msgstr "Dit websted ser ud til at bruge basisbekræftelse, hvilket i øjeblikket
 #: wp-admin/includes/class-wp-site-health.php:2244
 msgid "https://developer.wordpress.org/rest-api/frequently-asked-questions/#why-is-authentication-not-working"
 msgstr "https://developer.wordpress.org/rest-api/frequently-asked-questions/#why-is-authentication-not-working"
+
+#. translators: %s: WordPress 5.9 Field Guide link.
+#: wp-admin/about.php:290
+msgid "Check out the latest version of the WordPress Field Guide. It highlights developer notes for each change you may want to be aware of. <a href=\"%s\">WordPress 5.9 Field Guide.</a>"
+msgstr "Tjek den seneste version af WordPress' feltguide. Den fremhæver udviklernes noter om om de ændringer, som du kunne være interesseret i. <a href=\"%s\">WordPress 5.6 feltguide.</a>"
 
 #: wp-admin/update-core.php:392
 msgid "This site appears to be under version control. Automatic updates are disabled."
@@ -223,6 +1049,10 @@ msgstr "Vi kunne ikke finde %s. Prøv venligst at finde en anden by tæt på. F.
 msgid "You will be returned to the WordPress Dashboard, and no changes will be made."
 msgstr "Du vil blive sendt tilbage til WordPress kontrolpanelet, og ingen ændringer vil blive foretaget."
 
+#: wp-admin/authorize-application.php:285
+msgid "No, I do not approve of this connection"
+msgstr "Nej, jeg godkender ikke denne forbindelse"
+
 #: wp-admin/authorize-application.php:278
 msgid "You will be given a password to manually enter into the application in question."
 msgstr "Du vil få tildelt en adgangskode til manuelt at kunne tilgå den nævnte app."
@@ -232,6 +1062,26 @@ msgstr "Du vil få tildelt en adgangskode til manuelt at kunne tilgå den nævnt
 #: wp-admin/authorize-application.php:299
 msgid "You will be sent to %s"
 msgstr "Du vil blive sendt til %s"
+
+#: wp-admin/authorize-application.php:251
+msgid "Yes, I approve of this connection"
+msgstr "Ja, jeg godkender denne forbindelse"
+
+#. translators: 1: URL to my-sites.php, 2: Number of sites the user has.
+#: wp-admin/authorize-application.php:170
+msgid "This will grant access to <a href=\"%1$s\">the %2$s site in this installation that you have permissions on</a>."
+msgid_plural "This will grant access to <a href=\"%1$s\">all %2$s sites in this installation that you have permissions on</a>."
+msgstr[0] "Dette giver adgang til <a href=\"%1$s\">de %2$s som du har tilladelser til i denne installation</a>."
+msgstr[1] "Dette giver adgang til <a href=\"%1$s\">bloggene %2$s som du har tilladelser til i denne installation</a>."
+
+#: wp-admin/authorize-application.php:157
+msgid "Would you like to give this application access to your account? You should only do this if you trust the application in question."
+msgstr "Vil du give denne applikation adgang til din konto? Du skal kun gøre dette, hvis du har tillid til den pågældende app."
+
+#. translators: %s: Application name.
+#: wp-admin/authorize-application.php:151
+msgid "Would you like to give the application identifying itself as %s access to your account? You should only do this if you trust the application in question."
+msgstr "Vil du give applikationen, der identificerer sig selv som %s adgang til din konto? Du skal kun gøre dette, hvis du har tillid til den pågældende app."
 
 #: wp-admin/authorize-application.php:145
 msgid "An application would like to connect to your account."
@@ -258,6 +1108,13 @@ msgstr "Sørg for at gemme denne et sikkert sted. Du kan ikke hente den senere."
 #: wp-admin/authorize-application.php:227 wp-admin/user-edit.php:769
 msgid "New Application Password Name"
 msgstr "Navn på nye applikation adgangskode"
+
+#. translators: 1: URL to my-sites.php, 2: Number of sites the user has.
+#: wp-admin/user-edit.php:751
+msgid "Application passwords grant access to <a href=\"%1$s\">the %2$s site in this installation that you have permissions on</a>."
+msgid_plural "Application passwords grant access to <a href=\"%1$s\">all %2$s sites in this installation that you have permissions on</a>."
+msgstr[0] "Applikation adgangskode giver adgang til <a href=\"%1$s\">de %2$s som du har tilladelser til i denne installation</a>."
+msgstr[1] "Applikation adgangskoder giver adgang til <a href=\"%1$s\">bloggen %2$s som du har tilladelser til i denne installation</a>."
 
 #: wp-admin/user-edit.php:739
 msgid "Application passwords allow authentication via non-interactive systems, such as XML-RPC or the REST API, without providing your actual password. Application passwords can be easily revoked. They cannot be used for traditional logins to your website."
@@ -350,9 +1207,21 @@ msgstr "Lær hvordan du konfigurerer autorisations-headeren."
 msgid "Flush permalinks"
 msgstr "Flush permalinks"
 
+#: wp-admin/includes/class-wp-site-health.php:2224
+msgid "The authorization header is invalid"
+msgstr "Autorisation-headeren er ugyldig."
+
+#: wp-admin/includes/class-wp-site-health.php:2222
+msgid "The authorization header is missing"
+msgstr "Autorisation-headeren mangler."
+
 #: wp-admin/includes/class-wp-site-health.php:2215
 msgid "The Authorization header comes from the third-party applications you approve. Without it, those apps cannot connect to your site."
 msgstr "Autorisation-headeren kommer fra de tredjepartsprogrammer du godkender. Uden den kan disse apps ikke oprette forbindelse til dit websted."
+
+#: wp-admin/includes/class-wp-site-health.php:2207
+msgid "The Authorization header is working as expected"
+msgstr "Autorisation-header fungerer som forventet."
 
 #: wp-admin/includes/class-wp-screen.php:1116
 msgid "They can be expanded and collapsed by clickling on their headings, and arranged by dragging their headings or by clicking on the up and down arrows."
@@ -365,6 +1234,14 @@ msgstr "Nogle skærmelementer kan vises eller skjules ved hjælp af afkrydsnings
 #: wp-admin/includes/class-wp-screen.php:1113
 msgid "Screen elements"
 msgstr "Skærmelementer"
+
+#: wp-admin/includes/user.php:634
+msgid "The rejection URL must be served over a secure connection."
+msgstr "URL'en for afvisning skal ekspederes via en sikker forbindelse."
+
+#: wp-admin/includes/user.php:623
+msgid "The success URL must be served over a secure connection."
+msgstr "URL'en for at det lykkedes skal ekspederes via en sikker forbindelse."
 
 #. translators: Default privacy policy text.
 #: wp-admin/includes/class-wp-privacy-policy-content.php:566
@@ -430,6 +1307,30 @@ msgstr "Marker anmodningerne som færdige"
 msgid "Next steps"
 msgstr "Næste trin"
 
+#: wp-admin/includes/privacy-tools.php:566
+msgid "Unable to open personal data export file (archive) for writing."
+msgstr "Kunne ikke åbne brugerens dataeksportfil (arkiv) til skrivning."
+
+#: wp-admin/includes/privacy-tools.php:432
+msgid "Unable to open personal data export file (JSON report) for writing."
+msgstr "Kunne ikke åbne eksportfilen (JSON-rapport) til skrivning."
+
+#: wp-admin/includes/privacy-tools.php:341
+msgid "Unable to protect personal data export folder from browsing."
+msgstr "Kunne ikke beskytte eksportmappe fra gennemsyn."
+
+#: wp-admin/includes/privacy-tools.php:325
+msgid "Invalid email address when generating personal data export file."
+msgstr "Ugyldig e-mailadresse da eksportfilen blev genereret."
+
+#: wp-admin/includes/privacy-tools.php:319
+msgid "Invalid request ID when generating personal data export file."
+msgstr "Ugyldig forespørgsel ID da eksportfilen blev genereret."
+
+#: wp-admin/includes/privacy-tools.php:312
+msgid "Unable to generate personal data export file. ZipArchive not available."
+msgstr "Kunne ikke generere eksportfilen. Zip-arkiv er ikke tilgængeligt."
+
 #. translators: %s: Search query.
 #: wp-admin/edit-comments.php:253 wp-admin/edit-tags.php:344
 #: wp-admin/edit.php:415 wp-admin/link-manager.php:111 wp-admin/plugins.php:737
@@ -446,6 +1347,11 @@ msgstr "Bemærk at selv når du beder søgemaskiner om ikke at indeksere, så er
 #: wp-admin/options-reading.php:45
 msgid "You can choose whether or not your site will be crawled by robots, ping services, and spiders. If you want those services to ignore your site, click the checkbox next to &#8220;Discourage search engines from indexing this site&#8221; and click the Save Changes button at the bottom of the screen."
 msgstr "Du kan vælge om robotter, ping-services og spiders skal gennemgå din side. Hvis du vil udelukke dem, skal du bare aktivere den anden mulighed her: Fortæl søgemaskinerne at de ikke skal indeksere dette websted. Derefter skal du vælge Gem ændringer nederst. Dette forhindrer dog ikke dit websted i at være synlig på internettet."
+
+#. translators: 1: post_max_size, 2: upload_max_filesize
+#: wp-admin/includes/class-wp-site-health.php:2164
+msgid "The \"%1$s\" value is smaller than \"%2$s\""
+msgstr "\"%1$s\" værdien er mindre end \"%2$s\"."
 
 #: wp-admin/includes/class-wp-debug-data.php:126
 msgid "Environment type"
@@ -542,6 +1448,10 @@ msgstr "%s funktionen er blevet deaktiveret, nogle medieindstillinger er ikke ti
 #: wp-admin/includes/class-wp-site-health.php:2125
 msgid "The %1$s directive in %2$s determines if uploading files is allowed on your site."
 msgstr "%1$s direktivet i %2$s bestemmer om overførsel af filer til dit websted er tilladt."
+
+#: wp-admin/includes/class-wp-site-health.php:2115
+msgid "Files can be uploaded"
+msgstr "Filer kan overføres."
 
 #: wp-admin/includes/class-wp-debug-data.php:575
 msgid "Max number of files allowed"
@@ -1729,6 +2639,10 @@ msgstr "https://wordpress.org/support/article/custom-fields/"
 msgid "https://wordpress.org/support/article/introduction-to-blogging/#comments"
 msgstr "https://wordpress.org/support/article/introduction-to-blogging/#comments"
 
+#: wp-admin/includes/dashboard.php:2044
+msgid "https://wordpress.org/support/article/block-themes/"
+msgstr "https://wordpress.org/support/article/block-themes/"
+
 #. translators: Post date information. %s: Date on which the post is to be
 #. published.
 #: wp-admin/includes/meta-boxes.php:237
@@ -1908,6 +2822,10 @@ msgstr "Pluginnet %1$s blev deaktiveret på grund af en fejl: %2$s"
 #: wp-admin/theme-editor.php:370
 msgid "If you need to tweak more than your theme&#8217;s CSS, you might want to try <a href=\"%s\">making a child theme</a>."
 msgstr "Hvis du har brug for at finpusse mere end dit tema&#8217;s CSS, kan du prøve <a href=\"%s\">at lave et underordnet tema</a>."
+
+#: wp-admin/theme-editor.php:362
+msgid "You appear to be making direct edits to your theme in the WordPress dashboard. It is not recommended! Editing your theme directly could break your site and your changes may be lost in future updates."
+msgstr "Det ser ud til, at du foretager direkte redigeringer af dit tema i WordPress-kontrolpanelet. Vi anbefaler, at du ikke gør det! Redigering af dit tema direkte kan ødelægge dit websted, og dine ændringer kan gå tabt i fremtidige opdateringer."
 
 #. translators: Maximum number of words used in a preview of a draft on the
 #. dashboard.
@@ -2179,6 +3097,11 @@ msgid_plural "Your site has %1$d inactive themes, other than %2$s, the default W
 msgstr[0] "Dit websted har %1$d inaktivt tema, udover %2$s, standard-temaet til WordPress, og %3$s, dit aktive tema."
 msgstr[1] "Dit websted har %1$d inaktive temaer, udover %2$s, standard-temaet til WordPress, og %3$s, dit aktive tema."
 
+#: wp-admin/includes/class-wp-site-health.php:682
+#: wp-admin/includes/class-wp-site-health.php:698
+msgid "You should consider removing any unused themes to enhance your site&#8217;s security."
+msgstr "For at forbedre dit websteds sikkerhed, anbefaler vi, at du sletter ubrugte temaer."
+
 #. translators: 1: The amount of inactive themes. 2: The currently active
 #. theme.
 #: wp-admin/includes/class-wp-site-health.php:674
@@ -2194,6 +3117,10 @@ msgid "Your site has %d inactive theme."
 msgid_plural "Your site has %d inactive themes."
 msgstr[0] "Dit websted har %d inaktivt tema."
 msgstr[1] "Dit websted har %d inaktive temaer."
+
+#: wp-admin/includes/class-wp-site-health.php:470
+msgid "Inactive plugins are tempting targets for attackers. If you&#8217;re not going to use a plugin, you should consider removing it."
+msgstr "Deaktiverede plugins er fristende mål for hackere. Vi anbefaler, at du fjerner plugins, du ikke skal bruge."
 
 #. translators: %d: The number of inactive plugins.
 #: wp-admin/includes/class-wp-site-health.php:463
@@ -2523,6 +3450,11 @@ msgstr "Dit websted benytter ikke HTTPS"
 msgid "Your website is using an active HTTPS connection"
 msgstr "Dit websted benytter en aktiv HTTPS-forbindelse."
 
+#. translators: %s: URL to Settings > General > Site Address.
+#: wp-admin/includes/class-wp-site-health.php:1559
+msgid "You are accessing this website using HTTPS, but your <a href=\"%s\">Site Address</a> is not set up to use HTTPS by default."
+msgstr "Du tilgår dette websted ved hjælp af HTTPS, men din <a href=\"%s\">webstedsadresse</a> er ikke indstillet til at bruge HTTPS som standard."
+
 #: wp-admin/includes/class-wp-site-health.php:1484
 msgid "Your site is set to display errors to site visitors"
 msgstr "Dit websted er sat til at vise fejlmeddelelser til besøgende"
@@ -2531,6 +3463,10 @@ msgstr "Dit websted er sat til at vise fejlmeddelelser til besøgende"
 #: wp-admin/includes/class-wp-site-health.php:1477
 msgid "The value, %s, has been added to this website&#8217;s configuration file. This means any errors on the site will be written to a file which is potentially available to all users."
 msgstr "Værdien,%s, er blevet tilføjet til dette websteds konfigurationsfil. Dette betyder, at eventuelle fejl på webstedet vil blive skrevet til en fil, som potentielt kan være tilgængelig for normale brugere."
+
+#: wp-admin/includes/class-wp-site-health.php:1469
+msgid "Your site is set to log errors to a potentially public file"
+msgstr "Dit websted er sat til at logge fejl til en potentielt offentlig fil"
 
 #: wp-admin/includes/class-wp-site-health.php:1454
 msgid "Debug mode is often enabled to gather more details about an error or site failure, but may contain sensitive information which should not be available on a publicly available website."
@@ -2593,6 +3529,12 @@ msgstr "WordPress kræver %1$s version %2$s eller højere. Kontakt din webudbyde
 msgid "Severely outdated SQL server"
 msgstr "Alvorligt uddateret SQL-server"
 
+#. translators: 1: The database engine in use (MySQL or MariaDB). 2: Database
+#. server recommended version number.
+#: wp-admin/includes/class-wp-site-health.php:1203
+msgid "For optimal performance and security reasons, you should consider running %1$s version %2$s or higher. Contact your web hosting company to correct this."
+msgstr "Vi anbefaler, at du kører %1$s version %2$s eller højere for at opnå optimal ydeevne og af sikkerhedsmæssige grunde. Kontakt dit webhostingfirma for at rette op på dette."
+
 #: wp-admin/includes/class-wp-site-health.php:1197
 msgid "Outdated SQL server"
 msgstr "Din SQL-server er uddateret"
@@ -2636,6 +3578,18 @@ msgstr "Dit websted har ikke et standardtema. WordPress bruger standardtemaer, h
 #: wp-admin/includes/class-wp-site-health.php:708
 msgid "Have a default theme available"
 msgstr "Hav et standard-tema tilgængeligt"
+
+#. translators: 1: The default theme for WordPress. 2: The currently active
+#. theme. 3: The active theme's parent theme.
+#: wp-admin/includes/class-wp-site-health.php:656
+msgid "To enhance your site&#8217;s security, you should consider removing any themes you&#8217;re not using. You should keep %1$s, the default WordPress theme, %2$s, your current theme, and %3$s, its parent theme."
+msgstr "For at forbedre dit websteds sikkerhed anbefaler vi, at du fjerner alle temaer, du ikke bruger. Du skal beholde %1$s, standard WordPress-temaet, %2$s, dit aktuelle tema og %3$s, dets overordnede tema."
+
+#. translators: 1: The currently active theme. 2: The active theme's parent
+#. theme.
+#: wp-admin/includes/class-wp-site-health.php:637
+msgid "To enhance your site&#8217;s security, you should consider removing any themes you&#8217;re not using. You should keep your current theme, %1$s, and %2$s, its parent theme."
+msgstr "For at forbedre dit websteds sikkerhed anbefaler vi, at du fjerner alle temaer, du ikke bruger. Du skal beholde dit aktuelle tema, %1$s og %2$s, der er dets overordnede tema."
 
 #: wp-admin/includes/class-wp-site-health.php:457
 msgid "You should remove inactive plugins"
@@ -2718,6 +3672,10 @@ msgstr "WordPress-opdatering tilgængelig (%s)"
 msgid "Check for updates manually"
 msgstr "Søg efter opdateringer manuelt"
 
+#: wp-admin/includes/class-wp-site-health.php:287
+msgid "Unable to check if any new versions of WordPress are available."
+msgstr "Det var ikke muligt at undersøge, om der er nye versioner af WordPress tilgængelig."
+
 #. translators: %s: Name of the filter used.
 #: wp-admin/includes/class-wp-site-health-auto-updates.php:449
 msgid "WordPress security and maintenance releases are blocked by the %s filter."
@@ -2794,6 +3752,10 @@ msgstr "En tidligere automatisk baggrundsopdatering kunne ikke udføres."
 #: wp-admin/includes/class-wp-site-health-auto-updates.php:189
 msgid "The error code was %s."
 msgstr "Fejlkoden var %s."
+
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:169
+msgid "When you've been able to update using the \"Update now\" button on Dashboard > Updates, we'll clear this error for future update attempts."
+msgstr "Når du har kunnet opdatere ved hjælp af knappen \"Opdater nu\" ved Kontrolpanel > Opdateringer, fjerner vi denne fejl ved fremtidige opdateringsforsøg."
 
 #: wp-admin/includes/class-wp-site-health-auto-updates.php:168
 #: wp-admin/includes/class-wp-site-health-auto-updates.php:183
@@ -3656,6 +4618,14 @@ msgstr "Der er ingen sider."
 msgid "After your Privacy Policy page is set, we suggest that you edit it."
 msgstr "Efter du har lavet din side med privatlivspolitik, anbefaler vi, at du redigerer den."
 
+#. translators: 1: Privacy Policy guide URL, 2: Additional link attributes, 3:
+#. Accessibility text.
+#: wp-admin/options-privacy.php:230
+msgid "Need help putting together your new Privacy Policy page? <a href=\"%1$s\" %2$s>Check out our Privacy Policy guide%3$s</a> for recommendations on what content to include, along with policies suggested by your plugins and theme."
+msgstr ""
+"Brug for hjælp til at lave din egen side om Privatlivspolitik? \n"
+"<a href=\"%1$s\" %2$s>Se vores guide%3$s</a> med anbefalinger til indhold, du bør have med, samt retningslinjer foreslået fra dine plugins og tema."
+
 #: wp-admin/privacy-policy-guide.php:65 wp-admin/privacy-policy-guide.php:74
 msgid "Privacy Policy Guide"
 msgstr "Guide til privatlivspolitik"
@@ -4402,6 +5372,10 @@ msgstr "Hvis du beslutter dig for at redigere direkte alligevel, så brug filhå
 msgid "If you absolutely have to make direct edits to this plugin, use a file manager to create a copy with a new name and hang on to the original. That way, you can re-enable a functional version if something goes wrong."
 msgstr "Hvis du absolut skal redigere direkte i dette plugin, så brug et filhåndteringsplugin til at lave en kopi med et nyt navn og hold fast i originalen. På den måde kan du genskabe en funktionsdygtig version, hvis noget går galt."
 
+#: wp-admin/plugin-editor.php:329
+msgid "You appear to be making direct edits to your plugin in the WordPress dashboard. Editing plugins directly is not recommended as it may introduce incompatibilities that break your site and your changes may be lost in future updates."
+msgstr "Du ser ud til at lave direkte redigering af dit plugin i WordPress kontrolpanelet. Vi anbefaler, at du ikke gør dette! Når du redigerer direkte i pluginet kan det give inkompatibilitet, der kan ødelægge dit websted og dine ændringer kan gå tabt ved fremtidige opdateringer."
+
 #. translators: 1: Documentation URL, 2: URL to Reading Settings screen.
 #: wp-admin/options-writing.php:224
 msgid "WordPress is not notifying any <a href=\"%1$s\">Update Services</a> because of your site&#8217;s <a href=\"%2$s\">visibility settings</a>."
@@ -4427,6 +5401,11 @@ msgstr "Hvis din %1$s fil var <a href=\"%2$s\">skrivbar</a>, kunne vi gøre dett
 #: wp-admin/options-general.php:100
 msgid "Enter the address here if you <a href=\"%s\">want your site home page to be different from your WordPress installation directory</a>."
 msgstr "Indtast adressen her, hvis du <a href=\"%s\">ønsker, at dit websteds startside skal være forskellig fra din WordPress-installationsmappe.</a>."
+
+#. translators: %s: https://wordpress.org/about/privacy
+#: wp-admin/privacy.php:61
+msgid "We take privacy and transparency very seriously. To learn more about what data we collect, and how we use it, please visit <a href=\"%s\">our Privacy Policy</a>."
+msgstr "Vi tager privatliv og gennemsigtighed meget alvorligt. For at lære mere om, hvilke data vi indsamler, og hvordan vi bruger det, så besøg venligst vores <a href=\"%s\">privatlivspolitik</a>."
 
 #: wp-admin/freedoms.php:52 wp-admin/freedoms.php:102
 msgid "https://wordpress.org/about/license/"
@@ -6569,6 +7548,10 @@ msgstr "eksempel: www.wordpress.org"
 msgid "The search for installed themes will search for terms in their name, description, author, or tag."
 msgstr "Søgningen efter installerede temaer vil søge efter udtryk i deres navn, beskrivelse, forfatter eller tag."
 
+#: wp-admin/theme-install.php:111
+msgid "Alternately, you can browse the themes that are Popular or Latest. When you find a theme you like, you can preview it or install it."
+msgstr "Alternativt kan du gennemse temaer under Udvalgte, Populære eller Seneste. Når du finder et tema, som du kan lide, kan du forhåndsvise eller installere det."
+
 #: wp-admin/theme-install.php:110
 msgid "You can Search for themes by keyword, author, or tag, or can get more specific and search by criteria listed in the feature filter."
 msgstr "Du kan søge efter temaer efter nøgleord, forfatter eller tag, eller du kan være mere specifik og søge på kriterierne i funktionsfiltret."
@@ -7296,6 +8279,10 @@ msgstr "<strong>Oversættelser</strong> &mdash; Filerne der oversætter WordPres
 msgid "In most cases, WordPress will automatically apply maintenance and security updates in the background for you."
 msgstr "I de fleste tilfælde vil WordPress automatisk foretage vedligeholdelses- og sikkerhedsopdateringer i baggrunden for dig."
 
+#: wp-admin/update-core.php:974
+msgid "<strong>WordPress</strong> &mdash; Updating your WordPress installation is a simple one-click procedure: just <strong>click on the &#8220;Update now&#8221; button</strong> when you are notified that a new version is available."
+msgstr "<strong>WordPress</strong> &mdash; At opdatere din WordPress-installation er en simpel et-klik procedure: bare <strong>klik på &#8220;Opdater Nu&#8221; knappen</strong>, når du får en meddelelse om, at der er en ny opdatering tilgængelig."
+
 #: wp-admin/update-core.php:964
 msgid "If an update is available, you&#8127;ll see a notification appear in the Toolbar and navigation menu."
 msgstr "Hvis en opdatering er tilgængelig vil du se en meddelelse i værktøjslinjen og navigationsmenuen."
@@ -7368,6 +8355,10 @@ msgstr "Dette er et undertema af %s."
 #: wp-admin/themes.php:175
 msgid "When previewing on smaller monitors, you can use the collapse icon at the bottom of the left-hand pane. This will hide the pane, giving you more room to preview your site in the new theme. To bring the pane back, click on the collapse icon again."
 msgstr "Når du bruger forhåndsvisning på mindre skærme, kan du bruge minimerknappen i bunden af venstre vindue. Dette vil skjule vinduet, hvilket giver mere plads til at forhåndsvise dit websted med det nye tema. For at bringe vinduet tilbage, så klik på minimerknappen igen."
+
+#: wp-admin/themes.php:174
+msgid "The theme being previewed is fully interactive &mdash; navigate to different pages to see how the theme handles posts, archives, and other page templates. The settings may differ depending on what theme features the theme being previewed supports. To accept the new settings and activate the theme all in one step, click the Activate &amp; Publish button above the menu."
+msgstr "Temaet der forhåndsvises, kan du interagere med fuldt ud &mdash; gå til forskellige sider for at se, hvordan temaet håndterer indlæg, arkiver og andre sideskabeloner. Indstillingerne kan ændre sig alt efter hvilke egenskaber temaet understøtter. For at godkende de nye indstillinger og aktivere temaet i et hug, så klik Gem &amp; Aktiver knappen ovenover menuen."
 
 #: wp-admin/themes.php:173
 msgid "Tap or hover on any theme then click the Live Preview button to see a live preview of that theme and change theme options in a separate, full-screen view. You can also find a Live Preview button at the bottom of the theme details screen. Any installed theme can be previewed and customized in this way."
@@ -8342,6 +9333,11 @@ msgstr "Du kan uploade og indsætte medier (billeder, lyd, dokumenter osv.) ved 
 msgid "Image rotation is not supported by your web host."
 msgstr "Rotering af billeder er ikke understøttet af din udbyder."
 
+#. translators: %s: A link to install the Link Manager plugin.
+#: wp-admin/includes/bookmark.php:357
+msgid "If you are looking to use the link manager, please install the <a href=\"%s\">Link Manager plugin</a>."
+msgstr "Hvis du søger en link manager, så installer <a href=\"%s\">Link Manager pluginet</a>."
+
 #: wp-admin/widgets-form.php:65
 msgid "When changing themes, there is often some variation in the number and setup of widget areas/sidebars and sometimes these conflicts make the transition a bit less smooth. If you changed themes and seem to be missing widgets, scroll down on this screen to the Inactive Widgets area, where all of your widgets and their settings will have been saved."
 msgstr "Når du skifter temaer, er der ofte en vis variation i antallet og opsætningen af widget områder/sidebarer og nogle gange kommer disse i konflikt med hinanden og gør overgangen lidt mindre glat. Hvis du har ændret temaer og synes at der mangler widgets, skal du rulle ned på skærmen til Inaktive widgets, hvor alle dine widgets og deres indstillinger er blevet gemt."
@@ -8697,6 +9693,10 @@ msgstr "Find et tema som matcher specifikke funktioner."
 msgid "Search for themes by keyword."
 msgstr "Find temaer ved brug af nøgleord."
 
+#: wp-admin/setup-config.php:195
+msgid "In all likelihood, these items were supplied to you by your web host. If you don&#8217;t have this information, then you will need to contact them before you can continue. If you&#8217;re all ready&hellip;"
+msgstr "Du har efter al sandsynlighed fået tilsendt disse oplysninger af din webhoteludbyder. Hvis du ikke har disse oplysninger, så skal du kontakte din udbyder, før du kan fortsætte. Hvis du er klar, så&hellip;"
+
 #: wp-admin/theme-editor.php:247
 msgid "This theme is broken."
 msgstr "Dette tema er defekt."
@@ -8724,6 +9724,10 @@ msgstr "(påkrævet)"
 #: wp-admin/link.php:112
 msgid "Edit Link"
 msgstr "Rediger link"
+
+#: wp-admin/includes/user.php:207
+msgid "<strong>Error</strong>: This email is already registered. Please choose another one."
+msgstr "<strong>Fejl</strong>: Denne e-mail er allerede registreret. Vælg en anden."
 
 #: wp-admin/includes/user.php:151
 msgid "<strong>Error</strong>: Please enter a nickname."
@@ -10393,6 +11397,10 @@ msgstr "Anvend filtre"
 msgid "Editor Style"
 msgstr "Editor-stylesheet"
 
+#: wp-admin/users.php:225
+msgid "Sorry, you are not allowed to edit users."
+msgstr "Beklager, du har desværre ikke tilladelse til at redigere brugere."
+
 #: wp-admin/includes/file.php:2347
 msgid "To perform the requested action, WordPress needs to access your web server."
 msgstr "For at udføre den handling, du har anmodet om, skal WordPress have adgang til din webserver."
@@ -10593,6 +11601,10 @@ msgstr "Bidragydere kan skrive og håndtere deres egne indlæg, men kan ikke udg
 msgid "Administrators have access to all the administration features."
 msgstr "Administratorer har adgang til alle funktioner i administrationen."
 
+#: wp-admin/plugin-editor.php:127
+msgid "You can use the plugin file editor to make changes to any of your plugins&#8217; individual PHP files. Be aware that if you make changes, plugins updates will overwrite your customizations."
+msgstr "Du kan bruge editoren til at redigere de individuelle PHP-filer, der bruges i dine plugins. Husk dog, at alle ændringer bliver overskrevet, hvis pluginet opdateres."
+
 #: wp-admin/link-manager.php:73
 msgid "If you delete a link, it will be removed permanently, as Links do not have a Trash function yet."
 msgstr "Da links endnu ikke har en Papirkurv, bliver de fjernet permanent, hvis du sletter dem."
@@ -10642,6 +11654,11 @@ msgstr "Du kan også moderate kommentaren fra denne skærm ved hjælp af status-
 #: wp-admin/comment.php:64
 msgid "You can edit the information left in a comment if needed. This is often useful when you notice that a commenter has made a typographical error."
 msgstr "Du kan redigere de oplysninger, der er i en kommentar, hvis det er nødvendigt. Dette er ofte nyttig, når du opdager, at en kommentar har en tastefejl."
+
+#. translators: %s: Documentation URL.
+#: wp-admin/options-reading.php:34
+msgid "You can also control the display of your content in RSS feeds, including the maximum number of posts to display and whether to show full text or an excerpt. <a href=\"%s\">Learn more about feeds</a>."
+msgstr "Du kan også kontrollere visning af dit indhold i RSS feeds, inklusiv maks. antal indlæg der skal vises, eller om hele indlægget eller et resume vises. <a href=\"%s\">Lær mere om feeds</a>."
 
 #: wp-admin/options-reading.php:26
 msgid "This screen contains the settings that affect the display of your content."
@@ -10750,6 +11767,10 @@ msgstr "Når du er færdig med dine ændringer, skal du klikke på Opdater fil."
 #: wp-admin/theme-editor.php:31
 msgid "Begin by choosing a theme to edit from the dropdown menu and clicking the Select button. A list then appears of the theme&#8217;s template files. Clicking once on any file name causes the file to appear in the large Editor box."
 msgstr "Begynd ved at vælge et tema at redigere fra dropdownmenuen og klik på Vælg-knappen. En liste over temaets skabelonfiler viser sig. Ved at klikke én gang på et hvilket som helst filnavn får du filen til at vise sig i den store redigeringsboks."
+
+#: wp-admin/theme-editor.php:30
+msgid "You can use the theme file editor to edit the individual CSS and PHP files which make up your theme."
+msgstr "Du kan bruge tema-editoren til at redigere de forskellige CSS og PHP-filer, som dit tema består af."
 
 #: wp-admin/includes/meta-boxes.php:951
 msgid "(no parent)"
@@ -13526,6 +14547,10 @@ msgstr "Kunne ikke udpakke filen."
 #: wp-admin/includes/file.php:1633 wp-admin/includes/file.php:1713
 msgid "Could not retrieve file from archive."
 msgstr "Kunne ikke hente filen."
+
+#: wp-admin/includes/file.php:1138
+msgid "Could not create temporary file."
+msgstr "Kunne ikke oprette midlertidig fil."
 
 #: wp-admin/includes/file.php:1127
 msgid "Invalid URL Provided."

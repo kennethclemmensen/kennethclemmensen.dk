@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.9.x - Development - Administration - Network Admin package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-07-09 13:04:33+0000\n"
+"PO-Revision-Date: 2022-01-31 16:48:08+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,22 @@ msgstr ""
 "X-Generator: GlotPress/3.0.0-alpha.2\n"
 "Language: da_DK\n"
 "Project-Id-Version: WordPress - 5.9.x - Development - Administration - Network Admin\n"
+
+#. translators: %s: wp-config.php
+#: wp-admin/includes/network.php:463
+msgid "You should back up your existing %s file."
+msgstr "Du bør tage backup af den nuværende %s fil."
+
+#. translators: 1: wp-config.php, 2: .htaccess
+#. translators: 1: wp-config.php, 2: web.config
+#: wp-admin/includes/network.php:447 wp-admin/includes/network.php:455
+msgid "You should back up your existing %1$s and %2$s files."
+msgstr "Du bør tage backup af de nuværende %1$s og %2$s filer."
+
+#. translators: %s: Theme name.
+#: wp-admin/includes/class-wp-ms-themes-list-table.php:724
+msgid "Visit theme site for %s"
+msgstr "Besøg tema webstedet for %s"
 
 #. translators: %s: Theme name.
 #: wp-admin/includes/class-wp-ms-themes-list-table.php:737
@@ -263,6 +279,11 @@ msgstr "Fordi du bruger %1$s, skal webstederne i dit WordPress-netværk bruge un
 #: wp-admin/includes/network.php:288 wp-admin/includes/network.php:348
 msgid "The internet address of your network will be %s."
 msgstr "Internetadressen for dit netværk vil være %s."
+
+#. translators: 1: Site URL, 2: Host name, 3: www.
+#: wp-admin/includes/network.php:274
+msgid "You should consider changing your site domain to %1$s before enabling the network feature. It will still be possible to visit your site using the %3$s prefix with an address like %2$s but any links will not have the %3$s prefix."
+msgstr "Vi anbefaler, at du ændrer domænet for dit websted til %1$s, før du aktiverer netværket. Det vil stadig være muligt at besøge dit websted ved at bruge %3$s præfikset med adresser såsom %2$s, men dine links vil ikke have %3$s præfikset."
 
 #: wp-admin/includes/network.php:229
 msgid "You cannot change this later."
@@ -987,6 +1008,10 @@ msgstr "Adresserne på webstederne i dit netværk"
 msgid "Note:"
 msgstr "Bemærk:"
 
+#: wp-admin/includes/network.php:182
+msgid "Fill in the information below and you&#8217;ll be on your way to creating a network of WordPress sites. Configuration files will be created in the next step."
+msgstr "Udfyld informationerne nedenunder og du vil være godt på vej til at oprette et netværk af WordPress-websteder. Vi vil oprette konfigurationsfilerne i det næste trin."
+
 #: wp-admin/includes/network.php:181
 msgid "Welcome to the Network installation process!"
 msgstr "Velkommen til netværksinstallationen!"
@@ -1132,6 +1157,11 @@ msgstr "Oprettelsesindstillingerne kan slå offentlige tilmeldinger til eller fr
 #: wp-admin/network/settings.php:51
 msgid "This screen sets and changes options for the network as a whole. The first site is the main site in the network and network options are pulled from that original site&#8217;s options."
 msgstr "Dette skærmbillede indstiller og ændrer mulighederne for hele netværket. Det første websted i netværket er hovedwebstedet og er det vigtigste websted i netværket. Alle netværkets indstillinger bliver hentet fra dette oprindelige websted."
+
+#. translators: %s: Reserved names list.
+#: wp-admin/network/site-new.php:59
+msgid "The following words are reserved for use by WordPress functions and cannot be used as site names: %s"
+msgstr "Følgende ord er reserveret til brug af WordPress-funktioner og kan ikke bruges som blognavne: %s"
 
 #: wp-admin/network/upgrade.php:125
 msgid "If your browser doesn&#8217;t start loading the next page automatically, click this link:"
