@@ -5,36 +5,36 @@
 final class ThemeSettings {
 
 	private static ?ThemeSettings $instance = null;
-	private string $contactPageSlug;
-	private string $scriptPageSlug;
-	private string $sliderPageSlug;
-	private string $otherPageSlug;
-	private string $contactOptionsName;
-	private string $scriptOptionsName;
-	private string $sliderOptionsName;
-	private string $otherOptionsName;
-	private array | bool $contactOptions;
-	private array | bool $scriptOptions;
-	private array | bool $sliderOptions;
-	private array | bool $otherOptions;
-	private string $email;
-	private string $linkedIn;
-	private string $gitHub;
-	private string $imagesPerPage;
-	private string $filesPerPage;
-	private string $searchResultsPerPage;
-	private string $allowFileEditing;
-	private string $scriptHeader;
-	private string $scriptStartBody;
-	private string $scriptFooter;
-	private string $removeVersionQueryString;
-	private string $emailShortcode;
-	private string $linkedInShortcode;
-	private string $gitHubShortcode;
-	private string $sliderDelay;
-	private string $sliderDuration;
-	private string $sliderAnimation;
-	private string $checkboxCheckedValue;
+	private readonly string $contactPageSlug;
+	private readonly string $scriptPageSlug;
+	private readonly string $sliderPageSlug;
+	private readonly string $otherPageSlug;
+	private readonly string $contactOptionsName;
+	private readonly string $scriptOptionsName;
+	private readonly string $sliderOptionsName;
+	private readonly string $otherOptionsName;
+	private readonly array | bool $contactOptions;
+	private readonly array | bool $scriptOptions;
+	private readonly array | bool $sliderOptions;
+	private readonly array | bool $otherOptions;
+	private readonly string $email;
+	private readonly string $linkedIn;
+	private readonly string $gitHub;
+	private readonly string $imagesPerPage;
+	private readonly string $filesPerPage;
+	private readonly string $searchResultsPerPage;
+	private readonly string $allowFileEditing;
+	private readonly string $scriptHeader;
+	private readonly string $scriptStartBody;
+	private readonly string $scriptFooter;
+	private readonly string $removeVersionQueryString;
+	private readonly string $emailShortcode;
+	private readonly string $linkedInShortcode;
+	private readonly string $gitHubShortcode;
+	private readonly string $sliderDelay;
+	private readonly string $sliderDuration;
+	private readonly string $sliderAnimation;
+	private readonly string $checkboxCheckedValue;
 
 	/**
 	 * ThemeSettings constructor
