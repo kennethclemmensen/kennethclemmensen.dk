@@ -24,8 +24,8 @@
     "uploadsFolder": "public/wp-content/uploads/"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.12.1",
-    "@typescript-eslint/parser": "^5.12.1",
+    "@typescript-eslint/eslint-plugin": "^5.13.0",
+    "@typescript-eslint/parser": "^5.13.0",
     "browser-sync": "^2.27.7",
     "css-loader": "^6.6.0",
     "eslint": "^8.10.0",
