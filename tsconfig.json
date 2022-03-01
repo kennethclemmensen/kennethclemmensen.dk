@@ -14,7 +14,7 @@
     "noUnusedParameters": true,
     "outDir": "./public/wp-content/themes/kennethclemmensen/js/compiled",
     "strict": true,
-    "target": "ES2019",
+    "target": "ES2022",
     "tsBuildInfoFile": "./.tsbuildinfo"
   },
   "include": [
