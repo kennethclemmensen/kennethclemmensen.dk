@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Twenty Twenty-Two package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-02-15 09:25:56+0000\n"
+"PO-Revision-Date: 2022-02-26 21:29:06+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -18,6 +18,15 @@ msgstr "Twenty Twenty-Two er bygget på et solidt designet fundament og er baser
 #. Theme Name of the theme
 msgid "Twenty Twenty-Two"
 msgstr "Twenty Twenty-Two"
+
+#: inc/patterns/hidden-404.php:14
+msgid "Search"
+msgstr "Søg"
+
+#: inc/patterns/hidden-404.php:14
+msgctxt "label"
+msgid "Search"
+msgstr "Søg"
 
 #: theme.json
 msgctxt "Template part name"
@@ -661,7 +670,7 @@ msgstr "1"
 
 #: inc/patterns/general-pricing-table.php:6
 msgid "Pricing table"
-msgstr "Prisliste"
+msgstr "Pristabel"
 
 #: inc/patterns/general-list-events.php:103
 msgid "Emery Driscoll"
@@ -869,11 +878,15 @@ msgstr "Sidehoveder"
 
 #: inc/block-patterns.php:18
 msgid "Footers"
-msgstr "Sidefødder"
+msgstr "sidefod"
 
 #: inc/block-patterns.php:17
 msgid "Featured"
 msgstr "Fremhævet"
+
+#. Theme URI of the theme
+msgid "https://wordpress.org/themes/twentytwentytwo/"
+msgstr "https://da.wordpress.org/themes/twentytwentytwo/"
 
 #. Author URI of the theme
 msgid "https://wordpress.org/"
@@ -882,7 +895,3 @@ msgstr "https://da.wordpress.org/"
 #. Author of the theme
 msgid "the WordPress team"
 msgstr "af WordPress-holdet"
-
-#. Theme URI of the theme
-msgid "https://github.com/wordpress/twentytwentytwo/"
-msgstr "https://github.com/wordpress/twentytwentytwo/"
