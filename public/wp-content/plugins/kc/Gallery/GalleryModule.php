@@ -3,7 +3,7 @@ namespace KC\Gallery;
 
 use KC\Core\Action;
 use KC\Core\Modules\BaseModule;
-use KC\Core\Constant;
+use KC\Core\PostTypeFeature;
 use KC\Core\FieldName;
 use KC\Core\Filter;
 use KC\Core\Images\ImageSize;
@@ -53,7 +53,7 @@ class GalleryModule extends BaseModule implements IModule {
 				],
 				'public' => true,
 				'has_archive' => true,
-				'supports' => [Constant::TITLE, Constant::EDITOR, Constant::THUMBNAIL],
+				'supports' => [PostTypeFeature::Title->value, PostTypeFeature::Editor->value, PostTypeFeature::Thumbnail->value],
 				'menu_icon' => 'dashicons-format-gallery',
 				'rewrite' => ['slug' => $this->gallerySettings->getParentPagePath(), 'with_front' => false]
 			]);
@@ -64,7 +64,7 @@ class GalleryModule extends BaseModule implements IModule {
 				],
 				'public' => false,
 				'has_archive' => false,
-				'supports' => [Constant::TITLE, Constant::THUMBNAIL],
+				'supports' => [PostTypeFeature::Title->value, PostTypeFeature::Thumbnail->value],
 				'menu_icon' => 'dashicons-format-image',
 				'publicly_queryable' => true,
 				'show_ui' => true,

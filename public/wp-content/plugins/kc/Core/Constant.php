@@ -6,15 +6,5 @@ namespace KC\Core;
  */
 class Constant {
 
-	public const ASC = 'ASC';
-
-	public const EDITOR = 'editor';
-
-	public const POST_THUMBNAILS = 'post-thumbnails';
-
 	public const TEXT_DOMAIN = 'kc';
-
-	public const THUMBNAIL = 'thumbnail';
-
-	public const TITLE = 'title';
 }

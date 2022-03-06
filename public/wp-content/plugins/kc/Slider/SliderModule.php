@@ -2,7 +2,7 @@
 namespace KC\Slider;
 
 use KC\Core\Action;
-use KC\Core\Constant;
+use KC\Core\PostTypeFeature;
 use KC\Core\Filter;
 use KC\Core\Modules\IModule;
 use KC\Core\PostType;
@@ -37,7 +37,7 @@ class SliderModule implements IModule {
 				],
 				'public' => false,
 				'has_archive' => false,
-				'supports' => [Constant::TITLE, Constant::THUMBNAIL],
+				'supports' => [PostTypeFeature::Title->value, PostTypeFeature::Thumbnail->value],
 				'menu_icon' => 'dashicons-images-alt',
 				'publicly_queryable' => true,
 				'show_ui' => true,

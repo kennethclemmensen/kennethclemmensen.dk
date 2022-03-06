@@ -16,8 +16,8 @@ require_once 'Core/Modules/BaseModule.php';
 require_once 'Core/Modules/IModule.php';
 require_once 'Core/Settings/ISettings.php';
 $directoryIterator = new \RecursiveDirectoryIterator(__DIR__);
-$iteratorIterator = new \RecursiveIteratorIterator($directoryIterator);
-$files = new \RegexIterator($iteratorIterator, '/^.+\.php$/i');
+$recursiveIterator = new \RecursiveIteratorIterator($directoryIterator);
+$files = new \RegexIterator($recursiveIterator, '/^.+\.php$/i');
 foreach($files as $file) {
 	$fileName = $file->getFilename();
 	if($fileName !== 'kc.php' && $fileName !== 'uninstall.php') {

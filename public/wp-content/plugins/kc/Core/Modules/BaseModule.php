@@ -1,7 +1,7 @@
 <?php
 namespace KC\Core\Modules;
 
-use KC\Core\Constant;
+use KC\Core\SortingOrder;
 use KC\Core\PostType;
 use \WP_Query;
 
@@ -21,7 +21,7 @@ class BaseModule {
 		$args = [
 			'post_type' => $postType->value,
 			'posts_per_page' => -1,
-			'order' => Constant::ASC
+			'order' => SortingOrder::Ascending->value
 		];
 		$wpQuery = new WP_Query($args);
 		while($wpQuery->have_posts()) {

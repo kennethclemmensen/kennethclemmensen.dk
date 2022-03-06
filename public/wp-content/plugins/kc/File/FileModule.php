@@ -2,7 +2,7 @@
 namespace KC\File;
 
 use KC\Core\Action;
-use KC\Core\Constant;
+use KC\Core\PostTypeFeature;
 use KC\Core\FieldName;
 use KC\Core\Filter;
 use KC\Core\Modules\IModule;
@@ -38,7 +38,7 @@ class FileModule implements IModule {
 				'public' => true,
 				'exclude_from_search' => true,
 				'has_archive' => true,
-				'supports' => [Constant::TITLE]
+				'supports' => [PostTypeFeature::Title->value]
 			]);
 			register_taxonomy(TaxonomyName::FileType->value, [PostType::Page->value, PostType::File->value], [
 				'labels' => [

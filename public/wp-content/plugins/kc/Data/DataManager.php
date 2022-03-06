@@ -1,7 +1,8 @@
 <?php
 namespace KC\Data;
 
-use KC\Core\Constant;
+use KC\Core\PostTypeFeature;
+use KC\Core\SortingOrder;
 use KC\Core\FieldName;
 use KC\Core\Images\ImageSize;
 use KC\Core\PostType;
@@ -23,7 +24,7 @@ class DataManager {
 	public function getPages() : array {
 		$pages = [];
 		$args = [
-			'order' => Constant::ASC,
+			'order' => SortingOrder::Ascending->value,
 			'orderby' => 'menu_order',
 			'posts_per_page' => -1,
 			'post_type' => [PostType::Page->value]
@@ -47,7 +48,7 @@ class DataManager {
 	public function getPagesByTitle(string $title) : array {
 		$pages = [];
 		$args = [
-			'order' => Constant::ASC,
+			'order' => SortingOrder::Ascending->value,
 			'orderby' => 'menu_order',
 			'posts_per_page' => -1,
 			'post_type' => [PostType::Page->value],
@@ -75,7 +76,7 @@ class DataManager {
 		$args = [
 			'post_type' => PostType::Slides->value,
 			'posts_per_page' => -1,
-			'order' => Constant::ASC,
+			'order' => SortingOrder::Ascending->value,
 			'orderby' => 'menu_order'
 		];
 		$wpQuery = new WP_Query($args);
@@ -96,7 +97,7 @@ class DataManager {
 		$args = [
 			'post_type' => PostType::Gallery->value,
 			'posts_per_page' => -1,
-			'order' => Constant::ASC
+			'order' => SortingOrder::Ascending->value
 		];
 		$wpQuery = new WP_Query($args);
 		while($wpQuery->have_posts()) {
@@ -121,8 +122,8 @@ class DataManager {
 		$args = [
 			'post_type' => PostType::Image->value,
 			'posts_per_page' => -1,
-			'orderby' => Constant::TITLE,
-			'order' => Constant::ASC,
+			'orderby' => PostTypeFeature::Title->value,
+			'order' => SortingOrder::Ascending->value,
 			'meta_key' => FieldName::ImageGallery->value,
 			'meta_value' => $galleryId
 		];
@@ -166,7 +167,7 @@ class DataManager {
 		$args = [
 			'post_type' => PostType::File->value,
 			'posts_per_page' => -1,
-			'order' => Constant::ASC,
+			'order' => SortingOrder::Ascending->value,
 			'tax_query' => [
 				[
 					'taxonomy' => TaxonomyName::FileType->value,
