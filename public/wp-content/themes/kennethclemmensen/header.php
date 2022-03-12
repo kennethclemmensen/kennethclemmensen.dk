@@ -15,8 +15,8 @@
 	<a href="<?php bloginfo('url'); ?>" class="header__site-name">
 		<?php bloginfo('name'); ?>
 	</a>
-	<a href="#" class="header__nav-trigger" id="mobile-menu-trigger">
-		<span class="header__nav-icon"></span>
+	<a href="#" class="header__mobile-menu-trigger" id="mobile-menu-trigger">
+		<span class="header__icon"></span>
 	</a>
 	<nav class="menu">
 		<?php wp_nav_menu(['theme_location' => ThemeHelper::getMainMenuKey()]); ?>

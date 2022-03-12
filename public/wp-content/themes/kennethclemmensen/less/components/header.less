@@ -23,7 +23,7 @@
 	}
 }
 
-.header__nav-trigger {
+.header__mobile-menu-trigger {
 	width: 48px;
 	height: 44px;
 	padding: 4px 8px 8px 8px;
@@ -36,21 +36,22 @@
 		display: none;
 	}
 	&--active {
-		.header__nav-icon {
+		.header__icon {
 			background: transparent;
-			&::before {
+			&::before, &::after {
 				margin-top: 0;
+			}
+			&::before {
 				.rotate(45deg);
 			}
 			&::after {
-				margin-top: 0;
 				.rotate(-45deg);
 			}
 		}
 	}
 }
 
-.header__nav-icon {
+.header__icon {
 	display: inline-block;
 	background: @color-white;
 	width: 30px;

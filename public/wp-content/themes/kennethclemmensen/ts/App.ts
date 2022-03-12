@@ -52,7 +52,7 @@ class App {
 		const showMobileMenuClass: string = 'show-mobile-menu';
 		mobileMenuTrigger?.addEventListener(EventType.Click, (event: Event): void => {
 			event.preventDefault();
-			mobileMenuTrigger?.classList.toggle('header__nav-trigger--active');
+			mobileMenuTrigger?.classList.toggle('header__mobile-menu-trigger--active');
 			mobileMenu?.classList.toggle('mobile-menu--active');
 			document.documentElement.classList.toggle(showMobileMenuClass);
 			this.#body.classList.toggle(showMobileMenuClass);
