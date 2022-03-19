@@ -1,5 +1,5 @@
 <?php
-namespace KC\Core;
+namespace KC\Core\Translations;
 
 /**
  * The TranslationString enum defines the translation strings

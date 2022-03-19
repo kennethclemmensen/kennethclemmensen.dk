@@ -1,6 +1,8 @@
 <?php
 namespace KC\Core;
 
+use KC\Core\PostTypes\PostType;
+
 /**
  * The Filter class defines the filters
  */

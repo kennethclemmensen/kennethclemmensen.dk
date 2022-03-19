@@ -3,13 +3,13 @@ namespace KC\Gallery;
 
 use KC\Core\Action;
 use KC\Core\Modules\BaseModule;
-use KC\Core\PostTypeFeature;
-use KC\Core\FieldName;
+use KC\Core\PostTypes\PostTypeFeature;
+use KC\Core\PostTypes\FieldName;
 use KC\Core\Filter;
 use KC\Core\Images\ImageSize;
 use KC\Core\Modules\IModule;
-use KC\Core\PostType;
-use KC\Core\TranslationString;
+use KC\Core\PostTypes\PostType;
+use KC\Core\Translations\TranslationString;
 use KC\Data\DatabaseManager;
 use KC\Gallery\Settings\GallerySettings;
 use KC\Utils\PluginHelper;

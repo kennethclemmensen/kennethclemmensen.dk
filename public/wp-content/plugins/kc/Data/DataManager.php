@@ -1,12 +1,12 @@
 <?php
 namespace KC\Data;
 
-use KC\Core\PostTypeFeature;
-use KC\Core\SortingOrder;
-use KC\Core\FieldName;
+use KC\Core\PostTypes\PostTypeFeature;
+use KC\Core\PostTypes\SortingOrder;
+use KC\Core\PostTypes\FieldName;
 use KC\Core\Images\ImageSize;
-use KC\Core\PostType;
-use KC\Core\TaxonomyName;
+use KC\Core\PostTypes\PostType;
+use KC\Core\Taxonomies\TaxonomyName;
 use KC\Security\Security;
 use KC\Utils\PluginHelper;
 use \WP_Query;

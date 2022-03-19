@@ -1,8 +1,8 @@
 <?php
 namespace KC\Core\Modules;
 
-use KC\Core\SortingOrder;
-use KC\Core\PostType;
+use KC\Core\PostTypes\SortingOrder;
+use KC\Core\PostTypes\PostType;
 use \WP_Query;
 
 /**

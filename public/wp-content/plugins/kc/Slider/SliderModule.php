@@ -2,11 +2,11 @@
 namespace KC\Slider;
 
 use KC\Core\Action;
-use KC\Core\PostTypeFeature;
+use KC\Core\PostTypes\PostTypeFeature;
 use KC\Core\Filter;
 use KC\Core\Modules\IModule;
-use KC\Core\PostType;
-use KC\Core\TranslationString;
+use KC\Core\PostTypes\PostType;
+use KC\Core\Translations\TranslationString;
 use KC\Slider\Settings\SliderSettings;
 use KC\Utils\PluginHelper;
 

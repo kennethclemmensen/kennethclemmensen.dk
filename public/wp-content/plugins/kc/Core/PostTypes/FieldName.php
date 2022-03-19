@@ -1,5 +1,5 @@
 <?php
-namespace KC\Core;
+namespace KC\Core\PostTypes;
 
 /**
  * The FieldName enum defines the field names

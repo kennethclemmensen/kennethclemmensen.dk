@@ -1,5 +1,5 @@
 <?php
-namespace KC\Core;
+namespace KC\Core\PostTypes;
 
 /**
  * The PostTypeFeature enum defines the post type features

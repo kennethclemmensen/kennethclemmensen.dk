@@ -5,8 +5,8 @@ use KC\Core\Action;
 use KC\Core\Users\UserRole;
 use KC\Core\Images\ImageSize;
 use KC\Core\Settings\ISettings;
-use KC\Core\PostType;
-use KC\Core\TranslationString;
+use KC\Core\PostTypes\PostType;
+use KC\Core\Translations\TranslationString;
 use KC\Security\Security;
 use KC\Utils\PluginHelper;
 

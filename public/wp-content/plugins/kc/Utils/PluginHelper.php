@@ -1,9 +1,8 @@
 <?php
 namespace KC\Utils;
 
-use KC\Core\Constant;
-use KC\Core\FieldName;
-use KC\Core\TranslationString;
+use KC\Core\PostTypes\FieldName;
+use KC\Core\Translations\TranslationString;
 use KC\Core\Images\ImageSize;
 use KC\Security\Security;
 
@@ -52,7 +51,7 @@ class PluginHelper {
 	 * @return string the translated string
 	 */
 	public static function getTranslatedString(TranslationString $str) : string {
-		return __($str->value, Constant::TEXT_DOMAIN);
+		return __($str->value, 'kc');
 	}
 
 	/**

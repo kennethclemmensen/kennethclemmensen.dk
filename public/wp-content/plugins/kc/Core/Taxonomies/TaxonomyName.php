@@ -1,5 +1,5 @@
 <?php
-namespace KC\Core;
+namespace KC\Core\Taxonomies;
 
 /**
  * The TaxonomyName enum defines the taxonomy names
