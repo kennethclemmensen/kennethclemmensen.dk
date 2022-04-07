@@ -16,12 +16,9 @@ require_once 'Core/Modules/IModule.php';
 require_once 'Core/Settings/ISettings.php';
 $directoryIterator = new \RecursiveDirectoryIterator(__DIR__);
 $recursiveIterator = new \RecursiveIteratorIterator($directoryIterator);
-$files = new \RegexIterator($recursiveIterator, '/^.+\.php$/i');
+$files = new \RegexIterator($recursiveIterator, '/^(?!kc\.php).+\.php$/i');
 foreach($files as $file) {
-	$fileName = $file->getFilename();
-	if($fileName !== 'kc.php' && $fileName !== 'uninstall.php') {
-		require_once $file->getPathname();
-	}
+	require_once $file->getPathname();
 }
 $pluginActivator = new Core\PluginActivator();
 $pluginActivator->activate(__FILE__);
