@@ -128,7 +128,7 @@ class AIOWPSecurity_Feature_Item_Manager {
 	
 	public function get_feature_item_by_id($feature_id) {
 		foreach ($this->feature_items as $item) {
-			if ($feature_id) {
+			if ($item->feature_id == $feature_id) {
 				return $item;
 			}
 		}

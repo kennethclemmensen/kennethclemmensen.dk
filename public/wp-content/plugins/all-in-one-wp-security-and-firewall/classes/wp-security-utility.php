@@ -382,7 +382,7 @@ class AIOWPSecurity_Utility {
 			'event_data' => '',
 		);
 
-		$data = apply_filters('filter_event_logger_data', $data);
+		$data = apply_filters('aiowps_filter_event_logger_data', $data);
 		//log to database
 		$result = $wpdb->insert($events_table_name, $data);
 		if (false === $result) {

@@ -339,7 +339,7 @@ class AIOWPSecurity_Admin_Init {
             {
                 $brute_force_feature_secret_word = sanitize_text_field($_POST['aiowps_brute_force_secret_word']);
                 if(empty($brute_force_feature_secret_word)){
-                    $brute_force_feature_secret_word = "aiowps_secret";
+                    $brute_force_feature_secret_word = "aiowpssecret";
                 }
                 AIOWPSecurity_Utility::set_cookie_value($brute_force_feature_secret_word, "1");
             }

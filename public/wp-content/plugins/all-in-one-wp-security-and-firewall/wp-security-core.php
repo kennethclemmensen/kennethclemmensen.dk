@@ -8,7 +8,7 @@ if (!class_exists('AIO_WP_Security')) {
 
 	class AIO_WP_Security {
 
-		public $version = '4.4.11';
+		public $version = '4.4.12';
 
 		public $db_version = '1.9';
 
@@ -61,7 +61,7 @@ if (!class_exists('AIO_WP_Security')) {
 		 * @var boolean
 		 */
 		public $is_aiowps_admin_page;
-		
+
 		/**
 		 * Whether the page is AIOWPS Login recaptcha page.
 		 *
@@ -152,6 +152,7 @@ if (!class_exists('AIO_WP_Security')) {
 			include_once('classes/wp-security-captcha.php');
 			include_once('classes/wp-security-backup.php');
 			include_once('classes/wp-security-file-scan.php');
+			include_once(AIO_WP_SECURITY_PATH.'/classes/wp-security-comment.php');
 			include_once('classes/wp-security-cronjob-handler.php');
 			include_once('classes/grade-system/wp-security-feature-item.php');
 			include_once('classes/grade-system/wp-security-feature-item-manager.php');
@@ -176,16 +177,19 @@ if (!class_exists('AIO_WP_Security')) {
 			$debug_config = $this->configs->get_value('aiowps_enable_debug');
 			$debug_enabled = empty($debug_config) ? false : true;
 			$this->debug_logger = new AIOWPSecurity_Logger($debug_enabled);
-
-			if (is_admin()) {
-				$this->admin_init = new AIOWPSecurity_Admin_Init();
-				$this->notices = new AIOWPSecurity_Notices();
-			}
 		}
 
 		public static function activate_handler($networkwide) {
 			global $wpdb;// phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Used for the include below
 			//Only runs when the plugin activates
+			if (version_compare(phpversion(), '5.6.0', '<')) {
+				deactivate_plugins(basename(__FILE__));
+				wp_die(
+					sprintf(htmlspecialchars(__('This plugin requires PHP version %s.', 'all-in-one-wp-security-and-firewall')), '<strong>5.6+</strong>')
+					.' '.sprintf(htmlspecialchars(__('Current site PHP version is %s.', 'all-in-one-wp-security-and-firewall')), '<strong>'.phpversion().'</strong>')
+					.' '.htmlspecialchars(__('You will need to ask your web hosting company to upgrade.', 'all-in-one-wp-security-and-firewall'))
+				);
+			}
 			include_once('classes/wp-security-installer.php');
 			AIOWPSecurity_Installer::run_installer($networkwide);
 			AIOWPSecurity_Installer::set_cron_tasks_upon_activation($networkwide);
@@ -328,6 +332,8 @@ if (!class_exists('AIO_WP_Security')) {
 			if (is_admin()) {
 				//Do plugins_loaded operations for admin side
 				$this->db_upgrade_handler();
+				$this->admin_init = new AIOWPSecurity_Admin_Init();
+				$this->notices = new AIOWPSecurity_Notices();
 			}
 			$this->do_additional_plugins_loaded_tasks();
 		}
@@ -368,6 +374,7 @@ if (!class_exists('AIO_WP_Security')) {
 			// For front side force log out.
 			add_action('template_redirect', array($this, 'do_action_force_logout_check'));
 			new AIOWPSecurity_General_Init_Tasks();
+			new AIOWPSecurity_Comment();
 		}
 
 		public function aiowps_wp_loaded_handler() {
@@ -379,7 +386,7 @@ if (!class_exists('AIO_WP_Security')) {
 		 */
 		public function aiowps_login_enqueue() {
 			global $aio_wp_security;
-			if ($aio_wp_security->configs->get_value('aiowps_default_recaptcha')) {
+			if (!$aio_wp_security->is_login_lockdown_by_const() && $aio_wp_security->configs->get_value('aiowps_default_recaptcha')) {
 				if ($aio_wp_security->configs->get_value('aiowps_enable_login_captcha') == '1' || $aio_wp_security->configs->get_value('aiowps_enable_registration_page_captcha') == '1') {
 					wp_enqueue_script('google-recaptcha', 'https://www.google.com/recaptcha/api.js', false, AIO_WP_SECURITY_VERSION);
 					// below is needed to provide some space for the google reCaptcha form (otherwise it appears partially hidden on RHS)
@@ -449,7 +456,7 @@ if (!class_exists('AIO_WP_Security')) {
 			if (false !== strpos($response_body, 'Invalid site key')) $result = false;
 			return $result;
 		}
-	
+
 		/**
 		 * Check whether current admin page is Admin Dashboard page or not.
 		 *
@@ -491,7 +498,7 @@ if (!class_exists('AIO_WP_Security')) {
 			$this->is_aiowps_admin_page = ('admin.php' == $pagenow && isset($_GET['page']) && false !== strpos($_GET['page'], AIOWPSEC_MENU_SLUG_PREFIX));
 			return $this->is_aiowps_admin_page;
 		}
-	
+
 		/**
 		 * Check whether current admin page is Google recaptcha tab page or not.
 		 *
@@ -510,7 +517,7 @@ if (!class_exists('AIO_WP_Security')) {
 			);
 			return $this->is_aiowps_google_recaptcha_tab_page;
 		}
-		
+
 		/**
 		 * Invokes all functions attached to action hook aiowps_force_logout_check
 		 *
@@ -519,7 +526,17 @@ if (!class_exists('AIO_WP_Security')) {
 		public function do_action_force_logout_check() {
 			do_action('aiowps_force_logout_check');
 		}
-	}//End of class
+
+		/**
+		 * Check AIOWPS_DISABLE_LOGIN_LOCKDOWN constant value
+		 *
+		 * @return boolean True if the AIOWPS_DISABLE_LOGIN_LOCKDOWN constant defined with true value, otherwise false.
+		 */
+		public function is_login_lockdown_by_const() {
+			return defined('AIOWPS_DISABLE_LOGIN_LOCKDOWN') && AIOWPS_DISABLE_LOGIN_LOCKDOWN;
+		}
+
+	} // End of class
 
 }//End of class not exists check
 

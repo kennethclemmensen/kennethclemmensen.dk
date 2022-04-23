@@ -245,7 +245,7 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu
             {
                 $brute_force_feature_secret_word = sanitize_text_field($_POST['aiowps_brute_force_secret_word']);
                 if(empty($brute_force_feature_secret_word)){
-                    $brute_force_feature_secret_word = "aiowps_secret";
+                    $brute_force_feature_secret_word = "aiowpssecret";
                 }else if(!ctype_alnum($brute_force_feature_secret_word)){
                     $msg = '<p>'.__('Settings have not been saved - your secret word must consist only of alphanumeric characters, ie, letters and/or numbers only!', 'all-in-one-wp-security-and-firewall').'</p>';
                     $error = true;
@@ -376,7 +376,7 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu
             <tr valign="top">
                 <th scope="row"><?php _e('Enable Brute Force Attack Prevention', 'all-in-one-wp-security-and-firewall')?>:</th>
                 <td>
-                <input name="aiowps_enable_brute_force_attack_prevention" type="checkbox"<?php if($aio_wp_security->configs->get_value('aiowps_enable_brute_force_attack_prevention')=='1') echo ' checked="checked"'; ?> value="1"/>
+                <input name="aiowps_enable_brute_force_attack_prevention" type="checkbox"<?php checked($aio_wp_security->configs->get_value('aiowps_enable_brute_force_attack_prevention')); ?> value="1"/>
                 <span class="description"><?php _e('Check this if you want to protect your login page from Brute Force Attack.', 'all-in-one-wp-security-and-firewall'); ?></span>
                 <span class="aiowps_more_info_anchor"><span class="aiowps_more_info_toggle_char">+</span><span class="aiowps_more_info_toggle_text"><?php _e('More Info', 'all-in-one-wp-security-and-firewall'); ?></span></span>
                 <div class="aiowps_more_info_body">
@@ -400,13 +400,13 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu
             </tr>
             <tr valign="top">
                 <th scope="row"><?php _e('Secret Word', 'all-in-one-wp-security-and-firewall')?>:</th>
-                <td><input type="text" size="40" name="aiowps_brute_force_secret_word" value="<?php echo $aio_wp_security->configs->get_value('aiowps_brute_force_secret_word'); ?>" />
+                <td><input type="text" size="40" name="aiowps_brute_force_secret_word" value="<?php echo $aio_wp_security->configs->get_value('aiowps_brute_force_secret_word'); ?>"<?php if(!$aio_wp_security->configs->get_value('aiowps_enable_brute_force_attack_prevention')) echo ' disabled'; ?>/>
                 <span class="description"><?php _e('Choose a secret word consisting of alphanumeric characters which you can use to access your special URL. Your are highly encouraged to choose a word which will be difficult to guess.', 'all-in-one-wp-security-and-firewall'); ?></span>
                 </td>
             </tr>
             <tr valign="top">
                 <th scope="row"><?php _e('Re-direct URL', 'all-in-one-wp-security-and-firewall')?>:</th>
-                <td><input type="text" size="40" name="aiowps_cookie_based_brute_force_redirect_url" value="<?php echo $aio_wp_security->configs->get_value('aiowps_cookie_based_brute_force_redirect_url'); ?>" />
+                <td><input type="text" size="40" name="aiowps_cookie_based_brute_force_redirect_url" value="<?php echo $aio_wp_security->configs->get_value('aiowps_cookie_based_brute_force_redirect_url'); ?>"<?php if(!$aio_wp_security->configs->get_value('aiowps_enable_brute_force_attack_prevention')) echo ' disabled'; ?>/>
                 <span class="description">
                     <?php
                     _e('Specify a URL to redirect a hacker to when they try to access your WordPress login page.', 'all-in-one-wp-security-and-firewall');
@@ -576,6 +576,17 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu
             ?>
             </p>
         </div>
+
+        <?php if ($aio_wp_security->is_login_lockdown_by_const()) { ?>
+            <div class="aio_blue_box">
+                <p>
+                <?php
+                echo __('Recaptcha will not work because you have disabled login lockdown by acitvating the AIOWPS_DISABLE_LOGIN_LOCKDOWN constant value in a configuration file.', 'all-in-one-wp-security-and-firewall').'
+                <br />'.__('To enable it, define AIOWPS_DISABLE_LOGIN_LOCKDOWN constant value as false, or remove it.', 'all-in-one-wp-security-and-firewall');
+                ?>
+                </p>
+            </div>
+        <?php } ?>
 
         <table class="form-table">
             <tr valign="top">

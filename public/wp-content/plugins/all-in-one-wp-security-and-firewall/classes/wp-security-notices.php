@@ -31,6 +31,28 @@ class AIOWPSecurity_Notices extends Updraft_Notices {
 				'supported_positions' => $this->dashboard_top,
 				'validity_function' => 'show_rate_notice'
 			),
+			'updraftplus' => array(
+				'prefix' => '',
+				'title' => __('Enhance your security even more by backing up your site', 'all-in-one-wp-security-and-firewall'),
+				'text' => __("UpdraftPlus is the world's most trusted backup plugin from the owners of All In One WP Security & Firewall", 'all-in-one-wp-security-and-firewall'),
+				'image' => 'notices/updraft_logo.png',
+				'button_link' => 'https://wordpress.org/plugins/updraftplus/',
+				'button_meta' => 'updraftplus',
+				'dismiss_time' => 'dismiss_page_notice_until',
+				'supported_positions' => $this->dashboard_top_or_report,
+				'validity_function' => 'updraftplus_not_installed',
+			),
+			'wp-optimize' => array(
+				'prefix' => '',
+				'title' => 'WP-Optimize',
+				'text' => __("After you've secured your site, we recommend you install our WP-Optimize plugin to streamline it for better website performance.", "all-in-one-wp-security-and-firewall"),
+				'image' => 'notices/wp_optimize_logo.png',
+				'button_link' => 'https://wordpress.org/plugins/wp-optimize/',
+				'button_meta' => 'wp-optimize',
+				'dismiss_time' => 'dismiss_notice',
+				'supported_positions' => $this->anywhere,
+				'validity_function' => 'wp_optimize_not_installed',
+			),
 		);
 
 		return array_merge($parent_notice_content, $child_notice_content);

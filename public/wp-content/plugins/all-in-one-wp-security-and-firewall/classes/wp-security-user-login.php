@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) {
 }
 
 class AIOWPSecurity_User_Login {
-	
+
 	public $key_login_msg;// This will store a URI query string key for passing messages to the login form
 
 	public function __construct() {
@@ -23,7 +23,54 @@ class AIOWPSecurity_User_Login {
 		add_action('aiowps_force_logout_check', array($this, 'aiowps_force_logout_action_handler'));
 		add_action('clear_auth_cookie', array($this, 'wp_logout_action_handler'));
 		add_filter('login_message', array($this, 'aiowps_login_message')); //WP filter to add or modify messages on the login page
+
+		// Display disable lockdown message
+		if (is_admin() && current_user_can(AIOWPSEC_MANAGEMENT_PERMISSION) && $aio_wp_security->is_login_lockdown_by_const() && $this->is_admin_page_to_display_disable_login_lockdown_by_const_notice()) {
+			add_action('all_admin_notices', array($this, 'disable_login_lockdown_by_const_notice'));
+		}
 	}
+
+	/**
+	 * Check whether the admin page is to display disable login lockdown by const notice.
+	 *
+	 * @return boolean True if the notice will be displayed, Otherwise false.
+	 */
+	private function is_admin_page_to_display_disable_login_lockdown_by_const_notice() {
+		global $pagenow;
+		if (in_array($pagenow, array('index.php', 'plugins.php'))) {
+			return true;
+		} elseif (('admin.php' == $pagenow && isset($_GET['page']) && false !== strpos($_GET['page'], AIOWPSEC_MENU_SLUG_PREFIX)) && !$this->is_locked_ip_addresses_tab_admin_page()) {
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * Check whether the admin page is Locked IP Addresses Tab page.
+	 *
+	 * @return boolean True if is Locked IP Addresses Tab page, Otherwise false.
+	 */
+	private function is_locked_ip_addresses_tab_admin_page() {
+		global $pagenow;
+		return ('admin.php' == $pagenow && isset($_GET['page']) && 'aiowpsec' == $_GET['page'] && isset($_GET['tab']) && 'tab3' == $_GET['tab']);
+	}
+
+	/**
+	 * Display admin to disable lockdown message
+	 */
+	public function disable_login_lockdown_by_const_notice() {
+
+		echo '<div class="notice notice-error">
+					<p>'.
+						__('You have disabled login lockdown by defining the AIOWPS_DISABLE_LOGIN_LOCKDOWN constant value as true, and the login lockdown setting has enabled it.', 'all-in-one-wp-security-and-firewall') . '&nbsp;' .
+						/* translators: 1: Locked IP Addresses admin page link */
+						sprintf(__('Delete your login lockdown IP from %s and define the AIOWPS_DISABLE_LOGIN_LOCKDOWN constant value as false.', 'all-in-one-wp-security-and-firewall'),
+							'<a href="'.admin_url('admin.php?page=aiowpsec&tab=tab3').'">' . __('Locked IP Addresses', 'all-in-one-wp-security-and-firewall') . '</a>'
+						).
+					'</p>
+				</div>';
+	}
+
 	/**
 	 * Terminate the execution via wp_die with 503 status code, if current
 	 * user's IP is currently locked.
@@ -34,6 +81,12 @@ class AIOWPSecurity_User_Login {
 	 */
 	public function block_ip_if_locked($user) {
 		global $aio_wp_security;
+
+		// Allow users to login when disable AIOWPS_DISABLE_LOCK_DOWN defined true
+		if ($aio_wp_security->is_login_lockdown_by_const()) {
+			return $user;
+		}
+
 		$user_locked = $this->check_locked_user();
 		if (null != $user_locked) {
 			$aio_wp_security->debug_logger->log_debug("Login attempt from blocked IP range - ".$user_locked['failed_login_ip'], 2);
@@ -61,7 +114,7 @@ class AIOWPSecurity_User_Login {
 	 */
 	public function check_captcha($user) {
 		global $aio_wp_security;
-		if (is_wp_error($user)) {
+		if (is_wp_error($user) || $aio_wp_security->is_login_lockdown_by_const()) {
 			// Authentication has failed already at some earlier step.
 			return $user;
 		}

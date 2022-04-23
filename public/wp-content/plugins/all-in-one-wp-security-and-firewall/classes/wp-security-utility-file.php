@@ -23,10 +23,10 @@ class AIOWPSecurity_Utility_File {
 			array('name' => '.htaccess', 'path' => $home_path.".htaccess", 'permissions' => '0644'),
 			array('name' => 'wp-admin/index.php', 'path' => ABSPATH."wp-admin/index.php", 'permissions' => '0644'),
 			array('name' => 'wp-admin/js/', 'path' => ABSPATH."wp-admin/js/", 'permissions' => '0755'),
-			array('name' => 'wp-content/themes/', 'path' => ABSPATH."wp-content/themes", 'permissions' => '0755'),
-			array('name' => 'wp-content/plugins/', 'path' => ABSPATH."wp-content/plugins", 'permissions' => '0755'),
+			array('name' => 'wp-content/themes/', 'path' => WP_CONTENT_DIR."/themes", 'permissions' => '0755'),
+			array('name' => 'wp-content/plugins/', 'path' => WP_PLUGIN_DIR, 'permissions' => '0755'),
 			array('name' => 'wp-admin/', 'path' => ABSPATH."wp-admin", 'permissions' => '0755'),
-			array('name' => 'wp-content/', 'path' => ABSPATH."wp-content", 'permissions' => '0755'),
+			array('name' => 'wp-content/', 'path' => WP_CONTENT_DIR, 'permissions' => '0755'),
 			array('name' => 'wp-config.php', 'path' => $wp_config_path, 'permissions' => '0640'),
 			//Add as many files or dirs as needed by following the convention above
 		);

@@ -4,13 +4,13 @@ if (!defined('ABSPATH')) {
 }
 
 class AIOWPSecurity_Captcha {
-	
+
 	private $google_verify_recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify';
 
 	public function __construct() {
 		//NOP
 	}
-	
+
 	/**
 	 * Displays Google reCaptcha form v2
 	 *
@@ -50,15 +50,15 @@ class AIOWPSecurity_Captcha {
 		$cap_form .= $maths_question_output . '</strong></div></p>';
 		echo $cap_form;
 	}
-	
+
 	public function generate_maths_question() {
 		global $aio_wp_security;
 		//For now we will only do plus, minus, multiplication
 		$equation_string = '';
 		$operator_type = array('&#43;', '&#8722;', '&#215;');
-		
+
 		$operand_display = array('word', 'number');
-		
+
 		//let's now generate an equation
 		$operator = $operator_type[rand(0, 2)];
 
@@ -70,13 +70,13 @@ class AIOWPSecurity_Captcha {
 			$first_digit = rand(1, 20);
 			$second_digit = rand(1, 20);
 		}
-		
+
 		if ('word' == $operand_display[rand(0, 1)]) {
 			$first_operand = $this->number_word_mapping($first_digit);
 		} else {
 			$first_operand = $first_digit;
 		}
-		
+
 		if ('word' == $operand_display[rand(0, 1)]) {
 			$second_operand = $this->number_word_mapping($second_digit);
 		} else {
@@ -103,7 +103,7 @@ class AIOWPSecurity_Captcha {
 			$equation_string .= $first_operand . ' ' . $operator . ' ' . $second_operand . ' = ';
 			$result = $first_digit*$second_digit;
 		}
-		
+
 		//Let's encode correct answer
 		$captcha_secret_string = $aio_wp_security->configs->get_value('aiowps_captcha_secret_key');
 		$current_time = time();
@@ -121,7 +121,7 @@ class AIOWPSecurity_Captcha {
 		$equation_string .= '<input type="text" size="2" id="aiowps-captcha-answer" name="aiowps-captcha-answer" value="" autocomplete="off" />';
 		return $equation_string;
 	}
-	
+
 	public function number_word_mapping($num) {
 		$number_map = array(
 			1 => __('one', 'all-in-one-wp-security-and-firewall'),
@@ -147,8 +147,8 @@ class AIOWPSecurity_Captcha {
 		);
 		return $number_map[$num];
 	}
-	
-	 
+
+
 	/**
 	 * Verifies the math or Google recaptcha v2 forms
 	 * Returns TRUE if correct answer.
@@ -186,7 +186,7 @@ class AIOWPSecurity_Captcha {
 			}
 		}
 	}
-	
+
 	/**
 	 * Verifies the math captcha answer entered by the user
 	 *
@@ -231,7 +231,7 @@ class AIOWPSecurity_Captcha {
 		}
 
 		$url = $this->google_verify_recaptcha_url;
-		
+
 		$sitekey = $aio_wp_security->configs->get_value('aiowps_recaptcha_site_key');// phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
 		$secret = $aio_wp_security->configs->get_value('aiowps_recaptcha_secret_key');
 		$ip_address = AIOWPSecurity_Utility_IP::get_user_ip_address();

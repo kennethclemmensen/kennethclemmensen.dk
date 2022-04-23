@@ -39,15 +39,16 @@ class AIOWPSecurity_WP_Footer_Content {
 	/**
 	 * For Woocommerce my account page - display two separate Google reCaptcha forms "explicitly"
 	 *
-	 * @global type $aio_wp_security
+	 * @global $aio_wp_security
 	 */
 	public function print_recaptcha_api_woo() {
 		global $aio_wp_security;
-		$is_woo = false;
-		$is_woo = is_account_page();
-		if (!$is_woo) {
+
+		// We don't want to load for woo account page because we have a special function for this
+		if (function_exists('is_account_page') && !is_account_page()) {
 			return; // if current page is not woo account page don't do anything
 		}
+
 		$site_key = esc_html($aio_wp_security->configs->get_value('aiowps_recaptcha_site_key'));
 			?>
 			<script type="text/javascript">

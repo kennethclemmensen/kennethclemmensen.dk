@@ -431,10 +431,10 @@ class AIOWPSecurity_Dashboard_Menu extends AIOWPSecurity_Admin_Menu
     public function widget_spread_the_word() {
 ?>
         <p><?php _e('We are working hard to make your WordPress site more secure. Please support us, here is how:', 'all-in-one-wp-security-and-firewall');?></p>
-        <p><a href="https://www.facebook.com/tipsntrickshq/" target="_blank"><?php _e('Follow us on', 'all-in-one-wp-security-and-firewall');?> Facebook</a>
+        <p><a href="https://twitter.com/intent/user?screen_name=UpdraftPlus" target="_blank"><?php _e('Follow us on', 'all-in-one-wp-security-and-firewall');?> Twitter</a>
         </p>
         <p>
-            <a href="http://twitter.com/intent/tweet?url=https://www.tipsandtricks-hq.com/wordpress-security-and-firewall-plugin&text=I love the All In One WP Security and Firewall plugin!"
+            <a href="http://twitter.com/intent/tweet?url=https://wordpress.org/plugins/all-in-one-wp-security-and-firewall&text=I love the All In One WP Security and Firewall plugin!"
                target="_blank" class="aio_tweet_link"><?php _e('Post to Twitter', 'all-in-one-wp-security-and-firewall');?></a>
         </p>
         <p>
@@ -447,8 +447,7 @@ class AIOWPSecurity_Dashboard_Menu extends AIOWPSecurity_Admin_Menu
     public function widget_know_developers() {
 ?>
         <p><?php _e('Wanna know more about the developers behind this plugin?', 'all-in-one-wp-security-and-firewall');?></p>
-        <p><a href="https://wpsolutions-hq.com/" target="_blank">WPSolutions</a></p>
-        <p><a href="https://www.tipsandtricks-hq.com/" target="_blank">Tips and Tricks HQ</a></p>
+        <p><a href="https://teamupdraft.com/" target="_blank">Team UpdraftPlus</a></p>
 
 <?php
     }

@@ -7,19 +7,60 @@ class AIOWPSecurity_Utility_IP {
 	public function __construct() {
 		//NOP
 	}
-	
+
+	/**
+	 * Get user IP Address.
+	 *
+	 * @return string User IP Address.
+	 */
 	public static function get_user_ip_address() {
+		$user_ip = '';
 		if (isset($_SERVER['HTTP_X_REAL_IP'])) {
-			return sanitize_text_field(wp_unslash($_SERVER['HTTP_X_REAL_IP']));
+			$user_ip = sanitize_text_field(wp_unslash($_SERVER['HTTP_X_REAL_IP']));
 		} elseif (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
 			// Proxy servers can send through this header like this: X-Forwarded-For: client1, proxy1, proxy2
 			// Make sure we always only send through the first IP in the list which should always be the client IP.
-			return (string) rest_is_ip_address(trim(current(preg_split('/,/', sanitize_text_field(wp_unslash($_SERVER['HTTP_X_FORWARDED_FOR']))))));
+			$user_ip = (string) rest_is_ip_address(trim(current(preg_split('/,/', sanitize_text_field(wp_unslash($_SERVER['HTTP_X_FORWARDED_FOR']))))));
 		} elseif (isset($_SERVER['REMOTE_ADDR'])) {
-			return sanitize_text_field(wp_unslash($_SERVER['REMOTE_ADDR']));
+			$user_ip = sanitize_text_field(wp_unslash($_SERVER['REMOTE_ADDR']));
 		}
 
-		return '';
+		if (in_array($user_ip, array('', '127.0.0.1', '::1'))) {
+			$user_ip = self::get_external_ip_address();
+		}
+
+		return $user_ip;
+	}
+
+	/**
+	 * Get user IP Address using an external service.
+	 * This can be used as a fallback for users on localhost where
+	 * get_ip_address() will be a local IP and non-geolocatable.
+	 *
+	 * @return string external ip address.
+	 */
+	public static function get_external_ip_address() {
+		$external_ip_address = '0.0.0.0';
+		$ip_lookup_services = array(
+			'ipify'             => 'http://api.ipify.org/',
+			'ipecho'            => 'http://ipecho.net/plain',
+			'ident'             => 'http://ident.me',
+			'whatismyipaddress' => 'http://bot.whatismyipaddress.com',
+		);
+		$ip_lookup_services_keys = array_keys($ip_lookup_services);
+		shuffle($ip_lookup_services_keys);
+
+		foreach ($ip_lookup_services_keys as $service_name) {
+			$service_endpoint = $ip_lookup_services[$service_name];
+			$response         = wp_safe_remote_get($service_endpoint, array( 'timeout' => 2 ));
+
+			if (!is_wp_error($response) && rest_is_ip_address($response['body'])) {
+				$external_ip_address = sanitize_text_field($response['body']);
+				break;
+			}
+		}
+
+		return $external_ip_address;
 	}
 	
 	/**
