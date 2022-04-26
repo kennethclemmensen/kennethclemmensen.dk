@@ -2,6 +2,7 @@
 namespace KC\Core;
 
 use KC\Core\Modules\IModule;
+use KC\Core\Translations\TranslationString;
 use KC\Utils\PluginHelper;
 
 /**
