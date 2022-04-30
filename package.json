@@ -7,7 +7,6 @@
     "cssCompiledFiles": "public/wp-content/themes/kennethclemmensen/css/compiled/**/*.css",
     "cssCompiledFolder": "public/wp-content/themes/kennethclemmensen/css/compiled",
     "cssFiles": "public/wp-content/themes/kennethclemmensen/css/*.css",
-    "cssLibrariesFiles": "public/wp-content/themes/kennethclemmensen/css/libraries/**/*.css",
     "jsCompiledFiles": "public/wp-content/themes/kennethclemmensen/js/compiled/**/*.js",
     "jsDistFiles": "public/wp-content/themes/kennethclemmensen/js/dist/*.js",
     "lessFiles": "public/wp-content/themes/kennethclemmensen/less/**/*.less",
@@ -23,6 +22,7 @@
     "uploadsFolder": "public/wp-content/uploads/"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.1.1",
     "jquery": "^3.6.0",
     "lightbox2": "^2.11.3",
     "lodash": "^4.17.21",

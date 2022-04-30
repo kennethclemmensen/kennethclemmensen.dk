@@ -32,7 +32,6 @@ jobs:
         server-dir: public_html/wp-content/themes/kennethclemmensen/
         exclude: |
           public/wp-content/themes/kennethclemmensen/css/compiled
-          public/wp-content/themes/kennethclemmensen/css/libraries
           public/wp-content/themes/kennethclemmensen/js/compiled
           public/wp-content/themes/kennethclemmensen/less
           public/wp-content/themes/kennethclemmensen/sass

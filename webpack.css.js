@@ -20,7 +20,8 @@ module.exports = merge(common, {
         new mergeIntoSingleFilePlugin({
             files: [{
                 src: [
-                    package.config.cssLibrariesFiles,
+                    'node_modules/@fortawesome/fontawesome-free/css/all.min.css',
+                    'node_modules/lightbox2/dist/css/lightbox.min.css',
                     package.config.cssCompiledFiles
                 ],
                 dest: cssFile

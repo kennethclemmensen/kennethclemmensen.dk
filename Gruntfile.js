@@ -82,7 +82,7 @@ module.exports = function(grunt) {
                 livereload: true
             },
             css: {
-                files: ['<%= pkg.config.cssCompiledFiles %>', '<%= pkg.config.cssLibrariesFiles %>'],
+                files: ['<%= pkg.config.cssCompiledFiles %>'],
                 tasks: ['shell:npm_run_webpack_css']
             },
             javascript: {
