@@ -10,7 +10,6 @@
     "cssLibrariesFiles": "public/wp-content/themes/kennethclemmensen/css/libraries/**/*.css",
     "jsCompiledFiles": "public/wp-content/themes/kennethclemmensen/js/compiled/**/*.js",
     "jsDistFiles": "public/wp-content/themes/kennethclemmensen/js/dist/*.js",
-    "jsLibrariesFiles": "public/wp-content/themes/kennethclemmensen/js/libraries/**/*.js",
     "lessFiles": "public/wp-content/themes/kennethclemmensen/less/**/*.less",
     "npmTscCommand": "npm run tsc",
     "npmWebpackJsCommand": "npm run webpack-js",
@@ -22,6 +21,12 @@
     "styleScssFile": "public/wp-content/themes/kennethclemmensen/sass/style.scss",
     "testDomain": "kennethclemmensen.test",
     "uploadsFolder": "public/wp-content/uploads/"
+  },
+  "dependencies": {
+    "jquery": "^3.6.0",
+    "lightbox2": "^2.11.3",
+    "lodash": "^4.17.21",
+    "vue": "^3.2.33"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.21.0",

@@ -86,7 +86,7 @@ module.exports = function(grunt) {
                 tasks: ['shell:npm_run_webpack_css']
             },
             javascript: {
-                files: ['<%= pkg.config.jsCompiledFiles %>', '<%= pkg.config.jsLibrariesFiles %>'],
+                files: ['<%= pkg.config.jsCompiledFiles %>'],
                 tasks: ['shell:npm_run_webpack_js']
             },
             less: {

@@ -102,6 +102,6 @@ exports.imagemin = imagemin;
 
 //Look for changes in files
 watch([package.config.cssCompiledFiles, package.config.cssLibrariesFiles], runNpmWebpackCssCommand);
-watch([package.config.jsCompiledFiles, package.config.jsLibrariesFiles], runNpmWebpackJsCommand);
+watch([package.config.jsCompiledFiles], runNpmWebpackJsCommand);
 watch(package.config.lessFiles, less);
 watch(package.config.scssFiles, sass);
