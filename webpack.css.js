@@ -4,6 +4,7 @@ const package = require('./package.json');
 const path = require('path');
 const mergeIntoSingleFilePlugin = require('webpack-merge-and-include-globally');
 const cssFile = 'style.min.css';
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = merge(common, {
     entry: './' + package.config.styleCssFile,
@@ -26,6 +27,12 @@ module.exports = merge(common, {
                 ],
                 dest: cssFile
             }]
+        }),
+        new CopyPlugin({
+            patterns: [
+                { from: 'node_modules/lightbox2/dist/images', to: '../images' },
+                { from: 'node_modules/@fortawesome/fontawesome-free/webfonts', to: '../webfonts' }
+            ]
         })
     ]
 });
