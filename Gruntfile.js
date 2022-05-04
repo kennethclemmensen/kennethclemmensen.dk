@@ -37,7 +37,7 @@ module.exports = function(grunt) {
                     outputStyle: 'compressed'
                 },
                 files: {
-                    '<%= pkg.config.styleCssFile %>': '<%= pkg.config.styleScssFile %>'
+                    '<%= pkg.config.cssCompiledFile %>': '<%= pkg.config.styleScssFile %>'
                 }
             }
         },
@@ -56,7 +56,7 @@ module.exports = function(grunt) {
         less: {
             development: {
                 files: {
-                    '<%= pkg.config.styleCssFile %>': '<%= pkg.config.styleLessFile %>'
+                    '<%= pkg.config.cssCompiledFile %>': '<%= pkg.config.styleLessFile %>'
                 },
                 options: {
                     compress: true,
@@ -82,7 +82,7 @@ module.exports = function(grunt) {
                 livereload: true
             },
             css: {
-                files: ['<%= pkg.config.cssCompiledFiles %>'],
+                files: ['<%= pkg.config.cssCompiledFile %>'],
                 tasks: ['shell:npm_run_webpack_css']
             },
             javascript: {

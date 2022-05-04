@@ -60,7 +60,7 @@ function runNpmWebpackJsCommand() {
 
 //Run the npm webpack css command
 function runNpmWebpackCssCommand() {
-    return src(package.config.styleCssFile)
+    return src(package.config.cssCompiledFile)
         .pipe(shellPlugin(package.config.npmWebpackCssCommand))
         .on('error', (error) => {
             console.log(error.toString());
@@ -101,7 +101,7 @@ exports.default = parallel(browserSync, runNpmTscCommand);
 exports.imagemin = imagemin;
 
 //Look for changes in files
-watch([package.config.cssCompiledFiles], runNpmWebpackCssCommand);
+watch([package.config.cssCompiledFile], runNpmWebpackCssCommand);
 watch([package.config.jsCompiledFiles], runNpmWebpackJsCommand);
 watch(package.config.lessFiles, less);
 watch(package.config.scssFiles, sass);

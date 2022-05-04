@@ -4,7 +4,7 @@
   "private": true,
   "config": {
     "appJsFile": "public/wp-content/themes/kennethclemmensen/js/compiled/App.js",
-    "cssCompiledFiles": "public/wp-content/themes/kennethclemmensen/css/compiled/**/*.css",
+    "cssCompiledFile": "public/wp-content/themes/kennethclemmensen/css/compiled/compiled.css",
     "cssCompiledFolder": "public/wp-content/themes/kennethclemmensen/css/compiled",
     "cssFiles": "public/wp-content/themes/kennethclemmensen/css/*.css",
     "jsCompiledFiles": "public/wp-content/themes/kennethclemmensen/js/compiled/**/*.js",
@@ -15,7 +15,6 @@
     "npmWebpackCssCommand": "npm run webpack-css",
     "phpFiles": "public/wp-content/themes/kennethclemmensen/**/*.php",
     "scssFiles": "public/wp-content/themes/kennethclemmensen/sass/**/*.scss",
-    "styleCssFile": "public/wp-content/themes/kennethclemmensen/css/compiled/style.css",
     "styleLessFile": "public/wp-content/themes/kennethclemmensen/less/style.less",
     "styleScssFile": "public/wp-content/themes/kennethclemmensen/sass/style.scss",
     "testDomain": "kennethclemmensen.test",

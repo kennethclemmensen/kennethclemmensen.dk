@@ -7,7 +7,7 @@ const cssFile = 'style.min.css';
 const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = merge(common, {
-    entry: './' + package.config.styleCssFile,
+    entry: './' + package.config.cssCompiledFile,
     output: {
         filename: cssFile,
         path: path.resolve(__dirname, 'public/wp-content/themes/kennethclemmensen/css/')
@@ -23,7 +23,7 @@ module.exports = merge(common, {
                 src: [
                     'node_modules/@fortawesome/fontawesome-free/css/all.min.css',
                     'node_modules/lightbox2/dist/css/lightbox.min.css',
-                    package.config.cssCompiledFiles
+                    package.config.cssCompiledFile
                 ],
                 dest: cssFile
             }]
