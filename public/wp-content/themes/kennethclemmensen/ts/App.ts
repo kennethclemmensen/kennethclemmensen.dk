@@ -17,7 +17,8 @@ class App {
 	 */
 	public constructor() {
 		this.#body = document.body;
-		document.addEventListener(EventType.DOMContentLoaded, (): void => {
+		const { fromEvent } = rxjs;
+		fromEvent(document, EventType.DOMContentLoaded).subscribe((): void => {
 			this.setupSlider();
 			this.setupMobileMenu();
 			lightbox.option({

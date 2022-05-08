@@ -1,6 +1,6 @@
 module.exports = {
     mode: 'production',
     performance: {
-        maxAssetSize: 300000
+        maxAssetSize: 400000
     }
 };

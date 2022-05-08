@@ -14,6 +14,7 @@ module.exports = merge(common, {
         new mergeIntoSingleFilePlugin({
             files: [{
                 src: [
+                    'node_modules/rxjs/dist/bundles/rxjs.umd.min.js',
                     'node_modules/jquery/dist/jquery.min.js',
                     'node_modules/lightbox2/dist/js/lightbox.min.js',
                     'node_modules/lodash/lodash.min.js',

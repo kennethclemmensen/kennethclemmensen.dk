@@ -18,6 +18,7 @@ These technologies includes:
 * [Lodash](https://lodash.com/)
 * [NodeJS](https://nodejs.org/en/)/[NPM](https://npmjs.com/)
 * [PHP](http://php.net/)
+* [RxJS](https://rxjs.dev/)
 * [SASS](https://sass-lang.com/)
 * [TypeScript](https://www.typescriptlang.org/)
 * [Vue](https://v3.vuejs.org/)
