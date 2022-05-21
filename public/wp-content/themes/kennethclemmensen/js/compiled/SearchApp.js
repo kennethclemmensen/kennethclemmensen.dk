@@ -2,6 +2,7 @@ import { EventType } from './enums/EventType';
 import { HttpMethod } from './enums/HttpMethod';
 import { HttpStatusCode } from './enums/HttpStatusCode';
 import { Url } from './enums/Url';
+import _ from 'lodash';
 /**
  * The SearchApp class contains methods to handle the search functionality
  */
