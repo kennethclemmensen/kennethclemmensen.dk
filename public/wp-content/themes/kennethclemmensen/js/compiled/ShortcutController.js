@@ -5,10 +5,12 @@ import { Url } from './enums/Url';
  * The ShortcutController class contains methods to handle shortcuts
  */
 export class ShortcutController {
+    #rxjs;
     /**
      * Initialize a new instance of the ShortcutController class
      */
     constructor() {
+        this.#rxjs = rxjs;
         this.setupKeypressEventListener();
         this.setupKeydownEventListener();
     }
@@ -16,7 +18,8 @@ export class ShortcutController {
      * Setup the keypress event listener
      */
     setupKeypressEventListener() {
-        document.addEventListener(EventType.Keypress, (event) => {
+        const { fromEvent } = this.#rxjs;
+        fromEvent(document, EventType.Keypress).subscribe((event) => {
             if (event.shiftKey) {
                 switch (event.key) {
                     case KeyCode.B:
@@ -45,7 +48,8 @@ export class ShortcutController {
      * Setup the keydown event listener
      */
     setupKeydownEventListener() {
-        document.addEventListener(EventType.Keydown, (event) => {
+        const { fromEvent } = this.#rxjs;
+        fromEvent(document, EventType.Keydown).subscribe((event) => {
             if (event.ctrlKey && event.shiftKey) {
                 switch (event.key) {
                     case KeyCode.F:

@@ -9,17 +9,19 @@ import { Slider } from './Slider';
  */
 class App {
     #body;
+    #rxjs;
     /**
      * Initialize a new instance of the App class
      */
     constructor() {
         this.#body = document.body;
-        const { fromEvent } = rxjs;
+        this.#rxjs = rxjs;
+        const { fromEvent } = this.#rxjs;
         fromEvent(document, EventType.DOMContentLoaded).subscribe(() => {
             this.setupSlider();
             this.setupMobileMenu();
             lightbox.option({
-                'albumLabel': this.#body.dataset.imageText + ' %1 ' + this.#body.dataset.ofText + ' %2'
+                'albumLabel': `${this.#body.dataset.imageText} %1 ${this.#body.dataset.ofText} %2`
             });
             new FilesApp();
             new SearchApp();
@@ -46,7 +48,8 @@ class App {
         const mobileMenuTrigger = document.getElementById('mobile-menu-trigger');
         const mobileMenu = document.getElementById('mobile-menu');
         const showMobileMenuClass = 'show-mobile-menu';
-        mobileMenuTrigger?.addEventListener(EventType.Click, (event) => {
+        const { fromEvent } = this.#rxjs;
+        fromEvent(mobileMenuTrigger, EventType.Click).subscribe((event) => {
             event.preventDefault();
             mobileMenuTrigger?.classList.toggle('header__mobile-menu-trigger--active');
             mobileMenu?.classList.toggle('mobile-menu--active');
@@ -55,7 +58,7 @@ class App {
         });
         const mobileMenuArrows = document.querySelectorAll('.mobile-menu__arrow');
         mobileMenuArrows.forEach((arrow) => {
-            arrow.addEventListener(EventType.Click, (event) => {
+            fromEvent(arrow, EventType.Click).subscribe((event) => {
                 event.preventDefault();
                 arrow.classList.toggle('mobile-menu__arrow--rotated');
                 const subMenu = arrow.parentNode?.parentElement?.getElementsByClassName('sub-menu')[0];

@@ -6,25 +6,25 @@ export type File = {
 	/**
 	 * The file id
 	 */
-	id: number;
+	id: number,
 
 	/**
 	 * The file name
 	 */
-	fileName: string;
+	fileName: string,
 
 	/**
 	 * The url to the file
 	 */
-	url: string;
+	url: string,
 
 	/**
 	 * The file description
 	 */
-	description: string;
+	description: string,
 
 	/**
 	 * The number of downloads
 	 */
-	downloads: number;
-};
+	downloads: number
+}

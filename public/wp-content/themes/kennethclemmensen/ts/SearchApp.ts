@@ -20,6 +20,7 @@ export class SearchApp {
 	 * Setup the search app
 	 */
 	private setupSearchApp(): void {
+		const { fromEvent } = rxjs;
 		const searchApp = {
 			data(): object {
 				return {
@@ -44,10 +45,10 @@ export class SearchApp {
 					}
 					const xhr: XMLHttpRequest = new XMLHttpRequest();
 					xhr.open(HttpMethod.Get, Url.ApiPages + this.searchString, true);
-					xhr.addEventListener(EventType.Load, (): void => {
+					fromEvent(xhr, EventType.Load).subscribe((): void => {
 						this.results = (xhr.status === HttpStatusCode.Ok) ? JSON.parse(xhr.responseText) : [];
 					});
-					xhr.addEventListener(EventType.Error, (): void => {
+					fromEvent(xhr, EventType.Error).subscribe((): void => {
 						this.results = [];
 					});
 					xhr.send();

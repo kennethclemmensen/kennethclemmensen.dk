@@ -7,10 +7,13 @@ import { Url } from './enums/Url';
  */
 export class ShortcutController {
 
+	readonly #rxjs: any;
+
 	/**
 	 * Initialize a new instance of the ShortcutController class
 	 */
 	public constructor() {
+		this.#rxjs = rxjs;
 		this.setupKeypressEventListener();
 		this.setupKeydownEventListener();
 	}
@@ -19,7 +22,8 @@ export class ShortcutController {
 	 * Setup the keypress event listener
 	 */
 	private setupKeypressEventListener(): void {
-		document.addEventListener(EventType.Keypress, (event: KeyboardEvent): void => {
+		const { fromEvent } = this.#rxjs;
+		fromEvent(document, EventType.Keypress).subscribe((event: KeyboardEvent): void => {
 			if(event.shiftKey) {
 				switch(event.key) {
 					case KeyCode.B:
@@ -49,7 +53,8 @@ export class ShortcutController {
 	 * Setup the keydown event listener
 	 */
 	private setupKeydownEventListener(): void {
-		document.addEventListener(EventType.Keydown, (event: KeyboardEvent): void => {
+		const { fromEvent } = this.#rxjs;
+		fromEvent(document, EventType.Keydown).subscribe((event: KeyboardEvent): void => {
 			if(event.ctrlKey && event.shiftKey) {
 				switch(event.key) {
 					case KeyCode.F:

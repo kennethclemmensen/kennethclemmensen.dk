@@ -20,6 +20,7 @@ export class FilesApp {
 	 * Setup the files app
 	 */
 	private setupFilesApp(): void {
+		const { fromEvent } = rxjs;
 		const filesApp = {
 			components: {
 				'files': {
@@ -32,10 +33,10 @@ export class FilesApp {
 					created: function(): void {
 						const xhr: XMLHttpRequest = new XMLHttpRequest();
 						xhr.open(HttpMethod.Get, Url.ApiFiles + this.fileTypes, true);
-						xhr.addEventListener(EventType.Load, (): void => {
+						fromEvent(xhr, EventType.Load).subscribe((): void => {
 							this.files = (xhr.status === HttpStatusCode.Ok) ? JSON.parse(xhr.responseText) : [];
 						});
-						xhr.addEventListener(EventType.Error, (): void => {
+						fromEvent(xhr, EventType.Error).subscribe((): void => {
 							this.files = [];
 						});
 						xhr.send();
@@ -50,7 +51,7 @@ export class FilesApp {
 						updateFileDownloads: (file: File): void => {
 							const xhr: XMLHttpRequest = new XMLHttpRequest();
 							xhr.open(HttpMethod.Put, Url.ApiFileDownloads + file.id, true);
-							xhr.addEventListener(EventType.Load, (): void => {
+							fromEvent(xhr, EventType.Load).subscribe((): void => {
 								if(xhr.status === HttpStatusCode.Ok) file.downloads++;
 							});
 							xhr.send();
