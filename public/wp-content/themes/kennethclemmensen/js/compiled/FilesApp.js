@@ -2,6 +2,7 @@ import { EventType } from './enums/EventType';
 import { HttpMethod } from './enums/HttpMethod';
 import { HttpStatusCode } from './enums/HttpStatusCode';
 import { Url } from './enums/Url';
+import { fromEvent } from 'rxjs';
 /**
  * The FilesApp class contains methods to handle the functionality of the files
  */
@@ -16,7 +17,6 @@ export class FilesApp {
      * Setup the files app
      */
     setupFilesApp() {
-        const { fromEvent } = rxjs;
         const filesApp = {
             components: {
                 'files': {

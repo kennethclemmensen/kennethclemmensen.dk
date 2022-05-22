@@ -3,6 +3,7 @@ import { HttpMethod } from './enums/HttpMethod';
 import { HttpStatusCode } from './enums/HttpStatusCode';
 import { Url } from './enums/Url';
 import { File } from './types/File';
+import { fromEvent } from 'rxjs';
 
 /**
  * The FilesApp class contains methods to handle the functionality of the files
@@ -20,7 +21,6 @@ export class FilesApp {
 	 * Setup the files app
 	 */
 	private setupFilesApp(): void {
-		const { fromEvent } = rxjs;
 		const filesApp = {
 			components: {
 				'files': {

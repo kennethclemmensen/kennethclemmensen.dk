@@ -4,6 +4,7 @@ import { FilesApp } from './FilesApp';
 import { SearchApp } from './SearchApp';
 import { ShortcutController } from './ShortcutController';
 import { Slider } from './Slider';
+import { fromEvent } from 'rxjs';
 
 /**
  * The App class contains methods to handle the functionality of the app
@@ -11,15 +12,12 @@ import { Slider } from './Slider';
 class App {
 
 	readonly #body: HTMLElement;
-	readonly #rxjs: any;
 
 	/**
 	 * Initialize a new instance of the App class
 	 */
 	public constructor() {
 		this.#body = document.body;
-		this.#rxjs = rxjs;
-		const { fromEvent } = this.#rxjs;
 		fromEvent(document, EventType.DOMContentLoaded).subscribe((): void => {
 			this.setupSlider();
 			this.setupMobileMenu();
@@ -51,9 +49,9 @@ class App {
 	 */
 	private setupMobileMenu(): void {
 		const mobileMenuTrigger: HTMLElement | null = document.getElementById('mobile-menu-trigger');
+		if(!mobileMenuTrigger) return;
 		const mobileMenu: HTMLElement | null = document.getElementById('mobile-menu');
 		const showMobileMenuClass: string = 'show-mobile-menu';
-		const { fromEvent } = this.#rxjs;
 		fromEvent(mobileMenuTrigger, EventType.Click).subscribe((event: Event): void => {
 			event.preventDefault();
 			mobileMenuTrigger?.classList.toggle('header__mobile-menu-trigger--active');

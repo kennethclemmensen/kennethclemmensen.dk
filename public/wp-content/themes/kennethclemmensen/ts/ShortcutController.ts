@@ -1,19 +1,17 @@
 import { EventType } from './enums/EventType';
 import { KeyCode } from './enums/KeyCode';
 import { Url } from './enums/Url';
+import { fromEvent } from 'rxjs';
 
 /**
  * The ShortcutController class contains methods to handle shortcuts
  */
 export class ShortcutController {
 
-	readonly #rxjs: any;
-
 	/**
 	 * Initialize a new instance of the ShortcutController class
 	 */
 	public constructor() {
-		this.#rxjs = rxjs;
 		this.setupKeypressEventListener();
 		this.setupKeydownEventListener();
 	}
@@ -22,10 +20,10 @@ export class ShortcutController {
 	 * Setup the keypress event listener
 	 */
 	private setupKeypressEventListener(): void {
-		const { fromEvent } = this.#rxjs;
-		fromEvent(document, EventType.Keypress).subscribe((event: KeyboardEvent): void => {
-			if(event.shiftKey) {
-				switch(event.key) {
+		fromEvent(document, EventType.Keypress).subscribe((event: Event): void => {
+			const e = event as KeyboardEvent;
+			if(e.shiftKey) {
+				switch(e.key) {
 					case KeyCode.B:
 						this.redirectToUrl(Url.ImagesPage);
 						break;
@@ -53,10 +51,10 @@ export class ShortcutController {
 	 * Setup the keydown event listener
 	 */
 	private setupKeydownEventListener(): void {
-		const { fromEvent } = this.#rxjs;
-		fromEvent(document, EventType.Keydown).subscribe((event: KeyboardEvent): void => {
-			if(event.ctrlKey && event.shiftKey) {
-				switch(event.key) {
+		fromEvent(document, EventType.Keydown).subscribe((event: Event): void => {
+			const e = event as KeyboardEvent;
+			if(e.ctrlKey && e.shiftKey) {
+				switch(e.key) {
 					case KeyCode.F:
 						this.redirectToUrl(Url.MoviePage);
 						break;

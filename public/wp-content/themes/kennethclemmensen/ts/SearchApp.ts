@@ -3,6 +3,7 @@ import { HttpMethod } from './enums/HttpMethod';
 import { HttpStatusCode } from './enums/HttpStatusCode';
 import { Url } from './enums/Url';
 import _ from 'lodash';
+import { fromEvent } from 'rxjs';
 
 /**
  * The SearchApp class contains methods to handle the search functionality
@@ -20,7 +21,6 @@ export class SearchApp {
 	 * Setup the search app
 	 */
 	private setupSearchApp(): void {
-		const { fromEvent } = rxjs;
 		const searchApp = {
 			data(): object {
 				return {
