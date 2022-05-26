@@ -4,7 +4,7 @@ import { FilesApp } from './FilesApp';
 import { SearchApp } from './SearchApp';
 import { ShortcutController } from './ShortcutController';
 import { Slider } from './Slider';
-import { fromEvent } from 'rxjs';
+import { fromEvent, scan } from 'rxjs';
 /**
  * The App class contains methods to handle the functionality of the app
  */
@@ -15,11 +15,13 @@ class App {
      */
     constructor() {
         this.#body = document.body;
-        fromEvent(document, EventType.DOMContentLoaded).subscribe(() => {
+        fromEvent(document, EventType.DOMContentLoaded)
+            .pipe(scan((albumLabel) => `${albumLabel}${this.#body.dataset.imageText} %1 ${this.#body.dataset.ofText} %2`, ''))
+            .subscribe((albumLabel) => {
             this.setupSlider();
             this.setupMobileMenu();
             lightbox.option({
-                'albumLabel': `${this.#body.dataset.imageText} %1 ${this.#body.dataset.ofText} %2`
+                'albumLabel': albumLabel
             });
             new FilesApp();
             new SearchApp();
