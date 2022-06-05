@@ -1,6 +1,7 @@
 <?php
 namespace KC\Api;
 
+use KC\Core\Http\HttpMethod;
 use KC\Data\DataManager;
 use KC\Security\Security;
 use \WP_REST_Controller;
@@ -95,7 +96,7 @@ class ApiController extends WP_REST_Controller {
 	private function registerFileDownloadCounterRoute() : void {
 		$fileId = 'fileid';
 		register_rest_route($this->namespace, '/fileDownloads', [
-			'methods' => ['PUT'],
+			'methods' => [HttpMethod::Put->value],
 			'callback' => function(WP_REST_Request $request) use ($fileId) : WP_REST_Response {
 				$this->dataManager->updateFileDownloadCounter($request->get_param($fileId));
 				return new WP_REST_Response();
