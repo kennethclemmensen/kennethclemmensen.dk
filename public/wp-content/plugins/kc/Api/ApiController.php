@@ -38,27 +38,10 @@ class ApiController extends WP_REST_Controller {
 	 */
 	private function registerPagesRoute() : void {
 		$title = 'title';
-		register_rest_route($this->namespace, '/pages/(?P<'.$title.'>[\S]+)', [
-			'methods' => [HttpMethod::Get->value],
-			'callback' => function(WP_REST_Request $request) use ($title) : WP_REST_Response {
-				$pages = $this->dataManager->getPagesByTitle($request->get_param($title));
-				return new WP_REST_Response($pages);
-			},
-			'args' => [
-				$title => [
-					'required' => true,
-					'sanitize_callback' => function(string $value) : string {
-						return Security::sanitizeString($value);
-					},
-					'validate_callback' => function(string $value) : bool {
-						return Security::isValid($value);
-					}
-				]
-			],
-			'permission_callback' => function() : bool {
-				return Security::hasApiAccess();
-			}
-		]);
+		$this->registerRoute('/pages/(?P<'.$title.'>[\S]+)', HttpMethod::Get, function(WP_REST_Request $request) use ($title) : WP_REST_Response {
+			$pages = $this->dataManager->getPagesByTitle($request->get_param($title));
+			return new WP_REST_Response($pages);
+		}, [$title]);
 	}
 
 	/**
@@ -66,27 +49,10 @@ class ApiController extends WP_REST_Controller {
 	 */
 	private function registerFilesRoute() : void {
 		$type = 'type';
-		register_rest_route($this->namespace, '/files', [
-			'methods' => [HttpMethod::Get->value],
-			'callback' => function(WP_REST_Request $request) use ($type) : WP_REST_Response {
-				$fileTypes = explode(',', $request->get_param($type));
-				return new WP_REST_Response($this->dataManager->getFiles($fileTypes));
-			},
-			'args' => [
-				$type => [
-					'required' => true,
-					'sanitize_callback' => function(string $value) : string {
-						return Security::sanitizeString($value);
-					},
-					'validate_callback' => function(string $value) : bool {
-						return Security::isValid($value);
-					}
-				]
-			],
-			'permission_callback' => function() : bool {
-				return Security::hasApiAccess();
-			}
-		]);
+		$this->registerRoute('/files', HttpMethod::Get, function(WP_REST_Request $request) use ($type) : WP_REST_Response {
+			$fileTypes = explode(',', $request->get_param($type));
+			return new WP_REST_Response($this->dataManager->getFiles($fileTypes));
+		}, [$type]);
 	}
 
 	/**
@@ -94,42 +60,19 @@ class ApiController extends WP_REST_Controller {
 	 */
 	private function registerFileDownloadCounterRoute() : void {
 		$fileId = 'fileid';
-		register_rest_route($this->namespace, '/fileDownloads', [
-			'methods' => [HttpMethod::Put->value],
-			'callback' => function(WP_REST_Request $request) use ($fileId) : WP_REST_Response {
-				$this->dataManager->updateFileDownloadCounter($request->get_param($fileId));
-				return new WP_REST_Response();
-			},
-			'args' => [
-				$fileId => [
-					'required' => true,
-					'sanitize_callback' => function(string $value) : string {
-						return Security::sanitizeString($value);
-					},
-					'validate_callback' => function(string $value) : bool {
-						return Security::isValid($value);
-					}
-				]
-			],
-			'permission_callback' => function() : bool {
-				return Security::hasApiAccess();
-			}
-		]);
+		$this->registerRoute('/fileDownloads', HttpMethod::Put, function(WP_REST_Request $request) use ($fileId) : WP_REST_Response {
+			$this->dataManager->updateFileDownloadCounter($request->get_param($fileId));
+			return new WP_REST_Response();
+		}, [$fileId]);
 	}
 
 	/**
 	 * Register the slides route
 	 */
 	private function registerSlidesRoute() : void {
-		register_rest_route($this->namespace, '/slides', [
-			'methods' => [HttpMethod::Get->value],
-			'callback' => function() : WP_REST_Response {
-				return new WP_REST_Response($this->dataManager->getSlides());
-			},
-			'permission_callback' => function() : bool {
-				return Security::hasApiAccess();
-			}
-		]);
+		$this->registerRoute('/slides', HttpMethod::Get, function() : WP_REST_Response {
+			return new WP_REST_Response($this->dataManager->getSlides());
+		});
 	}
 
 	/**
@@ -137,24 +80,36 @@ class ApiController extends WP_REST_Controller {
 	 */
 	private function registerGalleriesRoutes() : void {
 		$route = '/galleries';
-		register_rest_route($this->namespace, $route, [
-			'methods' => [HttpMethod::Get->value],
-			'callback' => function() : WP_REST_Response {
-				return new WP_REST_Response($this->dataManager->getGalleries());
-			},
+		$this->registerRoute($route, HttpMethod::Get, function() : WP_REST_Response {
+			return new WP_REST_Response($this->dataManager->getGalleries());
+		});
+		$id = 'id';
+		$this->registerRoute($route.'/(?P<'.$id.'>[\S]+)', HttpMethod::Get, function(WP_REST_Request $request) use ($id) : WP_REST_Response {
+			$galleryId = $request->get_param($id);
+			return new WP_REST_Response($this->dataManager->getImages($galleryId));
+		}, [$id]);
+	}
+
+	/**
+	 * Register a route
+	 * 
+	 * @param string $route the route to register
+	 * @param HttpMethod $httpMethod the http method
+	 * @param callable $callback the callback
+	 * @param array $parameters the parameters
+	 */
+	private function registerRoute(string $route, HttpMethod $httpMethod, callable $callback, array $parameters = []) : void {
+		$routeOptions = [
+			'methods' => [$httpMethod->value],
+			'callback' => $callback,
 			'permission_callback' => function() : bool {
 				return Security::hasApiAccess();
 			}
-		]);
-		$id = 'id';
-		register_rest_route($this->namespace, $route.'/(?P<'.$id.'>[\S]+)', [
-			'methods' => [HttpMethod::Get->value],
-			'callback' => function(WP_REST_Request $request) use ($id) : WP_REST_Response {
-				$galleryId = $request->get_param($id);
-				return new WP_REST_Response($this->dataManager->getImages($galleryId));
-			},
-			'args' => [
-				$id => [
+		];
+		if(!empty($parameters)) {
+			$parameterOptions = [];
+			foreach($parameters as $parameter) {
+				$parameterOptions[$parameter] = [
 					'required' => true,
 					'sanitize_callback' => function(string $value) : string {
 						return Security::sanitizeString($value);
@@ -162,11 +117,10 @@ class ApiController extends WP_REST_Controller {
 					'validate_callback' => function(string $value) : bool {
 						return Security::isValid($value);
 					}
-				]
-			],
-			'permission_callback' => function() : bool {
-				return Security::hasApiAccess();
+				];
 			}
-		]);
+			$routeOptions['args'] = $parameterOptions;
+		}
+		register_rest_route($this->namespace, $route, $routeOptions);
 	}
 }
