@@ -16,7 +16,7 @@ class App {
     constructor() {
         this.#body = document.body;
         fromEvent(document, EventType.DOMContentLoaded)
-            .pipe(scan((albumLabel) => `${albumLabel}${this.#body.dataset.imageText} %1 ${this.#body.dataset.ofText} %2`, ''))
+            .pipe(scan(() => `${this.#body.dataset.imageText} %1 ${this.#body.dataset.ofText} %2`, ''))
             .subscribe((albumLabel) => {
             this.setupSlider();
             this.setupMobileMenu();
@@ -52,7 +52,7 @@ class App {
         const showMobileMenuClass = 'show-mobile-menu';
         fromEvent(mobileMenuTrigger, EventType.Click).subscribe((event) => {
             event.preventDefault();
-            mobileMenuTrigger?.classList.toggle('header__mobile-menu-trigger--active');
+            mobileMenuTrigger.classList.toggle('header__mobile-menu-trigger--active');
             mobileMenu?.classList.toggle('mobile-menu--active');
             document.documentElement.classList.toggle(showMobileMenuClass);
             this.#body.classList.toggle(showMobileMenuClass);

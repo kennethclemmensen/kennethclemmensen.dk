@@ -19,8 +19,8 @@ class App {
 	public constructor() {
 		this.#body = document.body;
 		fromEvent(document, EventType.DOMContentLoaded)
-		.pipe(scan((albumLabel) => `${albumLabel}${this.#body.dataset.imageText} %1 ${this.#body.dataset.ofText} %2`, ''))
-		.subscribe((albumLabel): void => {
+		.pipe(scan((): string => `${this.#body.dataset.imageText} %1 ${this.#body.dataset.ofText} %2`, ''))
+		.subscribe((albumLabel: string): void => {
 			this.setupSlider();
 			this.setupMobileMenu();
 			lightbox.option({
@@ -56,7 +56,7 @@ class App {
 		const showMobileMenuClass: string = 'show-mobile-menu';
 		fromEvent(mobileMenuTrigger, EventType.Click).subscribe((event: Event): void => {
 			event.preventDefault();
-			mobileMenuTrigger?.classList.toggle('header__mobile-menu-trigger--active');
+			mobileMenuTrigger.classList.toggle('header__mobile-menu-trigger--active');
 			mobileMenu?.classList.toggle('mobile-menu--active');
 			document.documentElement.classList.toggle(showMobileMenuClass);
 			this.#body.classList.toggle(showMobileMenuClass);
