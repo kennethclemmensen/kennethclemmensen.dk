@@ -10,63 +10,29 @@ export class ShortcutController {
      * Initialize a new instance of the ShortcutController class
      */
     constructor() {
-        this.setupKeypressEventListener();
-        this.setupKeydownEventListener();
+        this.setupShortcuts();
     }
     /**
-     * Setup the keypress event listener
+     * Setup the shortcuts
      */
-    setupKeypressEventListener() {
-        fromEvent(document, EventType.Keypress).subscribe((event) => {
-            const e = event;
-            if (e.shiftKey) {
-                switch (e.key) {
-                    case KeyCode.B:
-                        this.redirectToUrl(Url.ImagesPage);
-                        break;
-                    case KeyCode.F:
-                        this.redirectToUrl(Url.Frontpage);
-                        break;
-                    case KeyCode.J:
-                        this.redirectToUrl(Url.JavaPage);
-                        break;
-                    case KeyCode.O:
-                        this.redirectToUrl(Url.AboutMePage);
-                        break;
-                    case KeyCode.P:
-                        this.redirectToUrl(Url.PhpPage);
-                        break;
-                    case KeyCode.S:
-                        this.redirectToUrl(Url.SearchPage);
-                        break;
-                }
-            }
-        });
-    }
-    /**
-     * Setup the keydown event listener
-     */
-    setupKeydownEventListener() {
+    setupShortcuts() {
+        const shortcuts = [
+            { altKey: false, ctrlKey: true, shiftKey: true, keyCode: KeyCode.B, url: Url.ImagesPage },
+            { altKey: false, ctrlKey: true, shiftKey: true, keyCode: KeyCode.F, url: Url.Frontpage },
+            { altKey: false, ctrlKey: true, shiftKey: true, keyCode: KeyCode.J, url: Url.JavaPage },
+            { altKey: false, ctrlKey: true, shiftKey: true, keyCode: KeyCode.O, url: Url.AboutMePage },
+            { altKey: false, ctrlKey: true, shiftKey: true, keyCode: KeyCode.P, url: Url.PhpPage },
+            { altKey: false, ctrlKey: true, shiftKey: true, keyCode: KeyCode.S, url: Url.SearchPage },
+            { altKey: true, ctrlKey: true, shiftKey: true, keyCode: KeyCode.F, url: Url.MoviePage },
+            { altKey: true, ctrlKey: true, shiftKey: true, keyCode: KeyCode.S, url: Url.SitemapPage }
+        ];
         fromEvent(document, EventType.Keydown).subscribe((event) => {
             const e = event;
-            if (e.ctrlKey && e.shiftKey) {
-                switch (e.key) {
-                    case KeyCode.F:
-                        this.redirectToUrl(Url.MoviePage);
-                        break;
-                    case KeyCode.S:
-                        this.redirectToUrl(Url.SitemapPage);
-                        break;
+            for (const shortcut of shortcuts) {
+                if (e.altKey === shortcut.altKey && e.ctrlKey === shortcut.ctrlKey && e.shiftKey === shortcut.shiftKey && e.key === shortcut.keyCode) {
+                    location.href = shortcut.url;
                 }
             }
         });
-    }
-    /**
-     * Redirect to an url
-     *
-     * @param url the url to redirect to
-     */
-    redirectToUrl(url) {
-        location.href = url;
     }
 }

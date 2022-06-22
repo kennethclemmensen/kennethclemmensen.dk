@@ -7,6 +7,5 @@ export var EventType;
     EventType["DOMContentLoaded"] = "DOMContentLoaded";
     EventType["Error"] = "error";
     EventType["Keydown"] = "keydown";
-    EventType["Keypress"] = "keypress";
     EventType["Load"] = "load";
 })(EventType || (EventType = {}));
