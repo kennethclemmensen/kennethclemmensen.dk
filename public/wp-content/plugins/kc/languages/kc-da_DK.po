@@ -12,11 +12,17 @@ msgstr ""
 "Last-Translator: \n"
 "Language: da\n"
 
+msgid "Alt key"
+msgstr "Alt tast"
+
 msgid "Backup"
 msgstr "Backup"
 
 msgid "Create backup"
 msgstr "Opret backup"
+
+msgid "Ctrl key"
+msgstr "Ctrl tast"
 
 msgid "Delete"
 msgstr "Slet"
@@ -69,6 +75,9 @@ msgstr "Billedbredde"
 msgid "Image informations"
 msgstr "Billedeoplysninger"
 
+msgid "Key"
+msgstr "Tast"
+
 msgid "Meta Box is not activated"
 msgstr "Meta Box er ikke aktiveret"
 
@@ -77,6 +86,12 @@ msgstr "Forælderside"
 
 msgid "Settings"
 msgstr "Indstillinger"
+
+msgid "Shift key"
+msgstr "Shift tast"
+
+msgid "Shortcut"
+msgstr "Genvej"
 
 msgid "Slide"
 msgstr "Slide"

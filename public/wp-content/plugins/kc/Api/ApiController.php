@@ -31,6 +31,7 @@ class ApiController extends WP_REST_Controller {
 		$this->registerFileDownloadCounterRoute();
 		$this->registerSlidesRoute();
 		$this->registerGalleriesRoutes();
+		$this->registerShortcutsRoute();
 	}
 
 	/**
@@ -88,6 +89,15 @@ class ApiController extends WP_REST_Controller {
 			$galleryId = $request->get_param($id);
 			return new WP_REST_Response($this->dataManager->getImages($galleryId));
 		}, [$id]);
+	}
+
+	/**
+	 * Register the shortcuts route
+	 */
+	private function registerShortcutsRoute() : void {
+		$this->registerRoute('/shortcuts', HttpMethod::Get, function() : WP_REST_Response {
+			return new WP_REST_Response($this->dataManager->getShortcuts());
+		});
 	}
 
 	/**

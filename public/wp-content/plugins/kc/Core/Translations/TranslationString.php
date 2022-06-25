@@ -5,8 +5,10 @@ namespace KC\Core\Translations;
  * The TranslationString enum defines the translation strings
  */
 enum TranslationString: string {
+	case AltKey = 'Alt key';
 	case Backup = 'Backup';
 	case CreateBackup = 'Create backup';
+	case CtrlKey = 'Ctrl key';
 	case Delete = 'Delete';
 	case Description = 'Description';
 	case Download = 'Download';
@@ -19,6 +21,7 @@ enum TranslationString: string {
 	case Galleries = 'Galleries';
 	case Gallery = 'Gallery';
 	case GalleryInformations = 'Gallery informations';
+	case Key = 'Key';
 	case Image = 'Image';
 	case Images = 'Images';
 	case ImageHeight = 'Image height';
@@ -27,6 +30,8 @@ enum TranslationString: string {
 	case MetaBoxIsNotActivated = 'Meta Box is not activated';
 	case ParentPage = 'Parent page';
 	case Settings = 'Settings';
+	case ShiftKey = 'Shift key';
+	case Shortcut = 'Shortcut';
 	case Slide = 'Slide';
 	case Slides = 'Slides';
 }

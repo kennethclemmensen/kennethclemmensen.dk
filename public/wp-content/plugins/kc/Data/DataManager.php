@@ -191,6 +191,37 @@ class DataManager {
 	}
 
 	/**
+	 * Get the shortcuts
+	 * 
+	 * @return array the shortcuts
+	 */
+	public function getShortcuts() : array {
+		$shortcuts = [];
+		$args = [
+			'post_type' => PostType::Page->value,
+			'posts_per_page' => -1,
+			'meta_key' => FieldName::Key->value,
+			'meta_value' => '',
+			'compare' => 'NOT IN'
+		];
+		$wpQuery = new WP_Query($args);
+		while($wpQuery->have_posts()) {
+			$wpQuery->the_post();
+			$id = get_the_ID();
+			$relativeLink = wp_make_link_relative(get_permalink($id));
+			$url = PluginHelper::removeLastCharacter($relativeLink);
+			$shortcuts[] = [
+				'altKey' => PluginHelper::getFieldValue(FieldName::AltKey, $id) === '1',
+				'ctrlKey' => PluginHelper::getFieldValue(FieldName::CtrlKey, $id) === '1',
+				'shiftKey' => PluginHelper::getFieldValue(FieldName::ShiftKey, $id) === '1',
+				'key' => PluginHelper::getFieldValue(FieldName::Key, $id),
+				'url' => $url
+			];
+		}
+		return $shortcuts;
+	}
+
+	/**
 	 * Get the file url
 	 *
 	 * @param int $fileID the id of the file

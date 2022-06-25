@@ -11,10 +11,16 @@ msgstr ""
 "X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+msgid "Alt key"
+msgstr ""
+
 msgid "Backup"
 msgstr ""
 
 msgid "Create backup"
+msgstr ""
+
+msgid "Ctrl key"
 msgstr ""
 
 msgid "Delete"
@@ -68,6 +74,9 @@ msgstr ""
 msgid "Image informations"
 msgstr ""
 
+msgid "Key"
+msgstr ""
+
 msgid "Meta Box is not activated"
 msgstr ""
 
@@ -75,6 +84,12 @@ msgid "Parent page"
 msgstr ""
 
 msgid "Settings"
+msgstr ""
+
+msgid "Shift key"
+msgstr ""
+
+msgid "Shortcut"
 msgstr ""
 
 msgid "Slide"
