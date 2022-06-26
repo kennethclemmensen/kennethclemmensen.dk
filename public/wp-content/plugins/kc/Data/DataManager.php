@@ -199,24 +199,27 @@ class DataManager {
 		$shortcuts = [];
 		$args = [
 			'post_type' => PostType::Page->value,
-			'posts_per_page' => -1,
-			'meta_key' => FieldName::Key->value,
-			'meta_value' => '',
-			'compare' => 'NOT IN'
+			'posts_per_page' => -1
 		];
 		$wpQuery = new WP_Query($args);
 		while($wpQuery->have_posts()) {
 			$wpQuery->the_post();
 			$id = get_the_ID();
-			$relativeLink = wp_make_link_relative(get_permalink($id));
-			$url = PluginHelper::removeLastCharacter($relativeLink);
-			$shortcuts[] = [
-				'altKey' => PluginHelper::getFieldValue(FieldName::AltKey, $id) === '1',
-				'ctrlKey' => PluginHelper::getFieldValue(FieldName::CtrlKey, $id) === '1',
-				'shiftKey' => PluginHelper::getFieldValue(FieldName::ShiftKey, $id) === '1',
-				'key' => PluginHelper::getFieldValue(FieldName::Key, $id),
-				'url' => $url
-			];
+			$key = PluginHelper::getFieldValue(FieldName::Key, $id);
+			$altKey = PluginHelper::getFieldValue(FieldName::AltKey, $id) === '1';
+			$ctrlKey = PluginHelper::getFieldValue(FieldName::CtrlKey, $id) === '1';
+			$shiftKey = PluginHelper::getFieldValue(FieldName::ShiftKey, $id) === '1';
+			if($key && ($altKey === true || $ctrlKey === true || $shiftKey === true)) {
+				$relativeLink = wp_make_link_relative(get_permalink($id));
+				$url = PluginHelper::removeLastCharacter($relativeLink);
+				$shortcuts[] = [
+					'altKey' => $altKey,
+					'ctrlKey' => $ctrlKey,
+					'shiftKey' => $shiftKey,
+					'key' => $key,
+					'url' => $url
+				];
+			}
 		}
 		return $shortcuts;
 	}
