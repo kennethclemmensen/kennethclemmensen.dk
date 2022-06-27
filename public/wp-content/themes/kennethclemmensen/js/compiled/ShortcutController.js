@@ -22,10 +22,12 @@ export class ShortcutController {
         fromEvent(xhr, EventType.Load).subscribe(() => {
             const shortcuts = (xhr.status === HttpStatusCode.Ok) ? JSON.parse(xhr.responseText) : [];
             fromEvent(document, EventType.Keydown).subscribe((event) => {
+                event.preventDefault();
                 const e = event;
                 for (const shortcut of shortcuts) {
                     if (e.altKey === shortcut.altKey && e.ctrlKey === shortcut.ctrlKey && e.shiftKey === shortcut.shiftKey && e.key === shortcut.key) {
                         location.href = shortcut.url;
+                        break;
                     }
                 }
             });
