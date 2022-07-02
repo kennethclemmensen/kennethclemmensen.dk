@@ -1,9 +1,8 @@
+import { fromEvent } from 'rxjs';
 import { EventType } from './enums/EventType';
 import { HttpMethod } from './enums/HttpMethod';
 import { HttpStatusCode } from './enums/HttpStatusCode';
-import { Url } from './enums/Url';
 import { File } from './types/File';
-import { fromEvent } from 'rxjs';
 
 /**
  * The FilesApp class contains methods to handle the functionality of the files
@@ -21,7 +20,7 @@ export class FilesApp {
 	 * Setup the files app
 	 */
 	private setupFilesApp(): void {
-		const filesApp = {
+		Vue.createApp({
 			components: {
 				'files': {
 					data: (): object => {
@@ -32,7 +31,7 @@ export class FilesApp {
 					},
 					created: function(): void {
 						const xhr: XMLHttpRequest = new XMLHttpRequest();
-						xhr.open(HttpMethod.Get, Url.ApiFiles + this.fileTypes, true);
+						xhr.open(HttpMethod.Get, '/wp-json/kcapi/v1/files?type=' + this.fileTypes, true);
 						fromEvent(xhr, EventType.Load).subscribe((): void => {
 							this.files = (xhr.status === HttpStatusCode.Ok) ? JSON.parse(xhr.responseText) : [];
 						});
@@ -50,7 +49,7 @@ export class FilesApp {
 						},
 						updateFileDownloads: (file: File): void => {
 							const xhr: XMLHttpRequest = new XMLHttpRequest();
-							xhr.open(HttpMethod.Put, Url.ApiFileDownloads + file.id, true);
+							xhr.open(HttpMethod.Put, '/wp-json/kcapi/v1/fileDownloads?fileid=' + file.id, true);
 							fromEvent(xhr, EventType.Load).subscribe((): void => {
 								if(xhr.status === HttpStatusCode.Ok) file.downloads++;
 							});
@@ -94,7 +93,6 @@ export class FilesApp {
 					`
 				}
 			}
-		};
-		Vue.createApp(filesApp).mount('#files-app');
+		}).mount('#files-app');
 	}
 }

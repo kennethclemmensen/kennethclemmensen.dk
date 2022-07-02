@@ -1,9 +1,8 @@
+import _ from 'lodash';
+import { fromEvent } from 'rxjs';
 import { EventType } from './enums/EventType';
 import { HttpMethod } from './enums/HttpMethod';
 import { HttpStatusCode } from './enums/HttpStatusCode';
-import { Url } from './enums/Url';
-import _ from 'lodash';
-import { fromEvent } from 'rxjs';
 
 /**
  * The SearchApp class contains methods to handle the search functionality
@@ -21,7 +20,7 @@ export class SearchApp {
 	 * Setup the search app
 	 */
 	private setupSearchApp(): void {
-		const searchApp = {
+		Vue.createApp({
 			data(): object {
 				return {
 					searchString: '',
@@ -44,7 +43,7 @@ export class SearchApp {
 						return;
 					}
 					const xhr: XMLHttpRequest = new XMLHttpRequest();
-					xhr.open(HttpMethod.Get, Url.ApiPages + this.searchString, true);
+					xhr.open(HttpMethod.Get, '/wp-json/kcapi/v1/pages/' + this.searchString, true);
 					fromEvent(xhr, EventType.Load).subscribe((): void => {
 						this.results = (xhr.status === HttpStatusCode.Ok) ? JSON.parse(xhr.responseText) : [];
 					});
@@ -106,7 +105,6 @@ export class SearchApp {
 					`
 				}
 			}
-		};
-		Vue.createApp(searchApp).mount('#search-app');
+		}).mount('#search-app');
 	}
 }

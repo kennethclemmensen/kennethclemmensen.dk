@@ -1,10 +1,11 @@
+import { fromEvent, scan } from 'rxjs';
 import { EventType } from './enums/EventType';
+import { HttpMethod } from './enums/HttpMethod';
+import { HttpStatusCode } from './enums/HttpStatusCode';
 import { SliderAnimation } from './enums/SliderAnimation';
 import { FilesApp } from './FilesApp';
 import { SearchApp } from './SearchApp';
-import { ShortcutController } from './ShortcutController';
 import { Slider } from './Slider';
-import { fromEvent, scan } from 'rxjs';
 /**
  * The App class contains methods to handle the functionality of the app
  */
@@ -20,12 +21,12 @@ class App {
             .subscribe((albumLabel) => {
             this.setupSlider();
             this.setupMobileMenu();
+            this.setupShortcuts();
             lightbox.option({
-                'albumLabel': albumLabel
+                albumLabel: albumLabel
             });
             new FilesApp();
             new SearchApp();
-            new ShortcutController();
         });
     }
     /**
@@ -66,6 +67,26 @@ class App {
                 subMenu?.classList.toggle('show');
             });
         });
+    }
+    /**
+     * Setup the shortcuts
+     */
+    setupShortcuts() {
+        const xhr = new XMLHttpRequest();
+        xhr.open(HttpMethod.Get, '/wp-json/kcapi/v1/shortcuts/', true);
+        fromEvent(xhr, EventType.Load).subscribe(() => {
+            const shortcuts = (xhr.status === HttpStatusCode.Ok) ? JSON.parse(xhr.responseText) : [];
+            fromEvent(document, EventType.Keydown).subscribe((event) => {
+                const e = event;
+                for (const shortcut of shortcuts) {
+                    if (e.altKey === shortcut.altKey && e.ctrlKey === shortcut.ctrlKey && e.shiftKey === shortcut.shiftKey && e.key === shortcut.key) {
+                        location.href = shortcut.url;
+                        break;
+                    }
+                }
+            });
+        });
+        xhr.send();
     }
 }
 new App();
