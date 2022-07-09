@@ -4,6 +4,7 @@ namespace KC\Shortcut;
 use KC\Core\Filter;
 use KC\Core\Modules\IModule;
 use KC\Core\PostTypes\FieldName;
+use KC\Core\PostTypes\FieldType;
 use KC\Core\PostTypes\PostType;
 use KC\Core\Translations\TranslationString;
 use KC\Utils\PluginHelper;
@@ -33,22 +34,22 @@ class ShortcutModule implements IModule {
 					[
 						'name' => PluginHelper::getTranslatedString(TranslationString::AltKey),
 						'id' => FieldName::AltKey->value,
-						'type' => 'checkbox'
+						'type' => FieldType::CheckBox->value
 					],
 					[
 						'name' => PluginHelper::getTranslatedString(TranslationString::CtrlKey),
 						'id' => FieldName::CtrlKey->value,
-						'type' => 'checkbox'
+						'type' => FieldType::CheckBox->value
 					],
 					[
 						'name' => PluginHelper::getTranslatedString(TranslationString::ShiftKey),
 						'id' => FieldName::ShiftKey->value,
-						'type' => 'checkbox'
+						'type' => FieldType::CheckBox->value
 					],
 					[
 						'name' => PluginHelper::getTranslatedString(TranslationString::Key),
 						'id' => FieldName::Key->value,
-						'type' => 'select',
+						'type' => FieldType::Select->value,
 						'options' => [
 							'A' => 'A',
 							'B' => 'B',

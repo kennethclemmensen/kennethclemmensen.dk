@@ -2,13 +2,15 @@
 namespace KC\Gallery;
 
 use KC\Core\Action;
-use KC\Core\Modules\BaseModule;
-use KC\Core\PostTypes\PostTypeFeature;
-use KC\Core\PostTypes\FieldName;
 use KC\Core\Filter;
 use KC\Core\Images\ImageSize;
+use KC\Core\Modules\BaseModule;
 use KC\Core\Modules\IModule;
+use KC\Core\PostTypes\FieldName;
+use KC\Core\PostTypes\FieldType;
+use KC\Core\PostTypes\Icon;
 use KC\Core\PostTypes\PostType;
+use KC\Core\PostTypes\PostTypeFeature;
 use KC\Core\Translations\TranslationString;
 use KC\Data\DatabaseManager;
 use KC\Gallery\Settings\GallerySettings;
@@ -54,7 +56,7 @@ class GalleryModule extends BaseModule implements IModule {
 				'public' => true,
 				'has_archive' => true,
 				'supports' => [PostTypeFeature::Title->value, PostTypeFeature::Editor->value, PostTypeFeature::Thumbnail->value],
-				'menu_icon' => 'dashicons-format-gallery',
+				'menu_icon' => Icon::Gallery->value,
 				'rewrite' => ['slug' => $this->gallerySettings->getParentPagePath(), 'with_front' => false]
 			]);
 			register_post_type(PostType::Image->value, [
@@ -65,7 +67,7 @@ class GalleryModule extends BaseModule implements IModule {
 				'public' => false,
 				'has_archive' => false,
 				'supports' => [PostTypeFeature::Title->value, PostTypeFeature::Thumbnail->value],
-				'menu_icon' => 'dashicons-format-image',
+				'menu_icon' => Icon::Image->value,
 				'publicly_queryable' => true,
 				'show_ui' => true,
 				'exclude_from_search' => true,
@@ -100,7 +102,7 @@ class GalleryModule extends BaseModule implements IModule {
 					[
 						'name' => PluginHelper::getTranslatedString(TranslationString::ParentPage),
 						'id' => $this->fieldParentPage,
-						'type' => 'select',
+						'type' => FieldType::Select->value,
 						'options' => $this->getAllPosts(PostType::Page)
 					]
 				]
@@ -113,7 +115,7 @@ class GalleryModule extends BaseModule implements IModule {
 					[
 						'name' => PluginHelper::getTranslatedString(TranslationString::Gallery),
 						'id' => FieldName::ImageGallery->value,
-						'type' => 'select',
+						'type' => FieldType::Select->value,
 						'options' => $this->getAllPosts(PostType::Gallery)
 					]
 				]

@@ -2,11 +2,12 @@
 namespace KC\File;
 
 use KC\Core\Action;
-use KC\Core\PostTypes\PostTypeFeature;
-use KC\Core\PostTypes\FieldName;
 use KC\Core\Filter;
 use KC\Core\Modules\IModule;
+use KC\Core\PostTypes\FieldName;
+use KC\Core\PostTypes\FieldType;
 use KC\Core\PostTypes\PostType;
+use KC\Core\PostTypes\PostTypeFeature;
 use KC\Core\Taxonomies\TaxonomyName;
 use KC\Core\Translations\TranslationString;
 use KC\Utils\PluginHelper;
@@ -64,18 +65,18 @@ class FileModule implements IModule {
 					[
 						'name' => PluginHelper::getTranslatedString(TranslationString::Description),
 						'id' => FieldName::FileDescription->value,
-						'type' => 'textarea'
+						'type' => FieldType::TextArea->value
 					],
 					[
 						'name' => PluginHelper::getTranslatedString(TranslationString::File),
 						'id' => FieldName::File->value,
-						'type' => 'file_advanced',
+						'type' => FieldType::File->value,
 						'max_file_uploads' => 1
 					],
 					[
 						'name' => PluginHelper::getTranslatedString(TranslationString::DownloadCounter),
 						'id' => FieldName::FileDownloads->value,
-						'type' => 'number',
+						'type' => FieldType::Number->value,
 						'std' => 0
 					]
 				],

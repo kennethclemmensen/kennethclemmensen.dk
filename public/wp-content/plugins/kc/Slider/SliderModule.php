@@ -2,10 +2,11 @@
 namespace KC\Slider;
 
 use KC\Core\Action;
-use KC\Core\PostTypes\PostTypeFeature;
 use KC\Core\Filter;
 use KC\Core\Modules\IModule;
+use KC\Core\PostTypes\Icon;
 use KC\Core\PostTypes\PostType;
+use KC\Core\PostTypes\PostTypeFeature;
 use KC\Core\Translations\TranslationString;
 use KC\Slider\Settings\SliderSettings;
 use KC\Utils\PluginHelper;
@@ -38,7 +39,7 @@ class SliderModule implements IModule {
 				'public' => false,
 				'has_archive' => false,
 				'supports' => [PostTypeFeature::Title->value, PostTypeFeature::Thumbnail->value],
-				'menu_icon' => 'dashicons-images-alt',
+				'menu_icon' => Icon::Images->value,
 				'publicly_queryable' => true,
 				'show_ui' => true,
 				'exclude_from_search' => true,
