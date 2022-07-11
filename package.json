@@ -25,7 +25,7 @@
     "jquery": "^3.6.0",
     "lightbox2": "^2.11.3",
     "lodash": "^4.17.21",
-    "rxjs": "^7.5.5",
+    "rxjs": "^7.5.6",
     "vue": "^3.2.37"
   },
   "devDependencies": {
