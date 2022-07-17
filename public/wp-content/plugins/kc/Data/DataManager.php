@@ -1,11 +1,11 @@
 <?php
 namespace KC\Data;
 
+use KC\Core\Images\ImageSize;
+use KC\Core\PostTypes\FieldName;
+use KC\Core\PostTypes\PostType;
 use KC\Core\PostTypes\PostTypeFeature;
 use KC\Core\PostTypes\SortingOrder;
-use KC\Core\PostTypes\FieldName;
-use KC\Core\Images\ImageSize;
-use KC\Core\PostTypes\PostType;
 use KC\Core\Taxonomies\TaxonomyName;
 use KC\Security\Security;
 use KC\Utils\PluginHelper;

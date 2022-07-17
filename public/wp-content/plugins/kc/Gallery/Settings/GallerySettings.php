@@ -2,11 +2,11 @@
 namespace KC\Gallery\Settings;
 
 use KC\Core\Action;
-use KC\Core\Users\UserRole;
 use KC\Core\Images\ImageSize;
-use KC\Core\Settings\ISettings;
 use KC\Core\PostTypes\PostType;
+use KC\Core\Settings\ISettings;
 use KC\Core\Translations\TranslationString;
+use KC\Core\Users\UserRole;
 use KC\Data\DataManager;
 use KC\Security\Security;
 use KC\Utils\PluginHelper;

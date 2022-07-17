@@ -2,9 +2,9 @@
 namespace KC\Backup\Settings;
 
 use KC\Core\Action;
-use KC\Core\Users\UserRole;
 use KC\Core\Settings\ISettings;
 use KC\Core\Translations\TranslationString;
+use KC\Core\Users\UserRole;
 use KC\Data\DatabaseManager;
 use KC\Data\FileManager;
 use KC\Utils\PluginHelper;

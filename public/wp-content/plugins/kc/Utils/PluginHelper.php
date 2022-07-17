@@ -1,9 +1,9 @@
 <?php
 namespace KC\Utils;
 
+use KC\Core\Images\ImageSize;
 use KC\Core\PostTypes\FieldName;
 use KC\Core\Translations\TranslationString;
-use KC\Core\Images\ImageSize;
 use KC\Security\Security;
 
 /**

@@ -82,8 +82,8 @@ class GalleryModule extends BaseModule implements IModule {
 	 */
 	private function updatePostParent() : void {
 		add_action(Action::getSavePostAction(PostType::Gallery), function(int $postID) : void {
-			PluginHelper::setFieldValue($_REQUEST[$this->fieldParentPage], $this->fieldParentPage, $postID);
-			$parentPage = PluginHelper::getFieldValue($this->fieldParentPage, $postID);
+			PluginHelper::setFieldValue($_REQUEST[$this->fieldParentPage], FieldName::ParentPage, $postID);
+			$parentPage = PluginHelper::getFieldValue(FieldName::ParentPage, $postID);
 			$dbManager = new DatabaseManager();
 			$dbManager->updatePostParent($postID, $parentPage);
 		});
