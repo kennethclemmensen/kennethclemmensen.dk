@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Yoast SEO - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-07-12 08:41:03+0000\n"
+"PO-Revision-Date: 2022-07-19 11:02:38+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,296 @@ msgstr ""
 "X-Generator: GlotPress/4.0.0-alpha.1\n"
 "Language: da_DK\n"
 "Project-Id-Version: Plugins - Yoast SEO - Stable (latest release)\n"
+
+#. translators: 1: Link start tag to the first-time configuration, 2: Link
+#. closing tag.
+#: src/integrations/admin/first-time-configuration-notice-integration.php:151
+msgid "We noticed that you haven't fully configured Yoast SEO yet. Optimize your SEO settings even further by using our improved %1$s First-time configuration%2$s."
+msgstr "Vi har bemærket, at du ikke har konfigureret Yoast SEO fuldt ud endnu. Optimer dine SEO-indstillinger endnu mere ved at bruge vores forbedrede %1$sførstegangskonfiguration%2$s."
+
+#: src/integrations/admin/first-time-configuration-notice-integration.php:138
+msgid "SEO configuration"
+msgstr "SEO-konfiguration"
+
+#: src/integrations/admin/crawl-settings-integration.php:290
+msgid "By removing Global comments feed, Post comments feeds will be removed too."
+msgstr "Ved at fjerne det globale kommentarfeed fjernes feeds med kommentarer også."
+
+#: src/integrations/admin/crawl-settings-integration.php:191
+msgid "Remove feed links added by WordPress that aren't needed for this site."
+msgstr "Fjern feedlinks tilføjet af WordPress, der ikke er nødvendige for dette websted."
+
+#: src/integrations/admin/crawl-settings-integration.php:191
+msgid "Feed crawl settings"
+msgstr "Indstillinger for crawl af feed"
+
+#: src/integrations/admin/crawl-settings-integration.php:190
+msgid "Remove links added by WordPress to the header and &lt;head&gt;."
+msgstr "Fjern links tilføjet af WordPress til overskriften og &lt;head&gt;."
+
+#: src/integrations/admin/crawl-settings-integration.php:190
+msgid "Basic crawl settings"
+msgstr "Grundlæggende indstillinger for crawl"
+
+#: src/integrations/admin/crawl-settings-integration.php:125
+msgid "Powered by HTTP header"
+msgstr "Drevet af HTTP-header"
+
+#: src/integrations/admin/crawl-settings-integration.php:124
+msgid "Pingback HTTP header"
+msgstr "Pingback HTTP-header"
+
+#: src/integrations/admin/crawl-settings-integration.php:123
+msgid "Emoji scripts"
+msgstr "Emoji-scripts"
+
+#: src/integrations/admin/crawl-settings-integration.php:122
+msgid "Generator tag"
+msgstr "Generator tag"
+
+#: src/integrations/admin/crawl-settings-integration.php:121
+msgid "oEmbed links"
+msgstr "oEmbed links"
+
+#: src/integrations/admin/crawl-settings-integration.php:120
+msgid "RSD / WLW links"
+msgstr "RSD / WLW links"
+
+#: src/integrations/admin/crawl-settings-integration.php:119
+msgid "REST API links"
+msgstr "REST API-links"
+
+#: src/integrations/admin/crawl-settings-integration.php:118
+msgid "Shortlinks"
+msgstr "Kortlinks"
+
+#: src/integrations/admin/crawl-settings-integration.php:114
+msgid "Atom/RDF feeds"
+msgstr "Atom/RDF feeds"
+
+#: src/integrations/admin/crawl-settings-integration.php:113
+msgid "Search results feeds"
+msgstr "Feeds til søgeresultater"
+
+#: src/integrations/admin/crawl-settings-integration.php:112
+msgid "Custom taxonomy feeds"
+msgstr "Brugerdefinerede taksonomifeeds"
+
+#: src/integrations/admin/crawl-settings-integration.php:111
+msgid "Tag feeds"
+msgstr "Tag feeds"
+
+#: src/integrations/admin/crawl-settings-integration.php:110
+msgid "Category feeds"
+msgstr "Kategori feeds"
+
+#: src/integrations/admin/crawl-settings-integration.php:109
+msgid "Post type feeds"
+msgstr "Feeds af indlægstyper"
+
+#: src/integrations/admin/crawl-settings-integration.php:108
+msgid "Post authors feeds"
+msgstr "Indlægsforfattere feeds"
+
+#: src/integrations/admin/crawl-settings-integration.php:106
+msgid "Global comment feeds"
+msgstr "Globale kommentarfeeds"
+
+#: src/integrations/admin/crawl-settings-integration.php:105
+msgid "Global feed"
+msgstr "Globalt feed"
+
+#: src/integrations/admin/crawl-settings-integration.php:107
+msgid "Post comments feeds"
+msgstr "Send kommentarer feeds"
+
+#. translators: %1$s opens the link to the Yoast.com article about Crawl
+#. settings, %2$s closes the link,
+#: admin/views/tabs/network/crawl-settings.php:31
+msgid "%1$sLearn more about crawl settings.%2$s"
+msgstr "%1$sFå flere oplysninger om crawlindstillinger.%2$s"
+
+#. translators: %1$s opens the link to the Yoast.com article about Crawl
+#. settings, %2$s closes the link,
+#: admin/views/tabs/dashboard/crawl-settings.php:29
+msgid "%1$sLearn more about crawl settings and how they could benefit your site.%2$s"
+msgstr "%1$sFå flere oplysninger om crawlindstillinger, og hvordan de kan gavne dit websted. %2$s"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/views/tabs/dashboard/crawl-settings.php:22
+msgid "To make the crawling of your site more efficient and environmental friendly, %1$s allows you to remove URLs (added by WordPress) that might not be needed for your site."
+msgstr "For at gøre gennemsøgningen af dit websted mere effektiv og miljøvenlig giver %1$s dig mulighed for at fjerne webadresser (tilføjet af WordPress), der muligvis ikke er nødvendige for dit websted."
+
+#: admin/views/redirects.php:188
+msgid "No items found."
+msgstr "Ingen emner fundet."
+
+#: admin/views/redirects.php:137
+msgid "All redirect types"
+msgstr "Alle redirect-typer"
+
+#: admin/views/redirects.php:122
+msgid "Add Redirect"
+msgstr "Tilføj viderestilling"
+
+#: admin/views/redirects.php:100 admin/views/redirects.php:165
+#: admin/views/redirects.php:212
+msgid "Old URL"
+msgstr "Gammel URL"
+
+#. translators: 1: opens a link. 2: closes the link.
+#: admin/views/redirects.php:91
+msgid "The redirect type is the HTTP response code sent to the browser telling the browser what type of redirect is served. %1$sLearn more about redirect types%2$s."
+msgstr "Redirect-typen er den HTTP-svarkode, der sendes til browseren for at fortælle den, hvilken slags redirect en får. %1$sLæs mere om redirect-typer%2$s."
+
+#: admin/views/redirects.php:66 admin/views/redirects.php:75
+msgid "301 Moved Permanently"
+msgstr "301 Flyttet permanent"
+
+#: admin/views/redirects.php:59 admin/views/redirects.php:155
+#: admin/views/redirects.php:203
+msgid "Type"
+msgstr "Type"
+
+#: admin/views/redirects.php:50
+msgid "Plain redirects"
+msgstr "Almindelige viderestillinger"
+
+#: admin/views/redirects.php:37
+msgid "Regex Redirects"
+msgstr "Regex-viderestillinger"
+
+#: admin/pages/network.php:28 admin/views/tabs/dashboard/crawl-settings.php:17
+#: admin/views/tabs/network/crawl-settings.php:19
+#: src/integrations/admin/crawl-settings-integration.php:151
+msgid "Crawl settings"
+msgstr "Indstillinger for crawl"
+
+#: src/integrations/admin/first-time-configuration-integration.php:115
+msgid "First-time configuration"
+msgstr "Førstegangskonfiguration"
+
+#. translators: 1: Link start tag to the First time configuration tab in the
+#. General page, 2: Link closing tag.
+#: admin/views/tabs/tool/import-seo.php:99
+msgid "You should finish the %1$sfirst time configuration%2$s to make sure your SEO data has been optimized and you’ve set the essential Yoast SEO settings for your site."
+msgstr "Du skal afslutte %1$sførstegangskonfiguration%2$s for at sikre, at dine SEO-data er optimeret, og du har indstillet de væsentlige Yoast SEO-indstillinger for dit websted."
+
+#: admin/views/tabs/tool/import-seo.php:94
+msgid "Step 4: Go through the first time configuration"
+msgstr "Trin 4: Gennemgå en førstegangskonfiguration"
+
+#: src/services/health-check/ryte-check.php:48
+msgid "Ryte"
+msgstr "Ryte"
+
+#: src/services/health-check/postname-permalink-check.php:48
+msgid "Postname permalink"
+msgstr "Indlægstitel permalink"
+
+#: src/services/health-check/page-comments-check.php:48
+msgid "Page comments"
+msgstr "Sidekommentarer"
+
+#: src/services/health-check/links-table-check.php:48
+msgid "Links table"
+msgstr "Tabel over links"
+
+#: src/services/health-check/curl-check.php:48
+msgid "cURL"
+msgstr "cURL"
+
+#: src/integrations/admin/import-integration.php:218
+msgid "If you already have saved AIOSEO 'Search Appearance' settings and the issue persists, please contact our support team so we can take a closer look."
+msgstr "Hvis du allerede har gemt AIOSEO's indstillinger for \"Søgeudseende\", og problemet fortsætter, bedes du kontakte vores supportteam, så vi kan se nærmere på det."
+
+#: src/integrations/admin/import-integration.php:215
+msgid "If you have never saved any AIOSEO 'Search Appearance' settings, please do that first and run the import again."
+msgstr "Hvis du aldrig har gemt nogen AIOSEO 'Søgeudseende' indstillinger, skal du gøre det først og køre importen igen."
+
+#: src/integrations/admin/import-integration.php:212
+msgid "The AIOSEO import was cancelled because some AIOSEO data is missing. Please try and take the following steps to fix this:"
+msgstr "AIOSEO-importen blev annulleret, fordi der mangler nogle AIOSEO-data. Prøv at foretage følgende trin for at løse dette:"
+
+#: src/exceptions/importing/aioseo-validation-exception.php:17
+msgid "The validation of the AIOSEO data structure has failed."
+msgstr "Valideringen af AIOSEO-datastrukturen er mislykkedes."
+
+#. translators: %s expands to Wincher
+#. translators: %s expands to WordProof
+#: src/integrations/third-party/wincher.php:125
+#: src/integrations/third-party/wordproof-integration-toggle.php:130
+#: src/integrations/third-party/wordproof-integration-toggle.php:152
+msgid "Currently, the %s integration is not available for multisites."
+msgstr "I øjeblikket er %s-integrationen ikke tilgængelig for multisites."
+
+#: src/integrations/admin/import-integration.php:234
+msgid "Cleanup failed with the following error:"
+msgstr "Oprydning mislykkedes med følgende fejl:"
+
+#: src/integrations/admin/import-integration.php:118
+msgid "Note: These settings will overwrite the default settings of Yoast SEO."
+msgstr "Bemærk: Disse indstillinger overskriver standardindstillingerne for Yoast SEO."
+
+#: src/integrations/admin/import-integration.php:114
+#: src/integrations/admin/import-integration.php:124
+msgid "Note: This metadata will only be imported if there is no existing Yoast SEO metadata yet."
+msgstr "Bemærk: Disse metadata importeres kun, hvis der endnu ikke findes nogen Yoast SEO-metadata."
+
+#: src/integrations/admin/import-integration.php:113
+#: src/integrations/admin/import-integration.php:123
+msgid "Post metadata (SEO titles, descriptions, etc.)"
+msgstr "Send metadata (SEO-titler, beskrivelser osv.)"
+
+#. translators: %s: expands to the name of the plugin that is selected to be
+#. imported
+#: src/integrations/admin/import-integration.php:109
+msgid "The import from %s includes:"
+msgstr "Importen fra %s omfatter:"
+
+#: src/integrations/admin/import-integration.php:107
+msgid "Once you're certain that your site is working properly with the imported data from another SEO plugin, you can clean up all the original data from that plugin."
+msgstr "Når du er sikker på, at dit websted fungerer korrekt med de importerede data fra et andet SEO-plugin, kan du rydde op i alle de originale data fra det plugin."
+
+#: src/integrations/admin/import-integration.php:106
+msgid "Please select an SEO plugin below to see what data can be imported."
+msgstr "Vælg et SEO-plugin nedenfor for at se, hvilke data der kan importeres."
+
+#: src/integrations/admin/import-integration.php:105
+msgid "Clean up"
+msgstr "Ryd op"
+
+#: src/integrations/admin/import-integration.php:97
+msgid "After you've imported data from another SEO plugin, please make sure to clean up all the original data from that plugin. (step 5)"
+msgstr "Når du har importeret data fra et andet SEO-plugin, skal du sørge for at rydde op i alle de originale data fra det plugin. (trin 5)"
+
+#: src/integrations/admin/import-integration.php:96
+msgid "Note: "
+msgstr "Note: "
+
+#: src/integrations/admin/import-integration.php:95
+msgid "The cleanup can take a long time depending on your site's size."
+msgstr "Oprydningen kan tage lang tid afhængigt af dit websteds størrelse."
+
+#: src/services/health-check/default-tagline-check.php:48
+msgid "Default tagline"
+msgstr "Standard undertitel"
+
+#: src/integrations/admin/import-integration.php:236
+msgid "Import failed with the following error:"
+msgstr "Importen mislykkedes med følgende fejl:"
+
+#: src/integrations/admin/import-integration.php:99
+msgid "No data found from other SEO plugins."
+msgstr "Ingen data fundet fra andre SEO-plugins."
+
+#: src/integrations/admin/import-integration.php:98
+msgid "Select SEO plugin"
+msgstr "Vælg SEO-plugin"
+
+#: src/integrations/admin/import-integration.php:94
+msgid "The import can take a long time depending on your site's size."
+msgstr "Importen kan tage lang tid afhængigt af dit websteds størrelse."
 
 #: src/integrations/admin/installation-success-integration.php:100
 msgid "Installation Successful"
@@ -78,6 +368,12 @@ msgstr "Adgang til de seneste træningsprogrammer kræver en opdateret version a
 #: src/integrations/admin/workouts-integration.php:200
 msgid "Renew your subscription of %s"
 msgstr "Forny dit abonnement på %s"
+
+#. translators: 1: Link start tag to the first-time configuration, 2: Yoast
+#. SEO, 3: Link closing tag.
+#: src/integrations/admin/first-time-configuration-notice-integration.php:142
+msgid "Get started quickly with the %1$s%2$s First-time configuration%3$s and configure Yoast SEO with the optimal SEO settings for your site!"
+msgstr "Kom hurtigt i gang med %1$s%2$s førstegangskonfigurationen%3$s, og konfigurer Yoast SEO med de optimale SEO-indstillinger for dit websted!"
 
 #: inc/class-wpseo-replace-vars.php:1458
 msgid "Current or first category title"
@@ -930,6 +1226,11 @@ msgstr "%1$s tilbyder et gratis indekserings tjek for %2$s brugere og det viser 
 msgid "Your site can be found by search engines"
 msgstr "Dit websted kan findes af søgemaskiner"
 
+#. translators: %1$s: Expands to 'Ryte', %2$s: Expands to 'Yoast SEO'.
+#: src/services/health-check/ryte-reports.php:146
+msgid "%1$s offers a free indexability check for %2$s users and right now it has trouble determining whether search engines can find your site. This could have several (legitimate) reasons and is not a problem in itself. If this is a live site, it is recommended that you figure out why the %1$s check failed."
+msgstr "%1$s tilbyder en gratis tjek af indekseringsmuligheder til %2$s brugere og lige nu er det svært at afgøre, hvorvidt søgemaskiner kan finde dit websted. Det kan der være mange (legitime) grunde til og er ikke i sig selv et problem. Hvis det er et live websted, så anbefaler vi, at du finder ud af, hvorfor %1$s tjekket mislykkedes."
+
 #. translators: %1$s: Expands to 'Ryte'.
 #: src/services/health-check/ryte-reports.php:74
 msgid "%1$s cannot determine whether your site can be found by search engines"
@@ -1089,9 +1390,18 @@ msgstr "Dine %1$s indstillinger:"
 msgid "Schema"
 msgstr "Skema"
 
+#: admin/views/tabs/social/twitterbox.php:21
+msgid "Twitter uses Open Graph metadata just like Facebook, so be sure to keep the \"Add Open Graph metadata\" setting on the Facebook tab enabled if you want to optimize your site for Twitter."
+msgstr "Twitter bruger Open Graph metadata lige som Facebook, så vær sikker på, at \"Tilføj Open Graph meta data\"-indstillingen på Facebook-fanen er aktiveret, hvis du ønsker at optimere dit websted til Twitter."
+
 #: admin/admin-settings-changed-listener.php:81
 msgid "Settings saved."
 msgstr "Indstillinger gemt."
+
+#. translators: %s: additional message with the submitted invalid value
+#: admin/class-yoast-input-validation.php:167
+msgid "Please check the format of the YouTube URL you entered. %s"
+msgstr "Tjek venligst formatet på den YouTube-URL du har indtastet. %s"
 
 #. translators: %s: additional message with the submitted invalid value
 #: admin/class-yoast-input-validation.php:157
@@ -1107,6 +1417,11 @@ msgstr "Tjek venligst formatet på den Pinterest-URL du har indtastet. %s"
 #: admin/class-yoast-input-validation.php:137
 msgid "Please check the format of the MySpace URL you entered. %s"
 msgstr "Tjek venligst formatet på den MySpace-URL du har indtastet. %s"
+
+#. translators: %s: additional message with the submitted invalid value
+#: admin/class-yoast-input-validation.php:127
+msgid "Please check the format of the LinkedIn URL you entered. %s"
+msgstr "Tjek venligst formatet på den LinkedIn-URL du har indtastet. %s"
 
 #. translators: %s: additional message with the submitted invalid value
 #: admin/class-yoast-input-validation.php:122
@@ -1632,6 +1947,12 @@ msgstr "Vil du gerne tilføje søgeordssynonymer?"
 #: src/deprecated/admin/add-keyword-modal.php:32
 msgid "Would you like to add more than one keyphrase?"
 msgstr "Vil du gerne tilføje flere end et søgeord?"
+
+#. translators: %1$s expands to an opening anchor tag, %2$s expands to a
+#. closing anchor tag.
+#: admin/views/tabs/metas/paper-content/post_type/woocommerce-shop-page.php:15
+msgid "You can edit the SEO metadata for this custom type on the %1$sShop page%2$s."
+msgstr "Du kan redigere SEO-metadataene for denne brugerdefinerede type på %1$sShop-siden%2$s."
 
 #: admin/views/tabs/metas/paper-content/post_type/woocommerce-shop-page.php:10
 msgid "You haven't set a Shop page in your WooCommerce settings. Please do this first."
@@ -2348,6 +2669,10 @@ msgstr "Du kan ikke oprette en %s-fil."
 msgid "More information about %1$s"
 msgstr "Mere information om %1$s"
 
+#: src/integrations/admin/old-configuration-integration.php:39
+msgid "Old Configuration Wizard"
+msgstr "gammel opsætningsguide"
+
 #. translators: %s expands to the extension title
 #: admin/views/licenses.php:151 admin/views/licenses.php:255
 msgid "Manage your %s subscription on MyYoast"
@@ -2467,6 +2792,10 @@ msgstr "Andre fordele, %s giver dig:"
 #: js/dist/externals-components.js:15
 msgid "Cornerstone content"
 msgstr "Hjørnestensindhold"
+
+#: src/integrations/admin/crawl-settings-integration.php:304
+msgid "Upgrade Premium"
+msgstr "Opgradér til Premium"
 
 #: admin/class-premium-upsell-admin-block.php:56 js/dist/block-editor.js:43
 #: js/dist/classic-editor.js:39 js/dist/elementor.js:43
@@ -2988,6 +3317,11 @@ msgstr "Forventede et input bestående af et heltal."
 #: inc/sitemaps/class-sitemaps-cache-validator.php:111
 msgid "Trying to build the sitemap cache key, but the postfix and prefix combination leaves too little room to do this. You are probably requesting a page that is way out of the expected range."
 msgstr "Forsøger at lave en cachenøgle for sitemaps, men kombinationen af postfix og præfix giver for lidt plads til at gøre det. Du har formentlig sendt en forespørgsel om en side, som ligger langt uden for det forventede område."
+
+#: admin/views/redirects.php:32
+#: src/integrations/admin/redirects-integration.php:50
+msgid "Redirects"
+msgstr "Viderestillinger"
 
 #: admin/views/tabs/metas/taxonomies/category-url.php:10
 #: src/integrations/admin/crawl-settings-integration.php:261
@@ -3560,6 +3894,10 @@ msgstr "Dette værktøj gør det muligt hurtigt at ændre vigtige filer i relati
 msgid "File editor"
 msgstr "Fil-editor"
 
+#: admin/pages/tools.php:25
+msgid "Import settings from other SEO plugins and export your settings for re-use on (another) site."
+msgstr "Importér indstillinger fra andre SEO-plugins og eksportér dine indstillinger, så de kan genbruges på denne eller en anden blog."
+
 #: admin/pages/tools.php:24
 msgid "Import and Export"
 msgstr "Import og eksport"
@@ -3832,6 +4170,10 @@ msgstr "For at kunne viderestille og løse dette problem, har du brug for %1$s. 
 #: admin/google_search_console/views/gsc-redirect-nopremium.php:15
 msgid "Creating redirects is a %s feature"
 msgstr "Oprettelse af viderestillinger er en funktion i %s"
+
+#: admin/views/redirects.php:175 admin/views/redirects.php:222
+msgid "New URL"
+msgstr "Ny URL"
 
 #: admin/views/redirects.php:112
 msgid "URL"
