@@ -4,17 +4,17 @@ namespace KC\Gallery\Settings;
 use KC\Core\Action;
 use KC\Core\Images\ImageSize;
 use KC\Core\PostTypes\PostType;
+use KC\Core\Settings\BaseSettings;
 use KC\Core\Settings\ISettings;
 use KC\Core\Translations\TranslationString;
 use KC\Core\Users\UserRole;
 use KC\Data\DataManager;
-use KC\Security\Security;
 use KC\Utils\PluginHelper;
 
 /**
  * The GallerySettings class contains methods to handle the gallery settings
  */
-class GallerySettings implements ISettings {
+class GallerySettings extends BaseSettings implements ISettings {
 
 	private readonly string $settingOptionsName;
 	private readonly array | bool $settingsOption;
@@ -95,9 +95,7 @@ class GallerySettings implements ISettings {
 				</select>
 				<?php
 			}, $this->settingsPageSlug, $sectionID);
-			register_setting($this->settingOptionsName, $this->settingOptionsName, function(array $input) : array {
-				return Security::validateSettingInputs($input);
-			});
+			$this->registerSetting($this->settingOptionsName);
 		});
 	}
 

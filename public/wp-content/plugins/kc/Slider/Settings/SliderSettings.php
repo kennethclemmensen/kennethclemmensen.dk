@@ -4,16 +4,16 @@ namespace KC\Slider\Settings;
 use KC\Core\Action;
 use KC\Core\Images\ImageSize;
 use KC\Core\PostTypes\PostType;
+use KC\Core\Settings\BaseSettings;
 use KC\Core\Settings\ISettings;
 use KC\Core\Translations\TranslationString;
 use KC\Core\Users\UserRole;
-use KC\Security\Security;
 use KC\Utils\PluginHelper;
 
 /**
  * The SliderSettings class contains methods to handle the slider settings
  */
-class SliderSettings implements ISettings {
+class SliderSettings extends BaseSettings implements ISettings {
 
 	private readonly string $settingOptionsName;
 	private readonly array | bool $settingsOption;
@@ -70,9 +70,7 @@ class SliderSettings implements ISettings {
 			add_settings_field($prefix.'slideHeight', PluginHelper::getTranslatedString(TranslationString::ImageHeight), function() : void {
 				echo '<input type="number" name="'.$this->settingOptionsName.'['.$this->slideHeight.']" value="'.$this->getSlideHeight().'" min="1">';
 			}, $this->settingsPageSlug, $sectionID);
-			register_setting($this->settingOptionsName, $this->settingOptionsName, function(array $input) : array {
-				return Security::validateSettingInputs($input);
-			});
+			$this->registerSetting($this->settingOptionsName);
 		});
 	}
 
