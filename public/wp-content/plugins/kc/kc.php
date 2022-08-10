@@ -13,6 +13,7 @@ namespace KC;
 if(!defined('ABSPATH')) wp_die();
 require_once 'Core/Modules/BaseModule.php';
 require_once 'Core/Modules/IModule.php';
+require_once 'Core/Settings/BaseSettings.php';
 require_once 'Core/Settings/ISettings.php';
 $directoryIterator = new \RecursiveDirectoryIterator(__DIR__);
 $recursiveIterator = new \RecursiveIteratorIterator($directoryIterator);
