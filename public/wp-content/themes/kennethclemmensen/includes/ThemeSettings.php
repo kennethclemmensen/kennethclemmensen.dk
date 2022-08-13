@@ -188,9 +188,7 @@ final class ThemeSettings {
 			echo '<input type="url" name="'.$this->contactOptionsName.'['.$this->linkedIn.']" value="'.$this->getLinkedInUrl().'" class="regular-text" required> ';
 			echo '['.$this->linkedInShortcode.']';
 		}, $this->contactPageSlug, $sectionID);
-		register_setting($this->contactOptionsName, $this->contactOptionsName, function(array $input) : array {
-			return $this->validateSettingInputs($input);
-		});
+		$this->registerSetting($this->contactOptionsName);
 	}
 
 	/**
@@ -213,9 +211,7 @@ final class ThemeSettings {
 			$checked = (isset($this->scriptOptions[$this->removeVersionQueryString])) ? $this->scriptOptions[$this->removeVersionQueryString] : '';
 			echo '<input type="checkbox" name="'.$this->scriptOptionsName.'['.$this->removeVersionQueryString.']" '.checked($checked, $this->checkboxCheckedValue, false).' >';
 		}, $this->scriptPageSlug, $sectionID);
-		register_setting($this->scriptOptionsName, $this->scriptOptionsName, function(array $input) : array {
-			return $this->validateSettingInputs($input);
-		});
+		$this->registerSetting($this->scriptOptionsName);
 	}
 
 	/**
@@ -243,9 +239,7 @@ final class ThemeSettings {
 			</select>
 			<?php
 		}, $this->sliderPageSlug, $sectionID);
-		register_setting($this->sliderOptionsName, $this->sliderOptionsName, function(array $input) : array {
-			return $this->validateSettingInputs($input);
-		});
+		$this->registerSetting($this->sliderOptionsName);
 	}
 
 	/**
@@ -272,9 +266,7 @@ final class ThemeSettings {
 			$checked = (isset($this->otherOptions[$this->allowFileEditing])) ? $this->otherOptions[$this->allowFileEditing] : '';
 			echo '<input type="checkbox" name="'.$this->otherOptionsName.'['.$this->allowFileEditing.']" '.checked($checked, $this->checkboxCheckedValue, false).' >';
 		}, $this->otherPageSlug, $sectionID);
-		register_setting($this->otherOptionsName, $this->otherOptionsName, function(array $input) : array {
-			return $this->validateSettingInputs($input);
-		});
+		$this->registerSetting($this->otherOptionsName);
 	}
 
 	/**
@@ -337,6 +329,19 @@ final class ThemeSettings {
 		add_filter('style_loader_src', function(string $src) : string {
 			return ($this->mustVersionQueryStringBeRemoved()) ? $this->removeVersionQueryString($src) : $src;
 		});
+	}
+
+	/**
+	 * Register a setting with a name
+	 * 
+	 * @param string $name the name of the setting
+	 */
+	private function registerSetting(string $name) : void {
+		register_setting($name, $name, [
+			'sanitize_callback' => function(array $input) : array {
+				return $this->validateSettingInputs($input);
+			}
+		]);
 	}
 
 	/**
