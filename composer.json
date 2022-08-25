@@ -5,5 +5,8 @@
     "codeception/module-phpbrowser": "^1.0.3",
     "codeception/module-rest": "^2.0.2",
     "lucatume/wp-browser": "^3.1.6"
+  },
+  "scripts": {
+    "codecept": "codecept run"
   }
 }
