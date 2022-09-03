@@ -646,6 +646,42 @@ class AIOWPSecurity_Utility {
 		}
 		return reset($keys); //Return the first element from the valid values
 	}
+
+	/**
+	 * Get textarea string from array or string.
+	 *
+	 * @param String|Array $vals value to render as textarea val
+	 * @return String value to render in textarea.
+	 */
+	public static function get_textarea_str_val($vals) {
+		if (empty($vals)) {
+			return '';
+		}
+
+		if (is_array($vals)) {
+			return implode("\n", array_filter(array_map('trim', $vals)));
+		}
+
+		return $vals;
+	}
+
+	/**
+	 * Get array from textarea val.
+	 *
+	 * @param String|Array $vals value from textarea val
+	 * @return Array value to from textarea value.
+	 */
+	public static function get_array_from_textarea_val($vals) {
+		if (empty($vals)) {
+			return array();
+		}
+
+		if (is_array($vals)) {
+			return $vals;
+		}
+
+		return array_filter(array_map('trim', explode("\n", $vals)));
+	}
 	
 	/**
 	 * Partially or fully masks a string using '*' to replace original characters

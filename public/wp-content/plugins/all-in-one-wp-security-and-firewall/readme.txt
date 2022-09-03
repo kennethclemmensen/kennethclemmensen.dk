@@ -5,7 +5,7 @@ Tags: security, secure, Anti Virus, antivirus, ban, ban hacker, virus, firewall,
 Requires PHP: 5.6
 Requires at least: 5.0
 Tested up to: 6.0
-Stable tag: 5.0.3
+Stable tag: 5.0.4
 License: GPLv3 or later
 
 A comprehensive, user-friendly, all in one WordPress security and firewall plugin for your site.
@@ -179,12 +179,17 @@ https://www.tipsandtricks-hq.com/wordpress-security-and-firewall-plugin
 
 == Changelog ==
 
+= 5.0.4 - 03/September/2022 =
+
+* FIX: PHP coding warning in latest PHP version when handling email address parameter.
+* TWEAK: Added a constant, AIOS_DISABLE_COOKIE_BRUTE_FORCE_PREVENTION. Define this in your wp-config.php to disable cookie based brute force login prevention.
+
 = 5.0.3 - 02/September/2022 =
 
 * FIX: An empty IP lock notification mail could be sent out after upgrading to the 5.0.0 version.
 * FIX: The PHP file couldn't be loaded via commandline if the rename login page is enabled.
 * FIX: When running WordPress from the command line, the warning Undefined index: REQUEST_METHOD was logged.
-* TWEAK: Import latest TFA module, loading JS less aggressively to avoid potential for conflicts
+* TWEAK: Import latest TFA module, loading JS less aggressively to avoid potential for conflicts.
 
 = 5.0.2 - 02/September/2022 =
 

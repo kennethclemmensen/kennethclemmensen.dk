@@ -158,7 +158,7 @@ class AIOWPSecurity_Filescan_Menu extends AIOWPSecurity_Admin_Menu
             }
 
             // Explode by end-of-line character, then trim and filter empty lines
-            $email_list_array = array_filter(array_map('trim', explode(PHP_EOL, $_POST['aiowps_fcd_scan_email_address'])), 'strlen');
+            $email_list_array = array_filter(array_map('trim', explode('\n', $_POST['aiowps_fcd_scan_email_address'])), 'strlen');
             $errors = array();
             foreach($email_list_array as $key=>$value){
                 $email_sane = sanitize_email($value);
@@ -346,7 +346,7 @@ class AIOWPSecurity_Filescan_Menu extends AIOWPSecurity_Admin_Menu
                 <input id="aiowps_send_fcd_scan_email" name="aiowps_send_fcd_scan_email" type="checkbox"<?php if($aio_wp_security->configs->get_value('aiowps_send_fcd_scan_email')=='1') echo ' checked="checked"'; ?> value="1"/>
                 <label for="aiowps_send_fcd_scan_email" class="description"><?php _e('Check this if you want the system to email you if a file change was detected', 'all-in-one-wp-security-and-firewall'); ?></label>
                 <br />
-                    <textarea name="aiowps_fcd_scan_email_address" id="aiowps_fcd_scan_email_address" rows="5" cols="50"><?php echo htmlspecialchars($aio_wp_security->configs->get_value('aiowps_fcd_scan_email_address')); ?></textarea>
+                    <textarea name="aiowps_fcd_scan_email_address" id="aiowps_fcd_scan_email_address" rows="5" cols="50"><?php echo esc_textarea(wp_unslash(AIOWPSecurity_Utility::get_textarea_str_val($aio_wp_security->configs->get_value('aiowps_fcd_scan_email_address')))); ?></textarea>
                     <br />
                     <span class="description"><?php _e('Enter one or more email addresses on a new line.', 'all-in-one-wp-security-and-firewall'); ?></span>
                 </td>

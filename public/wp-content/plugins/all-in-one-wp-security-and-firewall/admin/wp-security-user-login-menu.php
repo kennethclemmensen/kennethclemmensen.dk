@@ -353,10 +353,7 @@ class AIOWPSecurity_User_Login_Menu extends AIOWPSecurity_Admin_Menu {
                     <input id="aiowps_enable_email_notify" name="aiowps_enable_email_notify" type="checkbox"<?php if($aio_wp_security->configs->get_value('aiowps_enable_email_notify')=='1') echo ' checked="checked"'; ?> value="1"/>
                     <label for="aiowps_enable_email_notify" class="description"><?php _e('Check this if you want to receive an email when someone has been locked out due to maximum failed login attempts', 'all-in-one-wp-security-and-firewall'); ?></span></label>
                     <br />
-                    <?php
-						$aiowps_email_address_list = (array)$aio_wp_security->configs->get_value('aiowps_email_address');
-                    ?>
-                    <textarea id="aiowps_email_address" name="aiowps_email_address" cols="50" rows="5"><?php echo esc_textarea(implode("\n", $aiowps_email_address_list)); ?></textarea><br>
+                    <textarea id="aiowps_email_address" name="aiowps_email_address" cols="50" rows="5"><?php echo esc_textarea(AIOWPSecurity_Utility::get_textarea_str_val($aio_wp_security->configs->get_value('aiowps_email_address'))); ?></textarea><br>
                     <span class="description"><?php _e('Fill in one email address per line.', 'all-in-one-wp-security-and-firewall'); ?></span>
                     <span class="aiowps_more_info_anchor"><span class="aiowps_more_info_toggle_char">+</span><span class="aiowps_more_info_toggle_text"><?php _e('More Info', 'all-in-one-wp-security-and-firewall'); ?></span></span>
                     <div class="aiowps_more_info_body">

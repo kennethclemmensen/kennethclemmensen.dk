@@ -311,7 +311,12 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu
             echo '<p>' . $info_msg . '</p>';
             ?>
         </div>
-        <div class="postbox">
+		<?php
+        if (defined('AIOS_DISABLE_COOKIE_BRUTE_FORCE_PREVENTION') && AIOS_DISABLE_COOKIE_BRUTE_FORCE_PREVENTION) {
+            $aio_wp_security->include_template('notices/cookie-based-brute-force-prevention-disabled.php');
+        }
+        ?>
+		<div class="postbox">
         <h3 class="hndle"><label for="title"><?php _e('Cookie Based Brute Force Login Prevention', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
         <div class="inside">
         <?php

@@ -54,7 +54,7 @@ class AIOWPSecurity_General_Init_Tasks {
 		}
 
 		// For the cookie based brute force prevention feature
-		if ($aio_wp_security->configs->get_value('aiowps_enable_brute_force_attack_prevention') == 1) {
+		if ($aio_wp_security->should_cookie_based_brute_force_prvent()) {
 			$bfcf_secret_word = $aio_wp_security->configs->get_value('aiowps_brute_force_secret_word');
 			$login_page_slug = $aio_wp_security->configs->get_value('aiowps_login_page_slug');
 			if (isset($_GET[$bfcf_secret_word])) {

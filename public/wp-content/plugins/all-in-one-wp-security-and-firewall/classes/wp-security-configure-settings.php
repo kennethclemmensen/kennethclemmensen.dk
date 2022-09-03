@@ -12,8 +12,8 @@ class AIOWPSecurity_Configure_Settings {
 	 */
 	public static function set_default_settings() {
 		global $aio_wp_security;
-		$blog_email_address = array();
-		$blog_email_address[] = get_bloginfo('admin_email'); //Get the blog admin email address - we will use as the default value
+
+		$blog_email_address = get_bloginfo('admin_email'); //Get the blog admin email address - we will use as the default value
 				
 		//Debug
 		$aio_wp_security->configs->set_value('aiowps_enable_debug', '');//Checkbox
@@ -176,8 +176,7 @@ class AIOWPSecurity_Configure_Settings {
 	
 	public static function add_option_values() {
 		global $aio_wp_security;
-		$blog_email_address = array();
-		$blog_email_address[] = get_bloginfo('admin_email'); //Get the blog admin email address - we will use as the default value
+		$blog_email_address = get_bloginfo('admin_email'); //Get the blog admin email address - we will use as the default value
 
 		//Debug
 		$aio_wp_security->configs->add_value('aiowps_enable_debug', '');//Checkbox

@@ -385,7 +385,10 @@ class AIOWPSecurity_User_Login {
 		if (0 != count($lockout_ips_list)) {
 			$email_notification_enabled = $aio_wp_security->configs->get_value('aiowps_enable_email_notify');
 			if (1 == $email_notification_enabled) {
-				$to_email_address = $aio_wp_security->configs->get_value('aiowps_email_address');
+				$to_email_address = AIOWPSecurity_Utility::get_array_from_textarea_val($aio_wp_security->configs->get_value('aiowps_email_address'));
+				if (empty($to_email_address)) {
+					$to_email_address = array(get_site_option('admin_email'));
+				}
 				$subject = '['.get_option('home').'] '. __('Site Lockout Notification', 'all-in-one-wp-security-and-firewall');
 				$email_msg = __('Lockdown events had occurred due to too many failed login attempts or invalid username:', 'all-in-one-wp-security-and-firewall')."\n\n";
 			

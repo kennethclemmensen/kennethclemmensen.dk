@@ -8,7 +8,7 @@ if (!class_exists('AIO_WP_Security')) {
 
 	class AIO_WP_Security {
 
-		public $version = '5.0.3';
+		public $version = '5.0.4';
 
 		public $db_version = '1.9.2';
 
@@ -729,6 +729,19 @@ if (!class_exists('AIO_WP_Security')) {
 		 */
 		public function is_login_lockdown_by_const() {
 			return defined('AIOWPS_DISABLE_LOGIN_LOCKDOWN') && AIOWPS_DISABLE_LOGIN_LOCKDOWN;
+		}
+
+		/**
+		 * Check whether the cookie-based brute force attack is prevented or not.
+		 *
+		 * @return Boolean True if the cookie-based brute force attack is prevented, otherwise false.
+		 */
+		public function should_cookie_based_brute_force_prvent() {
+			if (defined('AIOS_DISABLE_COOKIE_BRUTE_FORCE_PREVENTION') && 'AIOS_DISABLE_COOKIE_BRUTE_FORCE_PREVENTION') {
+				return false;
+			}
+
+			return $this->configs->get_value('aiowps_enable_brute_force_attack_prevention');
 		}
 
 	} // End of class
