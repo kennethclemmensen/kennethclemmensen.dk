@@ -190,8 +190,8 @@ class AIOWPSecurity_Process_Renamed_Login_Page {
 
 		$parsed_url_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 		
-		// for `wp plugin list` it will be empty so showing Not available isntead plugin list.
-		if (empty($parsed_url_path) && !defined('WP_CLI')) {
+		// for `wp plugin list` it will be empty so showing Not available instead plugin list.
+		if (empty($parsed_url_path) && !defined('WP_CLI') && "cli" != PHP_SAPI) {
 			do_action('aiowps_before_wp_die_renamed_login');
 			wp_die(__('Not available.', 'all-in-one-wp-security-and-firewall'), 403);
 		}

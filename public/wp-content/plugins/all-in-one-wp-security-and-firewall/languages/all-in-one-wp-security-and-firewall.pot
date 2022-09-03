@@ -36,7 +36,7 @@ msgstr ""
 msgid "Enjoyed %1$s? Please leave us a %2$s rating. We really appreciate your support!"
 msgstr ""
 
-#: src/admin/wp-security-admin-init.php:402, src/admin/wp-security-admin-init.php:402, src/classes/wp-security-two-factor-login.php:50, src/classes/wp-security-two-factor-login.php:50
+#: src/admin/wp-security-admin-init.php:402, src/admin/wp-security-admin-init.php:402, src/classes/wp-security-two-factor-login.php:96, src/classes/wp-security-two-factor-login.php:96
 msgid "WP Security"
 msgstr ""
 
@@ -4724,19 +4724,19 @@ msgstr ""
 msgid "Not available."
 msgstr ""
 
-#: src/classes/wp-security-two-factor-login.php:30
+#: src/classes/wp-security-two-factor-login.php:33
 msgid "Two Factor Authentication - Admin Settings"
 msgstr ""
 
-#: src/classes/wp-security-two-factor-login.php:52, src/classes/wp-security-two-factor-login.php:52
+#: src/classes/wp-security-two-factor-login.php:98, src/classes/wp-security-two-factor-login.php:98
 msgid "Two Factor Auth"
 msgstr ""
 
-#: src/classes/wp-security-two-factor-login.php:98
+#: src/classes/wp-security-two-factor-login.php:154
 msgid "PHP OpenSSL or mcrypt module required"
 msgstr ""
 
-#: src/classes/wp-security-two-factor-login.php:98
+#: src/classes/wp-security-two-factor-login.php:154
 msgid "The All In One WP Security plugin's Two Factor Authentication module requires either the PHP openssl (preferred) or mcrypt module to be installed. Please ask your web hosting company to install one of them."
 msgstr ""
 
@@ -4898,6 +4898,18 @@ msgstr ""
 
 #: src/other-includes/wp-security-unlock-request.php:108
 msgid "Send Unlock Request"
+msgstr ""
+
+#: src/templates/admin/incompatible-plugin.php:6
+msgid "Two Factor Authentication"
+msgstr ""
+
+#: src/templates/admin/incompatible-plugin.php:10
+msgid "Two Factor Authentication currently disabled"
+msgstr ""
+
+#: src/templates/admin/incompatible-plugin.php:12, src/templates/admin/incompatible-plugin.php:16
+msgid "Two factor authentication in All In One WP Security is currently disabled because the incompatible plugin %s is active."
 msgstr ""
 
 #: src/templates/automated-database-backup.php:4

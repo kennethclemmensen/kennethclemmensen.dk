@@ -533,7 +533,7 @@ class AIOWPSecurity_User_Login {
 			if (is_user_logged_in()) {
 				$current_user = wp_get_current_user();
 				$user_id = $current_user->ID;
-				$current_time = current_time('mysql');
+				$current_time = current_time('mysql', true);
 				$login_time = $this->get_wp_user_aiowps_last_login_time($user_id);
 				if (empty($login_time)) {
 					return;

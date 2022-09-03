@@ -47,7 +47,7 @@ class Rule_Request_Method_6g extends Rule {
 	 * @return boolean
 	 */
 	public function is_satisfied() {
-		return in_array(strtoupper($_SERVER['REQUEST_METHOD']), $this->blocked_methods);
+		return isset($_SERVER['REQUEST_METHOD']) && in_array(strtoupper($_SERVER['REQUEST_METHOD']), $this->blocked_methods);
 	}
 
 }

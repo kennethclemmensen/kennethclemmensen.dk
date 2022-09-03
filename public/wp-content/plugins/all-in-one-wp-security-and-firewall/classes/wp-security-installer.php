@@ -82,7 +82,7 @@ class AIOWPSecurity_Installer {
 		failed_login_ip varchar(100) NOT NULL DEFAULT '',
 		lock_reason varchar(128) NOT NULL DEFAULT '',
 		unlock_key varchar(128) NOT NULL DEFAULT '',
-		is_lockout_email_sent tinyint(1) NOT NULL DEFAULT '0',
+		is_lockout_email_sent tinyint(1) NOT NULL DEFAULT '1',
 		backtrace_log text NOT NULL DEFAULT '',
 		PRIMARY KEY  (id)
 		)" . $charset_collate . ";";

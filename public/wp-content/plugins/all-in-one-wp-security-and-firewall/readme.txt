@@ -5,7 +5,7 @@ Tags: security, secure, Anti Virus, antivirus, ban, ban hacker, virus, firewall,
 Requires PHP: 5.6
 Requires at least: 5.0
 Tested up to: 6.0
-Stable tag: 5.0.0
+Stable tag: 5.0.3
 License: GPLv3 or later
 
 A comprehensive, user-friendly, all in one WordPress security and firewall plugin for your site.
@@ -177,12 +177,21 @@ https://www.tipsandtricks-hq.com/wordpress-security-and-firewall-plugin
 Check the following page for F.A.Q (see the faq section):
 https://www.tipsandtricks-hq.com/wordpress-security-and-firewall-plugin
 
-== Upgrade Notice ==
-None
-
 == Changelog ==
 
-= 5.0.0 - 24/August/2022 =
+= 5.0.3 - 02/September/2022 =
+
+* FIX: An empty IP lock notification mail could be sent out after upgrading to the 5.0.0 version.
+* FIX: The PHP file couldn't be loaded via commandline if the rename login page is enabled.
+* FIX: When running WordPress from the command line, the warning Undefined index: REQUEST_METHOD was logged.
+* TWEAK: Import latest TFA module, loading JS less aggressively to avoid potential for conflicts
+
+= 5.0.2 - 02/September/2022 =
+
+* FIX: The user can't login if the user set forced logout and the site's timezone is different than UTC.
+* FIX: Avoid an incompatibility with Wordfence Login Security by not loading our TFA module if that plugin is active
+
+= 5.0.0 - 01/September/2022 =
 
 * FEATURE: Two-Factor Authentication (2FA) functionality & related settings.
 * FEATURE: Set up a mechanism to load the firewall PHP file early.
@@ -1018,4 +1027,4 @@ those who want to enable the basic firewall but do not have "AllowOverride" opti
 
 
 == Upgrade Notice ==
-* 5.0.0: New features such as a PHP-based firewall, Two Factor Authentication, and WHOIS lookup have been added. It contains various fixes and tweaks. A recommended update for all.
+* 5.0.2: New features such as a PHP-based firewall, Two Factor Authentication, and WHOIS lookup have been added. It contains various fixes and tweaks. A recommended update for all.

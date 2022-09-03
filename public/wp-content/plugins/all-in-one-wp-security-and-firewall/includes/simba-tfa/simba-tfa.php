@@ -1147,6 +1147,9 @@ class Simba_Two_Factor_Authentication {
 	 * Called not only upon the WP action login_enqueue_scripts, but potentially upon the action 'init' and various others from other plugins too. It can handle being called multiple times.
 	 */
 	public function login_enqueue_scripts() {
+		if (!$this->should_enqueue_login_scripts()) {
+			return;
+		}
 
 		if (isset($_GET['action']) && 'logout ' != $_GET['action'] && 'login' != $_GET['action']) return;
 
@@ -1154,7 +1157,7 @@ class Simba_Two_Factor_Authentication {
 		if ($already_done) return;
 		$already_done = true;
 
-		// Prevent cacheing when in debug mode
+		// Prevent caching when in debug mode
 		$script_ver = (defined('WP_DEBUG') && WP_DEBUG) ? time() : filemtime($this->includes_dir().'/tfa.js');
 
 		wp_enqueue_script('tfa-ajax-request', $this->includes_url().'/tfa.js', array('jquery'), $script_ver);
@@ -1187,6 +1190,31 @@ class Simba_Two_Factor_Authentication {
 		wp_localize_script('tfa-ajax-request', 'simba_tfasettings', $localize);
 
 	}
+
+	/**
+	 * Check whether TFA login scripts should be enqueued or not.
+	 *
+	 * @return boolean True if the TFA login script should be enqueued, otherwise false.
+	 */
+	private function should_enqueue_login_scripts() {
+		if (defined('TWO_FACTOR_DISABLE') && TWO_FACTOR_DISABLE) {
+			return apply_filters('simbatfa_enqueue_login_scripts', false);
+		}
+
+		global $wpdb;
+		$sql = $wpdb->prepare('SELECT COUNT(user_id) FROM ' . $wpdb->usermeta . ' WHERE meta_key = %s AND meta_value = %d LIMIT 1', 'tfa_enable_tfa', 1);
+		$count_user_id = $wpdb->get_var($sql);
+
+		if (is_null($count_user_id)) { // Error in query.
+			return apply_filters('simbatfa_enqueue_login_scripts', true);
+		} elseif ($count_user_id > 0) { // A user exists with TFA enabled.
+			return apply_filters('simbatfa_enqueue_login_scripts', true);
+		}
+
+		// No user exists with TFA enabled.
+		return apply_filters('simbatfa_enqueue_login_scripts', false);
+	}
+
 
 	/**
 	 * Return or output view content

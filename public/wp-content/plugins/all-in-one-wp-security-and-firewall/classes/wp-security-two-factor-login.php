@@ -10,7 +10,6 @@ if (!class_exists('Simba_Two_Factor_Authentication')) require AIO_WP_SECURITY_PA
  */
 class AIO_WP_Security_Simba_Two_Factor_Authentication_Plugin extends Simba_Two_Factor_Authentication {
 
-
 	/**
 	 * Simba_Two_Factor_Authentication_Plugin Constructor
 	 *
@@ -19,11 +18,15 @@ class AIO_WP_Security_Simba_Two_Factor_Authentication_Plugin extends Simba_Two_F
 	 */
 	public function __construct() {
 
+		add_filter('aiowpsecurity_setting_tabs', array($this, 'add_two_factor_setting_tab'));
+
+		if (false !== $this->is_incompatible_plugin_active()) return;
+
 		if (!function_exists('mcrypt_get_iv_size') && !function_exists('openssl_cipher_iv_length')) {
 			add_action('all_admin_notices', array($this, 'admin_notice_missing_mcrypt_and_openssl'));
 			return;
 		}
-		add_filter('aiowpsecurity_setting_tabs', array($this, 'add_two_factor_setting_tab'));
+		
 		add_action('admin_menu', array($this, 'menu_entry_for_user'), 30);
 		$this->version = AIO_WP_SECURITY_VERSION;
 		$this->set_user_settings_page_slug(AIOWPSEC_TWO_FACTOR_AUTH_MENU_SLUG);
@@ -34,6 +37,49 @@ class AIO_WP_Security_Simba_Two_Factor_Authentication_Plugin extends Simba_Two_F
 		$this->set_premium_version_url('https://aiowpsecurity.com');
 		$this->set_faq_url('https://wordpress.org/plugins/all-in-one-wp-security-and-firewall/#faq');
 		parent::__construct();
+	}
+	
+	/**
+	 * Detect plugins that cause us to self-deactivate
+	 *
+	 * @return Boolean|String
+	 */
+	private function is_incompatible_plugin_active() {
+		
+		if (defined('WORDFENCE_LS_VERSION')) return 'Wordfence Login Security';
+				
+		$active_plugins = $this->get_active_plugins();
+		foreach ($active_plugins as $plugin_file_rel_to_plugins_dir) {
+			$temp_plugin_file_name = substr($plugin_file_rel_to_plugins_dir, strpos($plugin_file_rel_to_plugins_dir, '/') + 1);
+			if ('wordfence-login-security.php' == $temp_plugin_file_name) {
+				return 'Wordfence Login Security';
+			}
+			if ('wordfence.php' == $temp_plugin_file_name) {
+				return 'Wordfence';
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * Gets an array of plugins active on either the current site, or site-wide
+	 *
+	 * @return Array - a list of plugin paths (relative to the plugin directory)
+	 */
+	private function get_active_plugins() {
+		
+		// Gets all active plugins on the current site
+		$active_plugins = get_option('active_plugins');
+		
+		if (is_multisite()) {
+			$network_active_plugins = get_site_option('active_sitewide_plugins');
+			if (!empty($network_active_plugins)) {
+				$network_active_plugins = array_keys($network_active_plugins);
+				$active_plugins = array_merge($active_plugins, $network_active_plugins);
+			}
+		}
+		
+		return $active_plugins;
 	}
 	
 	/**
@@ -61,6 +107,7 @@ class AIO_WP_Security_Simba_Two_Factor_Authentication_Plugin extends Simba_Two_F
 	 */
 	public function add_two_factor_setting_tab($tabs = array()) {
 		if (!current_user_can(AIOWPSEC_MANAGEMENT_PERMISSION)) return;
+
 		$tabs['two-factor-authentication'] = array(
 			'title' => __('Two Factor Authentication', 'all-in-one-wp-security-and-firewall-premium'),
 			'render_callback' => array($this, 'render_two_factor_authentication'),
@@ -73,6 +120,15 @@ class AIO_WP_Security_Simba_Two_Factor_Authentication_Plugin extends Simba_Two_F
 	 * Display the Two Factor Authentication tab & handle the operations
 	 */
 	public function render_two_factor_authentication() {
+		
+		if (false !== ($plugin = $this->is_incompatible_plugin_active())) { // phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged,Squiz.PHP.DisallowMultipleAssignments.FoundInControlStructure
+			global $aio_wp_security;
+			$aio_wp_security->include_template('admin/incompatible-plugin.php', false, array(
+				'incompatible_plugin' => $plugin,
+			));
+			return;
+		}
+		
 		$this->get_totp_controller()->potentially_port_private_keys();
 		$this->show_admin_settings_page();
 	}
