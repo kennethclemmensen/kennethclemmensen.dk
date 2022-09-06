@@ -21,7 +21,7 @@ jobs:
       uses: actions/checkout@v3.0.2
 
     - name: Sync files
-      uses: SamKirkland/FTP-Deploy-Action@4.3.1
+      uses: SamKirkland/FTP-Deploy-Action@4.3.2
       with:
         server: ${{ secrets.server }}
         username: ${{ secrets.username }}
