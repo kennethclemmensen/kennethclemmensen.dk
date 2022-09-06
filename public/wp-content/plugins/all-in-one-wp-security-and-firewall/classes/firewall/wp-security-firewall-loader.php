@@ -27,6 +27,13 @@ class Loader {
 
 		try {
 
+			/**
+			 * The preloader file should not be directly accessed.
+			 * It should only be loaded via the bootstrap file or in a WordPress context
+			 */
+			if ($this->is_preloader_directly_accessed()) return;
+			
+
 			$this->init_includes();
 			$this->init_services();
 	
@@ -46,6 +53,16 @@ class Loader {
 			$this->log_message($e->getMessage());
 		}
 
+	}
+
+
+	/**
+	 * Detects whether the preloader file (wp-security-firewall.php) was directly accessed
+	 *
+	 * @return boolean
+	 */
+	public function is_preloader_directly_accessed() {
+		return (1 === preg_match('/wp-security-firewall\.php$/', get_included_files()[0]));
 	}
 
 	/**

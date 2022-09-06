@@ -8,9 +8,9 @@ if (!class_exists('AIO_WP_Security')) {
 
 	class AIO_WP_Security {
 
-		public $version = '5.0.4';
+		public $version = '5.0.5';
 
-		public $db_version = '1.9.2';
+		public $db_version = '1.9.3';
 
 		public $plugin_url;
 
@@ -416,81 +416,12 @@ if (!class_exists('AIO_WP_Security')) {
 				if (get_option('aiowpsec_db_version') != AIO_WP_SECURITY_DB_VERSION) {
 					require_once(AIO_WP_SECURITY_PATH.'/classes/wp-security-installer.php');
 					AIOWPSecurity_Installer::run_installer();
-					$this->upgrade_aio_firewall();
 					AIOWPSecurity_Installer::set_cron_tasks_upon_activation();
+					AIOWPSecurity_Utility_Htaccess::write_to_htaccess();
 				}
 			}
 		}
 
-
-		/**
-		 * Upgrades .htaccess firewall to PHP firewall
-		 *
-		 * @return void
-		 */
-		public function upgrade_aio_firewall() {
-
-			$htpath = path_join(get_home_path(), '.htaccess');
-
-			clearstatcache();
-			if (!file_exists($htpath)) {
-				return;
-			}
-
-			$contents = file_get_contents($htpath);
-
-			if (false === $contents) {
-				return;
-			}
-
-			//Blacklist IPs get merged with 6G firewall directives if enabled together, we need to separate them (if present) for the upgrade.
-			$replacement_content = "";
-			$is_blacklist_merged = false;
-			if (preg_match('/#AIOWPS_IP_BLACKLIST_2_3_START(.*?)#AIOWPS_IP_BLACKLIST_2_3_END/sm', $contents, $matches23)) {
-				$is_blacklist_merged = true;
-				$replacement_content .= "<IfModule !mod_authz_core.c>\n";
-				$replacement_content .= "Order allow,deny\n";
-				$replacement_content .= "Allow from all\n";
-				$replacement_content .= trim($matches23[1])."\n";
-				$replacement_content .= "</IfModule>\n";
-			}
-			if (preg_match('/#AIOWPS_IP_BLACKLIST_2_4_START(.*?)#AIOWPS_IP_BLACKLIST_2_4_END/sm', $contents, $matches24)) {
-				$is_blacklist_merged = true;
-				$replacement_content .= "<IfModule mod_authz_core.c>\n";
-				$replacement_content .= "<RequireAll>\n";
-				$replacement_content .= "Require all granted\n";
-				$replacement_content .= trim($matches24[1])."\n";
-				$replacement_content .= "</RequireAll>\n";
-				$replacement_content .= "</IfModule>\n";
-			}
-			//Encapsulate the separated blacklist in its header and footer
-			if ($is_blacklist_merged) {
-				$replacement_content = "#AIOWPS_IP_BLACKLIST_START\n".$replacement_content."#AIOWPS_IP_BLACKLIST_END";
-			}
-
-			$removed = 0;
-			$contents = preg_replace('/#AIOWPS_SIX_G_BLACKLIST_START(.*?)#AIOWPS_SIX_G_BLACKLIST_END/ms', $replacement_content, $contents, -1, $removed);
-
-			if ($removed > 0) {
-				
-				include_once(AIO_WP_SECURITY_PATH.'/classes/firewall/libs/wp-security-firewall-config.php');
-				$rules_path = AIOWPSecurity_Utility_Firewall::get_firewall_rules_path();
-				
-				if (false !== file_put_contents($htpath, $contents, LOCK_EX)) {
-					
-					$config = new \AIOWPS\Firewall\Config($rules_path . 'settings');
-					
-					//Enable all the 6G firewall settings
-					$config->set_value('aiowps_6g_block_request_methods', AIOS_Abstracted_Ids::get_firewall_block_request_methods());
-					$config->set_value('aiowps_6g_block_referrers', true);
-					$config->set_value('aiowps_6g_block_query', true);
-					$config->set_value('aiowps_6g_block_request', true);
-					$config->set_value('aiowps_6g_block_agents', true);
-
-				}
-
-			}
-		}
 
 		/**
 		 * Loads our firewall
