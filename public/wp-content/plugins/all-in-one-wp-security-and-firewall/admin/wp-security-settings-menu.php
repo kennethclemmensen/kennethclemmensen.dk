@@ -592,7 +592,7 @@ class AIOWPSecurity_Settings_Menu extends AIOWPSecurity_Admin_Menu
                 <th scope="row"><?php _e('Delete database tables', 'all-in-one-wp-security-and-firewall')?>:</th>
                 <td>
                 <input id="aiowps_on_uninstall_delete_db_tables" name="aiowps_on_uninstall_delete_db_tables" type="checkbox"<?php if($aio_wp_security->configs->get_value('aiowps_on_uninstall_delete_db_tables')=='1') echo ' checked="checked"'; ?> value="1"/>
-                <label for="aiowps_on_uninstall_delete_db_tables" class="description"><?php _e('Check this if you want to remove database tables when the plugin is deactivated.', 'all-in-one-wp-security-and-firewall'); ?></label>
+                <label for="aiowps_on_uninstall_delete_db_tables" class="description"><?php _e('Check this if you want to remove database tables when the plugin is uninstalled.', 'all-in-one-wp-security-and-firewall'); ?></label>
                 </td>
             </tr>
             <tr valign="top">

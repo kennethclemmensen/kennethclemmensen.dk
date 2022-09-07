@@ -112,6 +112,13 @@ class AIOWPSecurity_Process_Renamed_Login_Page {
 	 * @return void
 	 */
 	public static function renamed_login_init_tasks() {
+		// Bail if the host cron job is running by running the command "php wp-cron.php"
+		// The $_SERVER['REQUEST_URI'] is undefined when running a PHP file from the command line.
+		// for `wp plugin list` it will be empty so showing Not available instead plugin list.
+		if (empty($_SERVER['REQUEST_URI']) || defined('WP_CLI') || 'cli' == PHP_SAPI || wp_doing_cron() || wp_doing_ajax()) {
+			return;
+		}
+
 		global $aio_wp_security;
 
 		//The following will process the native wordpress post password protection form
@@ -139,7 +146,7 @@ class AIOWPSecurity_Process_Renamed_Login_Page {
 		}
 
 		//case where someone attempting to reach wp-admin
-		if (is_admin() && !is_user_logged_in() && !defined('DOING_AJAX') && basename($_SERVER["SCRIPT_FILENAME"]) !== 'admin-post.php') {
+		if (is_admin() && !is_user_logged_in() && basename($_SERVER["SCRIPT_FILENAME"]) !== 'admin-post.php') {
 			//Fix to prevent fatal error caused by some themes and Yoast SEO
 			do_action('aiowps_before_wp_die_renamed_login');
 			wp_die(__('Not available.', 'all-in-one-wp-security-and-firewall'), 403);
@@ -189,12 +196,6 @@ class AIOWPSecurity_Process_Renamed_Login_Page {
 		}
 
 		$parsed_url_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-		
-		// for `wp plugin list` it will be empty so showing Not available instead plugin list.
-		if (empty($parsed_url_path) && !defined('WP_CLI') && "cli" != PHP_SAPI) {
-			do_action('aiowps_before_wp_die_renamed_login');
-			wp_die(__('Not available.', 'all-in-one-wp-security-and-firewall'), 403);
-		}
 
 		$login_slug = $aio_wp_security->configs->get_value('aiowps_login_page_slug');
 		$site_url_with_slug = site_url($login_slug, 'relative');

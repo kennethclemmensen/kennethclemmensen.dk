@@ -226,7 +226,7 @@ class AIOWPSecurity_Configure_Settings {
 		//User registration
 		$aio_wp_security->configs->add_value('aiowps_enable_manual_registration_approval', '');//Checkbox
 		$aio_wp_security->configs->add_value('aiowps_enable_registration_page_captcha', '');//Checkbox
-		$aio_wp_security->configs->set_value('aiowps_enable_registration_honeypot', '');//Checkbox
+		$aio_wp_security->configs->add_value('aiowps_enable_registration_honeypot', '');//Checkbox
 	   
 		//DB Security feature
 		//$aio_wp_security->configs->add_value('aiowps_new_manual_db_pefix', ''); //text field
@@ -274,7 +274,7 @@ class AIOWPSecurity_Configure_Settings {
 		//Brute Force features
 		$aio_wp_security->configs->add_value('aiowps_enable_rename_login_page', '');//Checkbox
 		$aio_wp_security->configs->add_value('aiowps_enable_login_honeypot', '');//Checkbox
-		$aio_wp_security->configs->set_value('aiowps_disable_application_password', '1');//Checkbox
+		$aio_wp_security->configs->add_value('aiowps_disable_application_password', '1');//Checkbox
 		
 		$aio_wp_security->configs->add_value('aiowps_enable_brute_force_attack_prevention', '');//Checkbox
 		$aio_wp_security->configs->add_value('aiowps_brute_force_secret_word', '');
@@ -294,8 +294,8 @@ class AIOWPSecurity_Configure_Settings {
 		$aio_wp_security->configs->add_value('aiowps_spam_ip_min_comments_block', '');
 		$aio_wp_security->configs->add_value('aiowps_enable_bp_register_captcha', '');
 		$aio_wp_security->configs->add_value('aiowps_enable_bbp_new_topic_captcha', '');//Checkbox
-		$aio_wp_security->configs->set_value('aiowps_enable_trash_spam_comments', '');
-		$aio_wp_security->configs->set_value('aiowps_trash_spam_comments_after_days', '14');
+		$aio_wp_security->configs->add_value('aiowps_enable_trash_spam_comments', '');
+		$aio_wp_security->configs->add_value('aiowps_trash_spam_comments_after_days', '14');
 
 
 		//Filescan features
@@ -326,8 +326,8 @@ class AIOWPSecurity_Configure_Settings {
 		$aio_wp_security->configs->add_value('aiowps_default_recaptcha', '');//Checkbox
 		
 		// Deactivation Handler
-		$aio_wp_security->configs->set_value('aiowps_on_uninstall_delete_db_tables', '1'); //Checkbox
-		$aio_wp_security->configs->set_value('aiowps_on_uninstall_delete_configs', '1'); //Checkbox
+		$aio_wp_security->configs->add_value('aiowps_on_uninstall_delete_db_tables', '1'); //Checkbox
+		$aio_wp_security->configs->add_value('aiowps_on_uninstall_delete_configs', '1'); //Checkbox
 
 		//TODO - keep adding default options for any fields that require it
 		

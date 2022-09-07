@@ -3251,7 +3251,7 @@ msgid "Delete database tables"
 msgstr ""
 
 #: src/admin/wp-security-settings-menu.php:595
-msgid "Check this if you want to remove database tables when the plugin is deactivated."
+msgid "Check this if you want to remove database tables when the plugin is uninstalled."
 msgstr ""
 
 #: src/admin/wp-security-settings-menu.php:599
@@ -4720,7 +4720,7 @@ msgstr ""
 msgid "After you've secured your site, we recommend you install our WP-Optimize plugin to streamline it for better website performance."
 msgstr ""
 
-#: src/classes/wp-security-process-renamed-login-page.php:145, src/classes/wp-security-process-renamed-login-page.php:196
+#: src/classes/wp-security-process-renamed-login-page.php:152
 msgid "Not available."
 msgstr ""
 
