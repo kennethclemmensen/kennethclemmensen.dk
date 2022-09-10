@@ -108,6 +108,12 @@ jQuery(function($) {
 		user_can_trust = ('undefined' == typeof user_can_trust) ? false : user_can_trust;
 		user_already_trusted = ('undefined' == typeof user_already_trusted) ? false : user_already_trusted;
 		
+		if ('https:' != window.location.protocol && 'localhost' !== location.hostname && '127.0.0.1' !== location.hostname && /^\.localdomain$/.test(location.hostname)) {
+			user_can_trust = false;
+		}
+		
+		if (!user_can_trust) { user_already_trusted = false; }
+		
 		// name="Submit" is WP-Members. 'submit' is Theme My Login starting from 7.x
 		$submit_button = $(form).find('input[name="wp-submit"], input[name="Submit"], input[name="submit"]');
 		// This hasn't been needed for anything yet (Jul 2018), but is a decent back-stop that would have prevented some breakage in the past that needed manual attention:
@@ -129,30 +135,33 @@ jQuery(function($) {
 		// Add new field and controls
 		var html = '';
 		
-		html += '<label for="simba_two_factor_auth">' + simba_tfasettings.otp + '<br><input type="text" name="two_factor_code" id="simba_two_factor_auth" autocomplete="off" data-lpignore="true"';
-		
-		if ($(form).hasClass('woocommerce-form-login')) {
-			// Retain compatibility with previous full-width layout
-			html += ' style="width: 100%;"';
-		}
-		
-		html += '></label>';
-		
-		html += '<p class="forgetmenot" style="font-size:small;';
-		
-		if (!$(form).hasClass('woocommerce-form-login')) {
-			// Retain compatibility with previous full-width layout
-			html += ' max-width: 60%;';
-		}
-		
-		html += '">'+simba_tfasettings.otp_login_help;
-
-		if (user_can_trust && ('https:' == window.location.protocol || 'localhost' === location.hostname || '127.0.0.1' === location.hostname)) {
+		if (user_already_trusted) {
 			
-			html += '<br><input type="checkbox" name="simba_tfa_mark_as_trusted" id="simba_tfa_mark_as_trusted" value="1"><label for="simba_tfa_mark_as_trusted">'+ simba_tfasettings.mark_as_trusted+'</label>';
+			html += '<br><span class="simbaotp_is_trusted">'+simba_tfasettings.is_trusted+'</span>';
 			
 		} else {
-			user_already_trusted = false;
+			
+			html += '<label for="simba_two_factor_auth">' + simba_tfasettings.otp + '<br><input type="text" name="two_factor_code" id="simba_two_factor_auth" autocomplete="off" data-lpignore="true"';
+			
+			if ($(form).hasClass('woocommerce-form-login')) {
+				// Retain compatibility with previous full-width layout
+				html += ' style="width: 100%;"';
+			}
+			
+			html += '></label>';
+			
+			html += '<p class="forgetmenot" style="font-size:small;';
+			if (!$(form).hasClass('woocommerce-form-login')) {
+				// Retain compatibility with previous full-width layout
+				html += ' max-width: 60%;';
+			}
+			html += '">'+simba_tfasettings.otp_login_help;
+			
+			if (user_can_trust) {
+			
+				html += '<br><input type="checkbox" name="simba_tfa_mark_as_trusted" id="simba_tfa_mark_as_trusted" value="1"><label for="simba_tfa_mark_as_trusted">'+ simba_tfasettings.mark_as_trusted+'</label>';
+				
+			}
 		}
 		
 		html += '</p>';
@@ -175,13 +184,16 @@ jQuery(function($) {
 		html += 'value="' + submit_button_text + '"></p>';
 		
 		$submit_button.prop('disabled', true);
-
-		$submit_button.parents('form').first().prepend(html);
-		$('#simba_two_factor_auth').trigger('focus');
 		
-		if (user_can_trust && user_already_trusted) {
-			$('#simba_two_factor_auth').val(simba_tfasettings.is_trusted);
+		$submit_button.parents('form').first().prepend(html);
+		
+		$('#login_error').hide();
+			
+		if (user_already_trusted) {
 			$('#tfa_login_btn').trigger('click');
+		} else {
+
+			$('#simba_two_factor_auth').trigger('focus');
 		}
 		
 	}

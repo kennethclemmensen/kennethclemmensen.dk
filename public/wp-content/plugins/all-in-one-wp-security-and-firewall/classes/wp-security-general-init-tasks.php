@@ -35,6 +35,7 @@ class AIOWPSecurity_General_Init_Tasks {
 
 			add_action('all_admin_notices', array($this, 'do_firewall_notice'));
 			add_action('admin_post_aiowps_firewall_setup', array(AIOWPSecurity_Firewall_Setup_Notice::get_instance(), 'handle_setup_form'));
+			add_action('admin_post_aiowps_firewall_setup_dismiss', array(AIOWPSecurity_Firewall_Setup_Notice::get_instance(), 'handle_dismiss_form'));
 
 			$this->reapply_htaccess_rules();
 			add_action('admin_notices', array($this,'reapply_htaccess_rules_notice'));
@@ -61,7 +62,7 @@ class AIOWPSecurity_General_Init_Tasks {
 				// If URL contains secret word in query param then set cookie and then redirect to the login page
 				AIOWPSecurity_Utility::set_cookie_value($bfcf_secret_word, '1');
 				if ('1' == $aio_wp_security->configs->get_value('aiowps_enable_rename_login_page') && !is_user_logged_in()) {
-					$login_url = site_url($login_page_slug);
+					$login_url = home_url((get_option('permalink_structure') ? '' : '?')  . $aio_wp_security->configs->get_value('aiowps_login_page_slug'));
 					AIOWPSecurity_Utility::redirect_to_url($login_url);
 				} else {
 					AIOWPSecurity_Utility::redirect_to_url(AIOWPSEC_WP_URL.'/wp-admin');

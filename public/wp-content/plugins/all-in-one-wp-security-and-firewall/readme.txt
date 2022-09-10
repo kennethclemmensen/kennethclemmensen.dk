@@ -5,7 +5,7 @@ Tags: security, secure, Anti Virus, antivirus, ban, ban hacker, virus, firewall,
 Requires PHP: 5.6
 Requires at least: 5.0
 Tested up to: 6.0
-Stable tag: 5.0.6
+Stable tag: 5.0.7
 License: GPLv3 or later
 
 A comprehensive, user-friendly, all in one WordPress security and firewall plugin for your site.
@@ -178,6 +178,13 @@ Check the following page for F.A.Q (see the faq section):
 https://www.tipsandtricks-hq.com/wordpress-security-and-firewall-plugin
 
 == Changelog ==
+
+= 5.0.7 - 08/September/2022 =
+
+* FIX: The Login URL was prefixed with the site URL instead of the home URL when the home URL is different than the site URL.
+* FIX: Rename login and cookie-based brute force protection couldn't work simultaneously when the permalink was set to plain.
+* FIX: Disabling the 5G Firewall Protection didn't remove the 5G rules from the .htaccess file.
+* TWEAK: Add a 'Dismiss' button to the firewall setup notice.
 
 = 5.0.6 - 07/September/2022 =
 
@@ -1043,4 +1050,4 @@ those who want to enable the basic firewall but do not have "AllowOverride" opti
 
 
 == Upgrade Notice ==
-* 5.0.6: The 5.0 series has various new features such as a PHP-based firewall, Two Factor Authentication, and WHOIS lookup have been added. It contains various fixes and tweaks. 5.0.X releases are fixing issues discovered in the 5.0 branch. A recommended update for all.
+* 5.0.7: The 5.0 series has various new features such as a PHP-based firewall, Two Factor Authentication, and WHOIS lookup have been added. It contains various fixes and tweaks. 5.0.X releases are fixing issues discovered in the 5.0 branch. A recommended update for all.

@@ -570,13 +570,19 @@ class AIOWPSecurity_Firewall_Menu extends AIOWPSecurity_Admin_Menu
                 die("Nonce check failed on enable 5G/6G firewall settings!");
             }
 
+            // If the user has changed the 5G firewall checkbox settings, then there is a need yo write htaccess rules again.
+			$is_5G_firewall_option_changed = ((isset($_POST['aiowps_enable_5g_firewall']) && '1' != $aio_wp_security->configs->get_value('aiowps_enable_5g_firewall')) || (!isset($_POST['aiowps_enable_5g_firewall']) && '1' == $aio_wp_security->configs->get_value('aiowps_enable_5g_firewall')));
+
             //Save settings
             if (isset($_POST['aiowps_enable_5g_firewall'])) {
                 $aio_wp_security->configs->set_value('aiowps_enable_5g_firewall', '1');
-                $res = AIOWPSecurity_Utility_Htaccess::write_to_htaccess(); //Now let's write the applicable rules to the .htaccess file
             } else {
                 $aio_wp_security->configs->set_value('aiowps_enable_5g_firewall', '');
             }
+
+            if ($is_5G_firewall_option_changed) {
+                $res = AIOWPSecurity_Utility_Htaccess::write_to_htaccess(); // let's write the applicable rules to the .htaccess file
+			}
 
             if (isset($_POST['aiowps_enable_6g_firewall'])) {
                 $aiowps_firewall_config->set_value('aiowps_6g_block_request_methods', AIOS_Abstracted_Ids::get_firewall_block_request_methods());

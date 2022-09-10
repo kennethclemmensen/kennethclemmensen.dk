@@ -843,7 +843,8 @@ class Simba_Two_Factor_Authentication {
 
 		// If the TFA code was actually validated (not just not required, for example), then $code_ok is (boolean)true
 		if (isset($code_ok) && true === $code_ok && is_a($ret, 'WP_User')) {
-			if (!empty($params['simba_tfa_mark_as_trusted']) && $this->user_can_trust($ret->ID) && (is_ssl() || (!empty($_SERVER['SERVER_NAME']) && ('localhost' == $_SERVER['SERVER_NAME'] ||'127.0.0.1' == $_SERVER['SERVER_NAME'])))) {
+			// Though $_SERVER['SERVER_NAME'] can't always be trusted (if the webserver is misconfigured), anyone using this already has password and TFA clearance.
+			if (!empty($params['simba_tfa_mark_as_trusted']) && $this->user_can_trust($ret->ID) && (is_ssl() || (!empty($_SERVER['SERVER_NAME']) && ('localhost' == $_SERVER['SERVER_NAME'] ||'127.0.0.1' == $_SERVER['SERVER_NAME'] || preg_match('/\.localdomain$/', $_SERVER['SERVER_NAME']))))) {
 
 				$trusted_for = $this->get_option('tfa_trusted_for');
 				$trusted_for = (false === $trusted_for) ? 30 : (string) absint($trusted_for);
@@ -1172,7 +1173,7 @@ class Simba_Two_Factor_Authentication {
 			'otp' => __('One Time Password (i.e. 2FA)', 'all-in-one-wp-security-and-firewall'),
 			'otp_login_help' => __('(check your OTP app to get this password)', 'all-in-one-wp-security-and-firewall'),
 			'mark_as_trusted' => sprintf(_n('Trust this device (allow login without 2FA for %d day)', 'Trust this device (allow login without TFA for %d days)', $trusted_for, 'all-in-one-wp-security-and-firewall'), $trusted_for),
-			'is_trusted' => __('(Trusted device)', 'all-in-one-wp-security-and-firewall'),
+			'is_trusted' => __('(Trusted device - no OTP code required)', 'all-in-one-wp-security-and-firewall'),
 			'nonce' => wp_create_nonce('simba_tfa_loginform_nonce'),
 			'login_form_selectors' => '',
 			'login_form_off_selectors' => '',

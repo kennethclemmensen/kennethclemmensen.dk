@@ -87,9 +87,9 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu
         $aiowps_login_page_slug = '';
 
         if (get_option('permalink_structure')){
-            $site_url = trailingslashit(site_url());
+			$home_url = trailingslashit(home_url());
         }else{
-            $site_url = trailingslashit(site_url()) . '?';
+			$home_url = trailingslashit(home_url()) . '?';
         }
 
         if(isset($_POST['aiowps_save_rename_login_page_settings']))//Do form submission tasks
@@ -172,7 +172,7 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu
             <div class="aio_yellow_box">
                 <p><?php _e('Your WordPress login page URL has been renamed.', 'all-in-one-wp-security-and-firewall'); ?></p>
                 <p><?php _e('Your current login URL is:', 'all-in-one-wp-security-and-firewall'); ?></p>
-                <p><strong><?php echo $site_url.$aio_wp_security->configs->get_value('aiowps_login_page_slug'); ?></strong></p>
+                <p><strong><?php echo $home_url.$aio_wp_security->configs->get_value('aiowps_login_page_slug'); ?></strong></p>
             </div>
 
         <?php
@@ -206,7 +206,7 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu
             </tr>
             <tr valign="top">
                 <th scope="row"><label for="aiowps_login_page_slug"><?php _e('Login Page URL', 'all-in-one-wp-security-and-firewall')?>:</label></th>
-                <td><code><?php echo $site_url; ?></code><input id="aiowps_login_page_slug" type="text" size="15" name="aiowps_login_page_slug" value="<?php echo $aio_wp_security->configs->get_value('aiowps_login_page_slug'); ?>" />
+                <td><code><?php echo $home_url; ?></code><input id="aiowps_login_page_slug" type="text" size="15" name="aiowps_login_page_slug" value="<?php echo $aio_wp_security->configs->get_value('aiowps_login_page_slug'); ?>" />
                 <span class="description"><?php _e('Enter a string which will represent your secure login page slug. You are encouraged to choose something which is hard to guess and only you will remember.', 'all-in-one-wp-security-and-firewall'); ?></span>
                 </td>
             </tr>

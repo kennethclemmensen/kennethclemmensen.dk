@@ -481,9 +481,9 @@ class AIOWPSecurity_User_Login {
 			}
 			if ($aio_wp_security->configs->get_value('aiowps_enable_rename_login_page')=='1') {
 				if (get_option('permalink_structure')) {
-					$site_url = trailingslashit(site_url());
+					$home_url = trailingslashit(home_url());
 				} else {
-					$site_url = trailingslashit(site_url()) . '?';
+					$home_url = trailingslashit(home_url()) . '?';
 				}
 				if ($woo_unlock) {
 					$login_url = wc_get_page_permalink('myaccount'); //redirect to woo login page if applicable
@@ -493,7 +493,7 @@ class AIOWPSecurity_User_Login {
 						$aio_wp_security->debug_logger->log_debug("process_unlock_request(): Error deleting row from AIOWPSEC_TBL_GLOBAL_META_DATA for meta_key1=woo_unlock_request_key and meta_value1=".$unlock_key, 4);
 					}
 				} else {
-					$login_url = $site_url.$aio_wp_security->configs->get_value('aiowps_login_page_slug');
+					$login_url = $home_url.$aio_wp_security->configs->get_value('aiowps_login_page_slug');
 				}
 
 				AIOWPSecurity_Utility::redirect_to_url($login_url);

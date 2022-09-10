@@ -34,6 +34,16 @@ class AIOWPSecurity_Utility_Firewall {
 	}
 
 	/**
+	 * Determines whether we're on the firewall page
+	 *
+	 * @return boolean
+	 */
+	public static function is_firewall_page() {
+		global $pagenow;
+		return ('admin.php' == $pagenow && isset($_GET['page']) && false !== strpos($_GET['page'], AIOWPSEC_MENU_SLUG_PREFIX.'_firewall'));
+	}
+
+	/**
 	 * Returns the current path to our bootstrap file
 	 *
 	 * @return string
@@ -146,6 +156,7 @@ class AIOWPSecurity_Utility_Firewall {
 	 * @return void
 	 */
 	public static function remove_firewall() {
+		global $aio_wp_security;
 		
 		$firewall_files = array(
 			'server'    => AIOWPSecurity_Utility_Firewall::get_server_file(),
@@ -181,6 +192,9 @@ class AIOWPSecurity_Utility_Firewall {
 		if (file_exists($muplugin_path)) {
 			@unlink($muplugin_path); // phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged -- ignore this
 		}
+
+		$aio_wp_security->configs->set_value('aios_firewall_dismiss', false);
+		$aio_wp_security->configs->save_config();
 
 	}
 }

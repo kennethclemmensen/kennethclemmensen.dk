@@ -8,7 +8,7 @@ if (!class_exists('AIO_WP_Security')) {
 
 	class AIO_WP_Security {
 
-		public $version = '5.0.6';
+		public $version = '5.0.7';
 
 		public $db_version = '1.9.3';
 
@@ -543,11 +543,11 @@ if (!class_exists('AIO_WP_Security')) {
 						$login_url = get_permalink(get_option('woocommerce_myaccount_page_id'));
 					} elseif ('1' == $aio_wp_security->configs->get_value('aiowps_enable_rename_login_page')) { //Check if rename login feature enabled.
 						if (get_option('permalink_structure')) {
-							$site_url = trailingslashit(site_url());
+							$home_url = trailingslashit(home_url());
 						} else {
-							$site_url = trailingslashit(site_url()) . '?';
+							$home_url = trailingslashit(home_url()) . '?';
 						}
-						$login_url = $site_url.$aio_wp_security->configs->get_value('aiowps_login_page_slug');
+						$login_url = $home_url.$aio_wp_security->configs->get_value('aiowps_login_page_slug');
 					} else {
 						$login_url = wp_login_url();
 					}

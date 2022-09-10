@@ -173,6 +173,29 @@ class AIOWPSecurity_Firewall_Setup_Notice {
 	}
 
 	/**
+	 * Dismisses the notice 
+	 *
+	 * @return void
+	 */
+	private function do_dismiss() {
+		global $aio_wp_security;
+
+		$aio_wp_security->configs->set_value('aios_firewall_dismiss', true);
+		$aio_wp_security->configs->save_config();
+	}
+
+	/**
+	 * Checks whether the notice is dismissed
+	 *
+	 * @return boolean
+	 */
+	private function is_dismissed() {
+		global $aio_wp_security;
+		return (true === $aio_wp_security->configs->get_value('aios_firewall_dismiss'));
+		
+	}
+
+	/**
 	 * Handles the form submission for the 'Set up now' notice
 	 *
 	 * @return void
@@ -180,6 +203,18 @@ class AIOWPSecurity_Firewall_Setup_Notice {
 	public function handle_setup_form() {
 		if (isset($_POST['_wpnonce']) && wp_verify_nonce($_POST['_wpnonce'], 'aiowpsec-firewall-setup')) {
 			$this->do_setup();
+			AIOWPSecurity_Utility::redirect_to_url(admin_url('admin.php?page=aiowpsec'));
+		}
+	}
+
+	/**
+	 * Handles the dismiss form
+	 *
+	 * @return void
+	 */
+	public function handle_dismiss_form() {
+		if (isset($_POST['_wpnonce']) && wp_verify_nonce($_POST['_wpnonce'], 'aiowpsec-firewall-setup-dismiss')) {
+			$this->do_dismiss();
 			AIOWPSecurity_Utility::redirect_to_url(admin_url('admin.php?page=aiowpsec'));
 		}
 	}
@@ -528,6 +563,10 @@ class AIOWPSecurity_Firewall_Setup_Notice {
 			return true;
 		}
 
+		if ($this->is_dismissed() && !AIOWPSecurity_Utility_Firewall::is_firewall_page()) {
+			return true;
+		}
+		
 		if ($this->any_pending_notices()) {
 			return true; //only display if there are no other notices waiting to be displayed
 		}
@@ -545,6 +584,7 @@ class AIOWPSecurity_Firewall_Setup_Notice {
 		if ($this->should_not_show_notice()) {
 			return;
 		}
+
 		?>
 			<div class="notice notice-information">
 
@@ -564,11 +604,17 @@ class AIOWPSecurity_Firewall_Setup_Notice {
 					<p>
 						<?php _e('To set up the PHP-based firewall, press the \'Set up now\' button below:', 'all-in-one-wp-security-and-firewall'); ?>
 					</p>
-					<div style="padding-top: 10px; padding-bottom: 10px;">
+					<div style='padding-bottom: 10px; padding-top:10px;'>
 						<input class="button button-primary" type="submit" name="btn_setup_now" value="<?php _e('Set up now', 'all-in-one-wp-security-and-firewall'); ?>">
-					</div>
 				</form>
-
+						<?php if (!AIOWPSecurity_Utility_Firewall::is_firewall_page()) { ?>
+							<form action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="POST" style='display:inline;'>
+								<?php wp_nonce_field('aiowpsec-firewall-setup-dismiss'); ?>
+								<input type="hidden" name="action" value="aiowps_firewall_setup_dismiss">
+								<input class="button button-secondary" type="submit" name="btn_dismiss_setup_now" value="<?php _e('Dismiss', 'all-in-one-wp-security-and-firewall'); ?>">
+							</form>
+						<?php } ?>
+					</div>
 			</div>
 
 		<?php

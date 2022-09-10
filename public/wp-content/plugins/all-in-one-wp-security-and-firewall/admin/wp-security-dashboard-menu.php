@@ -609,9 +609,9 @@ class AIOWPSecurity_Dashboard_Menu extends AIOWPSecurity_Admin_Menu
         //Insert Rename Login Page feature box if this feature is active
         if ($aio_wp_security->configs->get_value('aiowps_enable_rename_login_page') == '1') {
             if (get_option('permalink_structure')) {
-                $site_url = trailingslashit(site_url());
+                 $home_url = trailingslashit(home_url());
             } else {
-                $site_url = trailingslashit(site_url()) . '?';
+                $home_url = trailingslashit(home_url()) . '?';
             }
 
             $rename_login_feature_link = '<a href="admin.php?page=' . AIOWPSEC_BRUTE_FORCE_MENU_SLUG . '&tab=tab1" target="_blank">' . __('Rename Login Page', 'all-in-one-wp-security-and-firewall') . '</a>';
@@ -619,7 +619,7 @@ class AIOWPSecurity_Dashboard_Menu extends AIOWPSecurity_Admin_Menu
 
             echo '<p>' . sprintf(__('The %s feature is currently active.', 'all-in-one-wp-security-and-firewall'), $rename_login_feature_link) . '</p>';
             echo '<p>' . __('Your new WordPress login URL is now:', 'all-in-one-wp-security-and-firewall') . '</p>';
-            echo '<p><strong>' . $site_url . $aio_wp_security->configs->get_value('aiowps_login_page_slug') . '</strong></p>';
+            echo '<p><strong>' . $home_url . $aio_wp_security->configs->get_value('aiowps_login_page_slug') . '</strong></p>';
             echo '</div>'; //yellow box div
             echo '<div class="aio_clear_float"></div>';
         }//End if statement for Rename Login box
