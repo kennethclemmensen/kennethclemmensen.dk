@@ -139,7 +139,7 @@ msgstr ""
 
 #: all-in-one-wp-security/admin/wp-security-blacklist-menu.php:145
 msgid ""
-"By blocking people via the .htaccess file your are using the most secure "
+"By blocking people your are using the most secure "
 "first line of defence which denies all access to blacklisted visitors as "
 "soon as they hit your hosting server."
 msgstr ""

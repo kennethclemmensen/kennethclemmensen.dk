@@ -13,8 +13,6 @@ class AIOWPSecurity_General_Init_Tasks {
 			add_filter('wp_headers', array($this, 'aiowps_remove_x_pingback_header'));
 		}
 
-		add_action('permalink_structure_changed', array($this, 'refresh_firewall_rules'), 10, 2);
-
 		// Check permanent block list and block if applicable (ie, do PHP blocking)
 		AIOWPSecurity_Blocking::check_visitor_ip_and_perform_blocking();
 
@@ -55,12 +53,15 @@ class AIOWPSecurity_General_Init_Tasks {
 		}
 
 		// For the cookie based brute force prevention feature
-		if ($aio_wp_security->should_cookie_based_brute_force_prvent()) {
+		// Already logged in user should not redirected to brute_force_redirect_url in any case so added condition !is_user_logged_in()
+		if ($aio_wp_security->should_cookie_based_brute_force_prvent() && !is_user_logged_in()) {
 			$bfcf_secret_word = $aio_wp_security->configs->get_value('aiowps_brute_force_secret_word');
 			$login_page_slug = $aio_wp_security->configs->get_value('aiowps_login_page_slug');
 			if (isset($_GET[$bfcf_secret_word])) {
+				AIOWPSecurity_Utility_IP::check_login_whitelist_and_forbid();
+
 				// If URL contains secret word in query param then set cookie and then redirect to the login page
-				AIOWPSecurity_Utility::set_cookie_value($bfcf_secret_word, '1');
+				AIOWPSecurity_Utility::set_cookie_value(AIOWPSecurity_Utility::get_brute_force_secret_cookie_name(), wp_hash($bfcf_secret_word));
 				if ('1' == $aio_wp_security->configs->get_value('aiowps_enable_rename_login_page') && !is_user_logged_in()) {
 					$login_url = home_url((get_option('permalink_structure') ? '' : '?')  . $aio_wp_security->configs->get_value('aiowps_login_page_slug'));
 					AIOWPSecurity_Utility::redirect_to_url($login_url);
@@ -68,11 +69,11 @@ class AIOWPSecurity_General_Init_Tasks {
 					AIOWPSecurity_Utility::redirect_to_url(AIOWPSEC_WP_URL.'/wp-admin');
 				}
 			} else {
-				$secret_word_cookie_val = AIOWPSecurity_Utility::get_cookie_value($bfcf_secret_word);
+				$secret_word_cookie_val = AIOWPSecurity_Utility::get_cookie_value(AIOWPSecurity_Utility::get_brute_force_secret_cookie_name());
 				$pw_protected_exception = $aio_wp_security->configs->get_value('aiowps_brute_force_attack_prevention_pw_protected_exception');
 				$prevent_ajax_exception = $aio_wp_security->configs->get_value('aiowps_brute_force_attack_prevention_ajax_exception');
-				
-				if ('' != $_SERVER['REQUEST_URI'] && 1 != $secret_word_cookie_val) {
+
+				if ('' != $_SERVER['REQUEST_URI'] && !hash_equals($secret_word_cookie_val, wp_hash($bfcf_secret_word))) {
 					// admin section or login page or login custom slug called
 					$is_admin_or_login = (false != strpos($_SERVER['REQUEST_URI'], 'wp-admin') || false != strpos($_SERVER['REQUEST_URI'], 'wp-login') || ('' != $login_page_slug && false != strpos($_SERVER['REQUEST_URI'], $login_page_slug))) ? 1 : 0;
 					
@@ -308,22 +309,6 @@ class AIOWPSecurity_General_Init_Tasks {
 	public function aiowps_remove_x_pingback_header($headers) {
 	   unset($headers['X-Pingback']);
 	   return $headers;
-	}
-
-	/**
-	 * Refreshes the firewall rules in .htaccess file
-	 * eg: if permalink settings changed and white list enabled
-	 */
-	public function refresh_firewall_rules() {
-		global $aio_wp_security;
-		//If white list enabled need to re-adjust the .htaccess rules
-		if ($aio_wp_security->configs->get_value('aiowps_enable_whitelisting') == '1') {
-			$write_result = AIOWPSecurity_Utility_Htaccess::write_to_htaccess(); //now let's write to the .htaccess file
-			if (!$write_result) {
-				$this->show_msg_error(__('The plugin was unable to write to the .htaccess file. Please edit file manually.', 'all-in-one-wp-security-and-firewall'));
-				$aio_wp_security->debug_logger->log_debug("AIOWPSecurity_whitelist_Menu - The plugin was unable to write to the .htaccess file.");
-			}
-		}
 	}
 
 	public function spam_detect_process_comment_post($comment_id, $comment_approved) {

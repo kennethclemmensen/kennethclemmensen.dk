@@ -108,7 +108,7 @@ class Simba_TFA_Login_Form_Integrations {
 		if (is_wp_error($code_ok)) {
 			$login->add_error($code_ok->get_error_code, $code_ok->get_error_message());
 		} elseif (!$code_ok) {
-			$login->add_error('authentication_failed', __('Error:', 'all-in-one-wp-security-and-firewall').' '.__('The one-time password (TFA code) you entered was incorrect.', 'all-in-one-wp-security-and-firewall'));
+			$login->add_error('authentication_failed', __('Error:', 'all-in-one-wp-security-and-firewall').' '.apply_filters('simba_tfa_message_code_incorrect', __('The one-time password (TFA code) you entered was incorrect.', 'all-in-one-wp-security-and-firewall')));
 		}
 		
 	}

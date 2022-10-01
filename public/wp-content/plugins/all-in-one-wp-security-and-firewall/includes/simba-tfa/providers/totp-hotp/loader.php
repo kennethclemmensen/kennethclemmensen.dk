@@ -6,35 +6,89 @@ if (!class_exists('HOTP')) require_once(__DIR__.'/hotp-php-master/hotp.php');
 if (!class_exists('Base32')) require_once(__DIR__.'/Base32/Base32.php');
 
 class Simba_TFA_Provider_TOTP {
-
-	// @var Simba_Two_Factor_Authentication
+	
+	/**
+	 * Simba 2FA object
+	 *
+	 * @var object instance of Simba_Two_Factor_Authentication
+	 */
 	private $tfa;
 	
-	// @var String
+	/**
+	 * OTP helper object
+	 *
+	 * @var object instance of HOTP
+	 */
+	private $otp_helper;
+	
+	/**
+	 * Forward counter window to check number of times
+	 *
+	 * @var int
+	 */
+	private $check_forward_counter_window;
+	
+	/**
+	 * Salt prefix
+	 *
+	 * @var string
+	 */
 	private $salt_prefix;
 	
-	// @var String
+	/**
+	 * Password prefix
+	 *
+	 * @var string
+	 */
 	private $pw_prefix;
 	
-	// @var Integer
+	/**
+	 * Time window size
+	 *
+	 * @var int
+	 */
 	private $time_window_size;
 	
-	// @var Integer
+	/**
+	 * Check back time window
+	 *
+	 * @var int
+	 */
 	private $check_back_time_windows;
 	
-	// @var Integer
+	/**
+	 * Check forward time windows
+	 *
+	 * @var int
+	 */
 	private $check_forward_time_windows;
 	
-	// @var Integer
+	/**
+	 * OTP length
+	 *
+	 * @var int
+	 */
 	private $otp_length = 6;
 	
-	// @var Integer
+	/**
+	 * Emergency codes length
+	 *
+	 * @var int
+	 */
 	private $emergency_codes_length = 8;
 	
-	// @var String
+	/**
+	 * Default HMAC type
+	 *
+	 * @var string
+	 */
 	public $default_hmac = 'totp';
 	
-	// @var Boolean
+	/**
+	 * Settings saved flag
+	 *
+	 * @var boolean
+	 */
 	private $settings_saved = false;
 
 	/**
@@ -507,13 +561,12 @@ class Simba_TFA_Provider_TOTP {
 		
 		$tfa_priv_key_32 = Base32::encode($tfa_priv_key);
 		
+		// The first (base32) private key used to have the description "base 32 - used by Google Authenticator and Authy", and the base64 version was just described as "private key". But basically the former is what everything uses.
+		//<strong>Private key:</strong> htmlspecialchars($tfa_priv_key)
 		if ('full' == $type) {
 			?>
-			<strong><?php echo __('Private key (base 32 - used by Google Authenticator and Authy):', 'all-in-one-wp-security-and-firewall');?></strong>
+			<strong><?php _e('Private key:', 'two-factor-authentication');?></strong>
 			<?php echo htmlspecialchars($tfa_priv_key_32); ?><br>
-			
-			<strong><?php echo __('Private key:', 'all-in-one-wp-security-and-firewall');?></strong>
-			<?php echo htmlspecialchars($tfa_priv_key); ?><br>
 			<?php
 		} elseif ('plain' == $type) {
 			echo htmlspecialchars($tfa_priv_key);

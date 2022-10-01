@@ -585,7 +585,11 @@ class AIOWPSecurity_Firewall_Menu extends AIOWPSecurity_Admin_Menu
 			}
 
             if (isset($_POST['aiowps_enable_6g_firewall'])) {
-                $aiowps_firewall_config->set_value('aiowps_6g_block_request_methods', AIOS_Abstracted_Ids::get_firewall_block_request_methods());
+           	$aiowps_6g_block_request_methods = array_filter(AIOS_Abstracted_Ids::get_firewall_block_request_methods(), function($block_request_method) {
+                    return ('PUT' != $block_request_method);
+                });
+
+                $aiowps_firewall_config->set_value('aiowps_6g_block_request_methods', $aiowps_6g_block_request_methods);
                 $aiowps_firewall_config->set_value('aiowps_6g_block_query', true);
                 $aiowps_firewall_config->set_value('aiowps_6g_block_request', true);
                 $aiowps_firewall_config->set_value('aiowps_6g_block_referrers', true);
@@ -720,6 +724,12 @@ class AIOWPSecurity_Firewall_Menu extends AIOWPSecurity_Admin_Menu
             <div class="postbox">
             <h3 class="hndle"><label for="title"><?php _e('6G block request methods', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
                 <div class="inside">
+                	<div class="aio_blue_box">
+                        <?php 
+							echo '<p>' . __('HTTP Request methods are used by browsers and clients to communicate with servers to get responses.' , 'all-in-one-wp-security-and-firewall') . '</p>';
+							echo '<p>' . __('GET and POST are the most commonly used methods to request and submit data for specified resources of the server.' , 'all-in-one-wp-security-and-firewall') . '</p>';
+						?>
+					</div>
                     <table class="form-table">
                         <?php foreach ($block_request_methods as $block_request_method) {?>
                             <tr>
@@ -727,6 +737,15 @@ class AIOWPSecurity_Firewall_Menu extends AIOWPSecurity_Admin_Menu
                             <td>
                                 <input id="<?php echo esc_attr("aiowps_block_request_method_{$block_request_method}");?>" name="<?php echo esc_attr("aiowps_block_request_method_{$block_request_method}");?>" type="checkbox"<?php checked(in_array(strtoupper($block_request_method), $methods));?>>
                                 <label for="<?php echo esc_attr("aiowps_block_request_method_{$block_request_method}");?>" class="description"><?php printf(__('Check this to block the %s request method', 'all-in-one-wp-security-and-firewall'), strtoupper($block_request_method));?></label>
+                                <?php if('put' == $block_request_method) { ?>
+                                <span class="aiowps_more_info_anchor"><span class="aiowps_more_info_toggle_char">+</span><span class="aiowps_more_info_toggle_text"><?php _e('More Info', 'all-in-one-wp-security-and-firewall'); ?></span></span>
+                    			<div class="aiowps_more_info_body">
+	                    			<?php
+	                                echo '<p class="description">' . __('Some WooCommerce extensions use the PUT request method in addition to GET and POST.', 'all-in-one-wp-security-and-firewall') . ' ' . __("This means WooCommerce users shouldn't block the PUT request method." , 'all-in-one-wp-security-and-firewall') . '</p>';
+	                                echo '<p class="description">' . __('A few REST requests use the PUT request method.', 'all-in-one-wp-security-and-firewall') . ' ' . __('If your site is communicated by the WP REST API, you should not block the PUT request method.' , 'all-in-one-wp-security-and-firewall') . '</p>';
+	                                ?>
+                    			</div>
+                                <?php } ?>
                             </td>
                             </tr>
                         <?php } ?>

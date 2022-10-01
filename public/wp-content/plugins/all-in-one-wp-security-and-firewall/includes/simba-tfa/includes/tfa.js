@@ -94,6 +94,7 @@ jQuery(function($) {
 				console.log(jq_xhr);
 				if (jq_xhr.hasOwnProperty('responseText')) {
 					console.log(jq_xhr.responseText);
+					$(form).append('<p class="error" style="clear:left;">'+simba_tfasettings.error+'</p>');
 				}
 			}
 		});

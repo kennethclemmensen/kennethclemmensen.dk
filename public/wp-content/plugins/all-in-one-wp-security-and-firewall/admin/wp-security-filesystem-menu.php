@@ -450,7 +450,7 @@ class AIOWPSecurity_Filesystem_Menu extends AIOWPSecurity_Admin_Menu
         ?>
         <script type="text/javascript">
 	/* <![CDATA[ */
-	jQuery(document).ready(function($) {
+	jQuery(function($) {
             loading_span = $('.aiowps_loading_1');
             loading_span.hide(); //hide the spinner gif after page has successfully loaded
             $('.search-error-files').on("click",function(){

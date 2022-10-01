@@ -203,7 +203,14 @@ class AIOWPSecurity_Admin_Init {
     public function render_admin_notices() {
         global $aio_wp_security;
 
-		$aio_wp_security->notices->do_notice('automated-database-backup', 'automated-database-backup');
+		foreach (AIOS_Abstracted_Ids::custom_admin_notice_ids() as $custom_admin_notice_id) {
+			$aio_wp_security->notices->do_notice($custom_admin_notice_id, $custom_admin_notice_id);
+		}
+
+		// Bail if the premium plugin is active and does not show ads.
+		if (defined('AIOWPSECURITY_NOADS_B') && AIOWPSECURITY_NOADS_B) {
+			return;
+		}
 
         $installed_at = $aio_wp_security->notices->get_aiowps_plugin_installed_timestamp();
         $time_now = $aio_wp_security->notices->get_time_now();
@@ -211,7 +218,7 @@ class AIOWPSecurity_Admin_Init {
 
         $dismissed_dash_notice_until = (int) $aio_wp_security->configs->get_value('dismissdashnotice');
 
-        if ($this->is_admin_dashboard_page() && ($installed_at && $time_now > $dismissed_dash_notice_until && $installed_for > (14 * 86400) && !defined('AIOWPSECURITY_NOADS_B')) || (defined('AIOWPSECURITY_FORCE_DASHNOTICE') && AIOWPSECURITY_FORCE_DASHNOTICE)) {
+        if ($this->is_admin_dashboard_page() && ($installed_at && $time_now > $dismissed_dash_notice_until && $installed_for > (14 * 86400)) || (defined('AIOWPSECURITY_FORCE_DASHNOTICE') && AIOWPSECURITY_FORCE_DASHNOTICE)) {
             $aio_wp_security->include_template('notices/thanks-for-using-main-dash.php');
         } elseif ($this->is_aiowps_admin_page() && $installed_at && $installed_for > 14*86400) {
             $aio_wp_security->notices->do_notice(false, 'top');
@@ -240,6 +247,16 @@ class AIOWPSecurity_Admin_Init {
         wp_enqueue_script('media-upload');
         wp_register_script('aiowpsec-admin-js', AIO_WP_SECURITY_URL. '/js/wp-security-admin-script.js', array('jquery'), AIO_WP_SECURITY_VERSION, true);
         wp_enqueue_script('aiowpsec-admin-js');
+		wp_localize_script('aiowpsec-admin-js', 'aios_data',
+			array(
+				'ajax_nonce' => wp_create_nonce('aios-ajax-nonce'),
+			)
+		);
+		wp_localize_script('aiowpsec-admin-js', 'aios_trans',
+			array(
+				'unexpected_response' => __('Unexpected response:', 'all-in-one-wp-security-and-firewall'),
+			)
+		);
         wp_register_script('aiowpsec-pw-tool-js', AIO_WP_SECURITY_URL. '/js/password-strength-tool.js', array('jquery')); // We will enqueue this in the user acct menu class
 	}
     
@@ -307,9 +324,13 @@ class AIOWPSecurity_Admin_Init {
         $aiowps_feature_mgr->calculate_total_points(); 
         $GLOBALS['aiowps_feature_mgr'] = $aiowps_feature_mgr;
     }
-    
-    function do_other_admin_side_init_tasks()
-    {
+
+	/**
+	 * Other admin side init tasks.
+	 *
+	 * @return void
+	 */
+    private function do_other_admin_side_init_tasks() {
         global $aio_wp_security;
         
         //***New Feature improvement for Cookie Based Brute Force Protection***//
@@ -322,56 +343,48 @@ class AIOWPSecurity_Admin_Init {
             if (empty($test_cookie_name_saved)) {
                 $random_suffix = AIOWPSecurity_Utility::generate_alpha_numeric_random_string(10);
                 $test_cookie_name = 'aiowps_cookie_test_'.$random_suffix;
-                $aio_wp_security->configs->set_value('aiowps_cookie_brute_test',$test_cookie_name);
+                $aio_wp_security->configs->set_value('aiowps_cookie_brute_test', $test_cookie_name);
                 $aio_wp_security->configs->save_config();//save the value
                 AIOWPSecurity_Utility::set_cookie_value($test_cookie_name, '1');
             }
         }
         //For cookie test form submission case
-        if (isset($_GET['page']) && $_GET['page'] == AIOWPSEC_BRUTE_FORCE_MENU_SLUG && isset($_GET['tab']) && $_GET['tab'] == 'tab2')
-        {
+        if (isset($_GET['page']) && AIOWPSEC_BRUTE_FORCE_MENU_SLUG == $_GET['page'] && isset($_GET['tab']) && 'tab2' == $_GET['tab']) {
             global $aio_wp_security;
-            if(isset($_POST['aiowps_do_cookie_test_for_bfla'])){
+            if (isset($_POST['aiowps_do_cookie_test_for_bfla'])) {
                 $random_suffix = AIOWPSecurity_Utility::generate_alpha_numeric_random_string(10);
                 $test_cookie_name = 'aiowps_cookie_test_'.$random_suffix;
-                $aio_wp_security->configs->set_value('aiowps_cookie_brute_test',$test_cookie_name);
+                $aio_wp_security->configs->set_value('aiowps_cookie_brute_test', $test_cookie_name);
                 $aio_wp_security->configs->save_config();//save the value
                 AIOWPSecurity_Utility::set_cookie_value($test_cookie_name, '1');
                 $cur_url = "admin.php?page=".AIOWPSEC_BRUTE_FORCE_MENU_SLUG."&tab=tab2";
                 $redirect_url = AIOWPSecurity_Utility::add_query_data_to_url($cur_url, 'aiowps_cookie_test', "1");
                 AIOWPSecurity_Utility::redirect_to_url($redirect_url);
             }
-            
-            if(isset($_POST['aiowps_enable_brute_force_attack_prevention']))//Enabling the BFLA feature so drop the cookie again
-            {
-                $brute_force_feature_secret_word = sanitize_text_field($_POST['aiowps_brute_force_secret_word']);
-                if(empty($brute_force_feature_secret_word)){
-                    $brute_force_feature_secret_word = "aiowpssecret";
-                }
-                AIOWPSecurity_Utility::set_cookie_value($brute_force_feature_secret_word, "1");
-            }
 
-            if(isset($_REQUEST['aiowps_cookie_test']))
-            {
+			if (isset($_POST['aiowps_enable_brute_force_attack_prevention'])) { // Enabling the BFLA feature so drop the cookie again
+				$brute_force_feature_secret_word = sanitize_text_field($_POST['aiowps_brute_force_secret_word']);
+				if(empty($brute_force_feature_secret_word)){
+					$brute_force_feature_secret_word = "aiowpssecret";
+				}
+				AIOWPSecurity_Utility::set_cookie_value(AIOWPSecurity_Utility::get_brute_force_secret_cookie_name(), wp_hash($brute_force_feature_secret_word));
+			}
+
+			if (isset($_REQUEST['aiowps_cookie_test'])) {
                 $test_cookie = $aio_wp_security->configs->get_value('aiowps_cookie_brute_test');
                 $cookie_val = AIOWPSecurity_Utility::get_cookie_value($test_cookie);
-                if(empty($cookie_val))
-                {
+                if (empty($cookie_val)) {
                     $aio_wp_security->configs->set_value('aiowps_cookie_test_success','');
-                }
-                else
-                {
+                } else {
                     $aio_wp_security->configs->set_value('aiowps_cookie_test_success','1');
                 }
                 $aio_wp_security->configs->save_config();//save the value
             }
         }
 
-        if(isset($_POST['aiowps_save_wp_config']))//the wp-config backup operation
-        {
-            $nonce=$_REQUEST['_wpnonce'];
-            if (!wp_verify_nonce($nonce, 'aiowpsec-save-wp-config-nonce'))
-            {
+        if (isset($_POST['aiowps_save_wp_config'])) { // the wp-config backup operation
+            $nonce = $_REQUEST['_wpnonce'];
+            if (!wp_verify_nonce($nonce, 'aiowpsec-save-wp-config-nonce')) {
                 $aio_wp_security->debug_logger->log_debug("Nonce check failed on wp_config file save!",4);
                 die("Nonce check failed on wp_config file save!");
             }
@@ -381,19 +394,16 @@ class AIOWPSecurity_Admin_Init {
         }
         
         //Handle export settings
-        if(isset($_POST['aiowps_export_settings']))//Do form submission tasks
-        {
-            $nonce=$_REQUEST['_wpnonce'];
-            if (!wp_verify_nonce($nonce, 'aiowpsec-export-settings-nonce'))
-            {
-                $aio_wp_security->debug_logger->log_debug("Nonce check failed on export AIOWPS settings!",4);
-                die("Nonce check failed on export AIOWPS settings!");
+        if (isset($_POST['aiowps_export_settings'])) {
+			$nonce = $_REQUEST['_wpnonce'];
+            if (!wp_verify_nonce($nonce, 'aiowpsec-export-settings-nonce')) {
+                $aio_wp_security->debug_logger->log_debug("Nonce check failed on export AIOWPS settings.", 4);
+                die("Nonce check failed on export AIOWPS settings.");
             }
             $config_data = get_option('aio_wp_security_configs');
             $output = json_encode($config_data);
             AIOWPSecurity_Utility_File::download_content_to_a_file($output);            
         }
-        
     }
     
     function create_admin_menus()

@@ -211,7 +211,16 @@ class AIOWPSecurity_Utility {
 		if (empty($cookie_domain)) {
 			$cookie_domain = COOKIE_DOMAIN;
 		}
-		setcookie($cookie_name, $cookie_value, $expiry_time, $path, $cookie_domain);
+		setcookie($cookie_name, $cookie_value, $expiry_time, $path, $cookie_domain, is_ssl(), true);
+	}
+
+	/**
+	 * Get brute force secret cookie name.
+	 *
+	 * @return String Brute force secret cookie name.
+	 */
+	public static function get_brute_force_secret_cookie_name() {
+		return 'aios_brute_force_secret_' . COOKIEHASH;
 	}
 	
 	/**
@@ -225,6 +234,15 @@ class AIOWPSecurity_Utility {
 			return $_COOKIE[$cookie_name];
 		}
 		return "";
+	}
+
+	/**
+	 * Checks if installation is multisite or not.
+	 *
+	 * @return Boolean True if the site is network multisite, false otherwise.
+	 */
+	public static function is_multisite_install() {
+		return function_exists('is_multisite') && is_multisite();
 	}
 
 	/**
@@ -778,5 +796,43 @@ class AIOWPSecurity_Utility {
 		// https://core.trac.wordpress.org/ticket/42656
 		return is_admin() &&
 			preg_match('#/wp-admin/plugins.php$#i', $_SERVER['PHP_SELF']) && isset($_GET['plugin']) && (preg_match("/\/two-factor-login.php/", $_GET['plugin']) || preg_match("/all-in-one-wp-security-and-firewall/", $_GET['plugin']));
+	}
+
+	/**
+	 * Check whether the site is running on localhost or not.
+	 *
+	 * @return Boolean True if the site is on localhost, otherwise false.
+	 */
+	public static function is_localhost() {
+		if (defined('AIOS_IS_LOCALHOST')) {
+			return AIOS_IS_LOCALHOST;
+		}
+
+		if (empty($_SERVER['REMOTE_ADDR'])) {
+			return false;
+		}
+		return in_array($_SERVER['REMOTE_ADDR'], array('127.0.0.1', '::1')) ? true : false;
+	}
+
+	/**
+	 * Get server software.
+	 *
+	 * @return string Server software or empty.
+	 */
+	public static function get_server_software() {
+		static $server_software;
+		if (!isset($server_software)) {
+			$server_software = (isset($_SERVER['SERVER_SOFTWARE']) ? $_SERVER['SERVER_SOFTWARE'] : '');
+		}
+		return $server_software;
+	}
+
+	/**
+	 * Check whether the server is apache or not.
+	 *
+	 * @return Boolean True the server is apache, otherwise false.
+	 */
+	public static function is_apache_server() {
+		return (false !== strpos(self::get_server_software(), 'Apache'));
 	}
 }

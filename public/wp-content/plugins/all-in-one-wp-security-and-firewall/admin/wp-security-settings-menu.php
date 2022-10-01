@@ -1,48 +1,61 @@
 <?php
-if(!defined('ABSPATH')){
-    exit;//Exit if accessed directly
-}
 
-class AIOWPSecurity_Settings_Menu extends AIOWPSecurity_Admin_Menu
-{
+if (!defined('ABSPATH')) die('No direct access.');
+
+class AIOWPSecurity_Settings_Menu extends AIOWPSecurity_Admin_Menu {
+
     private $menu_page_slug = AIOWPSEC_SETTINGS_MENU_SLUG;
 
     /* Specify all the tabs of this menu in the following array */
     public $menu_tabs;
 
+    /**
+     * Class constructor
+     */
     public function __construct() {
         $this->render_menu_page();
     }
 
+    /**
+     * Sets the menu_tabs class variable
+     */
     public function set_menu_tabs() {
-        $menu_tabs = apply_filters('aiowpsecurity_setting_tabs',
-            array(
-                'tab1' => array(
-                    'title' => __('General Settings', 'all-in-one-wp-security-and-firewall'),
-                    'render_callback' => array($this, 'render_tab1'),
-                ),
-                'tab2' => array(
-                    'title' => '.htaccess '.__('File', 'all-in-one-wp-security-and-firewall'),
-                    'render_callback' => array($this, 'render_tab2'),
-                ),
-                'tab3' =>  array(
-                    'title' => 'wp-config.php '.__('File', 'all-in-one-wp-security-and-firewall'),
-                    'render_callback' => array($this, 'render_tab3'),
-                ),
-				'delete-plugin-settings' =>  array(
-                    'title' => __('Delete Plugin Settings', 'all-in-one-wp-security-and-firewall'),
-                    'render_callback' => array($this, 'render_delete_plugin_settings_tab'),
-                ),
-                'tab4' =>  array(
-                    'title' => __('WP Version Info', 'all-in-one-wp-security-and-firewall'),
-                    'render_callback' => array($this, 'render_tab4'),
-                ),
-                'tab5' =>  array(
-                    'title' => __('Import/Export', 'all-in-one-wp-security-and-firewall'),
-                    'render_callback' => array($this, 'render_tab5'),
-                ),
-            )
-        );
+        $menu_tabs = array(
+                        'tab1' => array(
+                            'title' => __('General Settings', 'all-in-one-wp-security-and-firewall'),
+                            'render_callback' => array($this, 'render_tab1'),
+                        ),
+                        'tab2' => array(
+                            'title' => '.htaccess '.__('File', 'all-in-one-wp-security-and-firewall'),
+                            'render_callback' => array($this, 'render_tab2'),
+                        ),
+                        'tab3' =>  array(
+                            'title' => 'wp-config.php '.__('File', 'all-in-one-wp-security-and-firewall'),
+                            'render_callback' => array($this, 'render_tab3'),
+                        ),
+                        'delete-plugin-settings' =>  array(
+                            'title' => __('Delete Plugin Settings', 'all-in-one-wp-security-and-firewall'),
+                            'render_callback' => array($this, 'render_delete_plugin_settings_tab'),
+                        ),
+                        'tab4' =>  array(
+                            'title' => __('WP Version Info', 'all-in-one-wp-security-and-firewall'),
+                            'render_callback' => array($this, 'render_tab4'),
+                        ),
+                        'tab5' =>  array(
+                            'title' => __('Import/Export', 'all-in-one-wp-security-and-firewall'),
+                            'render_callback' => array($this, 'render_tab5'),
+                        ),
+                );
+
+		if (is_main_site()) {
+			$menu_tabs['advanced-settings'] =  array(
+                                            'title' => __('Advanced settings', 'all-in-one-wp-security-and-firewall'),
+                                            'render_callback' => array($this, 'render_advanced_settings'),
+                                        );
+        }
+
+
+		$menu_tabs = apply_filters('aiowpsecurity_setting_tabs', $menu_tabs);
 		$this->menu_tabs = array_filter($menu_tabs, array($this, 'should_display_tab'));
     }
 
@@ -77,8 +90,7 @@ class AIOWPSecurity_Settings_Menu extends AIOWPSecurity_Admin_Menu
     /*
      * The menu rendering goes here
      */
-    function render_menu_page()
-    {
+    public function render_menu_page() {
         echo '<div class="wrap">';
         echo '<h2>'.__('Settings','all-in-one-wp-security-and-firewall').'</h2>';//Interface title
         $this->set_menu_tabs();
@@ -94,8 +106,7 @@ class AIOWPSecurity_Settings_Menu extends AIOWPSecurity_Admin_Menu
         <?php
     }
 
-    function render_tab1()
-    {
+    public function render_tab1() {
         global $aio_wp_security;
         if(isset($_POST['aiowpsec_disable_all_features']))//Do form submission tasks
         {
@@ -845,7 +856,71 @@ class AIOWPSecurity_Settings_Menu extends AIOWPSecurity_Admin_Menu
     <?php
     }
 
-    function check_if_wp_config_contents($wp_file)
+	/**
+     * Renders advanced settings tab.
+     *
+	 * @return void
+	 */
+	public function render_advanced_settings() {
+		if (!is_main_site()) {
+            return;
+		}
+
+		global $aio_wp_security;
+
+		if (isset($_POST['aiowps_save_advanced_settings'])) {
+			if (empty($_POST['_wpnonce']) || !wp_verify_nonce($_POST['_wpnonce'], 'aiowpsec-ip-settings-nonce')) {
+				$aio_wp_security->debug_logger->log_debug('Nonce check failed for save advanced settings.', 4);
+				die('Nonce check failed for save advanced settings.');
+			}
+
+			$ip_retrieve_method_id = sanitize_text_field($_POST["aiowps_ip_retrieve_method"]);
+
+            if (in_array($ip_retrieve_method_id, array_keys(AIOS_Abstracted_Ids::get_ip_retrieve_methods()))) {
+				$aio_wp_security->configs->set_value('aiowps_ip_retrieve_method', $ip_retrieve_method_id);
+				$aio_wp_security->configs->save_config(); //Save the configuration
+
+				//Clear logged in list because it might be showing wrong addresses
+				if (AIOWPSecurity_Utility::is_multisite_install()) {
+					delete_site_transient('users_online');
+				} else {
+					delete_transient('users_online');
+				}
+
+				$this->show_msg_settings_updated();
+			}
+		}
+
+		$ip_retrieve_methods_postfixes = array(
+                'REMOTE_ADDR' =>  __('Default - if correct, then this is the best option', 'all-in-one-wp-security-and-firewall'),
+                'HTTP_CF_CONNECTING_IP' => __("Only use if you're using Cloudflare.", 'all-in-one-wp-security-and-firewall'),
+		);
+
+		$ip_retrieve_methods = array();
+        foreach (AIOS_Abstracted_Ids::get_ip_retrieve_methods() as $id => $ip_method) {
+            $ip_retrieve_methods[$id]['ip_method'] = $ip_method;
+
+			if (isset($_SERVER[$ip_method])) {
+				$ip_retrieve_methods[$id]['ip_method'] .= ' '.sprintf(__('(current value: %s)', 'all-in-one-wp-security-and-firewall'), $_SERVER[$ip_method]);
+                $ip_retrieve_methods[$id]['is_enabled'] = true;
+			} else {
+				$ip_retrieve_methods[$id]['ip_method'] .= '  (' . __('no value (i.e. empty) on your server', 'all-in-one-wp-security-and-firewall') . ')';
+				$ip_retrieve_methods[$id]['is_enabled'] = false;
+			}
+
+			if (!empty($ip_retrieve_methods_postfixes[$ip_method])) {
+				$ip_retrieve_methods[$id]['ip_method'] .= ' (' . $ip_retrieve_methods_postfixes[$ip_method] . ')';
+			}
+		}
+
+		$aio_wp_security->include_template('menus/settings/advanced-settings.php', false, array(
+			'is_localhost' => AIOWPSecurity_Utility::is_localhost(),
+			'ip_retrieve_methods' => $ip_retrieve_methods,
+			'server_suitable_ip_methods' => AIOWPSecurity_Utility_IP::get_server_suitable_ip_methods(),
+        ));
+	}
+
+    private function check_if_wp_config_contents($wp_file)
     {
         $is_wp_config = false;
 
@@ -868,14 +943,8 @@ class AIOWPSecurity_Settings_Menu extends AIOWPSecurity_Admin_Menu
                 $is_wp_config = false;
             }
         }
-        if ($is_wp_config)
-        {
-            return 1;
-        }
-        else
-        {
-            return -1;
-        }
+        
+        return $is_wp_config ? 1 : -1;
 
     }
 
@@ -887,17 +956,16 @@ class AIOWPSecurity_Settings_Menu extends AIOWPSecurity_Admin_Menu
         }
     }
 
-    function check_is_aiopws_settings($strText) {
-        if(strpos($strText, 'aiowps_enable_login_lockdown') === FALSE){
+    private function check_is_aiopws_settings($strText) {
+        if (false === strpos($strText, 'aiowps_enable_login_lockdown')) {
             return false;
-        } else {
-            return true;
         }
+        
+        return true;
     }
 
     //Checks if valid aiowps settings file and returns contents as string
-    function check_if_valid_aiowps_settings_file($wp_file)
-    {
+    private function check_if_valid_aiowps_settings_file($wp_file) {
         $is_aiopws_settings = false;
 
         $file_contents = file_get_contents($wp_file);

@@ -177,7 +177,7 @@ msgid "The plugin achieves this by making appropriate modifications to your .hta
 msgstr "O plugin consegue isso fazendo modificações apropriadas ao seu arquivo .htaccess."
 
 #: ../../plugins/all-in-one-wp-security-and-firewall/admin/wp-security-blacklist-menu.php:149
-msgid "By blocking people via the .htaccess file your are using the most secure first line of defence which denies all access to blacklisted visitors as soon as they hit your hosting server."
+msgid "By blocking people, you are using the most secure first line of defence, which denies all access to blacklisted visitors as soon as they hit your hosting server."
 msgstr "Ao bloquear as pessoas através do arquivo .htaccess você está usando a primeira linha mais seguro de defesa que nega todo o acesso a visitantes na lista negra, assim que atingirem o seu servidor de hospedagem."
 
 #: ../../plugins/all-in-one-wp-security-and-firewall/admin/wp-security-blacklist-menu.php:155
@@ -399,8 +399,8 @@ msgid "Enter a string which will represent your secure login page slug. You are 
 msgstr "Digite uma sequência de caracteres que irá representar sua lesma/apelido da página de login seguro. Você é incentivado a escolher algo que é difícil de adivinhar e só você vai se lembrar."
 
 #: ../../plugins/all-in-one-wp-security-and-firewall/admin/wp-security-brute-force-menu.php:226
-msgid "Settings have not been saved - your secret word must consist only of alphanumeric characters, ie, letters and/or numbers only!"
-msgstr "Configurações não foram salvas - sua palavra secreta deve consistir apenas de caracteres alfanuméricos, ou seja, letras e/ou números apenas!"
+msgid "Settings have not been saved - your secret word must consist only of alphanumeric characters, ie, letters and/or numbers only."
+msgstr "Configurações não foram salvas - sua palavra secreta deve consistir apenas de caracteres alfanuméricos, ou seja, letras e/ou números apenas."
 
 #: ../../plugins/all-in-one-wp-security-and-firewall/admin/wp-security-brute-force-menu.php:245
 msgid "You have successfully enabled the cookie based brute force prevention feature"
@@ -666,7 +666,7 @@ msgid "The plugin achieves this by writing the appropriate directives to your .h
 msgstr "O plugin consegue isso por escrito as diretivas apropriadas para o seu arquivo .htaccess."
 
 #: ../../plugins/all-in-one-wp-security-and-firewall/admin/wp-security-brute-force-menu.php:649
-msgid "By allowing/blocking IP addresses via the .htaccess file your are using the most secure first line of defence because login access will only be granted to whitelisted IP addresses and other addresses will be blocked as soon as they try to access your login page."
+msgid "By allowing/blocking IP addresses, you are using the most secure first line of defence because login access will only be granted to whitelisted IP addresses and other addresses will be blocked as soon as they try to access your login page."
 msgstr "Ao permitir / bloquear endereços IP via arquivo .htaccess você está usando a primeira linha mais seguro de defesa porque o acesso de login será concedido somente a endereços IP autorizados na lista branca e outros endereços serão bloqueadas assim que eles tentam acessar a página de login."
 
 #: ../../plugins/all-in-one-wp-security-and-firewall/admin/wp-security-brute-force-menu.php:657

@@ -231,17 +231,17 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu
 
         //Save settings for brute force cookie method
         if (isset($_POST['aiowps_apply_cookie_based_bruteforce_firewall'])) {
-            if (!wp_verify_nonce($_POST['_wpnonce'], 'aiowpsec-enable-cookie-based-brute-force-prevention')) {
-                $aio_wp_security->debug_logger->log_debug('Nonce check failed on enable cookie based brute force prevention feature.',4);
+            if (!isset($_POST['_wpnonce']) || !wp_verify_nonce($_POST['_wpnonce'], 'aiowpsec-enable-cookie-based-brute-force-prevention')) {
+                $aio_wp_security->debug_logger->log_debug('Nonce check failed on enable cookie based brute force prevention feature.', 4);
                 die('Nonce check failed on enable cookie based brute force prevention feature.');
             }
 
             if (isset($_POST['aiowps_enable_brute_force_attack_prevention'])) {
                 $brute_force_feature_secret_word = sanitize_text_field($_POST['aiowps_brute_force_secret_word']);
                 if (empty($brute_force_feature_secret_word)) {
-                    $brute_force_feature_secret_word = "aiossecret";
+                    $brute_force_feature_secret_word = AIOS_DEFAULT_BRUTE_FORCE_FEATURE_SECRET_WORD;
                 } elseif (!ctype_alnum($brute_force_feature_secret_word)) {
-                    $msg = '<p>'.__('Settings have not been saved - your secret word must consist only of alphanumeric characters, ie, letters and/or numbers only!', 'all-in-one-wp-security-and-firewall').'</p>';
+                    $msg = '<p>'.__('Settings have not been saved - your secret word must consist only of alphanumeric characters, ie, letters and/or numbers only.', 'all-in-one-wp-security-and-firewall').'</p>';
                     $error = true;
                 }
 
@@ -250,10 +250,11 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu
                 } else {
                     $aio_wp_security->configs->set_value('aiowps_cookie_based_brute_force_redirect_url', 'http://127.0.0.1');
                 }
-                $aio_wp_security->configs->set_value('aiowps_enable_brute_force_attack_prevention', '1');
 
                 if (!$error) {
-                    $aio_wp_security->configs->set_value('aiowps_brute_force_secret_word', $brute_force_feature_secret_word);
+					$aio_wp_security->configs->set_value('aiowps_enable_brute_force_attack_prevention', '1');
+					$aio_wp_security->configs->set_value('aiowps_brute_force_secret_word', $brute_force_feature_secret_word);
+
                     $msg = '<p>'.__('You have successfully enabled the cookie based brute force prevention feature', 'all-in-one-wp-security-and-firewall').'</p>';
                     $msg .= '<p>'.__('From now on you will need to log into your WP Admin using the following URL:', 'all-in-one-wp-security-and-firewall').'</p>';
                     $msg .= '<p><strong>'.AIOWPSEC_WP_URL.'/?'.$brute_force_feature_secret_word.'=1</strong></p>';
@@ -686,68 +687,57 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu
         <?php
     }
 
-    function render_tab4()
-    {
+	/**
+     * Render login whitelist tab.
+     *
+	 * @return Void
+	 */
+    private function render_tab4() {
         global $aio_wp_security;
         global $aiowps_feature_mgr;
-        $result = 1;
+        $result = 0;
         $your_ip_address = AIOWPSecurity_Utility_IP::get_user_ip_address();
-        if (isset($_POST['aiowps_save_whitelist_settings']))
-        {
-            $nonce=$_REQUEST['_wpnonce'];
-            if (!wp_verify_nonce($nonce, 'aiowpsec-whitelist-settings-nonce'))
-            {
-                $aio_wp_security->debug_logger->log_debug("Nonce check failed for save whitelist settings.",4);
-                die(__('Nonce check failed for save whitelist settings.','all-in-one-wp-security-and-firewall'));
+        if (isset($_POST['aiowps_save_whitelist_settings'])) {
+            $nonce = $_REQUEST['_wpnonce'];
+            if (!wp_verify_nonce($nonce, 'aiowpsec-whitelist-settings-nonce')) {
+                $aio_wp_security->debug_logger->log_debug('Nonce check failed for save whitelist settings.', 4);
+                die('Nonce check failed for save whitelist settings.');
             }
 
-            if (isset($_POST["aiowps_enable_whitelisting"]) && empty($_POST['aiowps_allowed_ip_addresses']))
-            {
+            if (isset($_POST["aiowps_enable_whitelisting"]) && empty($_POST['aiowps_allowed_ip_addresses'])) {
                 $this->show_msg_error('You must submit at least one IP address!','all-in-one-wp-security-and-firewall');
-            }
-            else
-            {
-                if (!empty($_POST['aiowps_allowed_ip_addresses']))
-                {
+            } else {
+                if (!empty($_POST['aiowps_allowed_ip_addresses'])) {
                     $ip_addresses = $_POST['aiowps_allowed_ip_addresses'];
                     $ip_list_array = AIOWPSecurity_Utility_IP::create_ip_list_array_from_string_with_newline($ip_addresses);
                     $payload = AIOWPSecurity_Utility_IP::validate_ip_list($ip_list_array, 'whitelist');
-                    if($payload[0] == 1){
+                    if (1 == $payload[0]) {
                         //success case
                         $result = 1;
                         $list = $payload[1];
                         $whitelist_ip_data = implode(PHP_EOL, $list);
-                        $aio_wp_security->configs->set_value('aiowps_allowed_ip_addresses',$whitelist_ip_data);
+                        $aio_wp_security->configs->set_value('aiowps_allowed_ip_addresses', $whitelist_ip_data);
                         $_POST['aiowps_allowed_ip_addresses'] = ''; //Clear the post variable for the banned address list
-                    }
-                    else{
+                    } else {
                         $result = -1;
                         $error_msg = htmlspecialchars($payload[1][0]);
                         $this->show_msg_error($error_msg);
                     }
-
-                }
-                else
-                {
-                    $aio_wp_security->configs->set_value('aiowps_allowed_ip_addresses',''); //Clear the IP address config value
+                } else {
+                    $aio_wp_security->configs->set_value('aiowps_allowed_ip_addresses', ''); //Clear the IP address config value
                 }
 
-                if ($result == 1)
-                {
-                    $aio_wp_security->configs->set_value('aiowps_enable_whitelisting',isset($_POST["aiowps_enable_whitelisting"])?'1':'');
+                if (1 == $result) {
+                    $aio_wp_security->configs->set_value('aiowps_enable_whitelisting', isset($_POST["aiowps_enable_whitelisting"]) ? '1' : '');
+					if ('1' == $aio_wp_security->configs->get_value('aiowps_is_login_whitelist_disabled_on_upgrade')) {
+						$aio_wp_security->configs->delete_value('aiowps_is_login_whitelist_disabled_on_upgrade');
+					}
                     $aio_wp_security->configs->save_config(); //Save the configuration
 
                     //Recalculate points after the feature status/options have been altered
                     $aiowps_feature_mgr->check_feature_status_and_recalculate_points();
 
                     $this->show_msg_settings_updated();
-
-                    $write_result = AIOWPSecurity_Utility_Htaccess::write_to_htaccess(); //now let's write to the .htaccess file
-                    if ( !$write_result )
-                    {
-                        $this->show_msg_error(__('The plugin was unable to write to the .htaccess file. Please edit file manually.','all-in-one-wp-security-and-firewall'));
-                        $aio_wp_security->debug_logger->log_debug("AIOWPSecurity_whitelist_Menu - The plugin was unable to write to the .htaccess file.");
-                    }
                 }
             }
         }
@@ -758,7 +748,7 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu
             echo '<p>'.__('The All In One WP Security Whitelist feature gives you the option of only allowing certain IP addresses or ranges to have access to your WordPress login page.', 'all-in-one-wp-security-and-firewall').'
             <br />'.__('This feature will deny login access for all IP addresses which are not in your whitelist as configured in the settings below.', 'all-in-one-wp-security-and-firewall').'
             <br />'.__('The plugin achieves this by writing the appropriate directives to your .htaccess file.', 'all-in-one-wp-security-and-firewall').'
-            <br />'.__('By allowing/blocking IP addresses via the .htaccess file your are using the most secure first line of defence because login access will only be granted to whitelisted IP addresses and other addresses will be blocked as soon as they try to access your login page.', 'all-in-one-wp-security-and-firewall').'
+            <br />'.__('By allowing/blocking IP addresses, you are using the most secure first line of defence because login access will only be granted to whitelisted IP addresses and other addresses will be blocked as soon as they try to access your login page.', 'all-in-one-wp-security-and-firewall').'
             </p>';
             ?>
         </div>
@@ -770,6 +760,12 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu
             <p>'.__('These features are NOT functionally related. Having both of them enabled on your site means you are creating 2 layers of security.', 'all-in-one-wp-security-and-firewall').'</p>';
             ?>
         </div>
+
+		<?php
+		if (defined('AIOS_DISABLE_LOGIN_WHITELIST') && AIOS_DISABLE_LOGIN_WHITELIST) {
+			$aio_wp_security->include_template('notices/disable-login-whitelist.php');
+		}
+		?>
 
         <div class="postbox">
         <h3 class="hndle"><label for="title"><?php _e('Login IP Whitelist Settings', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
@@ -792,7 +788,7 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu
             <tr valign="top">
                 <th scope="row"><label for="aiowps_user_ip"><?php _e('Your Current IP Address', 'all-in-one-wp-security-and-firewall')?>:</label></th>
                 <td>
-                <input id="aiowps_user_ip" size="20" name="aiowps_user_ip" type="text" value="<?php echo $your_ip_address; ?>" readonly="readonly"/>
+                <input id="aiowps_user_ip" size="40" name="aiowps_user_ip" type="text" value="<?php echo $your_ip_address; ?>" readonly="readonly"/>
                 <span class="description"><?php _e('You can copy and paste this address in the text box below if you want to include it in your login whitelist.', 'all-in-one-wp-security-and-firewall'); ?></span>
                 </td>
             </tr>

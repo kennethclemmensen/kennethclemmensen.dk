@@ -5,7 +5,7 @@ Tags: security, secure, Anti Virus, antivirus, ban, ban hacker, virus, firewall,
 Requires PHP: 5.6
 Requires at least: 5.0
 Tested up to: 6.0
-Stable tag: 5.0.7
+Stable tag: 5.0.8
 License: GPLv3 or later
 
 A comprehensive, user-friendly, all in one WordPress security and firewall plugin for your site.
@@ -178,6 +178,21 @@ Check the following page for F.A.Q (see the faq section):
 https://www.tipsandtricks-hq.com/wordpress-security-and-firewall-plugin
 
 == Changelog ==
+
+= 5.0.8 - 29/September/2022 =
+
+* SECURITY/FEATURE: Fix IP address detection, and give IP address detection settings in the Admin Dashboard > WP Security > Settings > Advanced Settings, provide user guidance on how to use them, and notify the user if there any problem is apparent. Versions from 5.0.0 to 5.0.7 had a defect allowing an attacker to spoof their IP address, aiding them to avoid detection or locking out legitimate users. Thanks to Calvin Alkan for the responsible disclosure.
+* FIX: The 403 forbidden error was shown on the wp login screen if the login url contains the redirect_to parameter and the deny bad query strings firewall feature is enabled on localhost.
+* FIX: The PUT request method was blocked when the user enabled the 6G firewall.
+* FIX: The login whitelisting didn't work on servers not supporting .htaccess files, without this information being dislayed in the user interface. The feature is now ported to PHP so that it works on all servers. Thanks to Calvin Alkan for identifying this issue.
+* TWEAK: Add index keys to the login lockdown, failed_logins and the permanent block tables to prevent poor database reading performance in the event of vast numbers of rows being stored in these tables (see the "SECURITY" item above, since the defect described there can allow this). Thanks to Calvin Alkan for identifying this issue.
+* TWEAK: Resolve a PHP-firewall 'Unable to locate workspace' log message.
+* TWEAK: Added a constant AIOS_DISABLE_GET_EXTERNAL_IP. Define this in your wp-config.php to disable getting the IP address via an external API when the IP retrieval method fail to get a valid IP address.
+* TWEAK: Replace deprecated jQuery(document).ready() calls.
+* TWEAK: Disable cookie access via JS and HTTP for cookie-based brute force prevention.
+* TWEAK: Enhanced cookie storage mechanism for cookie-based brute force prevention. Thanks to Calvin Alkan for identifying this improvement.
+* TWEAK: Display notice alerting the user that the block spam comment doesn't work on non-apache servers in the block spam comment section. Thanks to Calvin Alkan for identifying this omission.
+* TWEAK: Added a constant AIOS_DISABLE_LOGIN_WHITELIST. Define this in your wp-config.php to disable login IP whitelist.
 
 = 5.0.7 - 08/September/2022 =
 
@@ -1048,6 +1063,5 @@ those who want to enable the basic firewall but do not have "AllowOverride" opti
 = 1.0 =
 - First commit to the WP repository.
 
-
 == Upgrade Notice ==
-* 5.0.7: The 5.0 series has various new features such as a PHP-based firewall, Two Factor Authentication, and WHOIS lookup have been added. It contains various fixes and tweaks. 5.0.X releases are fixing issues discovered in the 5.0 branch. A recommended update for all.
+* 5.0.8: This is a security fix release fixing issues allowing an attacker to evade detection and block legitimate users, and to degrade site performance; full details are in the changelog. Many other further tweaks and improvements. All users are recommended to update.

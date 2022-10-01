@@ -234,7 +234,7 @@ msgstr ""
 
 #: admin/wp-security-blacklist-menu.php:145
 #@ all-in-one-wp-security-and-firewall
-msgid "By blocking people via the .htaccess file your are using the most secure first line of defence which denies all access to blacklisted visitors as soon as they hit your hosting server."
+msgid "By blocking people, you are using the most secure first line of defence, which denies all access to blacklisted visitors as soon as they hit your hosting server."
 msgstr ""
 
 #: admin/wp-security-blacklist-menu.php:151
@@ -479,7 +479,7 @@ msgstr ""
 
 #: admin/wp-security-brute-force-menu.php:217
 #@ all-in-one-wp-security-and-firewall
-msgid "Settings have not been saved - your secret word must consist only of alphanumeric characters, ie, letters and/or numbers only!"
+msgid "Settings have not been saved - your secret word must consist only of alphanumeric characters, ie, letters and/or numbers only."
 msgstr ""
 
 #: admin/wp-security-brute-force-menu.php:236
@@ -794,7 +794,7 @@ msgstr ""
 
 #: admin/wp-security-brute-force-menu.php:621
 #@ all-in-one-wp-security-and-firewall
-msgid "By allowing/blocking IP addresses via the .htaccess file your are using the most secure first line of defence because login access will only be granted to whitelisted IP addresses and other addresses will be blocked as soon as they try to access your login page."
+msgid "By allowing/blocking IP addresses, you are using the most secure first line of defence because login access will only be granted to whitelisted IP addresses and other addresses will be blocked as soon as they try to access your login page."
 msgstr ""
 
 #: admin/wp-security-brute-force-menu.php:628

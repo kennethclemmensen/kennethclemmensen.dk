@@ -8,9 +8,9 @@ if (!class_exists('AIO_WP_Security')) {
 
 	class AIO_WP_Security {
 
-		public $version = '5.0.7';
+		public $version = '5.0.8';
 
-		public $db_version = '1.9.3';
+		public $db_version = '1.9.5';
 
 		public $plugin_url;
 
@@ -148,6 +148,7 @@ if (!class_exists('AIO_WP_Security')) {
 			if (!defined('AIOS_PURGE_EVENTS_RECORDS_AFTER_DAYS')) define('AIOS_PURGE_EVENTS_RECORDS_AFTER_DAYS', 90);
 			if (!defined('AIOS_PURGE_LOGIN_ACTIVITY_RECORDS_AFTER_DAYS')) define('AIOS_PURGE_LOGIN_ACTIVITY_RECORDS_AFTER_DAYS', 90);
 			if (!defined('AIOS_PURGE_GLOBAL_META_DATA_RECORDS_AFTER_DAYS')) define('AIOS_PURGE_GLOBAL_META_DATA_RECORDS_AFTER_DAYS', 90);
+			if (!defined('AIOS_DEFAULT_BRUTE_FORCE_FEATURE_SECRET_WORD')) define('AIOS_DEFAULT_BRUTE_FORCE_FEATURE_SECRET_WORD', 'aiossecret');
 
 			global $wpdb;
 			define('AIOWPSEC_TBL_LOGIN_LOCKDOWN', $wpdb->prefix . 'aiowps_login_lockdown');
@@ -210,6 +211,8 @@ if (!class_exists('AIO_WP_Security')) {
 			$debug_config = $this->configs->get_value('aiowps_enable_debug');
 			$debug_enabled = empty($debug_config) ? false : true;
 			$this->debug_logger = new AIOWPSecurity_Logger($debug_enabled);
+
+			$this->load_ajax_handler();
 		}
 
 		/**
@@ -290,6 +293,12 @@ if (!class_exists('AIO_WP_Security')) {
 				}
 			} elseif ('dismiss_automated_database_backup_notice' == $subaction) {
 				$this->delete_automated_backup_configs();
+			} elseif ('dismiss_ip_retrieval_settings_notice' == $subaction) {
+				$this->configs->set_value($subaction, 1);
+			} elseif ('dismiss_ip_retrieval_settings_notice' == $subaction) {
+				$this->configs->set_value('aiowps_is_login_whitelist_disabled_on_upgrade', 1);
+			} elseif ('dismiss_login_whitelist_disabled_on_upgrade_notice' == $subaction) {
+				$this->configs->delete_value('aiowps_is_login_whitelist_disabled_on_upgrade');
 			} else {
 				// Other commands, available for any remote method.
 			}
@@ -479,8 +488,6 @@ if (!class_exists('AIO_WP_Security')) {
 			$this->scan_obj = new AIOWPSecurity_Scan();//Object to handle scan tasks
 			add_action('login_enqueue_scripts', array($this, 'aiowps_login_enqueue'));
 			add_action('wp_footer', array($this, 'aiowps_footer_content'));
-
-			$this->configs->add_value('installed-at', time());
 
 			add_action('wp_ajax_aiowps_ajax', array($this, 'aiowps_ajax_handler'));
 
@@ -673,6 +680,14 @@ if (!class_exists('AIO_WP_Security')) {
 			}
 
 			return $this->configs->get_value('aiowps_enable_brute_force_attack_prevention');
+		}
+
+		/**
+		 * Instantiate Ajax handling class
+		 */
+		private function load_ajax_handler() {
+			include_once(AIO_WP_SECURITY_PATH.'/classes/aios-ajax.php');
+			AIOS_Ajax::get_instance();
 		}
 
 	} // End of class

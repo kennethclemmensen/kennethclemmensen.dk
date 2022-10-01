@@ -142,7 +142,7 @@ class AIOWPSecurity_Blacklist_Menu extends AIOWPSecurity_Admin_Menu
             echo '<p>'.__('The All In One WP Security Blacklist feature gives you the option of banning certain host IP addresses or ranges and also user agents.', 'all-in-one-wp-security-and-firewall').'
             <br />'.__('This feature will deny total site access for users which have IP addresses or user agents matching those which you have configured in the settings below.', 'all-in-one-wp-security-and-firewall').'
             <br />'.__('The plugin achieves this by making appropriate modifications to your .htaccess file.', 'all-in-one-wp-security-and-firewall').'
-            <br />'.__('By blocking people via the .htaccess file your are using the most secure first line of defence which denies all access to blacklisted visitors as soon as they hit your hosting server.', 'all-in-one-wp-security-and-firewall').'
+            <br />'.__('By blocking people, you are using the most secure first line of defence, which denies all access to blacklisted visitors as soon as they hit your hosting server.', 'all-in-one-wp-security-and-firewall').'
             </p>';
             ?>
         </div>

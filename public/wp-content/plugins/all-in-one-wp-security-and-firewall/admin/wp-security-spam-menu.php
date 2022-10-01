@@ -165,6 +165,7 @@ class AIOWPSecurity_Spam_Menu extends AIOWPSecurity_Admin_Menu
             ?>
         </div>
         <?php
+		$aio_wp_security->include_template('partials/non-apache-feature-notice.php');
         //Display security info badge
         $aiowps_feature_mgr->output_feature_details_badge("block-spambots");
         $blog_id = get_current_blog_id(); 

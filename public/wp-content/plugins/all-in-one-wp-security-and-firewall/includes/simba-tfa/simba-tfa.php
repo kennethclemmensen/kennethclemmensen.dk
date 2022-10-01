@@ -3,10 +3,34 @@
 if (!defined('ABSPATH')) die('Access denied.');
 
 class Simba_Two_Factor_Authentication {
-	
+
+	/**
+	 * Simba 2FA frontend object
+	 *
+	 * @var Object
+	 */
 	protected $frontend;
-	
+
+	/**
+	 * Simba 2FA totp object
+	 *
+	 * @var Object
+	 */
 	protected $totp_controller;
+	
+	/**
+	 * Flag for prevent PHP notices in AJAX
+	 *
+	 * @var Boolean
+	 */
+	private $output_buffering;
+	
+	/**
+	 * Logged error lines array
+	 *
+	 * @var Array
+	 */
+	private $logged;
 
 	/**
 	 * URL slug for the plugin's option page
@@ -766,7 +790,7 @@ class Simba_Two_Factor_Authentication {
 	}
 
 	/**
-	 * Here's where the login action happens. Called on the WP 'authenticate' action.
+	 * Here's where the login action happens. Called on the WP 'authenticate' action (which also happens when wp-login.php loads, so parameters need checking).
 	 *
 	 * @param WP_Error|WP_User $user
 	 * @param String		   $username - this is not necessarily the WP username; it is whatever was typed in the form, so can be an email address
@@ -775,7 +799,7 @@ class Simba_Two_Factor_Authentication {
 	 * @return WP_Error|WP_User
 	 */
 	public function tfaVerifyCodeAndUser($user, $username, $password) {
-		// When both AIOWPS and Two Factor Authentication plugins are active, this function called more than once, To prevent it, this code is written.
+		// When both the AIOWPS and Two Factor Authentication plugins are active, this function is called more than once; that should be short-circuited.
 		if (isset(self::$is_authenticated[$this->authentication_slug]) && self::$is_authenticated[$this->authentication_slug]) {
 			return $user;
 		}
@@ -816,7 +840,7 @@ class Simba_Two_Factor_Authentication {
 			if (is_wp_error($code_ok)) {
 				$ret = $code_ok;
 			} elseif (!$code_ok) {
-				$ret =  new WP_Error('authentication_failed', '<strong>'.__('Error:', 'all-in-one-wp-security-and-firewall').'</strong> '.__('The one-time password (TFA code) you entered was incorrect.', 'all-in-one-wp-security-and-firewall'));
+				$ret =  new WP_Error('authentication_failed', '<strong>'.__('Error:', 'all-in-one-wp-security-and-firewall').'</strong> '.apply_filters('simba_tfa_message_code_incorrect', __('The one-time password (TFA code) you entered was incorrect.', 'all-in-one-wp-security-and-firewall')));
 			} elseif ($user) {
 				$ret = $user;
 			} else {
@@ -1177,6 +1201,7 @@ class Simba_Two_Factor_Authentication {
 			'nonce' => wp_create_nonce('simba_tfa_loginform_nonce'),
 			'login_form_selectors' => '',
 			'login_form_off_selectors' => '',
+			'error' => __('An error has occurred. Site owners can check the JavaScript console for more details.', 'all-in-one-wp-security-and-firewall'),
 		);
 
 		// Spinner exists since WC 3.8. Use the proper functions to avoid SSL warnings.

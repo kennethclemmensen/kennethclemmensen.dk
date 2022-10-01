@@ -104,7 +104,7 @@ class Loader {
 	 private function get_firewall_workspace() {
 		global $aiowps_firewall_rules_path;
 		$workspace = '';
-
+		
 		if (!empty($aiowps_firewall_rules_path)) {
 			$workspace = $aiowps_firewall_rules_path;
 		} else {

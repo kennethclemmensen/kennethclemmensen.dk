@@ -250,8 +250,8 @@ msgid "IP Retrieval Settings"
 msgstr "IP informatie-instellingen"
 
 #: admin/wp-security-settings-menu.php:728
-msgid "Nonce check failed for save advanced settings!"
-msgstr "Nonce check mislukt voor het opslaan van geavanceerde instellingen!"
+msgid "Nonce check failed for save advanced settings."
+msgstr "Nonce check mislukt voor het opslaan van geavanceerde instellingen."
 
 #: admin/wp-security-spam-menu.php:543
 msgid "Check this if you want to insert a captcha field on the BBPress new topic forms"
@@ -4522,7 +4522,7 @@ msgid "Attention: If in addition to enabling the white list feature, you also ha
 msgstr "Attentie: Als je naast het gebruiken van de white-list optie je ook %s of %s gebruikt, <strong>zal je nog steeds je geheime woord of eigen slug moeten gebruiken om je WordPress inlogpagina te bezoeken</strong>."
 
 #: admin/wp-security-brute-force-menu.php:762
-msgid "By allowing/blocking IP addresses via the .htaccess file your are using the most secure first line of defence because login access will only be granted to whitelisted IP addresses and other addresses will be blocked as soon as they try to access your login page."
+msgid "By allowing/blocking IP addresses, you are using the most secure first line of defence because login access will only be granted to whitelisted IP addresses and other addresses will be blocked as soon as they try to access your login page."
 msgstr "Door IP-adressen toe te staan of te blokkeren via het .htaccess-bestand maak je gebruik van de beste beschermingsmogelijkheid omdat inloggen alleen toegestaan is voor toegestane IP-adressen en andere adressen geblokkeerd worden zodra ze jouw loginpagina proberen te bereiken."
 
 #: admin/wp-security-brute-force-menu.php:761
@@ -4652,7 +4652,7 @@ msgid "The plugin achieves this by making appropriate modifications to your .hta
 msgstr "De plugin bereikt dit door het maken van passende wijzigingen aan uw .htaccess-bestand."
 
 #: admin/wp-security-blacklist-menu.php:152
-msgid "By blocking people via the .htaccess file your are using the most secure first line of defence which denies all access to blacklisted visitors as soon as they hit your hosting server."
+msgid "By blocking people, you are using the most secure first line of defence, which denies all access to blacklisted visitors as soon as they hit your hosting server."
 msgstr "Door mensen via het. htaccess-bestand te blokkeren gebruikt u de veiligste eerste lijn van defensie, die alle toegang voor bezoekers die op de zwarte lijst staan blokkeert zodra zij uw server benaderen."
 
 #: admin/wp-security-blacklist-menu.php:190
@@ -4697,8 +4697,8 @@ msgid "Enter a string which will represent your secure login page slug. You are 
 msgstr "Voer een string in die je beveiligde loginpagina slug zal representeren. U wordt aangeraden iets te kiezen wat moeilijk te raden is en alleen u zich zult herinneren."
 
 #: admin/wp-security-brute-force-menu.php:257
-msgid "Settings have not been saved - your secret word must consist only of alphanumeric characters, ie, letters and/or numbers only!"
-msgstr "Instellingen niet opgeslagen - uw geheime woord mag alleen bestaan uit alfanumerieke tekens, dat wil zeggen, letters en/of cijfers!"
+msgid "Settings have not been saved - your secret word must consist only of alphanumeric characters, ie, letters and/or numbers only."
+msgstr "Instellingen niet opgeslagen - uw geheime woord mag alleen bestaan uit alfanumerieke tekens, dat wil zeggen, letters en/of cijfers."
 
 #: admin/wp-security-brute-force-menu.php:277
 msgid "From now on you will need to log into your WP Admin using the following URL:"
