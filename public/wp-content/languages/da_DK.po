@@ -2,12 +2,12 @@
 # This file is distributed under the same license as the WordPress - 6.0.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-05-27 09:48:50+0000\n"
+"PO-Revision-Date: 2022-09-30 09:36:12+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: GlotPress/4.0.0-alpha.1\n"
+"X-Generator: GlotPress/4.0.0-alpha.3\n"
 "Language: da_DK\n"
 "Project-Id-Version: WordPress - 6.0.x - Development\n"
 
@@ -426,6 +426,11 @@ msgctxt "block description"
 msgid "Displays a link to edit the comment in the WordPress Dashboard. This link is only visible to users with the edit comment capability."
 msgstr "Viser et link til at redigere kommentaren i WordPress kontrolpanel. Dette link er kun synligt for brugere med rettigheder til at redigere kommentar."
 
+#: wp-includes/blocks/comment-date/block.json
+msgctxt "block description"
+msgid "Displays the date on which the comment was posted."
+msgstr "Viser datoen, hvor kommentaren blev indsendt."
+
 #: wp-includes/blocks/comment-content/block.json
 msgctxt "block description"
 msgid "Displays the contents of a comment."
@@ -451,9 +456,99 @@ msgstr "Avatar"
 msgid "A WordPress Commenter"
 msgstr "En WordPress-kommentator"
 
+#: wp-includes/js/dist/block-library.js:1910
+#: wp-includes/js/dist/block-library.js:1953
+#: wp-admin/options-discussion.php:267 wp-admin/options-discussion.php:268
+msgid "Default Avatar"
+msgstr "Standardavatar"
+
+#: wp-trackback.php:130
+msgid "There is already a ping from that URL for this post."
+msgstr "Der er allerede et ping fra den URL til dette indlæg."
+
+#. translators: 1: Documentation URL, 2: wp-config.php
+#: wp-load.php:95 wp-admin/setup-config.php:190
+msgid "Need more help? <a href=\"%1$s\">Read the support article on %2$s</a>."
+msgstr "Har du brug for mere hjælp? <a href=\"%1$s\">Læs supportartiklen %2$s</a>"
+
+#: wp-includes/wp-db.php:1185
+msgid "Cannot select database"
+msgstr "Kan ikke vælge database"
+
+#. translators: %s: URL to media library.
+#: wp-includes/widgets/class-wp-widget-media.php:501
+msgid "That file cannot be found. Check your <a href=\"%s\">media library</a> and make sure it was not deleted."
+msgstr "Vi kan ikke finde den fil. Tjek venligst dit <a href=\"%s\">mediebibliotek</a> og verificer den ikke er blevet slettet."
+
+#. translators: %s: A list of valid video file extensions.
+#: wp-includes/widgets/class-wp-widget-media-video.php:51
+msgid "Sorry, the video at the supplied URL cannot be loaded. Please check that the URL is for a supported video file (%s) or stream (e.g. YouTube and Vimeo)."
+msgstr "Beklager, men vi kan ikke læse videoen fra den givne URL. Undersøg om din URL stammer fra en understøttet videofil (%s) eller stream (f.eks. YouTube og Vimeo)."
+
+#: wp-includes/user.php:2192
+msgid "User URL may not be longer than 100 characters."
+msgstr "Bruger-URL må ikke være længere end 100 tegn."
+
+#: wp-includes/class-wp-theme.php:992
+msgctxt "color scheme"
+msgid "Dark"
+msgstr "Mørk"
+
+#: wp-includes/class-wp-image-editor-gd.php:92
+#: wp-includes/class-wp-image-editor-gd.php:101
+#: wp-includes/class-wp-image-editor-imagick.php:132
+msgid "File does not exist?"
+msgstr "Filen eksisterer ikke?"
+
+#: wp-includes/blocks/comments-title.php:74
+#: wp-includes/js/dist/block-library.js:9619
+msgid "Responses"
+msgstr "Kommentarer"
+
+#: wp-includes/blocks/comments-title.php:72
+#: wp-includes/js/dist/block-library.js:9617
+msgid "Response"
+msgstr "Kommentar"
+
+#: wp-includes/blocks/comments-pagination-previous.php:18
+#: wp-includes/js/dist/block-library.js:8700
+#: wp-includes/js/dist/block-library.js:31296
+#: wp-includes/js/dist/block-library.js:31367
+msgid "Older Comments"
+msgstr "Ældre kommentarer"
+
+#: wp-includes/blocks/comments-pagination-next.php:25
+#: wp-includes/js/dist/block-library.js:9194
+#: wp-includes/js/dist/block-library.js:31300
+#: wp-includes/js/dist/block-library.js:31371
+msgid "Newer Comments"
+msgstr "Nyere kommentarer"
+
+#. translators: %s is the Comment Author name.
+#: wp-includes/blocks/avatar.php:127
+msgid "(%s website link, opens in a new tab)"
+msgstr "(%s webstedslink, åbner i en ny fane)"
+
+#. translators: %s is the Author name.
+#: wp-includes/blocks/avatar.php:100
+msgid "(%s author archive, opens in a new tab)"
+msgstr "(%s forfatterarkiv, åbner i en ny fane)"
+
+#. translators: %s is the Author name.
+#. translators: %s is the Comment Author name
+#: wp-includes/blocks/avatar.php:85 wp-includes/blocks/avatar.php:109
+#: wp-includes/js/dist/block-library.js:1910
+#: wp-includes/js/dist/block-library.js:1953
+msgid "%s Avatar"
+msgstr "%s Avatar"
+
 #: wp-includes/block-template-utils.php:170
 msgid "Displays search results."
 msgstr "Viser søgeresultater."
+
+#: wp-includes/block-template-utils.php:126
+msgid "Displays the homepage."
+msgstr "Viser forsiden."
 
 #: wp-includes/script-loader.php:1271
 msgid "Use Site Editor"
@@ -17248,7 +17343,7 @@ msgstr "Ikke godkendt"
 #: wp-includes/js/dist/block-library.js:31195
 #: wp-includes/js/dist/block-library.js:31196
 msgid "Post Comment"
-msgstr "Skriv kommentar"
+msgstr "Send kommentar"
 
 #: wp-includes/comment-template.php:2500
 msgid "Cancel reply"
