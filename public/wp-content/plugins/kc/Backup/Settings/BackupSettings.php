@@ -3,11 +3,11 @@ namespace KC\Backup\Settings;
 
 use KC\Core\Action;
 use KC\Core\Settings\ISettings;
+use KC\Core\Translations\TranslationHelper;
 use KC\Core\Translations\TranslationString;
 use KC\Core\Users\UserRole;
 use KC\Data\DatabaseManager;
 use KC\Data\FileManager;
-use KC\Utils\PluginHelper;
 
 /**
  * The BackupSettings class contains methods to handle the backup settings
@@ -30,11 +30,11 @@ class BackupSettings implements ISettings {
 	 */
 	public function createSettingsPage() : void {
 		add_action(Action::ADMIN_MENU, function() : void {
-			$title = PluginHelper::getTranslatedString(TranslationString::Backup);
+			$title = TranslationHelper::getTranslatedString(TranslationString::Backup);
 			add_management_page($title, $title, UserRole::Administrator->value, 'kc-backup', function() use ($title) : void {
-				$createBackup = PluginHelper::getTranslatedString(TranslationString::CreateBackup);
-				$download = PluginHelper::getTranslatedString(TranslationString::Download);
-				$delete = PluginHelper::getTranslatedString(TranslationString::Delete);
+				$createBackup = TranslationHelper::getTranslatedString(TranslationString::CreateBackup);
+				$download = TranslationHelper::getTranslatedString(TranslationString::Download);
+				$delete = TranslationHelper::getTranslatedString(TranslationString::Delete);
 				$name = 'createBackup';
 				if(isset($_POST[$name])) {
 					$this->createDatabaseBackupFile();

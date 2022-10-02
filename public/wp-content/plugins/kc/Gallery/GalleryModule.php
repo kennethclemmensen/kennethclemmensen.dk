@@ -3,6 +3,7 @@ namespace KC\Gallery;
 
 use KC\Core\Action;
 use KC\Core\Filter;
+use KC\Core\Images\ImageHelper;
 use KC\Core\Images\ImageSize;
 use KC\Core\Modules\BaseModule;
 use KC\Core\Modules\IModule;
@@ -11,10 +12,11 @@ use KC\Core\PostTypes\FieldType;
 use KC\Core\PostTypes\Icon;
 use KC\Core\PostTypes\PostType;
 use KC\Core\PostTypes\PostTypeFeature;
+use KC\Core\PostTypes\PostTypeHelper;
+use KC\Core\Translations\TranslationHelper;
 use KC\Core\Translations\TranslationString;
 use KC\Data\DatabaseManager;
 use KC\Gallery\Settings\GallerySettings;
-use KC\Utils\PluginHelper;
 
 /**
  * The GalleryModule class contains functionality to handle galleries
@@ -50,8 +52,8 @@ class GalleryModule extends BaseModule implements IModule {
 		add_action(Action::INIT, function() : void {
 			register_post_type(PostType::Gallery->value, [
 				'labels' => [
-					'name' => PluginHelper::getTranslatedString(TranslationString::Galleries),
-					'singular_name' => PluginHelper::getTranslatedString(TranslationString::Gallery)
+					'name' => TranslationHelper::getTranslatedString(TranslationString::Galleries),
+					'singular_name' => TranslationHelper::getTranslatedString(TranslationString::Gallery)
 				],
 				'public' => true,
 				'has_archive' => true,
@@ -61,8 +63,8 @@ class GalleryModule extends BaseModule implements IModule {
 			]);
 			register_post_type(PostType::Image->value, [
 				'labels' => [
-					'name' => PluginHelper::getTranslatedString(TranslationString::Images),
-					'singular_name' => PluginHelper::getTranslatedString(TranslationString::Image)
+					'name' => TranslationHelper::getTranslatedString(TranslationString::Images),
+					'singular_name' => TranslationHelper::getTranslatedString(TranslationString::Image)
 				],
 				'public' => false,
 				'has_archive' => false,
@@ -82,8 +84,8 @@ class GalleryModule extends BaseModule implements IModule {
 	 */
 	private function updatePostParent() : void {
 		add_action(Action::getSavePostAction(PostType::Gallery), function(int $postID) : void {
-			PluginHelper::setFieldValue($_REQUEST[$this->fieldParentPage], FieldName::ParentPage, $postID);
-			$parentPage = PluginHelper::getFieldValue(FieldName::ParentPage, $postID);
+			PostTypeHelper::setFieldValue($_REQUEST[$this->fieldParentPage], FieldName::ParentPage, $postID);
+			$parentPage = PostTypeHelper::getFieldValue(FieldName::ParentPage, $postID);
 			$dbManager = new DatabaseManager();
 			$dbManager->updatePostParent($postID, $parentPage);
 		});
@@ -96,11 +98,11 @@ class GalleryModule extends BaseModule implements IModule {
 		add_filter(Filter::META_BOXES, function(array $metaBoxes) : array {
 			$metaBoxes[] = [
 				'id' => 'gallery_informations',
-				'title' => PluginHelper::getTranslatedString(TranslationString::GalleryInformations),
+				'title' => TranslationHelper::getTranslatedString(TranslationString::GalleryInformations),
 				'post_types' => [PostType::Gallery->value],
 				'fields' => [
 					[
-						'name' => PluginHelper::getTranslatedString(TranslationString::ParentPage),
+						'name' => TranslationHelper::getTranslatedString(TranslationString::ParentPage),
 						'id' => $this->fieldParentPage,
 						'type' => FieldType::Select->value,
 						'options' => $this->getAllPosts(PostType::Page)
@@ -109,11 +111,11 @@ class GalleryModule extends BaseModule implements IModule {
 			];
 			$metaBoxes[] = [
 				'id' => 'image_informations',
-				'title' => PluginHelper::getTranslatedString(TranslationString::ImageInformations),
+				'title' => TranslationHelper::getTranslatedString(TranslationString::ImageInformations),
 				'post_types' => [PostType::Image->value],
 				'fields' => [
 					[
-						'name' => PluginHelper::getTranslatedString(TranslationString::Gallery),
+						'name' => TranslationHelper::getTranslatedString(TranslationString::Gallery),
 						'id' => FieldName::ImageGallery->value,
 						'type' => FieldType::Select->value,
 						'options' => $this->getAllPosts(PostType::Gallery)
@@ -131,16 +133,16 @@ class GalleryModule extends BaseModule implements IModule {
 		$columnGalleryKey = 'gallery';
 		$columnImageKey = 'image';
 		add_filter(Filter::getManagePostsColumnsFilter(PostType::Image), function(array $columns) use ($columnGalleryKey, $columnImageKey) : array {
-			$columns[$columnGalleryKey] = PluginHelper::getTranslatedString(TranslationString::Gallery);
-			$columns[$columnImageKey] = PluginHelper::getTranslatedString(TranslationString::Image);
+			$columns[$columnGalleryKey] = TranslationHelper::getTranslatedString(TranslationString::Gallery);
+			$columns[$columnImageKey] = TranslationHelper::getTranslatedString(TranslationString::Image);
 			return $columns;
 		});
 		add_action(Action::getManagePostsCustomColumn(PostType::Image), function(string $columnName) use ($columnGalleryKey, $columnImageKey) : void {
 			if($columnName === $columnGalleryKey) {
-				$galleryID = PluginHelper::getFieldValue(FieldName::ImageGallery, get_the_ID());
+				$galleryID = PostTypeHelper::getFieldValue(FieldName::ImageGallery, get_the_ID());
 				echo get_the_title($galleryID);
 			} else if($columnName === $columnImageKey) {
-				echo '<img src="'.PluginHelper::getImageUrl(get_the_ID(), ImageSize::Thumbnail).'" alt="'.get_the_title().'">';
+				echo '<img src="'.ImageHelper::getImageUrl(get_the_ID(), ImageSize::Thumbnail).'" alt="'.get_the_title().'">';
 			}
 		});
 	}

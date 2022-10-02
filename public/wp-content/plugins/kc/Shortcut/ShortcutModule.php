@@ -6,8 +6,8 @@ use KC\Core\Modules\IModule;
 use KC\Core\PostTypes\FieldName;
 use KC\Core\PostTypes\FieldType;
 use KC\Core\PostTypes\PostType;
+use KC\Core\Translations\TranslationHelper;
 use KC\Core\Translations\TranslationString;
-use KC\Utils\PluginHelper;
 
 /**
  * The ShortcutModule class contains functionality to handle shortcuts
@@ -28,26 +28,26 @@ class ShortcutModule implements IModule {
 		add_filter(Filter::META_BOXES, function(array $metaBoxes) : array {
 			$metaBoxes[] = [
 				'id' => 'shortcut_informations',
-				'title' => PluginHelper::getTranslatedString(TranslationString::Shortcut),
+				'title' => TranslationHelper::getTranslatedString(TranslationString::Shortcut),
 				'post_types' => [PostType::Page->value],
 				'fields' => [
 					[
-						'name' => PluginHelper::getTranslatedString(TranslationString::AltKey),
+						'name' => TranslationHelper::getTranslatedString(TranslationString::AltKey),
 						'id' => FieldName::AltKey->value,
 						'type' => FieldType::CheckBox->value
 					],
 					[
-						'name' => PluginHelper::getTranslatedString(TranslationString::CtrlKey),
+						'name' => TranslationHelper::getTranslatedString(TranslationString::CtrlKey),
 						'id' => FieldName::CtrlKey->value,
 						'type' => FieldType::CheckBox->value
 					],
 					[
-						'name' => PluginHelper::getTranslatedString(TranslationString::ShiftKey),
+						'name' => TranslationHelper::getTranslatedString(TranslationString::ShiftKey),
 						'id' => FieldName::ShiftKey->value,
 						'type' => FieldType::CheckBox->value
 					],
 					[
-						'name' => PluginHelper::getTranslatedString(TranslationString::Key),
+						'name' => TranslationHelper::getTranslatedString(TranslationString::Key),
 						'id' => FieldName::Key->value,
 						'type' => FieldType::Select->value,
 						'options' => [

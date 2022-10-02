@@ -1,7 +1,7 @@
 <?php
 namespace KC\Core\Settings;
 
-use KC\Security\Security;
+use KC\Core\Security\SecurityHelper;
 
 /**
  * The BaseSettings class contains basic functionality to handle settings
@@ -16,7 +16,7 @@ class BaseSettings {
 	protected function registerSetting(string $name) : void {
 		register_setting($name, $name, [
 			'sanitize_callback' => function(array $input) : array {
-				return Security::validateSettingInputs($input);
+				return SecurityHelper::validateSettingInputs($input);
 			}
 		]);
 	}

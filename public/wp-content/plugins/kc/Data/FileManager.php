@@ -1,7 +1,6 @@
 <?php
 namespace KC\Data;
 
-use KC\Utils\PluginHelper;
 use \ZipArchive;
 
 /**
@@ -18,7 +17,7 @@ class FileManager {
 	 */
 	public function createFile(string $fileName, string $content, string $folder) : void {
 		$this->createFolder($folder);
-		PluginHelper::appendSlash($folder);
+		$this->appendSlash($folder);
 		$file = fopen($folder.$fileName, 'w');
 		fwrite($file, $content);
 		fclose($file);
@@ -34,7 +33,7 @@ class FileManager {
 	 */
 	public function createZipFile(string $fileName, string $files, string $sourceFolder, string $destinationfolder) : void {
 		$this->createFolder($destinationfolder);
-		PluginHelper::appendSlash($destinationfolder);
+		$this->appendSlash($destinationfolder);
 		$zip = new ZipArchive();
 		$zip->open($destinationfolder.$fileName, ZipArchive::CREATE);
 		$options = [
@@ -71,7 +70,7 @@ class FileManager {
 	 * @param string $folder the folder
 	 */
 	public function downloadFile(string $fileName, string $folder) : void {
-		PluginHelper::appendSlash($folder);
+		$this->appendSlash($folder);
 		$file = $folder.$fileName;
 		header('Content-Description: File Transfer');
 		header('Content-Type: application/octet-stream');
@@ -91,7 +90,7 @@ class FileManager {
 	 * @param string $folder the folder
 	 */
 	public function deleteFile(string $fileName, string $folder) : void {
-		PluginHelper::appendSlash($folder);
+		$this->appendSlash($folder);
 		unlink($folder.$fileName);
 	}
 
@@ -102,5 +101,14 @@ class FileManager {
 	 */
 	private function createFolder(string $folder) : void {
 		if(!file_exists($folder)) mkdir($folder);
+	}
+
+	/**
+	 * Append a slash to a string
+	 * 
+	 * @param string $str the string to append the slash to
+	 */
+	private static function appendSlash(string &$str) : void {
+		$str .= '/';
 	}
 }

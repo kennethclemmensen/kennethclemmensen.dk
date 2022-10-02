@@ -1,10 +1,10 @@
 <?php
-namespace KC\Security;
+namespace KC\Core\Security;
 
 /**
- * The Security class contains security methods to use in the plugin
+ * The SecurityHelper class contains security methods
  */
-class Security {
+class SecurityHelper {
 
 	/**
 	 * Escape an url
