@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Yoast SEO - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-09-29 18:26:00+0000\n"
+"PO-Revision-Date: 2022-10-03 09:36:09+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -27,9 +27,21 @@ msgstr "WordPress indlæser mange ressourcer, og nogle af dem har dit websted m�
 msgid "Remove unused resources"
 msgstr "Fjern ubrugte ressourcer"
 
+#: src/integrations/admin/crawl-settings-integration.php:149
+msgid "Prevent search engines from crawling /wp-json/"
+msgstr "Forhindrer søgemaskiner i at crawle /wp-json/"
+
+#: src/integrations/admin/crawl-settings-integration.php:144
+msgid "Prevent search engines from crawling site search URLs"
+msgstr "Forhindrer søgemaskiner i at crawle URL'er til søgninger på webstedet"
+
 #: admin/views/tabs/dashboard/features.php:94
 msgid "Please update your Yoast SEO Premium plugin to the latest version to be able to use this feature."
 msgstr "Du skal opdatere dit Yoast SEO Premium-plugin til den nyeste version, for at kunne bruge denne funktion."
+
+#: admin/views/tabs/dashboard/features.php:84
+msgid "This feature has been disabled, since it is not supported for your language yet."
+msgstr "Denne funktion er ikke aktiv, da den ikke er understøttet med din sprogversion endnu."
 
 #. translators: %1$s expands to the opening span tag (styling). %2$s expands to
 #. the closing span tag.
@@ -260,10 +272,6 @@ msgstr "Sidekommentarer"
 msgid "Links table"
 msgstr "Tabel over links"
 
-#: src/services/health-check/curl-check.php:48
-msgid "cURL"
-msgstr "cURL"
-
 #: src/integrations/admin/import-integration.php:218
 msgid "If you already have saved AIOSEO 'Search Appearance' settings and the issue persists, please contact our support team so we can take a closer look."
 msgstr "Hvis du allerede har gemt AIOSEO's indstillinger for \"Søgeudseende\", og problemet fortsætter, bedes du kontakte vores supportteam, så vi kan se nærmere på det."
@@ -287,6 +295,13 @@ msgstr "Valideringen af AIOSEO-datastrukturen er mislykkedes."
 #: src/integrations/third-party/wordproof-integration-toggle.php:152
 msgid "Currently, the %s integration is not available for multisites."
 msgstr "I øjeblikket er %s-integrationen ikke tilgængelig for multisites."
+
+#: src/config/wordproof-translations.php:79
+#: vendor_prefixed/wordproof/wordpress-sdk/app/Translations/DefaultTranslations.php:47
+#: vendor_prefixed/wordproof/wordpress-sdk/build/wordproof-block-editor.js:1
+#: vendor_prefixed/wordproof/wordpress-sdk/build/wordproof-classic-editor.js:1
+msgid "Open settings"
+msgstr "Åbn indstillinger"
 
 #: src/integrations/admin/import-integration.php:234
 msgid "Cleanup failed with the following error:"
@@ -848,17 +863,6 @@ msgstr "Aktiver brødkrummestier til dit tema"
 msgid "Note: You can always choose to enable / disable them for your theme below. This setting will not apply to breadcrumbs inserted through a widget, a block or a shortcode."
 msgstr "Bemærk: Du kan altid vælge at aktivere / deaktivere dem for dit tema nedenfor. Denne indstilling gælder ikke for brødkrummer, der indsættes via en widget, en blok eller en kortkode."
 
-#. translators: %1$s expands to 'Yoast'.
-#: src/services/health-check/curl-reports.php:47
-msgid "%1$s premium plugin updates work fine"
-msgstr "%1$s premium plugin opdateringer virker fint"
-
-#. translators: %1$s expands to 'Yoast'.
-#: src/services/health-check/curl-reports.php:61
-#: src/services/health-check/curl-reports.php:93
-msgid "%1$s premium plugins cannot update"
-msgstr "%1$s premium plugins kan ikke opdatere"
-
 #: src/exceptions/indexable/post-not-found-exception.php:16
 msgid "The post could not be found."
 msgstr "Indlægget blev ikke fundet."
@@ -1258,24 +1262,6 @@ msgstr "Dette %1$s REST API endpoint giver dig alle de metadata du har brug for 
 #: admin/views/class-yoast-feature-toggles.php:182
 msgid "REST API: Head endpoint"
 msgstr "REST API: Head endpoint"
-
-#: src/services/health-check/curl-reports.php:49
-msgid "Great! You can activate your premium plugin(s) and receive updates."
-msgstr "Fantastisk! Du kan aktivere dine premium plugins og modtage opdateringer."
-
-#. translators: %1$s Emphasis open tag, %2$s: Emphasis close tag, %3$s Link
-#. start tag to the Yoast help center, %4$s Link closing tag, %5$s to Yoast
-#. SEO, %6$s to my.yoast.com.
-#: src/services/health-check/curl-reports.php:107
-msgid "You can %1$snot%2$s activate your premium plugin(s) and receive updates because %5$s cannot connect to %6$s. The cause for this error is probably that the cURL software on your server is too old. Please contact your host and ask them to update it to at least version 7.34. %3$sRead more about cURL in our help center%4$s."
-msgstr "Du kan %1$sikke%2$s aktivere dine premium plugins og modtage opdateringer fordi %5$s ikke kan forbindes til %6$s. Årsagen til dette er sandsynligvis, at cURL softwaren på din server er forældet. Kontakt venligst din udbyder og bed dem om at opgradere til minimum version 7.34. %3$sLæs mere om cURL i vores vidensbase%4$s."
-
-#. translators: %1$s Emphasis open tag, %2$s: Emphasis close tag, %3$s Link
-#. start tag to the Yoast help center, %4$s Link closing tag, %5$s to Yoast
-#. SEO, %6$s to my.yoast.com.
-#: src/services/health-check/curl-reports.php:75
-msgid "You can %1$snot%2$s activate your premium plugin(s) and receive updates because %5$s cannot connect to %6$s. A common cause for not being able to connect is an out-of-date version of cURL, software used to connect to other servers. However, your cURL version seems fine. Please talk to your host and, if needed, the Yoast support team to figure out what is broken. %3$sRead more about cURL in our help center%4$s."
-msgstr "Du kan %1$sikke%2$s aktivere dine premium plugins og modtage opdateringer fordi %5$s ikke kan forbindes til %6$s. En typisk årsag til ikke at kunne opnå forbindelse er en uddateret version af cURL, en software der bruges til at forbinde til andre servere. Det skal siges, at cURL version synes at være i orden. Tag kontakt til din udbyder og, om nødvendigt, Yoast supportteamet for at finde ud af, hvad der ikke virker. %3$sLæs mere om cURL i vores vidensbase%4$s."
 
 #. translators: %1$s: Opening tag of the link to the Yoast Ryte website, %2$s:
 #. Expands to 'Ryte', %3$s: Link closing tag.
