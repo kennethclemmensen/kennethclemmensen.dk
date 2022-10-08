@@ -773,7 +773,7 @@ class AIOWPSecurity_Utility {
 	 *
 	 * @return boolean True if the incompatible TFA premium plugin version active, otherwise false.
 	 */
-	public static function is_incopatible_tfa_premium_version_active() {
+	public static function is_incompatible_tfa_premium_version_active() {
 		if (!function_exists('get_plugins')) {
 			require_once(ABSPATH.'/wp-admin/includes/plugin.php');
 		}

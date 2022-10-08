@@ -8,9 +8,9 @@ if (!class_exists('AIO_WP_Security')) {
 
 	class AIO_WP_Security {
 
-		public $version = '5.0.8';
+		public $version = '5.0.9';
 
-		public $db_version = '1.9.5';
+		public $db_version = '1.9.6';
 
 		public $plugin_url;
 
@@ -95,6 +95,11 @@ if (!class_exists('AIO_WP_Security')) {
 
 		}
 
+		/**
+		 * Return the URL for the plugin directory
+		 *
+		 * @return String
+		 */
 		public function plugin_url() {
 			if ($this->plugin_url) return $this->plugin_url;
 			return $this->plugin_url = plugins_url('', __FILE__);
@@ -142,7 +147,7 @@ if (!class_exists('AIO_WP_Security')) {
 			define('AIOWPSEC_TWO_FACTOR_AUTH_MENU_SLUG', 'aiowpsec_two_factor_auth_user');
 			define('AIOWPSEC_TOOLS_MENU_SLUG', 'aiowpsec_tools');
 			
-			if (!defined('AIOS_TFA_PREMIUM_LATEST_INCOMPATIBLE_VERSION')) define('AIOS_TFA_PREMIUM_LATEST_INCOMPATIBLE_VERSION', '1.14.3');
+			if (!defined('AIOS_TFA_PREMIUM_LATEST_INCOMPATIBLE_VERSION')) define('AIOS_TFA_PREMIUM_LATEST_INCOMPATIBLE_VERSION', '1.14.7');
 			
 			if (!defined('AIOWPSEC_PURGE_FAILED_LOGIN_RECORDS_AFTER_DAYS')) define('AIOWPSEC_PURGE_FAILED_LOGIN_RECORDS_AFTER_DAYS', 90);
 			if (!defined('AIOS_PURGE_EVENTS_RECORDS_AFTER_DAYS')) define('AIOS_PURGE_EVENTS_RECORDS_AFTER_DAYS', 90);
@@ -298,6 +303,9 @@ if (!class_exists('AIO_WP_Security')) {
 			} elseif ('dismiss_ip_retrieval_settings_notice' == $subaction) {
 				$this->configs->set_value('aiowps_is_login_whitelist_disabled_on_upgrade', 1);
 			} elseif ('dismiss_login_whitelist_disabled_on_upgrade_notice' == $subaction) {
+				if (isset($_POST['turn_it_back_on']) && '1' == $_POST['turn_it_back_on']) {
+					$this->configs->set_value('aiowps_enable_whitelisting', '1');
+				}
 				$this->configs->delete_value('aiowps_is_login_whitelist_disabled_on_upgrade');
 			} else {
 				// Other commands, available for any remote method.

@@ -32,75 +32,75 @@ msgstr ""
 msgid "Nonce check failed for export 404 event logs to CSV!"
 msgstr ""
 
-#: src/admin/wp-security-admin-init.php:257
+#: src/admin/wp-security-admin-init.php:258
 msgid "Unexpected response:"
 msgstr ""
 
-#: src/admin/wp-security-admin-init.php:288
+#: src/admin/wp-security-admin-init.php:289
 msgid "Enjoyed %1$s? Please leave us a %2$s rating. We really appreciate your support!"
 msgstr ""
 
-#: src/admin/wp-security-admin-init.php:412, src/admin/wp-security-admin-init.php:412, src/classes/wp-security-two-factor-login.php:96, src/classes/wp-security-two-factor-login.php:96
+#: src/admin/wp-security-admin-init.php:413, src/admin/wp-security-admin-init.php:413, src/classes/wp-security-two-factor-login.php:95, src/classes/wp-security-two-factor-login.php:95
 msgid "WP Security"
 msgstr ""
 
-#: src/admin/wp-security-admin-init.php:413, src/admin/wp-security-admin-init.php:413, src/admin/wp-security-dashboard-menu.php:27, src/admin/wp-security-dashboard-menu.php:55
+#: src/admin/wp-security-admin-init.php:414, src/admin/wp-security-admin-init.php:414, src/admin/wp-security-dashboard-menu.php:27, src/admin/wp-security-dashboard-menu.php:55
 msgid "Dashboard"
 msgstr ""
 
-#: src/admin/wp-security-admin-init.php:414, src/admin/wp-security-admin-init.php:414, src/admin/wp-security-settings-menu.php:95
+#: src/admin/wp-security-admin-init.php:415, src/admin/wp-security-admin-init.php:415, src/admin/wp-security-settings-menu.php:95
 msgid "Settings"
 msgstr ""
 
-#: src/admin/wp-security-admin-init.php:415, src/admin/wp-security-admin-init.php:415, src/admin/wp-security-user-accounts-menu.php:60
+#: src/admin/wp-security-admin-init.php:416, src/admin/wp-security-admin-init.php:416, src/admin/wp-security-user-accounts-menu.php:60
 msgid "User Accounts"
 msgstr ""
 
-#: src/admin/wp-security-admin-init.php:416, src/admin/wp-security-admin-init.php:416, src/admin/wp-security-user-login-menu.php:59
+#: src/admin/wp-security-admin-init.php:417, src/admin/wp-security-admin-init.php:417, src/admin/wp-security-user-login-menu.php:59
 msgid "User Login"
 msgstr ""
 
-#: src/admin/wp-security-admin-init.php:417, src/admin/wp-security-admin-init.php:417, src/admin/wp-security-user-registration-menu.php:55
+#: src/admin/wp-security-admin-init.php:418, src/admin/wp-security-admin-init.php:418, src/admin/wp-security-user-registration-menu.php:55
 msgid "User Registration"
 msgstr ""
 
-#: src/admin/wp-security-admin-init.php:418, src/admin/wp-security-admin-init.php:418, src/admin/wp-security-database-menu.php:119
+#: src/admin/wp-security-admin-init.php:419, src/admin/wp-security-admin-init.php:419, src/admin/wp-security-database-menu.php:119
 msgid "Database Security"
 msgstr ""
 
-#: src/admin/wp-security-admin-init.php:422, src/admin/wp-security-admin-init.php:422, src/admin/wp-security-filesystem-menu.php:55
+#: src/admin/wp-security-admin-init.php:423, src/admin/wp-security-admin-init.php:423, src/admin/wp-security-filesystem-menu.php:55
 msgid "Filesystem Security"
 msgstr ""
 
-#: src/admin/wp-security-admin-init.php:427, src/admin/wp-security-admin-init.php:427, src/admin/wp-security-blacklist-menu.php:51
+#: src/admin/wp-security-admin-init.php:428, src/admin/wp-security-admin-init.php:428, src/admin/wp-security-blacklist-menu.php:51
 msgid "Blacklist Manager"
 msgstr ""
 
-#: src/admin/wp-security-admin-init.php:432, src/admin/wp-security-admin-init.php:432, src/admin/wp-security-firewall-menu.php:60
+#: src/admin/wp-security-admin-init.php:433, src/admin/wp-security-admin-init.php:433, src/admin/wp-security-firewall-menu.php:60
 msgid "Firewall"
 msgstr ""
 
-#: src/admin/wp-security-admin-init.php:434, src/admin/wp-security-admin-init.php:434, src/admin/wp-security-brute-force-menu.php:68
+#: src/admin/wp-security-admin-init.php:435, src/admin/wp-security-admin-init.php:435, src/admin/wp-security-brute-force-menu.php:68
 msgid "Brute Force"
 msgstr ""
 
-#: src/admin/wp-security-admin-init.php:435, src/admin/wp-security-admin-init.php:435, src/admin/wp-security-spam-menu.php:57
+#: src/admin/wp-security-admin-init.php:436, src/admin/wp-security-admin-init.php:436, src/admin/wp-security-spam-menu.php:57
 msgid "SPAM Prevention"
 msgstr ""
 
-#: src/admin/wp-security-admin-init.php:439, src/admin/wp-security-admin-init.php:439, src/admin/wp-security-filescan-menu.php:53
+#: src/admin/wp-security-admin-init.php:440, src/admin/wp-security-admin-init.php:440, src/admin/wp-security-filescan-menu.php:53
 msgid "Scanner"
 msgstr ""
 
-#: src/admin/wp-security-admin-init.php:441, src/admin/wp-security-admin-init.php:441, src/admin/wp-security-maintenance-menu.php:51
+#: src/admin/wp-security-admin-init.php:442, src/admin/wp-security-admin-init.php:442, src/admin/wp-security-maintenance-menu.php:51
 msgid "Maintenance"
 msgstr ""
 
-#: src/admin/wp-security-admin-init.php:442, src/admin/wp-security-admin-init.php:442, src/admin/wp-security-misc-options-menu.php:57
+#: src/admin/wp-security-admin-init.php:443, src/admin/wp-security-admin-init.php:443, src/admin/wp-security-misc-options-menu.php:57
 msgid "Miscellaneous"
 msgstr ""
 
-#: src/admin/wp-security-admin-init.php:443, src/admin/wp-security-admin-init.php:443, src/admin/wp-security-tools-menu.php:64
+#: src/admin/wp-security-admin-init.php:444, src/admin/wp-security-admin-init.php:444, src/admin/wp-security-tools-menu.php:64
 msgid "Tools"
 msgstr ""
 
@@ -2542,7 +2542,7 @@ msgstr ""
 msgid "Set up now"
 msgstr ""
 
-#: src/admin/wp-security-firewall-setup-notice.php:614, src/templates/notices/custom-notice.php:10, src/templates/notices/custom-notice.php:12, src/templates/notices/horizontal-notice.php:50, src/templates/notices/horizontal-notice.php:52
+#: src/admin/wp-security-firewall-setup-notice.php:614, src/templates/notices/custom-notice.php:10, src/templates/notices/custom-notice.php:12, src/templates/notices/horizontal-notice.php:50, src/templates/notices/horizontal-notice.php:52, src/templates/notices/htaccess-to-php-feature-notice.php:10, src/templates/notices/htaccess-to-php-feature-notice.php:12
 msgid "Dismiss"
 msgstr ""
 
@@ -4412,15 +4412,15 @@ msgstr ""
 msgid "Invalid IP retrieve method."
 msgstr ""
 
-#: src/classes/aios-ajax.php:131, src/wp-security-core.php:252
+#: src/classes/aios-ajax.php:131, src/wp-security-core.php:257
 msgid "The security check failed; try refreshing the page."
 msgstr ""
 
-#: src/classes/aios-ajax.php:152, src/wp-security-core.php:262
+#: src/classes/aios-ajax.php:152, src/wp-security-core.php:267
 msgid "You are not allowed to run this command."
 msgstr ""
 
-#: src/classes/aios-ajax.php:173, src/wp-security-core.php:276
+#: src/classes/aios-ajax.php:173, src/wp-security-core.php:281
 msgid "Options can only be saved by network admin"
 msgstr ""
 
@@ -4720,7 +4720,7 @@ msgstr ""
 msgid "Your Google reCAPTCHA site key is wrong. Please fill the correct reCAPTCHA keys %s to use the Google reCAPTCHA feature."
 msgstr ""
 
-#: src/classes/wp-security-general-init-tasks.php:643, src/classes/wp-security-notices.php:85
+#: src/classes/wp-security-general-init-tasks.php:643, src/classes/wp-security-notices.php:99
 msgid "here"
 msgstr ""
 
@@ -4740,95 +4740,111 @@ msgstr ""
 msgid "Your registration is pending approval."
 msgstr ""
 
-#: src/classes/wp-security-notices.php:27
-msgid "Removed database backup feature from the All In One WP Security & Firewall plugin"
-msgstr ""
-
-#: src/classes/wp-security-notices.php:29
-msgid "Beginning with version 5.0.0, AIOS has replaced the AIOS backup method with the superior UpdraftPlus method."
-msgstr ""
-
-#: src/classes/wp-security-notices.php:30
-msgid "It remains free and is fully supported by the UpdraftPlus team."
-msgstr ""
-
-#: src/classes/wp-security-notices.php:33
-msgid "You are seeing this notice because you have previously set up automated database backups in AIOS."
-msgstr ""
-
-#: src/classes/wp-security-notices.php:34
-msgid "Would you like to set up scheduled backups with UpdraftPlus?"
-msgstr ""
-
-#: src/classes/wp-security-notices.php:40
-msgid "Setup UpdraftPlus backup plugin"
-msgstr ""
-
-#: src/classes/wp-security-notices.php:46
-msgid "Important: set up your IP address detection settings"
-msgstr ""
-
-#: src/classes/wp-security-notices.php:48
-msgid "The All in One Security plugin couldn't be certain about the correct method to detect the IP address for your site visitors with your currently-configured IP address detection settings."
-msgstr ""
-
-#: src/classes/wp-security-notices.php:49
-msgid "It is important for your security to set the IP address detection settings properly."
-msgstr ""
-
-#: src/classes/wp-security-notices.php:52
-msgid "Please go to the settings and set them now."
-msgstr ""
-
-#: src/classes/wp-security-notices.php:58
-msgid "Setup IP address detection settings"
-msgstr ""
-
-#: src/classes/wp-security-notices.php:64
-msgid "Important: Disabled login whitelist setting"
-msgstr ""
-
-#: src/classes/wp-security-notices.php:66
+#: src/classes/wp-security-notices.php:25
 msgid "The All in One Security plugin has disabled the login whitelist setting that you have enabled in the past."
 msgstr ""
 
-#: src/classes/wp-security-notices.php:69
-msgid "Your website is running on a non-Apache webserver, so the login whitelisting was not functional until the recent update of AIOS (because it relied upon Apache-specific features). It began working with AIOS version 5.0.8."
+#: src/classes/wp-security-notices.php:29
+msgid "Your website is running on an Apache webserver, the login whitelisting might not be functional until the recent update of AIOS (because it relied upon Apache-specific module features)."
 msgstr ""
 
-#: src/classes/wp-security-notices.php:70
+#: src/classes/wp-security-notices.php:31
+msgid "Your website is running on a non-Apache webserver, so the login whitelisting was not functional until the recent update of AIOS (because it relied upon Apache-specific features)."
+msgstr ""
+
+#: src/classes/wp-security-notices.php:33
+msgid "It began working with AIOS version 5.0.8."
+msgstr ""
+
+#: src/classes/wp-security-notices.php:33
 msgid "We have disabled it so that your login page will not be blocked unexpectedly."
 msgstr ""
 
-#: src/classes/wp-security-notices.php:73
+#: src/classes/wp-security-notices.php:42
 msgid "Would you like to re-enable login whitelisting?"
 msgstr ""
 
+#: src/classes/wp-security-notices.php:48
+msgid "Removed database backup feature from the All In One WP Security & Firewall plugin"
+msgstr ""
+
+#: src/classes/wp-security-notices.php:50
+msgid "Beginning with version 5.0.0, AIOS has replaced the AIOS backup method with the superior UpdraftPlus method."
+msgstr ""
+
+#: src/classes/wp-security-notices.php:51
+msgid "It remains free and is fully supported by the UpdraftPlus team."
+msgstr ""
+
+#: src/classes/wp-security-notices.php:54
+msgid "You are seeing this notice because you have previously set up automated database backups in AIOS."
+msgstr ""
+
+#: src/classes/wp-security-notices.php:55
+msgid "Would you like to set up scheduled backups with UpdraftPlus?"
+msgstr ""
+
+#: src/classes/wp-security-notices.php:61
+msgid "Setup UpdraftPlus backup plugin"
+msgstr ""
+
+#: src/classes/wp-security-notices.php:67
+msgid "Important: set up your IP address detection settings"
+msgstr ""
+
+#: src/classes/wp-security-notices.php:69
+msgid "The All in One Security plugin couldn't be certain about the correct method to detect the IP address for your site visitors with your currently-configured IP address detection settings."
+msgstr ""
+
+#: src/classes/wp-security-notices.php:70
+msgid "It is important for your security to set the IP address detection settings properly."
+msgstr ""
+
+#: src/classes/wp-security-notices.php:73
+msgid "Please go to the settings and set them now."
+msgstr ""
+
 #: src/classes/wp-security-notices.php:79
-msgid "Setup login whitelist setting"
+msgid "Setup IP address detection settings"
 msgstr ""
 
 #: src/classes/wp-security-notices.php:85
-msgid "Hey - We noticed All In One WP Security & Firewall has kept your site safe for a while.  If you like us, please consider leaving a positive review to spread the word.  Or if you have any issues or questions please leave us a support message %s."
+msgid "Important: Disabled login whitelist setting"
 msgstr ""
 
-#: src/classes/wp-security-notices.php:85
-msgid "Thank you so much!"
+#: src/classes/wp-security-notices.php:91
+msgid "Turn it back on"
 msgstr ""
 
-#: src/classes/wp-security-notices.php:85
-msgid "Team All In One WP Security & Firewall"
+#: src/classes/wp-security-notices.php:92
+msgid "Edit the settings"
 msgstr ""
 
 #: src/classes/wp-security-notices.php:95
+msgid "Keep it off"
+msgstr ""
+
+#: src/classes/wp-security-notices.php:99
+msgid "Hey - We noticed All In One WP Security & Firewall has kept your site safe for a while.  If you like us, please consider leaving a positive review to spread the word.  Or if you have any issues or questions please leave us a support message %s."
+msgstr ""
+
+#: src/classes/wp-security-notices.php:99
+msgid "Thank you so much!"
+msgstr ""
+
+#: src/classes/wp-security-notices.php:99
+msgid "Team All In One WP Security & Firewall"
+msgstr ""
+
+#: src/classes/wp-security-notices.php:109
 msgid "Enhance your security even more by backing up your site"
 msgstr ""
 
-#: src/classes/wp-security-notices.php:96
+#: src/classes/wp-security-notices.php:110
 msgid "UpdraftPlus is the world's most trusted backup plugin from the owners of All In One WP Security & Firewall"
 msgstr ""
 
-#: src/classes/wp-security-notices.php:107
+#: src/classes/wp-security-notices.php:121
 msgid "After you've secured your site, we recommend you install our WP-Optimize plugin to streamline it for better website performance."
 msgstr ""
 
@@ -4836,19 +4852,19 @@ msgstr ""
 msgid "Not available."
 msgstr ""
 
-#: src/classes/wp-security-two-factor-login.php:33
+#: src/classes/wp-security-two-factor-login.php:34
 msgid "Two Factor Authentication - Admin Settings"
 msgstr ""
 
-#: src/classes/wp-security-two-factor-login.php:98, src/classes/wp-security-two-factor-login.php:98
+#: src/classes/wp-security-two-factor-login.php:97, src/classes/wp-security-two-factor-login.php:97
 msgid "Two Factor Auth"
 msgstr ""
 
-#: src/classes/wp-security-two-factor-login.php:154
+#: src/classes/wp-security-two-factor-login.php:153
 msgid "PHP OpenSSL or mcrypt module required"
 msgstr ""
 
-#: src/classes/wp-security-two-factor-login.php:154
+#: src/classes/wp-security-two-factor-login.php:153
 msgid "The All In One WP Security plugin's Two Factor Authentication module requires either the PHP openssl (preferred) or mcrypt module to be installed. Please ask your web hosting company to install one of them."
 msgstr ""
 
@@ -5256,23 +5272,23 @@ msgstr ""
 msgid "You are using the non-apache server %s, so this feature won't work on your site."
 msgstr ""
 
-#: src/wp-security-core.php:230, src/wp-security.php:45
+#: src/wp-security-core.php:235, src/wp-security.php:45
 msgid "This plugin requires PHP version %s."
 msgstr ""
 
-#: src/wp-security-core.php:231
+#: src/wp-security-core.php:236
 msgid "Current site PHP version is %s."
 msgstr ""
 
-#: src/wp-security-core.php:232, src/wp-security.php:47
+#: src/wp-security-core.php:237, src/wp-security.php:47
 msgid "You will need to ask your web hosting company to upgrade."
 msgstr ""
 
-#: src/wp-security-core.php:388
+#: src/wp-security-core.php:396
 msgid "Error:"
 msgstr ""
 
-#: src/wp-security-core.php:388
+#: src/wp-security-core.php:396
 msgid "template not found"
 msgstr ""
 

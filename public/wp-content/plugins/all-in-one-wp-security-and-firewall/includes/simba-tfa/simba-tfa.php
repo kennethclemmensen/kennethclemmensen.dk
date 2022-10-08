@@ -2,7 +2,7 @@
 
 if (!defined('ABSPATH')) die('Access denied.');
 
-class Simba_Two_Factor_Authentication {
+class Simba_Two_Factor_Authentication_1 {
 
 	/**
 	 * Simba 2FA frontend object
@@ -12,11 +12,11 @@ class Simba_Two_Factor_Authentication {
 	protected $frontend;
 
 	/**
-	 * Simba 2FA totp object
+	 * Simba 2FA TOTP object
 	 *
 	 * @var Object
 	 */
-	protected $totp_controller;
+	protected $controllers = array();
 	
 	/**
 	 * Flag for prevent PHP notices in AJAX
@@ -90,9 +90,15 @@ class Simba_Two_Factor_Authentication {
 	 */
 	public function __construct() {
 
-		require_once(__DIR__.'/providers/totp-hotp/loader.php');
-
-		$this->totp_controller = new Simba_TFA_Provider_TOTP($this);
+		$load_providers = apply_filters('simbatfa_load_providers', array('totp'));
+		
+		foreach ($load_providers as $provider_id) {
+			$class_name = "Simba_TFA_Provider_$provider_id";
+			if (!class_exists($class_name)) {
+				require_once(__DIR__.'/providers/'.$provider_id.'/loader.php');
+			}
+			$this->controllers[$provider_id] = new $class_name($this);
+		}
 
 		// Process login form AJAX events
 		add_action('wp_ajax_nopriv_simbatfa-init-otp', array($this, 'tfaInitLogin'));
@@ -110,6 +116,8 @@ class Simba_Two_Factor_Authentication {
 
 		// CSS for admin users screen
 		add_action('admin_print_styles-users.php', array($this, 'load_users_css'), 10, 0);
+		
+		add_action('admin_menu', array($this, 'admin_menu'), 9);
 
 		add_action('admin_init', array($this, 'register_two_factor_auth_settings'));
 		add_action('init', array($this, 'init'));
@@ -127,6 +135,13 @@ class Simba_Two_Factor_Authentication {
 		}
 	}
 
+	/**
+	 * Runs upon the WP filter admin_menu
+	 */
+	public function admin_menu() {
+		$this->get_controller('totp')->potentially_port_private_keys();
+	}
+	
 	/**
 	 * Give the filesystem path to the plugin's includes directory
 	 *
@@ -670,14 +685,35 @@ class Simba_Two_Factor_Authentication {
 	}
 
 	/**
-	 * Return the Simba_TFA_Provider_TOTP object.
+	 * Return the TOTP provider object.
 	 *
-	 * @returns Simba_TFA_Provider_TOTP
+	 * @param String $controller_id - which controller
+	 *
+	 * @return Simba_TFA_Provider_totp
 	 */
-	public function get_totp_controller() {
-		return $this->totp_controller;
+	public function get_controller($controller_id = 'totp') {
+		return $this->controllers[$controller_id];
+	}
+	
+	/**
+	 * Return all OTP controllers
+	 *
+	 * @return Array
+	 */
+	public function get_controllers() {
+		return $this->controllers;
 	}
 
+	/**
+	 * Deprecated synonym for get_controller('totp')
+	 *
+	 * @return Simba_TFA_Provider_totp
+	 */
+	public function get_totp_controller() {
+		trigger_error("Deprecated: Call get_controller('totp'), not get_totp_controller()", E_USER_WARNING);
+		return $this->get_controller('totp');
+	}
+	
 	/**
 	 * "Shared" - i.e. could be called from either front-end or back-end
 	 */
@@ -691,7 +727,7 @@ class Simba_Two_Factor_Authentication {
 
 		if ('refreshotp' == $subaction) {
 
-			$code = $this->totp_controller->get_current_code($current_user->ID);
+			$code = $this->get_controller('totp')->get_current_code($current_user->ID);
 
 			if (false === $code) die(json_encode(array('code' => '')));
 
@@ -912,7 +948,7 @@ class Simba_Two_Factor_Authentication {
 
 		$result = false;
 
-		$totp_controller = $this->totp_controller;
+		$totp_controller = $this->get_controller('totp');
 
 		if ($user) {
 			$tfa_priv_key = get_user_meta($user->ID, 'tfa_priv_key_64', true);
@@ -968,7 +1004,7 @@ class Simba_Two_Factor_Authentication {
 		$tfa_enabled_label = $long_label ? __('Enable two-factor authentication', 'all-in-one-wp-security-and-firewall') : __('Enabled', 'all-in-one-wp-security-and-firewall');
 
 		if ('show_current' == $style) {
-			$tfa_enabled_label .= ' '.sprintf(__('(Current code: %s)', 'all-in-one-wp-security-and-firewall'), $this->get_totp_controller()->current_otp_code($user_id));
+			$tfa_enabled_label .= ' '.sprintf(__('(Current code: %s)', 'all-in-one-wp-security-and-firewall'), $this->get_controller('totp')->current_otp_code($user_id));
 		} elseif ('require_current' == $style) {
 			$tfa_enabled_label .= ' '.sprintf(__('(you must enter the current code: %s)', 'all-in-one-wp-security-and-firewall'), '<input type="text" class="tfa_enable_current" name="tfa_enable_current" size="6" style="height">');
 		}
@@ -1123,7 +1159,7 @@ class Simba_Two_Factor_Authentication {
 
 		}
 
-		return $this->totp_controller->check_code_for_user($tfa_creds_user_id, $user_code);
+		return $this->get_controller('totp')->check_code_for_user($tfa_creds_user_id, $user_code);
 
 	}
 
@@ -1268,6 +1304,7 @@ class Simba_Two_Factor_Authentication {
 			// They appear as unused, but may be used in the $template_file.
 			$wpdb = $GLOBALS['wpdb'];// phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- $wpdb might be used in the included template
 			$simba_tfa = $this;// phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- $wp_optimize might be used in the included template
+			$totp_controller = $this->get_controller('totp');// phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- $wp_optimize might be used in the included template
 			include $template_file;
 		}
 

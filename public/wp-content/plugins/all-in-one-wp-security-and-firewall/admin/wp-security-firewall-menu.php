@@ -1058,7 +1058,7 @@ class AIOWPSecurity_Firewall_Menu extends AIOWPSecurity_Admin_Menu
         */?><!--
             <div class="aio_grey_box">
                 <?php
-/*              $premium_plugin_link = '<strong><a href="https://aiowpsecurity.com/landing/aiowpsecurity-premium" target="_blank">'.__('All In One WP Security & Firewall Premium', 'all-in-one-wp-security-and-firewall').'</a></strong>';
+/*              $premium_plugin_link = '<strong><a href="https://aiosplugin.com/landing/aiowpsecurity-premium" target="_blank">'.__('All In One WP Security & Firewall Premium', 'all-in-one-wp-security-and-firewall').'</a></strong>';
                 $info_msg = sprintf( __('You may also be interested in %s.', 'all-in-one-wp-security-and-firewall'), $premium_plugin_link);
                 $info_msg2 = sprintf(__('This plugin adds a number of extra features including %s and %s.', 'all-in-one-wp-security-and-firewall'), '<strong>'.__('smart 404 blocking', 'all-in-one-wp-security-and-firewall').'</strong>', '<strong>'.__('country IP blocking', 'all-in-one-wp-security-and-firewall').'</strong>');
 

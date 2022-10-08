@@ -44,6 +44,16 @@ class AIOS_Abstracted_Ids {
 		return array(
 			'automated-database-backup',
 			'ip-retrieval-settings',
+		);
+	}
+
+	/**
+	 * Get notice ids for notices that have transformed HTACESS rules to PHP.
+	 *
+	 * @return array notice ids.
+	 */
+	public static function htaccess_to_php_feature_notice_ids() {
+		return array(
 			'login-whitelist-disabled-on-upgrade',
 		);
 	}

@@ -203,7 +203,8 @@ class AIOWPSecurity_Admin_Init {
     public function render_admin_notices() {
         global $aio_wp_security;
 
-		foreach (AIOS_Abstracted_Ids::custom_admin_notice_ids() as $custom_admin_notice_id) {
+		$custom_notice_ids = array_merge(AIOS_Abstracted_Ids::custom_admin_notice_ids(), AIOS_Abstracted_Ids::htaccess_to_php_feature_notice_ids());
+		foreach ($custom_notice_ids as $custom_admin_notice_id) {
 			$aio_wp_security->notices->do_notice($custom_admin_notice_id, $custom_admin_notice_id);
 		}
 
@@ -212,7 +213,7 @@ class AIOWPSecurity_Admin_Init {
 			return;
 		}
 
-        $installed_at = $aio_wp_security->notices->get_aiowps_plugin_installed_timestamp();
+		$installed_at = $aio_wp_security->notices->get_aiowps_plugin_installed_timestamp();
         $time_now = $aio_wp_security->notices->get_time_now();
         $installed_for = $time_now - $installed_at;
 

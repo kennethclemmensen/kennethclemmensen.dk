@@ -5,7 +5,7 @@ Tags: security, secure, Anti Virus, antivirus, ban, ban hacker, virus, firewall,
 Requires PHP: 5.6
 Requires at least: 5.0
 Tested up to: 6.0
-Stable tag: 5.0.8
+Stable tag: 5.0.9
 License: GPLv3 or later
 
 A comprehensive, user-friendly, all in one WordPress security and firewall plugin for your site.
@@ -178,6 +178,12 @@ Check the following page for F.A.Q (see the faq section):
 https://www.tipsandtricks-hq.com/wordpress-security-and-firewall-plugin
 
 == Changelog ==
+
+= 5.0.9 - 06/October/2022 =
+
+* FIX: PHP Notice:  Only variables should be passed by reference in /wp-content/plugins/all-in-one-wp-security-and-firewall/classes/wp-security-notices.php on line 202.
+* TWEAK: Auto disable the login whitelisting on upgrade for all server types and shown related notice.
+* TWEAK : 2FA - Warning: Deprecated: Call get_controller('totp'), not get_totp_controller() in /includes/simba-tfa/simba-tfa.php on line 713.
 
 = 5.0.8 - 29/September/2022 =
 

@@ -1,19 +1,20 @@
 <?php
 if (!defined('ABSPATH')) die('No direct access allowed');
 
-if (!class_exists('Simba_Two_Factor_Authentication')) require AIO_WP_SECURITY_PATH.'/includes/simba-tfa/simba-tfa.php';
+if (!class_exists('Simba_Two_Factor_Authentication_1')) require AIO_WP_SECURITY_PATH.'/includes/simba-tfa/simba-tfa.php';
 
 /**
  * This parent-child relationship enables the two to be split without affecting backwards compatibility for developers making direct calls
  *
  * This class is for the plugin encapsulation.
  */
-class AIO_WP_Security_Simba_Two_Factor_Authentication_Plugin extends Simba_Two_Factor_Authentication {
+class AIO_WP_Security_Simba_Two_Factor_Authentication_Plugin extends Simba_Two_Factor_Authentication_1 {
 
 	/**
-	 * Simba_Two_Factor_Authentication_Plugin Constructor
+	 * Class constructor
 	 *
 	 * @uses __FILE__
+	 *
 	 * @return Void
 	 */
 	public function __construct() {
@@ -34,7 +35,7 @@ class AIO_WP_Security_Simba_Two_Factor_Authentication_Plugin extends Simba_Two_F
 		$this->set_settings_page_heading($settings_page_heading);
 		$this->set_plugin_translate_url('https://translate.wordpress.org/projects/wp-plugins/all-in-one-wp-security-and-firewall/');
 		$this->set_site_wide_administration_url(admin_url('admin.php?page=aiowpsec_settings&tab=two-factor-authentication'));
-		$this->set_premium_version_url('https://aiowpsecurity.com');
+		$this->set_premium_version_url('https://aiosplugin.com');
 		$this->set_faq_url('https://wordpress.org/plugins/all-in-one-wp-security-and-firewall/#faq');
 		parent::__construct();
 	}
@@ -87,8 +88,6 @@ class AIO_WP_Security_Simba_Two_Factor_Authentication_Plugin extends Simba_Two_F
 	 */
 	public function menu_entry_for_user() {
 		
-		$this->get_totp_controller()->potentially_port_private_keys();
-		
 		global $current_user;
 		if ($this->is_activated_for_user($current_user->ID)) {
 			if (!current_user_can(AIOWPSEC_MANAGEMENT_PERMISSION)) {
@@ -129,7 +128,6 @@ class AIO_WP_Security_Simba_Two_Factor_Authentication_Plugin extends Simba_Two_F
 			return;
 		}
 		
-		$this->get_totp_controller()->potentially_port_private_keys();
 		$this->show_admin_settings_page();
 	}
 	
@@ -137,11 +135,12 @@ class AIO_WP_Security_Simba_Two_Factor_Authentication_Plugin extends Simba_Two_F
 	 * Include the admin settings page code.
 	 */
 	public function show_admin_settings_page() {
-		$totp_controller = $this->get_totp_controller();
-		$totp_controller->setUserHMACTypes();
+
 		if (!is_admin() || !current_user_can(AIOWPSEC_MANAGEMENT_PERMISSION)) return;
+		
+		// The value for totp_controller is already set by versions of the TFA plugin after 3 Oct 2022
 		$this->include_template('admin-settings.php', array(
-			'totp_controller' => $totp_controller,
+			'totp_controller' => $this->get_controller('totp'),
 			'settings_page_heading' => $this->get_settings_page_heading(),
 			'admin_settings_links' => array(),
 		));
@@ -155,6 +154,6 @@ class AIO_WP_Security_Simba_Two_Factor_Authentication_Plugin extends Simba_Two_F
 	}
 }
 
-if (false === AIOWPSecurity_Utility::is_incopatible_tfa_premium_version_active() && false === AIOWPSecurity_Utility::is_tfa_or_self_plugin_activating()) {
+if (false === AIOWPSecurity_Utility::is_incompatible_tfa_premium_version_active() && false === AIOWPSecurity_Utility::is_tfa_or_self_plugin_activating()) {
 	$GLOBALS['simba_two_factor_authentication'] = new AIO_WP_Security_Simba_Two_Factor_Authentication_Plugin();
 }

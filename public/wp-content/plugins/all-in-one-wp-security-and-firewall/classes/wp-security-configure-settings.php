@@ -353,7 +353,7 @@ class AIOWPSecurity_Configure_Settings {
 		}
 
 		// Login whitelisting started to work on non-apache server from db_version 1.9.5
-		if (is_main_site() && !AIOWPSecurity_Utility::is_apache_server() && version_compare(get_option('aiowpsec_db_version'), '1.9.5', '<') && '1' == $aio_wp_security->configs->get_value('aiowps_enable_whitelisting') && !empty($aio_wp_security->configs->get_value('aiowps_allowed_ip_addresses'))) {
+		if (is_main_site() && version_compare(get_option('aiowpsec_db_version'), '1.9.6', '<') && '1' == $aio_wp_security->configs->get_value('aiowps_enable_whitelisting') && !empty($aio_wp_security->configs->get_value('aiowps_allowed_ip_addresses'))) {
 			$aio_wp_security->configs->set_value('aiowps_enable_whitelisting', '0');
 			$aio_wp_security->configs->set_value('aiowps_is_login_whitelist_disabled_on_upgrade', '1');
 			$aio_wp_security->configs->save_config();
