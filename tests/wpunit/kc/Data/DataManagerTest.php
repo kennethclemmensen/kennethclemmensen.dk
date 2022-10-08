@@ -1,6 +1,7 @@
 <?php
-namespace KC\Data;
+namespace Tests\WPUnit\KC\Data;
 
+use KC\Data\DataManager;
 use \Codeception\TestCase\WPTestCase;
 
 /**
@@ -11,9 +12,10 @@ class DataManagerTest extends WPTestCase {
     private DataManager $dataManager;
 
     /**
-     * The _before method is executed before each test
+     * The _before method is called before each test
      */
     protected function _before() {
+        require_once '../../public/wp-content/plugins/kc/Data/DataManager.php';
         $this->dataManager = new DataManager();
     }
 

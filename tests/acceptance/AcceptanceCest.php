@@ -1,4 +1,8 @@
 <?php
+namespace Tests\Acceptance;
+
+use \AcceptanceTester;
+
 /**
  * The AcceptanceCest class contains acceptance tests for the website
  */

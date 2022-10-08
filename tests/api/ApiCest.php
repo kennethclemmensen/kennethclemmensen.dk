@@ -1,4 +1,8 @@
 <?php
+namespace Tests\Api;
+
+use \ApiTester;
+
 /**
  * The ApiCest class contains methods to test the api
  */
@@ -9,7 +13,7 @@ class ApiCest {
      *
      * @param ApiTester $I the api tester
      */
-    public function getPages(\ApiTester $I) : void {
+    public function getPages(ApiTester $I) : void {
         $I->sendGET('/pages/title');
         $I->seeResponseCodeIs(200);
         $I->seeResponseIsJson();
@@ -20,7 +24,7 @@ class ApiCest {
      *
      * @param ApiTester $I the api tester
      */
-    public function getFiles(\ApiTester $I) : void {
+    public function getFiles(ApiTester $I) : void {
         $I->sendGET('/files?type=4');
         $I->seeResponseCodeIs(200);
         $I->seeResponseIsJson();
@@ -31,7 +35,7 @@ class ApiCest {
      *
      * @param ApiTester $I the api tester
      */
-    public function updateFileDownloadsCounter(\ApiTester $I) : void {
+    public function updateFileDownloadsCounter(ApiTester $I) : void {
         $I->sendPUT('/fileDownloads', ['fileid' => 1558]);
         $I->seeResponseCodeIs(200);
     }    
@@ -41,7 +45,7 @@ class ApiCest {
      *
      * @param ApiTester $I the api tester
      */
-    public function getSlides(\ApiTester $I) : void {
+    public function getSlides(ApiTester $I) : void {
         $I->sendGET('/slides');
         $I->seeResponseCodeIs(200);
         $I->seeResponseIsJson();
@@ -52,7 +56,7 @@ class ApiCest {
      *
      * @param ApiTester $I the api tester
      */
-    public function getGalleries(\ApiTester $I) : void {
+    public function getGalleries(ApiTester $I) : void {
         $I->sendGET('/galleries');
         $I->seeResponseCodeIs(200);
         $I->seeResponseIsJson();
@@ -63,7 +67,7 @@ class ApiCest {
      *
      * @param ApiTester $I the api tester
      */
-    public function getGalleriesWithIdParameter(\ApiTester $I) : void {
+    public function getGalleriesWithIdParameter(ApiTester $I) : void {
         $I->sendGET('/galleries/1740');
         $I->seeResponseCodeIs(200);
         $I->seeResponseIsJson();

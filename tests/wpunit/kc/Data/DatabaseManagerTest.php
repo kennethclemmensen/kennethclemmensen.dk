@@ -1,12 +1,20 @@
 <?php
-namespace KC\Data;
+namespace Tests\WPUnit\KC\Data;
 
+use KC\Data\DatabaseManager;
 use \Codeception\TestCase\WPTestCase;
 
 /**
  * The DatabaseManagerTest class contains methods to test the DatabaseManager class
  */
 class DatabaseManagerTest extends WPTestCase {
+
+    /**
+     * The _before method is called before each test
+     */
+    protected function _before() {
+        require_once '../../public/wp-content/plugins/kc/Data/DatabaseManager.php';
+    }
 
     /**
      * Test the getDatabaseStructure method

@@ -1,4 +1,8 @@
 <?php
+namespace Tests\Functional;
+
+use \FunctionalTester;
+
 /**
  * The FunctionalCest class contains functional tests for the website
  */
