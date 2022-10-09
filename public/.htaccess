@@ -1,3 +1,4 @@
+
 # BEGIN All In One WP Security
 #AIOWPS_BLOCK_WP_FILE_ACCESS_START
 <Files license.txt>
@@ -75,19 +76,6 @@ Deny from all
 #AIOWPS_DISABLE_INDEX_VIEWS_START
 Options -Indexes
 #AIOWPS_DISABLE_INDEX_VIEWS_END
-#AIOWPS_IP_BLACKLIST_START
-<IfModule !mod_authz_core.c>
-Order allow,deny
-Allow from all
-Deny from 1.2.3.4
-</IfModule>
-<IfModule mod_authz_core.c>
-<RequireAll>
-Require all granted
-Require not ip 1.2.3.4
-</RequireAll>
-</IfModule>
-#AIOWPS_IP_BLACKLIST_END
 #AIOWPS_DISABLE_TRACE_TRACK_START
 <IfModule mod_rewrite.c>
 RewriteEngine On
@@ -118,7 +106,7 @@ RewriteCond %{QUERY_STRING} ftp:     [NC,OR]
 RewriteCond %{QUERY_STRING} http:    [NC,OR]
 RewriteCond %{QUERY_STRING} https:   [NC,OR]
 RewriteCond %{QUERY_STRING} mosConfig [NC,OR]
-RewriteCond %{QUERY_STRING} ^.*(globals|encode|localhost|loopback).* [NC,OR]
+RewriteCond %{QUERY_STRING} ^.*(globals|encode|loopback).* [NC,OR]
 RewriteCond %{QUERY_STRING} (\;|'|\"|%22).*(request|insert|union|declare|drop) [NC]
 RewriteRule ^(.*)$ - [F,L]
 </IfModule>
@@ -276,26 +264,10 @@ RewriteCond %{HTTP_REFERER} !^http(s)?://kennethclemmensen\.dk [NC,OR]
 RewriteCond %{HTTP_USER_AGENT} ^$
 RewriteRule .* http://127.0.0.1 [L]
 </IfModule>
-<IfModule mod_rewrite.c>
-RewriteEngine On
-RewriteCond %{HTTP_REFERER} !^$
-RewriteCond %{REQUEST_FILENAME} -f
-RewriteCond %{REQUEST_FILENAME} \.(gif|jpe?g?|png)$ [NC]
-RewriteCond %{HTTP_REFERER} !^http(s)?://kennethclemmensen\.dk [NC]
-RewriteRule \.(gif|jpe?g?|png)$ - [F,NC,L]
-</IfModule>
-#AIOWPS_PREVENT_IMAGE_HOTLINKS_END
+#AIOWPS_BLOCK_SPAMBOTS_END
 # END All In One WP Security
 
 AddType application/x-httpd-php81 .php
-
-# BEGIN HTTPS Redirection Plugin
-<IfModule mod_rewrite.c>
-RewriteEngine On
-RewriteCond %{SERVER_PORT} !^443$
-RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-</IfModule>
-# END HTTPS Redirection Plugin
 
 # BEGIN WordPress
 # Direktiverne (linjer) mellem 'BEGIN WordPress' og 'END WordPress' er
