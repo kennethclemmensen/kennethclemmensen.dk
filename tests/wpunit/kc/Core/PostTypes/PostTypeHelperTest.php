@@ -13,7 +13,7 @@ class PostTypeHelperTest extends WPTestCase {
     /**
      * The _before method is called before each test
      */
-    protected function _before() {
+    protected function _before() : void {
         require_once '../../public/wp-content/plugins/kc/Core/PostTypes/PostTypeHelper.php';
     }
 
@@ -23,5 +23,13 @@ class PostTypeHelperTest extends WPTestCase {
     public function testGetFieldValue() : void {
         $expected = '';
         $this->assertEquals($expected, PostTypeHelper::getFieldValue(FieldName::File, 0));
+    }
+
+    /**
+     * Test the setFieldValue method
+     */
+    public function testSetFieldValue() : void {
+        PostTypeHelper::setFieldValue('', FieldName::File, 0);
+        $this->assertEquals('', PostTypeHelper::getFieldValue(FieldName::File, 0));
     }
 }

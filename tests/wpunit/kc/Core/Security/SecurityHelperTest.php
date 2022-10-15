@@ -12,7 +12,7 @@ class SecurityHelperTest extends WPTestCase {
     /**
      * The _before method is called before each test
      */
-    protected function _before() {
+    protected function _before() : void {
         require_once '../../public/wp-content/plugins/kc/Core/Security/SecurityHelper.php';
     }
 

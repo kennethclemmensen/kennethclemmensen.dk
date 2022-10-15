@@ -14,9 +14,17 @@ class DataManagerTest extends WPTestCase {
     /**
      * The _before method is called before each test
      */
-    protected function _before() {
+    protected function _before() : void {
         require_once '../../public/wp-content/plugins/kc/Data/DataManager.php';
         $this->dataManager = new DataManager();
+    }
+
+    /**
+     * Test the getPages method
+     */
+    public function testGetPages() : void {
+        $expected = 0;
+        $this->assertEquals($expected, count($this->dataManager->getPages()));
     }
 
     /**
@@ -58,5 +66,13 @@ class DataManagerTest extends WPTestCase {
     public function testGetFiles() : void {
         $expected = 0;
         $this->assertEquals($expected, count($this->dataManager->getFiles([])));
+    }
+
+    /**
+     * Test the getShortcuts method
+     */
+    public function testGetShortcuts() : void {
+        $expected = 0;
+        $this->assertEquals($expected, count($this->dataManager->getShortcuts()));
     }
 }
