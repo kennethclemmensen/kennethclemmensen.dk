@@ -50,7 +50,7 @@ class AIOWPSecurity_List_Login_Failed_Attempts extends AIOWPSecurity_List_Table 
     function get_columns(){
         $columns = array(
             'cb' => '<input type="checkbox" />', //Render a checkbox
-            'login_attempt_ip' => __('Login IP Range', 'all-in-one-wp-security-and-firewall'),
+			'login_attempt_ip' => __('Login IP range', 'all-in-one-wp-security-and-firewall'),
             'user_id' => __('User ID', 'all-in-one-wp-security-and-firewall'),
             'user_login' => __('Username', 'all-in-one-wp-security-and-firewall'),
             'failed_login_date' => __('Date', 'all-in-one-wp-security-and-firewall')
@@ -70,7 +70,7 @@ class AIOWPSecurity_List_Login_Failed_Attempts extends AIOWPSecurity_List_Table 
     
     function get_bulk_actions() {
         $actions = array(
-            'delete' => 'Delete'
+			'delete' => __('Delete', 'all-in-one-wp-security-and-firewall')
         );
         return $actions;
     }

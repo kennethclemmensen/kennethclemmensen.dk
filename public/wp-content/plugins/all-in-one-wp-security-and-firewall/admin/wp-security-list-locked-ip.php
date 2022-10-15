@@ -56,12 +56,12 @@ class AIOWPSecurity_List_Locked_IP extends AIOWPSecurity_List_Table {
     function get_columns(){
         $columns = array(
             'cb' => '<input type="checkbox" />', //Render a checkbox
-            'failed_login_ip' => __('Locked IP/Range', 'all-in-one-wp-security-and-firewall'),
+			'failed_login_ip' => __('Locked IP/range', 'all-in-one-wp-security-and-firewall'),
             'user_id' => __('User ID', 'all-in-one-wp-security-and-firewall'),
             'user_login' => __('Username', 'all-in-one-wp-security-and-firewall'),
             'lock_reason' => __('Reason', 'all-in-one-wp-security-and-firewall'),
-            'lockdown_date' => __('Date Locked', 'all-in-one-wp-security-and-firewall'),
-            'release_date' => __('Release Date', 'all-in-one-wp-security-and-firewall')
+			'lockdown_date' => __('Date locked', 'all-in-one-wp-security-and-firewall'),
+			'release_date' => __('Release date', 'all-in-one-wp-security-and-firewall')
         );
         return $columns;
     }

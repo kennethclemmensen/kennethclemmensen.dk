@@ -57,7 +57,7 @@ class AIOWPSecurity_List_Comment_Spammer_IP extends AIOWPSecurity_List_Table {
         $columns = array(
             'cb' => '<input type="checkbox" />', //Render a checkbox
             'comment_author_IP' => __('Spammer IP', 'all-in-one-wp-security-and-firewall'),
-            'amount' => __('Number of SPAM Comments From This IP', 'all-in-one-wp-security-and-firewall'),
+			'amount' => __('Number of spam comments from this IP', 'all-in-one-wp-security-and-firewall'),
             'status' => __('Status', 'all-in-one-wp-security-and-firewall'),
         );
         return $columns;

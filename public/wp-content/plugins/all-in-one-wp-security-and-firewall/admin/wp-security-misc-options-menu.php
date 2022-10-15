@@ -91,7 +91,7 @@ class AIOWPSecurity_Misc_Options_Menu extends AIOWPSecurity_Admin_Menu
         }
         ?>
         <div class="postbox">
-        <h3 class="hndle"><label for="title"><?php _e('Disable The Ability To Copy Text', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
+		<h3 class="hndle"><label for="title"><?php _e('Disable the ability to copy text', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
         <div class="inside">
         <form action="" method="POST">
         <?php wp_nonce_field('aiowpsec-copy-protection'); ?>
@@ -103,7 +103,7 @@ class AIOWPSecurity_Misc_Options_Menu extends AIOWPSecurity_Admin_Menu
         </div>
         <table class="form-table">
             <tr valign="top">
-                <th scope="row"><?php _e('Enable Copy Protection', 'all-in-one-wp-security-and-firewall')?>:</th>
+				<th scope="row"><?php _e('Enable copy protection', 'all-in-one-wp-security-and-firewall'); ?>:</th>
                 <td>
                 <input id="aiowps_copy_protection" name="aiowps_copy_protection" type="checkbox"<?php if($aio_wp_security->configs->get_value('aiowps_copy_protection')=='1') echo ' checked="checked"'; ?> value="1"/>
                 <label for="aiowps_copy_protection" class="description"><?php _e('Check this if you want to disable the "Right Click", "Text Selection" and "Copy" option on the front end of your site.', 'all-in-one-wp-security-and-firewall'); ?></label>
@@ -113,7 +113,7 @@ class AIOWPSecurity_Misc_Options_Menu extends AIOWPSecurity_Admin_Menu
         </table>
     
         <div class="submit">
-            <input type="submit" class="button-primary" name="aiowpsec_save_copy_protection" value="<?php _e('Save Copy Protection Settings', 'all-in-one-wp-security-and-firewall'); ?>" />
+			<input type="submit" class="button-primary" name="aiowpsec_save_copy_protection" value="<?php _e('Save copy protection settings', 'all-in-one-wp-security-and-firewall'); ?>">
         </div>
         </form>   
         </div></div>
@@ -142,7 +142,7 @@ class AIOWPSecurity_Misc_Options_Menu extends AIOWPSecurity_Admin_Menu
         }
         ?>
         <div class="postbox">
-        <h3 class="hndle"><label for="title"><?php _e('Prevent Your Site From Being Displayed In a Frame', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
+		<h3 class="hndle"><label for="title"><?php _e('Prevent your site from being displayed in a frame', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
         <div class="inside">
         <form action="" method="POST">
         <?php wp_nonce_field('aiowpsec-prevent-display-frame'); ?>
@@ -154,7 +154,7 @@ class AIOWPSecurity_Misc_Options_Menu extends AIOWPSecurity_Admin_Menu
         </div>
         <table class="form-table">
             <tr valign="top">
-                <th scope="row"><?php _e('Enable iFrame Protection', 'all-in-one-wp-security-and-firewall')?>:</th>
+				<th scope="row"><?php _e('Enable iFrame protection', 'all-in-one-wp-security-and-firewall'); ?>:</th>
                 <td>
                 <input id="aiowps_prevent_site_display_inside_frame" name="aiowps_prevent_site_display_inside_frame" type="checkbox"<?php if($aio_wp_security->configs->get_value('aiowps_prevent_site_display_inside_frame')=='1') echo ' checked="checked"'; ?> value="1"/>
                 <label for="aiowps_prevent_site_display_inside_frame" class="description"><?php _e('Check this if you want to stop other sites from displaying your content in a frame or iframe.', 'all-in-one-wp-security-and-firewall'); ?></label>
@@ -164,7 +164,7 @@ class AIOWPSecurity_Misc_Options_Menu extends AIOWPSecurity_Admin_Menu
         </table>
     
         <div class="submit">
-            <input type="submit" class="button-primary" name="aiowpsec_save_frame_display_prevent" value="<?php _e('Save Settings', 'all-in-one-wp-security-and-firewall'); ?>" />
+			<input type="submit" class="button-primary" name="aiowpsec_save_frame_display_prevent" value="<?php _e('Save settings', 'all-in-one-wp-security-and-firewall'); ?>">
         </div>
         </form>   
         </div></div>
@@ -193,7 +193,7 @@ class AIOWPSecurity_Misc_Options_Menu extends AIOWPSecurity_Admin_Menu
         }
         ?>
         <div class="postbox">
-        <h3 class="hndle"><label for="title"><?php _e('Prevent Users Enumeration', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
+		<h3 class="hndle"><label for="title"><?php _e('Prevent users enumeration', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
         <div class="inside">
         <form action="" method="POST">
         <?php wp_nonce_field('aiowpsec-users-enumeration'); ?>
@@ -205,7 +205,7 @@ class AIOWPSecurity_Misc_Options_Menu extends AIOWPSecurity_Admin_Menu
         </div>
         <table class="form-table">
             <tr valign="top">
-                <th scope="row"><?php _e('Disable Users Enumeration', 'all-in-one-wp-security-and-firewall')?>:</th>
+				<th scope="row"><?php _e('Disable users enumeration', 'all-in-one-wp-security-and-firewall'); ?>:</th>
                 <td>
                 <input id="aiowps_prevent_users_enumeration" name="aiowps_prevent_users_enumeration" type="checkbox"<?php if($aio_wp_security->configs->get_value('aiowps_prevent_users_enumeration')=='1') echo ' checked="checked"'; ?> value="1"/>
                 <label for="aiowps_prevent_users_enumeration" class="description"><?php _e('Check this if you want to stop users enumeration.', 'all-in-one-wp-security-and-firewall'); ?></label>
@@ -215,7 +215,7 @@ class AIOWPSecurity_Misc_Options_Menu extends AIOWPSecurity_Admin_Menu
         </table>
 
         <div class="submit">
-            <input type="submit" class="button-primary" name="aiowpsec_save_users_enumeration" value="<?php _e('Save Settings', 'all-in-one-wp-security-and-firewall'); ?>" />
+			<input type="submit" class="button-primary" name="aiowpsec_save_users_enumeration" value="<?php _e('Save settings', 'all-in-one-wp-security-and-firewall'); ?>">
         </div>
         </form>
         </div></div>
@@ -265,7 +265,7 @@ class AIOWPSecurity_Misc_Options_Menu extends AIOWPSecurity_Admin_Menu
             
         <table class="form-table">
             <tr valign="top">
-                <th scope="row"><?php _e('Disallow Unauthorized REST Requests', 'all-in-one-wp-security-and-firewall')?>:</th>
+				<th scope="row"><?php _e('Disallow unauthorized REST requests', 'all-in-one-wp-security-and-firewall'); ?>:</th>
                 <td>
                 <input id="aiowps_disallow_unauthorized_rest_requests" name="aiowps_disallow_unauthorized_rest_requests" type="checkbox"<?php if($aio_wp_security->configs->get_value('aiowps_disallow_unauthorized_rest_requests')=='1') echo ' checked="checked"'; ?> value="1"/>
                 <label for="aiowps_disallow_unauthorized_rest_requests" class="description"><?php _e('Check this if you want to stop REST API access for non-logged in requests.', 'all-in-one-wp-security-and-firewall'); ?></label>
@@ -275,7 +275,7 @@ class AIOWPSecurity_Misc_Options_Menu extends AIOWPSecurity_Admin_Menu
         </table>
 
         <div class="submit">
-            <input type="submit" class="button-primary" name="aiowpsec_save_rest_settings" value="<?php _e('Save Settings', 'all-in-one-wp-security-and-firewall'); ?>" />
+			<input type="submit" class="button-primary" name="aiowpsec_save_rest_settings" value="<?php _e('Save settings', 'all-in-one-wp-security-and-firewall'); ?>">
         </div>
         </form>
         </div></div>

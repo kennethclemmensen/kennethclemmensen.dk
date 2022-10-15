@@ -105,7 +105,7 @@ function display_unlock_form($email = '') {
 		<input type="text" name="aiowps_unlock_request_email" id="aiowps_unlock_request_email" class="input" value="<?php echo $email; ?>" size="20"></label>
 	</p>
 		<p class="submit">
-			<input type="submit" name="aiowps_wp_submit_unlock_request" id="aiowps_wp_submit_unlock_request" class="button button-primary button-large" value="<?php esc_attr_e('Send Unlock Request', 'all-in-one-wp-security-and-firewall'); ?>">
+			<input type="submit" name="aiowps_wp_submit_unlock_request" id="aiowps_wp_submit_unlock_request" class="button button-primary button-large" value="<?php esc_attr_e('Send unlock request', 'all-in-one-wp-security-and-firewall'); ?>">
 	</p>
 </form>
 <?php

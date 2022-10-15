@@ -12,7 +12,7 @@ class AIOWPSecurity_Captcha {
 	}
 
 	/**
-	 * Displays Google reCaptcha form v2
+	 * Displays Google reCAPTCHA form v2
 	 *
 	 * @global type $aio_wp_security
 	 */
@@ -34,7 +34,7 @@ class AIOWPSecurity_Captcha {
 	}
 
 	/**
-	 * Displays simple maths captcha form
+	 * Displays simple maths CAPTCHA form
 	 *
 	 * @global type $aio_wp_security
 	 */
@@ -44,8 +44,8 @@ class AIOWPSecurity_Captcha {
 			//if buddy press feature active add action hook so buddy press can display our errors properly on bp registration form
 			do_action('bp_aiowps-captcha-answer_errors');
 		}
-		$cap_form = '<p class="aiowps-captcha"><label for="aiowps-captcha-answer">'.__('Please enter an answer in digits:', 'all-in-one-wp-security-and-firewall').'</label>';
-		$cap_form .= '<div class="aiowps-captcha-equation"><strong>';
+		$cap_form = '<p class="aiowps-captcha hide-when-displaying-tfa-input"><label for="aiowps-captcha-answer">'.__('Please enter an answer in digits:', 'all-in-one-wp-security-and-firewall').'</label>';
+		$cap_form .= '<div class="aiowps-captcha-equation hide-when-displaying-tfa-input"><strong>';
 		$maths_question_output = $this->generate_maths_question();
 		$cap_form .= $maths_question_output . '</strong></div></p>';
 		echo $cap_form;
@@ -150,9 +150,9 @@ class AIOWPSecurity_Captcha {
 
 
 	/**
-	 * Verifies the math or Google recaptcha v2 forms
+	 * Verifies the math or Google reCAPTCHA v2 forms
 	 * Returns TRUE if correct answer.
-	 * Returns FALSE on wrong captcha result or missing data.
+	 * Returns FALSE on wrong CAPTCHA result or missing data.
 	 *
 	 * @global type $aio_wp_security
 	 * @return boolean
@@ -160,7 +160,7 @@ class AIOWPSecurity_Captcha {
 	public function verify_captcha_submit() {
 		global $aio_wp_security;
 		if ($aio_wp_security->configs->get_value('aiowps_default_recaptcha')) {
-			//Google reCaptcha enabled
+			// Google reCAPTCHA enabled
 			if (1 == $aio_wp_security->configs->get_value('aios_is_google_recaptcha_wrong_site_key')) {
 				return true;
 			}
@@ -170,25 +170,25 @@ class AIOWPSecurity_Captcha {
 				$verify_captcha = $this->verify_google_recaptcha($g_recaptcha_response);
 				return $verify_captcha;
 			} else {
-				// Expected captcha field in $_POST but got none!
+				// Expected CAPTCHA field in $_POST but got none!
 				return false;
 			}
 		} else {
-			// math captcha is enabled
+			// Math CAPTCHA is enabled
 			if (array_key_exists('aiowps-captcha-answer', $_POST)) {
 				$captcha_answer = isset($_POST['aiowps-captcha-answer']) ? sanitize_text_field($_POST['aiowps-captcha-answer']) : '';
 
 				$verify_captcha = $this->verify_math_captcha_answer($captcha_answer);
 				return $verify_captcha;
 			} else {
-				// Expected captcha field in $_POST but got none!
+				// Expected CAPTCHA field in $_POST but got none!
 				return false;
 			}
 		}
 	}
 
 	/**
-	 * Verifies the math captcha answer entered by the user
+	 * Verifies the math CAPTCHA answer entered by the user
 	 *
 	 * @param type $captcha_answer
 	 * @return boolean
@@ -216,7 +216,7 @@ class AIOWPSecurity_Captcha {
 	}
 
 	/**
-	 * Send a query to Google api to verify reCaptcha submission
+	 * Send a query to Google API to verify reCAPTCHA submission
 	 *
 	 * @global type $aio_wp_security
 	 * @param type $resp_token
@@ -252,6 +252,24 @@ class AIOWPSecurity_Captcha {
 			$is_humanoid = true;
 		}
 		return $is_humanoid;
+	}
+
+	/**
+	 *  Get site locale code for Google reCaptcha.
+	 *
+	 * @return string The site locale code.
+	 */
+	public static function get_google_recaptcha_compatible_site_locale() {
+		$google_recaptcha_locale_codes = AIOS_Abstracted_Ids::get_google_recaptcha_locale_codes();
+		$locale = str_replace('_', '-', determine_locale());
+
+		if (in_array($locale, $google_recaptcha_locale_codes, true)) {
+			return $locale;
+		}
+
+		// Return 2 letter locale code.
+		$locale = explode('-', $locale);
+		return $locale[0];
 	}
 
 }

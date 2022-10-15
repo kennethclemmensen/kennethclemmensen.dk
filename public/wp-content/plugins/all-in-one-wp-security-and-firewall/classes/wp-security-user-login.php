@@ -14,7 +14,7 @@ class AIOWPSecurity_User_Login {
 		add_filter('authenticate', array($this, 'block_ip_if_locked'), 1, 1);
 		// Check whether user needs to be manually approved after default WordPress authenticate hooks (with priority 20).
 		add_filter('authenticate', array($this, 'check_manual_registration_approval'), 30, 1);
-		// Check login captcha
+		// Check login CAPTCHA
 		if ($aio_wp_security->configs->get_value('aiowps_enable_login_captcha')) {
 			add_filter('authenticate', array($this, 'check_captcha'), 20, 1);
 		}
@@ -112,7 +112,7 @@ class AIOWPSecurity_User_Login {
 	}
 
 	/**
-	 * Check login captcha (if enabled).
+	 * Check login CAPTCHA (if enabled).
 	 *
 	 * @global AIO_WP_Security $aio_wp_security
 	 * @param WP_Error|WP_User $user
@@ -131,7 +131,7 @@ class AIOWPSecurity_User_Login {
 		}
 
 		if ($aio_wp_security->configs->get_value('aiowps_enable_login_captcha') != '1') {
-			// Captcha not enabled, nothing to do here.
+			// CAPTCHA not enabled, nothing to do here.
 			return $user;
 		}
 		$captcha_error = new WP_Error('authentication_failed', __('<strong>ERROR</strong>: Your answer was incorrect - please try again.', 'all-in-one-wp-security-and-firewall'));
@@ -437,7 +437,7 @@ class AIOWPSecurity_User_Login {
 			$aio_wp_security->debug_logger->log_debug("No locked user found with IP range ".$ip_range, 4);
 			return false;
 		} else {
-			//Check if unlock request or submitted from a woocommerce account login page
+			// Check if unlock request or submitted from a WooCommerce account login page
 			if (isset($_POST['aiowps-woo-login'])) {
 				$date_time = current_time('mysql');
 				$data = array('date_time' => $date_time, 'meta_key1' => 'woo_unlock_request_key', 'meta_value1' => $secret_rand_key);
@@ -470,7 +470,7 @@ class AIOWPSecurity_User_Login {
 		if (false === $result) {
 			$aio_wp_security->debug_logger->log_debug("Error unlocking user with unlock_key ".$unlock_key, 4);
 		} else {
-			//Now check if this unlock operation is for a woocommerce login
+			// Now check if this unlock operation is for a WooCommerce login
 			$aiowps_global_meta_tbl_name = AIOWPSEC_TBL_GLOBAL_META_DATA;
 			$sql = $wpdb->prepare("SELECT * FROM $aiowps_global_meta_tbl_name WHERE meta_key1=%s AND meta_value1=%s", 'woo_unlock_request_key', $unlock_key);
 			$woo_result = $wpdb->get_row($sql, OBJECT);
@@ -773,13 +773,13 @@ class AIOWPSecurity_User_Login {
 		if (isset($_POST['woocommerce-login-nonce'])) {
 			$unlock_request_form .= '<input type="hidden" name="aiowps-woo-login" id="aiowps-woo-login" value="1" />';
 		}
-		$unlock_request_form .= '<button type="submit" name="aiowps_unlock_request" id="aiowps_unlock_request" class="button">'.__('Request Unlock', 'all-in-one-wp-security-and-firewall').'</button></div></form>';
+		$unlock_request_form .= '<button type="submit" name="aiowps_unlock_request" id="aiowps_unlock_request" class="button">'.__('Request unlock', 'all-in-one-wp-security-and-firewall').'</button></div></form>';
 		return $unlock_request_form;
 	}
 
 	/**
-	 * Returns all logged in users for specific subsite of multisite installation
-	 * Checks the aiowps transient 'users_online'
+	 * Returns all logged in users for specific subsite of multisite installation.
+	 * Checks the AIOS transient 'users_online'.
 	 *
 	 * @param type $blog_id
 	 * @return array|bool

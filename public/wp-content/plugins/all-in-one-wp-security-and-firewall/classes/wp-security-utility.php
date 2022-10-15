@@ -592,9 +592,9 @@ class AIOWPSecurity_Utility {
 	}
 	
 	/**
-	 * Delete expired captcha info option
+	 * Delete expired CAPTCHA info option
 	 *
-	 * Note: A unique instance these option is created everytime the login page is loaded with captcha enabled
+	 * Note: A unique instance these option is created everytime the login page is loaded with CAPTCHA enabled
 	 * This function will help prune the options table of old expired entries.
 	 *
 	 * @global wpdb $wpdb

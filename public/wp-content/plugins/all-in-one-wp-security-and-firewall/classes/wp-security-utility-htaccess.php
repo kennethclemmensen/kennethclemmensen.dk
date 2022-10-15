@@ -153,7 +153,7 @@ class AIOWPSecurity_Utility_Htaccess {
 	 * It will try to find the comment markers "# BEGIN All In One WP Security" and "# END All In One WP Security" and delete contents in between
 	 *
 	 * @param string $section
-	 * @return boolean
+	 * @return Integer{-1,1} -1 for failure, 1 for success.
 	 */
 	public static function delete_from_htaccess($section = 'All In One WP Security') {
 		$home_path = AIOWPSecurity_Utility_File::get_home_path();
@@ -161,6 +161,11 @@ class AIOWPSecurity_Utility_Htaccess {
 
 		if (!file_exists($htaccess)) {
 			$ht = @fopen($htaccess, 'a+');// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
+			if (false === $ht) {
+				global $aio_wp_security;
+				$aio_wp_security->debug_logger->log_debug('Failed to create .htaccess file', 4);
+				return -1;
+			}
 			@fclose($ht);// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
 		}
 
@@ -368,7 +373,7 @@ class AIOWPSecurity_Utility_Htaccess {
 			//limit file upload size
 			$upload_limit = $aio_wp_security->configs->get_value('aiowps_max_file_upload_size');
 			//Shouldn't be empty but just in case
-			$upload_limit = empty($upload_limit) ? 10 : $upload_limit;
+			$upload_limit = empty($upload_limit) ? AIOS_FIREWALL_MAX_FILE_UPLOAD_LIMIT_MB : $upload_limit;
 			$upload_limit = $upload_limit * 1024 * 1024; // Convert from MB to Bytes - approx but close enough
 			
 			$rules .= 'LimitRequestBody '.$upload_limit . PHP_EOL;

@@ -30,10 +30,10 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu
     function set_menu_tabs()
     {
         $this->menu_tabs = array(
-        'tab1' => __('Rename Login Page','all-in-one-wp-security-and-firewall'),
+        'tab1' => __('Rename login page','all-in-one-wp-security-and-firewall'),
         'tab2' => __('Cookie Based Brute Force Prevention', 'all-in-one-wp-security-and-firewall'),
-        'tab3' => __('Login Captcha', 'all-in-one-wp-security-and-firewall'),
-        'tab4' => __('Login Whitelist', 'all-in-one-wp-security-and-firewall'),
+		'tab3' => __('Login CAPTCHA', 'all-in-one-wp-security-and-firewall'),
+        'tab4' => __('Login whitelist', 'all-in-one-wp-security-and-firewall'),
         'tab5' => __('Honeypot', 'all-in-one-wp-security-and-firewall'),
         );
     }
@@ -48,10 +48,9 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu
         echo '<h2 class="nav-tab-wrapper">';
         foreach ( $this->menu_tabs as $tab_key => $tab_caption )
         {
-            if (is_multisite() && get_current_blog_id() != 1
-                && stristr($tab_caption, "Rename Login Page") === false && stristr($tab_caption, "Login Captcha") === false){
-                //Suppress the all Brute Force menu tabs if site is a multi site AND not the main site except "rename login" and "captcha"
-            }else{
+			if (is_multisite() && get_current_blog_id() != 1 && stristr($tab_caption, 'Rename login page') === false && stristr($tab_caption, 'Login CAPTCHA') === false) {
+				// Suppress the all Brute Force menu tabs if site is a multi site AND not the main site except "rename login" and "CAPTCHA"
+			} else {
                 $active = $current_tab == $tab_key ? 'nav-tab-active' : '';
                 echo '<a class="nav-tab ' . $active . '" href="?page=' . $this->menu_page_slug . '&tab=' . $tab_key . '">' . $tab_caption . '</a>';
             }
@@ -179,7 +178,7 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu
         }
         ?>
         <div class="postbox">
-        <h3 class="hndle"><label for="title"><?php _e('Rename Login Page Settings', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
+		<h3 class="hndle"><label for="title"><?php _e('Rename login page settings', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
         <div class="inside">
         <?php
         //Display security info badge
@@ -198,20 +197,20 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu
         </div>
         <table class="form-table">
             <tr valign="top">
-                <th scope="row"><?php _e('Enable Rename Login Page Feature', 'all-in-one-wp-security-and-firewall')?>:</th>
+				<th scope="row"><?php _e('Enable rename login page feature', 'all-in-one-wp-security-and-firewall'); ?>:</th>
                 <td>
                 <input id="aiowps_enable_rename_login_page" name="aiowps_enable_rename_login_page" type="checkbox"<?php if($aio_wp_security->configs->get_value('aiowps_enable_rename_login_page')=='1') echo ' checked="checked"'; ?> value="1"/>
                 <label for="aiowps_enable_rename_login_page" class="description"><?php _e('Check this if you want to enable the rename login page feature', 'all-in-one-wp-security-and-firewall'); ?></label>
                 </td>
             </tr>
-            <tr valign="top">
-                <th scope="row"><label for="aiowps_login_page_slug"><?php _e('Login Page URL', 'all-in-one-wp-security-and-firewall')?>:</label></th>
-                <td><code><?php echo $home_url; ?></code><input id="aiowps_login_page_slug" type="text" size="15" name="aiowps_login_page_slug" value="<?php echo $aio_wp_security->configs->get_value('aiowps_login_page_slug'); ?>" />
+			<tr valign="top">
+				<th scope="row"><label for="aiowps_login_page_slug"><?php _e('Login page URL', 'all-in-one-wp-security-and-firewall'); ?>:</label></th>
+				<td><code><?php echo $home_url; ?></code><input id="aiowps_login_page_slug" type="text" size="15" name="aiowps_login_page_slug" value="<?php echo $aio_wp_security->configs->get_value('aiowps_login_page_slug'); ?>">
                 <span class="description"><?php _e('Enter a string which will represent your secure login page slug. You are encouraged to choose something which is hard to guess and only you will remember.', 'all-in-one-wp-security-and-firewall'); ?></span>
                 </td>
             </tr>
         </table>
-        <input type="submit" name="aiowps_save_rename_login_page_settings" value="<?php _e('Save Settings', 'all-in-one-wp-security-and-firewall')?>" class="button-primary" />
+		<input type="submit" name="aiowps_save_rename_login_page_settings" value="<?php _e('Save settings', 'all-in-one-wp-security-and-firewall'); ?>" class="button-primary">
         </form>
         </div></div>
 
@@ -293,7 +292,7 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu
             }
         }
         ?>
-        <h2><?php _e('Brute Force Prevention Firewall Settings', 'all-in-one-wp-security-and-firewall')?></h2>
+		<h2><?php _e('Brute force prevention firewall settings', 'all-in-one-wp-security-and-firewall'); ?></h2>
 
         <div class="aio_blue_box">
             <?php
@@ -311,14 +310,14 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu
             $brute_force_login_feature_link = '<a href="admin.php?page='.AIOWPSEC_FIREWALL_MENU_SLUG.'&tab=tab4" target="_blank">'.__('Cookie-Based Brute Force Login Prevention', 'all-in-one-wp-security-and-firewall').'</a>';
             echo '<p>' . $info_msg . '</p>';
             ?>
-        </div>
+		</div>
 		<?php
-        if (defined('AIOS_DISABLE_COOKIE_BRUTE_FORCE_PREVENTION') && AIOS_DISABLE_COOKIE_BRUTE_FORCE_PREVENTION) {
-            $aio_wp_security->include_template('notices/cookie-based-brute-force-prevention-disabled.php');
-        }
-        ?>
+		if (defined('AIOS_DISABLE_COOKIE_BRUTE_FORCE_PREVENTION') && AIOS_DISABLE_COOKIE_BRUTE_FORCE_PREVENTION) {
+			$aio_wp_security->include_template('notices/cookie-based-brute-force-prevention-disabled.php');
+		}
+		?>
 		<div class="postbox">
-        <h3 class="hndle"><label for="title"><?php _e('Cookie Based Brute Force Login Prevention', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
+		<h3 class="hndle"><label for="title"><?php _e('Cookie based brute force login prevention', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
         <div class="inside">
         <?php
         //Display security info badge
@@ -367,12 +366,12 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu
 		$disable_brute_force_sub_fields = !$aio_wp_security->configs->get_value('aiowps_enable_brute_force_attack_prevention');
         ?>
         <table class="form-table">
-            <tr valign="top">
-                <th scope="row"><?php _e('Enable brute force attack prevention', 'all-in-one-wp-security-and-firewall')?>:</th>
+			<tr valign="top">
+				<th scope="row"><?php _e('Enable brute force attack prevention', 'all-in-one-wp-security-and-firewall'); ?>:</th>
                 <td>
                 <input id="aiowps_enable_brute_force_attack_prevention" name="aiowps_enable_brute_force_attack_prevention" type="checkbox"<?php checked($aio_wp_security->configs->get_value('aiowps_enable_brute_force_attack_prevention'));?> value="1"<?php disabled($disable_brute_force_fetaure_input); ?>/>
                     <label for="aiowps_enable_brute_force_attack_prevention" class="description"><?php _e('Check this if you want to protect your login page from Brute Force Attack.', 'all-in-one-wp-security-and-firewall'); ?></label>
-                <span class="aiowps_more_info_anchor"><span class="aiowps_more_info_toggle_char">+</span><span class="aiowps_more_info_toggle_text"><?php _e('More Info', 'all-in-one-wp-security-and-firewall'); ?></span></span>
+				<span class="aiowps_more_info_anchor"><span class="aiowps_more_info_toggle_char">+</span><span class="aiowps_more_info_toggle_text"><?php _e('More info', 'all-in-one-wp-security-and-firewall'); ?></span></span>
                 <div class="aiowps_more_info_body">
                     <p class="description">
                         <?php
@@ -392,9 +391,9 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu
                 </div>
                 </td>
             </tr>
-            <tr valign="top">
-                <th scope="row"><label for="aiowps_brute_force_secret_word"><?php _e('Secret Word', 'all-in-one-wp-security-and-firewall')?>:</label></th>
-                <td><input id="aiowps_brute_force_secret_word" type="text" size="40" name="aiowps_brute_force_secret_word" value="<?php echo $aio_wp_security->configs->get_value('aiowps_brute_force_secret_word'); ?>"<?php disabled($disable_brute_force_sub_fields); ?>/>
+			<tr valign="top">
+				<th scope="row"><label for="aiowps_brute_force_secret_word"><?php _e('Secret word', 'all-in-one-wp-security-and-firewall'); ?>:</label></th>
+				<td><input id="aiowps_brute_force_secret_word" type="text" size="40" name="aiowps_brute_force_secret_word" value="<?php echo $aio_wp_security->configs->get_value('aiowps_brute_force_secret_word'); ?>"<?php disabled($disable_brute_force_sub_fields); ?>>
                 <span class="description"><?php _e('Choose a secret word consisting of alphanumeric characters which you can use to access your special URL. Your are highly encouraged to choose a word which will be difficult to guess.', 'all-in-one-wp-security-and-firewall'); ?></span>
                 </td>
             </tr>
@@ -406,7 +405,7 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu
                     _e('Specify a URL to redirect a hacker to when they try to access your WordPress login page.', 'all-in-one-wp-security-and-firewall');
                     ?>
                 </span>
-                <span class="aiowps_more_info_anchor"><span class="aiowps_more_info_toggle_char">+</span><span class="aiowps_more_info_toggle_text"><?php _e('More Info', 'all-in-one-wp-security-and-firewall'); ?></span></span>
+				<span class="aiowps_more_info_anchor"><span class="aiowps_more_info_toggle_char">+</span><span class="aiowps_more_info_toggle_text"><?php _e('More info', 'all-in-one-wp-security-and-firewall'); ?></span></span>
                 <div class="aiowps_more_info_body">
                     <p class="description">
                         <?php
@@ -424,12 +423,12 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu
                 </div>
                 </td>
             </tr>
-            <tr valign="top">
-                <th scope="row"><?php _e('My site has posts or pages which are password protected', 'all-in-one-wp-security-and-firewall')?>:</th>
+			<tr valign="top">
+				<th scope="row"><?php _e('My site has posts or pages which are password protected', 'all-in-one-wp-security-and-firewall'); ?>:</th>
                 <td>
                 <input id="aiowps_brute_force_attack_prevention_pw_protected_exception" name="aiowps_brute_force_attack_prevention_pw_protected_exception" type="checkbox"<?php checked($aio_wp_security->configs->get_value('aiowps_brute_force_attack_prevention_pw_protected_exception')); ?> value="1"<?php disabled($disable_brute_force_sub_fields); ?> />
                 <label for="aiowps_brute_force_attack_prevention_pw_protected_exception" class="description"><?php _e('Check this if you are using the native WordPress password protection feature for some or all of your blog posts or pages.', 'all-in-one-wp-security-and-firewall'); ?></label>
-                <span class="aiowps_more_info_anchor"><span class="aiowps_more_info_toggle_char">+</span><span class="aiowps_more_info_toggle_text"><?php _e('More Info', 'all-in-one-wp-security-and-firewall'); ?></span></span>
+				<span class="aiowps_more_info_anchor"><span class="aiowps_more_info_toggle_char">+</span><span class="aiowps_more_info_toggle_text"><?php _e('More info', 'all-in-one-wp-security-and-firewall'); ?></span></span>
                 <div class="aiowps_more_info_body">
                     <p class="description">
                         <?php
@@ -445,12 +444,12 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu
                 </div>
                 </td>
             </tr>
-            <tr valign="top">
-                <th scope="row"><?php _e('My site has a theme or plugins which use AJAX', 'all-in-one-wp-security-and-firewall')?>:</th>
+			<tr valign="top">
+				<th scope="row"><?php _e('My site has a theme or plugins which use AJAX', 'all-in-one-wp-security-and-firewall'); ?>:</th>
                 <td>
                 <input id="aiowps_brute_force_attack_prevention_ajax_exception" name="aiowps_brute_force_attack_prevention_ajax_exception" type="checkbox"<?php checked($aio_wp_security->configs->get_value('aiowps_brute_force_attack_prevention_ajax_exception')); ?> value="1"<?php disabled($disable_brute_force_sub_fields); ?>/>
                 <label for="aiowps_brute_force_attack_prevention_ajax_exception" class="description"><?php _e('Check this if your site uses AJAX functionality.', 'all-in-one-wp-security-and-firewall'); ?></label>
-                <span class="aiowps_more_info_anchor"><span class="aiowps_more_info_toggle_char">+</span><span class="aiowps_more_info_toggle_text"><?php _e('More Info', 'all-in-one-wp-security-and-firewall'); ?></span></span>
+				<span class="aiowps_more_info_anchor"><span class="aiowps_more_info_toggle_char">+</span><span class="aiowps_more_info_toggle_text"><?php _e('More info', 'all-in-one-wp-security-and-firewall'); ?></span></span>
                 <div class="aiowps_more_info_body">
                     <p class="description">
                         <?php
@@ -463,8 +462,8 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu
                 </td>
             </tr>
         </table>
-        <?php
-        $other_attributes = $disable_brute_force_fetaure_input ? array('disabled' => 'disabled') : array();
+		<?php
+		$other_attributes = $disable_brute_force_fetaure_input ? array('disabled' => 'disabled') : array();
 		submit_button(__('Save feature settings', 'all-in-one-wp-security-and-firewall'), 'primary', 'aiowps_apply_cookie_based_bruteforce_firewall', false, $other_attributes);
 		?>
         </form>
@@ -477,16 +476,16 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu
         global $aio_wp_security;
         global $aiowps_feature_mgr;
 
-        if (isset($_POST['aiowpsec_save_captcha_settings'])) { //Do form submission tasks
-           $error = '';
-           if (!wp_verify_nonce($_POST['_wpnonce'], 'aiowpsec-captcha-settings-nonce')) {
-                $aio_wp_security->debug_logger->log_debug('Nonce check failed on captcha settings save.', 4);
-                die('Nonce check failed on captcha settings save.');
+		if (isset($_POST['aiowpsec_save_captcha_settings'])) { // Do form submission tasks
+			$error = '';
+			if (!wp_verify_nonce($_POST['_wpnonce'], 'aiowpsec-captcha-settings-nonce')) {
+				$aio_wp_security->debug_logger->log_debug('Nonce check failed on CAPTCHA settings save.', 4);
+				die('Nonce check failed on CAPTCHA settings save.');
             }
 
 
             //Save all the form values to the options
-            $random_20_digit_string = AIOWPSecurity_Utility::generate_alpha_numeric_random_string(20); //Generate random 20 char string for use during captcha encode/decode
+			$random_20_digit_string = AIOWPSecurity_Utility::generate_alpha_numeric_random_string(20); // Generate random 20 char string for use during CAPTCHA encode/decode
             $aio_wp_security->configs->set_value('aiowps_captcha_secret_key', $random_20_digit_string);
             $aio_wp_security->configs->set_value('aiowps_enable_login_captcha',isset($_POST["aiowps_enable_login_captcha"])?'1':'');
             $aio_wp_security->configs->set_value('aiowps_enable_woo_login_captcha',isset($_POST["aiowps_enable_woo_login_captcha"])?'1':'');
@@ -523,23 +522,22 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu
         <div class="aio_blue_box">
             <?php
             $recaptcha_link = '<a href="https://www.google.com/recaptcha" target="_blank">Google reCAPTCHA v2</a>';
-            echo sprintf('<p>'.__('This feature allows you to add a captcha form on various WordPress login pages and forms.', 'all-in-one-wp-security-and-firewall').'
-            <br />'.__('Adding a captcha form on a login page or form is another effective yet simple "Brute Force" prevention technique.', 'all-in-one-wp-security-and-firewall').'
-            <br />'.__('You have the option of using either %s or a plain maths captcha form.', 'all-in-one-wp-security-and-firewall').'
-            <br />'.__('If you enable Google reCAPTCHA the reCAPTCHA widget will be displayed for all forms the captcha settings below.', 'all-in-one-wp-security-and-firewall').'
-            <br />'.__('If Google reCAPTCHA is disabled the simple maths captcha form will apply and users will need to enter the answer to a simple mathematical question.', 'all-in-one-wp-security-and-firewall').'
-            </p>', $recaptcha_link);
+			echo sprintf('<p>'.__('This feature allows you to add a CAPTCHA form on various WordPress login pages and forms.', 'all-in-one-wp-security-and-firewall').
+			'<br>'.__('Adding a CAPTCHA form on a login page or form is another effective yet simple "Brute Force" prevention technique.', 'all-in-one-wp-security-and-firewall').
+			'<br>'.__('You have the option of using either %s or a plain maths CAPTCHA form.', 'all-in-one-wp-security-and-firewall').
+			'<br>'.__('If you enable Google reCAPTCHA the reCAPTCHA widget will be displayed for all forms the CAPTCHA settings below.', 'all-in-one-wp-security-and-firewall').
+			'<br>'.__('If Google reCAPTCHA is disabled the simple maths CAPTCHA form will apply and users will need to enter the answer to a simple mathematical question.', 'all-in-one-wp-security-and-firewall').'</p>', $recaptcha_link);
             ?>
         </div>
         <form action="" method="POST">
         <?php wp_nonce_field('aiowpsec-captcha-settings-nonce'); ?>
         <div class="postbox">
-        <h3 class="hndle"><label for="title"><?php _e('Google reCAPTCHA Settings', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
+		<h3 class="hndle"><label for="title"><?php _e('Google reCAPTCHA settings', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
         <div class="inside">
         <div class="aio_orange_box">
             <p>
             <?php
-            echo __('By enabling these settings the Google reCAPTCHA v2 widget will be applied by default for all forms with captcha enabled.', 'all-in-one-wp-security-and-firewall');
+			echo __('By enabling these settings the Google reCAPTCHA v2 widget will be applied by default for all forms with CAPTCHA enabled.', 'all-in-one-wp-security-and-firewall');
             ?>
             </p>
         </div>
@@ -548,8 +546,8 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu
             <div class="aio_blue_box">
                 <p>
                 <?php
-                echo __('Recaptcha will not work because you have disabled login lockdown by acitvating the AIOWPS_DISABLE_LOGIN_LOCKDOWN constant value in a configuration file.', 'all-in-one-wp-security-and-firewall').'
-                <br />'.__('To enable it, define AIOWPS_DISABLE_LOGIN_LOCKDOWN constant value as false, or remove it.', 'all-in-one-wp-security-and-firewall');
+				echo __('reCAPTCHA will not work because you have disabled login lockdown by activating the AIOWPS_DISABLE_LOGIN_LOCKDOWN constant value in a configuration file.', 'all-in-one-wp-security-and-firewall').
+				'<br>'.__('To enable it, define the AIOWPS_DISABLE_LOGIN_LOCKDOWN constant value as false or remove it.', 'all-in-one-wp-security-and-firewall');
                 ?>
                 </p>
             </div>
@@ -560,23 +558,26 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu
                 <th scope="row"><?php _e('Use Google reCAPTCHA as default', 'all-in-one-wp-security-and-firewall')?>:</th>
                 <td>
                 <input id="aiowps_default_recaptcha" name="aiowps_default_recaptcha" type="checkbox"<?php if($aio_wp_security->configs->get_value('aiowps_default_recaptcha')=='1') echo ' checked="checked"'; ?> value="1"/>
-                <label for="aiowps_default_recaptcha" class="description"><?php _e('Check this if you want to default to Google reCAPTCHA for all settings below. (If this is left unchecked, all captcha forms will revert to the plain maths captcha)', 'all-in-one-wp-security-and-firewall'); ?></label>
+				<label for="aiowps_default_recaptcha" class="description"><?php _e('Check this if you want to default to Google reCAPTCHA for all settings below. (If this is left unchecked, all CAPTCHA forms will revert to the plain maths CAPTCHA)', 'all-in-one-wp-security-and-firewall'); ?></label>
                 </td>
             </tr>
             <tr valign="top">
-                <th scope="row"><label for="aiowps_recaptcha_site_key"><?php _e('Site Key', 'all-in-one-wp-security-and-firewall')?>:</label></th>
+				<th scope="row"><label for="aiowps_recaptcha_site_key"><?php _e('Site key', 'all-in-one-wp-security-and-firewall'); ?>:</label></th>
                 <td><input id="aiowps_recaptcha_site_key" type="text" size="50" name="aiowps_recaptcha_site_key" value="<?php echo esc_html( $aio_wp_security->configs->get_value('aiowps_recaptcha_site_key') ); ?>" />
                 </td>
             </tr>
-            <tr valign="top">
-                <th scope="row"><label for="aiowps_recaptcha_secret_key"><?php _e('Secret Key', 'all-in-one-wp-security-and-firewall')?>:</label></th>
-                <td><input id="aiowps_recaptcha_secret_key" type="text" size="50" name="aiowps_recaptcha_secret_key" value="<?php echo esc_html($secret_key_masked); ?>" />
-                </td>
+			<tr valign="top">
+				<th scope="row">
+					<label for="aiowps_recaptcha_secret_key"><?php _e('Secret key', 'all-in-one-wp-security-and-firewall'); ?>:</label>
+				</th>
+				<td>
+					<input id="aiowps_recaptcha_secret_key" type="text" size="50" name="aiowps_recaptcha_secret_key" value="<?php echo esc_html($secret_key_masked); ?>">
+				</td>
             </tr>
         </table>
         </div></div>
         <div class="postbox">
-        <h3 class="hndle"><label for="title"><?php _e('Login Form Captcha Settings', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
+		<h3 class="hndle"><label for="title"><?php _e('Login form CAPTCHA settings', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
         <div class="inside">
         <?php
         //Display security info badge
@@ -585,16 +586,16 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu
         ?>
         <table class="form-table">
             <tr valign="top">
-                <th scope="row"><?php _e('Enable Captcha On Login Page', 'all-in-one-wp-security-and-firewall')?>:</th>
+				<th scope="row"><?php _e('Enable CAPTCHA on login page', 'all-in-one-wp-security-and-firewall'); ?>:</th>
                 <td>
                 <input id="aiowps_enable_login_captcha" name="aiowps_enable_login_captcha" type="checkbox"<?php if($aio_wp_security->configs->get_value('aiowps_enable_login_captcha')=='1') echo ' checked="checked"'; ?> value="1"/>
-                <label for="aiowps_enable_login_captcha" class="description"><?php _e('Check this if you want to insert a captcha form on the login page', 'all-in-one-wp-security-and-firewall'); ?></label>
+				<label for="aiowps_enable_login_captcha" class="description"><?php _e('Check this if you want to insert a CAPTCHA form on the login page.', 'all-in-one-wp-security-and-firewall'); ?></label>
                 </td>
             </tr>
         </table>
         </div></div>
         <div class="postbox">
-        <h3 class="hndle"><label for="title"><?php _e('Lost Password Form Captcha Settings', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
+		<h3 class="hndle"><label for="title"><?php _e('Lost password form CAPTCHA settings', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
         <div class="inside">
         <?php
         //Display security info badge
@@ -604,16 +605,16 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu
 
         <table class="form-table">
             <tr valign="top">
-                <th scope="row"><?php _e('Enable Captcha On Lost Password Page', 'all-in-one-wp-security-and-firewall')?>:</th>
+				<th scope="row"><?php _e('Enable CAPTCHA on lost password page', 'all-in-one-wp-security-and-firewall'); ?>:</th>
                 <td>
                 <input id="aiowps_enable_lost_password_captcha" name="aiowps_enable_lost_password_captcha" type="checkbox"<?php if($aio_wp_security->configs->get_value('aiowps_enable_lost_password_captcha')=='1') echo ' checked="checked"'; ?> value="1"/>
-                <label for="aiowps_enable_lost_password_captcha" class="description"><?php _e('Check this if you want to insert a captcha form on the lost password page', 'all-in-one-wp-security-and-firewall'); ?></label>
+				<label for="aiowps_enable_lost_password_captcha" class="description"><?php _e('Check this if you want to insert a CAPTCHA form on the lost password page.', 'all-in-one-wp-security-and-firewall'); ?></label>
                 </td>
             </tr>
         </table>
         </div></div>
         <div class="postbox">
-        <h3 class="hndle"><label for="title"><?php _e('Custom Login Form Captcha Settings', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
+		<h3 class="hndle"><label for="title"><?php _e('Custom login form CAPTCHA settings', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
         <div class="inside">
         <?php
         //Display security info badge
@@ -622,20 +623,20 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu
         ?>
         <table class="form-table">
             <tr valign="top">
-                <th scope="row"><?php _e('Enable Captcha On Custom Login Form', 'all-in-one-wp-security-and-firewall')?>:</th>
+				<th scope="row"><?php _e('Enable CAPTCHA on custom login form', 'all-in-one-wp-security-and-firewall'); ?>:</th>
                 <td>
                 <input id="aiowps_enable_custom_login_captcha" name="aiowps_enable_custom_login_captcha" type="checkbox"<?php if($aio_wp_security->configs->get_value('aiowps_enable_custom_login_captcha')=='1') echo ' checked="checked"'; ?> value="1"/>
-                <label for="aiowps_enable_custom_login_captcha" class="description"><?php _e('Check this if you want to insert captcha on a custom login form generated by the following WP function: wp_login_form()', 'all-in-one-wp-security-and-firewall'); ?></label>
+				<label for="aiowps_enable_custom_login_captcha" class="description"><?php _e('Check this if you want to insert CAPTCHA on a custom login form generated by the following WP function: wp_login_form()', 'all-in-one-wp-security-and-firewall'); ?></label>
                 </td>
             </tr>
         </table>
         </div></div>
         <?php
-        // Only display woocommerce captcha settings if woo is active
+		// Only display WooCommerce CAPTCHA settings if woo is active
         if (AIOWPSecurity_Utility::is_woocommerce_plugin_active()) {
         ?>
         <div class="postbox">
-        <h3 class="hndle"><label for="title"><?php _e('Woocommerce Forms Captcha Settings', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
+		<h3 class="hndle"><label for="title"><?php _e('WooCommerce forms CAPTCHA settings', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
         <div class="inside">
         <?php
         //Display security info badge
@@ -644,10 +645,10 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu
         ?>
         <table class="form-table">
             <tr valign="top">
-                <th scope="row"><?php _e('Enable Captcha On Woocommerce Login Form', 'all-in-one-wp-security-and-firewall')?>:</th>
+				<th scope="row"><?php _e('Enable CAPTCHA on WooCommerce login form', 'all-in-one-wp-security-and-firewall'); ?>:</th>
                 <td>
                 <input id="aiowps_enable_woo_login_captcha" name="aiowps_enable_woo_login_captcha" type="checkbox"<?php if($aio_wp_security->configs->get_value('aiowps_enable_woo_login_captcha')=='1') echo ' checked="checked"'; ?> value="1"/>
-                <label for="aiowps_enable_woo_login_captcha" class="description"><?php _e('Check this if you want to insert captcha on a Woocommerce login form', 'all-in-one-wp-security-and-firewall'); ?></label>
+				<label for="aiowps_enable_woo_login_captcha" class="description"><?php _e('Check this if you want to insert CAPTCHA on a WooCommerce login form.', 'all-in-one-wp-security-and-firewall'); ?></label>
                 </td>
             </tr>
         </table>
@@ -657,10 +658,10 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu
         ?>
         <table class="form-table">
             <tr valign="top">
-                <th scope="row"><?php _e('Enable Captcha On Woocommerce Lost Password Form', 'all-in-one-wp-security-and-firewall')?>:</th>
+				<th scope="row"><?php _e('Enable CAPTCHA on WooCommerce lost password form', 'all-in-one-wp-security-and-firewall'); ?>:</th>
                 <td>
                 <input id="aiowps_enable_woo_lostpassword_captcha" name="aiowps_enable_woo_lostpassword_captcha" type="checkbox"<?php if($aio_wp_security->configs->get_value('aiowps_enable_woo_lostpassword_captcha')=='1') echo ' checked="checked"'; ?> value="1"/>
-                <label for="aiowps_enable_woo_lostpassword_captcha" class="description"><?php _e('Check this if you want to insert captcha on a Woocommerce lost password form', 'all-in-one-wp-security-and-firewall'); ?></label>
+				<label for="aiowps_enable_woo_lostpassword_captcha" class="description"><?php _e('Check this if you want to insert CAPTCHA on a WooCommerce lost password form.', 'all-in-one-wp-security-and-firewall'); ?></label>
                 </td>
             </tr>
         </table>
@@ -670,10 +671,10 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu
         ?>
         <table class="form-table">
             <tr valign="top">
-                <th scope="row"><?php _e('Enable Captcha On Woocommerce Registration Form', 'all-in-one-wp-security-and-firewall')?>:</th>
+				<th scope="row"><?php _e('Enable CAPTCHA on WooCommerce registration form', 'all-in-one-wp-security-and-firewall'); ?>:</th>
                 <td>
                 <input id="aiowps_enable_woo_register_captcha" name="aiowps_enable_woo_register_captcha" type="checkbox"<?php if($aio_wp_security->configs->get_value('aiowps_enable_woo_register_captcha')=='1') echo ' checked="checked"'; ?> value="1"/>
-                <label for="aiowps_enable_woo_register_captcha" class="description"><?php _e('Check this if you want to insert captcha on a Woocommerce registration form', 'all-in-one-wp-security-and-firewall'); ?></label>
+				<label for="aiowps_enable_woo_register_captcha" class="description"><?php _e('Check this if you want to insert CAPTCHA on a WooCommerce registration form.', 'all-in-one-wp-security-and-firewall'); ?></label>
                 </td>
             </tr>
         </table>
@@ -682,7 +683,7 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu
         }
         ?>
 
-        <input type="submit" name="aiowpsec_save_captcha_settings" value="<?php _e('Save Settings', 'all-in-one-wp-security-and-firewall')?>" class="button-primary" />
+		<input type="submit" name="aiowpsec_save_captcha_settings" value="<?php _e('Save settings', 'all-in-one-wp-security-and-firewall'); ?>" class="button-primary">
         </form>
         <?php
     }
@@ -742,7 +743,7 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu
             }
         }
         ?>
-        <h2><?php _e('Login Whitelist', 'all-in-one-wp-security-and-firewall')?></h2>
+		<h2><?php _e('Login whitelist', 'all-in-one-wp-security-and-firewall'); ?></h2>
         <div class="aio_blue_box">
             <?php
             echo '<p>'.__('The All In One WP Security Whitelist feature gives you the option of only allowing certain IP addresses or ranges to have access to your WordPress login page.', 'all-in-one-wp-security-and-firewall').'
@@ -755,7 +756,7 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu
         <div class="aio_yellow_box">
             <?php
             $brute_force_login_feature_link = '<a href="admin.php?page='.AIOWPSEC_BRUTE_FORCE_MENU_SLUG.'&tab=tab2" target="_blank">'.__('Cookie-Based Brute Force Login Prevention', 'all-in-one-wp-security-and-firewall').'</a>';
-            $rename_login_feature_link = '<a href="admin.php?page='.AIOWPSEC_BRUTE_FORCE_MENU_SLUG.'&tab=tab1" target="_blank">'.__('Rename Login Page', 'all-in-one-wp-security-and-firewall').'</a>';
+            $rename_login_feature_link = '<a href="admin.php?page='.AIOWPSEC_BRUTE_FORCE_MENU_SLUG.'&tab=tab1" target="_blank">'.__('Rename login page', 'all-in-one-wp-security-and-firewall').'</a>';
             echo '<p>'.sprintf( __('Attention: If in addition to enabling the white list feature, you also have one of the %s or %s features enabled, <strong>you will still need to use your secret word or special slug in the URL when trying to access your WordPress login page</strong>.', 'all-in-one-wp-security-and-firewall'), $brute_force_login_feature_link, $rename_login_feature_link).'</p>
             <p>'.__('These features are NOT functionally related. Having both of them enabled on your site means you are creating 2 layers of security.', 'all-in-one-wp-security-and-firewall').'</p>';
             ?>
@@ -768,7 +769,7 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu
 		?>
 
         <div class="postbox">
-        <h3 class="hndle"><label for="title"><?php _e('Login IP Whitelist Settings', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
+		<h3 class="hndle"><label for="title"><?php _e('Login IP whitelist settings', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
         <div class="inside">
         <?php
         //Display security info badge
@@ -779,31 +780,30 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu
         <?php wp_nonce_field('aiowpsec-whitelist-settings-nonce'); ?>
         <table class="form-table">
             <tr valign="top">
-                <th scope="row"><?php _e('Enable IP Whitelisting', 'all-in-one-wp-security-and-firewall')?>:</th>
+				<th scope="row"><?php _e('Enable IP whitelisting', 'all-in-one-wp-security-and-firewall'); ?>:</th>
                 <td>
                 <input id="aiowps_enable_whitelisting" name="aiowps_enable_whitelisting" type="checkbox"<?php if($aio_wp_security->configs->get_value('aiowps_enable_whitelisting')=='1') echo ' checked="checked"'; ?> value="1"/>
                 <label for="aiowps_enable_whitelisting" class="description"><?php _e('Check this if you want to enable the whitelisting of selected IP addresses specified in the settings below', 'all-in-one-wp-security-and-firewall'); ?></label>
                 </td>
             </tr>
             <tr valign="top">
-                <th scope="row"><label for="aiowps_user_ip"><?php _e('Your Current IP Address', 'all-in-one-wp-security-and-firewall')?>:</label></th>
+				<th scope="row"><label for="aiowps_user_ip"><?php _e('Your current IP address', 'all-in-one-wp-security-and-firewall'); ?>:</label></th>
                 <td>
                 <input id="aiowps_user_ip" size="40" name="aiowps_user_ip" type="text" value="<?php echo $your_ip_address; ?>" readonly="readonly"/>
                 <span class="description"><?php _e('You can copy and paste this address in the text box below if you want to include it in your login whitelist.', 'all-in-one-wp-security-and-firewall'); ?></span>
                 </td>
             </tr>
             <tr valign="top">
-                <th scope="row"><label for="aiowps_allowed_ip_addresses"><?php _e('Enter Whitelisted IP Addresses:', 'all-in-one-wp-security-and-firewall')?></label></th>
+				<th scope="row"><label for="aiowps_allowed_ip_addresses"><?php _e('Enter whitelisted IP addresses:', 'all-in-one-wp-security-and-firewall'); ?></label></th>
                 <td>
                     <textarea id="aiowps_allowed_ip_addresses" name="aiowps_allowed_ip_addresses" rows="5" cols="50"><?php echo esc_textarea(wp_unslash(-1 == $result ? $_POST['aiowps_allowed_ip_addresses'] : $aio_wp_security->configs->get_value('aiowps_allowed_ip_addresses'))); ?></textarea>
-                    <br />
-                    <span class="description"><?php _e('Enter one or more IP addresses or IP ranges you wish to include in your whitelist.', 'all-in-one-wp-security-and-firewall') . ' ' . _e('Only the addresses specified here will have access to the WordPress login page.', 'all-in-one-wp-security-and-firewall');?></span>
-                    <?php $aio_wp_security->include_template('info/ip-address-ip-range-info.php');?>
-
+					<br>
+					<span class="description"><?php echo __('Enter one or more IP addresses or IP ranges you wish to include in your whitelist.', 'all-in-one-wp-security-and-firewall') . ' ' . __('Only the addresses specified here will have access to the WordPress login page.', 'all-in-one-wp-security-and-firewall'); ?></span>
+					<?php $aio_wp_security->include_template('info/ip-address-ip-range-info.php'); ?>
                 </td>
             </tr>
         </table>
-        <input type="submit" name="aiowps_save_whitelist_settings" value="<?php _e('Save Settings', 'all-in-one-wp-security-and-firewall')?>" class="button-primary" />
+		<input type="submit" name="aiowps_save_whitelist_settings" value="<?php _e('Save settings', 'all-in-one-wp-security-and-firewall'); ?>" class="button-primary">
         </form>
         </div></div>
         <?php
@@ -845,7 +845,7 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu
         </div>
         <form action="" method="POST">
         <div class="postbox">
-        <h3 class="hndle"><label for="title"><?php _e('Login Form Honeypot Settings', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
+		<h3 class="hndle"><label for="title"><?php _e('Login form honeypot settings', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
         <div class="inside">
         <?php
         //Display security info badge
@@ -856,7 +856,7 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu
         <?php wp_nonce_field('aiowpsec-honeypot-settings-nonce'); ?>
         <table class="form-table">
             <tr valign="top">
-                <th scope="row"><?php _e('Enable Honeypot On Login Page', 'all-in-one-wp-security-and-firewall')?>:</th>
+				<th scope="row"><?php _e('Enable honeypot on login page', 'all-in-one-wp-security-and-firewall'); ?>:</th>
                 <td>
                 <input id="aiowps_enable_login_honeypot" name="aiowps_enable_login_honeypot" type="checkbox"<?php if($aio_wp_security->configs->get_value('aiowps_enable_login_honeypot')=='1') echo ' checked="checked"'; ?> value="1"/>
                 <label for="aiowps_enable_login_honeypot" class="description"><?php _e('Check this if you want to enable the honeypot feature for the login page', 'all-in-one-wp-security-and-firewall'); ?></label>
@@ -865,7 +865,7 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu
         </table>
         </div></div>
 
-        <input type="submit" name="aiowpsec_save_honeypot_settings" value="<?php _e('Save Settings', 'all-in-one-wp-security-and-firewall')?>" class="button-primary" />
+		<input type="submit" name="aiowpsec_save_honeypot_settings" value="<?php _e('Save settings', 'all-in-one-wp-security-and-firewall'); ?>" class="button-primary">
         </form>
         <?php
     }

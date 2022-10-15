@@ -6,6 +6,7 @@ if (!defined('ABSPATH')) {
 require_once(AIO_WP_SECURITY_PATH.'/classes/wp-security-base-tasks.php');
 
 class AIOWPSecurity_Deactivation_Tasks extends AIOWPSecurity_Base_Tasks {
+
 	/**
 	 * Run deactivation task for a single site.
 	 *
@@ -26,4 +27,5 @@ class AIOWPSecurity_Deactivation_Tasks extends AIOWPSecurity_Base_Tasks {
 			AIOWPSecurity_Utility_Firewall::remove_firewall();
 		}
 	}
+
 }

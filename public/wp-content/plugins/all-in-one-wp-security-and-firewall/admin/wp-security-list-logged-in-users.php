@@ -29,7 +29,7 @@ class AIOWPSecurity_List_Logged_In_Users extends AIOWPSecurity_List_Table {
         
         //Build row actions
         $actions = array(
-            'logout' => '<a href="'.$force_logout_nonce.'" onclick="return confirm(\'Are you sure you want to force this user to be logged out of this session?\')">Force Logout</a>',
+			'logout' => '<a href="'.$force_logout_nonce.'" onclick="return confirm(\'Are you sure you want to force this user to be logged out of this session?\')">Force logout</a>',
         );
         
         //Return the user_login contents
@@ -42,8 +42,8 @@ class AIOWPSecurity_List_Logged_In_Users extends AIOWPSecurity_List_Table {
     function get_columns(){
         $columns = array(
             'user_id' =>  __('User ID', 'all-in-one-wp-security-and-firewall'),
-            'username' =>  __('Login Name', 'all-in-one-wp-security-and-firewall'),
-            'ip_address' =>  __('IP Address', 'all-in-one-wp-security-and-firewall'),
+			'username' =>  __('Login name', 'all-in-one-wp-security-and-firewall'),
+			'ip_address' =>  __('IP address', 'all-in-one-wp-security-and-firewall')
         );
         return $columns;
     }

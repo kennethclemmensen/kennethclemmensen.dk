@@ -1,7 +1,7 @@
 <?php
 
 if (!defined('ABSPATH')) {
-	exit;  // Exit if accessed directly
+	exit; // Exit if accessed directly
 }
 
 class AIOWPSecurity_Tools_Menu extends AIOWPSecurity_Admin_Menu {
@@ -60,8 +60,8 @@ class AIOWPSecurity_Tools_Menu extends AIOWPSecurity_Admin_Menu {
 	 * @return Void
 	 */
 	private function render_menu_page() {
-		echo '<div class="wrap">';  // Start of wrap
-		echo '<h2>'.__('Tools', 'all-in-one-wp-security-and-firewall').'</h2>';  // Interface title
+		echo '<div class="wrap">'; // Start of wrap
+		echo '<h2>'.__('Tools', 'all-in-one-wp-security-and-firewall').'</h2>'; // Interface title
 		$this->set_menu_tabs();
 		$tab = $this->get_current_tab();
 		$this->render_menu_tabs();
@@ -74,7 +74,7 @@ class AIOWPSecurity_Tools_Menu extends AIOWPSecurity_Admin_Menu {
 		</div>
 		<?php
 
-		echo '</div>';  // End of wrap
+		echo '</div>'; // End of wrap
 	}
 
 	/**
@@ -173,7 +173,7 @@ class AIOWPSecurity_Tools_Menu extends AIOWPSecurity_Admin_Menu {
 			<p><?php echo __('The WHOIS lookup feature gives you a way to look up who owns an IP address or domain name.', 'all-in-one-wp-security-and-firewall').' '.__('You can use this to investigate users engaging in malicious activity on your site.', 'all-in-one-wp-security-and-firewall'); ?></p>
 		</div>
 		<div class="postbox">
-			<h3 class="hndle"><?php _e('WHOIS Lookup On IP Or Domain', 'all-in-one-wp-security-and-firewall'); ?></h3>
+			<h3 class="hndle"><?php _e('WHOIS lookup on IP or domain', 'all-in-one-wp-security-and-firewall'); ?></h3>
 			<div class="inside">
 				<form method="post" action="">
 					<?php wp_nonce_field('aiowpsec-whois-lookup'); ?>

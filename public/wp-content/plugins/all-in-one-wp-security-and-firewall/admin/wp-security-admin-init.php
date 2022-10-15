@@ -16,7 +16,7 @@ class AIOWPSecurity_Admin_Init {
     private $is_admin_dashboard_page;
 
     /**
-     * Whether the page is admin AIOWPS page.
+	 * Whether the page is admin AIOS page.
      * @var boolean
      */
     private $is_aiowps_admin_page;
@@ -49,6 +49,7 @@ class AIOWPSecurity_Admin_Init {
         if (current_user_can(AIOWPSEC_MANAGEMENT_PERMISSION)) {
             $this->admin_includes();
             add_action('admin_menu', array($this, 'create_admin_menus'));
+			add_action('admin_menu', array($this, 'premium_upgrade_submenu'), 40);
             add_action('admin_init', array($this, 'aiowps_csv_download'));
         }
 
@@ -164,7 +165,7 @@ class AIOWPSecurity_Admin_Init {
     }
 
     /**
-     * Hook admin notices on admin dashboard page and admin AIOWPS pages.
+	 * Hook admin notices on admin dashboard page and admin AIOS pages.
      *
      * @return void
      */
@@ -173,7 +174,7 @@ class AIOWPSecurity_Admin_Init {
             return;
         }
 
-        // If none of the admin dashboard page or the AIOWPS page, Then bail
+		// If none of the admin dashboard page or the AIOS page, Then bail
         if (!$this->is_admin_dashboard_page() && !$this->is_aiowps_admin_page()) {
             return;
         }
@@ -287,7 +288,7 @@ class AIOWPSecurity_Admin_Init {
         /* translators: 1: All In One WP Security & Firewall 2: G2 review link */
         $message = sprintf(
             __('Enjoyed %1$s? Please leave us a %2$s rating. We really appreciate your support!', 'all-in-one-wp-security-and-firewall'),
-            '<b>All In One WP Security & Firewall</b>',
+            '<b>' . htmlspecialchars('All In One WP Security & Firewall') . '</b>',
             '<a href="https://www.g2.com/products/all-in-one-wp-security-firewall/reviews" target="_blank">&starf;&starf;&starf;&starf;&starf;</a>'
         );
         return $message;
@@ -393,13 +394,13 @@ class AIOWPSecurity_Admin_Init {
             $result = AIOWPSecurity_Utility_File::backup_and_rename_wp_config($wp_config_path); //Backup the wp_config.php file
             AIOWPSecurity_Utility_File::download_a_file_option1($wp_config_path, "wp-config-backup.txt");
         }
-        
-        //Handle export settings
-        if (isset($_POST['aiowps_export_settings'])) {
+
+		// Handle export settings
+		if (isset($_POST['aiowps_export_settings'])) { // Do form submission tasks
 			$nonce = $_REQUEST['_wpnonce'];
-            if (!wp_verify_nonce($nonce, 'aiowpsec-export-settings-nonce')) {
-                $aio_wp_security->debug_logger->log_debug("Nonce check failed on export AIOWPS settings.", 4);
-                die("Nonce check failed on export AIOWPS settings.");
+			if (!wp_verify_nonce($nonce, 'aiowpsec-export-settings-nonce')) {
+				$aio_wp_security->debug_logger->log_debug('Nonce check failed on export AIOS settings.', 4);
+				die('Nonce check failed on export AIOS settings.');
             }
             $config_data = get_option('aio_wp_security_configs');
             $output = json_encode($config_data);
@@ -433,7 +434,7 @@ class AIOWPSecurity_Admin_Init {
             add_submenu_page(AIOWPSEC_MAIN_MENU_SLUG, __('Firewall', 'all-in-one-wp-security-and-firewall'),  __('Firewall', 'all-in-one-wp-security-and-firewall') , AIOWPSEC_MANAGEMENT_PERMISSION, AIOWPSEC_FIREWALL_MENU_SLUG, array($this, 'handle_firewall_menu_rendering'));
         }
         add_submenu_page(AIOWPSEC_MAIN_MENU_SLUG, __('Brute Force', 'all-in-one-wp-security-and-firewall'),  __('Brute Force', 'all-in-one-wp-security-and-firewall') , AIOWPSEC_MANAGEMENT_PERMISSION, AIOWPSEC_BRUTE_FORCE_MENU_SLUG, array($this, 'handle_brute_force_menu_rendering'));
-        add_submenu_page(AIOWPSEC_MAIN_MENU_SLUG, __('SPAM Prevention', 'all-in-one-wp-security-and-firewall'),  __('SPAM Prevention', 'all-in-one-wp-security-and-firewall') , AIOWPSEC_MANAGEMENT_PERMISSION, AIOWPSEC_SPAM_MENU_SLUG, array($this, 'handle_spam_menu_rendering'));
+		add_submenu_page(AIOWPSEC_MAIN_MENU_SLUG, __('Spam Prevention', 'all-in-one-wp-security-and-firewall'), __('Spam Prevention', 'all-in-one-wp-security-and-firewall'), AIOWPSEC_MANAGEMENT_PERMISSION, AIOWPSEC_SPAM_MENU_SLUG, array($this, 'handle_spam_menu_rendering'));
         if (is_multisite() && get_current_blog_id() != 1){
             //Suppress the filescan menu if site is a multi site AND not the main site
         }else{
@@ -441,10 +442,22 @@ class AIOWPSecurity_Admin_Init {
         }
         add_submenu_page(AIOWPSEC_MAIN_MENU_SLUG, __('Maintenance', 'all-in-one-wp-security-and-firewall'),  __('Maintenance', 'all-in-one-wp-security-and-firewall') , AIOWPSEC_MANAGEMENT_PERMISSION, AIOWPSEC_MAINTENANCE_MENU_SLUG, array($this, 'handle_maintenance_menu_rendering'));
         add_submenu_page(AIOWPSEC_MAIN_MENU_SLUG, __('Miscellaneous', 'all-in-one-wp-security-and-firewall'),  __('Miscellaneous', 'all-in-one-wp-security-and-firewall') , AIOWPSEC_MANAGEMENT_PERMISSION, AIOWPSEC_MISC_MENU_SLUG, array($this, 'handle_misc_menu_rendering'));
-        add_submenu_page(AIOWPSEC_MAIN_MENU_SLUG, __('Tools', 'all-in-one-wp-security-and-firewall'), __('Tools', 'all-in-one-wp-security-and-firewall'), AIOWPSEC_MANAGEMENT_PERMISSION, AIOWPSEC_TOOLS_MENU_SLUG, array($this, 'handle_tools_menu_rendering'));
+		add_submenu_page(AIOWPSEC_MAIN_MENU_SLUG, __('Tools', 'all-in-one-wp-security-and-firewall'), __('Tools', 'all-in-one-wp-security-and-firewall'), AIOWPSEC_MANAGEMENT_PERMISSION, AIOWPSEC_TOOLS_MENU_SLUG, array($this, 'handle_tools_menu_rendering'));
         do_action('aiowpsecurity_admin_menu_created');
-    }
-        
+	}
+
+	/**
+	 * Adds submenu link to premium upgrade tab.
+	 *
+	 * @return Void
+	 */
+	public function premium_upgrade_submenu() {
+		if (!defined('AIOWPSECURITY_NOADS_B') || !AIOWPSECURITY_NOADS_B) {
+			global $submenu;
+			$submenu[AIOWPSEC_MAIN_MENU_SLUG][] = array(__('Premium Upgrade', 'all-in-one-wp-security-and-firewall'), AIOWPSEC_MANAGEMENT_PERMISSION, 'admin.php?page='.AIOWPSEC_MAIN_MENU_SLUG.'&tab=premium-upgrade');
+		}
+	}
+
     function handle_dashboard_menu_rendering()
     {
         include_once('wp-security-dashboard-menu.php');

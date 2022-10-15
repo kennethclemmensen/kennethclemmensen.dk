@@ -96,8 +96,8 @@ class AIOWPSecurity_Notices extends Updraft_Notices_1_2 {
 				'validity_function' => 'should_show_login_whitelist_disabled_on_upgrade_notice',
 			),
 			'rate_plugin' => array(
-				'text' => sprintf(htmlspecialchars(__('Hey - We noticed All In One WP Security & Firewall has kept your site safe for a while.  If you like us, please consider leaving a positive review to spread the word.  Or if you have any issues or questions please leave us a support message %s.', 'all-in-one-wp-security-and-firewall')), '<a href="https://wordpress.org/support/plugin/all-in-one-wp-security-and-firewall/" target="_blank">'.__('here', 'all-in-one-wp-security-and-firewall').'</a>').'<br>'.__('Thank you so much!', 'all-in-one-wp-security-and-firewall').'<br><br>- <b>'.__('Team All In One WP Security & Firewall', 'all-in-one-wp-security-and-firewall').'</b>',
-				'image' => 'notices/aiowps-logo.png',
+				'text' => sprintf(htmlspecialchars(__('Hey - We noticed All In One WP Security & Firewall has kept your site safe for a while.  If you like us, please consider leaving a positive review to spread the word.  Or if you have any issues or questions please leave us a support message %s.', 'all-in-one-wp-security-and-firewall')), '<a href="https://wordpress.org/support/plugin/all-in-one-wp-security-and-firewall/" target="_blank">'.__('here', 'all-in-one-wp-security-and-firewall').'</a>').'<br>'.__('Thank you so much!', 'all-in-one-wp-security-and-firewall').'<br><br>- <b>'.htmlspecialchars(__('Team All In One WP Security & Firewall', 'all-in-one-wp-security-and-firewall')).'</b>',
+				'image' => 'plugin-logos/aiowps-logo.png',
 				'button_link' => 'https://wordpress.org/support/plugin/all-in-one-wp-security-and-firewall/reviews/?rate=5#new-post',
 				'button_meta' => 'review',
 				'dismiss_time' => 'dismiss_review_notice',
@@ -107,8 +107,8 @@ class AIOWPSecurity_Notices extends Updraft_Notices_1_2 {
 			'updraftplus' => array(
 				'prefix' => '',
 				'title' => __('Enhance your security even more by backing up your site', 'all-in-one-wp-security-and-firewall'),
-				'text' => __("UpdraftPlus is the world's most trusted backup plugin from the owners of All In One WP Security & Firewall", 'all-in-one-wp-security-and-firewall'),
-				'image' => 'notices/updraft_logo.png',
+				'text' => htmlspecialchars(__('UpdraftPlus is the world\'s most trusted backup plugin from the owners of All In One WP Security & Firewall', 'all-in-one-wp-security-and-firewall')),
+				'image' => 'plugin-logos/updraft_logo.png',
 				'button_link' => 'https://wordpress.org/plugins/updraftplus/',
 				'button_meta' => 'updraftplus',
 				'dismiss_time' => 'dismiss_page_notice_until',
@@ -119,7 +119,7 @@ class AIOWPSecurity_Notices extends Updraft_Notices_1_2 {
 				'prefix' => '',
 				'title' => 'WP-Optimize',
 				'text' => __("After you've secured your site, we recommend you install our WP-Optimize plugin to streamline it for better website performance.", "all-in-one-wp-security-and-firewall"),
-				'image' => 'notices/wp_optimize_logo.png',
+				'image' => 'plugin-logos/wp_optimize_logo.png',
 				'button_link' => 'https://wordpress.org/plugins/wp-optimize/',
 				'button_meta' => 'wp-optimize',
 				'dismiss_time' => 'dismiss_notice',
@@ -352,9 +352,9 @@ class AIOWPSecurity_Notices extends Updraft_Notices_1_2 {
 	}
 
 	/**
-	 * Get AIOWPS Plugin installation timestamp.
+	 * Get AIOS Plugin installation timestamp.
 	 *
-	 * @return integer AIOWPS Plugin installation timestamp.
+	 * @return integer AIOS Plugin installation timestamp.
 	 */
 	public function get_aiowps_plugin_installed_timestamp() {
 		$installed_at = @filemtime(AIO_WP_SECURITY_PATH.'/index.html'); // phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged

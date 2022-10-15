@@ -162,7 +162,7 @@ class AIOWPSecurity_User_Login_Menu extends AIOWPSecurity_Admin_Menu {
             }
 
             //Save all the form values to the options
-            $random_20_digit_string = AIOWPSecurity_Utility::generate_alpha_numeric_random_string(20); //Generate random 20 char string for use during captcha encode/decode
+			$random_20_digit_string = AIOWPSecurity_Utility::generate_alpha_numeric_random_string(20); // Generate random 20 char string for use during CAPTCHA encode/decode
             $aio_wp_security->configs->set_value('aiowps_unlock_request_secret_key', $random_20_digit_string);
             
             $aio_wp_security->configs->set_value('aiowps_enable_login_lockdown',isset($_POST["aiowps_enable_login_lockdown"])?'1':'');
@@ -193,12 +193,12 @@ class AIOWPSecurity_User_Login_Menu extends AIOWPSecurity_Admin_Menu {
             if (!wp_verify_nonce($nonce, 'aiowpsec-lockdown-whitelist-settings-nonce'))
             {
                 $aio_wp_security->debug_logger->log_debug("Nonce check failed for save lockdown whitelist settings!",4);
-                die(__('Nonce check failed for save lockdown whitelist settings!','aiowpsecurity'));
+				die(__('Nonce check failed for save lockdown whitelist settings.', 'all-in-one-wp-security-and-firewall'));
             }
             
             if (isset($_POST["aiowps_lockdown_enable_whitelisting"]) && empty($_POST['aiowps_lockdown_allowed_ip_addresses']))
             {
-                $this->show_msg_error('You must submit at least one IP address!','aiowpsecurity');
+				$this->show_msg_error('You must submit at least one IP address.', 'all-in-one-wp-security-and-firewall');
             }
             else
             {
@@ -236,7 +236,7 @@ class AIOWPSecurity_User_Login_Menu extends AIOWPSecurity_Admin_Menu {
             }
         }        
         ?>
-        <h2><?php _e('Login Lockdown Configuration', 'all-in-one-wp-security-and-firewall')?></h2>
+		<h2><?php _e('Login lockdown configuration', 'all-in-one-wp-security-and-firewall'); ?></h2>
         <div class="aio_blue_box">
             <?php
             $brute_force_login_feature_link = '<a href="admin.php?page='.AIOWPSEC_BRUTE_FORCE_MENU_SLUG.'&tab=tab2">'.__('Cookie-Based Brute Force Login Prevention', 'all-in-one-wp-security-and-firewall').'</a>';
@@ -247,7 +247,7 @@ class AIOWPSecurity_User_Login_Menu extends AIOWPSecurity_Admin_Menu {
         </div>
 
         <div class="postbox">
-        <h3 class="hndle"><label for="title"><?php _e('Login Lockdown Options', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
+		<h3 class="hndle"><label for="title"><?php _e('Login lockdown options', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
         <div class="inside">
         <?php
         //Display security info badge
@@ -258,80 +258,77 @@ class AIOWPSecurity_User_Login_Menu extends AIOWPSecurity_Admin_Menu {
         <?php wp_nonce_field('aiowpsec-login-lockdown-nonce'); ?>
         <table class="form-table">
             <tr valign="top">
-                <th scope="row"><?php _e('Enable Login Lockdown Feature', 'all-in-one-wp-security-and-firewall')?>:</th>
+				<th scope="row"><?php _e('Enable login lockdown feature', 'all-in-one-wp-security-and-firewall'); ?>:</th>
                 <td>
                 <input id="aiowps_enable_login_lockdown" name="aiowps_enable_login_lockdown" type="checkbox"<?php if($aio_wp_security->configs->get_value('aiowps_enable_login_lockdown')=='1') echo ' checked="checked"'; ?> value="1"/>
                 <label for="aiowps_enable_login_lockdown" class="description"><?php _e('Check this if you want to enable the login lockdown feature and apply the settings below', 'all-in-one-wp-security-and-firewall'); ?></label>
                 </td>
             </tr>            
             <tr valign="top">
-                <th scope="row"><?php _e('Allow Unlock Requests', 'all-in-one-wp-security-and-firewall')?>:</th>
+				<th scope="row"><?php _e('Allow unlock requests', 'all-in-one-wp-security-and-firewall'); ?>:</th>
                 <td>
                 <input id="aiowps_allow_unlock_requests" name="aiowps_allow_unlock_requests" type="checkbox"<?php if($aio_wp_security->configs->get_value('aiowps_allow_unlock_requests')=='1') echo ' checked="checked"'; ?> value="1"/>
                 <label for="aiowps_allow_unlock_requests" class="description"><?php _e('Check this if you want to allow users to generate an automated unlock request link which will unlock their account', 'all-in-one-wp-security-and-firewall'); ?></label>
                 </td>
             </tr>            
-            <tr valign="top">
-                <th scope="row"><label for="aiowps_max_login_attempts"><?php _e('Max Login Attempts', 'all-in-one-wp-security-and-firewall'); ?>:</label></th>
+			<tr valign="top">
+				<th scope="row"><label for="aiowps_max_login_attempts"><?php _e('Max login attempts', 'all-in-one-wp-security-and-firewall'); ?>:</label></th>
                 <td><input id="aiowps_max_login_attempts" type="text" size="5" name="aiowps_max_login_attempts" value="<?php echo esc_html($aio_wp_security->configs->get_value('aiowps_max_login_attempts')); ?>" />
                 <span class="description"><?php _e('Set the value for the maximum login retries before IP address is locked out', 'all-in-one-wp-security-and-firewall'); ?></span>
                 </td> 
-            </tr>
-            <tr valign="top">
-                <th scope="row"><label for="aiowps_retry_time_period"><?php _e('Login Retry Time Period (min)', 'all-in-one-wp-security-and-firewall'); ?>:</label></th>
+			</tr>
+			<tr valign="top">
+				<th scope="row"><label for="aiowps_retry_time_period"><?php _e('Login retry time period (min)', 'all-in-one-wp-security-and-firewall'); ?>:</label></th>
                 <td><input id="aiowps_retry_time_period" type="text" size="5" name="aiowps_retry_time_period" value="<?php echo esc_html($aio_wp_security->configs->get_value('aiowps_retry_time_period')); ?>" />
                 <span class="description"><?php _e('If the maximum number of failed login attempts for a particular IP address occur within this time period the plugin will lock out that address', 'all-in-one-wp-security-and-firewall'); ?></span>
                 </td> 
             </tr>
-            <tr valign="top">
-                <th scope="row">
-                    <label for="aiowps_lockout_time_length">
-                        <?php _e('Minimum lockout time length', 'all-in-one-wp-security-and-firewall'); ?>:
-                    </label>
-                </th>
-                <td><input type="text" size="5" name="aiowps_lockout_time_length" id="aiowps_lockout_time_length" value="<?php echo esc_attr($aio_wp_security->configs->get_value('aiowps_lockout_time_length')); ?>" />
-                <span class="description">
-                    <?php
-                    echo __('Set the minimum time period in minutes of lockout.', 'all-in-one-wp-security-and-firewall').' '.
-                            __('This failed login lockout time will be tripled on each failed login.', 'all-in-one-wp-security-and-firewall');
-                    ?>
-                </span>
-                </td> 
+			<tr valign="top">
+				<th scope="row">
+					<label for="aiowps_lockout_time_length"><?php _e('Minimum lockout time length', 'all-in-one-wp-security-and-firewall'); ?>:</label>
+				</th>
+				<td>
+					<input type="text" size="5" name="aiowps_lockout_time_length" id="aiowps_lockout_time_length" value="<?php echo esc_attr($aio_wp_security->configs->get_value('aiowps_lockout_time_length')); ?>">
+					<span class="description">
+						<?php
+						echo __('Set the minimum time period in minutes of lockout.', 'all-in-one-wp-security-and-firewall').' '.
+								__('This failed login lockout time will be tripled on each failed login.', 'all-in-one-wp-security-and-firewall');
+						?>
+					</span>
+				</td>
+			</tr>
+			<tr valign="top">
+				<th scope="row">
+					<label for="aiowps_max_lockout_time_length"><?php _e('Maximum lockout time length', 'all-in-one-wp-security-and-firewall'); ?>:</label>
+				</th>
+				<td>
+					<input type="text" size="5" name="aiowps_max_lockout_time_length" id="aiowps_max_lockout_time_length" value="<?php echo esc_attr($aio_wp_security->configs->get_value('aiowps_max_lockout_time_length')); ?>">
+					<span class="description">
+						<?php
+						echo __('Set the maximum time period in minutes of lockout.', 'all-in-one-wp-security-and-firewall').' '.
+							__('No IP address will be blocked for more than this time period after making a failed login attempt.', 'all-in-one-wp-security-and-firewall')
+						?>
+					</span>
+				</td>
             </tr>
             <tr valign="top">
-                <th scope="row">
-                    <label for="aiowps_max_lockout_time_length">
-                        <?php _e('Maximum lockout time length', 'all-in-one-wp-security-and-firewall')?>:
-                    </label>
-                </th>
-                <td><input type="text" size="5" name="aiowps_max_lockout_time_length" id="aiowps_max_lockout_time_length" value="<?php echo esc_attr($aio_wp_security->configs->get_value('aiowps_max_lockout_time_length')); ?>" />
-                <span class="description">
-                    <?php
-                    echo __('Set the maximum time period in minutes of lockout.', 'all-in-one-wp-security-and-firewall').' '.
-                        __('No IP address will be blocked for more than this time period after making a failed login attempt.', 'all-in-one-wp-security-and-firewall')
-                    ?>
-                </span>
-            </tr>
-            <tr valign="top">
-                <th scope="row"><?php _e('Display Generic Error Message', 'all-in-one-wp-security-and-firewall')?>:</th>
+				<th scope="row"><?php _e('Display generic error message', 'all-in-one-wp-security-and-firewall'); ?>:</th>
                 <td>
                 <input id="aiowps_set_generic_login_msg" name="aiowps_set_generic_login_msg" type="checkbox"<?php if($aio_wp_security->configs->get_value('aiowps_set_generic_login_msg')=='1') echo ' checked="checked"'; ?> value="1"/>
                 <label for="aiowps_set_generic_login_msg" class="description"><?php _e('Check this if you want to show a generic error message when a login attempt fails', 'all-in-one-wp-security-and-firewall'); ?></label>
                 </td>
             </tr>
             <tr valign="top">
-                <th scope="row"><?php _e('Instantly Lockout Invalid Usernames', 'all-in-one-wp-security-and-firewall')?>:</th>
+				<th scope="row"><?php _e('Instantly lockout invalid usernames', 'all-in-one-wp-security-and-firewall'); ?>:</th>
                 <td>
                 <input id="aiowps_enable_invalid_username_lockdown" name="aiowps_enable_invalid_username_lockdown" type="checkbox"<?php if($aio_wp_security->configs->get_value('aiowps_enable_invalid_username_lockdown')=='1') echo ' checked="checked"'; ?> value="1"/>
                 <label for="aiowps_enable_invalid_username_lockdown" class="description"><?php _e('Check this if you want to instantly lockout login attempts with usernames which do not exist on your system', 'all-in-one-wp-security-and-firewall'); ?></label>
                 </td>
             </tr>            
-            <tr valign="top">
-                <th scope="row">
-                    <label for="aiowps_instantly_lockout_specific_usernames">
-                        <?php _e('Instantly Lockout Specific Usernames', 'all-in-one-wp-security-and-firewall')?>:
-                    </label>
-                </th>
+			<tr valign="top">
+				<th scope="row">
+					<label for="aiowps_instantly_lockout_specific_usernames"><?php _e('Instantly lockout specific usernames', 'all-in-one-wp-security-and-firewall'); ?>:</label>
+				</th>
                 <td>
                     <?php
                     $instant_lockout_users_list = $aio_wp_security->configs->get_value('aiowps_instantly_lockout_specific_usernames');
@@ -343,12 +340,10 @@ class AIOWPSecurity_User_Login_Menu extends AIOWPSecurity_Admin_Menu {
                     <span class="description"><?php _e('Insert one username per line. Existing usernames are not blocked even if present in the list.', 'all-in-one-wp-security-and-firewall'); ?></span>
                 </td>
             </tr>
-            <tr valign="top">
-                <th scope="row">
-                    <label for="aiowps_email_address">
-                        <?php _e('Notify By Email', 'all-in-one-wp-security-and-firewall')?>:
-                    </label>
-                </th>
+			<tr valign="top">
+				<th scope="row">
+					<label for="aiowps_email_address"><?php _e('Notify by email', 'all-in-one-wp-security-and-firewall'); ?>:</label>
+				</th>
                 <td>
                     <input id="aiowps_enable_email_notify" name="aiowps_enable_email_notify" type="checkbox"<?php if($aio_wp_security->configs->get_value('aiowps_enable_email_notify')=='1') echo ' checked="checked"'; ?> value="1"/>
                     <label for="aiowps_enable_email_notify" class="description"><?php _e('Check this if you want to receive an email when someone has been locked out due to maximum failed login attempts', 'all-in-one-wp-security-and-firewall'); ?></span></label>
@@ -366,21 +361,21 @@ class AIOWPSecurity_User_Login_Menu extends AIOWPSecurity_Admin_Menu {
                     </div>
                 </td>
             </tr>
-            <tr valign="top">
-                <th scope="row">
-                    <?php _e('Enable PHP Backtrace In Email', 'all-in-one-wp-security-and-firewall')?>:
-                </th>
+			<tr valign="top">
+				<th scope="row">
+					<?php _e('Enable PHP backtrace in email', 'all-in-one-wp-security-and-firewall'); ?>:
+				</th>
                 <td>
                     <input name="aiowps_enable_php_backtrace_in_email" id="aiowps_enable_php_backtrace_in_email" type="checkbox"<?php checked($aio_wp_security->configs->get_value('aiowps_enable_php_backtrace_in_email'), '1'); ?> value="1"/>
                     <label for="aiowps_enable_php_backtrace_in_email"><?php _e('Check this if you want to include the PHP backtrace in notification emails.', 'all-in-one-wp-security-and-firewall'); ?> <?php _e('This is internal coding information which makes it easier to investigate where an issued occurred.', 'all-in-one-wp-security-and-firewall'); ?></label>
                 </td>
             </tr>
         </table>
-        <input type="submit" name="aiowps_login_lockdown" value="<?php _e('Save Settings', 'all-in-one-wp-security-and-firewall')?>" class="button-primary" />
+		<input type="submit" name="aiowps_login_lockdown" value="<?php _e('Save settings', 'all-in-one-wp-security-and-firewall'); ?>" class="button-primary">
         </form>
         </div></div>
         <div class="postbox">
-        <h3 class="hndle"><label for="title"><?php _e('Currently Locked Out IP Address Ranges', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
+		<h3 class="hndle"><label for="title"><?php _e('Currently locked out IP address ranges', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
         <div class="inside">
             <div class="aio_blue_box aio_width_80">
                 <?php
@@ -390,29 +385,29 @@ class AIOWPSecurity_User_Login_Menu extends AIOWPSecurity_Admin_Menu {
             </div>
         </div></div>
         <div class="postbox">
-        <h3 class="hndle"><label for="title"><?php _e('Login Lockdown IP Whitelist Settings', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
+		<h3 class="hndle"><label for="title"><?php _e('Login lockdown IP whitelist settings', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
         <div class="inside">
         <form action="" method="POST">
         <?php wp_nonce_field('aiowpsec-lockdown-whitelist-settings-nonce'); ?>            
         <table class="form-table">
             <tr valign="top">
-                <th scope="row"><label for="aiowps_lockdown_enable_whitelisting"><?php _e('Enable Login Lockdown IP Whitelist', 'all-in-one-wp-security-and-firewall')?></label>:</th>                
+				<th scope="row"><label for="aiowps_lockdown_enable_whitelisting"><?php _e('Enable login lockdown IP whitelist', 'all-in-one-wp-security-and-firewall'); ?></label>:</th>                
                 <td>
                 <input id="aiowps_lockdown_enable_whitelisting" name="aiowps_lockdown_enable_whitelisting" type="checkbox"<?php if($aio_wp_security->configs->get_value('aiowps_lockdown_enable_whitelisting')=='1') echo ' checked="checked"'; ?> value="1"/>
                 <span class="description"><?php _e('Check this if you want to enable the whitelisting of selected IP addresses specified in the settings below', 'all-in-one-wp-security-and-firewall'); ?></span>
                 </td>
             </tr>            
             <tr valign="top">
-                <th scope="row"><label for="aiowps_lockdown_allowed_ip_addresses"><?php _e('Enter Whitelisted IP Addresses:', 'all-in-one-wp-security-and-firewall')?></label></th>
+				<th scope="row"><label for="aiowps_lockdown_allowed_ip_addresses"><?php _e('Enter whitelisted IP addresses:', 'all-in-one-wp-security-and-firewall'); ?></label></th>
                 <td>
                     <textarea id="aiowps_lockdown_allowed_ip_addresses" name="aiowps_lockdown_allowed_ip_addresses" rows="5" cols="50"><?php echo esc_textarea(wp_unslash(-1 == $result ? $_POST['aiowps_lockdown_allowed_ip_addresses'] : $aio_wp_security->configs->get_value('aiowps_lockdown_allowed_ip_addresses'))); ?></textarea>
-                    <br />
-                    <span class="description"><?php _e('Enter one or more IP addresses or IP ranges you wish to include in your whitelist.', 'all-in-one-wp-security-and-firewall') . ' ' . _e('The addresses specified here will never be blocked by the login lockdown feature.', 'all-in-one-wp-security-and-firewall');?></span>
-                    <?php $aio_wp_security->include_template('info/ip-address-ip-range-info.php');?>
+					<br>
+					<span class="description"><?php echo __('Enter one or more IP addresses or IP ranges you wish to include in your whitelist.', 'all-in-one-wp-security-and-firewall') . ' ' . __('The addresses specified here will never be blocked by the login lockdown feature.', 'all-in-one-wp-security-and-firewall'); ?></span>
+					<?php $aio_wp_security->include_template('info/ip-address-ip-range-info.php'); ?>
                 </td>
             </tr>
         </table>
-        <input type="submit" name="aiowps_save_lockdown_whitelist_settings" value="<?php _e('Save Settings', 'all-in-one-wp-security-and-firewall')?>" class="button-primary" />
+		<input type="submit" name="aiowps_save_lockdown_whitelist_settings" value="<?php _e('Save settings', 'all-in-one-wp-security-and-firewall'); ?>" class="button-primary">
         </form>
         </div></div>
         
@@ -468,7 +463,7 @@ class AIOWPSecurity_User_Login_Menu extends AIOWPSecurity_Admin_Menu {
             ?>
         </div>
         <div class="postbox">
-        <h3 class="hndle"><label for="title"><?php _e('Failed Login Records', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
+		<h3 class="hndle"><label for="title"><?php _e('Failed login records', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
         <div class="inside">
             <?php 
             //Fetch, prepare, sort, and filter our data...
@@ -502,7 +497,7 @@ class AIOWPSecurity_User_Login_Menu extends AIOWPSecurity_Admin_Menu {
         </form>
         </div></div>  
         <div class="postbox">
-        <h3 class="hndle"><label for="title"><?php _e('Delete All Failed Login Records', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
+		<h3 class="hndle"><label for="title"><?php _e('Delete all failed login records', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
         <div class="inside">
         <form action="" method="POST">
         <?php wp_nonce_field('aiowpsec-delete-failed-login-records-nonce'); ?>
@@ -511,7 +506,7 @@ class AIOWPSecurity_User_Login_Menu extends AIOWPSecurity_Admin_Menu {
             <span class="description"><?php _e('Click this button if you wish to delete all failed login records in one go.', 'all-in-one-wp-security-and-firewall'); ?></span>
             </tr>            
         </table>
-        <input type="submit" name="aiowps_delete_failed_login_records" value="<?php _e('Delete All Failed Login Records', 'all-in-one-wp-security-and-firewall')?>" class="button-primary" onclick="return confirm('Are you sure you want to delete all records?')"/>
+		<input type="submit" name="aiowps_delete_failed_login_records" value="<?php _e('Delete all failed login records', 'all-in-one-wp-security-and-firewall'); ?>" class="button-primary" onclick="return confirm('Are you sure you want to delete all records?')">
         </form>
         </div></div>
 
@@ -570,7 +565,7 @@ class AIOWPSecurity_User_Login_Menu extends AIOWPSecurity_Admin_Menu {
             ?>
         </div>
         <div class="postbox">
-        <h3 class="hndle"><label for="title"><?php _e('Force User Logout Options', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
+		<h3 class="hndle"><label for="title"><?php _e('Force user logout options', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
         <div class="inside">
         <?php
         //Display security info badge
@@ -582,20 +577,20 @@ class AIOWPSecurity_User_Login_Menu extends AIOWPSecurity_Admin_Menu {
         <?php wp_nonce_field('aiowpsec-force-logout-settings-nonce'); ?>
         <table class="form-table">
             <tr valign="top">
-                <th scope="row"><?php _e('Enable Force WP User Logout', 'all-in-one-wp-security-and-firewall')?>:</th>
+				<th scope="row"><?php _e('Enable force WP user logout', 'all-in-one-wp-security-and-firewall'); ?>:</th>
                 <td>
                 <input id="aiowps_enable_forced_logout" name="aiowps_enable_forced_logout" type="checkbox"<?php if($aio_wp_security->configs->get_value('aiowps_enable_forced_logout')=='1') echo ' checked="checked"'; ?> value="1"/>
                 <label for="aiowps_enable_forced_logout" class="description"><?php _e('Check this if you want to force a wp user to be logged out after a configured amount of time', 'all-in-one-wp-security-and-firewall'); ?></label>
                 </td>
             </tr>            
             <tr valign="top">
-                <th scope="row"><label for="aiowps_logout_time_period"><?php _e('Logout the WP User After XX Minutes', 'all-in-one-wp-security-and-firewall')?></label>:</th>
+				<th scope="row"><label for="aiowps_logout_time_period"><?php _e('Logout the WP user after XX minutes', 'all-in-one-wp-security-and-firewall'); ?></label>:</th>
                 <td><input id="aiowps_logout_time_period" type="text" size="5" name="aiowps_logout_time_period" value="<?php echo $aio_wp_security->configs->get_value('aiowps_logout_time_period'); ?>" />
                 <span class="description"><?php _e('(Minutes) The user will be forced to log back in after this time period has elapased.', 'all-in-one-wp-security-and-firewall'); ?></span>
                 </td> 
             </tr>
         </table>
-        <input type="submit" name="aiowpsec_save_force_logout_settings" value="<?php _e('Save Settings', 'all-in-one-wp-security-and-firewall')?>" class="button-primary" />
+		<input type="submit" name="aiowpsec_save_force_logout_settings" value="<?php _e('Save settings', 'all-in-one-wp-security-and-firewall'); ?>" class="button-primary">
         </form>
         </div></div>        
         <?php
@@ -625,7 +620,7 @@ class AIOWPSecurity_User_Login_Menu extends AIOWPSecurity_Admin_Menu {
             ?>
         </div>
         <div class="postbox">
-        <h3 class="hndle"><label for="title"><?php _e('Account Activity Logs', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
+		<h3 class="hndle"><label for="title"><?php _e('Account activity logs', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
         <div class="inside">
             <?php 
             //Fetch, prepare, sort, and filter our data...
@@ -692,11 +687,11 @@ class AIOWPSecurity_User_Login_Menu extends AIOWPSecurity_Admin_Menu {
 
         ?>
         <div class="postbox">
-        <h3 class="hndle"><label for="title"><?php _e('Refresh Logged In User Data', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
+		<h3 class="hndle"><label for="title"><?php _e('Refresh logged in user data', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
         <div class="inside">
         <form action="" method="POST">
         <?php wp_nonce_field('aiowpsec-logged-in-users-nonce'); ?>
-        <input type="submit" name="aiowps_refresh_logged_in_user_list" value="<?php _e('Refresh Data', 'all-in-one-wp-security-and-firewall')?>" class="button-primary" />
+		<input type="submit" name="aiowps_refresh_logged_in_user_list" value="<?php _e('Refresh data', 'all-in-one-wp-security-and-firewall'); ?>" class="button-primary">
         </form>
         </div></div>
 		<div class="aio_blue_box">
@@ -708,7 +703,7 @@ class AIOWPSecurity_User_Login_Menu extends AIOWPSecurity_Admin_Menu {
             ?>
         </div>
         <div class="postbox">
-        <h3 class="hndle"><label for="title"><?php _e('Currently Logged In Users', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
+		<h3 class="hndle"><label for="title"><?php _e('Currently logged in users', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
         <div class="inside">
             <?php
             //Fetch, prepare, sort, and filter our data...
@@ -764,7 +759,7 @@ class AIOWPSecurity_User_Login_Menu extends AIOWPSecurity_Admin_Menu {
         </div>
         <form action="" method="POST">
         <div class="postbox">
-        <h3 class="hndle"><label for="title"><?php _e('Additonal Settings', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
+		<h3 class="hndle"><label for="title"><?php _e('Additional settings', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
         <div class="inside">
         <?php
         //Display security info badge
@@ -775,7 +770,7 @@ class AIOWPSecurity_User_Login_Menu extends AIOWPSecurity_Admin_Menu {
         <?php wp_nonce_field('aiowpsec-additonal-settings-nonce'); ?>
         <table class="form-table">
             <tr valign="top">
-                <th scope="row"><?php _e('Disable Application Password', 'all-in-one-wp-security-and-firewall')?>:</th>
+				<th scope="row"><?php _e('Disable application password', 'all-in-one-wp-security-and-firewall'); ?>:</th>
                 <td>
                 <input name="aiowps_disable_application_password" id="aiowps_disable_application_password" type="checkbox" <?php checked($aio_wp_security->configs->get_value('aiowps_disable_application_password'), '1'); ?> value="1"/>
                 <label for="aiowps_disable_application_password"><?php _e('Check this if you want to disable the application password.', 'all-in-one-wp-security-and-firewall'); ?></label>
@@ -783,7 +778,7 @@ class AIOWPSecurity_User_Login_Menu extends AIOWPSecurity_Admin_Menu {
             </tr>
         </table>
         </div></div>
-        <input type="submit" name="aiowpsec_save_additonal_settings" value="<?php _e('Save Settings', 'all-in-one-wp-security-and-firewall')?>" class="button-primary" />
+		<input type="submit" name="aiowpsec_save_additonal_settings" value="<?php _e('Save settings', 'all-in-one-wp-security-and-firewall'); ?>" class="button-primary">
         </form>
         <?php
     }

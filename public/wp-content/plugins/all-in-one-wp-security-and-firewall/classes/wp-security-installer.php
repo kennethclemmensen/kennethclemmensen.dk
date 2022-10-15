@@ -228,8 +228,8 @@ class AIOWPSecurity_Installer {
 	}
 	
 	/**
-	 * Setup aiowps cron tasks
-	 * Handles both single and multi-site (NW activation) cases
+	 * Setup AIOS cron tasks.
+	 * Handles both single and multi-site (NW activation) cases.
 	 *
 	 * @global type $wpdb
 	 * @param Boolean $networkwide Whether set cronjob networkwide or normal site.
@@ -254,9 +254,9 @@ class AIOWPSecurity_Installer {
 			do_action('aiowps_activation_complete');
 		}
 	}
-	
+
 	/**
-	 * Helper function for scheduling aiowps cron events.
+	 * Helper function for scheduling AIOS cron events.
 	 *
 	 * @return Void
 	 */

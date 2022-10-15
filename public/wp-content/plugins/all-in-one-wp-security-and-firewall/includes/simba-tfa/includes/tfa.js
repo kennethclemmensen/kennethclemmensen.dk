@@ -187,7 +187,7 @@ jQuery(function($) {
 		$submit_button.prop('disabled', true);
 		
 		$submit_button.parents('form').first().prepend(html);
-		
+
 		$('#login_error').hide();
 			
 		if (user_already_trusted) {
@@ -195,8 +195,11 @@ jQuery(function($) {
 		} else {
 
 			$('#simba_two_factor_auth').trigger('focus');
+
+			// Hide extra boxes of third party plugins
+			jQuery('.hide-when-displaying-tfa-input').hide();
 		}
-		
+
 	}
 	
 	/**

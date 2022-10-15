@@ -46,7 +46,7 @@ class AIOWPSecurity_List_404 extends AIOWPSecurity_List_Table {
         } else {
             //Build row actions
             $actions = array(
-                'temp_block' => sprintf('<a href="admin.php?page=%s&tab=%s&action=%s&ip_address=%s&username=%s" onclick="return confirm(\'Are you sure you want to block this IP address?\')">Temp Block</a>', AIOWPSEC_FIREWALL_MENU_SLUG, $tab, 'temp_block', $item['ip_or_host'], $item['username']),
+				'temp_block' => sprintf('<a href="admin.php?page=%s&tab=%s&action=%s&ip_address=%s&username=%s" onclick="return confirm(\'Are you sure you want to block this IP address?\')">Temp block</a>', AIOWPSEC_FIREWALL_MENU_SLUG, $tab, 'temp_block', $item['ip_or_host'], $item['username']),
                 'blacklist_ip' => sprintf('<a href="admin.php?page=%s&tab=%s&action=%s&ip_address=%s&username=%s" onclick="return confirm(\'Are you sure you want to permanently block this IP address?\')">Blacklist IP</a>', AIOWPSEC_FIREWALL_MENU_SLUG, $tab, 'blacklist_ip', $item['ip_or_host'], $item['username']),
                 'delete' => '<a href="'.$delete_url_nonce.'" onclick="return confirm(\'Are you sure you want to delete this item?\')">Delete</a>',
             );
@@ -88,12 +88,12 @@ class AIOWPSecurity_List_404 extends AIOWPSecurity_List_Table {
         $columns = array(
             'cb' => '<input type="checkbox" />', //Render a checkbox
             'id' => 'ID',
-            'event_type' => __('Event Type','all-in-one-wp-security-and-firewall'),
-            'ip_or_host' => __('IP Address','all-in-one-wp-security-and-firewall'),
-            'url' => __('Attempted URL','all-in-one-wp-security-and-firewall'),
-            'referer_info' => __('Referer','all-in-one-wp-security-and-firewall'),
-            'event_date' => __('Date','all-in-one-wp-security-and-firewall'),
-            'status' => __('Lock Status','all-in-one-wp-security-and-firewall'),
+			'event_type' => __('Event type', 'all-in-one-wp-security-and-firewall'),
+			'ip_or_host' => __('IP address', 'all-in-one-wp-security-and-firewall'),
+			'url' => __('Attempted URL', 'all-in-one-wp-security-and-firewall'),
+			'referer_info' => __('Referer', 'all-in-one-wp-security-and-firewall'),
+			'event_date' => __('Date', 'all-in-one-wp-security-and-firewall'),
+			'status' => __('Lock status', 'all-in-one-wp-security-and-firewall'),
         );
         $columns = apply_filters('list_404_get_columns', $columns);
         return $columns;
@@ -115,9 +115,9 @@ class AIOWPSecurity_List_404 extends AIOWPSecurity_List_Table {
     public function get_bulk_actions() {
         $actions = array(
             //'unlock' => 'Unlock',
-            'bulk_block_ip' => 'Temp Block IP',
-            'bulk_blacklist_ip' => 'Blacklist IP',
-            'delete' => 'Delete'
+			'bulk_block_ip' => __('Temp block IP', 'all-in-one-wp-security-and-firewall'),
+			'bulk_blacklist_ip' => __('Blacklist IP', 'all-in-one-wp-security-and-firewall'),
+			'delete' => __('Delete', 'all-in-one-wp-security-and-firewall')
         );
         return $actions;
     }

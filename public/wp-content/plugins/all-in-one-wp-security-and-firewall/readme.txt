@@ -1,14 +1,14 @@
-=== All In One WP Security & Firewall ===
+=== All-In-One Security (AIOS) – Security and Firewall ===
 Contributors: DavidAnderson, pmbaldha, Tips and Tricks HQ, wpsolutions, Peter Petreski, Ruhul Amin, mbrsolution
 Donate link: https://david.dw-perspective.org.uk/donate
-Tags: security, secure, Anti Virus, antivirus, ban, ban hacker, virus, firewall, firewall security, login, lockdown, htaccess, hack, malware, vulnerability, protect, protection, phishing, database, backup, plugin, sql injection, ssl, restrict, login captcha, bot, hotlink, 404 detection, admin, rename, all in one, scan, scanner, iframe,
+Tags: security, malware scanning, two factor authentication, firewall, antivirus
 Requires PHP: 5.6
 Requires at least: 5.0
-Tested up to: 6.0
-Stable tag: 5.0.9
+Tested up to: 6.1
+Stable tag: 5.1.0
 License: GPLv3 or later
 
-A comprehensive, user-friendly, all in one WordPress security and firewall plugin for your site.
+Protect your website investment with All-In-One Security (AIOS) – a comprehensive and easy to use security plugin designed especially for WordPress. Featuring login security tools, a cutting-edge firewall and much more.
 
 == Privacy Policy ==
 This plugin may collect IP addresses for security reasons such as mitigating brute force login threats and malicious activity.
@@ -37,18 +37,16 @@ Below is a list of the security and firewall features offered in this plugin:
 
 = User Accounts Security =
 * Detect if there is a user account which has the default "admin" username and easily change the username to a value of your choice.
-* The plugin will also detect if you have any WordPress user accounts which have identical login and display names. Having account's where display name is identical to login name is bad security practice because
-you are making it 50% easier for hackers because they already know the login name.
+* The plugin will also detect if you have any WordPress user accounts which have identical login and display names. Having account's where display name is identical to login name is bad security practice because you are making it 50% easier for hackers because they already know the login name.
 * Password strength tool to allow you to create very strong passwords.
-* Stop user enumeration. So users/bots cannot discover user info via author permalink.
+* Stop user enumeration so users/bots cannot discover user info via author permalink.
 
 = User Login Security =
-* Protect against "Brute Force Login Attack" with the Login Lockdown feature. Users with a certain IP address or range will be locked out of the system for a predetermined amount of time based on the configuration settings and you can also choose to be notified
-via email whenever somebody gets locked out due to too many login attempts.
+* Protect against "Brute Force Login Attack" with the Login Lockdown feature. Users with a certain IP address or range will be locked down of the system for a predetermined amount of time based on the configuration settings and you can also choose to be notified via email whenever somebody gets locked out due to too many login attempts.
 
 * As the administrator you can view a list of all locked out users which are displayed in an easily readable and navigable table which also allows you to unlock individual or bulk IP addresses at the click of a button.
-* Force logout of all users after a configurable time period
-* Monitor/View failed login attempts which show the user's IP address, User ID/Username and Date/Time of the failed login attempt
+* Force logout of all users after a configurable time period.
+* Monitor/View failed login attempts which show the user's IP address, User ID/Username and Date/Time of the failed login attempt.
 
 * Monitor/View the account activity of all user accounts on your system by keeping track of the username, IP address, login date/time, and logout date/time.
 * Ability to automatically lockout IP address ranges which attempt to login with an invalid username.
@@ -63,8 +61,8 @@ via email whenever somebody gets locked out due to too many login attempts.
 * Ability to add Honeypot to the WordPress's user registration form to reduce registration attempts by robots.
 
 = Database Security =
-* Easily set the default WP prefix to a value of your choice with the click of a button.
-* Schedule automatic backups and email notifications or make an instant DB backup whenever you want with one click.
+* Easily set the default `wp_` database prefix to a value of your choice with the click of a button.
+* Schedule automatic backups and email notifications or make an instant database backup whenever you want with one click.
 
 = File System Security =
 * Identify files or folders which have permission settings which are not secure and set the permissions to the recommend secure values with click of a button.
@@ -74,7 +72,7 @@ via email whenever somebody gets locked out due to too many login attempts.
 
 = htaccess and wp-config.php File Backup and Restore =
 * Easily backup your original .htaccess and wp-config.php files in case you will need to use them to restore broken functionality.
-* Modify the contents of the currently active .htaccess or wp-config.php files from the admin dashboard with only a few clicks
+* Modify the contents of the currently active .htaccess or wp-config.php files from the admin dashboard with only a few clicks.
 
 = Blacklist Functionality =
 * Ban users by specifying IP addresses or use a wild card to specify IP ranges.
@@ -87,7 +85,7 @@ So these firewall rules will stop malicious script(s) before it gets a chance to
 
 * Access control facility.
 * Instantly activate a selection of firewall settings ranging from basic, intermediate and advanced.
-* Enable the famous "6G Blacklist" Firewall rules courtesy of [Perishable Press](http://perishablepress.com/)
+* Enable the famous "6G Blacklist" firewall rules courtesy of [Perishable Press](http://perishablepress.com/).
 * Forbid proxy comment posting.
 * Block access to debug log file.
 * Disable trace and track.
@@ -101,7 +99,7 @@ or malicious bots who do not have a special cookie in their browser. You (the si
 * Ability to add custom rules to block access to various resources of your site.
 
 = Brute force login attack prevention =
-* Instantly block Brute Force Login Attacks via our special Cookie-Based Brute Force Login Prevention feature. This firewall functionality will block all login attempts from people and bots.
+* Instantly block brute force login attacks via our special Cookie-Based Brute Force Login Prevention feature. This firewall functionality will block all login attempts from people and bots.
 * Ability to add a simple math captcha to the WordPress login form to fight against brute force login attacks.
 * Ability to hide admin login page. Rename your WordPress login page URL so that bots and hackers cannot access your real WordPress login URL. This feature allows you to change the default login page (wp-login.php) to something you configure.
 * Ability to use Login Honeypot which will helps reduce brute force login attempts by robots.
@@ -119,15 +117,15 @@ or malicious bots who do not have a special cookie in their browser. You (the si
 * Ability to disable the right click, text selection and copy option for your front-end.
 
 = Regular updates and additions of new security features =
-* WordPress Security is something that evolves over time. We will be updating the All In One WP Security plugin with new security features (and fixes if required) on a regular basis so you can rest assured that your site will be on the cutting edge of security protection techniques.
+* WordPress Security is something that evolves over time. We will be updating the All In One WP Security (AIOS) plugin with new security features (and fixes if required) on a regular basis, so you can rest assured that your site will be on the cutting edge of security protection techniques.
 
 = Works with Most Popular WordPress Plugins =
 * It should work smoothly with most popular WordPress plugins.
 
 = Additional Features =
-* Ability to remove the WordPress Generator Meta information from the HTML source of your site.
-* Ability to remove the WordPress Version information from the JS and CSS file includes of your site.
-* Ability to prevent people from accessing the readme.html, license.txt and wp-config-sample.php files
+* Ability to remove the WordPress generated meta information from the HTML source of your site.
+* Ability to remove the WordPress version information from the JS and CSS file includes of your site.
+* Ability to prevent people from accessing the readme.html, license.txt and wp-config-sample.php files.
 * Ability to temporarily lock down the front end of your site from general visitors while you do various backend tasks (investigate security attacks, perform site upgrades, do maintenance work etc.)
 * Ability to export/import the security settings.
 * Prevent other sites from displaying your content via a frame or iframe.
@@ -155,7 +153,49 @@ Currently available translations:
 - Portuguese (Brazil)
 - Persian
 
-Visit the [WordPress Security Plugin](https://www.tipsandtricks-hq.com/wordpress-security-and-firewall-plugin) page for more details.
+== Frequently Asked Questions ==
+
+= How is All-In-One Security (AIOS) supported? =
+Customers of ‘Free’ AIOS can get support from this very webpage. Select ‘Support’ from the tabs above and post a topic. We aim to respond to all support requests within 24 hours during the working week.
+
+= Is All-In-One Security compatible with other plugins? =
+Yes. AIOS works smoothly with most popular WordPress plugins.
+
+= Is All-in-One-Security regularly updated? =
+Yes. WordPress Security is something that evolves over time. We update AIOS with new security features (and fixes if required) on a regular basis so you can be assured that your site will keep benefitting from new security protection techniques for as long as you need them.
+
+= Will All-In-One Security slow down my website? =
+No.
+
+= Should I install All-In-One Security for free or should I purchase AIOS Premium? =
+The decision is yours to make. ‘Free’ AIOS incorporates a web application firewall, comprehensive login security tools including two-factor authentication and all the latest recommended WordPress security practices and techniques.
+But if your WordPress site is a business website, if it showcases what you do, or who you are, we generally recommend AIOS Premium. Prices start from as little as $70 for the year.
+
+= What are the additional features of All-In-One Security Premium? =
+AIOS Premium scans your WordPress website for malware whilst aso monitoring your site's response time and uptime, notifying you of any issues within 24 hours, AIOS Premium customers also benefit from hands-on ticketed support via email (rather than via WP Support forums).
+Additional security tools include Country Blocking, Smart 404 Error Blocking and Advanced Two Factor Authentication.
+More information is available from our [All-In-One Security website](https://aiosplugin.com)
+
+= How do I get started with All-In-One Security Premium? =
+In the web shop, purchase your preferred subscription. After completing the purchase, you will be emailed a link to download the plugin. You can also access the link through your "My Account" page.
+After downloading the zip file, install and activate the plugin through WP Admin->Plugins->Add New->Upload Plugin.
+The premium extends the free version. Therefore you should keep the free version installed and active. You will also be prompted to enter your AIOS username and password to connect your site to licenses. This will allow the plugin to receive updates.
+
+= Do I need to have the free version before downloading Premium? =
+No, you do not need to have the free version of the plugin installed before installing Premium. The premium plugin will automatically deactivate the free version if it is installed on the site.
+
+= Does All-In-One Security work with multi-site network installations? =
+Yes, AIOS Premium is compatible with WordPress multisites. For multisite networks, the protection will apply to the network as a whole, and the dashboard and options will be available on the main site of the WordPress multisite.
+
+= Can a WordPress security plugin stop all attacks on my site? =
+There is no 100% guarantee that a security plugin will be able to protect against all attacks, as there is always the possibility of unknown WordPress vulnerabilities or other unexpected factors, and attackers are always seeking to develop new ways around protections. However, All-In-One Security gives good protection against known attack methods, and is under continuous development to monitor and improve protections.
+
+= Does All-In-One Security work on all servers and hosts? =
+AIOS should be compatible with most hosts, unless the host has specifically restricted the use of security plugins. Similarly, certain features may not work on some servers, especially Windows/IIS platforms. Features that use the ‘.htaccess’ file will not apply on a Windows IIS server or NGINX server (but development is ongoing to port those protections to all servers).
+
+= Can I cover my subdomains and test sites with a licence for AIOS Premium? =
+Development and test sites require their own licence if updates to the plugin are needed.
+However, these sites can be disconnected from the licence when they have served their purpose. You can disconnect the licence via the site's WP Admin->Plugins page, and it will be available to be reassigned to a different site.
 
 == Installation ==
 
@@ -170,14 +210,23 @@ To begin making your WordPress site more secure:
 Go to the settings menu after you activate the plugin and follow the instructions.
 
 == Screenshots ==
-Check the following page for screenshots:
-https://www.tipsandtricks-hq.com/wordpress-security-and-firewall-plugin
 
-== Frequently Asked Questions ==
-Check the following page for F.A.Q (see the faq section):
-https://www.tipsandtricks-hq.com/wordpress-security-and-firewall-plugin
+1. Features list.
 
 == Changelog ==
+
+= 5.1.0 - 12/October/2022 =
+
+* FIX: The login loader is visible infinitely on the login screen and administrators can't log in if the user has enabled maintenance mode and 2FA authentication simultaneously.
+* FIX: Pressing the "Disable Firewall" button didn't clear new 6G firewall rules.
+* FIX: The application password was disabled by default on the activation of the AIOS plugin.
+* FIX: The error occurred with the error message: Uncaught TypeError: fclose(): Argument #1 ($stream) must be of type resource, bool given in all-in-one-wp-security-and-firewall/classes/wp-security-utility-htaccess.php:164 in the server where the root folder is not writable.
+* TWEAK: IP address lookup service whatismyipaddress removed, API for bot.whatismyipaddress.com is no longer available.
+* TWEAK: The simple math captcha box was shown when the user was filling in the 2FA code at login time.
+* TWEAK: Firewall max upload limit default value increased instead 10MB to 100MB.
+* TWEAK: Google reCaptcha multilingual implemented to show in local language messages instead of English only.
+* TWEAK: Update headings, labels and buttons to match capitalisation style of other plugins.
+* TWEAK: Add premium upgrade tab.
 
 = 5.0.9 - 06/October/2022 =
 
@@ -211,6 +260,7 @@ https://www.tipsandtricks-hq.com/wordpress-security-and-firewall-plugin
 
 * FIX: Stopped host cron job working in a specific situation.
 * FIX: A few setting options like enabling the honeypot feature for registration page, disabling the application password, enabling move spam comments to trash after specified days, moving spam comments to trash after days, enabling remove database tables upon uninstalling, and enabling remove all plugin settings upon uninstalling the plugin were overridden on upgrading the plugin.
+* TWEAK: Add a 'safe message' comment to the firewall's settings file.
 
 = 5.0.5 - 05/September/2022 =
 
@@ -1070,4 +1120,4 @@ those who want to enable the basic firewall but do not have "AllowOverride" opti
 - First commit to the WP repository.
 
 == Upgrade Notice ==
-* 5.0.8: This is a security fix release fixing issues allowing an attacker to evade detection and block legitimate users, and to degrade site performance; full details are in the changelog. Many other further tweaks and improvements. All users are recommended to update.
+* 5.1.0: Various tweaks, fixes and minor improvements; full details are in the changelog. All users are recommended to update.

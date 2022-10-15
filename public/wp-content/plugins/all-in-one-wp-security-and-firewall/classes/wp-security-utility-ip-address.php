@@ -73,9 +73,9 @@ class AIOWPSecurity_Utility_IP {
 		$external_ip_address = '0.0.0.0';
 		$ip_lookup_services = array(
 			'ipify'             => 'http://api.ipify.org/',
-			'ipecho'            => 'http://ipecho.net/plain',
+			'ipecho'            => 'https://ipecho.net/plain',
 			'ident'             => 'http://ident.me',
-			'whatismyipaddress' => 'http://bot.whatismyipaddress.com',
+			'tnedi'				=> 'http://tnedi.me',
 		);
 		$ip_lookup_services_keys = array_keys($ip_lookup_services);
 		shuffle($ip_lookup_services_keys);

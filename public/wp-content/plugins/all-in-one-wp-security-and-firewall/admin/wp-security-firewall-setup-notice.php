@@ -536,7 +536,7 @@ class AIOWPSecurity_Firewall_Setup_Notice {
 					<?php wp_nonce_field('aiowpsec-firewall-setup'); ?>
 					<input type="hidden" name="action" value="aiowps_firewall_setup">
 					<p>
-						<?php _e('We have detected that your AIOWPS firewall is not fully installed, and therefore does not have the highest level of protection. ', 'all-in-one-wp-security-and-firewall');?>
+						<?php _e('We have detected that your AIOS firewall is not fully installed, and therefore does not have the highest level of protection. ', 'all-in-one-wp-security-and-firewall'); ?>
 						<?php _e('Your firewall will have reduced functionality until it has been upgraded. ', 'all-in-one-wp-security-and-firewall');?>
 						<div style="padding-top: 10px;">
 						    <input class="button button-primary" type="submit" name="btn_upgrade_now" value="<?php _e('Upgrade your protection now', 'all-in-one-wp-security-and-firewall'); ?>">
