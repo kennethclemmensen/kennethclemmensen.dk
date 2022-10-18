@@ -2135,6 +2135,15 @@ msgstr "Når denne indstilling er aktiv, så vises en meddelelse i \"Et overblik
 msgid "On this screen, you can update to the latest version of WordPress, as well as update your themes, plugins, and translations from the WordPress.org repositories."
 msgstr "På dette skærmbillede kan du opdatere til den seneste version af WordPress, samt opdatere dine temaer, plugins og oversættelser fra WordPress.orgs servere."
 
+#. translators: %s: https://wordpress.org/themes
+#: wp-admin/themes.php:156
+msgid "If you would like to see more themes to choose from, click on the &#8220;Add New&#8221; button and you will be able to browse or search for additional themes from the <a href=\"%s\">WordPress Theme Directory</a>. Themes in the WordPress Theme Directory are designed and developed by third parties, and are compatible with the license WordPress uses. Oh, and they&#8217;re free!"
+msgstr "Hvis du ønsker flere temaer at vælge imellem, så klik på knappen &#8220;Tilføj nyt&#8221;, og du vil kunne gennemse eller søge efter yderligere temaer fra <a href=\"%s\">WordPress.org-temabiblioteket</a>. Temaer i WordPress-temabiblioteket er designet og udviklet af tredjeparter, og bruger samme licens som WordPress. Nå ja, og de er gratis!"
+
+#: wp-admin/update-core.php:983
+msgid "<strong>Themes and Plugins</strong> &mdash; To update individual themes or plugins from this screen, use the checkboxes to make your selection, then <strong>click on the appropriate &#8220;Update&#8221; button</strong>. To update all of your themes or plugins at once, you can check the box at the top of the section to select all before clicking the update button."
+msgstr "<strong>Temaer og plugins</strong> &mdash; For at opdatere temaer og plugins fra dette skærmbillede, så brug afkrydsningsfelterne til at vælge, <strong>Klik derefter på den passende Opdater knap</strong>. For at opdatere alle dine temaer og plugins på en gang, kan du afkrydse feltet øverst for at vælge alle, før du klikker på opdateringsknappen."
+
 #: wp-admin/update-core.php:972
 msgid "If an update is available, you&#8127;ll see a notification appear in the Toolbar and navigation menu."
 msgstr "Hvis en opdatering er tilgængelig vil du se en meddelelse i værktøjslinjen og navigationsmenuen."
@@ -2146,15 +2155,6 @@ msgstr "<strong>WordPress</strong> &mdash; At opdatere din WordPress-installatio
 #: wp-admin/update-core.php:982
 msgid "In most cases, WordPress will automatically apply maintenance and security updates in the background for you."
 msgstr "I de fleste tilfælde vil WordPress automatisk foretage vedligeholdelses- og sikkerhedsopdateringer i baggrunden for dig."
-
-#. translators: %s: https://wordpress.org/themes
-#: wp-admin/themes.php:156
-msgid "If you would like to see more themes to choose from, click on the &#8220;Add New&#8221; button and you will be able to browse or search for additional themes from the <a href=\"%s\">WordPress Theme Directory</a>. Themes in the WordPress Theme Directory are designed and developed by third parties, and are compatible with the license WordPress uses. Oh, and they&#8217;re free!"
-msgstr "Hvis du ønsker flere temaer at vælge imellem, så klik på knappen &#8220;Tilføj nyt&#8221;, og du vil kunne gennemse eller søge efter yderligere temaer fra <a href=\"%s\">WordPress.org-temabiblioteket</a>. Temaer i WordPress-temabiblioteket er designet og udviklet af tredjeparter, og bruger samme licens som WordPress. Nå ja, og de er gratis!"
-
-#: wp-admin/update-core.php:983
-msgid "<strong>Themes and Plugins</strong> &mdash; To update individual themes or plugins from this screen, use the checkboxes to make your selection, then <strong>click on the appropriate &#8220;Update&#8221; button</strong>. To update all of your themes or plugins at once, you can check the box at the top of the section to select all before clicking the update button."
-msgstr "<strong>Temaer og plugins</strong> &mdash; For at opdatere temaer og plugins fra dette skærmbillede, så brug afkrydsningsfelterne til at vælge, <strong>Klik derefter på den passende Opdater knap</strong>. For at opdatere alle dine temaer og plugins på en gang, kan du afkrydse feltet øverst for at vælge alle, før du klikker på opdateringsknappen."
 
 #: wp-admin/update-core.php:986
 msgid "<strong>Translations</strong> &mdash; The files translating WordPress into your language are updated for you whenever any other updates occur. But if these files are out of date, you can <strong>click the &#8220;Update Translations&#8221;</strong> button."
@@ -2296,10 +2296,6 @@ msgctxt "timezone date format"
 msgid "Y-m-d H:i:s"
 msgstr "Y-m-d H:i:s"
 
-#: wp-admin/theme-install.php:475
-msgid "This theme has not been rated yet."
-msgstr "Dette tema er ikke blevet bedømt endnu."
-
 #. translators: Do not translate USERNAME, URL_DELETE, SITENAME, SITEURL: those
 #. are placeholders.
 #: wp-admin/ms-delete-site.php:58
@@ -2337,6 +2333,10 @@ msgstr ""
 "Tak fordi du brugte webstedet,\n"
 "Hilsen alle os hos ###SITENAME###\n"
 "###SITEURL###"
+
+#: wp-admin/theme-install.php:475
+msgid "This theme has not been rated yet."
+msgstr "Dette tema er ikke blevet bedømt endnu."
 
 #: wp-admin/update-core.php:812
 msgid "New translations are available."
@@ -7261,13 +7261,13 @@ msgctxt "Plugin installer section title"
 msgid "Other Notes"
 msgstr "Andre noter"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:222
-msgid "No comments awaiting moderation."
-msgstr "Ingen kommentarer afventer godkendelse."
-
 #: wp-admin/export.php:52
 msgid "You can export a file of your site&#8217;s content in order to import it into another installation or platform. The export file will be an XML file format called WXR. Posts, pages, comments, custom fields, categories, and tags can be included. You can choose for the WXR file to include only certain posts or pages by setting the dropdown filters to limit the export by category, author, date range by month, or publishing status."
 msgstr "Du kan eksportere en fil med dit websted &#8217;s indhold med henblik på at importere den til en anden installation eller til en anden platform. Eksportfilen er en XML-fil kaldet WXR. Indlæg, sider, kommentarer, egne felter, kategorier og tags medtages. Du kan vælge at WXR-filen til kun skal omfatte visse indlæg eller sider ved at bruge dropdown-felterne til at begrænse eksporten til kategori, forfatter, pr. måned eller udgivelsesstatus."
+
+#: wp-admin/includes/class-wp-comments-list-table.php:222
+msgid "No comments awaiting moderation."
+msgstr "Ingen kommentarer afventer godkendelse."
 
 #: wp-admin/includes/class-wp-debug-data.php:896 wp-admin/setup-config.php:163
 msgid "Database name"
@@ -7623,6 +7623,10 @@ msgstr "Du kan slette link-kategorier ved at bruge massehandling, men links i ka
 msgid "Tags can be selectively converted to categories using the <a href=\"%s\">tag to category converter</a>."
 msgstr "Tags kan efter ønske konverteres til kategorier ved at bruge <a href=\"%s\">Kategori- og tags-konverteringsværktøjet</a>."
 
+#: wp-admin/edit-form-advanced.php:324
+msgid "Creating a Page is very similar to creating a Post, and the screens can be customized in the same way using drag and drop, the Screen Options tab, and expanding/collapsing boxes as you choose. This screen also has the distraction-free writing space, available in both the Visual and Text modes via the Fullscreen buttons. The Page editor mostly works the same as the Post editor, but there are some Page-specific features in the Page Attributes box."
+msgstr "Oprettelse af en side er næsten det sammen som oprettelse af et indlæg. Skærmbillederne kan tilpasses på samme måde ved hjælp af træk og slip, med fanebladet Skærmindstillinger og bokse der kan udfoldes/sammenfoldes. Dette skærmbillede har også distraktionsfri tilstand tilgængelig i både visuel tilstand og teksttilstand via fuldskærm-knapperne. Editoren virker næsten på samme måde for sider og indlæg, men der er nogle specifikke funktioner for sider i boksen sideegenskaber."
+
 #: wp-admin/includes/class-wp-comments-list-table.php:884
 msgid "Select comment"
 msgstr "Vælg kommentar"
@@ -7647,10 +7651,6 @@ msgstr "Søg udfra nøgleord"
 #: wp-admin/includes/theme-install.php:114
 msgid "Search by author"
 msgstr "Søg udfra forfatter"
-
-#: wp-admin/edit-form-advanced.php:324
-msgid "Creating a Page is very similar to creating a Post, and the screens can be customized in the same way using drag and drop, the Screen Options tab, and expanding/collapsing boxes as you choose. This screen also has the distraction-free writing space, available in both the Visual and Text modes via the Fullscreen buttons. The Page editor mostly works the same as the Post editor, but there are some Page-specific features in the Page Attributes box."
-msgstr "Oprettelse af en side er næsten det sammen som oprettelse af et indlæg. Skærmbillederne kan tilpasses på samme måde ved hjælp af træk og slip, med fanebladet Skærmindstillinger og bokse der kan udfoldes/sammenfoldes. Dette skærmbillede har også distraktionsfri tilstand tilgængelig i både visuel tilstand og teksttilstand via fuldskærm-knapperne. Editoren virker næsten på samme måde for sider og indlæg, men der er nogle specifikke funktioner for sider i boksen sideegenskaber."
 
 #: wp-admin/includes/theme-install.php:117
 msgid "Search by tag"
@@ -7773,6 +7773,14 @@ msgstr "Indsætter mediefil"
 msgid "Several boxes on this screen contain settings for how your content will be published, including:"
 msgstr "Flere bokse på dette skærmbillede indeholder indstillinger for, hvordan dit indhold bliver udgivet, herunder:"
 
+#: wp-admin/includes/class-custom-background.php:91
+msgid "To use a background image, simply upload it or choose an image that has already been uploaded to your Media Library by clicking the &#8220;Choose Image&#8221; button. You can display a single instance of your image, or tile it to fill the screen. You can have your background fixed in place, so your site content moves on top of it, or you can have it scroll with your site."
+msgstr "Hvis du vil bruge et baggrundsbillede, skal du ganske enkelt uploade det eller vælg et billede, der allerede er uploadet i dit mediebibliotek ved at klikke på &#8220;Vælg billede&#8221;- knappen. Du kan vise dit billede en enkelt gang, eller du kan fylde skærmen ved at vise den mange gange ligesom når man lægger fliser på et flisegulv. Du kan fastgøre baggrunden, så dit indhold bevæger sig oven på det, eller du kan lade baggrunden rulle med dit websteds indhold."
+
+#: wp-admin/edit-form-advanced.php:282
+msgid "The title field and the big Post Editing Area are fixed in place, but you can reposition all the other boxes using drag and drop. You can also minimize or expand them by clicking the title bar of each box. Use the Screen Options tab to unhide more boxes (Excerpt, Send Trackbacks, Custom Fields, Discussion, Slug, Author) or to choose a 1- or 2-column layout for this screen."
+msgstr "Titelfeltet og indlægs-editoren er låste til deres pladser, men du kan flytte alle de andre bokse ved hjælp af træk og slip, og kan minimere eller udvide dem ved at klikke på titellinjen på hver boks. Brug fanebladet skærmindstillinger til vise flere bokse (Uddrag, Send Trackbacks, Egne felter, Diskussion, Kort titel, Forfatter) eller til at vælge et én- eller tokolonne layout til dette skærmbillede."
+
 #: wp-admin/edit-tags.php:288
 msgid "<strong>Parent</strong> &mdash; Categories, unlike tags, can have a hierarchy. You might have a Jazz category, and under that have child categories for Bebop and Big Band. Totally optional. To create a subcategory, just choose another category from the Parent dropdown."
 msgstr "<strong>Forælder</strong> &mdash; Kategorier kan, i modsætning til tags, være hierarkiske. Du kan fx have kategorien Jazz og under den underkategorier for Bebop og Big Band. Helt valgfrit. For at oprette en underkategori vælger du blot en anden kategori fra Forælder dropdown-menuen."
@@ -7781,14 +7789,6 @@ msgstr "<strong>Forælder</strong> &mdash; Kategorier kan, i modsætning til tag
 #: wp-admin/includes/bookmark.php:356
 msgid "If you are looking to use the link manager, please install the <a href=\"%s\">Link Manager plugin</a>."
 msgstr "Hvis du søger en link manager, så installer <a href=\"%s\">Link Manager pluginet</a>."
-
-#: wp-admin/includes/class-custom-background.php:91
-msgid "To use a background image, simply upload it or choose an image that has already been uploaded to your Media Library by clicking the &#8220;Choose Image&#8221; button. You can display a single instance of your image, or tile it to fill the screen. You can have your background fixed in place, so your site content moves on top of it, or you can have it scroll with your site."
-msgstr "Hvis du vil bruge et baggrundsbillede, skal du ganske enkelt uploade det eller vælg et billede, der allerede er uploadet i dit mediebibliotek ved at klikke på &#8220;Vælg billede&#8221;- knappen. Du kan vise dit billede en enkelt gang, eller du kan fylde skærmen ved at vise den mange gange ligesom når man lægger fliser på et flisegulv. Du kan fastgøre baggrunden, så dit indhold bevæger sig oven på det, eller du kan lade baggrunden rulle med dit websteds indhold."
-
-#: wp-admin/edit-form-advanced.php:282
-msgid "The title field and the big Post Editing Area are fixed in place, but you can reposition all the other boxes using drag and drop. You can also minimize or expand them by clicking the title bar of each box. Use the Screen Options tab to unhide more boxes (Excerpt, Send Trackbacks, Custom Fields, Discussion, Slug, Author) or to choose a 1- or 2-column layout for this screen."
-msgstr "Titelfeltet og indlægs-editoren er låste til deres pladser, men du kan flytte alle de andre bokse ved hjælp af træk og slip, og kan minimere eller udvide dem ved at klikke på titellinjen på hver boks. Brug fanebladet skærmindstillinger til vise flere bokse (Uddrag, Send Trackbacks, Egne felter, Diskussion, Kort titel, Forfatter) eller til at vælge et én- eller tokolonne layout til dette skærmbillede."
 
 #: wp-admin/includes/image-edit.php:78
 msgid "Image rotation is not supported by your web host."
@@ -8769,30 +8769,6 @@ msgstr "%2$s %1$s, %3$s kl. %4$s:%5$s."
 msgid "M j, Y @ H:i"
 msgstr "j. M Y @ H:i"
 
-#: wp-admin/includes/class-wp-automatic-updater.php:1364
-msgid ""
-"BETA TESTING?\n"
-"=============\n"
-"\n"
-"This debugging email is sent when you are using a development version of WordPress.\n"
-"\n"
-"If you think these failures might be due to a bug in WordPress, could you report it?\n"
-" * Open a thread in the support forums: https://wordpress.org/support/forum/alphabeta\n"
-" * Or, if you're comfortable writing a bug report: https://core.trac.wordpress.org/\n"
-"\n"
-"Thanks! -- The WordPress Team"
-msgstr ""
-"BETA TESTER?\n"
-"=============\n"
-"\n"
-"Denne fejlfindings-e-mail sendes, når du bruger en udviklingsversion af WordPress.\n"
-"\n"
-"Hvis du tror, at disse problemer skyldes en fejl i WordPress, kan du da anmelde det?\n"
-" * Åbn en tråd i supportforaene: https://wordpress.org/support/forum/alphabeta\n"
-" * Eller, hvis du er komfortabel ved at skrive en fejlrapport: https://core.trac.wordpress.org/\n"
-"\n"
-"Tak! -- WordPress-holdet"
-
 #: wp-admin/includes/class-wp-automatic-updater.php:1387
 msgid ""
 "UPDATE LOG\n"
@@ -8829,6 +8805,30 @@ msgstr "Du redigerer i øjeblikket siden, som viser dine seneste indlæg."
 #: wp-admin/includes/theme.php:821 wp-admin/themes.php:945
 msgid "Close details dialog"
 msgstr "Luk detaljedialog"
+
+#: wp-admin/includes/class-wp-automatic-updater.php:1364
+msgid ""
+"BETA TESTING?\n"
+"=============\n"
+"\n"
+"This debugging email is sent when you are using a development version of WordPress.\n"
+"\n"
+"If you think these failures might be due to a bug in WordPress, could you report it?\n"
+" * Open a thread in the support forums: https://wordpress.org/support/forum/alphabeta\n"
+" * Or, if you're comfortable writing a bug report: https://core.trac.wordpress.org/\n"
+"\n"
+"Thanks! -- The WordPress Team"
+msgstr ""
+"BETA TESTER?\n"
+"=============\n"
+"\n"
+"Denne fejlfindings-e-mail sendes, når du bruger en udviklingsversion af WordPress.\n"
+"\n"
+"Hvis du tror, at disse problemer skyldes en fejl i WordPress, kan du da anmelde det?\n"
+" * Åbn en tråd i supportforaene: https://wordpress.org/support/forum/alphabeta\n"
+" * Eller, hvis du er komfortabel ved at skrive en fejlrapport: https://core.trac.wordpress.org/\n"
+"\n"
+"Tak! -- WordPress-holdet"
 
 #: wp-admin/edit.php:346
 msgid "1 post not updated, somebody is editing it."
@@ -9588,6 +9588,10 @@ msgstr "Uddrag er valgfrie håndlavede resumeer af dit indhold, der kan bruges i
 msgid "Trackbacks are a way to notify legacy blog systems that you&#8217;ve linked to them. If you link other WordPress sites, they&#8217;ll be notified automatically using <a href=\"%s\">pingbacks</a>, no other action necessary."
 msgstr "Trackbacks er en måde at meddele ældre blog-systemer, at du har linket til dem. Hvis du linker til andre WordPress-websteder, vil de blive underrettet automatisk ved hjælp af <a href=\"%s\">pingbacks</a>, uden du behøver at gøre mere."
 
+#: wp-admin/edit-form-advanced.php:295
+msgid "The Text mode allows you to enter HTML along with your post text. Note that &lt;p&gt; and &lt;br&gt; tags are converted to line breaks when switching to the Text editor to make it less cluttered. When you type, a single line break can be used instead of typing &lt;br&gt;, and two line breaks instead of paragraph tags. The line breaks are converted back to tags automatically."
+msgstr "Tekst-tilstand gør det muligt at indtaste HTML sammen med dit indlægs tekst. Bemærk at &lt;p&gt; og &lt;br&gt; tags konverteres til linjeskift, når der skiftes til teksteditoren for at gøre den mindre rodet. Når du skriver, kan en enkelt linjeskift anvendes i stedet for at skrive &lt;br&gt;, og to linjeskift i stedet for afsnittags. Linjeskift konverteres tilbage til tags automatisk."
+
 #. translators: %s: Documentation URL.
 #: wp-admin/includes/meta-boxes.php:783
 msgid "Custom fields can be used to add extra metadata to a post that you can <a href=\"%s\">use in your theme</a>."
@@ -9597,10 +9601,6 @@ msgstr "Brugerdefinerede felter kan bruges til at tilføje ekstra metadata til e
 #: wp-admin/includes/meta-boxes.php:807
 msgid "Allow <a href=\"%s\">trackbacks and pingbacks</a> on this page"
 msgstr "Tillad <a href=\"%s\">trackbacks og pingbacks</a> på denne side"
-
-#: wp-admin/edit-form-advanced.php:295
-msgid "The Text mode allows you to enter HTML along with your post text. Note that &lt;p&gt; and &lt;br&gt; tags are converted to line breaks when switching to the Text editor to make it less cluttered. When you type, a single line break can be used instead of typing &lt;br&gt;, and two line breaks instead of paragraph tags. The line breaks are converted back to tags automatically."
-msgstr "Tekst-tilstand gør det muligt at indtaste HTML sammen med dit indlægs tekst. Bemærk at &lt;p&gt; og &lt;br&gt; tags konverteres til linjeskift, når der skiftes til teksteditoren for at gøre den mindre rodet. Når du skriver, kan en enkelt linjeskift anvendes i stedet for at skrive &lt;br&gt;, og to linjeskift i stedet for afsnittags. Linjeskift konverteres tilbage til tags automatisk."
 
 #: wp-admin/includes/class-custom-image-header.php:1104
 msgid "Sorry, you are not allowed to customize headers."
@@ -10086,6 +10086,15 @@ msgstr "<strong>Info</strong> &mdash; Webstedets URL bliver sjældent ændret, d
 msgid "<strong>Users</strong> &mdash; This displays the users associated with this site. You can also change their role, reset their password, or remove them from the site. Removing the user from the site does not remove the user from the network."
 msgstr "<strong>Brugere</strong> &mdash; Dette viser brugere tilknyttet dette websted. Du kan også ændre deres rolle, nulstille deres adgangskode, eller fjerne dem fra webstedet. At fjerne brugeren fra webstedet fjerner dem ikke fra netværket."
 
+#. translators: %s: URL to Network Themes screen.
+#: wp-admin/includes/ms.php:1156
+msgid "<strong>Themes</strong> &mdash; This area shows themes that are not already enabled across the network. Enabling a theme in this menu makes it accessible to this site. It does not activate the theme, but allows it to show in the site&#8217;s Appearance menu. To enable a theme for the entire network, see the <a href=\"%s\">Network Themes</a> screen."
+msgstr "<strong>Temaer</strong> &mdash; Dette område viser temaer, der endnu ikke aktiveret på netværket. Ved at aktivere et tema i denne menu, gør du det tilgængeligt på webstedet. Det aktiverer ikke temaet, men det tillader det at blive vist i webstedets Udseende-menu. For at aktivere et tema i hele netværket, så se på <a href=\"%s\">Netværkstemaer</a> skærmbilledet."
+
+#: wp-admin/includes/ms.php:1159
+msgid "<strong>Settings</strong> &mdash; This page shows a list of all settings associated with this site. Some are created by WordPress and others are created by plugins you activate. Note that some fields are grayed out and say Serialized Data. You cannot modify these values due to the way the setting is stored in the database."
+msgstr "<strong>Indstillinger</strong> &mdash; Denne side viser en liste af indstillinger på dette websted. Nogle er oprettet af WordPress, og andre er oprettet af plugins, du har aktiveret. Bemærk at nogle felter er gråtonede og er Serialized Data. Du kan ikke ændre disse værdier på grund af den måde indstillingerne gemmes i databasen."
+
 #: wp-admin/includes/plugin-install.php:596 wp-admin/update.php:128
 msgid "Plugin Installation"
 msgstr "Plugin installation"
@@ -10111,15 +10120,6 @@ msgstr "%s er allerede i gang med at redigere indlægget."
 #: wp-admin/includes/theme-install.php:245
 msgid "Theme Installation"
 msgstr "Temainstallation"
-
-#. translators: %s: URL to Network Themes screen.
-#: wp-admin/includes/ms.php:1156
-msgid "<strong>Themes</strong> &mdash; This area shows themes that are not already enabled across the network. Enabling a theme in this menu makes it accessible to this site. It does not activate the theme, but allows it to show in the site&#8217;s Appearance menu. To enable a theme for the entire network, see the <a href=\"%s\">Network Themes</a> screen."
-msgstr "<strong>Temaer</strong> &mdash; Dette område viser temaer, der endnu ikke aktiveret på netværket. Ved at aktivere et tema i denne menu, gør du det tilgængeligt på webstedet. Det aktiverer ikke temaet, men det tillader det at blive vist i webstedets Udseende-menu. For at aktivere et tema i hele netværket, så se på <a href=\"%s\">Netværkstemaer</a> skærmbilledet."
-
-#: wp-admin/includes/ms.php:1159
-msgid "<strong>Settings</strong> &mdash; This page shows a list of all settings associated with this site. Some are created by WordPress and others are created by plugins you activate. Note that some fields are grayed out and say Serialized Data. You cannot modify these values due to the way the setting is stored in the database."
-msgstr "<strong>Indstillinger</strong> &mdash; Denne side viser en liste af indstillinger på dette websted. Nogle er oprettet af WordPress, og andre er oprettet af plugins, du har aktiveret. Bemærk at nogle felter er gråtonede og er Serialized Data. Du kan ikke ændre disse værdier på grund af den måde indstillingerne gemmes i databasen."
 
 #. translators: %s: Plugin filename.
 #: wp-admin/includes/plugin.php:1033
@@ -10339,16 +10339,6 @@ msgstr "Sender e-mail..."
 msgid "Email sent."
 msgstr "E-mail sendt."
 
-#. translators: %s: Plugin name.
-#: wp-admin/includes/class-wp-privacy-policy-content.php:431
-msgid "Copy suggested policy text from %s."
-msgstr "Kopier foreslåede politik tekst fra %s."
-
-#. translators: Privacy Policy page slug.
-#: wp-admin/includes/upgrade.php:391
-msgid "privacy-policy"
-msgstr "privatlivspolitik"
-
 #. translators: Do not translate EXPIRATION, LINK, SITENAME, SITEURL: those are
 #. placeholders.
 #: wp-admin/includes/privacy-tools.php:664
@@ -10380,6 +10370,16 @@ msgstr ""
 "Med venlig hilsen,\n"
 "Alle hos ###SITENAME###\n"
 "###SITEURL###"
+
+#. translators: %s: Plugin name.
+#: wp-admin/includes/class-wp-privacy-policy-content.php:431
+msgid "Copy suggested policy text from %s."
+msgstr "Kopier foreslåede politik tekst fra %s."
+
+#. translators: Privacy Policy page slug.
+#: wp-admin/includes/upgrade.php:391
+msgid "privacy-policy"
+msgstr "privatlivspolitik"
 
 #: wp-admin/includes/ajax-actions.php:4844
 #: wp-admin/includes/ajax-actions.php:5035
@@ -10567,6 +10567,11 @@ msgid "In this subsection you should list the cookies your web site uses, includ
 msgstr "I denne undersektion bør du liste de cookies, som dit websted bruger, heriblandt dem der oprettes af plugins, sociale medier og analytics. Vi har leveret de cookies som WordPress installerer som standard."
 
 #. translators: Default privacy policy text.
+#: wp-admin/includes/class-wp-privacy-policy-content.php:500
+msgid "An anonymized string created from your email address (also called a hash) may be provided to the Gravatar service to see if you are using it. The Gravatar service privacy policy is available here: https://automattic.com/privacy/. After approval of your comment, your profile picture is visible to the public in the context of your comment."
+msgstr "En anonymiseret streng som er oprettet ud fra din e-mailadresse (også kaldet et hash), kan leveres til Gravatar tjenesten for at se om du bruger denne. Gravatar tjenestens privatlivspolitik er tilgængelig her: https://automattic.com/privacy/. Efter godkendelse af din kommentar, vil dit profilbillede være synligt for offentligheden sammen med din kommentar."
+
+#. translators: Default privacy policy text.
 #: wp-admin/includes/class-wp-privacy-policy-content.php:529
 msgid "If you leave a comment on our site you may opt-in to saving your name, email address and website in cookies. These are for your convenience so that you do not have to fill in your details again when you leave another comment. These cookies will last for one year."
 msgstr "Hvis du skriver en kommentar på vores websted, kan du vælge at gemme dit navn, e-mailadresse og websted i cookies. Disse er til din bekvemmeligehed, så du ikke skal udfylde dine oplysninger igen, når du skriver endnu en kommentar. Disse cookies vil holde i et år."
@@ -10575,11 +10580,6 @@ msgstr "Hvis du skriver en kommentar på vores websted, kan du vælge at gemme d
 #: wp-admin/includes/class-wp-privacy-policy-content.php:531
 msgid "If you visit our login page, we will set a temporary cookie to determine if your browser accepts cookies. This cookie contains no personal data and is discarded when you close your browser."
 msgstr "Hvis du besøger vores loginside, opretter vi en midlertidig cookie for at afgøre om din browser accepterer cookies. Denne cookie indeholder ingen personlige data og slettes, når du lukker din browser."
-
-#. translators: Default privacy policy text.
-#: wp-admin/includes/class-wp-privacy-policy-content.php:500
-msgid "An anonymized string created from your email address (also called a hash) may be provided to the Gravatar service to see if you are using it. The Gravatar service privacy policy is available here: https://automattic.com/privacy/. After approval of your comment, your profile picture is visible to the public in the context of your comment."
-msgstr "En anonymiseret streng som er oprettet ud fra din e-mailadresse (også kaldet et hash), kan leveres til Gravatar tjenesten for at se om du bruger denne. Gravatar tjenestens privatlivspolitik er tilgængelig her: https://automattic.com/privacy/. Efter godkendelse af din kommentar, vil dit profilbillede være synligt for offentligheden sammen med din kommentar."
 
 #. translators: Default privacy policy text.
 #: wp-admin/includes/class-wp-privacy-policy-content.php:533
@@ -10631,21 +10631,6 @@ msgstr "Som standard deler WordPress ikke noget persondata med nogen."
 msgid "How long we retain your data"
 msgstr "Hvor længe vi gemmer dine data"
 
-#. translators: Default privacy policy text.
-#: wp-admin/includes/class-wp-privacy-policy-content.php:577
-msgid "If you leave a comment, the comment and its metadata are retained indefinitely. This is so we can recognize and approve any follow-up comments automatically instead of holding them in a moderation queue."
-msgstr "Hvis du skriver en kommentar, så bliver kommentarer og dens metadata bevaret på ubestemt tid. Dette er så vi kan genkende og godkende enhver opfølgende kommentar automatisk i stedet for at have dem i en moderationskø."
-
-#. translators: Default privacy policy heading.
-#: wp-admin/includes/class-wp-privacy-policy-content.php:583
-msgid "What rights you have over your data"
-msgstr "Hvilke rettigheder har du over dine data"
-
-#. translators: Privacy policy tutorial.
-#: wp-admin/includes/class-wp-privacy-policy-content.php:587
-msgid "In this section you should explain what rights your users have over their data and how they can invoke those rights."
-msgstr "I denne sektion bør du forklare, hvilke rettigheder dine brugere har over deres data, og hvordan de kan håndhæve disse rettigheder."
-
 #. translators: Privacy policy tutorial.
 #: wp-admin/includes/class-wp-privacy-policy-content.php:561
 msgid "In this section you should name and list all third party providers with whom you share site data, including partners, cloud-based services, payment processors, and third party service providers, and note what data you share with them and why. Link to their own privacy policies if possible."
@@ -10657,9 +10642,24 @@ msgid "In this section you should explain how long you retain personal data coll
 msgstr "I denne sektion bør du forklare, hvor lang tid du beholder personlige data, der er indsamlet eller behandlet på webstedet. Mens det er dit ansvar at komme med en tidsplan for, hvor længe du beholder hvert datasæt, og hvorfor du beholder det, så er det nødvendigt, at denne information listes her. For eksempel kan du have lyst til at melde ud, at du beholder indtastninger i kontaktformularer i seks måneder, analytics-arkiver i et år, og kundekøbsarkiver i ti år."
 
 #. translators: Default privacy policy text.
+#: wp-admin/includes/class-wp-privacy-policy-content.php:577
+msgid "If you leave a comment, the comment and its metadata are retained indefinitely. This is so we can recognize and approve any follow-up comments automatically instead of holding them in a moderation queue."
+msgstr "Hvis du skriver en kommentar, så bliver kommentarer og dens metadata bevaret på ubestemt tid. Dette er så vi kan genkende og godkende enhver opfølgende kommentar automatisk i stedet for at have dem i en moderationskø."
+
+#. translators: Default privacy policy text.
 #: wp-admin/includes/class-wp-privacy-policy-content.php:579
 msgid "For users that register on our website (if any), we also store the personal information they provide in their user profile. All users can see, edit, or delete their personal information at any time (except they cannot change their username). Website administrators can also see and edit that information."
 msgstr "For brugere som opretter sig på vores websted (om nogen), gemmer vi også den personlige information de giver til deres brugerprofil. Alle brugere kan se, redigere, eller slette deres personlige information til enhver tid (med den undtagelse at de ikke kan ændre deres brugernavn). Webstedets administratorer kan også se og redigere den information."
+
+#. translators: Default privacy policy heading.
+#: wp-admin/includes/class-wp-privacy-policy-content.php:583
+msgid "What rights you have over your data"
+msgstr "Hvilke rettigheder har du over dine data"
+
+#. translators: Privacy policy tutorial.
+#: wp-admin/includes/class-wp-privacy-policy-content.php:587
+msgid "In this section you should explain what rights your users have over their data and how they can invoke those rights."
+msgstr "I denne sektion bør du forklare, hvilke rettigheder dine brugere har over deres data, og hvordan de kan håndhæve disse rettigheder."
 
 #. translators: Default privacy policy text.
 #: wp-admin/includes/class-wp-privacy-policy-content.php:590
@@ -10670,11 +10670,6 @@ msgstr "Hvis du har en konto på dette websted, eller har skrevet kommentarer, k
 #: wp-admin/includes/class-wp-privacy-policy-content.php:598
 msgid "In this section you should list all transfers of your site data outside the European Union and describe the means by which that data is safeguarded to European data protection standards. This could include your web hosting, cloud storage, or other third party services."
 msgstr "I denne sektion bør du liste alle overførsler af dit websteds data ud af den europæiske union og beskrive på hvilken måde denne data er beskyttet i forhold til den europæiske databeskyttelsesstandard. Dette kunne indbefatte din webudbyder, skylagring, eller tredjeparts tjenester."
-
-#. translators: Privacy policy tutorial.
-#: wp-admin/includes/class-wp-privacy-policy-content.php:600
-msgid "European data protection law requires data about European residents which is transferred outside the European Union to be safeguarded to the same standards as if the data was in Europe. So in addition to listing where data goes, you should describe how you ensure that these standards are met either by yourself or by your third party providers, whether that is through an agreement such as Privacy Shield, model clauses in your contracts, or binding corporate rules."
-msgstr "Den europæiske databeskyttelseslov kræver at data om europæiske borgere som er ført uden for den europæiske union skal være beskyttet af samme standard, som hvis data var i Europa. Så uover at liste, hvor data føres hen, så skal du også beskrive, hvordan du vil sikre disse standarder bliver mødt af enten dig selv eller tredjeparts leverandører, uanset om det er gennem en aftale om et Privacy Shield, modelklausuler i dine kontrakter, eller bindende virksomhedsregler."
 
 #. translators: Privacy policy tutorial.
 #: wp-admin/includes/class-wp-privacy-policy-content.php:610
@@ -10690,6 +10685,11 @@ msgstr "Yderligere information"
 #: wp-admin/includes/class-wp-privacy-policy-content.php:617
 msgid "If you use your site for commercial purposes and you engage in more complex collection or processing of personal data, you should note the following information in your privacy policy in addition to the information we have already discussed."
 msgstr "Hvis du bruger dit websted til kommercielle formål, og du beskæftiger dig med mere kompleks indsamling og bearbejdning af personige data, bør du meddele den følgende information i din privatlivspolitik foruden den information, vi allerede har været inde på."
+
+#. translators: Privacy policy tutorial.
+#: wp-admin/includes/class-wp-privacy-policy-content.php:600
+msgid "European data protection law requires data about European residents which is transferred outside the European Union to be safeguarded to the same standards as if the data was in Europe. So in addition to listing where data goes, you should describe how you ensure that these standards are met either by yourself or by your third party providers, whether that is through an agreement such as Privacy Shield, model clauses in your contracts, or binding corporate rules."
+msgstr "Den europæiske databeskyttelseslov kræver at data om europæiske borgere som er ført uden for den europæiske union skal være beskyttet af samme standard, som hvis data var i Europa. Så uover at liste, hvor data føres hen, så skal du også beskrive, hvordan du vil sikre disse standarder bliver mødt af enten dig selv eller tredjeparts leverandører, uanset om det er gennem en aftale om et Privacy Shield, modelklausuler i dine kontrakter, eller bindende virksomhedsregler."
 
 #. translators: Default privacy policy heading.
 #: wp-admin/includes/class-wp-privacy-policy-content.php:622
@@ -14141,7 +14141,7 @@ msgstr "Vis papirkurven"
 msgid "This comment is already marked as spam."
 msgstr "Denne kommentar er allerede markeret som spam."
 
-#: wp-admin/about.php:389 wp-admin/includes/network.php:148
+#: wp-admin/about.php:409 wp-admin/includes/network.php:148
 msgid "Go to Dashboard"
 msgstr "Gå til kontrolpanelet"
 
@@ -14283,11 +14283,11 @@ msgstr "Overblik"
 msgid "Core Developer"
 msgstr "Kerneudvikler"
 
-#: wp-admin/about.php:386
+#: wp-admin/about.php:406
 msgid "Go to Dashboard &rarr; Updates"
 msgstr "Tilbage til Kontrolpanel &rarr; Opdateringer"
 
-#: wp-admin/about.php:389
+#: wp-admin/about.php:409
 msgid "Go to Dashboard &rarr; Home"
 msgstr "Gå til Kontrolpanel &rarr; Forside"
 
@@ -14312,25 +14312,25 @@ msgstr "Behandler kommentarer"
 msgid "What&#8217;s New"
 msgstr "Hvad er nyt"
 
-#: wp-admin/about.php:400
+#: wp-admin/about.php:420
 msgid "Maintenance Release"
 msgstr "Vedligeholdelsesudgivelse"
 
-#: wp-admin/about.php:403
+#: wp-admin/about.php:423
 msgid "Security Release"
 msgstr "Sikkerhedsudgivelse"
 
-#: wp-admin/about.php:406
+#: wp-admin/about.php:426
 msgid "Maintenance and Security Release"
 msgstr "Vedligeholdelse- og sikkerhedsudgivelse"
 
 #. translators: %s: WordPress version number.
-#: wp-admin/about.php:412
+#: wp-admin/about.php:47 wp-admin/about.php:432
 msgid "<strong>Version %s</strong> addressed some security issues."
 msgstr "<strong>Version %s</strong> tog sig af nogle sikkerhedsproblemer."
 
 #. translators: 1: WordPress version number, 2: Plural number of bugs.
-#: wp-admin/about.php:72 wp-admin/about.php:415
+#: wp-admin/about.php:92 wp-admin/about.php:435
 msgid "<strong>Version %1$s</strong> addressed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed %2$s bugs."
 msgstr[0] "<strong>Version %1$s</strong> rettede %2$s fejl."
@@ -14338,7 +14338,7 @@ msgstr[1] "<strong>Version %1$s</strong> rettede %2$s fejl."
 
 #. translators: 1: WordPress version number, 2: Plural number of bugs. Singular
 #. security issue.
-#: wp-admin/about.php:421
+#: wp-admin/about.php:441
 msgid "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bugs."
 msgstr[0] "<strong>Version %1$s</strong> lukkede et sikkerhedshul og rettede %2$s fejl."
@@ -14348,16 +14348,17 @@ msgstr[1] "<strong>Version %1$s</strong> lukkede et sikkerhedshul og rettede %2$
 #. than one security issue.
 #. translators: 1: WordPress version number, 2: Plural number of bugs. More
 #. than one security issue.
-#: wp-admin/about.php:47 wp-admin/about.php:427
+#: wp-admin/about.php:67 wp-admin/about.php:447
 msgid "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bugs."
 msgstr[0] "<strong>Version %1$s</strong> lukkede nogle sikkerhedshuller og rettede %2$s fejl."
 msgstr[1] "<strong>Version %1$s</strong> lukkede nogle sikkerhedshuller og rettede %2$s fejl."
 
-#. translators: %s: HelpHub URL
 #. translators: %s: HelpHub URL.
+#. translators: %s: HelpHub URL
 #. translators: %s: Documentation URL.
-#: wp-admin/about.php:59 wp-admin/about.php:84 wp-admin/about.php:433
+#: wp-admin/about.php:54 wp-admin/about.php:79 wp-admin/about.php:104
+#: wp-admin/about.php:453
 msgid "For more information, see <a href=\"%s\">the release notes</a>."
 msgstr "Hvis du vil vide mere, så læs <a href=\"%s\">udgivelsesnoterne</a>."
 
@@ -14469,20 +14470,20 @@ msgstr "Preview side"
 msgid "View page"
 msgstr "Se side"
 
-#: wp-admin/about.php:401
+#: wp-admin/about.php:421
 msgid "Maintenance Releases"
 msgstr "Vedligeholdelsesudgivelser"
 
-#: wp-admin/about.php:404
+#: wp-admin/about.php:424
 msgid "Security Releases"
 msgstr "Sikkerhedsudgivelser"
 
-#: wp-admin/about.php:42 wp-admin/about.php:407
+#: wp-admin/about.php:42 wp-admin/about.php:427
 msgid "Maintenance and Security Releases"
 msgstr "Vedligeholdelses- og sikkerhedsudgivelser"
 
 #. translators: %s: WordPress version number.
-#: wp-admin/about.php:410
+#: wp-admin/about.php:430
 msgid "<strong>Version %s</strong> addressed one security issue."
 msgstr "<strong>Version %s</strong> tog hånd om ét sikkerhedsproblem."
 
@@ -14557,11 +14558,12 @@ msgctxt "page title"
 msgid "About"
 msgstr "Om"
 
-#. translators: %s: WordPress version
 #. translators: %s: WordPress version.
-#: wp-admin/about.php:62 wp-admin/about.php:87 wp-admin/about.php:372
-#: wp-admin/includes/update.php:302 wp-admin/index.php:119
-#: wp-admin/install.php:238 wp-admin/update-core.php:94 wp-admin/upgrade.php:80
+#. translators: %s: WordPress version
+#: wp-admin/about.php:57 wp-admin/about.php:82 wp-admin/about.php:107
+#: wp-admin/about.php:392 wp-admin/includes/update.php:302
+#: wp-admin/index.php:119 wp-admin/install.php:238 wp-admin/update-core.php:94
+#: wp-admin/upgrade.php:80
 msgid "https://wordpress.org/support/wordpress-version/version-%s/"
 msgstr "https://wordpress.org/support/wordpress-version/version-%s/"
 
@@ -14685,7 +14687,7 @@ msgstr "Nej, jeg godkender ikke denne forbindelse"
 msgid "You will be returned to the WordPress Dashboard, and no changes will be made."
 msgstr "Du vil blive sendt tilbage til WordPress kontrolpanelet, og ingen ændringer vil blive foretaget."
 
-#: wp-admin/about.php:386
+#: wp-admin/about.php:406
 msgid "Go to Updates"
 msgstr "Gå til opdateringer"
 
@@ -14727,23 +14729,23 @@ msgstr "Dit websted ser ud til at bruge basisgodkendelse, som i øjeblikket ikke
 msgid "<a href=\"https://wordpress.org/support/article/appearance-customize-screen/\">Documentation on Customizer</a>"
 msgstr "<a href=\"https://wordpress.org/support/article/appearance-customize-screen/\">Dokumentation om tilpasseren</a>"
 
-#: wp-admin/about.php:190
+#: wp-admin/about.php:210
 msgid "Integrated Patterns"
 msgstr "Integreret blokgruppe "
 
-#: wp-admin/about.php:207
+#: wp-admin/about.php:227
 msgid "Better List View"
 msgstr "Bedre listevisning"
 
-#: wp-admin/about.php:241
+#: wp-admin/about.php:261
 msgid "Some highlights for 6.0 include:"
 msgstr "Nogle højdepunkter i 6.0 inkluderer:"
 
 #. translators: %s: Version number.
-#: wp-admin/about.php:323
+#: wp-admin/about.php:343
 msgid "Learn more about WordPress %s"
 msgstr "Lær mere om WordPress %s"
 
-#: wp-admin/about.php:359
+#: wp-admin/about.php:379
 msgid "https://make.wordpress.org/core/2022/05/03/wordpress-6-0-field-guide/"
 msgstr "https://make.wordpress.org/core/2022/05/03/wordpress-6-0-field-guide/"
