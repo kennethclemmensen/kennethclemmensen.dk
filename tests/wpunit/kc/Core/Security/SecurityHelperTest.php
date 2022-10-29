@@ -7,7 +7,7 @@ use \Codeception\TestCase\WPTestCase;
 /**
  * The SecurityHelperTest class contains methods to test the SecurityHelper class
  */
-class SecurityHelperTest extends WPTestCase {
+final class SecurityHelperTest extends WPTestCase {
 
     /**
      * The _before method is called before each test

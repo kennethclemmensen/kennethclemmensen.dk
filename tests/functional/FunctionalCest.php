@@ -6,7 +6,7 @@ use \FunctionalTester;
 /**
  * The FunctionalCest class contains functional tests for the website
  */
-class FunctionalCest {
+final class FunctionalCest {
 
     /**
      * Test the front page

@@ -7,7 +7,7 @@ use \Codeception\TestCase\WPTestCase;
 /**
  * The TranslationStringTest class contains methods to test the TranslationString enum
  */
-class TranslationStringTest extends WPTestCase {
+final class TranslationStringTest extends WPTestCase {
 
     /**
      * The _before method is called before each test

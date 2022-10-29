@@ -8,7 +8,7 @@ use \Codeception\TestCase\WPTestCase;
 /**
  * The ActionTest class contains methods to test the Action class
  */
-class ActionTest extends WPTestCase {
+final class ActionTest extends WPTestCase {
 
     /**
      * The _before method is called before each test

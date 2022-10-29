@@ -7,7 +7,7 @@ use \Codeception\TestCase\WPTestCase;
 /**
  * The FileManagerTest class contains methods to test the FileManager class
  */
-class FileManagerTest extends WPTestCase {
+final class FileManagerTest extends WPTestCase {
 
     private FileManager $fileManager;
 

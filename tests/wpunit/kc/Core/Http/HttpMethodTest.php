@@ -7,7 +7,7 @@ use \Codeception\TestCase\WPTestCase;
 /**
  * The HttpMethodTest class contains methods to test the HttpMethod enum
  */
-class HttpMethodTest extends WPTestCase {
+final class HttpMethodTest extends WPTestCase {
 
 	/**
      * The _before method is called before each test

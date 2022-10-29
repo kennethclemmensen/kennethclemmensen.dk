@@ -7,7 +7,7 @@ use \Codeception\TestCase\WPTestCase;
 /**
  * The DataManagerTest class contains methods to test the DataManager class
  */
-class DataManagerTest extends WPTestCase {
+final class DataManagerTest extends WPTestCase {
 
     private DataManager $dataManager;
 

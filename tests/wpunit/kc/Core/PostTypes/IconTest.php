@@ -7,7 +7,7 @@ use \Codeception\TestCase\WPTestCase;
 /**
  * The IconTest class contains methods to test the Icon enum
  */
-class IconTest extends WPTestCase {
+final class IconTest extends WPTestCase {
 
 	/**
      * The _before method is called before each test

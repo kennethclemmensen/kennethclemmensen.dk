@@ -8,7 +8,7 @@ use \Codeception\TestCase\WPTestCase;
 /**
  * The TranslationHelperTest class contains methods to test the TranslationHelper class
  */
-class TranslationHelperTest extends WPTestCase {
+final class TranslationHelperTest extends WPTestCase {
 
     /**
      * The _before method is called before each test

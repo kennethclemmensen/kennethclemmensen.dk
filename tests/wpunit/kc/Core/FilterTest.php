@@ -8,7 +8,7 @@ use \Codeception\TestCase\WPTestCase;
 /**
  * The FilterTest class contains methods to test the Filter class
  */
-class FilterTest extends WPTestCase {
+final class FilterTest extends WPTestCase {
 
     /**
      * The _before method is called before each test

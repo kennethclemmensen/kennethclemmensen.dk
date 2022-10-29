@@ -6,7 +6,7 @@ use \ApiTester;
 /**
  * The ApiCest class contains methods to test the api
  */
-class ApiCest {
+final class ApiCest {
 
     /**
      * Test the pages endpoint

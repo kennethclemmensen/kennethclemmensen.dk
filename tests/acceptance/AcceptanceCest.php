@@ -6,7 +6,7 @@ use \AcceptanceTester;
 /**
  * The AcceptanceCest class contains acceptance tests for the website
  */
-class AcceptanceCest {
+final class AcceptanceCest {
 
     /**
      * Test the front page

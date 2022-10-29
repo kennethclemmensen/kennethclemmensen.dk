@@ -7,7 +7,7 @@ use \Codeception\TestCase\WPTestCase;
 /**
  * The ImageHelperTest class contains methods to test the ImageHelper class
  */
-class ImageHelperTest extends WPTestCase {
+final class ImageHelperTest extends WPTestCase {
 
     /**
      * The _before method is called before each test

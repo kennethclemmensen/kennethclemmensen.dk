@@ -8,7 +8,7 @@ use \Codeception\TestCase\WPTestCase;
 /**
  * The PostTypeHelperTest class contains methods to test the PostTypeHelper class
  */
-class PostTypeHelperTest extends WPTestCase {
+final class PostTypeHelperTest extends WPTestCase {
 
     /**
      * The _before method is called before each test

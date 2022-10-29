@@ -7,7 +7,7 @@ use \Codeception\TestCase\WPTestCase;
 /**
  * The GallerySettingsTest class contains methods to test the GallerySettings class
  */
-class GallerySettingsTest extends WPTestCase {
+final class GallerySettingsTest extends WPTestCase {
 
     private GallerySettings $gallerySettings;
 

@@ -7,7 +7,7 @@ use \Codeception\TestCase\WPTestCase;
 /**
  * The DatabaseManagerTest class contains methods to test the DatabaseManager class
  */
-class DatabaseManagerTest extends WPTestCase {
+final class DatabaseManagerTest extends WPTestCase {
 
     /**
      * The _before method is called before each test

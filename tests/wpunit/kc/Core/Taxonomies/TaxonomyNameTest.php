@@ -7,7 +7,7 @@ use \Codeception\TestCase\WPTestCase;
 /**
  * The TaxonomyNameTest class contains methods to test the TaxonomyName enum
  */
-class TaxonomyNameTest extends WPTestCase {
+final class TaxonomyNameTest extends WPTestCase {
 
 	/**
      * The _before method is called before each test

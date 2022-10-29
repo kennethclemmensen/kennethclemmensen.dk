@@ -7,7 +7,7 @@ use \Codeception\TestCase\WPTestCase;
 /**
  * The UserRoleTest class contains methods to test the UserRole enum
  */
-class UserRoleTest extends WPTestCase {
+final class UserRoleTest extends WPTestCase {
 
     /**
      * The _before method is called before each test

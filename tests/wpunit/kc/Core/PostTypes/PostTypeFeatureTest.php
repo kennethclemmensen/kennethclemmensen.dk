@@ -7,7 +7,7 @@ use \Codeception\TestCase\WPTestCase;
 /**
  * The PostTypeFeatureTest class contains methods to test the PostTypeFeature enum
  */
-class PostTypeFeatureTest extends WPTestCase {
+final class PostTypeFeatureTest extends WPTestCase {
 
 	/**
      * The _before method is called before each test

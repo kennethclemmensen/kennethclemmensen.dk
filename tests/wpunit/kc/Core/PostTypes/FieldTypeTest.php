@@ -7,7 +7,7 @@ use \Codeception\TestCase\WPTestCase;
 /**
  * The FieldTypeTest class contains methods to test the FieldType enum
  */
-class FieldTypeTest extends WPTestCase {
+final class FieldTypeTest extends WPTestCase {
 
 	/**
      * The _before method is called before each test

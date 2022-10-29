@@ -7,7 +7,7 @@ use \Codeception\TestCase\WPTestCase;
 /**
  * The ImageSizeTest class contains methods to test the ImageSize enum
  */
-class ImageSizeTest extends WPTestCase {
+final class ImageSizeTest extends WPTestCase {
 
 	/**
      * The _before method is called before each test
