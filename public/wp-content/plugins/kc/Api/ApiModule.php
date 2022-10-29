@@ -8,7 +8,7 @@ use KC\Data\DataManager;
 /**
  * The ApiModule class contains functionality to set up the Api
  */
-class ApiModule implements IModule {
+final class ApiModule implements IModule {
 
 	/**
 	 * Setup the api module

@@ -8,7 +8,7 @@ use KC\Data\FileManager;
 /**
  * The BackupModule class contains functionality to set up the backup module
  */
-class BackupModule implements IModule {
+final class BackupModule implements IModule {
 
 	/**
 	 * Setup the backup module

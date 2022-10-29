@@ -5,13 +5,13 @@ namespace KC\Core\PostTypes;
  * The FieldName enum defines the field names
  */
 enum FieldName: string {
-	case AltKey = 'field_alt_key';
-	case CtrlKey = 'field_ctrl_key';
-	case File = 'field_file';
-	case FileDescription = 'field_description';
-	case FileDownloads = 'field_download_counter';
-	case ImageGallery = 'photo_gallery';
-	case Key = 'field_key';
-	case ParentPage = 'parent_page';
-	case ShiftKey = 'field_shift_key';
+	case AltKey = 'kc_page_alt_key';
+	case CtrlKey = 'kc_page_ctrl_key';
+	case File = 'kc_file_file';
+	case FileDescription = 'kc_file_description';
+	case FileDownloads = 'kc_file_downloads';
+	case ImageGallery = 'kc_image_gallery';
+	case Key = 'kc_page_key';
+	case ParentPage = 'kc_gallery_parent_page';
+	case ShiftKey = 'kc_page_shift_key';
 }

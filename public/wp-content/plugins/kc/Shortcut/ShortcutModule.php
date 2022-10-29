@@ -12,7 +12,7 @@ use KC\Core\Translations\TranslationString;
 /**
  * The ShortcutModule class contains functionality to handle shortcuts
  */
-class ShortcutModule implements IModule {
+final class ShortcutModule implements IModule {
 
 	/**
 	 * Setup the shortcut module

@@ -15,7 +15,7 @@ use KC\Core\Translations\TranslationString;
 /**
  * The FileModule class contains functionality to handle files
  */
-class FileModule implements IModule {
+final class FileModule implements IModule {
 
 	/**
 	 * Setup the file module

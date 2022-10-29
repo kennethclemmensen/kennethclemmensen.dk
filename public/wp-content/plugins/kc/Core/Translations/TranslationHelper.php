@@ -4,7 +4,7 @@ namespace KC\Core\Translations;
 /**
  * The TranslationHelper class contains translation methods
  */
-class TranslationHelper {
+final class TranslationHelper {
 
 	/**
 	 * Get a translated string

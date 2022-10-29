@@ -21,7 +21,7 @@ use KC\Gallery\Settings\GallerySettings;
 /**
  * The GalleryModule class contains functionality to handle galleries
  */
-class GalleryModule extends BaseModule implements IModule {
+final class GalleryModule extends BaseModule implements IModule {
 
 	private readonly GallerySettings $gallerySettings;
 	private readonly string $fieldParentPage;

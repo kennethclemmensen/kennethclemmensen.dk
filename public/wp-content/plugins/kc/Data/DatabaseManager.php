@@ -4,7 +4,7 @@ namespace KC\Data;
 /**
  * The DatabaseManager class contains functionality to manage the database
  */
-class DatabaseManager {
+final class DatabaseManager {
 
 	/**
 	 * Update the post_parent column for a post

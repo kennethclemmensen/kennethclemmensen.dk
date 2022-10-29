@@ -6,7 +6,7 @@ use KC\Core\Security\SecurityHelper;
 /**
  * The ImageHelper class contains image methods
  */
-class ImageHelper {
+final class ImageHelper {
 
 	/**
 	 * Get an image url

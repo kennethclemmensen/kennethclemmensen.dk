@@ -14,7 +14,7 @@ use KC\Data\DataManager;
 /**
  * The GallerySettings class contains methods to handle the gallery settings
  */
-class GallerySettings extends BaseSettings implements ISettings {
+final class GallerySettings extends BaseSettings implements ISettings {
 
 	private readonly string $settingOptionsName;
 	private readonly array | bool $settingsOption;

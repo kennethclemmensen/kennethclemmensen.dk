@@ -8,7 +8,7 @@ use KC\Core\Translations\TranslationString;
 /**
  * The PluginActivator class contains functionality to activate and run the plugin
  */
-class PluginActivator {
+final class PluginActivator {
 
 	/**
 	 * Activate the plugin

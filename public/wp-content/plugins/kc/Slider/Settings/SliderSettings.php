@@ -13,7 +13,7 @@ use KC\Core\Users\UserRole;
 /**
  * The SliderSettings class contains methods to handle the slider settings
  */
-class SliderSettings extends BaseSettings implements ISettings {
+final class SliderSettings extends BaseSettings implements ISettings {
 
 	private readonly string $settingOptionsName;
 	private readonly array | bool $settingsOption;

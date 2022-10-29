@@ -12,7 +12,7 @@ use KC\Data\FileManager;
 /**
  * The BackupSettings class contains methods to handle the backup settings
  */
-class BackupSettings implements ISettings {
+final class BackupSettings implements ISettings {
 
 	private const BACKUP_FOLDER = WP_CONTENT_DIR.'/kc_backup';
 
@@ -38,8 +38,7 @@ class BackupSettings implements ISettings {
 				$name = 'createBackup';
 				if(isset($_POST[$name])) {
 					$this->createDatabaseBackupFile();
-					$sourceFolder = WP_CONTENT_DIR.'/uploads';
-					$this->fileManager->createZipFile('uploads_'.time().'.zip', $sourceFolder.'/**/**/*.*', $sourceFolder, self::BACKUP_FOLDER);
+					$this->fileManager->createZipFile('backup_'.time().'.zip', realpath(ABSPATH), self::BACKUP_FOLDER);
 				}
 				?>
 				<div class="kc-settings">

@@ -6,7 +6,7 @@ use KC\Core\PostTypes\PostType;
 /**
  * The Filter class defines the filters
  */
-class Filter {
+final class Filter {
 
 	public const META_BOXES = 'rwmb_meta_boxes';
 

@@ -11,7 +11,7 @@ use \WP_REST_Response;
 /**
  * The ApiController contains methods to register routes and handle requests and responses
  */
-class ApiController extends WP_REST_Controller {
+final class ApiController extends WP_REST_Controller {
 
 	/**
 	 * Initialize a new instance of the ApiController class

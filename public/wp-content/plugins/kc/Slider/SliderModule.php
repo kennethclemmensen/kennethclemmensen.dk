@@ -15,7 +15,7 @@ use KC\Slider\Settings\SliderSettings;
 /**
  * The SliderModule class contains functionality to handle the slides
  */
-class SliderModule implements IModule {
+final class SliderModule implements IModule {
 
 	/**
 	 * Setup the slider module

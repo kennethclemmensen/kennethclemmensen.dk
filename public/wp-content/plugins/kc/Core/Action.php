@@ -6,7 +6,7 @@ use KC\Core\PostTypes\PostType;
 /**
  * The Action class defines the actions
  */
-class Action {
+final class Action {
 
 	public const ADMIN_ENQUEUE_SCRIPTS = 'admin_enqueue_scripts';
 

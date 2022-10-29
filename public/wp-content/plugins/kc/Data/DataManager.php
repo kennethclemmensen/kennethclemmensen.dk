@@ -15,7 +15,7 @@ use \WP_Query;
 /**
  * The DataManager class contains functionality to manage data
  */
-class DataManager {
+final class DataManager {
 
 	/**
 	 * Get the pages
