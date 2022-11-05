@@ -29,9 +29,9 @@
     "vue": "^3.2.41"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.186",
-    "@typescript-eslint/eslint-plugin": "^5.41.0",
-    "@typescript-eslint/parser": "^5.41.0",
+    "@types/lodash": "^4.14.188",
+    "@typescript-eslint/eslint-plugin": "^5.42.0",
+    "@typescript-eslint/parser": "^5.42.0",
     "browser-sync": "^2.27.10",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.1",
