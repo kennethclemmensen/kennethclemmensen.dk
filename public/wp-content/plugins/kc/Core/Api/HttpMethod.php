@@ -1,5 +1,5 @@
 <?php
-namespace KC\Core\Http;
+namespace KC\Core\Api;
 
 /**
  * The HttpMethod enum defines the http methods

@@ -13,7 +13,7 @@ final class PostTypeHelper {
 	 * @param int $postId the id of the post
 	 * @return string the field value
 	 */
-	public static function getFieldValue(FieldName $fieldName, int $postId) : string {
+	public static function getFieldValue(FieldName $fieldName, int $postId) : string | int {
 		return get_post_meta($postId, $fieldName->value, true);
 	}
 

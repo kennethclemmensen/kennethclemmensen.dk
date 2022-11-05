@@ -1,7 +1,7 @@
 <?php
 namespace KC\Api;
 
-use KC\Core\Http\HttpMethod;
+use KC\Core\Api\HttpMethod;
 use KC\Core\Security\SecurityHelper;
 use KC\Data\DataManager;
 use \WP_REST_Controller;
