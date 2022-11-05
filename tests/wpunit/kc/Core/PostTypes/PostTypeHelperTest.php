@@ -21,7 +21,7 @@ final class PostTypeHelperTest extends WPTestCase {
      * Test the getFieldValue method
      */
     public function testGetFieldValue() : void {
-        $expected = '';
+        $expected = 0;
         $this->assertEquals($expected, PostTypeHelper::getFieldValue(FieldName::File, 0));
     }
 
@@ -30,6 +30,6 @@ final class PostTypeHelperTest extends WPTestCase {
      */
     public function testSetFieldValue() : void {
         PostTypeHelper::setFieldValue('', FieldName::File, 0);
-        $this->assertEquals('', PostTypeHelper::getFieldValue(FieldName::File, 0));
+        $this->assertEquals(0, PostTypeHelper::getFieldValue(FieldName::File, 0));
     }
 }
