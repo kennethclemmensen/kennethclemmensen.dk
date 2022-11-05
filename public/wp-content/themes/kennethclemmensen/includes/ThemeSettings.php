@@ -179,7 +179,7 @@ final class ThemeSettings {
 	private function createContactInputs() : void {
 		$sectionID = $this->contactPageSlug.'-section-contact';
 		$prefix = $this->contactPageSlug;
-		add_settings_section($sectionID, '', null, $this->contactPageSlug);
+		add_settings_section($sectionID, '', function() {}, $this->contactPageSlug);
 		add_settings_field($prefix.'email', TranslationStrings::getTranslatedString(TranslationStrings::EMAIL), function() : void {
 			echo '<input type="email" name="'.$this->contactOptionsName.'['.$this->email.']" value="'.$this->getEmail().'" class="regular-text" required> ';
 			echo '['.$this->emailShortcode.']';
@@ -197,7 +197,7 @@ final class ThemeSettings {
 	private function createScriptInputs() : void {
 		$sectionID = $this->scriptPageSlug.'-section-scripts';
 		$prefix = $this->scriptPageSlug;
-		add_settings_section($sectionID, '', null, $this->scriptPageSlug);
+		add_settings_section($sectionID, '', function() {}, $this->scriptPageSlug);
 		add_settings_field($prefix.'header', TranslationStrings::getTranslatedString(TranslationStrings::HEADER), function() : void {
 			echo '<textarea name="'.$this->scriptOptionsName.'['.$this->scriptHeader.']" cols="80" rows="10">'.$this->getHeaderScripts().'</textarea>';
 		}, $this->scriptPageSlug, $sectionID);
@@ -220,7 +220,7 @@ final class ThemeSettings {
 	private function createSliderInputs() : void {
 		$sectionID = $this->sliderPageSlug.'-section-slider';
 		$prefix = $this->sliderPageSlug;
-		add_settings_section($sectionID, '', null, $this->sliderPageSlug);
+		add_settings_section($sectionID, '', function() {}, $this->sliderPageSlug);
 		add_settings_field($prefix.'sliderDelay', TranslationStrings::getTranslatedString(TranslationStrings::DELAY), function() : void {
 			echo '<input type="number" name="'.$this->sliderOptionsName.'['.$this->sliderDelay.']" value="'.$this->getSliderDelay().'" min="1" max="10000">';
 		}, $this->sliderPageSlug, $sectionID);
@@ -248,7 +248,7 @@ final class ThemeSettings {
 	private function createOtherInputs() : void {
 		$sectionID = $this->otherPageSlug.'-section-other';
 		$prefix = $this->otherPageSlug;
-		add_settings_section($sectionID, '', null, $this->otherPageSlug);
+		add_settings_section($sectionID, '', function() {}, $this->otherPageSlug);
 		add_settings_field($prefix.'github', TranslationStrings::getTranslatedString(TranslationStrings::GITHUB), function() : void {
 			echo '<input type="url" name="'.$this->otherOptionsName.'['.$this->gitHub.']" value="'.$this->getGitHubUrl().'" class="regular-text" required> ';
 			echo '['.$this->gitHubShortcode.']';
