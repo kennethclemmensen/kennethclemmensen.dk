@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 6.1.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-11-03 14:43:53+0000\n"
+"PO-Revision-Date: 2022-11-09 12:50:25+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -285,6 +285,10 @@ msgstr "januar"
 msgid "Uncategorized"
 msgstr "Ikke-kategoriseret"
 
+#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:215
+msgid "Sorry, you are not allowed to view terms for this post."
+msgstr "Beklager, du har ikke tilladelse til at se dette indlæg."
+
 #: wp-includes/blocks/comments/block.json
 msgctxt "block title"
 msgid "Comments"
@@ -318,6 +322,21 @@ msgstr "Opret et websted eller kun et brugernavn:"
 msgid "Site Domain (subdomain only):"
 msgstr "Websteds domæne (kun subdomæne):"
 
+#: wp-includes/revision.php:552
+msgid "Revisions not enabled."
+msgstr "Revisioner er ikke aktiveret."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-post-types-controller.php:404
+msgid "The icon for the post type."
+msgstr "Ikonet for indholdstypen."
+
+#. translators: Add new file.
+#: wp-includes/post.php:78 wp-admin/media.php:130 wp-admin/menu.php:69
+#: wp-admin/upload.php:91 wp-admin/upload.php:283
+msgctxt "file"
+msgid "Add New"
+msgstr "Tilføj ny"
+
 #. translators: Character to identify required form fields.
 #: wp-includes/general-template.php:5175
 msgid "*"
@@ -327,6 +346,33 @@ msgstr "*"
 #: wp-includes/comment-template.php:2459
 msgid "Logged in as %1$s. <a href=\"%2$s\">Edit your profile</a>. <a href=\"%3$s\">Log out?</a>"
 msgstr "Logget ind som %1$s. <a href=\"%2$s\">Rediger din profil</a>. <a href=\"%3$s\">Log ud?</a>"
+
+#. translators: %s: Digit to indicate multiple of sizing, eg. 2X-Large.
+#: wp-includes/class-wp-theme-json.php:3018
+msgid "%sX-Large"
+msgstr "%sX-Stor"
+
+#. translators: %s: Digit to indicate multiple of sizing, eg. 2X-Small.
+#: wp-includes/class-wp-theme-json.php:2981
+msgid "%sX-Small"
+msgstr "%sX-Lille"
+
+#. translators: This string should only be translated if wp-config-sample.php
+#. is localized. You can check the localized release package or
+#. https://i18n.svn.wordpress.org/<locale code>/branches/<wp
+#. version>/dist/wp-config-sample.php
+#: wp-includes/class-wp-recovery-mode-cookie-service.php:209
+#: wp-includes/pluggable.php:2413 wp-admin/maint/repair.php:48
+msgid "put your unique phrase here"
+msgstr "indsæt unik frase her"
+
+#: wp-includes/class-wp-fatal-error-handler.php:189
+msgid "There has been a critical error on this website. Please reach out to your site administrator, and inform them of this error for further assistance."
+msgstr "Der er en kritisk fejl på websitet. Venligst kontakt sidens administrator for yderligere hjælp."
+
+#: wp-includes/cache-compat.php:144
+msgid "Your object cache implementation does not support flushing the in-memory runtime cache."
+msgstr "Din object cache implementering understøtter ikke at rydde den in-memory runtime cache."
 
 #. translators: Custom template title in the Site Editor, referencing a deleted
 #. author. %s: Author nicename.
@@ -352,6 +398,11 @@ msgstr "Skabelon til %s"
 #: wp-includes/block-template-utils.php:643
 msgid "Not found: %1$s (%2$s)"
 msgstr "Ikke fundet: %1$s (%2$s)"
+
+#: wp-includes/block-patterns.php:42
+msgctxt "Block pattern category"
+msgid "Footers"
+msgstr "Sidefødder"
 
 #. translators: 1: PHP file name, 2: Version number.
 #: wp-includes/functions.php:5579
@@ -13840,7 +13891,7 @@ msgid "Attachment Details"
 msgstr "Detaljer for vedhæftning"
 
 #. translators: %s: Digit to indicate multiple of sizing, eg. 2X-Large.
-#: wp-includes/block-editor.php:167 wp-includes/class-wp-theme-json.php:3018
+#: wp-includes/block-editor.php:172 wp-includes/class-wp-theme-json.php:3018
 #: wp-includes/media-template.php:860 wp-includes/media-template.php:940
 #: wp-includes/media-template.php:1131 wp-includes/media.php:4204
 #: wp-includes/js/dist/block-editor.js:3709
@@ -17892,7 +17943,7 @@ msgstr "Justering"
 msgid "Size"
 msgstr "Størrelse"
 
-#: wp-includes/block-editor.php:168 wp-includes/media-template.php:861
+#: wp-includes/block-editor.php:173 wp-includes/media-template.php:861
 #: wp-includes/media-template.php:941 wp-includes/media-template.php:1132
 #: wp-includes/media.php:4205 wp-includes/js/dist/block-editor.js:3712
 #: wp-admin/includes/class-custom-background.php:608
@@ -17900,7 +17951,7 @@ msgstr "Størrelse"
 msgid "Full Size"
 msgstr "Fuld størrelse"
 
-#: wp-includes/block-editor.php:166 wp-includes/class-wp-theme-json.php:3000
+#: wp-includes/block-editor.php:171 wp-includes/class-wp-theme-json.php:3000
 #: wp-includes/media-template.php:859 wp-includes/media-template.php:939
 #: wp-includes/media-template.php:1130 wp-includes/media.php:4203
 #: wp-includes/js/dist/block-editor.js:3706
@@ -17960,7 +18011,7 @@ msgstr "Filen &#8220;%s&#8221; er ikke et billede."
 msgid "The GD image library is not installed."
 msgstr "GD image library er ikke installeret."
 
-#: wp-includes/block-editor.php:165 wp-includes/media-template.php:858
+#: wp-includes/block-editor.php:170 wp-includes/media-template.php:858
 #: wp-includes/media-template.php:938 wp-includes/media-template.php:1129
 #: wp-includes/media.php:4202 wp-includes/js/dist/block-editor.js:3703
 #: wp-admin/includes/class-custom-background.php:605

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 6.1.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-09-29 16:58:08+0000\n"
+"PO-Revision-Date: 2022-11-08 14:51:34+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -42,6 +42,40 @@ msgstr "Europe/Copenhagen"
 #, gp-priority: high
 msgid "Continue"
 msgstr "Fortsæt"
+
+#: wp-admin/about.php:273
+msgid "Improved admin and editor accessibility"
+msgstr "Forbedret tilgængelighed for administratorer og redaktører"
+
+#: wp-admin/about.php:219
+msgid "https://wordpress.org/themes/tags/full-site-editing/"
+msgstr "https://wordpress.org/themes/tags/full-site-editing/"
+
+#: wp-admin/about.php:213
+msgid "Find block themes faster"
+msgstr "Find blok temaer hurtigere"
+
+#: wp-admin/theme-install.php:204
+msgctxt "themes"
+msgid "Block Themes"
+msgstr "Blok temaer"
+
+#: wp-admin/theme-install.php:149
+msgid "Block themes"
+msgstr "Blok temaer"
+
+#: wp-admin/includes/class-wp-site-health.php:2357
+msgid "Page cache is not detected and the server response time is slow"
+msgstr "Sidecache er ikke registreret, og serverens svartid er langsom"
+
+#: wp-admin/includes/class-wp-site-health.php:2350
+msgid "Page cache is not detected but the server response time is OK"
+msgstr "Sidecache er ikke registreret, men serverens svartid er OK"
+
+#. translators: %s: WordPress Field Guide link.
+#: wp-admin/about.php:529
+msgid "Check out the latest version of the <a href=\"%s\">WordPress Field Guide</a>. It is overflowing with detailed developer notes to help you build with WordPress."
+msgstr "Se den seneste version af <a href=\"%s\">WordPress Field Guide</a>. Den er fyldt med detaljerede udviklernoter, der hjælper dig med at bygge med WordPress."
 
 #. translators: %s: Version number.
 #: wp-admin/about.php:495
