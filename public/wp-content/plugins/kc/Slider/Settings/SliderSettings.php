@@ -63,7 +63,7 @@ final class SliderSettings extends BaseSettings implements ISettings {
 		add_action(Action::ADMIN_INIT, function() : void {
 			$sectionID = $this->settingsPageSlug.'-section-slider';
 			$prefix = $this->settingsPageSlug;
-			add_settings_section($sectionID, '', function() {}, $this->settingsPageSlug);
+			add_settings_section($sectionID, '', function() : void {}, $this->settingsPageSlug);
 			add_settings_field($prefix.'slideWidth', TranslationHelper::getTranslatedString(TranslationString::ImageWidth), function() : void {
 				echo '<input type="number" name="'.$this->settingOptionsName.'['.$this->slideWidth.']" value="'.$this->getSlideWidth().'" min="1">';
 			}, $this->settingsPageSlug, $sectionID);

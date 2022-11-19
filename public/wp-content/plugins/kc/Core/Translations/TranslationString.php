@@ -6,13 +6,18 @@ namespace KC\Core\Translations;
  */
 enum TranslationString: string {
 	case AltKey = 'Alt key';
+	case AppKey = 'App key';
+	case AppSecret = 'App secret';
 	case Backup = 'Backup';
 	case CreateBackup = 'Create backup';
 	case CtrlKey = 'Ctrl key';
+	case Database = 'Database';
 	case Delete = 'Delete';
 	case Description = 'Description';
 	case Download = 'Download';
 	case DownloadCounter = 'Download counter';
+	case Dropbox = 'Dropbox';
+	case Everything = 'Everything';
 	case File = 'File';
 	case Files = 'Files';
 	case FileInformations = 'File informations';
@@ -29,9 +34,12 @@ enum TranslationString: string {
 	case ImageInformations = 'Image informations';
 	case MetaBoxIsNotActivated = 'Meta Box is not activated';
 	case ParentPage = 'Parent page';
+	case RedirectUri = 'Redirect uri';
 	case Settings = 'Settings';
 	case ShiftKey = 'Shift key';
 	case Shortcut = 'Shortcut';
 	case Slide = 'Slide';
 	case Slides = 'Slides';
+	case Type = 'Type';
+	case Upload = 'Upload';
 }

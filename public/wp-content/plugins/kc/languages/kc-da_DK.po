@@ -15,6 +15,12 @@ msgstr ""
 msgid "Alt key"
 msgstr "Alt tast"
 
+msgid "App key"
+msgstr "App key"
+
+msgid "App secret"
+msgstr "App secret"
+
 msgid "Backup"
 msgstr "Backup"
 
@@ -23,6 +29,9 @@ msgstr "Opret backup"
 
 msgid "Ctrl key"
 msgstr "Ctrl tast"
+
+msgid "Database"
+msgstr "Database"
 
 msgid "Delete"
 msgstr "Slet"
@@ -35,6 +44,12 @@ msgstr "Download"
 
 msgid "Download counter"
 msgstr "Download tæller"
+
+msgid "Dropbox"
+msgstr "Dropbox"
+
+msgid "Everything"
+msgstr "Alt"
 
 msgid "File"
 msgstr "Fil"
@@ -84,6 +99,9 @@ msgstr "Meta Box er ikke aktiveret"
 msgid "Parent page"
 msgstr "Forælderside"
 
+msgid "Redirect uri"
+msgstr "Redirect uri"
+
 msgid "Settings"
 msgstr "Indstillinger"
 
@@ -98,3 +116,9 @@ msgstr "Slide"
 
 msgid "Slides"
 msgstr "Slides"
+
+msgid "Type"
+msgstr "Type"
+
+msgid "Upload"
+msgstr "Upload"

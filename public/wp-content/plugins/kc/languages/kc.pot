@@ -14,6 +14,12 @@ msgstr ""
 msgid "Alt key"
 msgstr ""
 
+msgid "App key"
+msgstr ""
+
+msgid "App secret"
+msgstr ""
+
 msgid "Backup"
 msgstr ""
 
@@ -21,6 +27,9 @@ msgid "Create backup"
 msgstr ""
 
 msgid "Ctrl key"
+msgstr ""
+
+msgid "Database"
 msgstr ""
 
 msgid "Delete"
@@ -33,6 +42,12 @@ msgid "Download"
 msgstr ""
 
 msgid "Download counter"
+msgstr ""
+
+msgid "Dropbox"
+msgstr ""
+
+msgid "Everything"
 msgstr ""
 
 msgid "File"
@@ -83,6 +98,9 @@ msgstr ""
 msgid "Parent page"
 msgstr ""
 
+msgid "Redirect uri"
+msgstr ""
+
 msgid "Settings"
 msgstr ""
 
@@ -96,4 +114,10 @@ msgid "Slide"
 msgstr ""
 
 msgid "Slides"
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "Upload"
 msgstr ""

@@ -75,7 +75,7 @@ final class GallerySettings extends BaseSettings implements ISettings {
 		add_action(Action::ADMIN_INIT, function() : void {
 			$sectionID = $this->settingsPageSlug.'-section-gallery';
 			$prefix = $this->settingsPageSlug.'galleryImage';
-			add_settings_section($sectionID, '', function() {}, $this->settingsPageSlug);
+			add_settings_section($sectionID, '', function() : void {}, $this->settingsPageSlug);
 			add_settings_field($prefix.'Width', TranslationHelper::getTranslatedString(TranslationString::ImageWidth), function() : void {
 				echo '<input type="number" name="'.$this->settingOptionsName.'['.$this->galleryImageWidth.']" value="'.$this->getGalleryImageWidth().'" min="1">';
 			}, $this->settingsPageSlug, $sectionID);

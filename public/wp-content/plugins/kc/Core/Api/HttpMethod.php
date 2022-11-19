@@ -6,5 +6,6 @@ namespace KC\Core\Api;
  */
 enum HttpMethod: string {
 	case Get = 'GET';
+	case Post = 'POST';
 	case Put = 'PUT';
 }
