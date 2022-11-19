@@ -24,6 +24,20 @@ final class TranslationStringTest extends WPTestCase {
 	}
 
 	/**
+	 * Test the AppKey value
+	 */
+	public function testAppKeyValue() : void {
+		$this->assertEquals('App key', TranslationString::AppKey->value);
+	}
+
+	/**
+	 * Test the AppSecret value
+	 */
+	public function testAppSecretValue() : void {
+		$this->assertEquals('App secret', TranslationString::AppSecret->value);
+	}
+
+	/**
 	 * Test the Backup value
 	 */
 	public function testBackupValue() : void {
@@ -42,6 +56,13 @@ final class TranslationStringTest extends WPTestCase {
 	 */
 	public function testCtrlKeyValue() : void {
 		$this->assertEquals('Ctrl key', TranslationString::CtrlKey->value);
+	}
+
+	/**
+	 * Test the Database value
+	 */
+	public function testDatabaseValue() : void {
+		$this->assertEquals('Database', TranslationString::Database->value);
 	}
 
 	/**
@@ -70,6 +91,20 @@ final class TranslationStringTest extends WPTestCase {
 	 */
 	public function testDownloadCounterValue() : void {
 		$this->assertEquals('Download counter', TranslationString::DownloadCounter->value);
+	}
+
+	/**
+	 * Test the Dropbox value
+	 */
+	public function testDropboxValue() : void {
+		$this->assertEquals('Dropbox', TranslationString::Dropbox->value);
+	}
+
+	/**
+	 * Test the Everything value
+	 */
+	public function testEverythingValue() : void {
+		$this->assertEquals('Everything', TranslationString::Everything->value);
 	}
 
 	/**
@@ -185,6 +220,13 @@ final class TranslationStringTest extends WPTestCase {
 	}
 
 	/**
+	 * Test the RedirectUri value
+	 */
+	public function testRedirectUriValue() : void {
+		$this->assertEquals('Redirect uri', TranslationString::RedirectUri->value);
+	}
+
+	/**
 	 * Test the Settings value
 	 */
 	public function testSettingsValue() : void {
@@ -217,5 +259,19 @@ final class TranslationStringTest extends WPTestCase {
 	 */
 	public function testSlidesValue() : void {
 		$this->assertEquals('Slides', TranslationString::Slides->value);
+	}
+
+	/**
+	 * Test the Type value
+	 */
+	public function testTypeValue() : void {
+		$this->assertEquals('Type', TranslationString::Type->value);
+	}
+
+	/**
+	 * Test the Upload value
+	 */
+	public function testUploadValue() : void {
+		$this->assertEquals('Upload', TranslationString::Upload->value);
 	}
 }

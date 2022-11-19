@@ -24,6 +24,13 @@ final class HttpMethodTest extends WPTestCase {
 	}
 
 	/**
+	 * Test the Post value
+	 */
+	public function testPostValue() : void {
+		$this->assertEquals('POST', HttpMethod::Post->value);
+	}
+
+	/**
 	 * Test the Put value
 	 */
 	public function testPutValue() : void {
