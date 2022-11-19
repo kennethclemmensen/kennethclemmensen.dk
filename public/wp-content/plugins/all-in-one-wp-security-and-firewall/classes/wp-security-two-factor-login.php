@@ -31,7 +31,7 @@ class AIO_WP_Security_Simba_Two_Factor_Authentication_Plugin extends Simba_Two_F
 		add_action('admin_menu', array($this, 'menu_entry_for_user'), 30);
 		$this->version = AIO_WP_SECURITY_VERSION;
 		$this->set_user_settings_page_slug(AIOWPSEC_TWO_FACTOR_AUTH_MENU_SLUG);
-		$settings_page_heading = __('Two Factor Authentication - Admin Settings', 'all-in-one-wp-security-and-firewall');
+		$settings_page_heading = __('Two factor authentication - Admin settings', 'all-in-one-wp-security-and-firewall');
 		$this->set_settings_page_heading($settings_page_heading);
 		$this->set_plugin_translate_url('https://translate.wordpress.org/projects/wp-plugins/all-in-one-wp-security-and-firewall/');
 		$this->set_site_wide_administration_url(admin_url('admin.php?page=aiowpsec_settings&tab=two-factor-authentication'));
@@ -108,7 +108,7 @@ class AIO_WP_Security_Simba_Two_Factor_Authentication_Plugin extends Simba_Two_F
 		if (!current_user_can(AIOWPSEC_MANAGEMENT_PERMISSION)) return;
 
 		$tabs['two-factor-authentication'] = array(
-			'title' => __('Two Factor Authentication', 'all-in-one-wp-security-and-firewall-premium'),
+			'title' => __('Two factor authentication', 'all-in-one-wp-security-and-firewall-premium'),
 			'render_callback' => array($this, 'render_two_factor_authentication'),
 			'display_condition_callback' => 'is_main_site',
 		);

@@ -25,8 +25,8 @@ class AIOWPSecurity_Spam_Menu extends AIOWPSecurity_Admin_Menu
     function set_menu_tabs() 
     {
         $this->menu_tabs = array(
-		'tab1' => __('Comment Spam', 'all-in-one-wp-security-and-firewall'),
-		'tab2' => __('Comment Spam IP Monitoring', 'all-in-one-wp-security-and-firewall'),
+		'tab1' => __('Comment spam', 'all-in-one-wp-security-and-firewall'),
+		'tab2' => __('Comment spam IP monitoring', 'all-in-one-wp-security-and-firewall'),
         'tab3' => __('BuddyPress', 'all-in-one-wp-security-and-firewall'),
 		'tab4' => __('bbPress', 'all-in-one-wp-security-and-firewall'),
         );
@@ -54,7 +54,7 @@ class AIOWPSecurity_Spam_Menu extends AIOWPSecurity_Admin_Menu
     function render_menu_page() 
     {
         echo '<div class="wrap">';
-		echo '<h2>'.__('Spam Prevention', 'all-in-one-wp-security-and-firewall').'</h2>'; // Interface title
+		echo '<h2>'.__('Spam prevention', 'all-in-one-wp-security-and-firewall').'</h2>'; // Interface title
         $this->set_menu_tabs();
         $tab = $this->get_current_tab();
         $this->render_menu_tabs();
@@ -98,7 +98,7 @@ class AIOWPSecurity_Spam_Menu extends AIOWPSecurity_Admin_Menu
 				if (isset($_POST['aiowps_enable_trash_spam_comments']) && !is_numeric($aiowps_trash_spam_comments_after_days)) {
 					$error = __('You entered a non numeric value for the "move spam comments to trash after number of days" field.','all-in-one-wp-security-and-firewall').' '.__('It has been set to the default value.','all-in-one-wp-security-and-firewall');
 					$aiowps_trash_spam_comments_after_days = '14';//Set it to the default value for this field
-					$this->show_msg_error(__('Attention!','all-in-one-wp-security-and-firewall').'&nbsp;'.htmlspecialchars($error));
+					$this->show_msg_error(__('Attention:', 'all-in-one-wp-security-and-firewall').' '.htmlspecialchars($error));
 				}
 				$aiowps_trash_spam_comments_after_days = absint($aiowps_trash_spam_comments_after_days);
 				$aio_wp_security->configs->set_value('aiowps_trash_spam_comments_after_days', $aiowps_trash_spam_comments_after_days);
@@ -258,19 +258,16 @@ class AIOWPSecurity_Spam_Menu extends AIOWPSecurity_Admin_Menu
             }
 
             $spam_ip_min_comments = sanitize_text_field($_POST['aiowps_spam_ip_min_comments_block']);
-            if(!is_numeric($spam_ip_min_comments))
-            {
+            if (!is_numeric($spam_ip_min_comments)) {
                 $error .= '<br />'.__('You entered a non numeric value for the minimum number of spam comments field. It has been set to the default value.','all-in-one-wp-security-and-firewall');
                 $spam_ip_min_comments = '3';//Set it to the default value for this field
-            }elseif(empty($spam_ip_min_comments)){
+            } elseif (empty($spam_ip_min_comments)) {
                 $error .= '<br />'.__('You must enter an integer greater than zero for minimum number of spam comments field. It has been set to the default value.','all-in-one-wp-security-and-firewall');
                 $spam_ip_min_comments = '3';//Set it to the default value for this field
-
             }
 
-            if($error)
-            {
-                $this->show_msg_error(__('Attention!','all-in-one-wp-security-and-firewall').$error);
+            if ($error) {
+                $this->show_msg_error(__('Attention:', 'all-in-one-wp-security-and-firewall').' '.$error);
             }
 
             //Save all the form values to the options
@@ -296,19 +293,17 @@ class AIOWPSecurity_Spam_Menu extends AIOWPSecurity_Admin_Menu
             }
 
             $min_comments_per_ip = sanitize_text_field($_POST['aiowps_spam_ip_min_comments']);
-            if(!is_numeric($min_comments_per_ip))
-            {
+            if (!is_numeric($min_comments_per_ip)) {
 				$error .= '<br>'.__('You entered a non numeric value for the minimum spam comments per IP field.', 'all-in-one-wp-security-and-firewall').' '.__('It has been set to the default value.', 'all-in-one-wp-security-and-firewall');
                 $min_comments_per_ip = '5';//Set it to the default value for this field
             }
             
-            if($error)
-            {
-                $this->show_msg_error(__('Attention!','all-in-one-wp-security-and-firewall').$error);
+            if ($error) {
+                $this->show_msg_error(__('Attention:', 'all-in-one-wp-security-and-firewall').' '.$error);
             }
             
             //Save all the form values to the options
-            $aio_wp_security->configs->set_value('aiowps_spam_ip_min_comments',absint($min_comments_per_ip));
+            $aio_wp_security->configs->set_value('aiowps_spam_ip_min_comments', absint($min_comments_per_ip));
             $aio_wp_security->configs->save_config();
 			$info_msg_string = sprintf(__('Displaying results for IP addresses which have posted a minimum of %s spam comments.', 'all-in-one-wp-security-and-firewall'), $min_comments_per_ip);
             $this->show_msg_updated($info_msg_string);

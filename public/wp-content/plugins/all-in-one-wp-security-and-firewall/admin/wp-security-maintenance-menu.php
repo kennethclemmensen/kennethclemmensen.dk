@@ -22,7 +22,7 @@ class AIOWPSecurity_Maintenance_Menu extends AIOWPSecurity_Admin_Menu
     function set_menu_tabs()
     {
         $this->menu_tabs = array(
-        'tab1' => __('Visitor Lockout', 'all-in-one-wp-security-and-firewall'),
+        'tab1' => __('Visitor lockout', 'all-in-one-wp-security-and-firewall'),
         );
     }
 

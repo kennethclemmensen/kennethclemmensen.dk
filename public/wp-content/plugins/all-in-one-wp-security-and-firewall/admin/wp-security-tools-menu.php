@@ -31,7 +31,7 @@ class AIOWPSecurity_Tools_Menu extends AIOWPSecurity_Admin_Menu {
 		$this->menu_tabs = apply_filters('aiowpsecurity_tools_tabs',
 			array(
 				'whois-lookup' => array(
-					'title' => __('WHOIS Lookup', 'all-in-one-wp-security-and-firewall'),
+					'title' => __('WHOIS lookup', 'all-in-one-wp-security-and-firewall'),
 					'render_callback' => array($this, 'render_whois_lookup_tab'),
 				)
 			)

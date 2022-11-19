@@ -25,9 +25,9 @@ class AIOWPSecurity_Misc_Options_Menu extends AIOWPSecurity_Admin_Menu
     function set_menu_tabs() 
     {
 		$this->menu_tabs = array(
-			'tab1' => __('Copy Protection', 'all-in-one-wp-security-and-firewall'),
+			'tab1' => __('Copy protection', 'all-in-one-wp-security-and-firewall'),
 			'tab2' => __('Frames', 'all-in-one-wp-security-and-firewall'),
-			'tab3' => __('Users Enumeration', 'all-in-one-wp-security-and-firewall'),
+			'tab3' => __('Users enumeration', 'all-in-one-wp-security-and-firewall'),
 			'tab4' => __('WP REST API', 'all-in-one-wp-security-and-firewall'),
 		);
     }
@@ -106,7 +106,7 @@ class AIOWPSecurity_Misc_Options_Menu extends AIOWPSecurity_Admin_Menu
 				<th scope="row"><?php _e('Enable copy protection', 'all-in-one-wp-security-and-firewall'); ?>:</th>
                 <td>
                 <input id="aiowps_copy_protection" name="aiowps_copy_protection" type="checkbox"<?php if($aio_wp_security->configs->get_value('aiowps_copy_protection')=='1') echo ' checked="checked"'; ?> value="1"/>
-                <label for="aiowps_copy_protection" class="description"><?php _e('Check this if you want to disable the "Right Click", "Text Selection" and "Copy" option on the front end of your site.', 'all-in-one-wp-security-and-firewall'); ?></label>
+                <label for="aiowps_copy_protection" class="description"><?php echo __('Check this if you want to disable the "Right click", "Text selection" and "Copy" option on the front end of your site.', 'all-in-one-wp-security-and-firewall'); ?></label>
                 </td>
             </tr>
 

@@ -24,13 +24,13 @@ class AIOWPSecurity_Dashboard_Menu extends AIOWPSecurity_Admin_Menu
 	private function set_menu_tabs() {
 		$this->menu_tabs = array(
 			'tab1' => __('Dashboard', 'all-in-one-wp-security-and-firewall'),
-			'tab2' => __('Locked IP Addresses', 'all-in-one-wp-security-and-firewall'),
-			'tab3' => __('Permanent Block List', 'all-in-one-wp-security-and-firewall'),
+			'tab2' => __('Locked IP addresses', 'all-in-one-wp-security-and-firewall'),
+			'tab3' => __('Permanent block list', 'all-in-one-wp-security-and-firewall'),
 			'tab4' => __('Logs', 'all-in-one-wp-security-and-firewall')
 		);
 
 		if (!defined('AIOWPSECURITY_NOADS_B') || !AIOWPSECURITY_NOADS_B) {
-			$this->menu_tabs['premium-upgrade'] = __('Premium Upgrade', 'all-in-one-wp-security-and-firewall');
+			$this->menu_tabs['premium-upgrade'] = __('Premium upgrade', 'all-in-one-wp-security-and-firewall');
 		}
 	}
 
@@ -115,23 +115,22 @@ class AIOWPSecurity_Dashboard_Menu extends AIOWPSecurity_Admin_Menu
         include_once 'wp-security-list-locked-ip.php'; //For rendering the AIOWPSecurity_List_Table in tab1
         $locked_ip_list = new AIOWPSecurity_List_Locked_IP(); //For rendering the AIOWPSecurity_List_Table in tab1
 
-        if (isset($_REQUEST['action'])) //Do list table form row action tasks
-        {
+        if (isset($_REQUEST['action'])) { //Do list table form row action tasks
             if ($_REQUEST['action'] == 'delete_blocked_ip') { //Delete link was clicked for a row in list table
-                $locked_ip_list->delete_lockdown_records(strip_tags($_REQUEST['lockdown_id']));
+                $locked_ip_list->delete_lockout_records(strip_tags($_REQUEST['lockout_id']));
             }
 
-            if ($_REQUEST['action'] == 'unlock_ip') { //Unlock link was clicked for a row in list table
-                $locked_ip_list->unlock_ip_range(strip_tags($_REQUEST['lockdown_id']));
+            if ('unlock_ip' == $_REQUEST['action']) { //Unlock link was clicked for a row in list table
+                $locked_ip_list->unlock_ip_range(strip_tags($_REQUEST['lockout_id']));
             }
         }
 
         ?>
         <div class="aio_blue_box">
             <?php
-            $login_lockdown_feature_url = '<a href="admin.php?page=' . AIOWPSEC_USER_LOGIN_MENU_SLUG . '&tab=tab1" target="_blank">'.__('Login Lockdown', 'all-in-one-wp-security-and-firewall').'</a>';
-            echo '<p>' . __('This tab displays the list of all IP addresses which are currently temporarily locked out due to the Login Lockdown feature:', 'all-in-one-wp-security-and-firewall') . '</p>' .
-                '<p>' . $login_lockdown_feature_url . '</p>';
+            $login_lockout_feature_url = '<a href="admin.php?page=' . AIOWPSEC_USER_LOGIN_MENU_SLUG . '&tab=login-lockout" target="_blank">'.__('Login lockout', 'all-in-one-wp-security-and-firewall').'</a>';
+            echo '<p>' . __('This tab displays the list of all IP addresses which are currently temporarily locked out due to the login lockout feature:', 'all-in-one-wp-security-and-firewall') . '</p>' .
+                '<p>' . $login_lockout_feature_url . '</p>';
             ?>
         </div>
 
@@ -479,7 +478,7 @@ class AIOWPSecurity_Dashboard_Menu extends AIOWPSecurity_Admin_Menu
         </p>
         <p>
             <a href="http://wordpress.org/support/view/plugin-reviews/all-in-one-wp-security-and-firewall/"
-               target="_blank" class="aio_rate_us_link"><?php _e('Give us a Good Rating', 'all-in-one-wp-security-and-firewall');?></a>
+               target="_blank" class="aio_rate_us_link"><?php _e('Give us a good rating', 'all-in-one-wp-security-and-firewall');?></a>
         </p>
 <?php
     }
@@ -501,7 +500,7 @@ class AIOWPSecurity_Dashboard_Menu extends AIOWPSecurity_Admin_Menu
         $feature_items = $aiowps_feature_mgr->feature_items;
         $username_admin_feature = $aiowps_feature_mgr->get_feature_item_by_id("user-accounts-change-admin-user");
         echo '<div class="aiowps_feature_status_container">';
-        echo '<div class="aiowps_feature_status_name">' . __('Admin Username', 'all-in-one-wp-security-and-firewall') . '</div>';
+        echo '<div class="aiowps_feature_status_name">' . __('Admin username', 'all-in-one-wp-security-and-firewall') . '</div>';
         echo '<a href="admin.php?page=' . AIOWPSEC_USER_ACCOUNTS_MENU_SLUG . '">';
         echo '<div class="aiowps_feature_status_bar">';
         if ($username_admin_feature->feature_status == $aiowps_feature_mgr->feature_active) {
@@ -516,7 +515,7 @@ class AIOWPSecurity_Dashboard_Menu extends AIOWPSecurity_Admin_Menu
 
         $login_lockdown_feature = $aiowps_feature_mgr->get_feature_item_by_id("user-login-login-lockdown");
         echo '<div class="aiowps_feature_status_container">';
-        echo '<div class="aiowps_feature_status_name">' . __('Login Lockdown', 'all-in-one-wp-security-and-firewall') . '</div>';
+        echo '<div class="aiowps_feature_status_name">' . __('Login lockout', 'all-in-one-wp-security-and-firewall') . '</div>';
         echo '<a href="admin.php?page=' . AIOWPSEC_USER_LOGIN_MENU_SLUG . '">';
         echo '<div class="aiowps_feature_status_bar">';
         if ($login_lockdown_feature->feature_status == $aiowps_feature_mgr->feature_active) {
@@ -531,7 +530,7 @@ class AIOWPSecurity_Dashboard_Menu extends AIOWPSecurity_Admin_Menu
 
         $filesystem_feature = $aiowps_feature_mgr->get_feature_item_by_id("filesystem-file-permissions");
         echo '<div class="aiowps_feature_status_container">';
-        echo '<div class="aiowps_feature_status_name">' . __('File Permission', 'all-in-one-wp-security-and-firewall') . '</div>';
+        echo '<div class="aiowps_feature_status_name">' . __('File permission', 'all-in-one-wp-security-and-firewall') . '</div>';
         echo '<a href="admin.php?page=' . AIOWPSEC_FILESYSTEM_MENU_SLUG . '">';
         echo '<div class="aiowps_feature_status_bar">';
         if ($filesystem_feature->feature_status == $aiowps_feature_mgr->feature_active) {
@@ -546,7 +545,7 @@ class AIOWPSecurity_Dashboard_Menu extends AIOWPSecurity_Admin_Menu
 
         $basic_firewall_feature = $aiowps_feature_mgr->get_feature_item_by_id("firewall-basic-rules");
         echo '<div class="aiowps_feature_status_container">';
-        echo '<div class="aiowps_feature_status_name">' . __('Basic Firewall', 'all-in-one-wp-security-and-firewall') . '</div>';
+        echo '<div class="aiowps_feature_status_name">' . __('Basic firewall', 'all-in-one-wp-security-and-firewall') . '</div>';
         echo '<a href="admin.php?page=' . AIOWPSEC_FIREWALL_MENU_SLUG . '">';
         echo '<div class="aiowps_feature_status_bar">';
         if ($basic_firewall_feature->feature_status == $aiowps_feature_mgr->feature_active) {
@@ -575,7 +574,7 @@ class AIOWPSecurity_Dashboard_Menu extends AIOWPSecurity_Admin_Menu
         $data = $wpdb->get_results($wpdb->prepare("SELECT * FROM $login_activity_table ORDER BY login_date DESC LIMIT %d", 5), ARRAY_A); //Get the last 5 records
 
         if ($data == NULL) {
-            echo '<p>' . __('No data found!', 'all-in-one-wp-security-and-firewall') . '</p>';
+            echo '<p>' . __('No data found.', 'all-in-one-wp-security-and-firewall') . '</p>';
 
         } else {
             $login_summary_table = '';
@@ -612,7 +611,7 @@ class AIOWPSecurity_Dashboard_Menu extends AIOWPSecurity_Admin_Menu
         }
 
         echo '<div class="aiowps_feature_status_container">';
-        echo '<div class="aiowps_feature_status_name">' . __('Maintenance Mode', 'all-in-one-wp-security-and-firewall') . '</div>';
+        echo '<div class="aiowps_feature_status_name">' . __('Maintenance mode', 'all-in-one-wp-security-and-firewall') . '</div>';
         echo '<a href="admin.php?page=' . AIOWPSEC_MAINTENANCE_MENU_SLUG . '">';
         echo '<div class="aiowps_feature_status_bar">';
         if ($aio_wp_security->configs->get_value('aiowps_site_lockout') == '1') {//Maintenance mode is enabled
@@ -630,7 +629,7 @@ class AIOWPSecurity_Dashboard_Menu extends AIOWPSecurity_Admin_Menu
     public function widget_brute_force() {
         global $aio_wp_security;
         if ($aio_wp_security->configs->get_value('aiowps_enable_brute_force_attack_prevention') == '1') {
-            $brute_force_login_feature_link = '<a href="admin.php?page=' . AIOWPSEC_BRUTE_FORCE_MENU_SLUG . '&tab=tab2" target="_blank">' . __('Cookie-Based Brute Force', 'all-in-one-wp-security-and-firewall') . '</a>';
+            $brute_force_login_feature_link = '<a href="admin.php?page=' . AIOWPSEC_BRUTE_FORCE_MENU_SLUG . '&tab=cookie-based-brute-force-prevention" target="_blank">' . __('Cookie-based brute force', 'all-in-one-wp-security-and-firewall') . '</a>';
             $brute_force_feature_secret_word = $aio_wp_security->configs->get_value('aiowps_brute_force_secret_word');
             echo '<div class="aio_yellow_box">';
 
@@ -649,7 +648,7 @@ class AIOWPSecurity_Dashboard_Menu extends AIOWPSecurity_Admin_Menu
                 $home_url = trailingslashit(home_url()) . '?';
             }
 
-            $rename_login_feature_link = '<a href="admin.php?page=' . AIOWPSEC_BRUTE_FORCE_MENU_SLUG . '&tab=tab1" target="_blank">' . __('Rename login page', 'all-in-one-wp-security-and-firewall') . '</a>';
+            $rename_login_feature_link = '<a href="admin.php?page=' . AIOWPSEC_BRUTE_FORCE_MENU_SLUG . '&tab=rename-login" target="_blank">' . __('Rename login page', 'all-in-one-wp-security-and-firewall') . '</a>';
             echo '<div class="aio_yellow_box">';
 
             echo '<p>' . sprintf(__('The %s feature is currently active.', 'all-in-one-wp-security-and-firewall'), $rename_login_feature_link) . '</p>';
@@ -662,7 +661,7 @@ class AIOWPSecurity_Dashboard_Menu extends AIOWPSecurity_Admin_Menu
     }
 
     public function widget_logged_in_users() {
-        $users_online_link = '<a href="admin.php?page=' . AIOWPSEC_USER_LOGIN_MENU_SLUG . '&tab=tab5">Logged In Users</a>';
+        $users_online_link = '<a href="admin.php?page=' . AIOWPSEC_USER_LOGIN_MENU_SLUG . '&tab=logged-in-users">'.__('Logged in users', 'all-in-one-wp-security-and-firewall').'</a>';
         // default display messages
         $multiple_users_info_msg = __('Number of users currently logged into your site (including you) is:', 'all-in-one-wp-security-and-firewall');
         $single_user_info_msg = __('There are no other users currently logged in.', 'all-in-one-wp-security-and-firewall');

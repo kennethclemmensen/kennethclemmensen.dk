@@ -30,8 +30,8 @@ class AIOWPSecurity_Configure_Settings {
 		//General Settings Page
 
 		//User password feature
-
-		//Lockdown feature
+		
+		//Lockout feature
 		$aio_wp_security->configs->set_value('aiowps_enable_login_lockdown', '');//Checkbox
 		$aio_wp_security->configs->set_value('aiowps_allow_unlock_requests', '1'); // Checkbox
 		$aio_wp_security->configs->set_value('aiowps_max_login_attempts', '3');
@@ -198,8 +198,8 @@ class AIOWPSecurity_Configure_Settings {
 		//General Settings Page
 
 		//User password feature
-
-		//Lockdown feature
+		
+		//Lockout feature
 		$aio_wp_security->configs->add_value('aiowps_enable_login_lockdown', '');//Checkbox
 		$aio_wp_security->configs->add_value('aiowps_allow_unlock_requests', '1'); // Checkbox
 		$aio_wp_security->configs->add_value('aiowps_max_login_attempts', '3');
@@ -356,6 +356,46 @@ class AIOWPSecurity_Configure_Settings {
 		}
 
 		update_option('aiowpsec_db_version', AIO_WP_SECURITY_DB_VERSION);
+	}
+		
+	/**
+	 * Firewall configs set based on version.
+	 *
+	 * @return void.
+	 */
+	public static function set_firewall_configs() {
+		if (version_compare(get_option('aiowpsec_firewall_version'), '1.0.1', '<')) {
+			self::set_cookie_based_bruteforce_firewall_configs();
+		}
+		update_option('aiowpsec_firewall_version', AIO_WP_SECURITY_FIREWALL_VERSION);
+	}
+	
+	/**
+	 * Cookie based bruteforce firewall configs set.
+	 *
+	 * @return void.
+	 */
+	public static function set_cookie_based_bruteforce_firewall_configs() {
+		global $aio_wp_security;
+		global $aiowps_firewall_config;
+		
+		$aiowps_firewall_config->set_value('aios_enable_rename_login_page', $aio_wp_security->configs->get_value('aiowps_enable_rename_login_page'));
+		
+		$aiowps_firewall_config->set_value('aios_login_page_slug', $aio_wp_security->configs->get_value('aiowps_login_page_slug'));
+		
+		$aios_enable_brute_force_attack_prevention = (defined('AIOS_DISABLE_COOKIE_BRUTE_FORCE_PREVENTION') && AIOS_DISABLE_COOKIE_BRUTE_FORCE_PREVENTION) ? 0 : $aio_wp_security->configs->get_value('aiowps_enable_brute_force_attack_prevention');
+		$aiowps_firewall_config->set_value('aios_enable_brute_force_attack_prevention', $aios_enable_brute_force_attack_prevention);
+		
+		$aiowps_firewall_config->set_value('aios_brute_force_secret_word', $aio_wp_security->configs->get_value('aiowps_brute_force_secret_word'));
+		
+		$aiowps_firewall_config->set_value('aios_cookie_based_brute_force_redirect_url', $aio_wp_security->configs->get_value('aiowps_cookie_based_brute_force_redirect_url'));
+		
+		$aiowps_firewall_config->set_value('aios_brute_force_attack_prevention_pw_protected_exception', $aio_wp_security->configs->get_value('aiowps_brute_force_attack_prevention_pw_protected_exception'));
+		
+		$aiowps_firewall_config->set_value('aios_brute_force_attack_prevention_ajax_exception', $aio_wp_security->configs->get_value('aiowps_brute_force_attack_prevention_ajax_exception'));
+		
+		$aiowps_firewall_config->set_value('aios_brute_force_secret_cookie_name', AIOWPSecurity_Utility::get_brute_force_secret_cookie_name());
+		$aiowps_firewall_config->set_value('aios_brute_force_cookie_salt', wp_salt());
 	}
 
 	/**

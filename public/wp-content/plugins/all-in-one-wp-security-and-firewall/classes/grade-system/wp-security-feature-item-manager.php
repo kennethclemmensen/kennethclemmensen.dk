@@ -45,8 +45,8 @@ class AIOWPSecurity_Feature_Item_Manager {
 		$this->feature_items[] = new AIOWPSecurity_Feature_Item('user-accounts-display-name', __('Change display name', 'all-in-one-wp-security-and-firewall'), $this->feature_point_1, $this->sec_level_basic);
 
 		// User Login menu features
-		// Login lockdown
-		$this->feature_items[] = new AIOWPSecurity_Feature_Item('user-login-login-lockdown', __('Login lockdown', 'all-in-one-wp-security-and-firewall'), $this->feature_point_4, $this->sec_level_basic);
+		// Login lockout
+		$this->feature_items[] = new AIOWPSecurity_Feature_Item('user-login-login-lockdown', __('Login lockout', 'all-in-one-wp-security-and-firewall'), $this->feature_point_4, $this->sec_level_basic);
 		// Force logout
 		$this->feature_items[] = new AIOWPSecurity_Feature_Item('user-login-force-logout', __('Force logout', 'all-in-one-wp-security-and-firewall'), $this->feature_point_1, $this->sec_level_basic);
 		// Additional settings
@@ -164,172 +164,130 @@ class AIOWPSecurity_Feature_Item_Manager {
 
 	public function check_and_set_feature_status() {
 		foreach ($this->feature_items as $item) {
-			if ("wp-generator-meta-tag" == $item->feature_id) {
-				$this->check_remove_wp_generator_meta_feature($item);
-			}
-
-			if ("prevent-hotlinking" == $item->feature_id) {
-				$this->check_prevent_hotlinking_feature($item);
-			}
-
-			if ("user-accounts-change-admin-user" == $item->feature_id) {
-				$this->check_user_accounts_change_admin_user_feature($item);
-			}
-
-			if ("user-accounts-display-name" == $item->feature_id) {
-				$this->check_user_accounts_display_name_feature($item);
-			}
-
-			if ("db-security-db-prefix" == $item->feature_id) {
-				$this->check_db_security_db_prefix_feature($item);
-			}
-
-			if ("db-security-db-backup" == $item->feature_id) {
-				$this->check_db_security_db_backup_feature($item);
-			}
-
-			if ("user-login-login-lockdown" == $item->feature_id) {
-				$this->check_login_lockdown_feature($item);
-			}
-
-			if ("user-login-captcha" == $item->feature_id) {
-				$this->check_login_captcha_feature($item);
-			}
-
-			if ("custom-login-captcha" == $item->feature_id) {
-				$this->check_custom_login_captcha_feature($item);
-			}
-
-			if ("woo-login-captcha" == $item->feature_id) {
-				$this->check_woo_login_captcha_feature($item);
-			}
-
-			if ("woo-lostpassword-captcha" == $item->feature_id) {
-				$this->check_woo_lostpassword_captcha_feature($item);
-			}
-
-			if ("woo-register-captcha" == $item->feature_id) {
-				$this->check_woo_register_captcha_feature($item);
-			}
-
-			if ("lost-password-captcha" == $item->feature_id) {
-				$this->check_lost_password_captcha_feature($item);
-			}
-
-			if ("comment-form-captcha" == $item->feature_id) {
-				$this->check_comment_captcha_feature($item);
-			}
-
-			if ("bp-register-captcha" == $item->feature_id) {
-				$this->check_bp_register_captcha_feature($item);
-			}
-
-			if ("bbp-new-topic-captcha" == $item->feature_id) {
-				$this->check_bbp_new_topic_captcha_feature($item);
-			}
-
-			if ("whitelist-manager-ip-login-whitelisting" == $item->feature_id) {
-				$this->check_login_whitelist_feature($item);
-			}
-
-			if ("user-login-force-logout" == $item->feature_id) {
-				$this->check_force_logout_feature($item);
-			}
-
-			if ("manually-approve-registrations" == $item->feature_id) {
-				$this->check_registration_approval_feature($item);
-			}
-
-			if ("user-registration-captcha" == $item->feature_id) {
-				$this->check_registration_captcha_feature($item);
-			}
-
-			if ("registration-honeypot" == $item->feature_id) {
-				$this->check_enable_registration_honeypot_feature($item);
-			}
-
-			if ("filesystem-file-permissions" == $item->feature_id) {
-				$this->check_filesystem_permissions_feature($item);
-			}
-
-			if ("filesystem-file-editing" == $item->feature_id) {
-				$this->check_filesystem_file_editing_feature($item);
-			}
-
-			if ("block-wp-files-access" == $item->feature_id) {
-				$this->check_block_wp_files_access_feature($item);
-			}
-
-			if ("blacklist-manager-ip-user-agent-blacklisting" == $item->feature_id) {
-				$this->check_enable_ip_useragent_blacklist_feature($item);
-			}
-
-			if ("firewall-basic-rules" == $item->feature_id) {
-				$this->check_enable_basic_firewall_feature($item);
-			}
-
-			if ("firewall-pingback-rules" == $item->feature_id) {
-				$this->check_enable_pingback_firewall_feature($item);
-			}
-
-			if ("firewall-block-debug-file-access" == $item->feature_id) {
-				$this->check_debug_file_access_block_firewall_feature($item);
-			}
-
-			if ("firewall-enable-404-blocking" == $item->feature_id) {
-				$this->check_enable_404_blocking_feature($item);
-			}
-
-			if ("firewall-enable-brute-force-attack-prevention" == $item->feature_id) {
-				$this->check_enable_bfap_firewall_feature($item);
-			}
-
-			if ("firewall-disable-index-views" == $item->feature_id) {
-				$this->check_disable_index_views_firewall_feature($item);
-			}
-
-			if ("firewall-disable-trace-track" == $item->feature_id) {
-				$this->check_disable_trace_track_firewall_feature($item);
-			}
-
-			if ("firewall-forbid-proxy-comments" == $item->feature_id) {
-				$this->check_forbid_proxy_comments_firewall_feature($item);
-			}
-
-			if ("firewall-deny-bad-queries" == $item->feature_id) {
-				$this->check_deny_bad_queries_firewall_feature($item);
-			}
-
-			if ("firewall-advanced-character-string-filter" == $item->feature_id) {
-				$this->check_advanced_char_string_filter_firewall_feature($item);
-			}
-
-			if ("firewall-enable-5g-6g-blacklist" == $item->feature_id) {
-				$this->check_enable_5G_6G_blacklist_firewall_feature($item);
-			}
-
-			if ("firewall-block-fake-googlebots" == $item->feature_id) {
-				$this->check_block_fake_googlebots_firewall_feature($item);
-			}
-
-			if ("bf-rename-login-page" == $item->feature_id) {
-				$this->check_enable_rename_login_page_feature($item);
-			}
-
-			if ("login-honeypot" == $item->feature_id) {
-				$this->check_enable_login_honeypot_feature($item);
-			}
-
-			if ("disable-application-password" == $item->feature_id) {
-				$this->check_disable_application_password_feature($item);
-			}
-
-			if ("block-spambots" == $item->feature_id) {
-				$this->check_enable_block_spambots_feature($item);
-			}
-
-			if ("scan-file-change-detection" == $item->feature_id) {
-				$this->check_enable_fcd_scan_feature($item);
+			switch ($item->feature_id) {
+				case 'wp-generator-meta-tag':
+					$this->check_remove_wp_generator_meta_feature($item);
+					break;
+				case 'prevent-hotlinking':
+					$this->check_prevent_hotlinking_feature($item);
+					break;
+				case 'user-accounts-change-admin-user':
+					$this->check_user_accounts_change_admin_user_feature($item);
+					break;
+				case 'user-accounts-display-name':
+					$this->check_user_accounts_display_name_feature($item);
+					break;
+				case 'db-security-db-prefix':
+					$this->check_db_security_db_prefix_feature($item);
+					break;
+				case 'user-login-login-lockdown':
+					$this->check_login_lockdown_feature($item);
+					break;
+				case 'user-login-captcha':
+					$this->check_login_captcha_feature($item);
+					break;
+				case 'custom-login-captcha':
+					$this->check_custom_login_captcha_feature($item);
+					break;
+				case 'woo-login-captcha':
+					$this->check_woo_login_captcha_feature($item);
+					break;
+				case 'woo-lostpassword-captcha':
+					$this->check_woo_lostpassword_captcha_feature($item);
+					break;
+				case 'woo-register-captcha':
+					$this->check_woo_register_captcha_feature($item);
+					break;
+				case 'lost-password-captcha':
+					$this->check_lost_password_captcha_feature($item);
+					break;
+				case 'comment-form-captcha':
+					$this->check_comment_captcha_feature($item);
+					break;
+				case 'bp-register-captcha':
+					$this->check_bp_register_captcha_feature($item);
+					break;
+				case 'bbp-new-topic-captcha':
+					$this->check_bbp_new_topic_captcha_feature($item);
+					break;
+				case 'whitelist-manager-ip-login-whitelisting':
+					$this->check_login_whitelist_feature($item);
+					break;
+				case 'user-login-force-logout':
+					$this->check_force_logout_feature($item);
+					break;
+				case 'manually-approve-registrations':
+					$this->check_registration_approval_feature($item);
+					break;
+				case 'user-registration-captcha':
+					$this->check_registration_captcha_feature($item);
+					break;
+				case 'registration-honeypot':
+					$this->check_enable_registration_honeypot_feature($item);
+					break;
+				case 'filesystem-file-permissions':
+					$this->check_filesystem_permissions_feature($item);
+					break;
+				case 'filesystem-file-editing':
+					$this->check_filesystem_file_editing_feature($item);
+					break;
+				case 'block-wp-files-access':
+					$this->check_block_wp_files_access_feature($item);
+					break;
+				case 'blacklist-manager-ip-user-agent-blacklisting':
+					$this->check_enable_ip_useragent_blacklist_feature($item);
+					break;
+				case 'firewall-basic-rules':
+					$this->check_enable_basic_firewall_feature($item);
+					break;
+				case 'firewall-pingback-rules':
+					$this->check_enable_pingback_firewall_feature($item);
+					break;
+				case 'firewall-block-debug-file-access':
+					$this->check_debug_file_access_block_firewall_feature($item);
+					break;
+				case 'firewall-enable-404-blocking':
+					$this->check_enable_404_blocking_feature($item);
+					break;
+				case 'firewall-enable-brute-force-attack-prevention':
+					$this->check_enable_bfap_firewall_feature($item);
+					break;
+				case 'firewall-disable-index-views':
+					$this->check_disable_index_views_firewall_feature($item);
+					break;
+				case 'firewall-disable-trace-track':
+					$this->check_disable_trace_track_firewall_feature($item);
+					break;
+				case 'firewall-forbid-proxy-comments':
+					$this->check_forbid_proxy_comments_firewall_feature($item);
+					break;
+				case 'firewall-deny-bad-queries':
+					$this->check_deny_bad_queries_firewall_feature($item);
+					break;
+				case 'firewall-advanced-character-string-filter':
+					$this->check_advanced_char_string_filter_firewall_feature($item);
+					break;
+				case 'firewall-enable-5g-6g-blacklist':
+					$this->check_enable_5G_6G_blacklist_firewall_feature($item);
+					break;
+				case 'firewall-block-fake-googlebots':
+					$this->check_block_fake_googlebots_firewall_feature($item);
+					break;
+				case 'bf-rename-login-page':
+					$this->check_enable_rename_login_page_feature($item);
+					break;
+				case 'login-honeypot':
+					$this->check_enable_login_honeypot_feature($item);
+					break;
+				case 'disable-application-password':
+					$this->check_disable_application_password_feature($item);
+					break;
+				case 'block-spambots':
+					$this->check_enable_block_spambots_feature($item);
+					break;
+				case 'scan-file-change-detection':
+					$this->check_enable_fcd_scan_feature($item);
+					break;
 			}
 		}
 	}
@@ -706,7 +664,7 @@ class AIOWPSecurity_Feature_Item_Manager {
 	}
 
 	/**
-	 * Featurs list updated based on the disabled appliction password on or off
+	 * Features list updated based on the disabled appliction password on or off
 	 *
 	 * @param object $item
 	 * @global AIO_WP_Security $aio_wp_security

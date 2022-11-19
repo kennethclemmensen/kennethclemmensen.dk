@@ -24,9 +24,9 @@ class AIOWPSecurity_User_Registration_Menu extends AIOWPSecurity_Admin_Menu
     function set_menu_tabs() 
     {
         $this->menu_tabs = array(
-        'tab1' => __('Manual Approval', 'all-in-one-wp-security-and-firewall'),
+        'tab1' => __('Manual approval', 'all-in-one-wp-security-and-firewall'),
 		'tab2' => __('Registration CAPTCHA', 'all-in-one-wp-security-and-firewall'),
-        'tab3' => __('Registration Honeypot', 'all-in-one-wp-security-and-firewall'),
+        'tab3' => __('Registration honeypot', 'all-in-one-wp-security-and-firewall'),
         );
     }
 
@@ -52,7 +52,7 @@ class AIOWPSecurity_User_Registration_Menu extends AIOWPSecurity_Admin_Menu
     function render_menu_page() 
     {
         echo '<div class="wrap">';
-        echo '<h2>'.__('User Registration','all-in-one-wp-security-and-firewall').'</h2>';//Interface title
+        echo '<h2>'.__('User registration','all-in-one-wp-security-and-firewall').'</h2>';//Interface title
         $this->set_menu_tabs();
         $tab = $this->get_current_tab();
         $this->render_menu_tabs();

@@ -73,7 +73,7 @@ class AIOWPSecurity_WP_Loaded_Tasks {
 	 *
 	 * @return void
 	 */
-	private static function site_lockout_tasks() {
+	public static function site_lockout_tasks() {
 		$lockout_output = apply_filters('aiowps_site_lockout_output', '');
 		if (empty($lockout_output)) {
 			nocache_headers();
@@ -94,7 +94,7 @@ class AIOWPSecurity_WP_Loaded_Tasks {
 		//https://wordpress.org/support/topic/already-logged-in-no-captcha
 		if (is_user_logged_in()) {
 			wp_redirect(admin_url());
-		} else {
+		} elseif (!(isset($_GET['action']) && 'postpass' == $_GET['action'])) {
 			AIOWPSecurity_Utility_IP::check_login_whitelist_and_forbid();
 		}
 	}

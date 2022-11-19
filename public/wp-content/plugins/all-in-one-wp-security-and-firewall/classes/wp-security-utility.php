@@ -431,7 +431,7 @@ class AIOWPSecurity_Utility {
 	 **/
 	public static function check_locked_ip($ip) {
 		global $wpdb;
-		$login_lockdown_table = AIOWPSEC_TBL_LOGIN_LOCKDOWN;
+		$login_lockdown_table = AIOWPSEC_TBL_LOGIN_LOCKOUT;
 		$now = current_time('mysql', true);
 		$locked_ip = $wpdb->get_row($wpdb->prepare("SELECT * FROM $login_lockdown_table WHERE release_date > %s AND failed_login_ip = %s", $now, $ip), ARRAY_A);
 		if (null != $locked_ip) {
@@ -449,7 +449,7 @@ class AIOWPSecurity_Utility {
 	 */
 	public static function get_locked_ips() {
 		global $wpdb;
-		$login_lockdown_table = AIOWPSEC_TBL_LOGIN_LOCKDOWN;
+		$login_lockdown_table = AIOWPSEC_TBL_LOGIN_LOCKOUT;
 		$now = current_time('mysql', true);
 	$locked_ips = $wpdb->get_results($wpdb->prepare("SELECT * FROM $login_lockdown_table WHERE release_date > %s", $now), ARRAY_A);
 		
@@ -462,7 +462,7 @@ class AIOWPSecurity_Utility {
 
 
 	/**
-	 * Locks an IP address - Adds an entry to the AIOWPSEC_TBL_LOGIN_LOCKDOWN table.
+	 * Locks an IP address - Adds an entry to the AIOWPSEC_TBL_LOGIN_LOCKOUT table.
 	 *
 	 * @global wpdb            $wpdb
 	 * @global AIO_WP_Security $aio_wp_security
@@ -475,7 +475,7 @@ class AIOWPSecurity_Utility {
 	 */
 	public static function lock_IP($ip, $lock_reason, $username = '') {
 		global $wpdb, $aio_wp_security;
-		$login_lockdown_table = AIOWPSEC_TBL_LOGIN_LOCKDOWN;
+		$login_lockdown_table = AIOWPSEC_TBL_LOGIN_LOCKOUT;
 
 		if ('404' == $lock_reason) {
 			$lock_minutes = $aio_wp_security->configs->get_value('aiowps_404_lockout_time_length');
@@ -629,23 +629,27 @@ class AIOWPSecurity_Utility {
 	 */
 	public static function get_server_type() {
 		if (!isset($_SERVER['SERVER_SOFTWARE'])) {
-			return -1;
+			return apply_filters('aios_server_type', -1);
 		}
 
 		// Figure out what server they're using.
 		$server_software = strtolower(sanitize_text_field(wp_unslash(($_SERVER['SERVER_SOFTWARE']))));
 
 		if (strstr($server_software, 'apache')) {
-			return 'apache';
+			$server_type = 'apache';
 		} elseif (strstr($server_software, 'nginx')) {
-			return 'nginx';
+			$server_type = 'nginx';
 		} elseif (strstr($server_software, 'litespeed')) {
-			return 'litespeed';
+			$server_type = 'litespeed';
 		} elseif (strstr($server_software, 'iis')) {
-			return 'iis';
+			$server_type = 'iis';
+		} elseif (strstr($server_software, 'lighttpd')) {
+			$server_type = 'lighttpd';
 		} else { // Unsupported server
-			return -1;
+			$server_type = -1;
 		}
+
+		return apply_filters('aios_server_type', $server_type);
 	}
 
 	/**

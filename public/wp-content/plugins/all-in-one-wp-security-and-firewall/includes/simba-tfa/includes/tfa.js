@@ -1,5 +1,5 @@
 jQuery(function($) {
-	
+
 	/**
 	 * Check if the user requires an OTP field and if so, display it
 	 *
@@ -15,7 +15,7 @@ jQuery(function($) {
 		if ($(form).attr('id') === 'lostpasswordform' ||  $(form).attr('id') === 'resetpasswordform') return false;
 		
 		// 'username' is used by WooCommerce
-		var username = $(form).find('[name="log"], [name="username"], #user_login, #affwp-login-user-login, #affwp-user-login').first().val();
+		var username = $(form).find('[name="log"], [name="username"], #user_login, #affwp-login-user-login, #affwp-user-login, #gform_fields_login input[type="text"]').first().val();
 		
 		if (!username.length) return false;
 		
@@ -115,6 +115,11 @@ jQuery(function($) {
 		
 		if (!user_can_trust) { user_already_trusted = false; }
 		
+		var form_is_gravity_forms = ('object' == typeof window['gform_gravityforms'] && 'gform_' === $(form).attr('id').substring(0, 6));
+		
+		// Gravity Forms won't submit if the elements are hidden
+		var form_retain_existing_elements = form_is_gravity_forms ? true : false;
+		
 		// name="Submit" is WP-Members. 'submit' is Theme My Login starting from 7.x
 		$submit_button = $(form).find('input[name="wp-submit"], input[name="Submit"], input[name="submit"]');
 		// This hasn't been needed for anything yet (Jul 2018), but is a decent back-stop that would have prevented some breakage in the past that needed manual attention:
@@ -122,16 +127,19 @@ jQuery(function($) {
 			$submit_button = $(form).find('input[type="submit"], button[type="submit"]').first();
 		}
 
-		// Hide all elements in a browser-safe way
-		// .user-pass-wrap is the wrapper used (instead of a paragraph) on wp-login.php from WP 5.3
-		$submit_button.parents('form').first().find('p, .impu-form-line-fr, .tml-field-wrap, .user-pass-wrap, .elementor-field-type-text, .elementor-field-type-submit, .elementor-remember-me, .bbp-username, .bbp-password, .bbp-submit-wrapper').each(function(i) {
-			$(this).css('visibility', 'hidden').css('position', 'absolute');
-			// On the WooCommerce form, the 'required' asterisk in the child <span> still shows without this
-			$(this).find('span').css('visibility', 'hidden').css('position', 'absolute');
-		});
-		
-		// WP-Members
-		$submit_button.parents('#wpmem_login').find('fieldset').css('visibility', 'hidden').css('position', 'absolute');
+		if (!form_retain_existing_elements) {
+			// Hide all elements in a browser-safe way
+			// .user-pass-wrap is the wrapper used (instead of a paragraph) on wp-login.php from WP 5.3
+			$submit_button.parents('form').first().find('p, .impu-form-line-fr, .tml-field-wrap, .user-pass-wrap, .elementor-field-type-text, .elementor-field-type-submit, .elementor-remember-me, .bbp-username, .bbp-password, .bbp-submit-wrapper, .gform_body').each(function(i) {
+				$(this).css('visibility', 'hidden').css('position', 'absolute');
+				// On the WooCommerce form, the 'required' asterisk in the child <span> still shows without this
+				$(this).find('span').css('visibility', 'hidden').css('position', 'absolute');
+			});
+			
+			// WP-Members
+			$submit_button.parents('#wpmem_login').find('fieldset').css('visibility', 'hidden').css('position', 'absolute');
+			
+		}
 		
 		// Add new field and controls
 		var html = '';
@@ -142,7 +150,13 @@ jQuery(function($) {
 			
 		} else {
 			
-			html += '<label for="simba_two_factor_auth">' + simba_tfasettings.otp + '<br><input type="text" name="two_factor_code" id="simba_two_factor_auth" autocomplete="off" data-lpignore="true"';
+			html += '<label ';
+			
+			if (form_is_gravity_forms) {
+				html += 'class="gfield_label"';
+			}
+			
+			html += 'for="simba_two_factor_auth">' + simba_tfasettings.otp + '<br><input type="text" name="two_factor_code" id="simba_two_factor_auth" autocomplete="off" data-lpignore="true"';
 			
 			if ($(form).hasClass('woocommerce-form-login')) {
 				// Retain compatibility with previous full-width layout
@@ -151,16 +165,23 @@ jQuery(function($) {
 			
 			html += '></label>';
 			
-			html += '<p class="forgetmenot" style="font-size:small;';
+			html += '<p class="forgetmenot';
+			if (form_is_gravity_forms) html += ' gfield';
+			html += '" style="font-size:small;';
 			if (!$(form).hasClass('woocommerce-form-login')) {
 				// Retain compatibility with previous full-width layout
 				html += ' max-width: 60%;';
 			}
-			html += '">'+simba_tfasettings.otp_login_help;
+			html += '">';
+			
+			// Would need further styling investigations to display this
+			if (!form_is_gravity_forms) {
+				html += simba_tfasettings.otp_login_help;
+			}
 			
 			if (user_can_trust) {
 			
-				html += '<br><input type="checkbox" name="simba_tfa_mark_as_trusted" id="simba_tfa_mark_as_trusted" value="1"><label for="simba_tfa_mark_as_trusted">'+ simba_tfasettings.mark_as_trusted+'</label>';
+				html += '<input type="checkbox" name="simba_tfa_mark_as_trusted" id="simba_tfa_mark_as_trusted" value="1"><label for="simba_tfa_mark_as_trusted">'+ simba_tfasettings.mark_as_trusted+'</label>';
 				
 			}
 		}
@@ -170,28 +191,41 @@ jQuery(function($) {
 		var submit_button_text;
 		var submit_button_name;
 		
-		if ('button' == $submit_button.prop('nodeName').toLowerCase()) {
-			submit_button_text = $submit_button.text().trim();
-			submit_button_name = $submit_button.attr('name');
-		} else {
-			submit_button_text = $submit_button.val();
-			submit_button_name = $submit_button.attr('name');
+		// Gravity forms doesn't like its button being disabled
+		if (!form_is_gravity_forms) {
+		
+			if ('button' == $submit_button.prop('nodeName').toLowerCase()) {
+				submit_button_text = $submit_button.text().trim();
+				submit_button_name = $submit_button.attr('name');
+			} else {
+				submit_button_text = $submit_button.val();
+				submit_button_name = $submit_button.attr('name');
+			}
+			
+			html += '<p class="submit"><input id="tfa_login_btn" class="button button-primary button-large" type="submit" ';
+			if ('undefined' !== typeof submit_button_name && '' != submit_button_name) { html += 'name="'+submit_button_name+'" '; }
+			html += 'value="' + submit_button_text + '"></p>';
+			
+			$submit_button.prop('disabled', true).hide();
+		
 		}
 		
-		html += '<p class="submit"><input id="tfa_login_btn" class="button button-primary button-large" type="submit" ';
-		
-		if ('undefined' !== typeof submit_button_name && '' != submit_button_name) { html += 'name="'+submit_button_name+'" '; }
-		
-		html += 'value="' + submit_button_text + '"></p>';
-		
-		$submit_button.prop('disabled', true);
-		
-		$submit_button.parents('form').first().prepend(html);
+		if (form_retain_existing_elements && form_is_gravity_forms) {
+			// $submit_button.parents('form').first().append(html);
+			//$('<div style="clear:both;">'+html+'</div>').insertBefore($submit_button);
+			$(form).find('#gform_fields_login').append(html);
+		} else {
+			$submit_button.parents('form').first().prepend(html);
+		}
 
 		$('#login_error').hide();
 			
 		if (user_already_trusted) {
-			$('#tfa_login_btn').trigger('click');
+			if (form_retain_existing_elements) {
+				$submit_button.trigger('click');
+			} else {
+				$('#tfa_login_btn').trigger('click');
+			}
 		} else {
 
 			$('#simba_two_factor_auth').trigger('focus');
@@ -214,11 +248,23 @@ jQuery(function($) {
 		console.log('Simba TFA: form submit request');
 
 		var form = e.target;
+		
+		var form_is_gravity_forms = ('object' == typeof window['gform_gravityforms'] && 'gform_' === $(form).attr('id').substring(0, 6));
+		
+		// Turn off everything
 		$(form).off();
 
-		if (check_and_possibly_show_otp_field(form)) {
+		if (0 == $(form).find('#simba_two_factor_auth').length && check_and_possibly_show_otp_field(form)) {
+			
+			if (form_is_gravity_forms) {
+				var form_id = $(form).attr('id').substring(6);
+				// Gravity Forms won't allow the form to submit if this is already true
+				window['gf_submitting_'+form_id] = false;
+			}
+			
 			e.preventDefault();
 			return false;
+			
 		}
 		
 		return true;

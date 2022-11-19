@@ -44,7 +44,7 @@ if (!defined('ABSPATH')) die('Access denied.');
 
 	<form method="post" action="options.php" style="margin-top: 12px">
 		<?php settings_fields('tfa_user_roles_group'); ?>
-		<h2><?php _e('User roles', 'all-in-one-wp-security-and-firewall'); ?></h2>
+		<h2><?php _e('Make two factor authentication available', 'all-in-one-wp-security-and-firewall'); ?></h2>
 		<?php _e('Choose which user roles will have two factor authentication available.', 'all-in-one-wp-security-and-firewall'); ?>
 		<p>
 			<?php $simba_tfa->list_user_roles_checkboxes(); ?>

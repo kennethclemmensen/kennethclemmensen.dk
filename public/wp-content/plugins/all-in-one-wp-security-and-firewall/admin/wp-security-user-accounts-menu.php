@@ -29,8 +29,8 @@ class AIOWPSecurity_User_Accounts_Menu extends AIOWPSecurity_Admin_Menu
     function set_menu_tabs() 
     {
         $this->menu_tabs = array(
-        'tab1' => __('WP Username', 'all-in-one-wp-security-and-firewall'),
-        'tab2' => __('Display Name', 'all-in-one-wp-security-and-firewall'),
+        'tab1' => __('WP username', 'all-in-one-wp-security-and-firewall'),
+        'tab2' => __('Display name', 'all-in-one-wp-security-and-firewall'),
         'tab3' => __('Password', 'all-in-one-wp-security-and-firewall')
         );
     }
@@ -57,7 +57,7 @@ class AIOWPSecurity_User_Accounts_Menu extends AIOWPSecurity_Admin_Menu
     function render_menu_page() 
     {
         echo '<div class="wrap">';
-        echo '<h2>'.__('User Accounts','all-in-one-wp-security-and-firewall').'</h2>';//Interface title
+        echo '<h2>'.__('User accounts','all-in-one-wp-security-and-firewall').'</h2>';//Interface title
         $this->set_menu_tabs();
         $tab = $this->get_current_tab();
         $this->render_menu_tabs();
@@ -83,7 +83,7 @@ class AIOWPSecurity_User_Accounts_Menu extends AIOWPSecurity_Admin_Menu
         <div class="aio_blue_box">
             <?php
             echo '<p>'.__('By default, WordPress sets the administrator username to "admin" at installation time.', 'all-in-one-wp-security-and-firewall').'
-            <br />'.__('A lot of hackers try to take advantage of this information by attempting "Brute Force Login Attacks" where they repeatedly try to guess the password by using "admin" for username.', 'all-in-one-wp-security-and-firewall').'
+            <br />'.__('A lot of hackers try to take advantage of this information by attempting "Brute force login attacks" where they repeatedly try to guess the password by using "admin" for username.', 'all-in-one-wp-security-and-firewall').'
             <br />'.__('From a security perspective, changing the default "admin" user name is one of the first and smartest things you should do on your site.', 'all-in-one-wp-security-and-firewall').'
             <br /><br />'.__('This feature will allow you to change your default "admin" user name to a more secure name of your choosing.', 'all-in-one-wp-security-and-firewall').'
             </p>';
@@ -234,8 +234,8 @@ class AIOWPSecurity_User_Accounts_Menu extends AIOWPSecurity_Admin_Menu
         $nonce=$_REQUEST['_wpnonce'];
         if (!wp_verify_nonce($nonce, 'aiowpsec-change-admin-nonce'))
         {
-            $aio_wp_security->debug_logger->log_debug("Nonce check failed on admin username change operation!",4);
-            die(__('Nonce check failed on admin username change operation!','all-in-one-wp-security-and-firewall'));
+            $aio_wp_security->debug_logger->log_debug("Nonce check failed on admin username change operation.", 4);
+            die('Nonce check failed on admin username change operation.');
         }
         if (!empty($_POST['aiowps_new_user_name'])) {
             $new_username = sanitize_text_field($_POST['aiowps_new_user_name']);
@@ -299,7 +299,7 @@ class AIOWPSecurity_User_Accounts_Menu extends AIOWPSecurity_Admin_Menu
             $return_msg = '<div id="message" class="error"><p>' . $errors . '</p></div>';
         } 
         else{
-            $return_msg = '<div id="message" class="updated fade"><p>'.__('Username Successfully Changed!', 'all-in-one-wp-security-and-firewall').'</p></div>';
+            $return_msg = '<div id="message" class="updated fade"><p>'.__('Username successfully changed.', 'all-in-one-wp-security-and-firewall').'</p></div>';
         }
         return $return_msg;
     }

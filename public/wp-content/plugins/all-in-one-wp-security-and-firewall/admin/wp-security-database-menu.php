@@ -116,7 +116,7 @@ class AIOWPSecurity_Database_Menu extends AIOWPSecurity_Admin_Menu
     function render_menu_page() 
     {
         echo '<div class="wrap">';
-        echo '<h2>'.__('Database Security','all-in-one-wp-security-and-firewall').'</h2>';//Interface title
+        echo '<h2>'.__('Database security', 'all-in-one-wp-security-and-firewall').'</h2>';//Interface title
         $this->set_menu_tabs();
         $tab = $this->get_current_tab();
         $this->render_menu_tabs();

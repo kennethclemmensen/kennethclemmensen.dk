@@ -4,9 +4,9 @@
 	<header>
 		<h3><?php echo htmlspecialchars(__('All-In-One Security (AIOS) Free vs Premium Comparison Chart', 'all-in-one-wp-security-and-firewall')); ?></h3>
 		<p>
-			<a href="https://aiosplugin.com/documentation/"><?php _e('FAQs', 'all-in-one-wp-security-and-firewall'); ?></a>
+			<a target="_blank" href="https://aiosplugin.com/faq/"><?php _e('FAQs', 'all-in-one-wp-security-and-firewall'); ?></a>
 			|
-			<a href="https://aiosplugin.com/general-enquiries/"><?php _e('Ask a pre-sales question', 'all-in-one-wp-security-and-firewall'); ?></a>
+			<a target="_blank" href="https://aiosplugin.com/general-enquiries/"><?php _e('Ask a pre-sales question', 'all-in-one-wp-security-and-firewall'); ?></a>
 		</p>
 	</header>
 	<table class="aiowps_feat_table">

@@ -23,10 +23,10 @@ class AIOWPSecurity_Filesystem_Menu extends AIOWPSecurity_Admin_Menu
     function set_menu_tabs() 
     {
         $this->menu_tabs = array(
-        'tab1' => __('File Permissions','all-in-one-wp-security-and-firewall'),
-        'tab2' => __('PHP File Editing','all-in-one-wp-security-and-firewall'),
-        'tab3' => __('WP File Access','all-in-one-wp-security-and-firewall'),
-        'tab4' => __('Host System Logs','all-in-one-wp-security-and-firewall'),
+        'tab1' => __('File permissions','all-in-one-wp-security-and-firewall'),
+        'tab2' => __('PHP file editing','all-in-one-wp-security-and-firewall'),
+        'tab3' => __('WP file access','all-in-one-wp-security-and-firewall'),
+        'tab4' => __('Host system logs','all-in-one-wp-security-and-firewall'),
         );
     }
 
@@ -52,7 +52,7 @@ class AIOWPSecurity_Filesystem_Menu extends AIOWPSecurity_Admin_Menu
     function render_menu_page() 
     {
         echo '<div class="wrap">';
-        echo '<h2>'.__('Filesystem Security','all-in-one-wp-security-and-firewall').'</h2>';//Interface title
+        echo '<h2>'.__('Filesystem security','all-in-one-wp-security-and-firewall').'</h2>';//Interface title
         $this->set_menu_tabs();
         $tab = $this->get_current_tab();
         $this->render_menu_tabs();
@@ -212,7 +212,7 @@ class AIOWPSecurity_Filesystem_Menu extends AIOWPSecurity_Admin_Menu
 		<h2><?php _e('File editing', 'all-in-one-wp-security-and-firewall'); ?></h2>
         <div class="aio_blue_box">
             <?php
-            echo '<p>'.__('The Wordpress Dashboard by default allows administrators to edit PHP files, such as plugin and theme files.', 'all-in-one-wp-security-and-firewall').'
+            echo '<p>'.__('The WordPress Dashboard by default allows administrators to edit PHP files, such as plugin and theme files.', 'all-in-one-wp-security-and-firewall').'
             <br />'.__('This is often the first tool an attacker will use if able to login, since it allows code execution.', 'all-in-one-wp-security-and-firewall').'
             <br />'.__('This feature will disable the ability for people to edit PHP files via the dashboard.', 'all-in-one-wp-security-and-firewall').'
             </p>';
@@ -379,7 +379,7 @@ class AIOWPSecurity_Filesystem_Menu extends AIOWPSecurity_Admin_Menu
             $logResults = AIOWPSecurity_Utility_File::recursive_file_search($sys_log_file, 0, ABSPATH);
             if (empty($logResults) || $logResults == NULL || $logResults == '' || $logResults === FALSE)
             {
-                $this->show_msg_updated(__('No system logs were found!', 'all-in-one-wp-security-and-firewall'));
+                $this->show_msg_updated(__('No system logs were found.', 'all-in-one-wp-security-and-firewall'));
             }
             else 
             {
@@ -438,7 +438,7 @@ class AIOWPSecurity_Filesystem_Menu extends AIOWPSecurity_Admin_Menu
                     </td>';
             } else
             {
-                echo '<td>'.__('No Action Required', 'all-in-one-wp-security-and-firewall').'</td>';
+                echo '<td>'.__('No action required', 'all-in-one-wp-security-and-firewall').'</td>';
             }
         echo "</tr>";
     }

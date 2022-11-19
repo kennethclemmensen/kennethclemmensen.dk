@@ -92,8 +92,8 @@ class AIOWPSecurity_Admin_Init {
         if (isset($_POST['aiowpsec_export_acct_activity_logs_to_csv'])) { //Export account activity logs
             $nonce = $_REQUEST['_wpnonce'];
             if (!wp_verify_nonce($nonce, 'aiowpsec-export-acct-activity-logs-to-csv-nonce')) {
-                $aio_wp_security->debug_logger->log_debug("Nonce check failed for export account activity logs to CSV!", 4);
-                die(__('Nonce check failed for export account activity logs to CSV!', 'all-in-one-wp-security-and-firewall'));
+                $aio_wp_security->debug_logger->log_debug("Nonce check failed for export account activity logs to CSV.", 4);
+				die('Nonce check failed for export account activity logs to CSV.');
             }
             include_once 'wp-security-list-acct-activity.php';
             $acct_activity_list = new AIOWPSecurity_List_Account_Activity();
@@ -113,7 +113,7 @@ class AIOWPSecurity_Admin_Init {
             $nonce = $_REQUEST['_wpnonce'];
             if (!wp_verify_nonce($nonce, 'aiowpsec-export-failed-login-records-to-csv-nonce')) {
                 $aio_wp_security->debug_logger->log_debug("Nonce check failed for export failed login records to CSV!", 4);
-                die(__('Nonce check failed for export failed login records to CSV!', 'all-in-one-wp-security-and-firewall'));
+				die('Nonce check failed for export failed login records to CSV.');
             }
             include_once 'wp-security-list-login-fails.php';
             $failed_login_list = new AIOWPSecurity_List_Login_Failed_Attempts();
@@ -130,8 +130,8 @@ class AIOWPSecurity_Admin_Init {
         if (isset($_POST['aiowps_export_404_event_logs_to_csv'])) {//Export 404 event logs
             $nonce = $_REQUEST['_wpnonce'];
             if (!wp_verify_nonce($nonce, 'aiowpsec-export-404-event-logs-to-csv-nonce')) {
-                $aio_wp_security->debug_logger->log_debug("Nonce check failed for export 404 event logs to CSV!", 4);
-                die(__('Nonce check failed for export 404 event logs to CSV!', 'all-in-one-wp-security-and-firewall'));
+                $aio_wp_security->debug_logger->log_debug("Nonce check failed for export 404 event logs to CSV.", 4);
+				die('Nonce check failed for export 404 event logs to CSV.');
             }
             include_once 'wp-security-list-404.php'; //For rendering the AIOWPSecurity_List_Table in tab1
             $event_list_404 = new AIOWPSecurity_List_404(); //For rendering the AIOWPSecurity_List_Table in tab1
@@ -351,7 +351,7 @@ class AIOWPSecurity_Admin_Init {
             }
         }
         //For cookie test form submission case
-        if (isset($_GET['page']) && AIOWPSEC_BRUTE_FORCE_MENU_SLUG == $_GET['page'] && isset($_GET['tab']) && 'tab2' == $_GET['tab']) {
+        if (isset($_GET['page']) && AIOWPSEC_BRUTE_FORCE_MENU_SLUG == $_GET['page'] && isset($_GET['tab']) && 'cookie-based-brute-force-prevention' == $_GET['tab']) {
             global $aio_wp_security;
             if (isset($_POST['aiowps_do_cookie_test_for_bfla'])) {
                 $random_suffix = AIOWPSecurity_Utility::generate_alpha_numeric_random_string(10);
@@ -359,7 +359,7 @@ class AIOWPSecurity_Admin_Init {
                 $aio_wp_security->configs->set_value('aiowps_cookie_brute_test', $test_cookie_name);
                 $aio_wp_security->configs->save_config();//save the value
                 AIOWPSecurity_Utility::set_cookie_value($test_cookie_name, '1');
-                $cur_url = "admin.php?page=".AIOWPSEC_BRUTE_FORCE_MENU_SLUG."&tab=tab2";
+                $cur_url = "admin.php?page=".AIOWPSEC_BRUTE_FORCE_MENU_SLUG."&tab=cookie-based-brute-force-prevention";
                 $redirect_url = AIOWPSecurity_Utility::add_query_data_to_url($cur_url, 'aiowps_cookie_test', "1");
                 AIOWPSecurity_Utility::redirect_to_url($redirect_url);
             }

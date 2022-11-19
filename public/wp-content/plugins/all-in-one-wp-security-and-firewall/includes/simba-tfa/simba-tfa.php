@@ -125,6 +125,8 @@ class Simba_Two_Factor_Authentication_1 {
 		if (!defined('TWO_FACTOR_DISABLE') || !TWO_FACTOR_DISABLE) {
 			add_filter('authenticate', array($this, 'tfaVerifyCodeAndUser'), 99999999999, 3);
 		}
+		
+		add_action('show_user_profile', array($this, 'show_user_profile'), 1);
 
 		if (defined('DOING_AJAX') && DOING_AJAX && defined('WP_ADMIN') && WP_ADMIN && !empty($_REQUEST['action']) && 'simbatfa-init-otp' == $_REQUEST['action']) {
 			// Try to prevent PHP notices breaking the AJAX conversation
@@ -135,6 +137,18 @@ class Simba_Two_Factor_Authentication_1 {
 		}
 	}
 
+	/**
+	 * Runs upon the WP action show_user_profile
+	 *
+	 * @param WP_User $user - the user that the profile is for
+	 */
+	public function show_user_profile($user) {
+		if ($user->ID !== get_current_user_id() || !$this->is_activated_for_user($user->ID)) return;
+		echo '<h2>'.__('Two Factor Authentication', 'all-in-one-wp-security-and-firewall').'</h2>';
+		$settings_url = admin_url('admin.php').'?page='.$this->get_user_settings_page_slug();
+		printf('<a target="_blank" href="%s">%s</a>', $settings_url, __('Go here for your two factor authentication settings...', 'all-in-one-wp-security-and-firewall'));
+	}
+	
 	/**
 	 * Runs upon the WP filter admin_menu
 	 */
@@ -334,10 +348,10 @@ class Simba_Two_Factor_Authentication_1 {
 				$value = '&#8212;';
 			} elseif ($this->is_activated_by_user($user_id)) {
 				// Use value.
-				$value = '<span title="' . __( 'Enabled', 'all-in-one-wp-security-and-firewall' ) . '" class="dashicons dashicons-yes"></span>';
+				$value = '<span title="'.__('Enabled', 'all-in-one-wp-security-and-firewall').'" class="dashicons dashicons-yes"></span>';
 			} else {
 				// No group.
-				$value = '<span title="' . __( 'Disabled', 'all-in-one-wp-security-and-firewall' ) . '" class="dashicons dashicons-no"></span>';
+				$value = '<span title="'.__('Disabled', 'all-in-one-wp-security-and-firewall').'" class="dashicons dashicons-no"></span>';
 			}
 		}
 
@@ -549,7 +563,7 @@ class Simba_Two_Factor_Authentication_1 {
 			'ip' => $_SERVER['REMOTE_ADDR'],
 			'until' => $until,
 			'user_agent' => empty($_SERVER['HTTP_USER_AGENT']) ? '' : (string) $_SERVER['HTTP_USER_AGENT'],
-								   'token' => $token
+			'token' => $token
 		);
 
 		$this->user_set_trusted_devices($user_id, $trusted_devices);
@@ -1056,7 +1070,7 @@ class Simba_Two_Factor_Authentication_1 {
 			$setting = $this->get_option('tfa_'.$prefix.$id);
 			$setting = ($setting === false) ? $default : ($setting ? 1 : 0);
 
-			echo '<input type="checkbox" id="tfa_'.$prefix.$id.'" name="tfa_'.$prefix.$id.'" value="1" '.($setting ? 'checked="checked"' :'').'> <label for="tfa_'.$prefix.$id.'">'.htmlspecialchars($name)."</label><br>\n";
+			echo '<input type="checkbox" id="tfa_'.$prefix.$id.'" name="tfa_'.$prefix.$id.'" class="tfa_'.$prefix.'user_roles" value="1" '.($setting ? 'checked="checked"' :'').'> <label for="tfa_'.$prefix.$id.'">'.htmlspecialchars($name)."</label><br>\n";
 		}
 
 		global $wp_roles;
@@ -1066,7 +1080,7 @@ class Simba_Two_Factor_Authentication_1 {
 			$setting = $this->get_option('tfa_'.$prefix.$id);
 			$setting = ($setting === false) ? $default : ($setting ? 1 : 0);
 
-			echo '<input type="checkbox" id="tfa_'.$prefix.$id.'" name="tfa_'.$prefix.$id.'" value="1" '.($setting ? 'checked="checked"' :'').'> <label for="tfa_'.$prefix.$id.'">'.htmlspecialchars($name)."</label><br>\n";
+			echo '<input type="checkbox" id="tfa_'.$prefix.$id.'" name="tfa_'.$prefix.$id.'" class="tfa_'.$prefix.'user_roles" value="1" '.($setting ? 'checked="checked"' :'').'> <label for="tfa_'.$prefix.$id.'">'.htmlspecialchars($name)."</label><br>\n";
 		}
 
 	}

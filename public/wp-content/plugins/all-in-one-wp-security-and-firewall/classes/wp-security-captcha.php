@@ -22,12 +22,12 @@ class AIOWPSecurity_Captcha {
 			//if buddy press feature active add action hook so buddy press can display our errors properly on bp registration form
 			do_action('bp_aiowps-captcha-answer_errors');
 		}
-		$site_key = $aio_wp_security->configs->get_value('aiowps_recaptcha_site_key');
-		if (false === $aio_wp_security->google_recaptcha_sitekey_verification($site_key)) {
-			$aio_wp_security->configs->set_value('aios_is_google_recaptcha_wrong_site_key', 1);
-			$aio_wp_security->configs->save_config();
+
+		if ('1' == $aio_wp_security->configs->get_value('aios_google_recaptcha_invalid_configuration')) {
 			return;
 		}
+
+		$site_key = $aio_wp_security->configs->get_value('aiowps_recaptcha_site_key');
 
 		$cap_form = '<div class="g-recaptcha-wrap" style="padding:10px 0 10px 0"><div class="g-recaptcha" data-sitekey="'.esc_attr($site_key).'"></div></div>';
 		echo $cap_form;
@@ -161,7 +161,7 @@ class AIOWPSecurity_Captcha {
 		global $aio_wp_security;
 		if ($aio_wp_security->configs->get_value('aiowps_default_recaptcha')) {
 			// Google reCAPTCHA enabled
-			if (1 == $aio_wp_security->configs->get_value('aios_is_google_recaptcha_wrong_site_key')) {
+			if ('1' == $aio_wp_security->configs->get_value('aios_google_recaptcha_invalid_configuration')) {
 				return true;
 			}
 			$site_key = esc_html($aio_wp_security->configs->get_value('aiowps_recaptcha_site_key'));// phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
@@ -270,6 +270,31 @@ class AIOWPSecurity_Captcha {
 		// Return 2 letter locale code.
 		$locale = explode('-', $locale);
 		return $locale[0];
+	}
+
+	/**
+	 * Verify Google reCAPTCHA configuration.
+	 *
+	 * @param String $site_key
+	 * @param String $secret_key
+	 *
+	 * @return Boolean
+	 */
+	public function google_recaptcha_verify_configuration($site_key, $secret_key) {
+		$site_key_verify_params = array('k' => $site_key, 'size' => 'checkbox');
+		$site_key_verify_url = esc_url(add_query_arg($site_key_verify_params, 'https://www.google.com/recaptcha/api2/anchor'));
+		$site_key_verify_response_body = wp_remote_retrieve_body(wp_remote_get($site_key_verify_url));
+
+		$secret_key_verify_params = array('secret' => $secret_key);
+		$secret_key_verify_url = esc_url(add_query_arg($secret_key_verify_params, $this->google_verify_recaptcha_url));
+		$secret_key_verify_response_body = wp_remote_retrieve_body(wp_remote_get($secret_key_verify_url));
+		$secret_key_verify_json = json_decode($secret_key_verify_response_body, true);
+
+		if (false !== strpos($site_key_verify_response_body, 'Invalid site key') || is_null($secret_key_verify_json) || (isset($secret_key_verify_json['error-codes']) && in_array('invalid-input-secret', $secret_key_verify_json['error-codes']))) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 
 }

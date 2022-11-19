@@ -45,7 +45,7 @@ class AIOWPSecurity_Installer {
 			 * otherwise it will contain the original blog id and not the current id we need.
 			 *
 			 */
-			$lockdown_tbl_name = $wpdb->prefix.'aiowps_login_lockdown';
+			$lockout_tbl_name = $wpdb->prefix.'aiowps_login_lockdown';
 			$failed_login_tbl_name = $wpdb->prefix.'aiowps_failed_logins';
 			$user_login_activity_tbl_name = $wpdb->prefix.'aiowps_login_activity';
 			$aiowps_global_meta_tbl_name = $wpdb->prefix.'aiowps_global_meta';
@@ -53,7 +53,7 @@ class AIOWPSecurity_Installer {
 			$perm_block_tbl_name = $wpdb->prefix.'aiowps_permanent_block';
 			
 		} else {
-			$lockdown_tbl_name = AIOWPSEC_TBL_LOGIN_LOCKDOWN;
+			$lockout_tbl_name = AIOWPSEC_TBL_LOGIN_LOCKOUT;
 			$failed_login_tbl_name = AIOWPSEC_TBL_FAILED_LOGINS;
 			$user_login_activity_tbl_name = AIOWPSEC_TBL_USER_LOGIN_ACTIVITY;
 			$aiowps_global_meta_tbl_name = AIOWPSEC_TBL_GLOBAL_META_DATA;
@@ -73,7 +73,7 @@ class AIOWPSecurity_Installer {
 			$charset_collate .= " COLLATE $wpdb->collate";
 		}
 
-		$ld_tbl_sql = "CREATE TABLE " . $lockdown_tbl_name . " (
+		$ld_tbl_sql = "CREATE TABLE " . $lockout_tbl_name . " (
 		id bigint(20) NOT NULL AUTO_INCREMENT,
 		user_id bigint(20) NOT NULL,
 		user_login VARCHAR(150) NOT NULL,

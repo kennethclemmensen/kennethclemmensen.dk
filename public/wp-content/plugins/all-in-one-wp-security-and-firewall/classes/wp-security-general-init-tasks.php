@@ -8,31 +8,34 @@ class AIOWPSecurity_General_Init_Tasks {
 		// Do init time tasks
 		global $aio_wp_security;
 
-		if ($aio_wp_security->configs->get_value('aiowps_disable_xmlrpc_pingback_methods') == '1') {
+		if ('1' == $aio_wp_security->configs->get_value('aiowps_disable_xmlrpc_pingback_methods')) {
 			add_filter('xmlrpc_methods', array($this, 'aiowps_disable_xmlrpc_pingback_methods'));
 			add_filter('wp_headers', array($this, 'aiowps_remove_x_pingback_header'));
 		}
 
 		// Check permanent block list and block if applicable (ie, do PHP blocking)
-		AIOWPSecurity_Blocking::check_visitor_ip_and_perform_blocking();
+		if (!is_user_logged_in()) {
+			AIOWPSecurity_Blocking::check_visitor_ip_and_perform_blocking();
+		}
 
-		if ($aio_wp_security->configs->get_value('aiowps_enable_autoblock_spam_ip') == '1') {
+		if ('1' == $aio_wp_security->configs->get_value('aiowps_enable_autoblock_spam_ip')) {
 			add_action('comment_post', array($this, 'spam_detect_process_comment_post'), 10, 2); //this hook gets fired just after comment is saved to DB
 			add_action('transition_comment_status', array($this, 'process_transition_comment_status'), 10, 3); //this hook gets fired when a comment's status changes
 		}
 
-		if ($aio_wp_security->configs->get_value('aiowps_enable_rename_login_page') == '1') {
+		if ('1' == $aio_wp_security->configs->get_value('aiowps_enable_rename_login_page')) {
 			add_action('widgets_init', array($this, 'remove_standard_wp_meta_widget'));
 			add_filter('retrieve_password_message', array($this, 'decode_reset_pw_msg'), 10, 4); //Fix for non decoded html entities in password reset link
 		}
 
 		if (current_user_can(AIOWPSEC_MANAGEMENT_PERMISSION) && is_admin()) {
-			if ($aio_wp_security->configs->get_value('aios_is_google_recaptcha_wrong_site_key')) {
+			if ('1' == $aio_wp_security->configs->get_value('aios_google_recaptcha_invalid_configuration')) {
 				add_action('all_admin_notices', array($this, 'google_recaptcha_notice'));
 			}
 
 			add_action('all_admin_notices', array($this, 'do_firewall_notice'));
 			add_action('admin_post_aiowps_firewall_setup', array(AIOWPSecurity_Firewall_Setup_Notice::get_instance(), 'handle_setup_form'));
+			add_action('admin_post_aiowps_firewall_downgrade', array(AIOWPSecurity_Firewall_Setup_Notice::get_instance(), 'handle_downgrade_protection_form'));
 			add_action('admin_post_aiowps_firewall_setup_dismiss', array(AIOWPSecurity_Firewall_Setup_Notice::get_instance(), 'handle_dismiss_form'));
 
 			$this->reapply_htaccess_rules();
@@ -42,11 +45,11 @@ class AIOWPSecurity_General_Init_Tasks {
 		/**
 		 * Send X-Frame-Options: SAMEORIGIN in HTTP header
 		 */
-		if ($aio_wp_security->configs->get_value('aiowps_prevent_site_display_inside_frame') == '1') {
+		if ('1' == $aio_wp_security->configs->get_value('aiowps_prevent_site_display_inside_frame')) {
 			add_action('template_redirect', 'send_frame_options_header');
 		}
 
-		if ($aio_wp_security->configs->get_value('aiowps_remove_wp_generator_meta_info') == '1') {
+		if ('1' == $aio_wp_security->configs->get_value('aiowps_remove_wp_generator_meta_info')) {
 			add_filter('the_generator', array($this,'remove_wp_generator_meta_info'));
 			add_filter('style_loader_src', array($this,'remove_wp_css_js_meta_info'));
 			add_filter('script_loader_src', array($this,'remove_wp_css_js_meta_info'));
@@ -56,7 +59,6 @@ class AIOWPSecurity_General_Init_Tasks {
 		// Already logged in user should not redirected to brute_force_redirect_url in any case so added condition !is_user_logged_in()
 		if ($aio_wp_security->should_cookie_based_brute_force_prvent() && !is_user_logged_in()) {
 			$bfcf_secret_word = $aio_wp_security->configs->get_value('aiowps_brute_force_secret_word');
-			$login_page_slug = $aio_wp_security->configs->get_value('aiowps_login_page_slug');
 			if (isset($_GET[$bfcf_secret_word])) {
 				AIOWPSecurity_Utility_IP::check_login_whitelist_and_forbid();
 
@@ -67,26 +69,6 @@ class AIOWPSecurity_General_Init_Tasks {
 					AIOWPSecurity_Utility::redirect_to_url($login_url);
 				} else {
 					AIOWPSecurity_Utility::redirect_to_url(AIOWPSEC_WP_URL.'/wp-admin');
-				}
-			} else {
-				$secret_word_cookie_val = AIOWPSecurity_Utility::get_cookie_value(AIOWPSecurity_Utility::get_brute_force_secret_cookie_name());
-				$pw_protected_exception = $aio_wp_security->configs->get_value('aiowps_brute_force_attack_prevention_pw_protected_exception');
-				$prevent_ajax_exception = $aio_wp_security->configs->get_value('aiowps_brute_force_attack_prevention_ajax_exception');
-
-				if ('' != $_SERVER['REQUEST_URI'] && !hash_equals($secret_word_cookie_val, wp_hash($bfcf_secret_word))) {
-					// admin section or login page or login custom slug called
-					$is_admin_or_login = (false != strpos($_SERVER['REQUEST_URI'], 'wp-admin') || false != strpos($_SERVER['REQUEST_URI'], 'wp-login') || ('' != $login_page_slug && false != strpos($_SERVER['REQUEST_URI'], $login_page_slug))) ? 1 : 0;
-					
-					// admin side ajax called
-					$is_admin_ajax_request = ('1' == $prevent_ajax_exception && false != strpos($_SERVER['REQUEST_URI'], 'wp-admin/admin-ajax.php')) ? 1 : 0;
-					
-					// password protected page called
-					$is_password_protected_access = ('1' == $pw_protected_exception && isset($_GET['action']) && 'postpass' == $_GET['action']) ? 1 : 0;
-					// cookie based brute force on and accessing admin without ajax and password protected then redirect
-					if ($is_admin_or_login && !$is_admin_ajax_request && !$is_password_protected_access) {
-						$redirect_url = $aio_wp_security->configs->get_value('aiowps_cookie_based_brute_force_redirect_url');
-						AIOWPSecurity_Utility::redirect_to_url($redirect_url);
-					}
 				}
 			}
 		}
@@ -282,9 +264,6 @@ class AIOWPSecurity_General_Init_Tasks {
 			add_action('bp_signup_validate', array($this, 'buddy_press_signup_validate_captcha'));
 		}
 
-
-		// For feature which displays logged in users
-		$aio_wp_security->user_login_obj->update_users_online_transient();
 
 		// For block fake Googlebots feature
 		if ($aio_wp_security->configs->get_value('aiowps_block_fake_googlebots') == '1') {
@@ -637,10 +616,10 @@ class AIOWPSecurity_General_Init_Tasks {
 		global $aio_wp_security;
 
 		if (($aio_wp_security->is_admin_dashboard_page() || $aio_wp_security->is_plugin_admin_page() || $aio_wp_security->is_aiowps_admin_page()) && !$aio_wp_security->is_aiowps_google_recaptcha_tab_page()) {
-			$recaptcha_tab_url = 'admin.php?page='.AIOWPSEC_BRUTE_FORCE_MENU_SLUG.'&tab=tab3';
+			$recaptcha_tab_url = 'admin.php?page='.AIOWPSEC_BRUTE_FORCE_MENU_SLUG.'&tab=login-captcha';
 			echo '<div class="notice notice-warning"><p>';
 			/* translators: %s: Admin Dashboard > WP Security > Brute Force > Login CAPTCHA Tab Link */
-			printf(__('Your Google reCAPTCHA site key is wrong. Please fill the correct reCAPTCHA keys %s to use the Google reCAPTCHA feature.', 'all-in-one-wp-security-and-firewall'), '<a href="'.esc_url($recaptcha_tab_url).'">'.__('here', 'all-in-one-wp-security-and-firewall').'</a>');
+			printf(__('Your Google reCAPTCHA configuration is invalid.', 'all-in-one-wp-security-and-firewall').' '.__('Please enter the correct reCAPTCHA keys %s to use the Google reCAPTCHA feature.', 'all-in-one-wp-security-and-firewall'), '<a href="'.esc_url($recaptcha_tab_url).'">'.__('here', 'all-in-one-wp-security-and-firewall').'</a>');
 			echo '</p></div>';
 		}
 	}

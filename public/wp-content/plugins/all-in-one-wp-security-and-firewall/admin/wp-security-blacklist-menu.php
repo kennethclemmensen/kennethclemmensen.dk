@@ -22,7 +22,7 @@ class AIOWPSecurity_Blacklist_Menu extends AIOWPSecurity_Admin_Menu
     function set_menu_tabs()
     {
         $this->menu_tabs = array(
-        'tab1' => __('Ban Users', 'all-in-one-wp-security-and-firewall'),
+        'tab1' => __('Ban users', 'all-in-one-wp-security-and-firewall'),
         );
     }
 
@@ -48,7 +48,7 @@ class AIOWPSecurity_Blacklist_Menu extends AIOWPSecurity_Admin_Menu
     function render_menu_page()
     {
         echo '<div class="wrap">';
-        echo '<h2>'.__('Blacklist Manager','all-in-one-wp-security-and-firewall').'</h2>';//Interface title
+        echo '<h2>'.__('Blacklist manager','all-in-one-wp-security-and-firewall').'</h2>';//Interface title
         $this->set_menu_tabs();
         $tab = $this->get_current_tab();
         $this->render_menu_tabs();
@@ -73,8 +73,8 @@ class AIOWPSecurity_Blacklist_Menu extends AIOWPSecurity_Admin_Menu
             $nonce=$_REQUEST['_wpnonce'];
             if (!wp_verify_nonce($nonce, 'aiowpsec-blacklist-settings-nonce'))
             {
-                $aio_wp_security->debug_logger->log_debug("Nonce check failed for save blacklist settings!",4);
-                die(__('Nonce check failed for save blacklist settings!','all-in-one-wp-security-and-firewall'));
+                $aio_wp_security->debug_logger->log_debug("Nonce check failed for save blacklist settings.",4);
+                die('Nonce check failed for save blacklist settings.');
             }
 
             if (isset($_POST["aiowps_enable_blacklisting"]) && empty($_POST['aiowps_banned_ip_addresses']) && empty($_POST['aiowps_banned_user_agents']))

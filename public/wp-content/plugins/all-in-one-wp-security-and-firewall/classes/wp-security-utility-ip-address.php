@@ -53,6 +53,12 @@ class AIOWPSecurity_Utility_IP {
 	 * @return string User IP Address.
 	 */
 	public static function get_user_ip_address() {
+		static $visitor_ip;
+		if (isset($visitor_ip)) {
+			//already set in the page request
+			return $visitor_ip;
+		}
+		
 		$visitor_ip = self::get_server_detected_user_ip_address();
 
 		if ((!defined('AIOS_DISABLE_GET_EXTERNAL_IP') || !AIOS_DISABLE_GET_EXTERNAL_IP) && in_array($visitor_ip, array('', '127.0.0.1', '::1'))) {

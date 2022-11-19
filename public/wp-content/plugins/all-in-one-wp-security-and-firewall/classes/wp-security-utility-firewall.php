@@ -58,7 +58,7 @@ class AIOWPSecurity_Utility_Firewall {
 	 * @return string
 	 */
 	public static function get_muplugin_path() {
-		return path_join(AIOWPSecurity_Utility_File::get_mu_plugin_dir(), 'aiowpsec-firewall-loader.php');
+		return path_join(AIOWPSecurity_Utility_File::get_mu_plugin_dir(), 'aios-firewall-loader.php');
 	}
 
 	/**
@@ -151,6 +151,27 @@ class AIOWPSecurity_Utility_Firewall {
 	}
 
 	/**
+	 * Checks whether the firewall has been setup
+	 *
+	 * @return boolean
+	 */
+	public static function is_firewall_setup() {
+		$is_in_bootstrap = (true === self::get_bootstrap_file()->contains_contents());
+
+		$files = array(
+			self::get_server_file(),
+			self::get_wpconfig_file(),
+			self::get_muplugin_file(),
+		);
+
+		foreach ($files as $file) {
+			if ($is_in_bootstrap && (true === $file->contains_contents())) return true;
+		}
+
+		return false;
+	}
+
+	/**
 	 * Attempts to remove our firewall.
 	 *
 	 * @return void
@@ -173,7 +194,7 @@ class AIOWPSecurity_Utility_Firewall {
 			if (true === $file->contains_contents()) {
 
 				$removed = $file->remove_contents();
-
+				
 				if (is_wp_error($removed)) {
 					global $aio_wp_security;
 

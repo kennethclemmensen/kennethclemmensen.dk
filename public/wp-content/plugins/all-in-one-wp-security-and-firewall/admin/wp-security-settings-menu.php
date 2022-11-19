@@ -22,23 +22,23 @@ class AIOWPSecurity_Settings_Menu extends AIOWPSecurity_Admin_Menu {
     public function set_menu_tabs() {
         $menu_tabs = array(
                         'tab1' => array(
-                            'title' => __('General Settings', 'all-in-one-wp-security-and-firewall'),
+                            'title' => __('General settings', 'all-in-one-wp-security-and-firewall'),
                             'render_callback' => array($this, 'render_tab1'),
                         ),
                         'tab2' => array(
-                            'title' => '.htaccess '.__('File', 'all-in-one-wp-security-and-firewall'),
+                            'title' => '.htaccess '.__('file', 'all-in-one-wp-security-and-firewall'),
                             'render_callback' => array($this, 'render_tab2'),
                         ),
                         'tab3' =>  array(
-                            'title' => 'wp-config.php '.__('File', 'all-in-one-wp-security-and-firewall'),
+                            'title' => 'wp-config.php '.__('file', 'all-in-one-wp-security-and-firewall'),
                             'render_callback' => array($this, 'render_tab3'),
                         ),
                         'delete-plugin-settings' =>  array(
-                            'title' => __('Delete Plugin Settings', 'all-in-one-wp-security-and-firewall'),
+                            'title' => __('Delete plugin settings', 'all-in-one-wp-security-and-firewall'),
                             'render_callback' => array($this, 'render_delete_plugin_settings_tab'),
                         ),
                         'tab4' =>  array(
-                            'title' => __('WP Version Info', 'all-in-one-wp-security-and-firewall'),
+                            'title' => __('WP version info', 'all-in-one-wp-security-and-firewall'),
                             'render_callback' => array($this, 'render_tab4'),
                         ),
                         'tab5' =>  array(
@@ -647,7 +647,7 @@ class AIOWPSecurity_Settings_Menu extends AIOWPSecurity_Admin_Menu {
 		<h2><?php _e('WP generator meta tag and version info', 'all-in-one-wp-security-and-firewall'); ?></h2>
         <div class="aio_blue_box">
             <?php
-            echo '<p>'.__('Wordpress generator automatically adds some meta information inside the "head" tags of every page on your site\'s front end. Below is an example of this:', 'all-in-one-wp-security-and-firewall');
+            echo '<p>'.__('WordPress generator automatically adds some meta information inside the "head" tags of every page on your site\'s front end. Below is an example of this:', 'all-in-one-wp-security-and-firewall');
             echo '<br /><strong>&lt;meta name="generator" content="WordPress 3.5.1" /&gt;</strong>';
             echo '<br />'.__('The above meta information shows which version of WordPress your site is currently running and thus can help hackers or crawlers scan your site to see if you have an older version of WordPress or one with a known exploit.', 'all-in-one-wp-security-and-firewall').'
             <br /><br />'.__('There are also other ways wordpress reveals version info such as during style and script loading. An example of this is:', 'all-in-one-wp-security-and-firewall').'
