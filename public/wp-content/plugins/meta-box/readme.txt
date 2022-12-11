@@ -2,10 +2,10 @@
 Contributors: elightup, metabox, rilwis, fitwp, f-j-kaiser, funkatronic, PerWiklander, ruanmer, Omnicia
 Donate link: https://metabox.io/pricing/
 Tags: meta box, custom fields, custom post types, custom taxonomies, cpt, meta boxes, custom field, post type, taxonomy, meta, admin, advanced, custom, edit, field, file, image, magic fields, post types, more fields, post, repeater, simple fields, text, textarea, type, cms, fields post
-Requires at least: 4.3
+Requires at least: 4.8
 Requires PHP: 7.0
-Tested up to: 6.1.0
-Stable tag: 5.6.8
+Tested up to: 6.1.1
+Stable tag: 5.6.13
 License: GPLv2 or later
 
 Meta Box plugin is a powerful, professional developer toolkit to create custom meta boxes and custom fields for your custom post types in WordPress.
@@ -102,7 +102,7 @@ You'll have ultimate control to add whatever meta box and custom fields in WordP
 
 #### Premium Extensions
 
-- [MB Views](https://metabox.io/plugins/mb-views/): Outputing custom fields and build front-end templates for WordPress without touching theme files.
+- [MB Views](https://metabox.io/plugins/mb-views/): Outputting custom fields and build front-end templates for WordPress without touching theme files.
 - [MB Blocks](https://metabox.io/plugins/mb-blocks/): Create custom Gutenberg blocks with PHP, using the same syntax in Meta Box.
 - [Meta Box Builder](https://metabox.io/plugins/meta-box-builder/): Create custom meta boxes and custom fields in WordPress using a user-friendly drag-and-drop interface.
 - [Meta Box Group](https://metabox.io/plugins/meta-box-group/): Create repeatable groups of WordPress custom fields for better appearance and structure.
@@ -176,6 +176,33 @@ To getting started with the plugin, please read the [Quick Start Guide](https://
 1. Post Taxonomy Fields
 
 == Changelog ==
+
+= 5.6.13 - 2022-12-08 =
+- Fix name for adding form enctype to match with MB Term Meta extension
+- Fix return type for RWMB_Helpers_Array::map()
+- Fix required param type for RWMB_Helpers_Field::get_class()
+
+= 5.6.12 - 2022-12-06 =
+- Fix error getting license key
+
+= 5.6.11 - 2022-12-06 =
+- Fix compatibility with other extensions
+
+= 5.6.10 - 2022-12-06 =
+- Fix padding for images in custom blocks
+- Fix sidebar::query not compatible with object_choice::query
+- Fix compatibility with custom models in MB Custom Table. Closes #1466.
+- Modernize code: use short array, add type hints, remove comments
+
+= 5.6.9 - 2022-12-05 =
+- Improve accessibility for form controls, especially when using on the front end
+- Use all admin themes for switch and button group
+- Add filter 'rwmb_validation_message_string' for validation message
+- Display field label description even if no label
+- Fix not displaying the language according to user preference
+- Fix not setting post parent for the uploaded images on the front end for `image_upload` fields
+- Fix warning when using `file_info` helper function
+- Modernize code for PHP 7
 
 = 5.6.8 - 2022-11-11 =
 - Fix PHP8 warning in image field file info
