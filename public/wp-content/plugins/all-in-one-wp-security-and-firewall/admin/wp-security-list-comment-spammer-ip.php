@@ -6,14 +6,14 @@ if (!defined('ABSPATH')) {
 
 class AIOWPSecurity_List_Comment_Spammer_IP extends AIOWPSecurity_List_Table {
 
-	public function __construct(){
+	public function __construct() {
 		global $status, $page;
-				
+		
 		//Set parent defaults
-		parent::__construct( array(
-			'singular'  => 'item',     //singular name of the listed records
-			'plural'    => 'items',    //plural name of the listed records
-			'ajax'      => false        //does this table support ajax?
+		parent::__construct(array(
+			'singular'  => 'item',  // singular name of the listed records
+			'plural'    => 'items', // plural name of the listed records
+			'ajax'      => false    // does this table support ajax?
 		) );
 		
 	}
@@ -25,7 +25,7 @@ class AIOWPSecurity_List_Comment_Spammer_IP extends AIOWPSecurity_List_Table {
 	public function column_comment_author_IP($item) {
 		$tab = strip_tags($_REQUEST['tab']);
 		//Build row actions
-		if (is_multisite() && get_current_blog_id() != 1) {
+		if (!is_main_site()) {
 			//Suppress the block link if site is a multi site AND not the main site
 			$actions = array(); //blank array
 		} else {
@@ -46,7 +46,7 @@ class AIOWPSecurity_List_Comment_Spammer_IP extends AIOWPSecurity_List_Table {
 	}
 
 	
-	public function column_cb($item){
+	public function column_cb($item) {
 		return sprintf(
 			'<input type="checkbox" name="%1$s[]" value="%2$s" />',
 			/*$1%s*/ $this->_args['singular'],  //Let's simply repurpose the table's singular label
@@ -54,7 +54,7 @@ class AIOWPSecurity_List_Comment_Spammer_IP extends AIOWPSecurity_List_Table {
 		);
 	}
 	
-	public function get_columns(){
+	public function get_columns() {
 		$columns = array(
 			'cb' => '<input type="checkbox" />', //Render a checkbox
 			'comment_author_IP' => __('Spammer IP', 'all-in-one-wp-security-and-firewall'),
@@ -74,7 +74,7 @@ class AIOWPSecurity_List_Comment_Spammer_IP extends AIOWPSecurity_List_Table {
 	}
 	
 	public function get_bulk_actions() {
-		if (is_multisite() && get_current_blog_id() != 1) {
+		if (!is_main_site()) {
 			//Suppress the block link if site is a multi site AND not the main site
 			$actions = array(); //blank array
 		} else {
@@ -89,9 +89,9 @@ class AIOWPSecurity_List_Comment_Spammer_IP extends AIOWPSecurity_List_Table {
 		if (empty($_REQUEST['_wpnonce']) || !wp_verify_nonce($_REQUEST['_wpnonce'], 'bulk-items')) return;
 		
 		global $aio_wp_security;
-		if('block'===$this->current_action()) {
+		if ('block' === $this->current_action()) {
 			//Process block bulk actions
-			if(!isset($_REQUEST['item'])) {
+			if (!isset($_REQUEST['item'])) {
 				$error_msg = '<div id="message" class="error"><p><strong>';
 				$error_msg .= __('Please select some records using the checkboxes','all-in-one-wp-security-and-firewall');
 				$error_msg .= '</strong></p></div>';
@@ -118,8 +118,8 @@ class AIOWPSecurity_List_Comment_Spammer_IP extends AIOWPSecurity_List_Table {
 				}
 			}
 		} else if ($entries != NULL) {
-			$nonce=isset($_GET['aiowps_nonce'])?$_GET['aiowps_nonce']:'';
-			if (!isset($nonce) ||!wp_verify_nonce($nonce, 'block_spammer_ip')) {
+			$nonce = isset($_GET['aiowps_nonce']) ? $_GET['aiowps_nonce'] : '';
+			if (!isset($nonce) || !wp_verify_nonce($nonce, 'block_spammer_ip')) {
 				$aio_wp_security->debug_logger->log_debug("Nonce check failed for delete selected blocked IP operation!",4);
 				die(__('Nonce check failed for delete selected blocked IP operation!','all-in-one-wp-security-and-firewall'));
 			}
@@ -156,8 +156,8 @@ class AIOWPSecurity_List_Comment_Spammer_IP extends AIOWPSecurity_List_Table {
 				}
 			}
 		} else if ($entries != NULL) {
-			$nonce=isset($_GET['aiowps_nonce'])?$_GET['aiowps_nonce']:'';
-			if (!isset($nonce) ||!wp_verify_nonce($nonce, 'block_spammer_ip')) {
+			$nonce = isset($_GET['aiowps_nonce']) ? $_GET['aiowps_nonce'] : '';
+			if (!isset($nonce) || !wp_verify_nonce($nonce, 'block_spammer_ip')) {
 				$aio_wp_security->debug_logger->log_debug("Nonce check failed for delete selected blocked IP operation!",4);
 				die(__('Nonce check failed for delete selected blocked IP operation!','all-in-one-wp-security-and-firewall'));
 			}
@@ -175,7 +175,7 @@ class AIOWPSecurity_List_Comment_Spammer_IP extends AIOWPSecurity_List_Table {
 		AIOWPSecurity_Admin_Menu::show_msg_updated_st(__('The selected IP addresses were saved in the blacklist configuration settings.','all-in-one-wp-security-and-firewall'));
 
 		//Let's check if the Enable Blacklisting flag has been set - If so, we will write the new data to the .htaccess file.
-		if ($aio_wp_security->configs->get_value('aiowps_enable_blacklisting')=='1') {
+		if ('1' == $aio_wp_security->configs->get_value('aiowps_enable_blacklisting')) {
 			$write_result = AIOWPSecurity_Utility_Htaccess::write_to_htaccess();
 			if ($write_result) {
 				AIOWPSecurity_Admin_Menu::show_msg_updated_st(__('The .htaccess file was successfully modified to include the selected IP addresses.','all-in-one-wp-security-and-firewall'));
@@ -219,24 +219,45 @@ class AIOWPSecurity_List_Comment_Spammer_IP extends AIOWPSecurity_List_Table {
 		$orderby = AIOWPSecurity_Utility::sanitize_value_by_array($orderby, $sortable);
 		$order = AIOWPSecurity_Utility::sanitize_value_by_array($order, array('DESC' => '1', 'ASC' => '1'));
 
-		$sql = $wpdb->prepare("SELECT   comment_author_IP, COUNT(*) AS amount
+		// status is not a key in the database so we don't want to sort the database results, but sort the array later
+		if ('status' == $orderby) {
+			$sql = $wpdb->prepare("SELECT comment_author_IP, COUNT(*) AS amount
+				FROM     $wpdb->comments 
+				WHERE    comment_approved = 'spam'
+				GROUP BY comment_author_IP
+				HAVING   amount >= %d
+				", $minimum_comments_per_ip);
+		} else {
+			$sql = $wpdb->prepare("SELECT comment_author_IP, COUNT(*) AS amount
 				FROM     $wpdb->comments 
 				WHERE    comment_approved = 'spam'
 				GROUP BY comment_author_IP
 				HAVING   amount >= %d
 				ORDER BY $orderby $order
 				", $minimum_comments_per_ip);
+		}
 		$data = $wpdb->get_results($sql, ARRAY_A);
 
-		//Get all permamnetly blocked IP addresses
+		// Get all permamnetly blocked IP addresses
 		$block_list = AIOWPSecurity_Blocking::get_list_blocked_ips();
-		if(!empty($block_list)){
-			foreach($data as $key=>$value){
-				if(in_array($value['comment_author_IP'],$block_list)){
-					$data[$key]['status'] = 'blocked';
-				}
+		
+		foreach ($data as $key => $value) {
+			if (in_array($value['comment_author_IP'], $block_list)) {
+				$data[$key]['status'] = 'blocked';
+			} else {
+				$data[$key]['status'] = 'not blocked';
 			}
 		}
+
+		if ('status' == $orderby) {
+			$keys = array_column($data, 'status');
+			if ('asc' == $order) {
+				array_multisort($keys, SORT_ASC, SORT_STRING, $data);
+			} else {
+				array_multisort($keys, SORT_DESC, SORT_STRING, $data);
+			}
+		}
+
 		$current_page = $this->get_pagenum();
 		$total_items = count($data);
 		$data = array_slice($data, (($current_page - 1) * $per_page), $per_page);

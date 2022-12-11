@@ -11,7 +11,7 @@ class AIOWPSecurity_WP_Footer_Content {
 		global $aio_wp_security;
 		
 		// If Google reCAPTCHA is enabled do relevant tasks
-		if ($aio_wp_security->configs->get_value('aiowps_default_recaptcha')) {
+		if ('google-recaptcha-v2' == $aio_wp_security->configs->get_value('aiowps_default_captcha')) {
 			// For WooCommerce forms.
 			// Only proceed if WooCommerce installed and active
 			if (AIOWPSecurity_Utility::is_woocommerce_plugin_active()) {
@@ -29,7 +29,7 @@ class AIOWPSecurity_WP_Footer_Content {
 
 		// Activate the copy protection feature for non-admin users
 		$copy_protection_active = $aio_wp_security->configs->get_value('aiowps_copy_protection') == '1';
-		if ($copy_protection_active && !current_user_can(AIOWPSEC_MANAGEMENT_PERMISSION)) {
+		if ($copy_protection_active && !current_user_can(apply_filters('aios_management_permission', 'manage_options'))) {
 			$this->output_copy_protection_code();
 		}
 		
@@ -75,35 +75,26 @@ class AIOWPSecurity_WP_Footer_Content {
 	public function output_copy_protection_code() {
 		?>
 		<meta http-equiv="imagetoolbar" content="no"><!-- disable image toolbar (if any) -->
+		<style>
+			:root {
+				-webkit-user-select: none;
+				-webkit-touch-callout: none;
+				-ms-user-select: none;
+				-moz-user-select: none;
+				user-select: none;
+			}
+		</style>
 		<script type="text/javascript">
 			/*<![CDATA[*/
-			document.oncontextmenu = function() {
-				return false;
-			};
-			document.onselectstart = function() {
-				if (event.srcElement.type != "text" && event.srcElement.type != "textarea" && event.srcElement.type != "password") {
-					return false;
-				}
-				else {
-					return true;
+			document.oncontextmenu = function(event) {
+				if (event.target.tagName != 'INPUT' && event.target.tagName != 'TEXTAREA') {
+					event.preventDefault();
 				}
 			};
-			if (window.sidebar) {
-				document.onmousedown = function(e) {
-					var obj = e.target;
-					if (obj.tagName.toUpperCase() == 'SELECT'
-							|| obj.tagName.toUpperCase() == "INPUT"
-							|| obj.tagName.toUpperCase() == "TEXTAREA"
-							|| obj.tagName.toUpperCase() == "PASSWORD") {
-						return true;
-					}
-					else {
-						return false;
-					}
-				};
-			}
 			document.ondragstart = function() {
-				return false;
+				if (event.target.tagName != 'INPUT' && event.target.tagName != 'TEXTAREA') {
+					event.preventDefault();
+				}
 			};
 			/*]]>*/
 		</script>
@@ -122,7 +113,7 @@ class AIOWPSecurity_WP_Footer_Content {
 			if(cust_login !== null) {
 				var recaptcha_script = document.createElement('script');
 				recaptcha_script.setAttribute('src','https://www.google.com/recaptcha/api.js?hl=<?php echo AIOWPSecurity_Captcha::get_google_recaptcha_compatible_site_locale(); ?>&ver=<?php echo AIO_WP_SECURITY_VERSION; ?>');
-				document.head.appendChild(recaptcha_script);                
+				document.head.appendChild(recaptcha_script);
 			}
 		</script>
 		<?php

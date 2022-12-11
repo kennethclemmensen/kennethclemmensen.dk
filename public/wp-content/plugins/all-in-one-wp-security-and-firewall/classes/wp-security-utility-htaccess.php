@@ -309,47 +309,6 @@ class AIOWPSecurity_Utility_Htaccess {
 
 				$rules .= AIOWPSecurity_Utility_Htaccess::$ip_blacklist_marker_end . PHP_EOL; //Add feature marker end
 			}
-
-			//Now let's do the user agent list
-			$user_agents = explode(PHP_EOL, $aio_wp_security->configs->get_value('aiowps_banned_user_agents'));
-			if (!empty($user_agents) && !(sizeof($user_agents) == 1 && trim($user_agents[0]) == '')) {
-				if ($apache_or_litespeed) {
-					$rules .= AIOWPSecurity_Utility_Htaccess::$user_agent_blacklist_marker_start . PHP_EOL; //Add feature marker start
-					//Start mod_rewrite rules
-					$rules .= "<IfModule mod_rewrite.c>" . PHP_EOL . "RewriteEngine On" . PHP_EOL . PHP_EOL;
-					$count = 1;
-					foreach ($user_agents as $agent) {
-						$agent_escaped = quotemeta($agent);
-						$pattern = '/\s/'; //Find spaces in the string
-						$replacement = '\s'; //Replace spaces with \s so apache can understand
-						$agent_sanitized = preg_replace($pattern, $replacement, $agent_escaped);
-
-						$rules .= "RewriteCond %{HTTP_USER_AGENT} ^" . trim($agent_sanitized);
-						if ($count < sizeof($user_agents)) {
-							$rules .= " [NC,OR]" . PHP_EOL;
-							$count++;
-						} else {
-							$rules .= " [NC]" . PHP_EOL;
-						}
-
-					}
-					$rules .= "RewriteRule ^(.*)$ - [F,L]" . PHP_EOL . PHP_EOL;
-					// End mod_rewrite rules
-					$rules .= "</IfModule>" . PHP_EOL;
-					$rules .= AIOWPSecurity_Utility_Htaccess::$user_agent_blacklist_marker_end . PHP_EOL; //Add feature marker end
-				} else {
-					$count = 1;
-					$alist = '';
-					foreach ($user_agents as $agent) {
-						$alist .= trim($agent);
-						if ($count < sizeof($user_agents)) {
-							$alist .= '|';
-							$count++;
-						}
-					}
-					$rules .= "\tif (\$http_user_agent ~* " . $alist . ") { return 403; }" . PHP_EOL;
-				}
-			}
 		}
 
 		return implode(PHP_EOL, array_diff(explode(PHP_EOL, $rules), array('Deny from ', 'Deny from')));
@@ -779,12 +738,13 @@ class AIOWPSecurity_Utility_Htaccess {
 	 * If it finds the tag it will deem the file as being .htaccess specific.
 	 * This was written to supplement the .htaccess restore functionality
 	 *
-	 * @param string $file
+	 * @param string $file_contents - the contents of the .htaccess file
+	 *
 	 * @return boolean
 	 */
-	public static function check_if_htaccess_contents($file) {
+	public static function check_if_htaccess_contents($file_contents) {
 		$is_htaccess = false;
-		$file_contents = file_get_contents($file);
+		
 		if (false === $file_contents || strlen($file_contents) == 0) {
 			return -1;
 		}

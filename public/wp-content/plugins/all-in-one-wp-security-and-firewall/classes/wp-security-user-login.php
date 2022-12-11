@@ -25,7 +25,7 @@ class AIOWPSecurity_User_Login {
 		add_filter('login_message', array($this, 'aiowps_login_message')); //WP filter to add or modify messages on the login page
 
 		// Display disable lockdown message
-		if (is_admin() && current_user_can(AIOWPSEC_MANAGEMENT_PERMISSION) && $aio_wp_security->is_login_lockdown_by_const() && $this->is_admin_page_to_display_disable_login_lockdown_by_const_notice()) {
+		if (is_admin() && current_user_can(apply_filters('aios_management_permission', 'manage_options')) && $aio_wp_security->is_login_lockdown_by_const() && $this->is_admin_page_to_display_disable_login_lockdown_by_const_notice()) {
 			add_action('all_admin_notices', array($this, 'disable_login_lockdown_by_const_notice'));
 		}
 	}

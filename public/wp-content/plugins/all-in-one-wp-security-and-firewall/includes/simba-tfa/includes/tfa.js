@@ -1,26 +1,79 @@
 jQuery(function($) {
 
+	var username_requires_otp = [];
+	
+	/**
+	 * Returns the jQuery identifiers for finding the username field. Abstracted here to avoid maintaining multiple lists.
+	 *
+	 * @return String
+	 */
+	function get_username_identifiers() {
+		// 'username' is used by WooCommerce
+		return '[name="log"], [name="username"], #user_login, #affwp-login-user-login, #affwp-user-login, #gform_fields_login input[type="text"]';
+	}
+	
+	/**
+	 * Process the results of a check for whether the user has TFA enabled or not
+	 *
+	 * @param Object form	  - jQuery form object
+	 * @param Object response - the response from the check; must have the property (boolean) "status" and potentially user_(boolean) "can_trust" and (boolean) user_can_trust.
+	 */
+	function process_user_tfa_enabled_check_results(form, response) {
+
+		if (true === response.status) {
+			// Don't bother to remove the spinner if the form is being submitted.
+			$('.simbaotp_spinner').remove();
+			
+			var user_can_trust = (response.hasOwnProperty('user_can_trust') && response.user_can_trust) ? true : false;
+			
+			var user_already_trusted = (response.hasOwnProperty('user_already_trusted') && response.user_can_trust) ? true : false;
+			
+			console.log("Simba TFA: User has OTP enabled: showing OTP field (user_can_trust="+user_can_trust+")");
+			
+			show_otp_field(form, user_can_trust, user_already_trusted);
+			
+			return true;
+			
+		} else {
+			console.log("Simba TFA: User does not have OTP enabled: submitting form");
+			// For some reason, .submit() stopped working with TML 7.x. N.B. Used to do this only for form_type == 2 ("TML shortcode or widget, WP Members, bbPress, Ultimate Membership Pro, WooCommerce or Elementor login form")
+			$(form).find('input[type="submit"], button[type="submit"]').first().trigger('click');
+			// $('#wp-submit').parents('form').first().trigger('submit');
+		}
+		return false;
+	}
+	
 	/**
 	 * Check if the user requires an OTP field and if so, display it
 	 *
-	 * @param String form - DOM selector string
+	 * @param String  form					   - DOM selector string
+	 * @param Boolean only_cache_the_results   - if true, then nothing more will be done that caching the results (in the variable username_requires_otp will be updated)
 	 *
 	 * @uses show_otp_field()
 	 *
 	 * @return Boolean - true if we got involved
 	 */
-	function check_and_possibly_show_otp_field(form) {
+	function check_and_possibly_show_otp_field(form, only_cache_the_results) {
 
 		// If this is a "lost password" form, then exit
-		if ($(form).attr('id') === 'lostpasswordform' ||  $(form).attr('id') === 'resetpasswordform') return false;
-		
-		// 'username' is used by WooCommerce
-		var username = $(form).find('[name="log"], [name="username"], #user_login, #affwp-login-user-login, #affwp-user-login, #gform_fields_login input[type="text"]').first().val();
+		if ($(form).attr('id') === 'lostpasswordform' || $(form).attr('id') === 'resetpasswordform') return false;
+
+		var username = $(form).find(get_username_identifiers()).first().val();
 		
 		if (!username.length) return false;
 		
+		// Is the result already known?
+		if ('object' === typeof username_requires_otp[username]) {
+			if (!only_cache_the_results) {
+				// Process the already-known result
+				return process_user_tfa_enabled_check_results($(form), username_requires_otp[username]);
+			}
+			// No further processing
+			return true;
+		}
+		
 		var $submit_button = $(form).find('input[name="wp-submit"], input[type="submit"], button[type="submit"]').first();
-
+		
 		if (simba_tfasettings.hasOwnProperty('spinnerimg')) {
 			var styling = 'float:right; margin:6px 12px; width: 20px; height: 20px;';
 			if ($('#theme-my-login #wp-submit').length >0) {
@@ -62,24 +115,12 @@ jQuery(function($) {
 						console.log(response.extra_output);
 					}
 					
-					if (true === response.status) {
-						// Don't bother to remove the spinner if the form is being submitted.
+					if (only_cache_the_results) {
+						// Save the result for later processing
+						username_requires_otp[username] = response;
 						$('.simbaotp_spinner').remove();
-
-						var user_can_trust = (response.hasOwnProperty('user_can_trust') && response.user_can_trust) ? true : false;
-						
-						var user_already_trusted = (response.hasOwnProperty('user_already_trusted') && response.user_can_trust) ? true : false;
-						
-						console.log("Simba TFA: User has OTP enabled: showing OTP field (user_can_trust="+user_can_trust+")");
-						
-						show_otp_field(form, user_can_trust, user_already_trusted);
-						
 					} else {
-						console.log("Simba TFA: User does not have OTP enabled: submitting form");
-						
-						// For some reason, .submit() stopped working with TML 7.x. N.B. Used to do this only for form_type == 2 ("TML shortcode or widget, WP Members, bbPress, Ultimate Membership Pro, WooCommerce or Elementor login form")
-						$(form).find('input[type="submit"], button[type="submit"]').first().trigger('click');
-						// $('#wp-submit').parents('form').first().trigger('submit');
+						process_user_tfa_enabled_check_results($(form), response);
 					}
 					
 				} catch(err) {
@@ -276,5 +317,10 @@ jQuery(function($) {
 	}
 	
 	$(simba_tfasettings.login_form_selectors).on('submit', form_submit_handler);
+	
+	$(simba_tfasettings.login_form_selectors).find(get_username_identifiers()).on('blur', function() {
+		var $form = $(this).parents('form').first();
+		check_and_possibly_show_otp_field($form, true);
+	});
 	
 });

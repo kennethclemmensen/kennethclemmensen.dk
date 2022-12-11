@@ -201,32 +201,55 @@ class AIOWPSecurity_Installer {
 		}
 	}
 
+	/**
+	 * Restores original config settings and .htaccess file rules from before the last deactivation.
+	 *
+	 * @global AIO_WP_Security $aio_wp_security
+	 *
+	 * @return Boolean - whether or not the restoration succeeded
+	 */
 	public static function reactivation_tasks() {
 		global $aio_wp_security;
-		$temp_cfgs = get_option('aiowps_temp_configs');
-		if (false !== $temp_cfgs) {
-			//Case where previously installed plugin was reactivated
-			//Let's copy the original configs back to the options table
-			$updated = update_option('aio_wp_security_configs', $temp_cfgs);
-			if (!$updated) {
-				$aio_wp_security->debug_logger->log_debug("AIOWPSecurity_Installer::reactivation_tasks() - Update of option settings failed upon plugin activation!", 4);
-			}
-			$aio_wp_security->configs->configs = $temp_cfgs; //copy the original configs to memory
-			//Now let's write any rules to the .htaccess file if necessary
-			$res = AIOWPSecurity_Utility_Htaccess::write_to_htaccess();
 
-			if (!$res) {
-				$aio_wp_security->debug_logger->log_debug("AIOWPSecurity_Installer::reactivation_tasks() - Could not write to the .htaccess file. Please check the file permissions.", 4);
+		$temp_configs = get_option('aiowps_temp_configs');
+
+		if (false !== $temp_configs) {
+			// Case where previously installed plugin is reactivated
+			// Let's copy the original configs back to the options table
+			$updated = update_option('aio_wp_security_configs', $temp_configs);
+
+			if (!$updated) {
+				if (get_option('aio_wp_security_configs') === $temp_configs) {
+					delete_option('aiowps_temp_configs');
+				}
+
+				$aio_wp_security->debug_logger->log_debug('AIOWPSecurity_Installer::reactivation_tasks() - Restoration of original config settings failed or nothing changed.', 4);
 				return false;
 			}
+
+			// Load the restored config settings to the configs object
+			$aio_wp_security->configs->load_config();
+
+			if (is_main_site() && is_super_admin()) {
+				// Now let's write any rules to the .htaccess file if necessary
+				$result = AIOWPSecurity_Utility_Htaccess::write_to_htaccess();
+				AIOWPSecurity_Configure_Settings::reapply_firewall_configs();
+
+				if (!$result) {
+					$aio_wp_security->debug_logger->log_debug('AIOWPSecurity_Installer::reactivation_tasks() - Could not write to the .htaccess file. Please check the file permissions.', 4);
+					return false;
+				}
+			}
+
 			delete_option('aiowps_temp_configs');
+
 			return true;
 		} else {
-			$aio_wp_security->debug_logger->log_debug("AIOWPSecurity_Deactivation::run_deactivation_tasks() - Original config settings not found!", 4);
+			$aio_wp_security->debug_logger->log_debug('AIOWPSecurity_Installer::reactivation_tasks() - Original config settings not found.', 4);
 			return false;
 		}
 	}
-	
+
 	/**
 	 * Setup AIOS cron tasks.
 	 * Handles both single and multi-site (NW activation) cases.

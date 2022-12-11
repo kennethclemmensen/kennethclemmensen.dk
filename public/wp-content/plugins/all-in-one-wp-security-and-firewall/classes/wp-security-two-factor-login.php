@@ -90,9 +90,9 @@ class AIO_WP_Security_Simba_Two_Factor_Authentication_Plugin extends Simba_Two_F
 		
 		global $current_user;
 		if ($this->is_activated_for_user($current_user->ID)) {
-			if (!current_user_can(AIOWPSEC_MANAGEMENT_PERMISSION)) {
+			if (!current_user_can(apply_filters('aios_management_permission', 'manage_options'))) {
 				$menu_icon_url = AIO_WP_SECURITY_URL . '/images/plugin-icon.png';
-				add_menu_page(__('WP Security', 'all-in-one-wp-security-and-firewall'), __('WP Security', 'all-in-one-wp-security-and-firewall'), AIOWPSEC_MANAGEMENT_PERMISSION, AIOWPSEC_MAIN_MENU_SLUG, '', $menu_icon_url);
+				add_menu_page(__('WP Security', 'all-in-one-wp-security-and-firewall'), __('WP Security', 'all-in-one-wp-security-and-firewall'), apply_filters('aios_management_permission', 'manage_options'), AIOWPSEC_MAIN_MENU_SLUG, '', $menu_icon_url);
 			}
 			add_submenu_page(AIOWPSEC_MAIN_MENU_SLUG, __('Two Factor Auth', 'all-in-one-wp-security-and-firewall'),  __('Two Factor Auth', 'all-in-one-wp-security-and-firewall'), 'read', AIOWPSEC_TWO_FACTOR_AUTH_MENU_SLUG, array($this, 'show_dashboard_user_settings_page'));
 		}
@@ -105,7 +105,7 @@ class AIO_WP_Security_Simba_Two_Factor_Authentication_Plugin extends Simba_Two_F
 	 * @return array Returns all tabs with callback function name
 	 */
 	public function add_two_factor_setting_tab($tabs = array()) {
-		if (!current_user_can(AIOWPSEC_MANAGEMENT_PERMISSION)) return;
+		if (!current_user_can(apply_filters('aios_management_permission', 'manage_options'))) return;
 
 		$tabs['two-factor-authentication'] = array(
 			'title' => __('Two factor authentication', 'all-in-one-wp-security-and-firewall-premium'),
@@ -136,7 +136,7 @@ class AIO_WP_Security_Simba_Two_Factor_Authentication_Plugin extends Simba_Two_F
 	 */
 	public function show_admin_settings_page() {
 
-		if (!is_admin() || !current_user_can(AIOWPSEC_MANAGEMENT_PERMISSION)) return;
+		if (!is_admin() || !current_user_can(apply_filters('aios_management_permission', 'manage_options'))) return;
 		
 		// The value for totp_controller is already set by versions of the TFA plugin after 3 Oct 2022
 		$this->include_template('admin-settings.php', array(

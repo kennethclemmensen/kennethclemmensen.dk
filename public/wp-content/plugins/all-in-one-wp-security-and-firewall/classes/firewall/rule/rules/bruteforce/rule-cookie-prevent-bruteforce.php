@@ -51,7 +51,7 @@ class Rule_Cookie_Prevent_Bruteforce extends Rule {
 			$pw_protected_exception = $aiowps_firewall_config->get_value('aios_brute_force_attack_prevention_pw_protected_exception');
 			$prevent_ajax_exception = $aiowps_firewall_config->get_value('aios_brute_force_attack_prevention_ajax_exception');
 			
-			if ('' != $_SERVER['REQUEST_URI'] && !hash_equals($brute_force_secret_cookie_val, hash_hmac('md5', $brute_force_secret_word, $brute_force_cookie_salt))) {
+			if (isset($_SERVER['REQUEST_URI']) && '' != $_SERVER['REQUEST_URI'] && !hash_equals($brute_force_secret_cookie_val, hash_hmac('md5', $brute_force_secret_word, $brute_force_cookie_salt))) {
 				// admin section or login page or login custom slug called
 				$is_admin_or_login = (false != strpos($_SERVER['REQUEST_URI'], 'wp-admin') || false != strpos($_SERVER['REQUEST_URI'], 'wp-login') || ('' != $login_page_slug && false != strpos($_SERVER['REQUEST_URI'], $login_page_slug))) ? 1 : 0;
 				
@@ -69,7 +69,7 @@ class Rule_Cookie_Prevent_Bruteforce extends Rule {
 				}
 			}
 		}
-		return !Rule::SATISFIED;
+		return Rule::NOT_SATISFIED;
 	}
 
 }

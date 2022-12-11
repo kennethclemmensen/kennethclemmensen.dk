@@ -26,7 +26,7 @@ class AIOWPSecurity_Utility {
 	 */
 	public static function has_manage_cap() {
 		// This filter will useful when the administrator would like to give permission to access AIOWPS to Security Analyst.
-		$cap = apply_filters('aiowps_management_capability', AIOWPSEC_MANAGEMENT_PERMISSION);
+		$cap = apply_filters('aiowps_management_capability', apply_filters('aios_management_permission', 'manage_options'));
 		return current_user_can($cap);
 	}
 
@@ -47,6 +47,8 @@ class AIOWPSecurity_Utility {
 	 * @return string
 	 */
 	public static function get_current_page_url() {
+		if (defined('WP_CLI') && WP_CLI) return '';
+
 		$pageURL = 'http';
 		if (isset($_SERVER["HTTPS"]) && "on" == $_SERVER["HTTPS"]) {
 			$pageURL .= "s";

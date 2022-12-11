@@ -8,7 +8,41 @@ class AIOWPSecurity_Captcha {
 	private $google_verify_recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify';
 
 	public function __construct() {
-		//NOP
+		$this->upgrade_captcha_options();
+	}
+
+	/**
+	 * This function handles upgrading captcha options
+	 *
+	 * @return void
+	 */
+	private function upgrade_captcha_options() {
+		global $aio_wp_security;
+
+		if (!empty($aio_wp_security->configs->get_value('aiowps_default_captcha'))) return;
+
+		// Upgrade the default captcha option
+		if ($aio_wp_security->configs->get_value('aiowps_default_recaptcha')) {
+			$aio_wp_security->configs->set_value('aiowps_default_recaptcha', '');
+			$aio_wp_security->configs->set_value('aiowps_default_captcha', 'google-recaptcha-v2');
+		} elseif ('1' == $aio_wp_security->configs->get_value('aiowps_enable_login_captcha') || '1' == $aio_wp_security->configs->get_value('aiowps_enable_registration_page_captcha')) {
+			$aio_wp_security->configs->set_value('aiowps_default_captcha', 'simple-math');
+		} else {
+			$aio_wp_security->configs->set_value('aiowps_default_captcha', 'none');
+		}
+	}
+
+	/**
+	 * This function will return an array of supported CAPTCHA options
+	 *
+	 * @return array - an array of supported CAPTCHA options
+	 */
+	public function get_supported_captchas() {
+		return array(
+			'none' => 'No CAPTCHA',
+			'google-recaptcha-v2' => 'Google reCAPTCHA V2',
+			'simple-math' => 'Simple math CAPTCHA'
+		);
 	}
 
 	/**
@@ -159,7 +193,7 @@ class AIOWPSecurity_Captcha {
 	 */
 	public function verify_captcha_submit() {
 		global $aio_wp_security;
-		if ($aio_wp_security->configs->get_value('aiowps_default_recaptcha')) {
+		if ('google-recaptcha-v2' == $aio_wp_security->configs->get_value('aiowps_default_captcha')) {
 			// Google reCAPTCHA enabled
 			if ('1' == $aio_wp_security->configs->get_value('aios_google_recaptcha_invalid_configuration')) {
 				return true;
@@ -173,7 +207,7 @@ class AIOWPSecurity_Captcha {
 				// Expected CAPTCHA field in $_POST but got none!
 				return false;
 			}
-		} else {
+		} elseif ('simple-math' == $aio_wp_security->configs->get_value('aiowps_default_captcha')) {
 			// Math CAPTCHA is enabled
 			if (array_key_exists('aiowps-captcha-answer', $_POST)) {
 				$captcha_answer = isset($_POST['aiowps-captcha-answer']) ? sanitize_text_field($_POST['aiowps-captcha-answer']) : '';

@@ -445,7 +445,7 @@ class AIOWPSecurity_Spam_Menu extends AIOWPSecurity_Admin_Menu
 		<h3 class="hndle"><label for="title"><?php _e('Spammer IP address results', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
         <div class="inside">
             <?php
-            if (is_multisite() && get_current_blog_id() != 1)
+            if (!is_main_site())
             {
                     echo '<div class="aio_yellow_box">';
                     echo '<p>'.__('The plugin has detected that you are using a Multi-Site WordPress installation.', 'all-in-one-wp-security-and-firewall').'</p>

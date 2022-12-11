@@ -178,7 +178,7 @@ class AIOWPSecurity_Utility_Firewall {
 	 */
 	public static function remove_firewall() {
 		global $aio_wp_security;
-		
+
 		$firewall_files = array(
 			'server'    => AIOWPSecurity_Utility_Firewall::get_server_file(),
 			'bootstrap' => AIOWPSecurity_Utility_Firewall::get_bootstrap_file(),
@@ -196,15 +196,12 @@ class AIOWPSecurity_Utility_Firewall {
 				$removed = $file->remove_contents();
 				
 				if (is_wp_error($removed)) {
-					global $aio_wp_security;
-
 					$error_message = $removed->get_error_message();
 					$error_message .= ' - ';
 					$error_message .= $removed->get_error_data();
 					$aio_wp_security->debug_logger->log_debug($error_message, 4);
 				}
 			}
-			
 		}
 
 		//Delete our mu-plugin, if it's created
@@ -216,6 +213,6 @@ class AIOWPSecurity_Utility_Firewall {
 
 		$aio_wp_security->configs->set_value('aios_firewall_dismiss', false);
 		$aio_wp_security->configs->save_config();
-
 	}
+
 }

@@ -212,7 +212,7 @@ class AIOWPSecurity_User_Registration_Menu extends AIOWPSecurity_Admin_Menu
 		<h3 class="hndle"><label for="title"><?php _e('Registration page CAPTCHA settings', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
         <div class="inside">
         <?php
-        if (is_multisite() && get_current_blog_id() != 1)
+        if (!is_main_site())
         {
             //Hide config settings if MS and not main site
             $special_msg = '<div class="aio_yellow_box">';

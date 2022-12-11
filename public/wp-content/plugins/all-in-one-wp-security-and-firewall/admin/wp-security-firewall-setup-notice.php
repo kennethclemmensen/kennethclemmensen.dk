@@ -604,7 +604,7 @@ class AIOWPSecurity_Firewall_Setup_Notice {
             return true;
         }
 
-        if (!current_user_can(AIOWPSEC_MANAGEMENT_PERMISSION)) {
+        if (!current_user_can(apply_filters('aios_management_permission', 'manage_options'))) {
 			return true;
 		}
 

@@ -80,7 +80,7 @@ class AIOWPSecurity_Database_Menu extends AIOWPSecurity_Admin_Menu
 
     public function set_menu_tabs() 
     {
-        if (is_multisite() && get_current_blog_id() != 1){
+        if (!is_main_site()) {
             //Suppress the DB prefix change tab if site is a multi site AND not the main site
             $this->menu_tabs = array(
             //'tab1' => __('Database prefix', 'all-in-one-wp-security-and-firewall'),

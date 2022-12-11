@@ -8,11 +8,11 @@ if (!class_exists('AIO_WP_Security')) {
 
 	class AIO_WP_Security {
 
-		public $version = '5.1.1';
+		public $version = '5.1.3';
 
 		public $db_version = '1.9.6';
 		
-		public $firewall_version = '1.0.1';
+		public $firewall_version = '1.0.2';
 
 		public $plugin_url;
 
@@ -77,6 +77,9 @@ if (!class_exists('AIO_WP_Security')) {
 		 * @return Void.
 		 */
 		public function __construct() {
+			// Add management permission filter early before any of the includes try to use it
+			add_filter('aios_management_permission', array($this, 'aios_management_permission'), 10, 2);
+
 			$this->define_constants();
 			$this->load_configs();
 			$this->includes();
@@ -129,7 +132,7 @@ if (!class_exists('AIO_WP_Security')) {
 			define('AIO_WP_SECURITY_BACKUPS_DIR_NAME', 'aiowps_backups');
 			define('AIO_WP_SECURITY_BACKUPS_PATH', AIO_WP_SECURITY_PATH.'/backups');
 			define('AIO_WP_SECURITY_LIB_PATH', AIO_WP_SECURITY_PATH.'/lib');
-			if (!defined('AIOWPSEC_MANAGEMENT_PERMISSION')) {//This will allow the user to define custom capability for this constant in wp-config file
+			if (!defined('AIOWPSEC_MANAGEMENT_PERMISSION')) { // This will allow the user to define custom capability for this constant in wp-config file
 				define('AIOWPSEC_MANAGEMENT_PERMISSION', 'manage_options');
 			}
 			define('AIOWPSEC_MENU_SLUG_PREFIX', 'aiowpsec');
@@ -225,6 +228,18 @@ if (!class_exists('AIO_WP_Security')) {
 		}
 
 		/**
+		 * A filter function to get the management permission for AIOS
+		 *
+		 * @param string $permission - the management permission
+		 *
+		 * @return string - the filtered permission
+		 */
+		public function aios_management_permission($permission) {
+			if (defined('AIOWPSEC_MANAGEMENT_PERMISSION') && AIOWPSEC_MANAGEMENT_PERMISSION) return AIOWPSEC_MANAGEMENT_PERMISSION;
+			return $permission;
+		}
+
+		/**
 		 * Activation handler function.
 		 *
 		 * @param boolean $networkwide whether activate plugin network wide.
@@ -263,8 +278,7 @@ if (!class_exists('AIO_WP_Security')) {
 			}
 
 			$subaction = sanitize_text_field($_POST['subaction']);
-
-			if (!current_user_can(AIOWPSEC_MANAGEMENT_PERMISSION)) {
+			if (!current_user_can(apply_filters('aios_management_permission', 'manage_options'))) {
 				wp_send_json(array(
 					'result' => false,
 					'error_code' => 'security_check',
@@ -441,10 +455,11 @@ if (!class_exists('AIO_WP_Security')) {
 			if (is_admin()) {
 				if (get_option('aiowpsec_firewall_version') != AIO_WP_SECURITY_FIREWALL_VERSION) {
 					AIOWPSecurity_Configure_Settings::set_firewall_configs();
+					AIOWPSecurity_Utility_Htaccess::write_to_htaccess();
 				}
 			}
 		}
-
+		
 		public function db_upgrade_handler() {
 			if (is_admin()) {//Check if DB needs to be upgraded
 				if (get_option('aiowpsec_db_version') != AIO_WP_SECURITY_DB_VERSION) {
@@ -545,7 +560,7 @@ if (!class_exists('AIO_WP_Security')) {
 		 */
 		public function aiowps_login_enqueue() {
 			global $aio_wp_security;
-			if (!$aio_wp_security->is_login_lockdown_by_const() && $aio_wp_security->configs->get_value('aiowps_default_recaptcha')) {
+			if (!$aio_wp_security->is_login_lockdown_by_const() && 'google-recaptcha-v2' == $aio_wp_security->configs->get_value('aiowps_default_captcha')) {
 				if ($aio_wp_security->configs->get_value('aiowps_enable_login_captcha') == '1' || $aio_wp_security->configs->get_value('aiowps_enable_registration_page_captcha') == '1') {
 					wp_enqueue_script('google-recaptcha', 'https://www.google.com/recaptcha/api.js?hl=' . AIOWPSecurity_Captcha::get_google_recaptcha_compatible_site_locale(), array(), AIO_WP_SECURITY_VERSION);
 					// Below is needed to provide some space for the Google reCAPTCHA form (otherwise it appears partially hidden on RHS)
