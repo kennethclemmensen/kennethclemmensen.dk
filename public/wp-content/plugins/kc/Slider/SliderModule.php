@@ -3,12 +3,12 @@ namespace KC\Slider;
 
 use KC\Core\Action;
 use KC\Core\Filter;
-use KC\Core\Images\ImageHelper;
+use KC\Core\Images\ImageService;
 use KC\Core\Modules\IModule;
 use KC\Core\PostTypes\Icon;
 use KC\Core\PostTypes\PostType;
 use KC\Core\PostTypes\PostTypeFeature;
-use KC\Core\Translations\TranslationHelper;
+use KC\Core\Translations\TranslationService;
 use KC\Core\Translations\TranslationString;
 use KC\Slider\Settings\SliderSettings;
 
@@ -34,8 +34,8 @@ final class SliderModule implements IModule {
 		add_action(Action::INIT, function() : void {
 			register_post_type(PostType::Slides->value, [
 				'labels' => [
-					'name' => TranslationHelper::getTranslatedString(TranslationString::Slides),
-					'singular_name' => TranslationHelper::getTranslatedString(TranslationString::Slide)
+					'name' => TranslationService::getTranslatedString(TranslationString::Slides),
+					'singular_name' => TranslationService::getTranslatedString(TranslationString::Slide)
 				],
 				'public' => false,
 				'has_archive' => false,
@@ -56,11 +56,11 @@ final class SliderModule implements IModule {
 	private function addAdminColumns() : void {
 		$imageColumnKey = 'image';
 		add_filter(Filter::getManagePostsColumnsFilter(PostType::Slides), function(array $columns) use ($imageColumnKey) : array {
-			$columns[$imageColumnKey] = TranslationHelper::getTranslatedString(TranslationString::Image);
+			$columns[$imageColumnKey] = TranslationService::getTranslatedString(TranslationString::Image);
 			return $columns;
 		});
 		add_action(Action::getManagePostsCustomColumn(PostType::Slides), function(string $columnName) use ($imageColumnKey) : void {
-			if($columnName === $imageColumnKey) echo '<img src="'.ImageHelper::getImageUrl(get_the_ID()).'" alt="'.get_the_title().'" style="height: 60px">';
+			if($columnName === $imageColumnKey) echo '<img src="'.ImageService::getImageUrl(get_the_ID()).'" alt="'.get_the_title().'" style="height: 60px">';
 		});
 	}
 }

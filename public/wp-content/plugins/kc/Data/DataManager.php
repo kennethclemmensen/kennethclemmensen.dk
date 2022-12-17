@@ -1,14 +1,14 @@
 <?php
 namespace KC\Data;
 
-use KC\Core\Images\ImageHelper;
+use KC\Core\Images\ImageService;
 use KC\Core\Images\ImageSize;
 use KC\Core\PostTypes\FieldName;
 use KC\Core\PostTypes\PostType;
 use KC\Core\PostTypes\PostTypeFeature;
-use KC\Core\PostTypes\PostTypeHelper;
+use KC\Core\PostTypes\PostTypeService;
 use KC\Core\PostTypes\SortingOrder;
-use KC\Core\Security\SecurityHelper;
+use KC\Core\Security\SecurityService;
 use KC\Core\Taxonomies\TaxonomyName;
 use \WP_Query;
 
@@ -83,7 +83,7 @@ final class DataManager {
 		$wpQuery = new WP_Query($args);
 		while($wpQuery->have_posts()) {
 			$wpQuery->the_post();
-			$slides[] = ['image' => ImageHelper::getImageUrl(get_the_ID(), ImageSize::Slides)];
+			$slides[] = ['image' => ImageService::getImageUrl(get_the_ID(), ImageSize::Slides)];
 		}
 		return $slides;
 	}
@@ -106,7 +106,7 @@ final class DataManager {
 			$galleries[] = [
 				'title' => get_the_title(),
 				'link' => get_permalink(get_the_ID()),
-				'image' => ImageHelper::getImageUrl(get_the_ID(), ImageSize::GalleryImage)
+				'image' => ImageService::getImageUrl(get_the_ID(), ImageSize::GalleryImage)
 			];
 		}
 		return $galleries;
@@ -132,12 +132,12 @@ final class DataManager {
 		while($wpQuery->have_posts()) {
 			$wpQuery->the_post();
 			$id = get_the_ID();
-			$url = ImageHelper::getImageUrl($id);
+			$url = ImageService::getImageUrl($id);
 			$imageInfo = wp_get_attachment_image_src(attachment_url_to_postid($url));
 			$images[] = [
 				'title' => get_the_title(),
-				'url' => ImageHelper::getImageUrl($id, ImageSize::Large),
-				'thumbnail' => ImageHelper::getImageUrl($id, ImageSize::Thumbnail),
+				'url' => ImageService::getImageUrl($id, ImageSize::Large),
+				'thumbnail' => ImageService::getImageUrl($id, ImageSize::Thumbnail),
 				'gallery' => $galleryId,
 				'width' => $imageInfo[1].'px',
 				'height' => $imageInfo[2].'px'
@@ -154,7 +154,7 @@ final class DataManager {
 	public function updateFileDownloadCounter(int $fileID) : void {
 		$downloads = $this->getFileDownloads($fileID);
 		$downloads++;
-		PostTypeHelper::setFieldValue($downloads, FieldName::FileDownloads, $fileID);
+		PostTypeService::setFieldValue($downloads, FieldName::FileDownloads, $fileID);
 	}
 
 	/**
@@ -206,10 +206,10 @@ final class DataManager {
 		while($wpQuery->have_posts()) {
 			$wpQuery->the_post();
 			$id = get_the_ID();
-			$key = PostTypeHelper::getFieldValue(FieldName::Key, $id);
-			$altKey = PostTypeHelper::getFieldValue(FieldName::AltKey, $id) === '1';
-			$ctrlKey = PostTypeHelper::getFieldValue(FieldName::CtrlKey, $id) === '1';
-			$shiftKey = PostTypeHelper::getFieldValue(FieldName::ShiftKey, $id) === '1';
+			$key = PostTypeService::getFieldValue(FieldName::Key, $id);
+			$altKey = PostTypeService::getFieldValue(FieldName::AltKey, $id) === '1';
+			$ctrlKey = PostTypeService::getFieldValue(FieldName::CtrlKey, $id) === '1';
+			$shiftKey = PostTypeService::getFieldValue(FieldName::ShiftKey, $id) === '1';
 			if($key && ($altKey === true || $ctrlKey === true || $shiftKey === true)) {
 				$relativeLink = wp_make_link_relative(get_permalink($id));
 				$url = $this->removeLastCharacter($relativeLink);
@@ -232,8 +232,8 @@ final class DataManager {
 	 * @return string the file url
 	 */
 	private function getFileUrl(int $fileID) : string {
-		$attachmentID = PostTypeHelper::getFieldValue(FieldName::File, $fileID);
-		return SecurityHelper::escapeUrl(wp_get_attachment_url($attachmentID));
+		$attachmentID = PostTypeService::getFieldValue(FieldName::File, $fileID);
+		return SecurityService::escapeUrl(wp_get_attachment_url($attachmentID));
 	}
 
 	/**
@@ -243,7 +243,7 @@ final class DataManager {
 	 * @return string the file name
 	 */
 	private function getFileName(int $fileID) : string {
-		$attachmentID = PostTypeHelper::getFieldValue(FieldName::File, $fileID);
+		$attachmentID = PostTypeService::getFieldValue(FieldName::File, $fileID);
 		return basename(get_attached_file($attachmentID));
 	}
 
@@ -254,7 +254,7 @@ final class DataManager {
 	 * @return string the file description
 	 */
 	private function getFileDescription(int $fileID) : string {
-		return PostTypeHelper::getFieldValue(FieldName::FileDescription, $fileID);
+		return PostTypeService::getFieldValue(FieldName::FileDescription, $fileID);
 	}
 
 	/**
@@ -264,7 +264,7 @@ final class DataManager {
 	 * @return int the number of file downloads
 	 */
 	private function getFileDownloads(int $fileID) : int {
-		return PostTypeHelper::getFieldValue(FieldName::FileDownloads, $fileID);
+		return PostTypeService::getFieldValue(FieldName::FileDownloads, $fileID);
 	}
 
 	/**

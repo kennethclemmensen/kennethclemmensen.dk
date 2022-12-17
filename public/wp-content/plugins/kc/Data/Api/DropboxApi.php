@@ -3,6 +3,7 @@ namespace KC\Data\Api;
 
 use KC\Core\Api\BaseApi;
 use KC\Core\Api\ContentType;
+use KC\Core\Files\FileService;
 
 /**
  * The DropboxApi class contains functionality to communicate with the Dropbox Api
@@ -48,7 +49,7 @@ final class DropboxApi extends BaseApi {
 			'Content-Type: '.ContentType::OctetStream->value,
 			'Dropbox-API-Arg: '.json_encode(['path' => '/'.$file])
 		];
-		$postFields = file_get_contents($folder.'/'.$file);
+		$postFields = FileService::getFileContent($folder.'/'.$file);
 		$this->createPostRequest($url, $headers, $postFields);
 	}
 }

@@ -9,7 +9,7 @@ use KC\Core\PostTypes\FieldType;
 use KC\Core\PostTypes\PostType;
 use KC\Core\PostTypes\PostTypeFeature;
 use KC\Core\Taxonomies\TaxonomyName;
-use KC\Core\Translations\TranslationHelper;
+use KC\Core\Translations\TranslationService;
 use KC\Core\Translations\TranslationString;
 
 /**
@@ -33,8 +33,8 @@ final class FileModule implements IModule {
 		add_action(Action::INIT, function() : void {
 			register_post_type(PostType::File->value, [
 				'labels' => [
-					'name' => TranslationHelper::getTranslatedString(TranslationString::Files),
-					'singular_name' => TranslationHelper::getTranslatedString(TranslationString::File)
+					'name' => TranslationService::getTranslatedString(TranslationString::Files),
+					'singular_name' => TranslationService::getTranslatedString(TranslationString::File)
 				],
 				'public' => true,
 				'exclude_from_search' => true,
@@ -43,8 +43,8 @@ final class FileModule implements IModule {
 			]);
 			register_taxonomy(TaxonomyName::FileType->value, [PostType::Page->value, PostType::File->value], [
 				'labels' => [
-					'name' => TranslationHelper::getTranslatedString(TranslationString::FileTypes),
-					'singular_name' => TranslationHelper::getTranslatedString(TranslationString::FileType)
+					'name' => TranslationService::getTranslatedString(TranslationString::FileTypes),
+					'singular_name' => TranslationService::getTranslatedString(TranslationString::FileType)
 				],
 				'show_admin_column' => true,
 				'hierarchical' => true
@@ -59,22 +59,22 @@ final class FileModule implements IModule {
 		add_filter(Filter::META_BOXES, function(array $metaBoxes) : array {
 			$metaBoxes[] = [
 				'id' => 'file_informations',
-				'title' => TranslationHelper::getTranslatedString(TranslationString::FileInformations),
+				'title' => TranslationService::getTranslatedString(TranslationString::FileInformations),
 				'post_types' => [PostType::File->value],
 				'fields' => [
 					[
-						'name' => TranslationHelper::getTranslatedString(TranslationString::Description),
+						'name' => TranslationService::getTranslatedString(TranslationString::Description),
 						'id' => FieldName::FileDescription->value,
 						'type' => FieldType::TextArea->value
 					],
 					[
-						'name' => TranslationHelper::getTranslatedString(TranslationString::File),
+						'name' => TranslationService::getTranslatedString(TranslationString::File),
 						'id' => FieldName::File->value,
 						'type' => FieldType::File->value,
 						'max_file_uploads' => 1
 					],
 					[
-						'name' => TranslationHelper::getTranslatedString(TranslationString::DownloadCounter),
+						'name' => TranslationService::getTranslatedString(TranslationString::DownloadCounter),
 						'id' => FieldName::FileDownloads->value,
 						'type' => FieldType::Number->value,
 						'std' => 0

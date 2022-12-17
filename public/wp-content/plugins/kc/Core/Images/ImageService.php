@@ -1,12 +1,12 @@
 <?php
 namespace KC\Core\Images;
 
-use KC\Core\Security\SecurityHelper;
+use KC\Core\Security\SecurityService;
 
 /**
- * The ImageHelper class contains image methods
+ * The ImageService class contains image methods
  */
-final class ImageHelper {
+final class ImageService {
 
 	/**
 	 * Get an image url
@@ -16,6 +16,6 @@ final class ImageHelper {
 	 * @return string the image url
 	 */
 	public static function getImageUrl(int $imageID, ImageSize $size = ImageSize::PostThumbnail) : string {
-		return SecurityHelper::escapeUrl(get_the_post_thumbnail_url($imageID, $size->value));
+		return SecurityService::escapeUrl(get_the_post_thumbnail_url($imageID, $size->value));
 	}
 }

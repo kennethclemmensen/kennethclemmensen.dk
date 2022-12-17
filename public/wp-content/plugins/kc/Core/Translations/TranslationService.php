@@ -2,9 +2,9 @@
 namespace KC\Core\Translations;
 
 /**
- * The TranslationHelper class contains translation methods
+ * The TranslationService class contains translation methods
  */
-final class TranslationHelper {
+final class TranslationService {
 
 	/**
 	 * Get a translated string

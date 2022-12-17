@@ -2,7 +2,7 @@
 namespace KC\Api;
 
 use KC\Core\Api\HttpMethod;
-use KC\Core\Security\SecurityHelper;
+use KC\Core\Security\SecurityService;
 use KC\Data\DataManager;
 use \WP_REST_Controller;
 use \WP_REST_Request;
@@ -113,7 +113,7 @@ final class ApiController extends WP_REST_Controller {
 			'methods' => [$httpMethod->value],
 			'callback' => $callback,
 			'permission_callback' => function() : bool {
-				return SecurityHelper::hasApiAccess();
+				return SecurityService::hasApiAccess();
 			}
 		];
 		if(!empty($parameters)) {
@@ -122,10 +122,10 @@ final class ApiController extends WP_REST_Controller {
 				$parameterOptions[$parameter] = [
 					'required' => true,
 					'sanitize_callback' => function(string $value) : string {
-						return SecurityHelper::sanitizeString($value);
+						return SecurityService::sanitizeString($value);
 					},
 					'validate_callback' => function(string $value) : bool {
-						return SecurityHelper::isValid($value);
+						return SecurityService::isValid($value);
 					}
 				];
 			}

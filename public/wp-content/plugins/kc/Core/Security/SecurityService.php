@@ -2,9 +2,9 @@
 namespace KC\Core\Security;
 
 /**
- * The SecurityHelper class contains security methods
+ * The SecurityService class contains security methods
  */
-final class SecurityHelper {
+final class SecurityService {
 
 	/**
 	 * Escape an url

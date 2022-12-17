@@ -6,7 +6,7 @@ use KC\Core\Images\ImageSize;
 use KC\Core\PostTypes\PostType;
 use KC\Core\Settings\BaseSettings;
 use KC\Core\Settings\ISettings;
-use KC\Core\Translations\TranslationHelper;
+use KC\Core\Translations\TranslationService;
 use KC\Core\Translations\TranslationString;
 use KC\Core\Users\UserRole;
 
@@ -38,7 +38,7 @@ final class SliderSettings extends BaseSettings implements ISettings {
 	 */
 	public function createSettingsPage() : void {
 		add_action(Action::ADMIN_MENU, function() : void {
-			$title = TranslationHelper::getTranslatedString(TranslationString::Settings);
+			$title = TranslationService::getTranslatedString(TranslationString::Settings);
 			add_submenu_page('edit.php?post_type='.PostType::Slides->value, $title, $title, UserRole::Administrator->value, $this->settingsPageSlug, function() : void {
 				settings_errors();
 				?>
@@ -64,10 +64,10 @@ final class SliderSettings extends BaseSettings implements ISettings {
 			$sectionID = $this->settingsPageSlug.'-section-slider';
 			$prefix = $this->settingsPageSlug;
 			add_settings_section($sectionID, '', function() : void {}, $this->settingsPageSlug);
-			add_settings_field($prefix.'slideWidth', TranslationHelper::getTranslatedString(TranslationString::ImageWidth), function() : void {
+			add_settings_field($prefix.'slideWidth', TranslationService::getTranslatedString(TranslationString::ImageWidth), function() : void {
 				echo '<input type="number" name="'.$this->settingOptionsName.'['.$this->slideWidth.']" value="'.$this->getSlideWidth().'" min="1">';
 			}, $this->settingsPageSlug, $sectionID);
-			add_settings_field($prefix.'slideHeight', TranslationHelper::getTranslatedString(TranslationString::ImageHeight), function() : void {
+			add_settings_field($prefix.'slideHeight', TranslationService::getTranslatedString(TranslationString::ImageHeight), function() : void {
 				echo '<input type="number" name="'.$this->settingOptionsName.'['.$this->slideHeight.']" value="'.$this->getSlideHeight().'" min="1">';
 			}, $this->settingsPageSlug, $sectionID);
 			$this->registerSetting($this->settingOptionsName);

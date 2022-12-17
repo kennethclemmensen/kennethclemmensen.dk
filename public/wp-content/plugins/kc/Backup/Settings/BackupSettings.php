@@ -2,10 +2,10 @@
 namespace KC\Backup\Settings;
 
 use KC\Core\Action;
-use KC\Core\Security\SecurityHelper;
+use KC\Core\Security\SecurityService;
 use KC\Core\Settings\BaseSettings;
 use KC\Core\Settings\ISettings;
-use KC\Core\Translations\TranslationHelper;
+use KC\Core\Translations\TranslationService;
 use KC\Core\Translations\TranslationString;
 use KC\Core\Users\UserRole;
 use KC\Data\Api\DropboxApi;
@@ -47,18 +47,18 @@ final class BackupSettings extends BaseSettings implements ISettings {
 	 */
 	public function createSettingsPage() : void {
 		add_action(Action::ADMIN_MENU, function() : void {
-			$title = TranslationHelper::getTranslatedString(TranslationString::Backup);
+			$title = TranslationService::getTranslatedString(TranslationString::Backup);
 			$menuSlug = 'kc-backup';
 			add_management_page($title, $title, UserRole::Administrator->value, $menuSlug, function() use ($title, $menuSlug) : void {
-				$createBackup = TranslationHelper::getTranslatedString(TranslationString::CreateBackup);
-				$download = TranslationHelper::getTranslatedString(TranslationString::Download);
-				$delete = TranslationHelper::getTranslatedString(TranslationString::Delete);
-				$type = TranslationHelper::getTranslatedString(TranslationString::Type);
-				$database = TranslationHelper::getTranslatedString(TranslationString::Database);
-				$files = TranslationHelper::getTranslatedString(TranslationString::Files);
-				$everything = TranslationHelper::getTranslatedString(TranslationString::Everything);
-				$dropbox = TranslationHelper::getTranslatedString(TranslationString::Dropbox);
-				$upload = TranslationHelper::getTranslatedString(TranslationString::Upload);
+				$createBackup = TranslationService::getTranslatedString(TranslationString::CreateBackup);
+				$download = TranslationService::getTranslatedString(TranslationString::Download);
+				$delete = TranslationService::getTranslatedString(TranslationString::Delete);
+				$type = TranslationService::getTranslatedString(TranslationString::Type);
+				$database = TranslationService::getTranslatedString(TranslationString::Database);
+				$files = TranslationService::getTranslatedString(TranslationString::Files);
+				$everything = TranslationService::getTranslatedString(TranslationString::Everything);
+				$dropbox = TranslationService::getTranslatedString(TranslationString::Dropbox);
+				$upload = TranslationService::getTranslatedString(TranslationString::Upload);
 				$name = 'createBackup';
 				$databaseType = 'database';
 				$filesType = 'files';
@@ -184,9 +184,9 @@ final class BackupSettings extends BaseSettings implements ISettings {
 		add_action(Action::ADMIN_INIT, function() : void {
 			$sectionId = $this->dropboxSettingsPage.'-section-dropbox';
 			$prefix = $this->dropboxSettingsPage;
-			$appKeyLabel = TranslationHelper::getTranslatedString(TranslationString::AppKey);
-			$appSecretLabel = TranslationHelper::getTranslatedString(TranslationString::AppSecret);
-			$redirectUriLabel = TranslationHelper::getTranslatedString(TranslationString::RedirectUri);
+			$appKeyLabel = TranslationService::getTranslatedString(TranslationString::AppKey);
+			$appSecretLabel = TranslationService::getTranslatedString(TranslationString::AppSecret);
+			$redirectUriLabel = TranslationService::getTranslatedString(TranslationString::RedirectUri);
 			add_settings_section($sectionId, '', function() : void {}, $this->dropboxSettingsPage);
 			add_settings_field($prefix.'app-key', $appKeyLabel, function() : void {
 				echo '<input type="text" name="'.$this->dropboxOptionGroup.'['.$this->appKey.']" value="'.$this->getAppKey().'">';
@@ -261,7 +261,7 @@ final class BackupSettings extends BaseSettings implements ISettings {
 	 */
 	private function getRedirectUri() : string {
 		if(isset($this->dropboxOptions[$this->redirectUri])) {
-			return SecurityHelper::escapeUrl($this->dropboxOptions[$this->redirectUri]);
+			return SecurityService::escapeUrl($this->dropboxOptions[$this->redirectUri]);
 		} else {
 			return '';
 		}

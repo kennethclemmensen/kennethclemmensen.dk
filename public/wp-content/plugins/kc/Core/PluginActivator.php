@@ -2,7 +2,7 @@
 namespace KC\Core;
 
 use KC\Core\Modules\IModule;
-use KC\Core\Translations\TranslationHelper;
+use KC\Core\Translations\TranslationService;
 use KC\Core\Translations\TranslationString;
 
 /**
@@ -18,7 +18,7 @@ final class PluginActivator {
 	public function activate(string $mainPluginFile) : void {
 		register_activation_hook($mainPluginFile, function() : void {
 			if(!class_exists('RW_Meta_Box'))
-				wp_die(TranslationHelper::getTranslatedString(TranslationString::MetaBoxIsNotActivated));
+				wp_die(TranslationService::getTranslatedString(TranslationString::MetaBoxIsNotActivated));
 		});
 	}
 

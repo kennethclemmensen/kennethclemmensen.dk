@@ -2,9 +2,9 @@
 namespace KC\Core\PostTypes;
 
 /**
- * The PostTypeHelper class contains post type methods
+ * The PostTypeService class contains post type methods
  */
-final class PostTypeHelper {
+final class PostTypeService {
 
 	/**
 	 * Get a field value from a post
