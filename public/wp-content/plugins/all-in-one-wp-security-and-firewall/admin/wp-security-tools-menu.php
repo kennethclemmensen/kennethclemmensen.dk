@@ -183,11 +183,11 @@ class AIOWPSecurity_Tools_Menu extends AIOWPSecurity_Admin_Menu {
 								<label for="aiowps_whois_ip_or_domain"><?php _e('IP address or domain name:', 'all-in-one-wp-security-and-firewall'); ?></label>
 							</th>
 							<td>
-								<input id="aiowps_whois_ip_or_domain" type="text" name="aiowps_whois_ip_or_domain" value="" size="80"/>
+								<input id="aiowps_whois_ip_or_domain" type="text" name="aiowps_whois_ip_or_domain" value="" size="80">
 							</td>
 						</tr>
 					</table>
-					<input class="button-primary" type="submit" value="<?php _e('Look up IP or domain', 'all-in-one-wp-security-and-firewall'); ?>"/>
+					<input class="button-primary" type="submit" value="<?php _e('Look up IP or domain', 'all-in-one-wp-security-and-firewall'); ?>">
 				</form>
 			</div>
 		</div>

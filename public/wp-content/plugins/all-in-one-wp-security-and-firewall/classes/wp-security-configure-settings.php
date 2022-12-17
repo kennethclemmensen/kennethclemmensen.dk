@@ -88,6 +88,7 @@ class AIOWPSecurity_Configure_Settings {
 		$aio_wp_security->configs->set_value('aiowps_max_file_upload_size', AIOS_FIREWALL_MAX_FILE_UPLOAD_LIMIT_MB); //Default
 		$aio_wp_security->configs->set_value('aiowps_enable_pingback_firewall', '');//Checkbox - blocks all access to XMLRPC
 		$aio_wp_security->configs->set_value('aiowps_disable_xmlrpc_pingback_methods', '');//Checkbox - Disables only pingback methods in XMLRPC functionality
+		$aio_wp_security->configs->set_value('aiowps_disable_rss_and_atom_feeds', ''); // Checkbox
 		$aio_wp_security->configs->set_value('aiowps_block_debug_log_file_access', '');//Checkbox
 		$aio_wp_security->configs->set_value('aiowps_disable_index_views', '');//Checkbox
 		$aio_wp_security->configs->set_value('aiowps_disable_trace_and_track', '');//Checkbox
@@ -256,6 +257,7 @@ class AIOWPSecurity_Configure_Settings {
 		$aio_wp_security->configs->add_value('aiowps_max_file_upload_size', AIOS_FIREWALL_MAX_FILE_UPLOAD_LIMIT_MB);
 		$aio_wp_security->configs->add_value('aiowps_enable_pingback_firewall', '');//Checkbox - blocks all access to XMLRPC
 		$aio_wp_security->configs->add_value('aiowps_disable_xmlrpc_pingback_methods', '');//Checkbox - Disables only pingback methods in XMLRPC functionality
+		$aio_wp_security->configs->set_value('aiowps_disable_rss_and_atom_feeds', ''); // Checkbox
 		$aio_wp_security->configs->add_value('aiowps_block_debug_log_file_access', '');//Checkbox
 		$aio_wp_security->configs->add_value('aiowps_disable_index_views', '');//Checkbox
 		$aio_wp_security->configs->add_value('aiowps_disable_trace_and_track', '');//Checkbox
@@ -483,6 +485,7 @@ class AIOWPSecurity_Configure_Settings {
 		$aio_wp_security->configs->set_value('aiowps_enable_basic_firewall', '');//Checkbox
 		$aio_wp_security->configs->set_value('aiowps_enable_pingback_firewall', '');//Checkbox - blocks all access to XMLRPC
 		$aio_wp_security->configs->set_value('aiowps_disable_xmlrpc_pingback_methods', '');//Checkbox - Disables only pingback methods in XMLRPC functionality
+		$aio_wp_security->configs->set_value('aiowps_disable_rss_and_atom_feeds', ''); // Checkbox
 		$aio_wp_security->configs->set_value('aiowps_block_debug_log_file_access', '');//Checkbox
 		$aio_wp_security->configs->set_value('aiowps_disable_index_views', '');//Checkbox
 		$aio_wp_security->configs->set_value('aiowps_disable_trace_and_track', '');//Checkbox

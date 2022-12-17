@@ -141,8 +141,15 @@ class AIOWPSecurity_Blacklist_Menu extends AIOWPSecurity_Admin_Menu {
 
                     //Recalculate points after the feature status/options have been altered
                     $aiowps_feature_mgr->check_feature_status_and_recalculate_points();
-
-                    $this->show_msg_settings_updated();
+                    
+                    $write_result = AIOWPSecurity_Utility_Htaccess::write_to_htaccess(); //now let's write to the .htaccess file
+                    
+                    if ($write_result) {
+                    	$this->show_msg_settings_updated();
+                    } else {
+                    	$this->show_msg_error(__('The plugin was unable to write to the .htaccess file. Please edit the file manually.', 'all-in-one-wp-security-and-firewall'));
+                    	$aio_wp_security->debug_logger->log_debug("AIOWPSecurity_Blacklist_Menu - The plugin was unable to write to the .htaccess file.");
+                    }
                 }
             }
         }

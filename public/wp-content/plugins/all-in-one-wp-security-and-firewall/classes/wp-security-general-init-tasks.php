@@ -13,6 +13,19 @@ class AIOWPSecurity_General_Init_Tasks {
 			add_filter('wp_headers', array($this, 'aiowps_remove_x_pingback_header'));
 		}
 
+		if ('1' == $aio_wp_security->configs->get_value('aiowps_disable_rss_and_atom_feeds')) {
+			add_action('do_feed', array($this, 'block_feed'), 1);
+			add_action('do_feed_rdf', array($this, 'block_feed'), 1);
+			add_action('do_feed_rss', array($this, 'block_feed'), 1);
+			add_action('do_feed_rss2', array($this, 'block_feed'), 1);
+			add_action('do_feed_atom', array($this, 'block_feed'), 1);
+			add_action('do_feed_rss2_comments', array($this, 'block_feed'), 1);
+			add_action('do_feed_atom_comments', array($this, 'block_feed'), 1);
+
+			remove_action('wp_head', 'feed_links_extra', 3);
+			remove_action('wp_head', 'feed_links', 2);
+		}
+
 		// Check permanent block list and block if applicable (ie, do PHP blocking)
 		if (!is_user_logged_in()) {
 			AIOWPSecurity_Blocking::check_visitor_ip_and_perform_blocking();
@@ -290,6 +303,15 @@ class AIOWPSecurity_General_Init_Tasks {
 	public function aiowps_remove_x_pingback_header($headers) {
 	   unset($headers['X-Pingback']);
 	   return $headers;
+	}
+
+	/**
+	 * Blocks feed by redirecting user to home url.
+	 *
+	 * @return Void
+	 */
+	public function block_feed() {
+		wp_redirect(home_url());
 	}
 
 	public function spam_detect_process_comment_post($comment_id, $comment_approved) {

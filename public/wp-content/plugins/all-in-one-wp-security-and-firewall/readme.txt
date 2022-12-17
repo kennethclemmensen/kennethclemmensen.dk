@@ -5,7 +5,7 @@ Tags: security, malware scanning, two factor authentication, firewall, antivirus
 Requires PHP: 5.6
 Requires at least: 5.0
 Tested up to: 6.1
-Stable tag: 5.1.3
+Stable tag: 5.1.4
 License: GPLv3 or later
 
 Protect your website investment with All-In-One Security (AIOS) – a comprehensive and easy to use security plugin designed especially for WordPress. Featuring login security tools, a cutting-edge firewall and much more.
@@ -164,6 +164,11 @@ Go to the settings menu after you activate the plugin and follow the instruction
 1. Features list.
 
 == Changelog ==
+
+= 5.1.4 - 14/December/2022 =
+
+* FEATURE: Add option to disable RSS and ATOM feeds.
+* FIX: The IP address blacklist manager wasn't working.
 
 = 5.1.3 - 09/December/2022 =
 
@@ -1118,4 +1123,4 @@ those who want to enable the basic firewall but do not have "AllowOverride" opti
 - First commit to the WP repository.
 
 == Upgrade Notice ==
-* 5.1.3: SECURITY: No longer save settings import files in a publicly accessible folder where they can be potentially indexed by search engines if the administrator does not actually import the settings (which deletes the import file) and some small tweaks; full details are in the changelog. All users are recommended to update.
+* 5.1.4: Disable RSS and ATOM feeds feature and fixed the issue IP address blacklist manager wasn't working. See changelog for full details. All users are recommended to update.

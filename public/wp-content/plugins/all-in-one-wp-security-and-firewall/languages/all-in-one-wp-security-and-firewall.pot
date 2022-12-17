@@ -72,7 +72,7 @@ msgstr ""
 msgid "Blacklist Manager"
 msgstr ""
 
-#: src/admin/wp-security-admin-init.php:430, src/admin/wp-security-admin-init.php:430, src/admin/wp-security-firewall-menu.php:62, src/admin/wp-security-firewall-menu.php:1318
+#: src/admin/wp-security-admin-init.php:430, src/admin/wp-security-admin-init.php:430, src/admin/wp-security-firewall-menu.php:62, src/admin/wp-security-firewall-menu.php:1334
 msgid "Firewall"
 msgstr ""
 
@@ -125,94 +125,98 @@ msgid "Blacklist manager"
 msgstr ""
 
 #: src/admin/wp-security-blacklist-menu.php:150
+msgid "The plugin was unable to write to the .htaccess file. Please edit the file manually."
+msgstr ""
+
+#: src/admin/wp-security-blacklist-menu.php:157
 msgid "Ban IPs or user agents"
 msgstr ""
 
-#: src/admin/wp-security-blacklist-menu.php:153
+#: src/admin/wp-security-blacklist-menu.php:160
 msgid "The All In One WP Security Blacklist feature gives you the option of banning certain host IP addresses or ranges and also user agents."
 msgstr ""
 
-#: src/admin/wp-security-blacklist-menu.php:154
+#: src/admin/wp-security-blacklist-menu.php:161
 msgid "This feature will deny total site access for users which have IP addresses or user agents matching those which you have configured in the settings below."
 msgstr ""
 
-#: src/admin/wp-security-blacklist-menu.php:155
+#: src/admin/wp-security-blacklist-menu.php:162
 msgid "Black-listed visitors will be blocked as soon as WordPress loads, preventing them from gaining any further access."
 msgstr ""
 
-#: src/admin/wp-security-blacklist-menu.php:164, src/admin/wp-security-firewall-menu.php:1057, src/templates/may-also-like.php:20
+#: src/admin/wp-security-blacklist-menu.php:171, src/admin/wp-security-firewall-menu.php:1073, src/templates/may-also-like.php:20
 msgid "All In One WP Security & Firewall Premium"
 msgstr ""
 
-#: src/admin/wp-security-blacklist-menu.php:165, src/admin/wp-security-firewall-menu.php:1058
+#: src/admin/wp-security-blacklist-menu.php:172, src/admin/wp-security-firewall-menu.php:1074
 msgid "You may also be interested in %s."
 msgstr ""
 
-#: src/admin/wp-security-blacklist-menu.php:166, src/admin/wp-security-firewall-menu.php:1059
+#: src/admin/wp-security-blacklist-menu.php:173, src/admin/wp-security-firewall-menu.php:1075
 msgid "This plugin adds a number of extra features including %s and %s."
 msgstr ""
 
-#: src/admin/wp-security-blacklist-menu.php:166, src/admin/wp-security-firewall-menu.php:1059
+#: src/admin/wp-security-blacklist-menu.php:173, src/admin/wp-security-firewall-menu.php:1075
 msgid "smart 404 blocking"
 msgstr ""
 
-#: src/admin/wp-security-blacklist-menu.php:166, src/admin/wp-security-firewall-menu.php:1059
+#: src/admin/wp-security-blacklist-menu.php:173, src/admin/wp-security-firewall-menu.php:1075
 msgid "country IP blocking"
 msgstr ""
 
-#: src/admin/wp-security-blacklist-menu.php:179
+#: src/admin/wp-security-blacklist-menu.php:186
 msgid "IP hosts and user agent blacklist settings"
 msgstr ""
 
-#: src/admin/wp-security-blacklist-menu.php:190, src/admin/wp-security-brute-force-menu.php:215, src/admin/wp-security-brute-force-menu.php:359
+#: src/admin/wp-security-blacklist-menu.php:197, src/admin/wp-security-brute-force-menu.php:215, src/admin/wp-security-brute-force-menu.php:359
 msgid "must read this message"
 msgstr ""
 
-#: src/admin/wp-security-blacklist-menu.php:191, src/admin/wp-security-brute-force-menu.php:216
+#: src/admin/wp-security-blacklist-menu.php:198, src/admin/wp-security-brute-force-menu.php:216
 msgid "This feature can lock you out of admin if it doesn't work correctly on your site. You %s before activating this feature."
 msgstr ""
 
-#: src/admin/wp-security-blacklist-menu.php:197
+#: src/admin/wp-security-blacklist-menu.php:204
 msgid "Enable IP or user agent blacklisting"
 msgstr ""
 
-#: src/admin/wp-security-blacklist-menu.php:200
+#: src/admin/wp-security-blacklist-menu.php:207
 msgid "Check this if you want to enable the banning (or blacklisting) of selected IP addresses and/or user agents specified in the settings below"
 msgstr ""
 
-#: src/admin/wp-security-blacklist-menu.php:204
+#: src/admin/wp-security-blacklist-menu.php:211
 msgid "Enter IP addresses:"
 msgstr ""
 
-#: src/admin/wp-security-blacklist-menu.php:208
+#: src/admin/wp-security-blacklist-menu.php:215
 msgid "Enter one or more IP addresses or IP ranges."
 msgstr ""
 
-#: src/admin/wp-security-blacklist-menu.php:213
+#: src/admin/wp-security-blacklist-menu.php:220
 msgid "Enter user agents:"
 msgstr ""
 
-#: src/admin/wp-security-blacklist-menu.php:218
+#: src/admin/wp-security-blacklist-menu.php:225
 msgid "Enter one or more user agent strings."
 msgstr ""
 
-#: src/admin/wp-security-blacklist-menu.php:219
+#: src/admin/wp-security-blacklist-menu.php:226
 msgid "More Info"
 msgstr ""
 
-#: src/admin/wp-security-blacklist-menu.php:222
+#: src/admin/wp-security-blacklist-menu.php:229
 msgid "Each user agent string must be on a new line."
 msgstr ""
 
-#: src/admin/wp-security-blacklist-menu.php:223
+#: src/admin/wp-security-blacklist-menu.php:230
 msgid "Example 1 - A single user agent string to block:"
 msgstr ""
 
-#: src/admin/wp-security-blacklist-menu.php:225
+#: src/admin/wp-security-blacklist-menu.php:232
 msgid "Example 2 - A list of more than 1 user agent strings to block"
 msgstr ""
 
-#: src/admin/wp-security-blacklist-menu.php:232, src/admin/wp-security-brute-force-menu.php:235, src/admin/wp-security-brute-force-menu.php:688, src/admin/wp-security-brute-force-menu.php:754, src/admin/wp-security-filescan-menu.php:348, src/admin/wp-security-filesystem-menu.php:242, src/admin/wp-security-firewall-menu.php:947, src/admin/wp-security-firewall-menu.php:1131, src/admin/wp-security-misc-options-menu.php:167, src/admin/wp-security-misc-options-menu.php:218, src/admin/wp-security-misc-options-menu.php:278, src/admin/wp-security-settings-menu.php:556, src/admin/wp-security-settings-menu.php:615, src/admin/wp-security-spam-menu.php:233, src/admin/wp-security-spam-menu.php:407, src/admin/wp-security-spam-menu.php:526, src/admin/wp-security-spam-menu.php:588, src/admin/wp-security-user-login-menu.php:384, src/admin/wp-security-user-login-menu.php:422, src/admin/wp-security-user-login-menu.php:601, src/admin/wp-security-user-login-menu.php:788, src/admin/wp-security-user-registration-menu.php:150, src/admin/wp-security-user-registration-menu.php:242, src/admin/wp-security-user-registration-menu.php:305, src/templates/menus/settings/advanced-settings.php:217, src/templates/wp-admin/brute-force/captcha-settings.php:169
+#: src/admin/wp-security-blacklist-menu.php:239, src/admin/wp-security-brute-force-menu.php:235, src/admin/wp-security-brute-force-menu.php:688, src/admin/wp-security-brute-force-menu.php:754, src/admin/wp-security-filescan-menu.php:348, src/admin/wp-security-filesystem-menu.php:242, src/admin/wp-security-firewall-menu.php:963, src/admin/wp-security-firewall-menu.php:1147, src/admin/wp-security-misc-options-menu.php:167, src/admin/wp-security-misc-options-menu.php:218, src/admin/wp-security-misc-options-menu.php:278, src/admin/wp-security-settings-menu.php:556, src/admin/wp-security-settings-menu.php:615, src/admin/wp-security-spam-menu.php:233, src/admin/wp-security-spam-menu.php:407, src/admin/wp-security-spam-menu.php:526, src/admin/wp-security-spam-menu.php:588, src/admin/wp-security-user-login-menu.php:384, src/admin/wp-security-user-login-menu.php:422, src/admin/wp-security-user-login-menu.php:601, src/admin/wp-security-user-login-menu.php:788, src/admin/wp-security-user-registration-menu.php:150, src/admin/wp-security-user-registration-menu.php:242, src/admin/wp-security-user-registration-menu.php:305, src/templates/menus/settings/advanced-settings.php:217, src/templates/wp-admin/brute-force/captcha-settings.php:169
 msgid "Save settings"
 msgstr ""
 
@@ -252,7 +256,7 @@ msgstr ""
 msgid "You must use alpha numeric characters for your login page slug."
 msgstr ""
 
-#: src/admin/wp-security-brute-force-menu.php:136, src/admin/wp-security-filescan-menu.php:196, src/admin/wp-security-firewall-menu.php:153, src/admin/wp-security-firewall-menu.php:1013, src/admin/wp-security-spam-menu.php:101, src/admin/wp-security-spam-menu.php:270, src/admin/wp-security-spam-menu.php:302, src/admin/wp-security-user-login-menu.php:184, src/admin/wp-security-user-login-menu.php:553, src/templates/partials/non-apache-feature-notice.php:9
+#: src/admin/wp-security-brute-force-menu.php:136, src/admin/wp-security-filescan-menu.php:196, src/admin/wp-security-firewall-menu.php:154, src/admin/wp-security-firewall-menu.php:1029, src/admin/wp-security-spam-menu.php:101, src/admin/wp-security-spam-menu.php:270, src/admin/wp-security-spam-menu.php:302, src/admin/wp-security-user-login-menu.php:184, src/admin/wp-security-user-login-menu.php:553, src/templates/partials/non-apache-feature-notice.php:9
 msgid "Attention:"
 msgstr ""
 
@@ -356,7 +360,7 @@ msgstr ""
 msgid "The features in this tab will stop the majority of brute force login attacks thus providing even better protection for your WP login page."
 msgstr ""
 
-#: src/admin/wp-security-brute-force-menu.php:335, src/admin/wp-security-firewall-menu.php:656
+#: src/admin/wp-security-brute-force-menu.php:335, src/admin/wp-security-firewall-menu.php:672
 msgid "backup"
 msgstr ""
 
@@ -408,7 +412,7 @@ msgstr ""
 msgid "Check this if you want to protect your login page from Brute Force Attack."
 msgstr ""
 
-#: src/admin/wp-security-brute-force-menu.php:402, src/admin/wp-security-brute-force-menu.php:436, src/admin/wp-security-brute-force-menu.php:459, src/admin/wp-security-brute-force-menu.php:480, src/admin/wp-security-filescan-menu.php:306, src/admin/wp-security-filescan-menu.php:323, src/admin/wp-security-firewall-menu.php:177, src/admin/wp-security-firewall-menu.php:214, src/admin/wp-security-firewall-menu.php:234, src/admin/wp-security-firewall-menu.php:260, src/admin/wp-security-firewall-menu.php:387, src/admin/wp-security-firewall-menu.php:417, src/admin/wp-security-firewall-menu.php:448, src/admin/wp-security-firewall-menu.php:476, src/admin/wp-security-firewall-menu.php:505, src/admin/wp-security-firewall-menu.php:683, src/admin/wp-security-firewall-menu.php:701, src/admin/wp-security-firewall-menu.php:739, src/admin/wp-security-firewall-menu.php:870, src/admin/wp-security-firewall-menu.php:1089, src/admin/wp-security-firewall-menu.php:1112, src/admin/wp-security-firewall-menu.php:1321, src/admin/wp-security-spam-menu.php:186, src/admin/wp-security-spam-menu.php:221, src/admin/wp-security-spam-menu.php:390, src/admin/wp-security-spam-menu.php:430, src/admin/wp-security-user-login-menu.php:362, src/templates/info/ip-address-ip-range-info.php:2, src/templates/menus/settings/advanced-settings.php:63
+#: src/admin/wp-security-brute-force-menu.php:402, src/admin/wp-security-brute-force-menu.php:436, src/admin/wp-security-brute-force-menu.php:459, src/admin/wp-security-brute-force-menu.php:480, src/admin/wp-security-filescan-menu.php:306, src/admin/wp-security-filescan-menu.php:323, src/admin/wp-security-firewall-menu.php:178, src/admin/wp-security-firewall-menu.php:215, src/admin/wp-security-firewall-menu.php:235, src/admin/wp-security-firewall-menu.php:276, src/admin/wp-security-firewall-menu.php:403, src/admin/wp-security-firewall-menu.php:433, src/admin/wp-security-firewall-menu.php:464, src/admin/wp-security-firewall-menu.php:492, src/admin/wp-security-firewall-menu.php:521, src/admin/wp-security-firewall-menu.php:699, src/admin/wp-security-firewall-menu.php:717, src/admin/wp-security-firewall-menu.php:755, src/admin/wp-security-firewall-menu.php:886, src/admin/wp-security-firewall-menu.php:1105, src/admin/wp-security-firewall-menu.php:1128, src/admin/wp-security-firewall-menu.php:1337, src/admin/wp-security-spam-menu.php:186, src/admin/wp-security-spam-menu.php:221, src/admin/wp-security-spam-menu.php:390, src/admin/wp-security-spam-menu.php:430, src/admin/wp-security-user-login-menu.php:362, src/templates/info/ip-address-ip-range-info.php:2, src/templates/menus/settings/advanced-settings.php:63
 msgid "More info"
 msgstr ""
 
@@ -516,7 +520,7 @@ msgstr ""
 msgid "Save feature settings"
 msgstr ""
 
-#: src/admin/wp-security-brute-force-menu.php:562, src/classes/wp-security-general-init-tasks.php:624
+#: src/admin/wp-security-brute-force-menu.php:562, src/classes/wp-security-general-init-tasks.php:646
 msgid "Your Google reCAPTCHA configuration is invalid."
 msgstr ""
 
@@ -652,7 +656,7 @@ msgstr ""
 msgid "Permanently blocked IP addresses"
 msgstr ""
 
-#: src/admin/wp-security-dashboard-menu.php:200, src/admin/wp-security-firewall-menu.php:1153, src/admin/wp-security-user-login-menu.php:485, src/admin/wp-security-user-login-menu.php:643, src/admin/wp-security-user-registration-menu.php:164
+#: src/admin/wp-security-dashboard-menu.php:200, src/admin/wp-security-firewall-menu.php:1169, src/admin/wp-security-user-login-menu.php:485, src/admin/wp-security-user-login-menu.php:643, src/admin/wp-security-user-registration-menu.php:164
 msgid "Search"
 msgstr ""
 
@@ -1228,7 +1232,7 @@ msgstr ""
 msgid "This is because the bots and spiders from search engines such as Google have the capability to detect malware when they are indexing the pages on your site, and consequently they can blacklist your website which will in turn affect your search rankings."
 msgstr ""
 
-#: src/admin/wp-security-filescan-menu.php:369, src/classes/wp-security-general-init-tasks.php:624, src/classes/wp-security-notices.php:99
+#: src/admin/wp-security-filescan-menu.php:369, src/classes/wp-security-general-init-tasks.php:646, src/classes/wp-security-notices.php:99
 msgid "here"
 msgstr ""
 
@@ -1440,7 +1444,7 @@ msgstr ""
 msgid "You have successfully saved the Prevent Access to Default WP Files configuration."
 msgstr ""
 
-#: src/admin/wp-security-filesystem-menu.php:286, src/admin/wp-security-firewall-menu.php:128, src/admin/wp-security-firewall-menu.php:348, src/admin/wp-security-firewall-menu.php:615, src/admin/wp-security-firewall-menu.php:914, src/admin/wp-security-settings-menu.php:667, src/admin/wp-security-spam-menu.php:124
+#: src/admin/wp-security-filesystem-menu.php:286, src/admin/wp-security-firewall-menu.php:129, src/admin/wp-security-firewall-menu.php:364, src/admin/wp-security-firewall-menu.php:631, src/admin/wp-security-firewall-menu.php:930, src/admin/wp-security-settings-menu.php:667, src/admin/wp-security-spam-menu.php:124
 msgid "Could not write to the .htaccess file. Please check the file permissions."
 msgstr ""
 
@@ -1556,815 +1560,843 @@ msgstr ""
 msgid "Custom rules"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:36, src/admin/wp-security-firewall-menu.php:1306, src/admin/wp-security-settings-menu.php:52
+#: src/admin/wp-security-firewall-menu.php:36, src/admin/wp-security-firewall-menu.php:1322, src/admin/wp-security-settings-menu.php:52
 msgid "Advanced settings"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:124, src/admin/wp-security-firewall-menu.php:910, src/admin/wp-security-spam-menu.php:120, src/admin/wp-security-spam-menu.php:494, src/admin/wp-security-spam-menu.php:556, src/admin/wp-security-user-registration-menu.php:95
+#: src/admin/wp-security-firewall-menu.php:125, src/admin/wp-security-firewall-menu.php:926, src/admin/wp-security-spam-menu.php:120, src/admin/wp-security-spam-menu.php:494, src/admin/wp-security-spam-menu.php:556, src/admin/wp-security-user-registration-menu.php:95
 msgid "Settings were successfully saved"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:133, src/admin/wp-security-firewall-menu.php:653
+#: src/admin/wp-security-firewall-menu.php:134, src/admin/wp-security-firewall-menu.php:669
 msgid "Firewall settings"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:140
+#: src/admin/wp-security-firewall-menu.php:141
 msgid "This should not have any impact on your site's general functionality but if you wish you can take a %s of your .htaccess file before proceeding."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:141
+#: src/admin/wp-security-firewall-menu.php:142
 msgid "The features in this tab allow you to activate some basic firewall security protection rules for your site."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:142
+#: src/admin/wp-security-firewall-menu.php:143
 msgid "The firewall functionality is achieved via the insertion of special code into your currently active .htaccess file."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:153
+#: src/admin/wp-security-firewall-menu.php:154
 msgid "You have enabled the \"Completely Block Access To XMLRPC\" checkbox which means all XMLRPC functionality will be blocked."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:154
+#: src/admin/wp-security-firewall-menu.php:155
 msgid "By leaving this feature enabled you will prevent Jetpack or Wordpress iOS or other apps which need XMLRPC from working correctly on your site."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:155
+#: src/admin/wp-security-firewall-menu.php:156
 msgid "If you still need XMLRPC then uncheck the \"Completely Block Access To XMLRPC\" checkbox and enable only the \"Disable Pingback Functionality From XMLRPC\" checkbox."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:165
+#: src/admin/wp-security-firewall-menu.php:166
 msgid "Basic firewall settings"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:173
+#: src/admin/wp-security-firewall-menu.php:174
 msgid "Enable basic firewall protection"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:176
+#: src/admin/wp-security-firewall-menu.php:177
 msgid "Check this if you want to apply basic firewall protection to your site."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:180
+#: src/admin/wp-security-firewall-menu.php:181
 msgid "This setting will implement the following basic firewall protection mechanisms on your site:"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:181
+#: src/admin/wp-security-firewall-menu.php:182
 msgid "1) Protect your htaccess file by denying access to it."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:182
+#: src/admin/wp-security-firewall-menu.php:183
 msgid "2) Disable the server signature."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:183
+#: src/admin/wp-security-firewall-menu.php:184
 msgid "3) Limit file upload size (%sMB)."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:184
+#: src/admin/wp-security-firewall-menu.php:185
 msgid "4) Protect your wp-config.php file by denying access to it."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:185
+#: src/admin/wp-security-firewall-menu.php:186
 msgid "The above firewall features will be applied via your .htaccess file and should not affect your site's overall functionality."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:186
+#: src/admin/wp-security-firewall-menu.php:187
 msgid "You are still advised to take a backup of your active .htaccess file just in case."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:192
+#: src/admin/wp-security-firewall-menu.php:193
 msgid "Max file upload size (MB)"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:194
+#: src/admin/wp-security-firewall-menu.php:195
 msgid "The value for the maximum file upload size used in the .htaccess file. (Defaults to %sMB if left blank)"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:202
+#: src/admin/wp-security-firewall-menu.php:203
 msgid "WordPress XMLRPC and pingback vulnerability protection"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:210
+#: src/admin/wp-security-firewall-menu.php:211
 msgid "Completely block access to XMLRPC"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:213
+#: src/admin/wp-security-firewall-menu.php:214
 msgid "Check this if you are not using the WP XML-RPC functionality and you want to completely block external access to XMLRPC."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:217
+#: src/admin/wp-security-firewall-menu.php:218
 msgid "This setting will add a directive in your .htaccess to disable access to the WordPress xmlrpc.php file which is responsible for the XML-RPC functionality in WordPress."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:218
+#: src/admin/wp-security-firewall-menu.php:219
 msgid "Hackers can exploit various vulnerabilities in the WordPress XML-RPC API in a number of ways such as:"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:219
+#: src/admin/wp-security-firewall-menu.php:220
 msgid "1) Denial of Service (DoS) attacks"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:220
+#: src/admin/wp-security-firewall-menu.php:221
 msgid "2) Hacking internal routers."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:221
+#: src/admin/wp-security-firewall-menu.php:222
 msgid "3) Scanning ports in internal networks to get info from various hosts."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:222
+#: src/admin/wp-security-firewall-menu.php:223
 msgid "Apart from the security protection benefit, this feature may also help reduce load on your server, particularly if your site currently has a lot of unwanted traffic hitting the XML-RPC API on your installation."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:223
+#: src/admin/wp-security-firewall-menu.php:224
 msgid "NOTE: You should only enable this feature if you are not currently using the XML-RPC functionality on your WordPress installation."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:224
+#: src/admin/wp-security-firewall-menu.php:225
 msgid "Leave this feature disabled and use the feature below if you want pingback protection but you still need XMLRPC."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:230
+#: src/admin/wp-security-firewall-menu.php:231
 msgid "Disable pingback functionality from XMLRPC"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:233
+#: src/admin/wp-security-firewall-menu.php:234
 msgid "If you use Jetpack or WP iOS or other apps which need WP XML-RPC functionality then check this. This will enable protection against WordPress pingback vulnerabilities."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:237
+#: src/admin/wp-security-firewall-menu.php:238
 msgid "NOTE: If you use Jetpack or the Wordpress iOS or other apps then you should enable this feature but leave the \"Completely Block Access To XMLRPC\" checkbox unchecked."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:238
+#: src/admin/wp-security-firewall-menu.php:239
 msgid "The feature will still allow XMLRPC functionality on your site but will disable the pingback methods."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:239
+#: src/admin/wp-security-firewall-menu.php:240
 msgid "This feature will also remove the \"X-Pingback\" header if it is present."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:248
-msgid "Block access to debug log file"
+#: src/admin/wp-security-firewall-menu.php:249
+msgid "Disable WordPress RSS and ATOM feeds"
+msgstr ""
+
+#: src/admin/wp-security-firewall-menu.php:253
+msgid "Disable RSS and ATOM feeds:"
 msgstr ""
 
 #: src/admin/wp-security-firewall-menu.php:256
-msgid "Block access to debug.log file"
+msgid "Check this if you do not want users using feeds."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:259
-msgid "Check this if you want to block access to the debug.log file that WordPress creates when debug logging is enabled."
+#: src/admin/wp-security-firewall-menu.php:256
+msgid "RSS and ATOM feeds are used to read content from your site."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:263
-msgid "WordPress has an option to turn on the debug logging to a file located in wp-content/debug.log. This file may contain sensitive information."
+#: src/admin/wp-security-firewall-menu.php:256
+msgid "Most users will want to share their site content widely, but some may prefer to prevent automated site scraping."
+msgstr ""
+
+#: src/admin/wp-security-firewall-menu.php:256
+msgid "For more information, check the %s"
+msgstr ""
+
+#: src/admin/wp-security-firewall-menu.php:256, src/templates/may-also-like.php:7
+msgid "FAQs"
 msgstr ""
 
 #: src/admin/wp-security-firewall-menu.php:264
-msgid "Using this option will block external access to this file."
-msgstr ""
-
-#: src/admin/wp-security-firewall-menu.php:264
-msgid "You can still access this file by logging into your site via FTP."
+msgid "Block access to debug log file"
 msgstr ""
 
 #: src/admin/wp-security-firewall-menu.php:272
+msgid "Block access to debug.log file"
+msgstr ""
+
+#: src/admin/wp-security-firewall-menu.php:275
+msgid "Check this if you want to block access to the debug.log file that WordPress creates when debug logging is enabled."
+msgstr ""
+
+#: src/admin/wp-security-firewall-menu.php:279
+msgid "WordPress has an option to turn on the debug logging to a file located in wp-content/debug.log. This file may contain sensitive information."
+msgstr ""
+
+#: src/admin/wp-security-firewall-menu.php:280
+msgid "Using this option will block external access to this file."
+msgstr ""
+
+#: src/admin/wp-security-firewall-menu.php:280
+msgid "You can still access this file by logging into your site via FTP."
+msgstr ""
+
+#: src/admin/wp-security-firewall-menu.php:288
 msgid "Save basic firewall settings"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:344
+#: src/admin/wp-security-firewall-menu.php:360
 msgid "You have successfully saved the Additional Firewall Protection configuration"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:358
+#: src/admin/wp-security-firewall-menu.php:374
 msgid "Additional firewall protection"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:362
+#: src/admin/wp-security-firewall-menu.php:378
 msgid "Due to the nature of the code being inserted to the .htaccess file, this feature may break some functionality for certain plugins and you are therefore advised to take a %s of .htaccess before applying this configuration."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:364
+#: src/admin/wp-security-firewall-menu.php:380
 msgid "This feature allows you to activate more advanced firewall settings to your site."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:365
+#: src/admin/wp-security-firewall-menu.php:381
 msgid "The advanced firewall rules are applied via the insertion of special code to your currently active .htaccess file."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:374
+#: src/admin/wp-security-firewall-menu.php:390
 msgid "Listing of directory contents"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:383, src/classes/grade-system/wp-security-feature-item-manager.php:85
+#: src/admin/wp-security-firewall-menu.php:399, src/classes/grade-system/wp-security-feature-item-manager.php:85
 msgid "Disable index views"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:386
+#: src/admin/wp-security-firewall-menu.php:402
 msgid "Check this if you want to disable directory and file listing."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:391
+#: src/admin/wp-security-firewall-menu.php:407
 msgid "By default, an Apache server will allow the listing of the contents of a directory if it doesn't contain an index.php file."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:393
+#: src/admin/wp-security-firewall-menu.php:409
 msgid "This feature will prevent the listing of contents for all directories."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:395
+#: src/admin/wp-security-firewall-menu.php:411
 msgid "NOTE: In order for this feature to work \"AllowOverride\" of the Indexes directive must be enabled in your httpd.conf file. Ask your hosting provider to check this if you don't have access to httpd.conf"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:404
+#: src/admin/wp-security-firewall-menu.php:420
 msgid "Trace and track"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:413, src/classes/grade-system/wp-security-feature-item-manager.php:86
+#: src/admin/wp-security-firewall-menu.php:429, src/classes/grade-system/wp-security-feature-item-manager.php:86
 msgid "Disable trace and track"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:416
+#: src/admin/wp-security-firewall-menu.php:432
 msgid "Check this if you want to disable trace and track."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:421
+#: src/admin/wp-security-firewall-menu.php:437
 msgid "HTTP Trace attack (XST) can be used to return header requests and grab cookies and other information."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:423
+#: src/admin/wp-security-firewall-menu.php:439
 msgid "This hacking technique is usually used together with cross site scripting attacks (XSS)."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:425
+#: src/admin/wp-security-firewall-menu.php:441
 msgid "Disabling trace and track on your site will help prevent HTTP Trace attacks."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:434
+#: src/admin/wp-security-firewall-menu.php:450
 msgid "Proxy comment posting"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:444
+#: src/admin/wp-security-firewall-menu.php:460
 msgid "Forbid proxy comment posting"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:447
+#: src/admin/wp-security-firewall-menu.php:463
 msgid "Check this if you want to forbid proxy comment posting."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:452
+#: src/admin/wp-security-firewall-menu.php:468
 msgid "This setting will deny any requests that use a proxy server when posting comments."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:453
+#: src/admin/wp-security-firewall-menu.php:469
 msgid "By forbidding proxy comments you are in effect eliminating some spam and other proxy requests."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:462
+#: src/admin/wp-security-firewall-menu.php:478
 msgid "Bad query strings"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:472
+#: src/admin/wp-security-firewall-menu.php:488
 msgid "Deny bad query strings"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:475
+#: src/admin/wp-security-firewall-menu.php:491
 msgid "This will help protect you against malicious queries via XSS."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:480
+#: src/admin/wp-security-firewall-menu.php:496
 msgid "This feature will write rules in your .htaccess file to prevent malicious string attacks on your site using XSS."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:481
+#: src/admin/wp-security-firewall-menu.php:497
 msgid "NOTE: Some of these strings might be used for plugins or themes and hence this might break some functionality."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:482, src/admin/wp-security-firewall-menu.php:512
+#: src/admin/wp-security-firewall-menu.php:498, src/admin/wp-security-firewall-menu.php:528
 msgid "You are therefore strongly advised to take a backup of your active .htaccess file before applying this feature."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:491, src/classes/grade-system/wp-security-feature-item-manager.php:89
+#: src/admin/wp-security-firewall-menu.php:507, src/classes/grade-system/wp-security-feature-item-manager.php:89
 msgid "Advanced character string filter"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:501
+#: src/admin/wp-security-firewall-menu.php:517
 msgid "Enable advanced character string filter"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:504
+#: src/admin/wp-security-firewall-menu.php:520
 msgid "This will block bad character matches from XSS."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:509
+#: src/admin/wp-security-firewall-menu.php:525
 msgid "This is an advanced character string filter to prevent malicious string attacks on your site coming from Cross Site Scripting (XSS)."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:510
+#: src/admin/wp-security-firewall-menu.php:526
 msgid "This setting matches for common malicious string patterns and exploits and will produce a 403 error for the hacker attempting the query."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:511
+#: src/admin/wp-security-firewall-menu.php:527
 msgid "NOTE: Some strings for this setting might break some functionality."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:520
+#: src/admin/wp-security-firewall-menu.php:536
 msgid "Save additional firewall settings"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:611
+#: src/admin/wp-security-firewall-menu.php:627
 msgid "You have successfully saved the 5G/6G Firewall Protection configuration"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:635
+#: src/admin/wp-security-firewall-menu.php:651
 msgid "All in One WP Security and Firewall"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:636
+#: src/admin/wp-security-firewall-menu.php:652
 msgid "We were unable to access the firewall's configuration file:"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:638
+#: src/admin/wp-security-firewall-menu.php:654
 msgid "As a result, the firewall will be unavailable."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:639
+#: src/admin/wp-security-firewall-menu.php:655
 msgid "Please check your PHP error log for further information."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:640
+#: src/admin/wp-security-firewall-menu.php:656
 msgid "If you're unable to locate your PHP log file, please contact your web hosting company to ask them where it can be found on their setup."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:657
+#: src/admin/wp-security-firewall-menu.php:673
 msgid "This feature allows you to activate the %s (or legacy %s) firewall security protection rules designed and produced by %s."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:658
+#: src/admin/wp-security-firewall-menu.php:674
 msgid "The 6G Blacklist is updated and improved version of 5G Blacklist. If you have 5G Blacklist active, you might consider activating 6G Blacklist instead."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:659
+#: src/admin/wp-security-firewall-menu.php:675
 msgid "The 6G Blacklist is a simple, flexible blacklist that helps reduce the number of malicious URL requests that hit your website."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:660
+#: src/admin/wp-security-firewall-menu.php:676
 msgid "The added advantage of applying the 6G firewall to your site is that it has been tested and confirmed by the people at PerishablePress.com to be an optimal and least disruptive set of .htaccess security rules for general WP sites running on an Apache server or similar."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:661
+#: src/admin/wp-security-firewall-menu.php:677
 msgid "Therefore the 6G firewall rules should not have any impact on your site's general functionality but if you wish you can take a %s of your .htaccess file before proceeding."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:667
+#: src/admin/wp-security-firewall-menu.php:683
 msgid "6G blacklist/firewall settings"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:679
+#: src/admin/wp-security-firewall-menu.php:695
 msgid "Enable 6G firewall protection"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:682
+#: src/admin/wp-security-firewall-menu.php:698
 msgid "Check this if you want to apply the 6G Blacklist firewall protection from perishablepress.com to your site."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:686
+#: src/admin/wp-security-firewall-menu.php:702
 msgid "This setting will implement the 6G security firewall protection mechanisms on your site which include the following things:"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:687, src/admin/wp-security-firewall-menu.php:705
+#: src/admin/wp-security-firewall-menu.php:703, src/admin/wp-security-firewall-menu.php:721
 msgid "1) Block forbidden characters commonly used in exploitative attacks."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:688, src/admin/wp-security-firewall-menu.php:706
+#: src/admin/wp-security-firewall-menu.php:704, src/admin/wp-security-firewall-menu.php:722
 msgid "2) Block malicious encoded URL characters such as the \".css(\" string."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:689, src/admin/wp-security-firewall-menu.php:707
+#: src/admin/wp-security-firewall-menu.php:705, src/admin/wp-security-firewall-menu.php:723
 msgid "3) Guard against the common patterns and specific exploits in the root portion of targeted URLs."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:690, src/admin/wp-security-firewall-menu.php:708
+#: src/admin/wp-security-firewall-menu.php:706, src/admin/wp-security-firewall-menu.php:724
 msgid "4) Stop attackers from manipulating query strings by disallowing illicit characters."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:691, src/admin/wp-security-firewall-menu.php:709
+#: src/admin/wp-security-firewall-menu.php:707, src/admin/wp-security-firewall-menu.php:725
 msgid "....and much more."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:697
+#: src/admin/wp-security-firewall-menu.php:713
 msgid "Enable legacy 5G firewall protection"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:700
+#: src/admin/wp-security-firewall-menu.php:716
 msgid "Check this if you want to apply the 5G Blacklist firewall protection from perishablepress.com to your site."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:704
+#: src/admin/wp-security-firewall-menu.php:720
 msgid "This setting will implement the 5G security firewall protection mechanisms on your site which include the following things:"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:715
+#: src/admin/wp-security-firewall-menu.php:731
 msgid "Save 5G/6G firewall settings"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:723
+#: src/admin/wp-security-firewall-menu.php:739
 msgid "6G block request methods"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:727
+#: src/admin/wp-security-firewall-menu.php:743
 msgid "HTTP Request methods are used by browsers and clients to communicate with servers to get responses."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:728
+#: src/admin/wp-security-firewall-menu.php:744
 msgid "GET and POST are the most commonly used methods to request and submit data for specified resources of the server."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:734
+#: src/admin/wp-security-firewall-menu.php:750
 msgid "Block %s method"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:737
+#: src/admin/wp-security-firewall-menu.php:753
 msgid "Check this to block the %s request method"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:742
+#: src/admin/wp-security-firewall-menu.php:758
 msgid "Some WooCommerce extensions use the PUT request method in addition to GET and POST."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:742
+#: src/admin/wp-security-firewall-menu.php:758
 msgid "This means WooCommerce users shouldn't block the PUT request method."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:743
+#: src/admin/wp-security-firewall-menu.php:759
 msgid "A few REST requests use the PUT request method."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:743
+#: src/admin/wp-security-firewall-menu.php:759
 msgid "If your site is communicated by the WP REST API, you should not block the PUT request method."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:751
+#: src/admin/wp-security-firewall-menu.php:767
 msgid "Save request methods settings"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:759
+#: src/admin/wp-security-firewall-menu.php:775
 msgid "6G other settings"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:763
+#: src/admin/wp-security-firewall-menu.php:779
 msgid "Block query strings"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:766
+#: src/admin/wp-security-firewall-menu.php:782
 msgid "Check this to block all query strings recommended by 6G"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:770
+#: src/admin/wp-security-firewall-menu.php:786
 msgid "Block request strings"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:773
+#: src/admin/wp-security-firewall-menu.php:789
 msgid "Check this to block all request strings recommended by 6G"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:777
+#: src/admin/wp-security-firewall-menu.php:793
 msgid "Block referrers"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:780
+#: src/admin/wp-security-firewall-menu.php:796
 msgid "Check this to block all referrers recommended by 6G"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:784
+#: src/admin/wp-security-firewall-menu.php:800
 msgid "Block user-agents"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:787
+#: src/admin/wp-security-firewall-menu.php:803
 msgid "Check this to block all user-agents recommended by 6G"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:791
+#: src/admin/wp-security-firewall-menu.php:807
 msgid "Save other settings"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:825
+#: src/admin/wp-security-firewall-menu.php:841
 msgid "The Internet bot settings were successfully saved"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:829
+#: src/admin/wp-security-firewall-menu.php:845
 msgid "Internet bot settings"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:835
+#: src/admin/wp-security-firewall-menu.php:851
 msgid "What is an Internet Bot"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:836
+#: src/admin/wp-security-firewall-menu.php:852
 msgid "%s?"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:838
+#: src/admin/wp-security-firewall-menu.php:854
 msgid "A bot is a piece of software which runs on the Internet and performs automatic tasks. For example when Google indexes your pages it uses automatic bots to achieve this task."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:839
+#: src/admin/wp-security-firewall-menu.php:855
 msgid "A lot of bots are legitimate and non-malicous but not all bots are good and often you will find some which try to impersonate legitimate bots such as \"Googlebot\" but in reality they have nohing to do with Google at all."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:840
+#: src/admin/wp-security-firewall-menu.php:856
 msgid "Although most of the bots out there are relatively harmless sometimes website owners want to have more control over which bots they allow into their site."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:841
+#: src/admin/wp-security-firewall-menu.php:857
 msgid "This feature allows you to block bots which are impersonating as a Googlebot but actually aren't. (In other words they are fake Google bots)"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:842
+#: src/admin/wp-security-firewall-menu.php:858
 msgid "Googlebots have a unique indentity which cannot easily be forged and this feature will indentify any fake Google bots and block them from reading your site's pages."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:848
+#: src/admin/wp-security-firewall-menu.php:864
 msgid "<strong>Attention</strong>: Sometimes non-malicious Internet organizations might have bots which impersonate as a \"Googlebot\"."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:849
+#: src/admin/wp-security-firewall-menu.php:865
 msgid "Just be aware that if you activate this feature the plugin will block all bots which use the \"Googlebot\" string in their User Agent information but are NOT officially from Google (irrespective whether they are malicious or not)."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:850
+#: src/admin/wp-security-firewall-menu.php:866
 msgid "All other bots from other organizations such as \"Yahoo\", \"Bing\" etc will not be affected by this feature."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:856, src/admin/wp-security-firewall-menu.php:866, src/classes/grade-system/wp-security-feature-item-manager.php:93
+#: src/admin/wp-security-firewall-menu.php:872, src/admin/wp-security-firewall-menu.php:882, src/classes/grade-system/wp-security-feature-item-manager.php:93
 msgid "Block fake Googlebots"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:869
+#: src/admin/wp-security-firewall-menu.php:885
 msgid "Check this if you want to block all fake Googlebots."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:873
+#: src/admin/wp-security-firewall-menu.php:889
 msgid "This feature will check if the User Agent information of a bot contains the string \"Googlebot\"."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:874
+#: src/admin/wp-security-firewall-menu.php:890
 msgid "It will then perform a few tests to verify if the bot is legitimately from Google and if so it will allow the bot to proceed."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:875
+#: src/admin/wp-security-firewall-menu.php:891
 msgid "If the bot fails the checks then the plugin will mark it as being a fake Googlebot and it will block it"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:882
+#: src/admin/wp-security-firewall-menu.php:898
 msgid "Save internet bot settings"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:918, src/admin/wp-security-firewall-menu.php:940, src/classes/grade-system/wp-security-feature-item-manager.php:95
+#: src/admin/wp-security-firewall-menu.php:934, src/admin/wp-security-firewall-menu.php:956, src/classes/grade-system/wp-security-feature-item-manager.php:95
 msgid "Prevent image hotlinking"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:921
+#: src/admin/wp-security-firewall-menu.php:937
 msgid "A Hotlink is where someone displays an image on their site which is actually located on your site by using a direct link to the source of the image on your server."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:922
+#: src/admin/wp-security-firewall-menu.php:938
 msgid "Due to the fact that the image being displayed on the other person's site is coming from your server, this can cause leaking of bandwidth and resources for you because your server has to present this image for the people viewing it on someone elses's site."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:923
+#: src/admin/wp-security-firewall-menu.php:939
 msgid "This feature will prevent people from directly hotlinking images from your site's pages by writing some directives in your .htaccess file."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:928
+#: src/admin/wp-security-firewall-menu.php:944
 msgid "Prevent hotlinking"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:943
+#: src/admin/wp-security-firewall-menu.php:959
 msgid "Check this if you want to prevent hotlinking to images on your site."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:963
+#: src/admin/wp-security-firewall-menu.php:979
 msgid "Nonce check failed for delete all 404 event logs operation!"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:974
+#: src/admin/wp-security-firewall-menu.php:990
 msgid "404 Detection Feature - Delete all 404 event logs operation failed!"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:978
+#: src/admin/wp-security-firewall-menu.php:994
 msgid "All 404 event logs were deleted from the DB successfully!"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1002
+#: src/admin/wp-security-firewall-menu.php:1018
 msgid "You entered a non numeric value for the lockout time length field. It has been set to the default value."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1008
+#: src/admin/wp-security-firewall-menu.php:1024
 msgid "You entered an incorrect format for the \"Redirect URL\" field. It has been set to the default value."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1041
+#: src/admin/wp-security-firewall-menu.php:1057
 msgid "404 detection configuration"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1044
+#: src/admin/wp-security-firewall-menu.php:1060
 msgid "A 404 or Not Found error occurs when somebody tries to access a non-existent page on your website."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1045
+#: src/admin/wp-security-firewall-menu.php:1061
 msgid "Typically, most 404 errors happen quite innocently when people have mis-typed a URL or used an old link to page which doesn't exist anymore."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1046
+#: src/admin/wp-security-firewall-menu.php:1062
 msgid "However, in some cases you may find many repeated 404 errors which occur in a relatively short space of time and from the same IP address which are all attempting to access a variety of non-existent page URLs."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1047
+#: src/admin/wp-security-firewall-menu.php:1063
 msgid "Such behaviour can mean that a hacker might be trying to find a particular page or URL for sinister reasons."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1048
+#: src/admin/wp-security-firewall-menu.php:1064
 msgid "This feature allows you to monitor all 404 events which occur on your site, and it also gives you the option of blocking IP addresses for a configured length of time."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1049
+#: src/admin/wp-security-firewall-menu.php:1065
 msgid "If you want to temporarily block or blacklist an IP address, simply click the \"Temp Block\" or \"Blacklist IP\" link for the applicable IP entry in the \"404 Event Logs\" table below."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1073
+#: src/admin/wp-security-firewall-menu.php:1089
 msgid "404 detection options"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1085
+#: src/admin/wp-security-firewall-menu.php:1101
 msgid "Enable 404 IP detection and lockout"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1088
+#: src/admin/wp-security-firewall-menu.php:1104
 msgid "Check this if you want to enable the lockout of selected IP addresses."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1093
+#: src/admin/wp-security-firewall-menu.php:1109
 msgid "When you enable this checkbox, all 404 events on your site will be logged in the table below. You can monitor these events and select some IP addresses listed in the table below and block them for a specified amount of time. All IP addresses you select to be blocked from the \"404 Event Logs\" table section will be unable to access your site during the time specified."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1101
+#: src/admin/wp-security-firewall-menu.php:1117
 msgid "Enable 404 event logging"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1104
+#: src/admin/wp-security-firewall-menu.php:1120
 msgid "Check this if you want to enable the logging of 404 events"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1109
+#: src/admin/wp-security-firewall-menu.php:1125
 msgid "Time length of 404 lockout (minutes)"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1111
+#: src/admin/wp-security-firewall-menu.php:1127
 msgid "Set the length of time for which a blocked IP address will be prevented from visiting your site"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1116
+#: src/admin/wp-security-firewall-menu.php:1132
 msgid "You can lock any IP address which is recorded in the \"404 Event Logs\" table section below."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1118
+#: src/admin/wp-security-firewall-menu.php:1134
 msgid "To temporarily lock an IP address, hover over the ID column and click the \"Temp Block\" link for the applicable IP entry."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1125
+#: src/admin/wp-security-firewall-menu.php:1141
 msgid "404 lockout redirect URL"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1127
+#: src/admin/wp-security-firewall-menu.php:1143
 msgid "A blocked visitor will be automatically redirected to this URL."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1137
+#: src/admin/wp-security-firewall-menu.php:1153
 msgid "This list displays the 404 event logs when somebody tries to access a non-existent page on your website."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1138
+#: src/admin/wp-security-firewall-menu.php:1154
 msgid "404 event logs that are older than %1$d days are purged automatically."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1143
+#: src/admin/wp-security-firewall-menu.php:1159
 msgid "404 event logs"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1165, src/admin/wp-security-firewall-menu.php:1174, src/admin/wp-security-user-login-menu.php:495, src/admin/wp-security-user-login-menu.php:504, src/admin/wp-security-user-login-menu.php:653, src/admin/wp-security-user-login-menu.php:662
+#: src/admin/wp-security-firewall-menu.php:1181, src/admin/wp-security-firewall-menu.php:1190, src/admin/wp-security-user-login-menu.php:495, src/admin/wp-security-user-login-menu.php:504, src/admin/wp-security-user-login-menu.php:653, src/admin/wp-security-user-login-menu.php:662
 msgid "Export to CSV"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1171, src/admin/wp-security-user-login-menu.php:501, src/admin/wp-security-user-login-menu.php:659
+#: src/admin/wp-security-firewall-menu.php:1187, src/admin/wp-security-user-login-menu.php:501, src/admin/wp-security-user-login-menu.php:659
 msgid "Click this button if you wish to download this log in CSV format."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1178, src/admin/wp-security-firewall-menu.php:1187
+#: src/admin/wp-security-firewall-menu.php:1194, src/admin/wp-security-firewall-menu.php:1203
 msgid "Delete all 404 event logs"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1184
+#: src/admin/wp-security-firewall-menu.php:1200
 msgid "Click this button if you wish to purge all 404 event logs from the DB."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1235, src/admin/wp-security-list-404.php:237, src/admin/wp-security-list-comment-spammer-ip.php:183
+#: src/admin/wp-security-firewall-menu.php:1251, src/admin/wp-security-list-404.php:237, src/admin/wp-security-list-comment-spammer-ip.php:183
 msgid "The plugin was unable to write to the .htaccess file. Please edit file manually."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1243
+#: src/admin/wp-security-firewall-menu.php:1259
 msgid "Custom .htaccess rules settings"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1250
+#: src/admin/wp-security-firewall-menu.php:1266
 msgid "This feature can be used to apply your own custom .htaccess rules and directives."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1251
+#: src/admin/wp-security-firewall-menu.php:1267
 msgid "It is useful for when you want to tweak our existing firewall rules or when you want to add your own."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1252
+#: src/admin/wp-security-firewall-menu.php:1268
 msgid "NOTE: This feature can only be used if your site is hosted in an apache or similar web server."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1258
+#: src/admin/wp-security-firewall-menu.php:1274
 msgid "<strong>Warning</strong>: Only use this feature if you know what you are doing."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1259
+#: src/admin/wp-security-firewall-menu.php:1275
 msgid "Incorrect .htaccess rules or directives can break or prevent access to your site."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1260
+#: src/admin/wp-security-firewall-menu.php:1276
 msgid "It is your responsibility to ensure that you are entering the correct code!"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1261
+#: src/admin/wp-security-firewall-menu.php:1277
 msgid "If you break your site you will need to access your server via FTP or something similar and then edit your .htaccess file and delete the changes you made."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1267
+#: src/admin/wp-security-firewall-menu.php:1283
 msgid "Custom .htaccess rules"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1271
+#: src/admin/wp-security-firewall-menu.php:1287
 msgid "Enable custom .htaccess rules"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1274
+#: src/admin/wp-security-firewall-menu.php:1290
 msgid "Check this if you want to enable custom rules entered in the text box below"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1278
+#: src/admin/wp-security-firewall-menu.php:1294
 msgid "Place custom rules at the top"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1281
+#: src/admin/wp-security-firewall-menu.php:1297
 msgid "Check this if you want to place your custom rules at the beginning of all the rules applied by this plugin"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1285
+#: src/admin/wp-security-firewall-menu.php:1301
 msgid "Enter custom .htaccess rules:"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1289
+#: src/admin/wp-security-firewall-menu.php:1305
 msgid "Enter your custom .htaccess rules/directives."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1294
+#: src/admin/wp-security-firewall-menu.php:1310
 msgid "Save custom rules"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1308
+#: src/admin/wp-security-firewall-menu.php:1324
 msgid "Firewall setup"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1312
+#: src/admin/wp-security-firewall-menu.php:1328
 msgid "This option allows you to set up or downgrade the firewall."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1313
+#: src/admin/wp-security-firewall-menu.php:1329
 msgid "We recommend you set up the firewall for greater protection, but if for whatever reason you wish to downgrade the firewall, then you can do so here."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1323, src/admin/wp-security-firewall-menu.php:1366
+#: src/admin/wp-security-firewall-menu.php:1339, src/admin/wp-security-firewall-menu.php:1382
 msgid "Set up firewall"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1323
+#: src/admin/wp-security-firewall-menu.php:1339
 msgid "This will attempt to set up the firewall in order to give you the highest level of protection it has to offer."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1325, src/admin/wp-security-firewall-menu.php:1350
+#: src/admin/wp-security-firewall-menu.php:1341, src/admin/wp-security-firewall-menu.php:1366
 msgid "Downgrade firewall"
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1325
+#: src/admin/wp-security-firewall-menu.php:1341
 msgid "This will undo the changes performed by the set-up mechanism."
 msgstr ""
 
-#: src/admin/wp-security-firewall-menu.php:1327
+#: src/admin/wp-security-firewall-menu.php:1343
 msgid "The firewall will still be active if it is downgraded or not set up, but you will have reduced protection."
 msgstr ""
 
@@ -3273,7 +3305,7 @@ msgid "Your AIOS settings were successfully imported."
 msgstr ""
 
 #: src/admin/wp-security-settings-menu.php:673
-msgid "The contents of your settings file appear invalid. Please check the contents of the file you are trying to import settings from."
+msgid "The contents of your settings file are invalid. Please check the contents of the file you are trying to import settings from."
 msgstr ""
 
 #: src/admin/wp-security-settings-menu.php:679
@@ -4464,7 +4496,7 @@ msgstr ""
 msgid "Advanced"
 msgstr ""
 
-#: src/classes/wp-security-captcha.php:81, src/classes/wp-security-general-init-tasks.php:389
+#: src/classes/wp-security-captcha.php:81, src/classes/wp-security-general-init-tasks.php:411
 msgid "Please enter an answer in digits:"
 msgstr ""
 
@@ -4596,63 +4628,63 @@ msgstr ""
 msgid "The following files were changed on your host"
 msgstr ""
 
-#: src/classes/wp-security-general-init-tasks.php:194, src/classes/wp-security-general-init-tasks.php:463
+#: src/classes/wp-security-general-init-tasks.php:207, src/classes/wp-security-general-init-tasks.php:485
 msgid "Application passwords have been disabled by All In One WP Security & Firewall plugin."
 msgstr ""
 
-#: src/classes/wp-security-general-init-tasks.php:410, src/classes/wp-security-general-init-tasks.php:523, src/classes/wp-security-general-init-tasks.php:556, src/classes/wp-security-user-login.php:137, src/classes/wp-security-user-registration.php:74
+#: src/classes/wp-security-general-init-tasks.php:432, src/classes/wp-security-general-init-tasks.php:545, src/classes/wp-security-general-init-tasks.php:578, src/classes/wp-security-user-login.php:137, src/classes/wp-security-user-registration.php:74
 msgid "<strong>ERROR</strong>: Your answer was incorrect - please try again."
 msgstr ""
 
-#: src/classes/wp-security-general-init-tasks.php:445
+#: src/classes/wp-security-general-init-tasks.php:467
 msgid "Enter something special:"
 msgstr ""
 
-#: src/classes/wp-security-general-init-tasks.php:458
+#: src/classes/wp-security-general-init-tasks.php:480
 msgid "Application passwords"
 msgstr ""
 
-#: src/classes/wp-security-general-init-tasks.php:467
+#: src/classes/wp-security-general-init-tasks.php:489
 msgid "Change setting"
 msgstr ""
 
-#: src/classes/wp-security-general-init-tasks.php:469
+#: src/classes/wp-security-general-init-tasks.php:491
 msgid "Site admin can only change this setting."
 msgstr ""
 
-#: src/classes/wp-security-general-init-tasks.php:498
+#: src/classes/wp-security-general-init-tasks.php:520
 msgid "Error: You entered an incorrect CAPTCHA answer. Please go back and try again."
 msgstr ""
 
-#: src/classes/wp-security-general-init-tasks.php:540
+#: src/classes/wp-security-general-init-tasks.php:562
 msgid "Your CAPTCHA answer was incorrect - please try again."
 msgstr ""
 
-#: src/classes/wp-security-general-init-tasks.php:549
+#: src/classes/wp-security-general-init-tasks.php:571
 msgid "<strong>ERROR</strong>: Your IP address is currently locked please contact the administrator!"
 msgstr ""
 
-#: src/classes/wp-security-general-init-tasks.php:624
+#: src/classes/wp-security-general-init-tasks.php:646
 msgid "Please enter the correct reCAPTCHA keys %s to use the Google reCAPTCHA feature."
 msgstr ""
 
-#: src/classes/wp-security-general-init-tasks.php:640
+#: src/classes/wp-security-general-init-tasks.php:662
 msgid "Would you like All In One WP Security & Firewall to restore the config settings and re-insert the security rules in your .htaccess file which were cleared when you deactivated the plugin?"
 msgstr ""
 
-#: src/classes/wp-security-general-init-tasks.php:640, src/classes/wp-security-general-init-tasks.php:642, src/templates/may-also-like.php:40, src/templates/may-also-like.php:43, src/templates/may-also-like.php:54, src/templates/may-also-like.php:57, src/templates/may-also-like.php:68, src/templates/may-also-like.php:71, src/templates/may-also-like.php:91, src/templates/may-also-like.php:103, src/templates/may-also-like.php:115, src/templates/may-also-like.php:127, src/templates/may-also-like.php:139, src/templates/may-also-like.php:151, src/templates/may-also-like.php:168, src/templates/may-also-like.php:171, src/templates/may-also-like.php:183, src/templates/may-also-like.php:195, src/templates/may-also-like.php:207, src/templates/may-also-like.php:219, src/templates/may-also-like.php:231, src/templates/may-also-like.php:243, src/templates/may-also-like.php:252, src/templates/may-also-like.php:255, src/templates/may-also-like.php:264, src/templates/may-also-like.php:267, src/templates/may-also-like.php:279, src/templates/may-also-like.php:297, src/templates/may-also-like.php:309, src/templates/may-also-like.php:327, src/templates/may-also-like.php:339, src/templates/may-also-like.php:351, src/templates/may-also-like.php:368, src/templates/may-also-like.php:380
+#: src/classes/wp-security-general-init-tasks.php:662, src/classes/wp-security-general-init-tasks.php:664, src/templates/may-also-like.php:40, src/templates/may-also-like.php:43, src/templates/may-also-like.php:54, src/templates/may-also-like.php:57, src/templates/may-also-like.php:68, src/templates/may-also-like.php:71, src/templates/may-also-like.php:91, src/templates/may-also-like.php:103, src/templates/may-also-like.php:115, src/templates/may-also-like.php:127, src/templates/may-also-like.php:139, src/templates/may-also-like.php:151, src/templates/may-also-like.php:168, src/templates/may-also-like.php:171, src/templates/may-also-like.php:183, src/templates/may-also-like.php:195, src/templates/may-also-like.php:207, src/templates/may-also-like.php:219, src/templates/may-also-like.php:231, src/templates/may-also-like.php:243, src/templates/may-also-like.php:252, src/templates/may-also-like.php:255, src/templates/may-also-like.php:264, src/templates/may-also-like.php:267, src/templates/may-also-like.php:279, src/templates/may-also-like.php:297, src/templates/may-also-like.php:309, src/templates/may-also-like.php:327, src/templates/may-also-like.php:339, src/templates/may-also-like.php:351, src/templates/may-also-like.php:368, src/templates/may-also-like.php:380
 msgid "Yes"
 msgstr ""
 
-#: src/classes/wp-security-general-init-tasks.php:640, src/classes/wp-security-general-init-tasks.php:642, src/templates/may-also-like.php:88, src/templates/may-also-like.php:100, src/templates/may-also-like.php:112, src/templates/may-also-like.php:124, src/templates/may-also-like.php:136, src/templates/may-also-like.php:148, src/templates/may-also-like.php:180, src/templates/may-also-like.php:192, src/templates/may-also-like.php:204, src/templates/may-also-like.php:216, src/templates/may-also-like.php:228, src/templates/may-also-like.php:240, src/templates/may-also-like.php:276, src/templates/may-also-like.php:294, src/templates/may-also-like.php:306, src/templates/may-also-like.php:324, src/templates/may-also-like.php:336, src/templates/may-also-like.php:348, src/templates/may-also-like.php:365, src/templates/may-also-like.php:377, src/templates/notices/custom-notice.php:27
+#: src/classes/wp-security-general-init-tasks.php:662, src/classes/wp-security-general-init-tasks.php:664, src/templates/may-also-like.php:88, src/templates/may-also-like.php:100, src/templates/may-also-like.php:112, src/templates/may-also-like.php:124, src/templates/may-also-like.php:136, src/templates/may-also-like.php:148, src/templates/may-also-like.php:180, src/templates/may-also-like.php:192, src/templates/may-also-like.php:204, src/templates/may-also-like.php:216, src/templates/may-also-like.php:228, src/templates/may-also-like.php:240, src/templates/may-also-like.php:276, src/templates/may-also-like.php:294, src/templates/may-also-like.php:306, src/templates/may-also-like.php:324, src/templates/may-also-like.php:336, src/templates/may-also-like.php:348, src/templates/may-also-like.php:365, src/templates/may-also-like.php:377, src/templates/notices/custom-notice.php:27
 msgid "No"
 msgstr ""
 
-#: src/classes/wp-security-general-init-tasks.php:642
+#: src/classes/wp-security-general-init-tasks.php:664
 msgid "Would you like All In One WP Security & Firewall to restore the config settings which were cleared when you deactivated the plugin?"
 msgstr ""
 
-#: src/classes/wp-security-general-init-tasks.php:662
+#: src/classes/wp-security-general-init-tasks.php:684
 msgid "Your registration is pending approval."
 msgstr ""
 
@@ -5050,10 +5082,6 @@ msgstr ""
 
 #: src/templates/may-also-like.php:5
 msgid "All-In-One Security (AIOS) Free vs Premium Comparison Chart"
-msgstr ""
-
-#: src/templates/may-also-like.php:7
-msgid "FAQs"
 msgstr ""
 
 #: src/templates/may-also-like.php:9
