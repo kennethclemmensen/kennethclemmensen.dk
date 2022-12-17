@@ -1,19 +1,19 @@
 <?php
 namespace Tests\WPUnit\KC\Core\Security;
 
-use KC\Core\Security\SecurityHelper;
+use KC\Core\Security\SecurityService;
 use \Codeception\TestCase\WPTestCase;
 
 /**
- * The SecurityHelperTest class contains methods to test the SecurityHelper class
+ * The SecurityServiceTest class contains methods to test the SecurityService class
  */
-final class SecurityHelperTest extends WPTestCase {
+final class SecurityServiceTest extends WPTestCase {
 
     /**
      * The _before method is called before each test
      */
     protected function _before() : void {
-        require_once '../../public/wp-content/plugins/kc/Core/Security/SecurityHelper.php';
+        require_once '../../public/wp-content/plugins/kc/Core/Security/SecurityService.php';
     }
 
     /**
@@ -21,7 +21,7 @@ final class SecurityHelperTest extends WPTestCase {
      */
     public function testEscapeUrl() : void {
         $expected = 'https://kennethclemmensen.dk';
-        $this->assertEquals($expected, SecurityHelper::escapeUrl($expected));
+        $this->assertEquals($expected, SecurityService::escapeUrl($expected));
     }
 
     /**
@@ -29,7 +29,7 @@ final class SecurityHelperTest extends WPTestCase {
      */
     public function testHasApiAccess() : void {
         $expected = true;
-        $this->assertEquals($expected, SecurityHelper::hasApiAccess());
+        $this->assertEquals($expected, SecurityService::hasApiAccess());
     }
 
     /**
@@ -37,7 +37,7 @@ final class SecurityHelperTest extends WPTestCase {
      */
     public function testSanitizeString() : void {
         $expected = '';
-        $this->assertEquals($expected, SecurityHelper::sanitizeString(''));
+        $this->assertEquals($expected, SecurityService::sanitizeString(''));
     }
 
     /**
@@ -45,6 +45,6 @@ final class SecurityHelperTest extends WPTestCase {
      */
     public function testIsValid() : void {
         $expected = false;
-        $this->assertEquals($expected, SecurityHelper::isValid(''));
+        $this->assertEquals($expected, SecurityService::isValid(''));
     }
 }
