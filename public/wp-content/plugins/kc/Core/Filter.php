@@ -21,4 +21,14 @@ final class Filter {
 	public static function getManagePostsColumnsFilter(PostType $postType) : string {
 		return 'manage_'.$postType->value.'_posts_columns';
 	}
+
+	/**
+	 * Get the pre_update_option_{$option} filter for an option
+	 * 
+	 * @param string $option the option
+	 * @return string the pre_update_option filter
+	 */
+	public static function getPreUpdateOptionFilter(string $option) : string {
+		return 'pre_update_option_'.$option;
+	}
 }

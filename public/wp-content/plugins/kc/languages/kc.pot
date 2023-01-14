@@ -47,6 +47,9 @@ msgstr ""
 msgid "Dropbox"
 msgstr ""
 
+msgid "Encryption"
+msgstr ""
+
 msgid "Everything"
 msgstr ""
 
@@ -96,6 +99,9 @@ msgid "Meta Box is not activated"
 msgstr ""
 
 msgid "Parent page"
+msgstr ""
+
+msgid "Password"
 msgstr ""
 
 msgid "Redirect uri"

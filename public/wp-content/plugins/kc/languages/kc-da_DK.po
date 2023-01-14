@@ -48,6 +48,9 @@ msgstr "Download tæller"
 msgid "Dropbox"
 msgstr "Dropbox"
 
+msgid "Encryption"
+msgstr "Kryptering"
+
 msgid "Everything"
 msgstr "Alt"
 
@@ -98,6 +101,9 @@ msgstr "Meta Box er ikke aktiveret"
 
 msgid "Parent page"
 msgstr "Forælderside"
+
+msgid "Password"
+msgstr "Kodeord"
 
 msgid "Redirect uri"
 msgstr "Redirect uri"

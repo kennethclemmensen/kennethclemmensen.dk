@@ -17,6 +17,7 @@ enum TranslationString: string {
 	case Download = 'Download';
 	case DownloadCounter = 'Download counter';
 	case Dropbox = 'Dropbox';
+	case Encryption = 'Encryption';
 	case Everything = 'Everything';
 	case File = 'File';
 	case Files = 'Files';
@@ -34,6 +35,7 @@ enum TranslationString: string {
 	case ImageInformations = 'Image informations';
 	case MetaBoxIsNotActivated = 'Meta Box is not activated';
 	case ParentPage = 'Parent page';
+	case Password = 'Password';
 	case RedirectUri = 'Redirect uri';
 	case Settings = 'Settings';
 	case ShiftKey = 'Shift key';

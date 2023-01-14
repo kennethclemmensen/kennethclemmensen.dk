@@ -5,7 +5,6 @@ use KC\Core\Action;
 use KC\Core\Images\ImageSize;
 use KC\Core\PostTypes\PostType;
 use KC\Core\Settings\BaseSettings;
-use KC\Core\Settings\ISettings;
 use KC\Core\Translations\TranslationService;
 use KC\Core\Translations\TranslationString;
 use KC\Core\Users\UserRole;
@@ -14,7 +13,7 @@ use KC\Data\DataManager;
 /**
  * The GallerySettings class contains methods to handle the gallery settings
  */
-final class GallerySettings extends BaseSettings implements ISettings {
+final class GallerySettings extends BaseSettings {
 
 	private readonly string $settingOptionsName;
 	private readonly array | bool $settingsOption;

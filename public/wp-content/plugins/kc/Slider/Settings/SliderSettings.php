@@ -5,7 +5,6 @@ use KC\Core\Action;
 use KC\Core\Images\ImageSize;
 use KC\Core\PostTypes\PostType;
 use KC\Core\Settings\BaseSettings;
-use KC\Core\Settings\ISettings;
 use KC\Core\Translations\TranslationService;
 use KC\Core\Translations\TranslationString;
 use KC\Core\Users\UserRole;
@@ -13,7 +12,7 @@ use KC\Core\Users\UserRole;
 /**
  * The SliderSettings class contains methods to handle the slider settings
  */
-final class SliderSettings extends BaseSettings implements ISettings {
+final class SliderSettings extends BaseSettings {
 
 	private readonly string $settingOptionsName;
 	private readonly array | bool $settingsOption;

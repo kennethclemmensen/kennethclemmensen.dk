@@ -18,7 +18,7 @@ final class ApiController extends WP_REST_Controller {
 	 * 
 	 * @param DataManager $dataManager the data manager
 	 */
-	public function __construct(private DataManager $dataManager) {
+	public function __construct(private readonly DataManager $dataManager) {
 		$this->namespace = 'kcapi/v1';
 	}
 

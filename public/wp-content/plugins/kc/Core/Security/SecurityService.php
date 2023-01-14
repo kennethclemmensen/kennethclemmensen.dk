@@ -58,4 +58,51 @@ final class SecurityService {
 		}
 		return $output;
 	}
+
+	/**
+	 * Encrypt a message with a nonce and a key
+	 * 
+	 * @param string $message the message to encrypt
+	 * @param string $nonce the nonce
+	 * @param string $key the key
+	 * @return string the encrypted message
+	 */
+	public static function encryptMessage(string $message, string $nonce, string $key) : string {
+		return sodium_crypto_aead_aes256gcm_encrypt($message, '', $nonce, $key);
+	}
+
+	/**
+	 * Decrypt a message with a nonce and a key
+	 * 
+	 * @param string $message the message to decrypt
+	 * @param string $nonce the nonce
+	 * @param string $key the key
+	 * @return string the decrypted message
+	 */
+	public static function decryptMessage(string $message, string $nonce, string $key) : string {
+		return sodium_crypto_aead_aes256gcm_decrypt($message, '', $nonce, $key);
+	}
+
+	/**
+	 * Generate an encryption key based on the password
+	 * 
+	 * @param string $password the password
+	 * @return string the encryption key
+	 */
+	public static function generateEncryptionKey(string $password) : string {
+		$length = SODIUM_CRYPTO_AEAD_AES256GCM_KEYBYTES;
+		$salt = random_bytes(SODIUM_CRYPTO_PWHASH_SALTBYTES);
+		$opslimit = SODIUM_CRYPTO_PWHASH_OPSLIMIT_MODERATE;
+		$memlimit = SODIUM_CRYPTO_PWHASH_MEMLIMIT_MODERATE;
+		return sodium_crypto_pwhash($length, $password, $salt, $opslimit, $memlimit);
+	}
+
+	/**
+	 * Generate a nonce
+	 * 
+	 * @return string the nonce
+	 */
+	public static function generateNonce() : string {
+		return random_bytes(12);
+	}
 }

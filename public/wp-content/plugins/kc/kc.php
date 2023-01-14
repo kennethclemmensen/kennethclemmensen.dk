@@ -6,7 +6,7 @@ Version: 1.0
 Author: Kenneth Clemmensen
 Author URI: https://kennethclemmensen.dk
 Requires at least: 6.1
-Requires PHP: 8.1
+Requires PHP: 8.2
 Domain Path: /languages
 */
 namespace KC;
@@ -15,7 +15,6 @@ require_once 'Core/Api/BaseApi.php';
 require_once 'Core/Modules/BaseModule.php';
 require_once 'Core/Modules/IModule.php';
 require_once 'Core/Settings/BaseSettings.php';
-require_once 'Core/Settings/ISettings.php';
 $directoryIterator = new \RecursiveDirectoryIterator(__DIR__);
 $recursiveIterator = new \RecursiveIteratorIterator($directoryIterator);
 $files = new \RegexIterator($recursiveIterator, '/^(?!kc\.php).+\.php$/i');
