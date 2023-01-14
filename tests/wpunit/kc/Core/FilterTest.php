@@ -24,4 +24,12 @@ final class FilterTest extends WPTestCase {
         $expected = 'manage_kc_image_posts_columns';
         $this->assertEquals($expected, Filter::getManagePostsColumnsFilter(PostType::Image));
     }
+
+    /**
+     * Test the getPreUpdateOptionFilter method
+     */
+    public function testGetPreUpdateOptionFilter() : void {
+        $expected = 'pre_update_option_kc-option';
+        $this->assertEquals($expected, Filter::getPreUpdateOptionFilter('kc-option'));
+    }
 }

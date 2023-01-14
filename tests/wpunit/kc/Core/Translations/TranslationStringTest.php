@@ -101,6 +101,13 @@ final class TranslationStringTest extends WPTestCase {
 	}
 
 	/**
+	 * Test the Encryption value
+	 */
+	public function testEncryptionValue() : void {
+		$this->assertEquals('Encryption', TranslationString::Encryption->value);
+	}
+
+	/**
 	 * Test the Everything value
 	 */
 	public function testEverythingValue() : void {
@@ -217,6 +224,13 @@ final class TranslationStringTest extends WPTestCase {
 	 */
 	public function testParentPageValue() : void {
 		$this->assertEquals('Parent page', TranslationString::ParentPage->value);
+	}
+
+	/**
+	 * Test the Password value
+	 */
+	public function testPasswordValue() : void {
+		$this->assertEquals('Password', TranslationString::Password->value);
 	}
 
 	/**

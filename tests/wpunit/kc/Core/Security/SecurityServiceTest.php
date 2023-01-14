@@ -47,4 +47,36 @@ final class SecurityServiceTest extends WPTestCase {
         $expected = false;
         $this->assertEquals($expected, SecurityService::isValid(''));
     }
+
+    /**
+     * Test the encryptMessage method
+     */
+    public function testEncryptMessage() : void {
+        $nonce = SecurityService::generateNonce();
+        $key = SecurityService::generateEncryptionKey('Password');
+        $this->assertNotEmpty(SecurityService::encryptMessage('message', $nonce, $key));
+    }
+
+    /**
+     * Test the decryptMessage method
+     */
+    public function testDecryptMessage() : void {
+        $nonce = SecurityService::generateNonce();
+        $key = SecurityService::generateEncryptionKey('Password');
+        $this->assertEmpty(SecurityService::decryptMessage('message', $nonce, $key));
+    }
+
+    /**
+     * Test the generateEncryptionKey method
+     */
+    public function testGenerateEncryptionKey() : void {
+        $this->assertNotEmpty(SecurityService::generateEncryptionKey('Password'));
+    }
+
+    /**
+     * Test the generateNonce method
+     */
+    public function testGenerateNonce() : void {
+        $this->assertNotEmpty(SecurityService::generateNonce());
+    }
 }
