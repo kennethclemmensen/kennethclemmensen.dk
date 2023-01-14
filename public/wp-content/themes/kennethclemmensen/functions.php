@@ -22,7 +22,7 @@ add_action('init', function() : void {
 	ThemeSettings::getInstance();
 	new TranslationStrings();
 	register_nav_menus([
-		ThemeHelper::getMainMenuKey() => 'Main menu'
+		ThemeService::getMainMenuKey() => 'Main menu'
 	]);
 	remove_action('admin_print_styles', 'print_emoji_styles');
 	$priority = 7;
@@ -40,7 +40,7 @@ add_action('init', function() : void {
 add_action('widgets_init', function() : void {
 	register_sidebar([
 		'name' => 'Footer',
-		'id' => ThemeHelper::getFooterSidebarID(),
+		'id' => ThemeService::getFooterSidebarID(),
 		'before_widget' => '<div class="footer__widget">',
 		'after_widget' => '</div>',
 		'before_title' => '',
@@ -48,7 +48,7 @@ add_action('widgets_init', function() : void {
 	]);
 	register_sidebar([
 		'name' => 'Page not found',
-		'id' => ThemeHelper::getPageNotFoundSidebarID(),
+		'id' => ThemeService::getPageNotFoundSidebarID(),
 		'before_widget' => '',
 		'after_widget' => '',
 		'before_title' => '<h1>',

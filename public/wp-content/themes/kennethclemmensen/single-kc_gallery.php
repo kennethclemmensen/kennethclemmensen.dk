@@ -3,8 +3,8 @@ get_header();
 ?>
 <div class="page">
 	<?php
-	ThemeHelper::loadSliderTemplate();
-	ThemeHelper::loadBreadcrumbTemplate();
+	ThemeService::loadSliderTemplate();
+	ThemeService::loadBreadcrumbTemplate();
 	?>
 	<section class="page__content">
 		<h1><?php the_title(); ?></h1>

@@ -1,8 +1,8 @@
 <?php
 /**
- * The ThemeHelper class contains utility methods to use in the theme
+ * The ThemeService class contains utility methods to use in the theme
  */
-final class ThemeHelper {
+final class ThemeService {
 
 	/**
 	 * Get the breadcrumb as an array of page IDs

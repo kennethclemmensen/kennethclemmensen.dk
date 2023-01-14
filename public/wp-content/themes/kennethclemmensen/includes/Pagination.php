@@ -2,7 +2,7 @@
 /**
  * The Pagination class contains functionality to handle pagination
  */
-final class Pagination {
+final readonly class Pagination {
 
 	private readonly string $urlParameterName;
 	private readonly int $offset;

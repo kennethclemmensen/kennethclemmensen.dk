@@ -19,14 +19,14 @@
 		<span class="header__icon"></span>
 	</a>
 	<nav class="menu">
-		<?php wp_nav_menu(['theme_location' => ThemeHelper::getMainMenuKey()]); ?>
+		<?php wp_nav_menu(['theme_location' => ThemeService::getMainMenuKey()]); ?>
 	</nav>
 </header>
 <nav class="mobile-menu" id="mobile-menu">
 	<div class="mobile-menu__content">
 		<?php
 		wp_nav_menu([
-			'theme_location' => ThemeHelper::getMainMenuKey(),
+			'theme_location' => ThemeService::getMainMenuKey(),
 			'walker' => new MobileMenuWalker()
 		]);
 		?>

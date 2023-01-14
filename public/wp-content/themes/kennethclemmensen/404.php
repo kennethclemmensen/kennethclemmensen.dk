@@ -2,9 +2,9 @@
 get_header();
 ?>
 	<div class="page">
-		<?php ThemeHelper::loadSliderTemplate(); ?>
+		<?php ThemeService::loadSliderTemplate(); ?>
 		<section class="page__content">
-			<?php dynamic_sidebar(ThemeHelper::getPageNotFoundSidebarID()); ?>
+			<?php dynamic_sidebar(ThemeService::getPageNotFoundSidebarID()); ?>
 		</section>
 	</div>
 <?php

@@ -4,7 +4,7 @@
 	</span>
 	<ul class="breadcrumb__list">
 		<?php
-		$pages = ThemeHelper::getBreadcrumb();
+		$pages = ThemeService::getBreadcrumb();
 		$count = count($pages);
 		for($i = 0; $i < $count; $i++) {
 			$pageID = $pages[$i];
