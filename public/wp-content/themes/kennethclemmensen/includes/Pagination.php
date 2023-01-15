@@ -2,7 +2,7 @@
 /**
  * The Pagination class contains functionality to handle pagination
  */
-final readonly class Pagination {
+final class Pagination {
 
 	private readonly string $urlParameterName;
 	private readonly int $offset;
@@ -13,8 +13,7 @@ final readonly class Pagination {
 	 * @param array $items the items
 	 * @param int $perPage the number of items per page
 	 */
-	public function __construct(private array $items, private int $perPage) {
-		$this->items = $items;
+	public function __construct(private readonly array $items, private int $perPage) {
 		$this->perPage = $perPage;
 		$this->urlParameterName = 'offset';
 		$this->offset = (isset($_GET[$this->urlParameterName]) && is_numeric($_GET[$this->urlParameterName])) ? $_GET[$this->urlParameterName] : 0;
