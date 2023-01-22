@@ -20,8 +20,9 @@ final class ImageServiceTest extends WPTestCase {
      * Test the getImageUrl method
      */
     public function testGetImageUrl() : void {
+        $imageService = new ImageService();
         $expected = '';
         $imageId = 0;
-        $this->assertEquals($expected, ImageService::getImageUrl($imageId));
+        $this->assertEquals($expected, $imageService->getImageUrl($imageId));
     }
 }

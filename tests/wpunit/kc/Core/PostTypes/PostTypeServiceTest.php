@@ -10,11 +10,14 @@ use \Codeception\TestCase\WPTestCase;
  */
 final class PostTypeServiceTest extends WPTestCase {
 
+    private PostTypeService $postTypeService;
+
     /**
      * The _before method is called before each test
      */
     protected function _before() : void {
         require_once '../../public/wp-content/plugins/kc/Core/PostTypes/PostTypeService.php';
+        $this->postTypeService = new PostTypeService();
     }
 
     /**
@@ -22,14 +25,14 @@ final class PostTypeServiceTest extends WPTestCase {
      */
     public function testGetFieldValue() : void {
         $expected = 0;
-        $this->assertEquals($expected, PostTypeService::getFieldValue(FieldName::File, 0));
+        $this->assertEquals($expected, $this->postTypeService->getFieldValue(FieldName::File, 0));
     }
 
     /**
      * Test the setFieldValue method
      */
     public function testSetFieldValue() : void {
-        PostTypeService::setFieldValue('', FieldName::File, 0);
-        $this->assertEquals(0, PostTypeService::getFieldValue(FieldName::File, 0));
+        $this->postTypeService->setFieldValue('', FieldName::File, 0);
+        $this->assertEquals(0, $this->postTypeService->getFieldValue(FieldName::File, 0));
     }
 }

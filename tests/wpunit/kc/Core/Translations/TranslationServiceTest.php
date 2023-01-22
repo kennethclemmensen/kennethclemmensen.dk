@@ -21,7 +21,8 @@ final class TranslationServiceTest extends WPTestCase {
      * Test the getTranslatedString method
      */
     public function testGetTranslatedString() : void {
+        $translationService = new TranslationService();
         $expected = 'Backup';
-        $this->assertEquals($expected, TranslationService::getTranslatedString(TranslationString::Backup));
+        $this->assertEquals($expected, $translationService->getTranslatedString(TranslationString::Backup));
     }
 }

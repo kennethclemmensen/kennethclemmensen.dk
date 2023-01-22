@@ -9,21 +9,19 @@ use \Codeception\TestCase\WPTestCase;
  */
 final class FileManagerTest extends WPTestCase {
 
-    private FileManager $fileManager;
-
     /**
      * The _before method is called before each test
      */
     protected function _before() : void {
         require_once '../../public/wp-content/plugins/kc/Data/FileManager.php';
-        $this->fileManager = new FileManager();
     }
 
 	/**
 	 * Test the getFiles method
 	 */
 	public function testGetFiles() : void {
+        $fileManager = new FileManager();
 		$expected = 3;
-		$this->assertEquals($expected, count($this->fileManager->getFiles(__DIR__)));
+		$this->assertEquals($expected, count($fileManager->getFiles(__DIR__)));
 	}
 }

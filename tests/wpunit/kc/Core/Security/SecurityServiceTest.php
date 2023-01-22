@@ -9,11 +9,14 @@ use \Codeception\TestCase\WPTestCase;
  */
 final class SecurityServiceTest extends WPTestCase {
 
+    private SecurityService $securityService;
+
     /**
      * The _before method is called before each test
      */
     protected function _before() : void {
         require_once '../../public/wp-content/plugins/kc/Core/Security/SecurityService.php';
+        $this->securityService = new SecurityService();
     }
 
     /**
@@ -21,7 +24,7 @@ final class SecurityServiceTest extends WPTestCase {
      */
     public function testEscapeUrl() : void {
         $expected = 'https://kennethclemmensen.dk';
-        $this->assertEquals($expected, SecurityService::escapeUrl($expected));
+        $this->assertEquals($expected, $this->securityService->escapeUrl($expected));
     }
 
     /**
@@ -29,7 +32,7 @@ final class SecurityServiceTest extends WPTestCase {
      */
     public function testHasApiAccess() : void {
         $expected = true;
-        $this->assertEquals($expected, SecurityService::hasApiAccess());
+        $this->assertEquals($expected, $this->securityService->hasApiAccess());
     }
 
     /**
@@ -37,7 +40,7 @@ final class SecurityServiceTest extends WPTestCase {
      */
     public function testSanitizeString() : void {
         $expected = '';
-        $this->assertEquals($expected, SecurityService::sanitizeString(''));
+        $this->assertEquals($expected, $this->securityService->sanitizeString(''));
     }
 
     /**
@@ -45,38 +48,38 @@ final class SecurityServiceTest extends WPTestCase {
      */
     public function testIsValid() : void {
         $expected = false;
-        $this->assertEquals($expected, SecurityService::isValid(''));
+        $this->assertEquals($expected, $this->securityService->isValid(''));
     }
 
     /**
      * Test the encryptMessage method
      */
     public function testEncryptMessage() : void {
-        $nonce = SecurityService::generateNonce();
-        $key = SecurityService::generateEncryptionKey('Password');
-        $this->assertNotEmpty(SecurityService::encryptMessage('message', $nonce, $key));
+        $nonce = $this->securityService->generateNonce();
+        $key = $this->securityService->generateEncryptionKey('Password');
+        $this->assertNotEmpty($this->securityService->encryptMessage('message', $nonce, $key));
     }
 
     /**
      * Test the decryptMessage method
      */
     public function testDecryptMessage() : void {
-        $nonce = SecurityService::generateNonce();
-        $key = SecurityService::generateEncryptionKey('Password');
-        $this->assertEmpty(SecurityService::decryptMessage('message', $nonce, $key));
+        $nonce = $this->securityService->generateNonce();
+        $key = $this->securityService->generateEncryptionKey('Password');
+        $this->assertEmpty($this->securityService->decryptMessage('message', $nonce, $key));
     }
 
     /**
      * Test the generateEncryptionKey method
      */
     public function testGenerateEncryptionKey() : void {
-        $this->assertNotEmpty(SecurityService::generateEncryptionKey('Password'));
+        $this->assertNotEmpty($this->securityService->generateEncryptionKey('Password'));
     }
 
     /**
      * Test the generateNonce method
      */
     public function testGenerateNonce() : void {
-        $this->assertNotEmpty(SecurityService::generateNonce());
+        $this->assertNotEmpty($this->securityService->generateNonce());
     }
 }

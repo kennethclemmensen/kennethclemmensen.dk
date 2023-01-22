@@ -20,7 +20,8 @@ class FileServiceTest extends WPTestCase {
 	 * Test the getFileContent method
 	 */
 	public function testGetFileContent() : void {
+		$fileService = new FileService();
 		$file = '../../public/index.php';
-		$this->assertNotEquals('', FileService::getFileContent($file));
+		$this->assertNotEquals('', $fileService->getFileContent($file));
 	}
 }

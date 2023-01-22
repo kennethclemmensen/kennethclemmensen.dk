@@ -1,6 +1,9 @@
 <?php
 namespace Tests\WPUnit\KC\Data;
 
+use KC\Core\Images\ImageService;
+use KC\Core\PostTypes\PostTypeService;
+use KC\Core\Security\SecurityService;
 use KC\Data\DataManager;
 use \Codeception\TestCase\WPTestCase;
 
@@ -16,7 +19,7 @@ final class DataManagerTest extends WPTestCase {
      */
     protected function _before() : void {
         require_once '../../public/wp-content/plugins/kc/Data/DataManager.php';
-        $this->dataManager = new DataManager();
+        $this->dataManager = new DataManager(new PostTypeService(), new SecurityService(), new ImageService());
     }
 
     /**
