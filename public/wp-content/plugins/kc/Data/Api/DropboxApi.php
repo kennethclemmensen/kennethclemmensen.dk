@@ -49,7 +49,8 @@ final class DropboxApi extends BaseApi {
 			'Content-Type: '.ContentType::OctetStream->value,
 			'Dropbox-API-Arg: '.json_encode(['path' => '/'.$file])
 		];
-		$postFields = FileService::getFileContent($folder.'/'.$file);
+		$fileService = new FileService();
+		$postFields = $fileService->getFileContent($folder.'/'.$file);
 		$this->createPostRequest($url, $headers, $postFields);
 	}
 }

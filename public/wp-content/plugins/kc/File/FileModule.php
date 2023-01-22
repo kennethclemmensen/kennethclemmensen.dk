@@ -15,7 +15,16 @@ use KC\Core\Translations\TranslationString;
 /**
  * The FileModule class contains functionality to handle files
  */
-final class FileModule implements IModule {
+final readonly class FileModule implements IModule {
+
+	private readonly TranslationService $translationService;
+
+	/**
+	 * FileModule constructor
+	 */
+	public function __construct() {
+		$this->translationService = new TranslationService();
+	}
 
 	/**
 	 * Setup the file module
@@ -33,8 +42,8 @@ final class FileModule implements IModule {
 		add_action(Action::INIT, function() : void {
 			register_post_type(PostType::File->value, [
 				'labels' => [
-					'name' => TranslationService::getTranslatedString(TranslationString::Files),
-					'singular_name' => TranslationService::getTranslatedString(TranslationString::File)
+					'name' => $this->translationService->getTranslatedString(TranslationString::Files),
+					'singular_name' => $this->translationService->getTranslatedString(TranslationString::File)
 				],
 				'public' => true,
 				'exclude_from_search' => true,
@@ -43,8 +52,8 @@ final class FileModule implements IModule {
 			]);
 			register_taxonomy(TaxonomyName::FileType->value, [PostType::Page->value, PostType::File->value], [
 				'labels' => [
-					'name' => TranslationService::getTranslatedString(TranslationString::FileTypes),
-					'singular_name' => TranslationService::getTranslatedString(TranslationString::FileType)
+					'name' => $this->translationService->getTranslatedString(TranslationString::FileTypes),
+					'singular_name' => $this->translationService->getTranslatedString(TranslationString::FileType)
 				],
 				'show_admin_column' => true,
 				'hierarchical' => true
@@ -59,22 +68,22 @@ final class FileModule implements IModule {
 		add_filter(Filter::META_BOXES, function(array $metaBoxes) : array {
 			$metaBoxes[] = [
 				'id' => 'file_informations',
-				'title' => TranslationService::getTranslatedString(TranslationString::FileInformations),
+				'title' => $this->translationService->getTranslatedString(TranslationString::FileInformations),
 				'post_types' => [PostType::File->value],
 				'fields' => [
 					[
-						'name' => TranslationService::getTranslatedString(TranslationString::Description),
+						'name' => $this->translationService->getTranslatedString(TranslationString::Description),
 						'id' => FieldName::FileDescription->value,
 						'type' => FieldType::TextArea->value
 					],
 					[
-						'name' => TranslationService::getTranslatedString(TranslationString::File),
+						'name' => $this->translationService->getTranslatedString(TranslationString::File),
 						'id' => FieldName::File->value,
 						'type' => FieldType::File->value,
 						'max_file_uploads' => 1
 					],
 					[
-						'name' => TranslationService::getTranslatedString(TranslationString::DownloadCounter),
+						'name' => $this->translationService->getTranslatedString(TranslationString::DownloadCounter),
 						'id' => FieldName::FileDownloads->value,
 						'type' => FieldType::Number->value,
 						'std' => 0

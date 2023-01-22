@@ -4,7 +4,7 @@ namespace KC\Core\Security;
 /**
  * The SecurityService class contains security methods
  */
-final class SecurityService {
+final readonly class SecurityService {
 
 	/**
 	 * Escape an url
@@ -12,7 +12,7 @@ final class SecurityService {
 	 * @param string $url the url to escape
 	 * @return string the escaped url
 	 */
-	public static function escapeUrl(string $url) : string {
+	public function escapeUrl(string $url) : string {
 		return esc_url($url);
 	}
 
@@ -21,7 +21,7 @@ final class SecurityService {
 	 * 
 	 * @return bool true if the user has access to the Api. False if the user doesn't has access to the Api
 	 */
-	public static function hasApiAccess() : bool {
+	public function hasApiAccess() : bool {
 		return !is_user_logged_in();
 	}
 
@@ -31,7 +31,7 @@ final class SecurityService {
 	 * @param string $str the string to sanitize
 	 * @return string the sanitized string
 	 */
-	public static function sanitizeString(string $str) : string {
+	public function sanitizeString(string $str) : string {
 		return sanitize_text_field($str);
 	}
 
@@ -41,7 +41,7 @@ final class SecurityService {
 	 * @param string $value the value to check
 	 * @return bool true if the value is valid. False if the value isn't valid
 	 */
-	public static function isValid(string $value) : bool {
+	public function isValid(string $value) : bool {
 		return !empty($value);
 	}
 
@@ -51,7 +51,7 @@ final class SecurityService {
 	 * @param array $inputs the inputs to validate
 	 * @return array the validated inputs
 	 */
-	public static function validateSettingInputs(array $inputs) : array {
+	public function validateSettingInputs(array $inputs) : array {
 		$output = [];
 		foreach($inputs as $key => $value) {
 			$output[$key] = strip_tags(addslashes($inputs[$key]));
@@ -67,7 +67,7 @@ final class SecurityService {
 	 * @param string $key the key
 	 * @return string the encrypted message
 	 */
-	public static function encryptMessage(string $message, string $nonce, string $key) : string {
+	public function encryptMessage(string $message, string $nonce, string $key) : string {
 		return sodium_crypto_aead_aes256gcm_encrypt($message, '', $nonce, $key);
 	}
 
@@ -79,7 +79,7 @@ final class SecurityService {
 	 * @param string $key the key
 	 * @return string the decrypted message
 	 */
-	public static function decryptMessage(string $message, string $nonce, string $key) : string {
+	public function decryptMessage(string $message, string $nonce, string $key) : string {
 		return sodium_crypto_aead_aes256gcm_decrypt($message, '', $nonce, $key);
 	}
 
@@ -89,7 +89,7 @@ final class SecurityService {
 	 * @param string $password the password
 	 * @return string the encryption key
 	 */
-	public static function generateEncryptionKey(string $password) : string {
+	public function generateEncryptionKey(string $password) : string {
 		$length = SODIUM_CRYPTO_AEAD_AES256GCM_KEYBYTES;
 		$salt = random_bytes(SODIUM_CRYPTO_PWHASH_SALTBYTES);
 		$opslimit = SODIUM_CRYPTO_PWHASH_OPSLIMIT_MODERATE;
@@ -102,7 +102,7 @@ final class SecurityService {
 	 * 
 	 * @return string the nonce
 	 */
-	public static function generateNonce() : string {
+	public function generateNonce() : string {
 		return random_bytes(12);
 	}
 }

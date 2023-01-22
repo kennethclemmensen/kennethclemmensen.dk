@@ -21,7 +21,8 @@ abstract class BaseSettings {
 	protected function registerSetting(string $name) : void {
 		register_setting($name, $name, [
 			'sanitize_callback' => function(array $input) : array {
-				return SecurityService::validateSettingInputs($input);
+				$securityService = new SecurityService();
+				return $securityService->validateSettingInputs($input);
 			}
 		]);
 	}

@@ -34,8 +34,10 @@ final class BackupSettings extends BaseSettings {
 	 * BackupSettings constructor
 	 * 
 	 * @param FileManager $fileManager the file manager
+	 * @param SecurityService $securityService the security service
+	 * @param TranslationService $translationService the translation service
 	 */
-	public function __construct(private FileManager $fileManager) {
+	public function __construct(private readonly FileManager $fileManager, private readonly SecurityService $securityService, private readonly TranslationService $translationService) {
 		$this->dropboxSettingsPage = 'kc-backup-dropbox-settings';
 		$this->dropboxOptionGroup = $this->dropboxSettingsPage.'-option-group';
 		$this->dropboxOptions = get_option($this->dropboxOptionGroup);
@@ -60,19 +62,19 @@ final class BackupSettings extends BaseSettings {
 	 */
 	public function createSettingsPage() : void {
 		add_action(Action::ADMIN_MENU, function() : void {
-			$title = TranslationService::getTranslatedString(TranslationString::Backup);
+			$title = $this->translationService->getTranslatedString(TranslationString::Backup);
 			$menuSlug = 'kc-backup';
 			add_management_page($title, $title, UserRole::Administrator->value, $menuSlug, function() use ($title, $menuSlug) : void {
-				$createBackup = TranslationService::getTranslatedString(TranslationString::CreateBackup);
-				$download = TranslationService::getTranslatedString(TranslationString::Download);
-				$delete = TranslationService::getTranslatedString(TranslationString::Delete);
-				$type = TranslationService::getTranslatedString(TranslationString::Type);
-				$database = TranslationService::getTranslatedString(TranslationString::Database);
-				$files = TranslationService::getTranslatedString(TranslationString::Files);
-				$everything = TranslationService::getTranslatedString(TranslationString::Everything);
-				$dropbox = TranslationService::getTranslatedString(TranslationString::Dropbox);
-				$upload = TranslationService::getTranslatedString(TranslationString::Upload);
-				$encryption = TranslationService::getTranslatedString(TranslationString::Encryption);
+				$createBackup = $this->translationService->getTranslatedString(TranslationString::CreateBackup);
+				$download = $this->translationService->getTranslatedString(TranslationString::Download);
+				$delete = $this->translationService->getTranslatedString(TranslationString::Delete);
+				$type = $this->translationService->getTranslatedString(TranslationString::Type);
+				$database = $this->translationService->getTranslatedString(TranslationString::Database);
+				$files = $this->translationService->getTranslatedString(TranslationString::Files);
+				$everything = $this->translationService->getTranslatedString(TranslationString::Everything);
+				$dropbox = $this->translationService->getTranslatedString(TranslationString::Dropbox);
+				$upload = $this->translationService->getTranslatedString(TranslationString::Upload);
+				$encryption = $this->translationService->getTranslatedString(TranslationString::Encryption);
 				$name = 'createBackup';
 				$databaseType = 'database';
 				$filesType = 'files';
@@ -208,9 +210,9 @@ final class BackupSettings extends BaseSettings {
 		add_action(Action::ADMIN_INIT, function() : void {
 			$sectionId = $this->dropboxSettingsPage.'-section-dropbox';
 			$prefix = $this->dropboxSettingsPage;
-			$appKeyLabel = TranslationService::getTranslatedString(TranslationString::AppKey);
-			$appSecretLabel = TranslationService::getTranslatedString(TranslationString::AppSecret);
-			$redirectUriLabel = TranslationService::getTranslatedString(TranslationString::RedirectUri);
+			$appKeyLabel = $this->translationService->getTranslatedString(TranslationString::AppKey);
+			$appSecretLabel = $this->translationService->getTranslatedString(TranslationString::AppSecret);
+			$redirectUriLabel = $this->translationService->getTranslatedString(TranslationString::RedirectUri);
 			add_settings_section($sectionId, '', function() : void {}, $this->dropboxSettingsPage);
 			add_settings_field($prefix.'app-key', $appKeyLabel, function() : void {
 				echo '<input type="text" name="'.$this->dropboxOptionGroup.'['.$this->appKey.']" value="'.$this->getAppKey().'">';
@@ -232,7 +234,7 @@ final class BackupSettings extends BaseSettings {
 		add_action(Action::ADMIN_INIT, function() : void {
 			$sectionId = $this->encryptionSettingsPage.'-section-encryption';
 			$prefix = $this->encryptionSettingsPage;
-			$password = TranslationService::getTranslatedString(TranslationString::Password);
+			$password = $this->translationService->getTranslatedString(TranslationString::Password);
 			add_settings_section($sectionId, '', function() : void {}, $this->encryptionSettingsPage);
 			add_settings_field($prefix.'password', $password, function() : void {
 				echo '<input type="password" name="'.$this->encryptionOptionGroup.'['.$this->password.']" required>';
@@ -266,18 +268,18 @@ final class BackupSettings extends BaseSettings {
 	 */
 	private function handleOptionsSaving() : void {
 		add_filter(Filter::getPreUpdateOptionFilter($this->encryptionOptionGroup), function(array $value) : array {
-			$key = SecurityService::generateEncryptionKey($value[$this->password]);
+			$key = $this->securityService->generateEncryptionKey($value[$this->password]);
 			$value[$this->password] = $this->convertToHexadecimal($key);
-			$nonce = SecurityService::generateNonce();
+			$nonce = $this->securityService->generateNonce();
 			$value[$this->nonce] = $this->convertToHexadecimal($nonce);
 			return $value;
 		});
 		add_filter(Filter::getPreUpdateOptionFilter($this->dropboxOptionGroup), function(array $value) : array {
 			$nonce = $this->getNonce();
 			$key = $this->getPassword();
-			$appKey = SecurityService::encryptMessage($value[$this->appKey], $nonce, $key);
-			$appSecret = SecurityService::encryptMessage($value[$this->appSecret], $nonce, $key);
-			$redirectUri = SecurityService::encryptMessage($value[$this->redirectUri], $nonce, $key);
+			$appKey = $this->securityService->encryptMessage($value[$this->appKey], $nonce, $key);
+			$appSecret = $this->securityService->encryptMessage($value[$this->appSecret], $nonce, $key);
+			$redirectUri = $this->securityService->encryptMessage($value[$this->redirectUri], $nonce, $key);
 			$value[$this->appKey] = $this->convertToHexadecimal($appKey);
 			$value[$this->appSecret] = $this->convertToHexadecimal($appSecret);
 			$value[$this->redirectUri] = $this->convertToHexadecimal($redirectUri);
@@ -305,7 +307,7 @@ final class BackupSettings extends BaseSettings {
 			$message = $this->convertToBinary($this->dropboxOptions[$this->appKey]);
 			$nonce = $this->getNonce();
 			$key = $this->getPassword();
-			return SecurityService::decryptMessage($message, $nonce, $key);
+			return $this->securityService->decryptMessage($message, $nonce, $key);
 		} else {
 			return '';
 		}
@@ -321,7 +323,7 @@ final class BackupSettings extends BaseSettings {
 			$message = $this->convertToBinary($this->dropboxOptions[$this->appSecret]);
 			$nonce = $this->getNonce();
 			$key = $this->getPassword();
-			return SecurityService::decryptMessage($message, $nonce, $key);
+			return $this->securityService->decryptMessage($message, $nonce, $key);
 		} else {
 			return '';
 		}
@@ -337,7 +339,8 @@ final class BackupSettings extends BaseSettings {
 			$message = $this->convertToBinary($this->dropboxOptions[$this->redirectUri]);
 			$nonce = $this->getNonce();
 			$key = $this->getPassword();
-			return SecurityService::escapeUrl(SecurityService::decryptMessage($message, $nonce, $key));
+			$url = $this->securityService->decryptMessage($message, $nonce, $key);
+			return $this->securityService->escapeUrl($url);
 		} else {
 			return '';
 		}

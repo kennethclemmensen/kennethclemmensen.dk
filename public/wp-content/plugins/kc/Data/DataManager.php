@@ -15,7 +15,24 @@ use \WP_Query;
 /**
  * The DataManager class contains functionality to manage data
  */
-final class DataManager {
+final readonly class DataManager {
+
+	private readonly PostTypeService $postTypeService;
+	private readonly SecurityService $securityService;
+	private readonly ImageService $imageService;
+
+	/**
+	 * DataManager constructor
+	 *
+	 * @param PostTypeService $postTypeService the post type service
+	 * @param SecurityService $securityService the security service
+	 * @param ImageService $imageService the image service
+	 */
+	public function __construct(PostTypeService $postTypeService, SecurityService $securityService, ImageService $imageService) {
+		$this->postTypeService = $postTypeService;
+		$this->securityService = $securityService;
+		$this->imageService = $imageService;
+	}
 
 	/**
 	 * Get the pages
@@ -83,7 +100,7 @@ final class DataManager {
 		$wpQuery = new WP_Query($args);
 		while($wpQuery->have_posts()) {
 			$wpQuery->the_post();
-			$slides[] = ['image' => ImageService::getImageUrl(get_the_ID(), ImageSize::Slides)];
+			$slides[] = ['image' => $this->imageService->getImageUrl(get_the_ID(), ImageSize::Slides)];
 		}
 		return $slides;
 	}
@@ -106,7 +123,7 @@ final class DataManager {
 			$galleries[] = [
 				'title' => get_the_title(),
 				'link' => get_permalink(get_the_ID()),
-				'image' => ImageService::getImageUrl(get_the_ID(), ImageSize::GalleryImage)
+				'image' => $this->imageService->getImageUrl(get_the_ID(), ImageSize::GalleryImage)
 			];
 		}
 		return $galleries;
@@ -132,12 +149,12 @@ final class DataManager {
 		while($wpQuery->have_posts()) {
 			$wpQuery->the_post();
 			$id = get_the_ID();
-			$url = ImageService::getImageUrl($id);
+			$url = $this->imageService->getImageUrl($id);
 			$imageInfo = wp_get_attachment_image_src(attachment_url_to_postid($url));
 			$images[] = [
 				'title' => get_the_title(),
-				'url' => ImageService::getImageUrl($id, ImageSize::Large),
-				'thumbnail' => ImageService::getImageUrl($id, ImageSize::Thumbnail),
+				'url' => $this->imageService->getImageUrl($id, ImageSize::Large),
+				'thumbnail' => $this->imageService->getImageUrl($id, ImageSize::Thumbnail),
 				'gallery' => $galleryId,
 				'width' => $imageInfo[1].'px',
 				'height' => $imageInfo[2].'px'
@@ -154,7 +171,7 @@ final class DataManager {
 	public function updateFileDownloadCounter(int $fileID) : void {
 		$downloads = $this->getFileDownloads($fileID);
 		$downloads++;
-		PostTypeService::setFieldValue($downloads, FieldName::FileDownloads, $fileID);
+		$this->postTypeService->setFieldValue($downloads, FieldName::FileDownloads, $fileID);
 	}
 
 	/**
@@ -206,10 +223,10 @@ final class DataManager {
 		while($wpQuery->have_posts()) {
 			$wpQuery->the_post();
 			$id = get_the_ID();
-			$key = PostTypeService::getFieldValue(FieldName::Key, $id);
-			$altKey = PostTypeService::getFieldValue(FieldName::AltKey, $id) === '1';
-			$ctrlKey = PostTypeService::getFieldValue(FieldName::CtrlKey, $id) === '1';
-			$shiftKey = PostTypeService::getFieldValue(FieldName::ShiftKey, $id) === '1';
+			$key = $this->postTypeService->getFieldValue(FieldName::Key, $id);
+			$altKey = $this->postTypeService->getFieldValue(FieldName::AltKey, $id) === '1';
+			$ctrlKey = $this->postTypeService->getFieldValue(FieldName::CtrlKey, $id) === '1';
+			$shiftKey = $this->postTypeService->getFieldValue(FieldName::ShiftKey, $id) === '1';
 			if($key && ($altKey === true || $ctrlKey === true || $shiftKey === true)) {
 				$relativeLink = wp_make_link_relative(get_permalink($id));
 				$url = $this->removeLastCharacter($relativeLink);
@@ -232,8 +249,8 @@ final class DataManager {
 	 * @return string the file url
 	 */
 	private function getFileUrl(int $fileID) : string {
-		$attachmentID = PostTypeService::getFieldValue(FieldName::File, $fileID);
-		return SecurityService::escapeUrl(wp_get_attachment_url($attachmentID));
+		$attachmentID = $this->postTypeService->getFieldValue(FieldName::File, $fileID);
+		return $this->securityService->escapeUrl(wp_get_attachment_url($attachmentID));
 	}
 
 	/**
@@ -243,7 +260,7 @@ final class DataManager {
 	 * @return string the file name
 	 */
 	private function getFileName(int $fileID) : string {
-		$attachmentID = PostTypeService::getFieldValue(FieldName::File, $fileID);
+		$attachmentID = $this->postTypeService->getFieldValue(FieldName::File, $fileID);
 		return basename(get_attached_file($attachmentID));
 	}
 
@@ -254,7 +271,7 @@ final class DataManager {
 	 * @return string the file description
 	 */
 	private function getFileDescription(int $fileID) : string {
-		return PostTypeService::getFieldValue(FieldName::FileDescription, $fileID);
+		return $this->postTypeService->getFieldValue(FieldName::FileDescription, $fileID);
 	}
 
 	/**
@@ -264,7 +281,7 @@ final class DataManager {
 	 * @return int the number of file downloads
 	 */
 	private function getFileDownloads(int $fileID) : int {
-		return PostTypeService::getFieldValue(FieldName::FileDownloads, $fileID);
+		return $this->postTypeService->getFieldValue(FieldName::FileDownloads, $fileID);
 	}
 
 	/**
@@ -273,7 +290,7 @@ final class DataManager {
 	 * @param string $str the string to remove the last character from
 	 * @return string the string without the last character
 	 */
-	private static function removeLastCharacter(string $str) : string {
+	private function removeLastCharacter(string $str) : string {
 		return (strlen($str) <= 1) ? $str : substr_replace($str, '', -1);
 	}
 }

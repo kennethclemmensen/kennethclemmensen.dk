@@ -12,7 +12,7 @@ use KC\Core\Translations\TranslationString;
 /**
  * The ShortcutModule class contains functionality to handle shortcuts
  */
-final class ShortcutModule implements IModule {
+final readonly class ShortcutModule implements IModule {
 
 	/**
 	 * Setup the shortcut module
@@ -26,28 +26,29 @@ final class ShortcutModule implements IModule {
 	 */
 	private function addMetaBoxes() : void {
 		add_filter(Filter::META_BOXES, function(array $metaBoxes) : array {
+			$translationService = new TranslationService();
 			$metaBoxes[] = [
 				'id' => 'shortcut_informations',
-				'title' => TranslationService::getTranslatedString(TranslationString::Shortcut),
+				'title' => $translationService->getTranslatedString(TranslationString::Shortcut),
 				'post_types' => [PostType::Page->value],
 				'fields' => [
 					[
-						'name' => TranslationService::getTranslatedString(TranslationString::AltKey),
+						'name' => $translationService->getTranslatedString(TranslationString::AltKey),
 						'id' => FieldName::AltKey->value,
 						'type' => FieldType::CheckBox->value
 					],
 					[
-						'name' => TranslationService::getTranslatedString(TranslationString::CtrlKey),
+						'name' => $translationService->getTranslatedString(TranslationString::CtrlKey),
 						'id' => FieldName::CtrlKey->value,
 						'type' => FieldType::CheckBox->value
 					],
 					[
-						'name' => TranslationService::getTranslatedString(TranslationString::ShiftKey),
+						'name' => $translationService->getTranslatedString(TranslationString::ShiftKey),
 						'id' => FieldName::ShiftKey->value,
 						'type' => FieldType::CheckBox->value
 					],
 					[
-						'name' => TranslationService::getTranslatedString(TranslationString::Key),
+						'name' => $translationService->getTranslatedString(TranslationString::Key),
 						'id' => FieldName::Key->value,
 						'type' => FieldType::Select->value,
 						'options' => [

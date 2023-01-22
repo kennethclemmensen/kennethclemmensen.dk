@@ -7,7 +7,7 @@ use KC\Core\Modules\IModule;
 /**
  * The TranslationModule class contains functionality to handle translations
  */
-final class TranslationModule implements IModule {
+final readonly class TranslationModule implements IModule {
 
 	/**
 	 * Setup the translation module

@@ -6,7 +6,7 @@ use KC\Core\Security\SecurityService;
 /**
  * The ImageService class contains image methods
  */
-final class ImageService {
+final readonly class ImageService {
 
 	/**
 	 * Get an image url
@@ -15,7 +15,8 @@ final class ImageService {
 	 * @param ImageSize $size the size of the image
 	 * @return string the image url
 	 */
-	public static function getImageUrl(int $imageID, ImageSize $size = ImageSize::PostThumbnail) : string {
-		return SecurityService::escapeUrl(get_the_post_thumbnail_url($imageID, $size->value));
+	public function getImageUrl(int $imageID, ImageSize $size = ImageSize::PostThumbnail) : string {
+		$securityService = new SecurityService();
+		return $securityService->escapeUrl(get_the_post_thumbnail_url($imageID, $size->value));
 	}
 }

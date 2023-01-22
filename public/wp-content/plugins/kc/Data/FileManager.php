@@ -1,6 +1,7 @@
 <?php
 namespace KC\Data;
 
+use KC\Core\Api\ContentType;
 use \RecursiveDirectoryIterator;
 use \RecursiveIteratorIterator;
 use \ZipArchive;
@@ -8,7 +9,7 @@ use \ZipArchive;
 /**
  * The FileManager class contains functionality to manage files
  */
-final class FileManager {
+final readonly class FileManager {
 
 	/**
 	 * Create a file
@@ -77,7 +78,7 @@ final class FileManager {
 		$this->appendSlash($folder);
 		$file = $folder.$fileName;
 		header('Content-Description: File Transfer');
-		header('Content-Type: application/octet-stream');
+		header('Content-Type: '.ContentType::OctetStream->value);
 		header('Content-Disposition: attachment; filename="'.basename($file).'"');
 		header('Expires: 0');
 		header('Cache-Control: must-revalidate');
@@ -112,7 +113,7 @@ final class FileManager {
 	 * 
 	 * @param string $str the string to append the slash to
 	 */
-	private static function appendSlash(string &$str) : void {
+	private function appendSlash(string &$str) : void {
 		$str .= '/';
 	}
 }

@@ -17,8 +17,9 @@ final class ApiController extends WP_REST_Controller {
 	 * Initialize a new instance of the ApiController class
 	 * 
 	 * @param DataManager $dataManager the data manager
+	 * @param SecurityService $securityService the security service
 	 */
-	public function __construct(private readonly DataManager $dataManager) {
+	public function __construct(private readonly DataManager $dataManager, private readonly SecurityService $securityService) {
 		$this->namespace = 'kcapi/v1';
 	}
 
@@ -113,7 +114,7 @@ final class ApiController extends WP_REST_Controller {
 			'methods' => [$httpMethod->value],
 			'callback' => $callback,
 			'permission_callback' => function() : bool {
-				return SecurityService::hasApiAccess();
+				return $this->securityService->hasApiAccess();
 			}
 		];
 		if(!empty($parameters)) {
@@ -122,10 +123,10 @@ final class ApiController extends WP_REST_Controller {
 				$parameterOptions[$parameter] = [
 					'required' => true,
 					'sanitize_callback' => function(string $value) : string {
-						return SecurityService::sanitizeString($value);
+						return $this->securityService->sanitizeString($value);
 					},
 					'validate_callback' => function(string $value) : bool {
-						return SecurityService::isValid($value);
+						return $this->securityService->isValid($value);
 					}
 				];
 			}

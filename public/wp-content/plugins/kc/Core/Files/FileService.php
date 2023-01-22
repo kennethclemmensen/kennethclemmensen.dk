@@ -4,7 +4,7 @@ namespace KC\Core\Files;
 /**
  * The FileService class contains file methods
  */
-final class FileService {
+final readonly class FileService {
 
 	/**
 	 * Get the content from a file
@@ -12,7 +12,7 @@ final class FileService {
 	 * @param string $file the file
 	 * @return string the file content
 	 */
-	public static function getFileContent(string $file) : string {
+	public function getFileContent(string $file) : string {
 		return file_get_contents($file);
 	}
 }

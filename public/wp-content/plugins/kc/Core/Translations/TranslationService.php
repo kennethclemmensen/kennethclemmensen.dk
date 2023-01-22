@@ -4,7 +4,7 @@ namespace KC\Core\Translations;
 /**
  * The TranslationService class contains translation methods
  */
-final class TranslationService {
+final readonly class TranslationService {
 
 	/**
 	 * Get a translated string
@@ -12,7 +12,7 @@ final class TranslationService {
 	 * @param TranslationString $str the string to translate
 	 * @return string the translated string
 	 */
-	public static function getTranslatedString(TranslationString $str) : string {
+	public function getTranslatedString(TranslationString $str) : string {
 		return __($str->value, 'kc');
 	}
 }

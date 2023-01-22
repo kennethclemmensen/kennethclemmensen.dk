@@ -15,13 +15,22 @@ use KC\Slider\Settings\SliderSettings;
 /**
  * The SliderModule class contains functionality to handle the slides
  */
-final class SliderModule implements IModule {
+final readonly class SliderModule implements IModule {
+
+	private readonly TranslationService $translationService;
+
+	/**
+	 * SliderModule constructor
+	 */
+	public function __construct() {
+		$this->translationService = new TranslationService();
+	}
 
 	/**
 	 * Setup the slider module
 	 */
 	public function setupModule() : void {
-		$sliderSettings = new SliderSettings();
+		$sliderSettings = new SliderSettings($this->translationService);
 		$sliderSettings->createSettingsPage();
 		$this->registerPostType();
 		$this->addAdminColumns();        
@@ -34,8 +43,8 @@ final class SliderModule implements IModule {
 		add_action(Action::INIT, function() : void {
 			register_post_type(PostType::Slides->value, [
 				'labels' => [
-					'name' => TranslationService::getTranslatedString(TranslationString::Slides),
-					'singular_name' => TranslationService::getTranslatedString(TranslationString::Slide)
+					'name' => $this->translationService->getTranslatedString(TranslationString::Slides),
+					'singular_name' => $this->translationService->getTranslatedString(TranslationString::Slide)
 				],
 				'public' => false,
 				'has_archive' => false,
@@ -56,11 +65,12 @@ final class SliderModule implements IModule {
 	private function addAdminColumns() : void {
 		$imageColumnKey = 'image';
 		add_filter(Filter::getManagePostsColumnsFilter(PostType::Slides), function(array $columns) use ($imageColumnKey) : array {
-			$columns[$imageColumnKey] = TranslationService::getTranslatedString(TranslationString::Image);
+			$columns[$imageColumnKey] = $this->translationService->getTranslatedString(TranslationString::Image);
 			return $columns;
 		});
 		add_action(Action::getManagePostsCustomColumn(PostType::Slides), function(string $columnName) use ($imageColumnKey) : void {
-			if($columnName === $imageColumnKey) echo '<img src="'.ImageService::getImageUrl(get_the_ID()).'" alt="'.get_the_title().'" style="height: 60px">';
+			$imageService = new ImageService();
+			if($columnName === $imageColumnKey) echo '<img src="'.$imageService->getImageUrl(get_the_ID()).'" alt="'.get_the_title().'" style="height: 60px">';
 		});
 	}
 }

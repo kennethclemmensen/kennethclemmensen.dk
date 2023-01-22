@@ -8,7 +8,7 @@ use KC\Core\Translations\TranslationString;
 /**
  * The PluginActivator class contains functionality to activate and run the plugin
  */
-final class PluginActivator {
+final readonly class PluginActivator {
 
 	/**
 	 * Activate the plugin
@@ -17,8 +17,10 @@ final class PluginActivator {
 	 */
 	public function activate(string $mainPluginFile) : void {
 		register_activation_hook($mainPluginFile, function() : void {
-			if(!class_exists('RW_Meta_Box'))
-				wp_die(TranslationService::getTranslatedString(TranslationString::MetaBoxIsNotActivated));
+			if(!class_exists('RW_Meta_Box')) {
+				$translationService = new TranslationService();
+				wp_die($translationService->getTranslatedString(TranslationString::MetaBoxIsNotActivated));
+			}
 		});
 	}
 

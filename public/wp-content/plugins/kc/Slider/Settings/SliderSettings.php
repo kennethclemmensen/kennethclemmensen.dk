@@ -22,8 +22,10 @@ final class SliderSettings extends BaseSettings {
 
 	/**
 	 * SliderSettings constructor
+	 * 
+	 * @param TranslationService $translationService the translation service
 	 */
-	public function __construct() {
+	public function __construct(private readonly TranslationService $translationService) {
 		$this->settingOptionsName = 'kc-slides-settings-options';
 		$this->settingsOption = get_option($this->settingOptionsName);
 		$this->settingsPageSlug = 'kc-slides-settings';
@@ -37,7 +39,7 @@ final class SliderSettings extends BaseSettings {
 	 */
 	public function createSettingsPage() : void {
 		add_action(Action::ADMIN_MENU, function() : void {
-			$title = TranslationService::getTranslatedString(TranslationString::Settings);
+			$title = $this->translationService->getTranslatedString(TranslationString::Settings);
 			add_submenu_page('edit.php?post_type='.PostType::Slides->value, $title, $title, UserRole::Administrator->value, $this->settingsPageSlug, function() : void {
 				settings_errors();
 				?>
@@ -63,10 +65,10 @@ final class SliderSettings extends BaseSettings {
 			$sectionID = $this->settingsPageSlug.'-section-slider';
 			$prefix = $this->settingsPageSlug;
 			add_settings_section($sectionID, '', function() : void {}, $this->settingsPageSlug);
-			add_settings_field($prefix.'slideWidth', TranslationService::getTranslatedString(TranslationString::ImageWidth), function() : void {
+			add_settings_field($prefix.'slideWidth', $this->translationService->getTranslatedString(TranslationString::ImageWidth), function() : void {
 				echo '<input type="number" name="'.$this->settingOptionsName.'['.$this->slideWidth.']" value="'.$this->getSlideWidth().'" min="1">';
 			}, $this->settingsPageSlug, $sectionID);
-			add_settings_field($prefix.'slideHeight', TranslationService::getTranslatedString(TranslationString::ImageHeight), function() : void {
+			add_settings_field($prefix.'slideHeight', $this->translationService->getTranslatedString(TranslationString::ImageHeight), function() : void {
 				echo '<input type="number" name="'.$this->settingOptionsName.'['.$this->slideHeight.']" value="'.$this->getSlideHeight().'" min="1">';
 			}, $this->settingsPageSlug, $sectionID);
 			$this->registerSetting($this->settingOptionsName);
