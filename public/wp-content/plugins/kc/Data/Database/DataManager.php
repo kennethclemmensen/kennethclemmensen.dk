@@ -1,5 +1,5 @@
 <?php
-namespace KC\Data;
+namespace KC\Data\Database;
 
 use KC\Core\Images\ImageService;
 use KC\Core\Images\ImageSize;
@@ -240,6 +240,27 @@ final readonly class DataManager {
 			}
 		}
 		return $shortcuts;
+	}
+
+	/**
+	 * Get all the posts from a post type
+	 * 
+	 * @param PostType $postType the post type
+	 * @return array all the posts
+	 */
+	public function getAllPosts(PostType $postType) : array {
+		$posts = [];
+		$args = [
+			'post_type' => $postType->value,
+			'posts_per_page' => -1,
+			'order' => SortingOrder::Ascending->value
+		];
+		$wpQuery = new WP_Query($args);
+		while($wpQuery->have_posts()) {
+			$wpQuery->the_post();
+			$posts[get_the_ID()] = get_the_title();
+		}
+		return $posts;
 	}
 
 	/**

@@ -5,7 +5,6 @@ use KC\Core\Action;
 use KC\Core\Filter;
 use KC\Core\Images\ImageService;
 use KC\Core\Images\ImageSize;
-use KC\Core\Modules\BaseModule;
 use KC\Core\Modules\IModule;
 use KC\Core\PostTypes\FieldName;
 use KC\Core\PostTypes\FieldType;
@@ -13,20 +12,24 @@ use KC\Core\PostTypes\Icon;
 use KC\Core\PostTypes\PostType;
 use KC\Core\PostTypes\PostTypeFeature;
 use KC\Core\PostTypes\PostTypeService;
+use KC\Core\Security\SecurityService;
 use KC\Core\Translations\TranslationService;
 use KC\Core\Translations\TranslationString;
-use KC\Data\DatabaseManager;
+use KC\Data\Database\DatabaseManager;
+use KC\Data\Database\DataManager;
 use KC\Gallery\Settings\GallerySettings;
 
 /**
  * The GalleryModule class contains functionality to handle galleries
  */
-final class GalleryModule extends BaseModule implements IModule {
+final class GalleryModule implements IModule {
 
 	private readonly GallerySettings $gallerySettings;
 	private readonly string $fieldParentPage;
 	private readonly TranslationService $translationService;
 	private readonly PostTypeService $postTypeService;
+	private readonly ImageService $imageService;
+	private readonly DataManager $dataManager;
 
 	/**
 	 * Initialize a new instance of the GalleryModule class
@@ -36,6 +39,8 @@ final class GalleryModule extends BaseModule implements IModule {
 		$this->gallerySettings = new GallerySettings($this->translationService);
 		$this->fieldParentPage = FieldName::ParentPage->value;
 		$this->postTypeService = new PostTypeService();
+		$this->imageService = new ImageService();
+		$this->dataManager = new DataManager($this->postTypeService, new SecurityService(), $this->imageService);
 	}
 
 	/**
@@ -109,7 +114,7 @@ final class GalleryModule extends BaseModule implements IModule {
 						'name' => $this->translationService->getTranslatedString(TranslationString::ParentPage),
 						'id' => $this->fieldParentPage,
 						'type' => FieldType::Select->value,
-						'options' => $this->getAllPosts(PostType::Page)
+						'options' => $this->dataManager->getAllPosts(PostType::Page)
 					]
 				]
 			];
@@ -122,7 +127,7 @@ final class GalleryModule extends BaseModule implements IModule {
 						'name' => $this->translationService->getTranslatedString(TranslationString::Gallery),
 						'id' => FieldName::ImageGallery->value,
 						'type' => FieldType::Select->value,
-						'options' => $this->getAllPosts(PostType::Gallery)
+						'options' => $this->dataManager->getAllPosts(PostType::Gallery)
 					]
 				]
 			];
@@ -146,8 +151,7 @@ final class GalleryModule extends BaseModule implements IModule {
 				$galleryID = $this->postTypeService->getFieldValue(FieldName::ImageGallery, get_the_ID());
 				echo get_the_title($galleryID);
 			} else if($columnName === $columnImageKey) {
-				$imageService = new ImageService();
-				echo '<img src="'.$imageService->getImageUrl(get_the_ID(), ImageSize::Thumbnail).'" alt="'.get_the_title().'">';
+				echo '<img src="'.$this->imageService->getImageUrl(get_the_ID(), ImageSize::Thumbnail).'" alt="'.get_the_title().'">';
 			}
 		});
 	}

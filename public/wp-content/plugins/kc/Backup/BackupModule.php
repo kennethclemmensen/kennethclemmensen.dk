@@ -5,7 +5,7 @@ use KC\Backup\Settings\BackupSettings;
 use KC\Core\Modules\IModule;
 use KC\Core\Security\SecurityService;
 use KC\Core\Translations\TranslationService;
-use KC\Data\FileManager;
+use KC\Data\Files\FileManager;
 
 /**
  * The BackupModule class contains functionality to set up the backup module

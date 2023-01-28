@@ -6,7 +6,7 @@ use KC\Core\Images\ImageService;
 use KC\Core\Modules\IModule;
 use KC\Core\PostTypes\PostTypeService;
 use KC\Core\Security\SecurityService;
-use KC\Data\DataManager;
+use KC\Data\Database\DataManager;
 
 /**
  * The ApiModule class contains functionality to set up the Api

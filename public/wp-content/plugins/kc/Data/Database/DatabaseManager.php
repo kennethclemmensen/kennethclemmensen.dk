@@ -1,5 +1,5 @@
 <?php
-namespace KC\Data;
+namespace KC\Data\Database;
 
 /**
  * The DatabaseManager class contains functionality to manage the database

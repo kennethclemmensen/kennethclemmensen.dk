@@ -11,7 +11,7 @@ use KC\Core\Settings\BaseSettings;
 use KC\Core\Translations\TranslationService;
 use KC\Core\Translations\TranslationString;
 use KC\Core\Users\UserRole;
-use KC\Data\DataManager;
+use KC\Data\Database\DataManager;
 
 /**
  * The GallerySettings class contains methods to handle the gallery settings

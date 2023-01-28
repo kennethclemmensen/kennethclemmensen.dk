@@ -9,8 +9,8 @@ use KC\Core\Translations\TranslationService;
 use KC\Core\Translations\TranslationString;
 use KC\Core\Users\UserRole;
 use KC\Data\Api\DropboxApi;
-use KC\Data\DatabaseManager;
-use KC\Data\FileManager;
+use KC\Data\Database\DatabaseManager;
+use KC\Data\Files\FileManager;
 
 /**
  * The BackupSettings class contains methods to handle the backup settings

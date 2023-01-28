@@ -1,7 +1,8 @@
 <?php
-namespace KC\Data;
+namespace KC\Data\Files;
 
 use KC\Core\Api\ContentType;
+use KC\Core\Files\FileService;
 use \RecursiveDirectoryIterator;
 use \RecursiveIteratorIterator;
 use \ZipArchive;
@@ -39,7 +40,7 @@ final readonly class FileManager {
 		$zip = new ZipArchive();
 		$zip->open($destinationFolder.$fileName, ZipArchive::CREATE);
 		$files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($sourceFolder));
-		foreach($files as $key => $file) {
+		foreach($files as $file) {
 			if(!$file->isDir()) {
 				$filePath = $file->getRealPath();
 				$entryName = substr($filePath, strlen($sourceFolder) + 1);
@@ -77,13 +78,14 @@ final readonly class FileManager {
 	public function downloadFile(string $fileName, string $folder) : void {
 		$this->appendSlash($folder);
 		$file = $folder.$fileName;
+		$fileService = new FileService();
 		header('Content-Description: File Transfer');
 		header('Content-Type: '.ContentType::OctetStream->value);
 		header('Content-Disposition: attachment; filename="'.basename($file).'"');
 		header('Expires: 0');
 		header('Cache-Control: must-revalidate');
 		header('Pragma: public');
-		header('Content-Length: '.filesize($file));
+		header('Content-Length: '.$fileService->getFilesize($file));
 		readfile($file);
 		exit;
 	}

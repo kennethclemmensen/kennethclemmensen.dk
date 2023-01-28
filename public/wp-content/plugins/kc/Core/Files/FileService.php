@@ -15,4 +15,14 @@ final readonly class FileService {
 	public function getFileContent(string $file) : string {
 		return file_get_contents($file);
 	}
+
+	/**
+	 * Get the filesize for a file
+	 * 
+	 * @param string $file the file
+	 * @return int the filesize
+	 */
+	public function getFilesize(string $file) : int {
+		return filesize($file);
+	}
 }

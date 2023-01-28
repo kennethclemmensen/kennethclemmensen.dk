@@ -3,7 +3,7 @@ namespace KC\Api;
 
 use KC\Core\Api\HttpMethod;
 use KC\Core\Security\SecurityService;
-use KC\Data\DataManager;
+use KC\Data\Database\DataManager;
 use \WP_REST_Controller;
 use \WP_REST_Request;
 use \WP_REST_Response;
