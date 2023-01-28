@@ -1,7 +1,7 @@
 <?php
-namespace Tests\WPUnit\KC\Data;
+namespace Tests\WPUnit\KC\Data\Database;
 
-use KC\Data\DatabaseManager;
+use KC\Data\Database\DatabaseManager;
 use \Codeception\TestCase\WPTestCase;
 
 /**
@@ -13,7 +13,7 @@ final class DatabaseManagerTest extends WPTestCase {
      * The _before method is called before each test
      */
     protected function _before() : void {
-        require_once '../../public/wp-content/plugins/kc/Data/DatabaseManager.php';
+        require_once '../../public/wp-content/plugins/kc/Data/Database/DatabaseManager.php';
     }
 
     /**

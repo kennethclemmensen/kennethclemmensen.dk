@@ -1,10 +1,11 @@
 <?php
-namespace Tests\WPUnit\KC\Data;
+namespace Tests\WPUnit\KC\Data\Database;
 
 use KC\Core\Images\ImageService;
+use KC\Core\PostTypes\PostType;
 use KC\Core\PostTypes\PostTypeService;
 use KC\Core\Security\SecurityService;
-use KC\Data\DataManager;
+use KC\Data\Database\DataManager;
 use \Codeception\TestCase\WPTestCase;
 
 /**
@@ -18,7 +19,7 @@ final class DataManagerTest extends WPTestCase {
      * The _before method is called before each test
      */
     protected function _before() : void {
-        require_once '../../public/wp-content/plugins/kc/Data/DataManager.php';
+        require_once '../../public/wp-content/plugins/kc/Data/Database/DataManager.php';
         $this->dataManager = new DataManager(new PostTypeService(), new SecurityService(), new ImageService());
     }
 
@@ -77,5 +78,13 @@ final class DataManagerTest extends WPTestCase {
     public function testGetShortcuts() : void {
         $expected = 0;
         $this->assertEquals($expected, count($this->dataManager->getShortcuts()));
+    }
+
+    /**
+     * Test the getAllPosts method
+     */
+    public function testGetAllPosts() : void {
+        $expected = 0;
+        $this->assertEquals($expected, count($this->dataManager->getAllPosts(PostType::Page)));
     }
 }

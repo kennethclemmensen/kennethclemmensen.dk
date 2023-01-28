@@ -9,10 +9,15 @@ use \Codeception\TestCase\WPTestCase;
  */
 class FileServiceTest extends WPTestCase {
 
+	private FileService $fileService;
+	private string $file;
+
     /**
      * The _before method is called before each test
      */
     protected function _before() : void {
+		$this->fileService = new FileService();
+		$this->file = '../../public/index.php';
         require_once '../../public/wp-content/plugins/kc/Core/Files/FileService.php';
     }
 
@@ -20,8 +25,13 @@ class FileServiceTest extends WPTestCase {
 	 * Test the getFileContent method
 	 */
 	public function testGetFileContent() : void {
-		$fileService = new FileService();
-		$file = '../../public/index.php';
-		$this->assertNotEquals('', $fileService->getFileContent($file));
+		$this->assertNotEquals('', $this->fileService->getFileContent($this->file));
+	}
+
+	/**
+	 * Test the getFilesize method
+	 */
+	public function testGetFilesize() : void {
+		$this->assertNotEquals('', $this->fileService->getFilesize($this->file));
 	}
 }
