@@ -99,7 +99,7 @@ final class TranslationStrings {
 	 * @return string the translated string
 	 */
 	public function getTranslatedString(string $str) : string {
-		return (self::isPolylangActivated()) ? pll__($str) : $str;
+		return ($this->isPolylangActivated()) ? pll__($str) : $str;
 	}
 
 	/**
