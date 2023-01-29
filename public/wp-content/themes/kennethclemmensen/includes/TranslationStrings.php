@@ -48,7 +48,7 @@ final class TranslationStrings {
 	 * The TranslationStrings constructor register the strings that should be translated
 	 */
 	public function __construct() {
-		if(self::isPolylangActivated()) {
+		if($this->isPolylangActivated()) {
 			$context = 'Theme';
 			pll_register_string(self::ADD_AN_ICON, self::ADD_AN_ICON, $context);
 			pll_register_string(self::ALLOW_FILE_EDITING, self::ALLOW_FILE_EDITING, $context);
@@ -98,7 +98,7 @@ final class TranslationStrings {
 	 * @param string $str the string to translate
 	 * @return string the translated string
 	 */
-	public static function getTranslatedString(string $str) : string {
+	public function getTranslatedString(string $str) : string {
 		return (self::isPolylangActivated()) ? pll__($str) : $str;
 	}
 
@@ -107,7 +107,7 @@ final class TranslationStrings {
 	 *
 	 * @return bool true if the Polylang plugin is activated. False if it isn't activated
 	 */
-	private static function isPolylangActivated() : bool {
+	private function isPolylangActivated() : bool {
 		return function_exists('pll_register_string');
 	}
 }

@@ -3,8 +3,11 @@ get_header();
 ?>
 <div class="page">
 	<?php
-	ThemeService::loadSliderTemplate();
-	ThemeService::loadBreadcrumbTemplate();
+	$themeService = new ThemeService();
+	$apiClient = new ApiClient();
+	$translationStrings = new TranslationStrings();
+	$themeService->loadSliderTemplate();
+	$themeService->loadBreadcrumbTemplate();
 	?>
 	<section class="page__content">
 		<h1><?php the_title(); ?></h1>
@@ -12,7 +15,7 @@ get_header();
 		<div class="gallery">
 			<?php
 			$perPage = ThemeSettings::getInstance()->getImagesPerPage();
-			$pagination = new Pagination(ApiClient::getImages(), $perPage);
+			$pagination = new Pagination($apiClient->getImages(), $perPage);
 			$images = $pagination->getItems();
 			foreach($images as $image) {
 				$url = $image['url'];
@@ -30,8 +33,8 @@ get_header();
 			?>
 			<div class="pagination">
 				<?php
-				$previousText = TranslationStrings::getTranslatedString(TranslationStrings::PREVIOUS);
-				$nextText = TranslationStrings::getTranslatedString(TranslationStrings::NEXT);
+				$previousText = $translationStrings->getTranslatedString(TranslationStrings::PREVIOUS);
+				$nextText = $translationStrings->getTranslatedString(TranslationStrings::NEXT);
 				echo $pagination->getPaginationLinks($previousText, $nextText);
 				?>
 			</div>

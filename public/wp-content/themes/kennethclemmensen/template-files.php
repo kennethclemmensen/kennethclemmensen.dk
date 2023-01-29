@@ -6,17 +6,19 @@ while(have_posts()) {
 	?>
 	<div class="page">
 		<?php
-		ThemeService::loadSliderTemplate();
-		ThemeService::loadBreadcrumbTemplate();
-		$previousText = TranslationStrings::getTranslatedString(TranslationStrings::PREVIOUS);
-		$nextText = TranslationStrings::getTranslatedString(TranslationStrings::NEXT);
-		$downloadsText = TranslationStrings::getTranslatedString(TranslationStrings::NUMBER_OF_DOWNLOADS);
+		$themeService = new ThemeService();
+		$themeService->loadSliderTemplate();
+		$themeService->loadBreadcrumbTemplate();
+		$translationStrings = new TranslationStrings();
+		$previousText = $translationStrings->getTranslatedString(TranslationStrings::PREVIOUS);
+		$nextText = $translationStrings->getTranslatedString(TranslationStrings::NEXT);
+		$downloadsText = $translationStrings->getTranslatedString(TranslationStrings::NUMBER_OF_DOWNLOADS);
 		?>
 		<section class="page__content">
 			<h1><?php the_title(); ?></h1>
 			<?php the_content(); ?>
 			<div id="files-app">
-				<files file-types="<?php echo ThemeService::getFileTypes(); ?>"
+				<files file-types="<?php echo $themeService->getFileTypes(); ?>"
 					per-page="<?php echo ThemeSettings::getInstance()->getFilesPerPage(); ?>"
 					previous-text="<?php echo $previousText; ?>"
 					next-text="<?php echo $nextText; ?>" 

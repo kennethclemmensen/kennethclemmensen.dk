@@ -21,8 +21,9 @@ add_action('wp_enqueue_scripts', function() : void {
 add_action('init', function() : void {
 	ThemeSettings::getInstance();
 	new TranslationStrings();
+	$themeService = new ThemeService();
 	register_nav_menus([
-		ThemeService::getMainMenuKey() => 'Main menu'
+		$themeService->getMainMenuKey() => 'Main menu'
 	]);
 	remove_action('admin_print_styles', 'print_emoji_styles');
 	$priority = 7;
@@ -38,9 +39,10 @@ add_action('init', function() : void {
  * Use the widgets_init action to register sidebars and a custom widget
  */
 add_action('widgets_init', function() : void {
+	$themeService = new ThemeService();
 	register_sidebar([
 		'name' => 'Footer',
-		'id' => ThemeService::getFooterSidebarID(),
+		'id' => $themeService->getFooterSidebarID(),
 		'before_widget' => '<div class="footer__widget">',
 		'after_widget' => '</div>',
 		'before_title' => '',
@@ -48,7 +50,7 @@ add_action('widgets_init', function() : void {
 	]);
 	register_sidebar([
 		'name' => 'Page not found',
-		'id' => ThemeService::getPageNotFoundSidebarID(),
+		'id' => $themeService->getPageNotFoundSidebarID(),
 		'before_widget' => '',
 		'after_widget' => '',
 		'before_title' => '<h1>',

@@ -8,8 +8,12 @@
 	<?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?> data-image-text="<?php echo TranslationStrings::getTranslatedString(TranslationStrings::IMAGE); ?>"
-	data-of-text="<?php echo TranslationStrings::getTranslatedString(TranslationStrings::OF); ?>">
+<?php
+$translationStrings = new TranslationStrings();
+$themeService = new ThemeService();
+?>
+<body <?php body_class(); ?> data-image-text="<?php echo $translationStrings->getTranslatedString(TranslationStrings::IMAGE); ?>"
+	data-of-text="<?php echo $translationStrings->getTranslatedString(TranslationStrings::OF); ?>">
 <?php wp_body_open(); ?>
 <header class="header">
 	<a href="<?php bloginfo('url'); ?>" class="header__site-name">
@@ -19,14 +23,14 @@
 		<span class="header__icon"></span>
 	</a>
 	<nav class="menu">
-		<?php wp_nav_menu(['theme_location' => ThemeService::getMainMenuKey()]); ?>
+		<?php wp_nav_menu(['theme_location' => $themeService->getMainMenuKey()]); ?>
 	</nav>
 </header>
 <nav class="mobile-menu" id="mobile-menu">
 	<div class="mobile-menu__content">
 		<?php
 		wp_nav_menu([
-			'theme_location' => ThemeService::getMainMenuKey(),
+			'theme_location' => $themeService->getMainMenuKey(),
 			'walker' => new MobileMenuWalker()
 		]);
 		?>

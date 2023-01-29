@@ -1,10 +1,11 @@
 <?php
 get_header();
+$themeService = new ThemeService();
 ?>
 	<div class="page">
-		<?php ThemeService::loadSliderTemplate(); ?>
+		<?php $themeService->loadSliderTemplate(); ?>
 		<section class="page__content">
-			<?php dynamic_sidebar(ThemeService::getPageNotFoundSidebarID()); ?>
+			<?php dynamic_sidebar($themeService->getPageNotFoundSidebarID()); ?>
 		</section>
 	</div>
 <?php

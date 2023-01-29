@@ -2,14 +2,14 @@
 /**
  * The ThemeService class contains utility methods to use in the theme
  */
-final class ThemeService {
+final readonly class ThemeService {
 
 	/**
 	 * Get the breadcrumb as an array of page IDs
 	 *
 	 * @return array the breadcrumb as an array of page IDs
 	 */
-	public static function getBreadcrumb() : array {
+	public function getBreadcrumb() : array {
 		if(!is_front_page()) {
 			global $post;
 			$pages[] = $post->ID;
@@ -29,7 +29,7 @@ final class ThemeService {
 	 *
 	 * @return string the id of the footer sidebar
 	 */
-	public static function getFooterSidebarID() : string {
+	public function getFooterSidebarID() : string {
 		return 'footer';
 	}
 
@@ -38,7 +38,7 @@ final class ThemeService {
 	 *
 	 * @return string the id of the page not found sidebar
 	 */
-	public static function getPageNotFoundSidebarID() : string {
+	public function getPageNotFoundSidebarID() : string {
 		return 'page-not-found';
 	}
 
@@ -47,21 +47,21 @@ final class ThemeService {
 	 *
 	 * @return string the main menu key
 	 */
-	public static function getMainMenuKey() : string {
+	public function getMainMenuKey() : string {
 		return 'main-menu';
 	}
 
 	/**
 	 * Load the breadcrumb template
 	 */
-	public static function loadBreadcrumbTemplate() : void {
+	public function loadBreadcrumbTemplate() : void {
 		get_template_part('template-parts/breadcrumb');
 	}
 
 	/**
 	 * Load the slider template
 	 */
-	public static function loadSliderTemplate() : void {
+	public function loadSliderTemplate() : void {
 		get_template_part('template-parts/slider');
 	}
 
@@ -70,7 +70,7 @@ final class ThemeService {
 	 * 
 	 * @return string the file types
 	 */
-	public static function getFileTypes() : string {
+	public function getFileTypes() : string {
 		$fileTypes = [];
 		$terms = get_the_terms(get_the_ID(), 'kc_tax_file_type');
 		foreach($terms as $term) $fileTypes[] = $term->term_id;

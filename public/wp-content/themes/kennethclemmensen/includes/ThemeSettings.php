@@ -35,6 +35,7 @@ final class ThemeSettings {
 	private readonly string $sliderDuration;
 	private readonly string $sliderAnimation;
 	private readonly string $checkboxCheckedValue;
+	private readonly TranslationStrings $translationStrings;
 
 	/**
 	 * ThemeSettings constructor
@@ -75,6 +76,7 @@ final class ThemeSettings {
 		$this->sliderDuration = $prefix.'duration';
 		$this->sliderAnimation = $prefix.'animation';
 		$this->checkboxCheckedValue = 'on';
+		$this->translationStrings = new TranslationStrings();
 		$this->createSettingsPage();
 		$this->registerSettingInputs();
 		$this->addShortcodes();
@@ -100,7 +102,7 @@ final class ThemeSettings {
 	 */
 	private function createSettingsPage() : void {
 		add_action('admin_menu', function() : void {
-			$title = TranslationStrings::getTranslatedString(TranslationStrings::SETTINGS);
+			$title = $this->translationStrings->getTranslatedString(TranslationStrings::SETTINGS);
 			add_theme_page($title, $title, 'administrator', $this->contactPageSlug, function() : void {
 				settings_errors();
 				?>
@@ -116,19 +118,19 @@ final class ThemeSettings {
 						?>
 						<a href="?page=<?php echo $this->contactPageSlug; ?>&tab=<?php echo $contactTab; ?>"
 						   class="nav-tab <?php echo (!in_array($activeTab, [$scriptsTab, $sliderTab, $otherTab])) ? $currentTab : ''; ?>">
-						   <?php echo TranslationStrings::getTranslatedString(TranslationStrings::CONTACT); ?>
+						   <?php echo $this->translationStrings->getTranslatedString(TranslationStrings::CONTACT); ?>
 						</a>
 						<a href="?page=<?php echo $this->contactPageSlug; ?>&tab=<?php echo $scriptsTab; ?>"
 						   class="nav-tab <?php echo ($activeTab === $scriptsTab) ? $currentTab : ''; ?>">
-						   <?php echo TranslationStrings::getTranslatedString(TranslationStrings::SCRIPTS); ?>
+						   <?php echo $this->translationStrings->getTranslatedString(TranslationStrings::SCRIPTS); ?>
 						</a>
 						<a href="?page=<?php echo $this->contactPageSlug; ?>&tab=<?php echo $sliderTab; ?>"
 						   class="nav-tab <?php echo ($activeTab === $sliderTab) ? $currentTab : ''; ?>">
-						   <?php echo TranslationStrings::getTranslatedString(TranslationStrings::SLIDER); ?>
+						   <?php echo $this->translationStrings->getTranslatedString(TranslationStrings::SLIDER); ?>
 						</a>
 						<a href="?page=<?php echo $this->contactPageSlug; ?>&tab=<?php echo $otherTab; ?>"
 						   class="nav-tab <?php echo ($activeTab === $otherTab) ? $currentTab : ''; ?>">
-						   <?php echo TranslationStrings::getTranslatedString(TranslationStrings::OTHER); ?>
+						   <?php echo $this->translationStrings->getTranslatedString(TranslationStrings::OTHER); ?>
 						</a>
 					</h2>
 					<form action="options.php" method="post">
@@ -180,11 +182,11 @@ final class ThemeSettings {
 		$sectionID = $this->contactPageSlug.'-section-contact';
 		$prefix = $this->contactPageSlug;
 		add_settings_section($sectionID, '', function() {}, $this->contactPageSlug);
-		add_settings_field($prefix.'email', TranslationStrings::getTranslatedString(TranslationStrings::EMAIL), function() : void {
+		add_settings_field($prefix.'email', $this->translationStrings->getTranslatedString(TranslationStrings::EMAIL), function() : void {
 			echo '<input type="email" name="'.$this->contactOptionsName.'['.$this->email.']" value="'.$this->getEmail().'" class="regular-text" required> ';
 			echo '['.$this->emailShortcode.']';
 		}, $this->contactPageSlug, $sectionID);
-		add_settings_field($prefix.'linkedin', TranslationStrings::getTranslatedString(TranslationStrings::LINKEDIN), function() : void {
+		add_settings_field($prefix.'linkedin', $this->translationStrings->getTranslatedString(TranslationStrings::LINKEDIN), function() : void {
 			echo '<input type="url" name="'.$this->contactOptionsName.'['.$this->linkedIn.']" value="'.$this->getLinkedInUrl().'" class="regular-text" required> ';
 			echo '['.$this->linkedInShortcode.']';
 		}, $this->contactPageSlug, $sectionID);
@@ -198,16 +200,16 @@ final class ThemeSettings {
 		$sectionID = $this->scriptPageSlug.'-section-scripts';
 		$prefix = $this->scriptPageSlug;
 		add_settings_section($sectionID, '', function() {}, $this->scriptPageSlug);
-		add_settings_field($prefix.'header', TranslationStrings::getTranslatedString(TranslationStrings::HEADER), function() : void {
+		add_settings_field($prefix.'header', $this->translationStrings->getTranslatedString(TranslationStrings::HEADER), function() : void {
 			echo '<textarea name="'.$this->scriptOptionsName.'['.$this->scriptHeader.']" cols="80" rows="10">'.$this->getHeaderScripts().'</textarea>';
 		}, $this->scriptPageSlug, $sectionID);
-		add_settings_field($prefix.'start-body', TranslationStrings::getTranslatedString(TranslationStrings::START_BODY), function() : void {
+		add_settings_field($prefix.'start-body', $this->translationStrings->getTranslatedString(TranslationStrings::START_BODY), function() : void {
 			echo '<textarea name="'.$this->scriptOptionsName.'['.$this->scriptStartBody.']" cols="80" rows="10">'.$this->getStartBodyScripts().'</textarea>';
 		}, $this->scriptPageSlug, $sectionID);
-		add_settings_field($prefix.'footer', TranslationStrings::getTranslatedString(TranslationStrings::FOOTER), function() : void {
+		add_settings_field($prefix.'footer', $this->translationStrings->getTranslatedString(TranslationStrings::FOOTER), function() : void {
 			echo '<textarea name="'.$this->scriptOptionsName.'['.$this->scriptFooter.']" cols="80" rows="10">'.$this->getFooterScripts().'</textarea>';
 		}, $this->scriptPageSlug, $sectionID);
-		add_settings_field($prefix.'remove-version-query-string', TranslationStrings::getTranslatedString(TranslationStrings::REMOVE_VERSION_QUERY_STRING), function() : void {
+		add_settings_field($prefix.'remove-version-query-string', $this->translationStrings->getTranslatedString(TranslationStrings::REMOVE_VERSION_QUERY_STRING), function() : void {
 			$checked = (isset($this->scriptOptions[$this->removeVersionQueryString])) ? $this->scriptOptions[$this->removeVersionQueryString] : '';
 			echo '<input type="checkbox" name="'.$this->scriptOptionsName.'['.$this->removeVersionQueryString.']" '.checked($checked, $this->checkboxCheckedValue, false).' >';
 		}, $this->scriptPageSlug, $sectionID);
@@ -221,13 +223,13 @@ final class ThemeSettings {
 		$sectionID = $this->sliderPageSlug.'-section-slider';
 		$prefix = $this->sliderPageSlug;
 		add_settings_section($sectionID, '', function() {}, $this->sliderPageSlug);
-		add_settings_field($prefix.'sliderDelay', TranslationStrings::getTranslatedString(TranslationStrings::DELAY), function() : void {
+		add_settings_field($prefix.'sliderDelay', $this->translationStrings->getTranslatedString(TranslationStrings::DELAY), function() : void {
 			echo '<input type="number" name="'.$this->sliderOptionsName.'['.$this->sliderDelay.']" value="'.$this->getSliderDelay().'" min="1" max="10000">';
 		}, $this->sliderPageSlug, $sectionID);
-		add_settings_field($prefix.'sliderDuration', TranslationStrings::getTranslatedString(TranslationStrings::DURATION), function() : void {
+		add_settings_field($prefix.'sliderDuration', $this->translationStrings->getTranslatedString(TranslationStrings::DURATION), function() : void {
 			echo '<input type="number" name="'.$this->sliderOptionsName.'['.$this->sliderDuration.']" value="'.$this->getSliderDuration().'" min="1" max="10000">';
 		}, $this->sliderPageSlug, $sectionID);
-		add_settings_field($prefix.'sliderAnimation', TranslationStrings::getTranslatedString(TranslationStrings::ANIMATION), function() : void {
+		add_settings_field($prefix.'sliderAnimation', $this->translationStrings->getTranslatedString(TranslationStrings::ANIMATION), function() : void {
 			?>
 			<select name="<?php echo $this->sliderOptionsName.'['.$this->sliderAnimation.']'; ?>">
 				<?php
@@ -249,20 +251,20 @@ final class ThemeSettings {
 		$sectionID = $this->otherPageSlug.'-section-other';
 		$prefix = $this->otherPageSlug;
 		add_settings_section($sectionID, '', function() {}, $this->otherPageSlug);
-		add_settings_field($prefix.'github', TranslationStrings::getTranslatedString(TranslationStrings::GITHUB), function() : void {
+		add_settings_field($prefix.'github', $this->translationStrings->getTranslatedString(TranslationStrings::GITHUB), function() : void {
 			echo '<input type="url" name="'.$this->otherOptionsName.'['.$this->gitHub.']" value="'.$this->getGitHubUrl().'" class="regular-text" required> ';
 			echo '['.$this->gitHubShortcode.']';
 		}, $this->otherPageSlug, $sectionID);
-		add_settings_field($prefix.'images-per-page', TranslationStrings::getTranslatedString(TranslationStrings::IMAGES_PER_PAGE), function() : void {
+		add_settings_field($prefix.'images-per-page', $this->translationStrings->getTranslatedString(TranslationStrings::IMAGES_PER_PAGE), function() : void {
 			echo '<input type="number" name="'.$this->otherOptionsName.'['.$this->imagesPerPage.']" value="'.$this->getImagesPerPage().'" min="1" max="50">';
 		}, $this->otherPageSlug, $sectionID);
-		add_settings_field($prefix.'files-per-page', TranslationStrings::getTranslatedString(TranslationStrings::FILES_PER_PAGE), function() : void {
+		add_settings_field($prefix.'files-per-page', $this->translationStrings->getTranslatedString(TranslationStrings::FILES_PER_PAGE), function() : void {
 			echo '<input type="number" name="'.$this->otherOptionsName.'['.$this->filesPerPage.']" value="'.$this->getFilesPerPage().'" min="1" max="50">';
 		}, $this->otherPageSlug, $sectionID);
-		add_settings_field($prefix.'search-results-per-page', TranslationStrings::getTranslatedString(TranslationStrings::SEARCH_RESULTS_PER_PAGE), function() : void {
+		add_settings_field($prefix.'search-results-per-page', $this->translationStrings->getTranslatedString(TranslationStrings::SEARCH_RESULTS_PER_PAGE), function() : void {
 			echo '<input type="number" name="'.$this->otherOptionsName.'['.$this->searchResultsPerPage.']" value="'.$this->getSearchResultsPerPage().'" min="1" max="50">';
 		}, $this->otherPageSlug, $sectionID);
-		add_settings_field($prefix.'allow-file-editing', TranslationStrings::getTranslatedString(TranslationStrings::ALLOW_FILE_EDITING), function() : void {            
+		add_settings_field($prefix.'allow-file-editing', $this->translationStrings->getTranslatedString(TranslationStrings::ALLOW_FILE_EDITING), function() : void {            
 			$checked = (isset($this->otherOptions[$this->allowFileEditing])) ? $this->otherOptions[$this->allowFileEditing] : '';
 			echo '<input type="checkbox" name="'.$this->otherOptionsName.'['.$this->allowFileEditing.']" '.checked($checked, $this->checkboxCheckedValue, false).' >';
 		}, $this->otherPageSlug, $sectionID);
@@ -419,11 +421,11 @@ final class ThemeSettings {
 	 */
 	private function getSliderAnimations() : array {
 		return [
-			'fade' => TranslationStrings::getTranslatedString(TranslationStrings::FADE),
-			'slide_down' => TranslationStrings::getTranslatedString(TranslationStrings::SLIDE_DOWN),
-			'slide_left' => TranslationStrings::getTranslatedString(TranslationStrings::SLIDE_LEFT),
-			'slide_right' => TranslationStrings::getTranslatedString(TranslationStrings::SLIDE_RIGHT),
-			'slide_up' => TranslationStrings::getTranslatedString(TranslationStrings::SLIDE_UP)
+			'fade' => $this->translationStrings->getTranslatedString(TranslationStrings::FADE),
+			'slide_down' => $this->translationStrings->getTranslatedString(TranslationStrings::SLIDE_DOWN),
+			'slide_left' => $this->translationStrings->getTranslatedString(TranslationStrings::SLIDE_LEFT),
+			'slide_right' => $this->translationStrings->getTranslatedString(TranslationStrings::SLIDE_RIGHT),
+			'slide_up' => $this->translationStrings->getTranslatedString(TranslationStrings::SLIDE_UP)
 		];
 	}
 

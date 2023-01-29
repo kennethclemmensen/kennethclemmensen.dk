@@ -6,15 +6,17 @@ while(have_posts()) {
 	?>
 	<div class="page">
 		<?php
-		ThemeService::loadSliderTemplate();
-		ThemeService::loadBreadcrumbTemplate();
+		$themeService = new ThemeService();
+		$apiClient = new ApiClient();
+		$themeService->loadSliderTemplate();
+		$themeService->loadBreadcrumbTemplate();
 		?>
 		<section class="page__content">
 			<h1><?php the_title(); ?></h1>
 			<?php the_content(); ?>
 			<div class="page__galleries">
 				<?php
-				$galleries = ApiClient::getGalleries();
+				$galleries = $apiClient->getGalleries();
 				foreach($galleries as $gallery) {
 					?>
 					<a href="<?php echo $gallery['link']; ?>" class="page__gallery-link" style="background-image: url('<?php echo $gallery['image']; ?>')">

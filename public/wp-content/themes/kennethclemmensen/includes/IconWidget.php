@@ -4,6 +4,7 @@
  */
 final class IconWidget extends WP_Widget {
 
+	private readonly TranslationStrings $translationStrings;
 	private readonly string $icon;
 	private readonly string $link;
 	private readonly string $target;
@@ -14,9 +15,10 @@ final class IconWidget extends WP_Widget {
 	 * IconWidget constructor
 	 */
 	public function __construct() {
+		$this->translationStrings = new TranslationStrings();
 		parent::__construct(self::class, 'Icon', [
 			'classname' => self::class,
-			'description' => TranslationStrings::getTranslatedString(TranslationStrings::ADD_AN_ICON)
+			'description' => $this->translationStrings->getTranslatedString(TranslationStrings::ADD_AN_ICON)
 		]);
 		$this->icon = 'icon';
 		$this->link = 'link';
@@ -55,10 +57,10 @@ final class IconWidget extends WP_Widget {
 		$linkFieldID = esc_attr($this->get_field_id($this->link));
 		$target = (isset($instance[$this->target])) ? $instance[$this->target] : $this->defaultTarget;
 		$targetFieldID = esc_attr($this->get_field_id($this->target));
-		$titleText = TranslationStrings::getTranslatedString(TranslationStrings::TITLE);
-		$iconText = TranslationStrings::getTranslatedString(TranslationStrings::ICON);
-		$linkText = TranslationStrings::getTranslatedString(TranslationStrings::LINK);
-		$tabText = TranslationStrings::getTranslatedString(TranslationStrings::OPEN_IN_A_NEW_TAB);
+		$titleText = $this->translationStrings->getTranslatedString(TranslationStrings::TITLE);
+		$iconText = $this->translationStrings->getTranslatedString(TranslationStrings::ICON);
+		$linkText = $this->translationStrings->getTranslatedString(TranslationStrings::LINK);
+		$tabText = $this->translationStrings->getTranslatedString(TranslationStrings::OPEN_IN_A_NEW_TAB);
 		?>
 		<p>
 			<label for="<?php echo $titleFieldID; ?>"><?php echo $titleText; ?></label>
