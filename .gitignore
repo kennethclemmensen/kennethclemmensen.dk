@@ -8,7 +8,7 @@ node_modules
 public/wp-content/uploads
 
 #Composer
-vendor
+/vendor
 
 #Cache
 public/wp-content/cache
