@@ -1,8 +1,8 @@
 #Visual Studio Code
-.vscode
+/.vscode
 
 #Node
-node_modules
+/node_modules
 
 #Uploads
 public/wp-content/uploads
@@ -14,7 +14,7 @@ public/wp-content/uploads
 public/wp-content/cache
 
 #TypeScript
-.tsbuildinfo
+/.tsbuildinfo
 
 #Backup
 public/wp-content/kc_backup
