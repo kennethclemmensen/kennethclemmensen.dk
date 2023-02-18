@@ -39,7 +39,7 @@ abstract class AIOWPSecurity_Admin_Menu
         //Always send string with translation markers in it
         ?>
         <div id="<?php echo $id; ?>" class="postbox">
-            <div class="handlediv" title="Click to toggle"><br /></div>
+            <div class="handlediv" title="<?php echo __('Press to toggle'); ?>"><br /></div>
             <h3 class="hndle"><span><?php echo $title; ?></span></h3>
             <div class="inside">
             <?php echo $content; ?>
@@ -96,21 +96,21 @@ abstract class AIOWPSecurity_Admin_Menu
     static function show_msg_updated_st($msg)
     {
         echo '<div id="message" class="updated fade"><p><strong>';
-        echo $msg;
+        echo wp_kses_post($msg);
         echo '</strong></p></div>';
     }
     
     function show_msg_error($error_msg)
     {
         echo '<div id="message" class="error"><p><strong>';
-        echo $error_msg;
+        echo wp_kses_post($error_msg);
         echo '</strong></p></div>';
     }
     
     static function show_msg_error_st($error_msg)
     {
         echo '<div id="message" class="error"><p><strong>';
-        echo $error_msg;
+        echo wp_kses_post($error_msg);
         echo '</strong></p></div>';
     }
     

@@ -217,7 +217,7 @@ jQuery(function($) {
 			
 			// Would need further styling investigations to display this
 			if (!form_is_gravity_forms) {
-				html += simba_tfasettings.otp_login_help;
+				html += '<span class="simba_tfa_otp_login_help">'+simba_tfasettings.otp_login_help+'</span>';
 			}
 			
 			if (user_can_trust) {

@@ -221,9 +221,10 @@ class AIOWPSecurity_Installer {
 			if (!$updated) {
 				if (get_option('aio_wp_security_configs') === $temp_configs) {
 					delete_option('aiowps_temp_configs');
+					return true;
 				}
 
-				$aio_wp_security->debug_logger->log_debug('AIOWPSecurity_Installer::reactivation_tasks() - Restoration of original config settings failed or nothing changed.', 4);
+				$aio_wp_security->debug_logger->log_debug('AIOWPSecurity_Installer::reactivation_tasks() - Restoration of original config settings failed.', 4);
 				return false;
 			}
 

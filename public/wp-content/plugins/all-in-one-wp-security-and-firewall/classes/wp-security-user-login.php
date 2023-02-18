@@ -512,8 +512,8 @@ class AIOWPSecurity_User_Login {
 	 */
 	public static function send_unlock_request_email($email, $unlock_link) {
 		global $aio_wp_security;
-		$subject = '['.get_option('siteurl').'] '. __('Unlock request notification', 'all-in-one-wp-security-and-firewall');
-		$email_msg = sprintf(__('You have requested for the account with email address %s to be unlocked. Please click the link below to unlock your account:', 'all-in-one-wp-security-and-firewall'), $email) . "\n" . sprintf(__('Unlock link: %s', 'all-in-one-wp-security-and-firewall'), $unlock_link) . "\n\n" . __('After clicking the above link you will be able to login to the WordPress administration panel.', 'all-in-one-wp-security-and-firewall') . "\n";
+		$subject = '['.network_site_url().'] '. __('Unlock request notification', 'all-in-one-wp-security-and-firewall');
+		$email_msg = sprintf(__('You have requested for the account with email address %s to be unlocked. Please press the link below to unlock your account:', 'all-in-one-wp-security-and-firewall'), $email) . "\n" . sprintf(__('Unlock link: %s', 'all-in-one-wp-security-and-firewall'), $unlock_link) . "\n\n" . __('After pressing the above link you will be able to login to the WordPress administration panel.', 'all-in-one-wp-security-and-firewall') . "\n";
 		$site_title = get_bloginfo('name');
 		$from_name = empty($site_title) ? 'WordPress' : $site_title;
 		$email_header = 'From: '.$from_name.' <'.get_bloginfo('admin_email').'>' . "\r\n\\";

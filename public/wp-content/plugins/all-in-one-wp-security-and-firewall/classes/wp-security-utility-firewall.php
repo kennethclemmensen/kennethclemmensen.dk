@@ -24,12 +24,25 @@ class AIOWPSecurity_Utility_Firewall {
 	/**
 	 * Returns the firewall rules path.
 	 *
+	 * @param boolean $mkdir - whether or not to create the directory if it doesn't exist
+	 *
 	 * @return string
 	 */
-	public static function get_firewall_rules_path() {
+	public static function get_firewall_rules_path($mkdir = false) {
 		$upload_dir_info = wp_get_upload_dir();
-		$firewall_rules_path = trailingslashit($upload_dir_info['basedir'].'/aios/firewall-rules');
-		wp_mkdir_p($firewall_rules_path);
+		$base = $upload_dir_info['basedir'];
+
+		// We want the base to always point to the main site's upload directory and not the subsite's.
+		if (!is_main_site()) {
+			$base = preg_replace('#/sites/'.get_current_blog_id().'/?$#', '', $base);
+		}
+
+		$firewall_rules_path = trailingslashit("{$base}/aios/firewall-rules");
+
+		if ($mkdir) {
+			wp_mkdir_p($firewall_rules_path);
+		}
+
 		return wp_normalize_path($firewall_rules_path);
 	}
 
@@ -165,6 +178,8 @@ class AIOWPSecurity_Utility_Firewall {
 		);
 
 		foreach ($files as $file) {
+			if (AIOWPSecurity_Utility_Firewall::MANUAL_SETUP === $file) continue;
+			
 			if ($is_in_bootstrap && (true === $file->contains_contents())) return true;
 		}
 

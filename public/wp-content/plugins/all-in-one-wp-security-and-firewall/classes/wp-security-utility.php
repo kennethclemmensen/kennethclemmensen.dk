@@ -780,11 +780,14 @@ class AIOWPSecurity_Utility {
 	 * @return boolean True if the incompatible TFA premium plugin version active, otherwise false.
 	 */
 	public static function is_incompatible_tfa_premium_version_active() {
-		if (!function_exists('get_plugins')) {
-			require_once(ABSPATH.'/wp-admin/includes/plugin.php');
+		if (!function_exists('get_plugin_data')) {
+			require_once(ABSPATH . '/wp-admin/includes/plugin.php');
 		}
-		foreach (get_plugins() as $plugin_slug => $plugin_info) {
-			if (is_plugin_active($plugin_slug) && strpos($plugin_slug, '/') && is_dir(WP_PLUGIN_DIR.'/'.explode('/', $plugin_slug)[0].'/simba-tfa/premium') && version_compare($plugin_info['Version'], AIOS_TFA_PREMIUM_LATEST_INCOMPATIBLE_VERSION, '<=')) {
+
+		$active_plugins = wp_get_active_and_valid_plugins();
+
+		foreach ($active_plugins as $plugin_file) {
+			if ('two-factor-login.php' == basename($plugin_file) && is_dir(dirname($plugin_file) . '/simba-tfa/premium') && version_compare(get_plugin_data($plugin_file)['Version'], AIOS_TFA_PREMIUM_LATEST_INCOMPATIBLE_VERSION, '<=')) {
 				return true;
 			}
 		}

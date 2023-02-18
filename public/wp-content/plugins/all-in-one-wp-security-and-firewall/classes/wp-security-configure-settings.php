@@ -159,6 +159,10 @@ class AIOWPSecurity_Configure_Settings {
 		// IP retrieval setting
 		$aio_wp_security->configs->set_value('aiowps_ip_retrieve_method', '0'); // Default is $_SERVER['REMOTE_ADDR']
 
+		// Cloudflare Turnstile
+		$aio_wp_security->configs->set_value('aiowps_turnstile_site_key', '');
+		$aio_wp_security->configs->set_value('aiowps_turnstile_secret_key', '');
+
 		// Google reCAPTCHA
 		$aio_wp_security->configs->set_value('aiowps_recaptcha_site_key', '');
 		$aio_wp_security->configs->set_value('aiowps_recaptcha_secret_key', '');
@@ -186,6 +190,8 @@ class AIOWPSecurity_Configure_Settings {
 	public static function add_option_values() {
 		global $aio_wp_security;
 		$blog_email_address = get_bloginfo('admin_email'); //Get the blog admin email address - we will use as the default value
+
+		$aio_wp_security->configs->load_config();
 
 		//Debug
 		$aio_wp_security->configs->add_value('aiowps_enable_debug', '');//Checkbox
@@ -329,6 +335,10 @@ class AIOWPSecurity_Configure_Settings {
 		// Commented the below code line because the IP retrieve method will be configured when the AIOS plugin is activated for the first time.
 		// $aio_wp_security->configs->add_value('aiowps_ip_retrieve_method', '0'); // Default is $_SERVER['REMOTE_ADDR']
 
+		// Cloudflare Turnstile
+		$aio_wp_security->configs->add_value('aiowps_turnstile_site_key', '');
+		$aio_wp_security->configs->add_value('aiowps_turnstile_secret_key', '');
+
 		// Google reCAPTCHA
 		$aio_wp_security->configs->add_value('aiowps_recaptcha_site_key', '');
 		$aio_wp_security->configs->add_value('aiowps_recaptcha_secret_key', '');
@@ -346,7 +356,7 @@ class AIOWPSecurity_Configure_Settings {
 		$aio_wp_security->configs->save_config();
 
 		// For Cookie based brute force prevention backward compatibility
-		if ($aio_wp_security->should_cookie_based_brute_force_prvent()) {
+		if (!headers_sent() && $aio_wp_security->should_cookie_based_brute_force_prvent()) {
 			$brute_force_secret_word = $aio_wp_security->configs->get_value('aiowps_brute_force_secret_word');
 			if (empty($brute_force_secret_word)) {
 				$brute_force_secret_word = AIOS_DEFAULT_BRUTE_FORCE_FEATURE_SECRET_WORD;
@@ -370,11 +380,13 @@ class AIOWPSecurity_Configure_Settings {
 	 * @return void.
 	 */
 	public static function set_firewall_configs() {
-		if (version_compare(get_option('aiowpsec_firewall_version'), '1.0.1', '<')) {
-			self::set_cookie_based_bruteforce_firewall_configs();
-		}
-		if (version_compare(get_option('aiowpsec_firewall_version'), '1.0.2', '<')) {
-			self::set_user_agent_firewall_configs();
+		if (is_main_site()) {
+			if (version_compare(get_option('aiowpsec_firewall_version'), '1.0.1', '<')) {
+				self::set_cookie_based_bruteforce_firewall_configs();
+			}
+			if (version_compare(get_option('aiowpsec_firewall_version'), '1.0.2', '<')) {
+				self::set_user_agent_firewall_configs();
+			}
 		}
 		update_option('aiowpsec_firewall_version', AIO_WP_SECURITY_FIREWALL_VERSION);
 	}

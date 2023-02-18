@@ -8,7 +8,7 @@ if (!class_exists('AIO_WP_Security')) {
 
 	class AIO_WP_Security {
 
-		public $version = '5.1.4';
+		public $version = '5.1.5';
 
 		public $db_version = '1.9.7';
 		
@@ -72,9 +72,9 @@ if (!class_exists('AIO_WP_Security')) {
 		public $is_aiowps_google_recaptcha_tab_page;
 
 		/**
-		 * Seup constans, load configs, includes required files and added actions.
+		 * Defines constants, loads configs, includes required files and adds actions.
 		 *
-		 * @return Void.
+		 * @return Void
 		 */
 		public function __construct() {
 			// Add management permission filter early before any of the includes try to use it
@@ -208,6 +208,7 @@ if (!class_exists('AIO_WP_Security')) {
 
 			// At this time, sometimes is_admin() can't be populated, It gives the error PHP Fatal error:  Uncaught Error: Class 'AIOWPSecurity_Admin_Init' not found.
 			// so we should not use is_admin() condition.
+			include_once(AIO_WP_SECURITY_PATH.'/classes/wp-security-settings-tasks.php');
 			include_once(AIO_WP_SECURITY_PATH.'/classes/wp-security-configure-settings.php');
 			include_once(AIO_WP_SECURITY_PATH.'/classes/wp-security-notices.php');
 			require_once(AIO_WP_SECURITY_PATH.'/admin/wp-security-admin-init.php');
@@ -246,16 +247,8 @@ if (!class_exists('AIO_WP_Security')) {
 		 * @return void
 		 */
 		public static function activate_handler($networkwide) {
+			// Only runs when the plugin activates
 			global $wpdb;// phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Used for the include below
-			//Only runs when the plugin activates
-			if (version_compare(phpversion(), '5.6.0', '<')) {
-				deactivate_plugins(basename(__FILE__));
-				wp_die(
-					sprintf(htmlspecialchars(__('This plugin requires PHP version %s.', 'all-in-one-wp-security-and-firewall')), '<strong>5.6+</strong>')
-					.' '.sprintf(htmlspecialchars(__('Current site PHP version is %s.', 'all-in-one-wp-security-and-firewall')), '<strong>'.phpversion().'</strong>')
-					.' '.htmlspecialchars(__('You will need to ask your web hosting company to upgrade.', 'all-in-one-wp-security-and-firewall'))
-				);
-			}
 			include_once(AIO_WP_SECURITY_PATH.'/classes/wp-security-installer.php');
 			AIOWPSecurity_Installer::run_installer($networkwide);
 			AIOWPSecurity_Installer::set_cron_tasks_upon_activation($networkwide);
@@ -471,9 +464,11 @@ if (!class_exists('AIO_WP_Security')) {
 					/**
 					 * Update our config file's header if needed.
 					 */
-					require_once(AIO_WP_SECURITY_PATH.'/classes/firewall/libs/wp-security-firewall-config.php');
-					$config = new \AIOWPS\Firewall\Config(AIOWPSecurity_Utility_Firewall::get_firewall_rules_path() . 'settings.php');
-					$config->update_prefix();
+					if (is_main_site()) {
+						require_once(AIO_WP_SECURITY_PATH.'/classes/firewall/libs/wp-security-firewall-config.php');
+						$config = new \AIOWPS\Firewall\Config(AIOWPSecurity_Utility_Firewall::get_firewall_rules_path() . 'settings.php');
+						$config->update_prefix();
+					}
 				}
 			}
 		}
@@ -534,7 +529,6 @@ if (!class_exists('AIO_WP_Security')) {
 			$this->captcha_obj = new AIOWPSecurity_Captcha(); // Do the CAPTCHA tasks
 			$this->cleanup_obj = new AIOWPSecurity_Cleanup(); // Object to handle cleanup tasks
 			$this->scan_obj = new AIOWPSecurity_Scan();//Object to handle scan tasks
-			add_action('login_enqueue_scripts', array($this, 'aiowps_login_enqueue'));
 			add_action('wp_footer', array($this, 'aiowps_footer_content'));
 
 			add_action('wp_ajax_aiowps_ajax', array($this, 'aiowps_ajax_handler'));
@@ -553,20 +547,6 @@ if (!class_exists('AIO_WP_Security')) {
 
 		public function aiowps_wp_loaded_handler() {
 			new AIOWPSecurity_WP_Loaded_Tasks();
-		}
-
-		/**
-		 * Enqueues the Google reCAPTCHA v2 API URL for the standard WP login page
-		 */
-		public function aiowps_login_enqueue() {
-			global $aio_wp_security;
-			if (!$aio_wp_security->is_login_lockdown_by_const() && 'google-recaptcha-v2' == $aio_wp_security->configs->get_value('aiowps_default_captcha')) {
-				if ($aio_wp_security->configs->get_value('aiowps_enable_login_captcha') == '1' || $aio_wp_security->configs->get_value('aiowps_enable_registration_page_captcha') == '1') {
-					wp_enqueue_script('google-recaptcha', 'https://www.google.com/recaptcha/api.js?hl=' . AIOWPSecurity_Captcha::get_google_recaptcha_compatible_site_locale(), array(), AIO_WP_SECURITY_VERSION);
-					// Below is needed to provide some space for the Google reCAPTCHA form (otherwise it appears partially hidden on RHS)
-					wp_add_inline_script('google-recaptcha', 'document.addEventListener("DOMContentLoaded", ()=>{document.getElementById("login").style.width = "340px";});');
-				}
-			}
 		}
 
 		public function aiowps_footer_content() {

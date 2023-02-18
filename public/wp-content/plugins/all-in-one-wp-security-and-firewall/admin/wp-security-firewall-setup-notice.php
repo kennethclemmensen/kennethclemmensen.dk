@@ -35,11 +35,11 @@ class AIOWPSecurity_Firewall_Setup_Notice {
 
 	/**
 	 * Constants for the different notice types
-	 * 
+	 *
 	 * @var string
 	 */
 	const NOTICE_BOOTSTRAP     = 'manual_bootstrap';
-	const NOTICE_MANUAL 	   = 'manual';
+	const NOTICE_MANUAL        = 'manual';
 	const NOTICE_INSTALLED     = 'success';
 	const NOTICE_DIRECTIVE_SET = 'userini_directive';
 
@@ -50,7 +50,7 @@ class AIOWPSecurity_Firewall_Setup_Notice {
 		$this->bootstrap = AIOWPSecurity_Utility_Firewall::get_bootstrap_file();
 		$this->wpconfig  = AIOWPSecurity_Utility_Firewall::get_wpconfig_file();
 		$this->muplugin  = AIOWPSecurity_Utility_Firewall::get_muplugin_file();
-		AIOWPSecurity_Utility_Firewall::get_firewall_rules_path(); //creates the needed directories for the first time
+		AIOWPSecurity_Utility_Firewall::get_firewall_rules_path(true); // Creates the needed directories for the first time.
 	}
 
 	/**

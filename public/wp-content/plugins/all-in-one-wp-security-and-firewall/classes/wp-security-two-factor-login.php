@@ -11,6 +11,20 @@ if (!class_exists('Simba_Two_Factor_Authentication_1')) require AIO_WP_SECURITY_
 class AIO_WP_Security_Simba_Two_Factor_Authentication_Plugin extends Simba_Two_Factor_Authentication_1 {
 
 	/**
+	 * Whether the TFA plugin is being integrated into the AIOS plugin.
+	 *
+	 * @var boolean
+	 */
+	public $is_tfa_integrated;
+
+	/**
+	 * Stores the current plugin version.
+	 *
+	 * @var string
+	 */
+	protected $version;
+
+	/**
 	 * Class constructor
 	 *
 	 * @uses __FILE__
@@ -27,17 +41,28 @@ class AIO_WP_Security_Simba_Two_Factor_Authentication_Plugin extends Simba_Two_F
 			add_action('all_admin_notices', array($this, 'admin_notice_missing_mcrypt_and_openssl'));
 			return;
 		}
+
+		$this->is_tfa_integrated = true;
+
+		// Run at a priority ensuring that this will be after AIOS has registered its translation domain
+		add_action('plugins_loaded', array($this, 'plugins_loaded'), 11);
 		
 		add_action('admin_menu', array($this, 'menu_entry_for_user'), 30);
 		$this->version = AIO_WP_SECURITY_VERSION;
 		$this->set_user_settings_page_slug(AIOWPSEC_TWO_FACTOR_AUTH_MENU_SLUG);
-		$settings_page_heading = __('Two factor authentication - Admin settings', 'all-in-one-wp-security-and-firewall');
-		$this->set_settings_page_heading($settings_page_heading);
+		
 		$this->set_plugin_translate_url('https://translate.wordpress.org/projects/wp-plugins/all-in-one-wp-security-and-firewall/');
 		$this->set_site_wide_administration_url(admin_url('admin.php?page=aiowpsec_settings&tab=two-factor-authentication'));
 		$this->set_premium_version_url('https://aiosplugin.com');
 		$this->set_faq_url('https://wordpress.org/plugins/all-in-one-wp-security-and-firewall/#faq');
 		parent::__construct();
+	}
+	
+	/**
+	 * Runs upon the WP action plugins_loaded (once the text domain has been loaded)
+	 */
+	public function plugins_loaded() {
+		$this->set_settings_page_heading(__('Two factor authentication - Admin settings', 'all-in-one-wp-security-and-firewall'));
 	}
 	
 	/**

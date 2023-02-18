@@ -15,8 +15,9 @@ class AIOWPSecurity_Deactivation_Tasks extends AIOWPSecurity_Base_Tasks {
 	protected static function run_for_a_site() {
 		global $aio_wp_security;
 
-		// Let's first save the current aio_wp_security_configs options in a temp option
 		$aio_wp_security->configs->load_config();
+
+		// Let's first save the current aio_wp_security_configs options in a temp option
 		update_option('aiowps_temp_configs', $aio_wp_security->configs->configs);
 
 		if (is_main_site()) {
@@ -27,8 +28,6 @@ class AIOWPSecurity_Deactivation_Tasks extends AIOWPSecurity_Base_Tasks {
 			// Deactivates PHP-based firewall
 			AIOWPSecurity_Utility_Firewall::remove_firewall();
 		}
-
-		delete_option('aio_wp_security_configs');
 	}
 
 }

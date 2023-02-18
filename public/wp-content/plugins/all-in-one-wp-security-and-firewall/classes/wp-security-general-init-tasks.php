@@ -72,7 +72,7 @@ class AIOWPSecurity_General_Init_Tasks {
 
 		// For the cookie based brute force prevention feature
 		// Already logged in user should not redirected to brute_force_redirect_url in any case so added condition !is_user_logged_in()
-		if ($aio_wp_security->should_cookie_based_brute_force_prvent() && !is_user_logged_in()) {
+		if ($aio_wp_security->should_cookie_based_brute_force_prvent()) {
 			$bfcf_secret_word = $aio_wp_security->configs->get_value('aiowps_brute_force_secret_word');
 			if (isset($_GET[$bfcf_secret_word])) {
 				AIOWPSecurity_Utility_IP::check_login_whitelist_and_forbid();
@@ -82,7 +82,7 @@ class AIOWPSecurity_General_Init_Tasks {
 				if ('1' == $aio_wp_security->configs->get_value('aiowps_enable_rename_login_page') && !is_user_logged_in()) {
 					$login_url = home_url((get_option('permalink_structure') ? '' : '?')  . $aio_wp_security->configs->get_value('aiowps_login_page_slug'));
 					AIOWPSecurity_Utility::redirect_to_url($login_url);
-				} else {
+				} elseif (!is_user_logged_in()) {
 					AIOWPSecurity_Utility::redirect_to_url(AIOWPSEC_WP_URL.'/wp-admin');
 				}
 			}
@@ -132,14 +132,14 @@ class AIOWPSecurity_General_Init_Tasks {
 		// For login CAPTCHA feature
 		if ($aio_wp_security->configs->get_value('aiowps_enable_login_captcha') == '1') {
 			if (!is_user_logged_in()) {
-				add_action('login_form', array($this, 'insert_captcha_question_form'));
+				add_action('login_form', array($aio_wp_security->captcha_obj, 'insert_captcha_question_form'));
 			}
 		}
 
 		// For woo form CAPTCHA features
 		if ($aio_wp_security->configs->get_value('aiowps_enable_woo_login_captcha') == '1') {
 			if (!is_user_logged_in()) {
-				add_action('woocommerce_login_form', array($this, 'insert_captcha_question_form'));
+				add_action('woocommerce_login_form', array($aio_wp_security->captcha_obj, 'insert_captcha_question_form'));
 			}
 			if (isset($_POST['woocommerce-login-nonce'])) {
 				add_filter('woocommerce_process_login_errors', array($this, 'aiowps_validate_woo_login_or_reg_captcha'), 10, 3);
@@ -148,7 +148,7 @@ class AIOWPSecurity_General_Init_Tasks {
 
 		if ($aio_wp_security->configs->get_value('aiowps_enable_woo_register_captcha') == '1') {
 			if (!is_user_logged_in()) {
-				add_action('woocommerce_register_form', array($this, 'insert_captcha_question_form'));
+				add_action('woocommerce_register_form', array($aio_wp_security->captcha_obj, 'insert_captcha_question_form'));
 			}
 
 			if (isset($_POST['woocommerce-register-nonce'])) {
@@ -158,7 +158,7 @@ class AIOWPSecurity_General_Init_Tasks {
 
 		if ($aio_wp_security->configs->get_value('aiowps_enable_woo_lostpassword_captcha') == '1') {
 			if (!is_user_logged_in()) {
-				add_action('woocommerce_lostpassword_form', array($this, 'insert_captcha_question_form'));
+				add_action('woocommerce_lostpassword_form', array($aio_wp_security->captcha_obj, 'insert_captcha_question_form'));
 			}
 			if (isset($_POST['woocommerce-lost-password-nonce'])) {
 				add_action('lostpassword_post', array($this, 'process_woo_lost_password_form_post'));
@@ -168,14 +168,14 @@ class AIOWPSecurity_General_Init_Tasks {
 		// For bbPress new topic form CAPTCHA
 		if ($aio_wp_security->configs->get_value('aiowps_enable_bbp_new_topic_captcha') == '1') {
 			if (!is_user_logged_in()) {
-				add_action('bbp_theme_before_topic_form_submit_wrapper', array($this, 'insert_captcha_question_form'));
+				add_action('bbp_theme_before_topic_form_submit_wrapper', array($aio_wp_security->captcha_obj, 'insert_captcha_question_form'));
 			}
 		}
 
 		// For custom login form CAPTCHA feature, ie, when wp_login_form() function is used to generate login form
 		if ($aio_wp_security->configs->get_value('aiowps_enable_custom_login_captcha') == '1') {
 			if (!is_user_logged_in()) {
-				add_filter('login_form_middle', array($this, 'insert_captcha_custom_login'), 10, 2); //For cases where the WP wp_login_form() function is used
+				add_filter('login_form_middle', array($aio_wp_security->captcha_obj, 'insert_captcha_custom_login'), 10, 2); //For cases where the WP wp_login_form() function is used
 			}
 		}
 
@@ -215,7 +215,7 @@ class AIOWPSecurity_General_Init_Tasks {
 		// For lost password CAPTCHA feature
 		if ($aio_wp_security->configs->get_value('aiowps_enable_lost_password_captcha') == '1') {
 			if (!is_user_logged_in()) {
-				add_action('lostpassword_form', array($this, 'insert_captcha_question_form'));
+				add_action('lostpassword_form', array($aio_wp_security->captcha_obj, 'insert_captcha_question_form'));
 				add_action('lostpassword_post', array($this, 'process_lost_password_form_post'));
 			}
 		}
@@ -240,7 +240,7 @@ class AIOWPSecurity_General_Init_Tasks {
 		} else {
 			if ($aio_wp_security->configs->get_value('aiowps_enable_registration_page_captcha') == '1') {
 				if (!is_user_logged_in()) {
-					add_action('register_form', array($this, 'insert_captcha_question_form'));
+					add_action('register_form', array($aio_wp_security->captcha_obj, 'insert_captcha_question_form'));
 				}
 			}
 		}
@@ -251,11 +251,9 @@ class AIOWPSecurity_General_Init_Tasks {
 			switch_to_blog($blog_id);
 			if ($aio_wp_security->configs->get_value('aiowps_enable_comment_captcha') == '1') {
 				if (!is_user_logged_in()) {
-					if ('google-recaptcha-v2' == $aio_wp_security->configs->get_value('aiowps_default_captcha')) {
-						add_action('wp_head', array($this, 'add_recaptcha_script'));
-					}
-					add_action('comment_form_after_fields', array($this, 'insert_captcha_question_form'), 1);
-					add_action('comment_form_logged_in_after', array($this, 'insert_captcha_question_form'), 1);
+					add_action('wp_head', array($aio_wp_security->captcha_obj, 'add_captcha_script'));
+					add_action('comment_form_after_fields', array($aio_wp_security->captcha_obj, 'insert_captcha_question_form'), 1);
+					add_action('comment_form_logged_in_after', array($aio_wp_security->captcha_obj, 'insert_captcha_question_form'), 1);
 					add_filter('preprocess_comment', array($this, 'process_comment_post'));
 				}
 			}
@@ -263,11 +261,9 @@ class AIOWPSecurity_General_Init_Tasks {
 		} else {
 			if ($aio_wp_security->configs->get_value('aiowps_enable_comment_captcha') == '1') {
 				if (!is_user_logged_in()) {
-					if ('google-recaptcha-v2' == $aio_wp_security->configs->get_value('aiowps_default_captcha')) {
-						add_action('wp_head', array($this, 'add_recaptcha_script'));
-					}
-					add_action('comment_form_after_fields', array($this, 'insert_captcha_question_form'), 1);
-					add_action('comment_form_logged_in_after', array($this, 'insert_captcha_question_form'), 1);
+					add_action('wp_head', array($aio_wp_security->captcha_obj, 'add_captcha_script'));
+					add_action('comment_form_after_fields', array($aio_wp_security->captcha_obj, 'insert_captcha_question_form'), 1);
+					add_action('comment_form_logged_in_after', array($aio_wp_security->captcha_obj, 'insert_captcha_question_form'), 1);
 					add_filter('preprocess_comment', array($this, 'process_comment_post'));
 				}
 			}
@@ -275,7 +271,7 @@ class AIOWPSecurity_General_Init_Tasks {
 
 		// For BuddyPress registration CAPTCHA feature
 		if ($aio_wp_security->configs->get_value('aiowps_enable_bp_register_captcha') == '1') {
-			add_action('bp_account_details_fields', array($this, 'insert_captcha_question_form'));
+			add_action('bp_account_details_fields', array($aio_wp_security->captcha_obj, 'insert_captcha_question_form'));
 			add_action('bp_signup_validate', array($this, 'buddy_press_signup_validate_captcha'));
 		}
 
@@ -389,38 +385,10 @@ class AIOWPSecurity_General_Init_Tasks {
 		}
 	}
 
-	/**
-	 * Renders CAPTCHA on form produced by the wp_login_form() function, ie, custom wp login form
-	 *
-	 * @global type $aio_wp_security
-	 * @param type $cust_html_code
-	 * @return string
-	 */
-	public function insert_captcha_custom_login($cust_html_code) {
-		global $aio_wp_security;
-		if ($aio_wp_security->is_login_lockdown_by_const()) {
-			return '';
-		}
-
-		if ('google-recaptcha-v2' == $aio_wp_security->configs->get_value('aiowps_default_captcha')) {
-			$site_key = esc_html($aio_wp_security->configs->get_value('aiowps_recaptcha_site_key'));
-			$cap_form = '<div class="g-recaptcha-wrap" style="padding:10px 0 10px 0"><div class="g-recaptcha" data-sitekey="'.$site_key.'"></div></div>';
-			$cust_html_code .= $cap_form;
-			return $cust_html_code;
-		} elseif ('simple-math' == $aio_wp_security->configs->get_value('aiowps_default_captcha')) {
-			$cap_form = '<p class="aiowps-captcha"><label>'.__('Please enter an answer in digits:', 'all-in-one-wp-security-and-firewall').'</label>';
-			$cap_form .= '<div class="aiowps-captcha-equation"><strong>';
-			$maths_question_output = $aio_wp_security->captcha_obj->generate_maths_question();
-			$cap_form .= $maths_question_output . '</strong></div></p>';
-
-			$cust_html_code .= $cap_form;
-			return $cust_html_code;
-		}
-	}
-
 	public function insert_captcha_question_form_multi() {
 		global $aio_wp_security;
-		$aio_wp_security->captcha_obj->display_captcha_form();
+		$default_captcha = $aio_wp_security->configs->get_value('aiowps_default_captcha');
+		$aio_wp_security->captcha_obj->display_captcha_form($default_captcha);
 	}
 
 	public function process_signup_form_multi($result) {
@@ -432,35 +400,6 @@ class AIOWPSecurity_General_Init_Tasks {
 			$result['errors']->add('generic', __('<strong>ERROR</strong>: Your answer was incorrect - please try again.', 'all-in-one-wp-security-and-firewall'));
 		}
 		return $result;
-	}
-
-	public function insert_captcha_question_form() {
-		global $aio_wp_security;
-
-		if ('google-recaptcha-v2' == $aio_wp_security->configs->get_value('aiowps_default_captcha')) {
-
-			// WooCommerce "my account" page needs special consideration, ie,
-			// need to display two Google reCAPTCHA forms on same page (for login and register forms)
-			// For this case we use the "explicit" reCAPTCHA display
-			$calling_hook = current_filter();
-			$site_key = esc_html($aio_wp_security->configs->get_value('aiowps_recaptcha_site_key'));
-			if ('woocommerce_login_form' == $calling_hook || 'woocommerce_lostpassword_form' == $calling_hook) {
-				echo '<div class="g-recaptcha-wrap" style="padding:10px 0 10px 0"><div id="woo_recaptcha_1" class="g-recaptcha" data-sitekey="'.$site_key.'"></div></div>';
-				return;
-			}
-
-			if ('woocommerce_register_form' == $calling_hook) {
-				echo '<div class="g-recaptcha-wrap" style="padding:10px 0 10px 0"><div id="woo_recaptcha_2" class="g-recaptcha" data-sitekey="'.$site_key.'"></div></div>';
-				return;
-			}
-
-			// For all other forms simply display Google reCAPTCHA as per normal
-			$aio_wp_security->captcha_obj->display_recaptcha_form();
-		} elseif ('simple-math' == $aio_wp_security->configs->get_value('aiowps_default_captcha')) {
-			// Display plain maths CAPTCHA form
-			$aio_wp_security->captcha_obj->display_captcha_form();
-		}
-
 	}
 
 	public function insert_honeypot_hidden_field() {
@@ -702,28 +641,6 @@ class AIOWPSecurity_General_Init_Tasks {
 		if (empty($rest_user->ID)) {
 			$error_message = apply_filters('aiowps_rest_api_error_message', __('You are not authorized to perform this action.', 'disable-wp-rest-api'));
 			wp_die($error_message);
-		}
-	}
-
-	/**
-	 * Enqueues the Google reCAPTCHA API URL in the wp_head for general pages
-	 * Caters for scenarios when reCAPTCHA used on wp comments or custom wp login form
-	 */
-	public function add_recaptcha_script() {
-		// Enqueue the reCAPTCHA API url
-
-		// Do NOT enqueue if this is the main WooCommerce account login page because for WooCommerce page we "explicitly" render the reCAPTCHA widget
-		$is_woo = false;
-
-		// We don't want to load for woo account page because we have a special function for this
-		if (function_exists('is_account_page')) {
-			// Check if this a WooCommerce account page
-			$is_woo = is_account_page();
-		}
-
-		if (empty($is_woo)) {
-			// Only enqueue when not a WooCommerce page
-			wp_enqueue_script('google-recaptcha', 'https://www.google.com/recaptcha/api.js?hl=' . AIOWPSecurity_Captcha::get_google_recaptcha_compatible_site_locale(), array(), AIO_WP_SECURITY_VERSION);
 		}
 	}
 

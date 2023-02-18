@@ -325,20 +325,20 @@ class AIOWPSecurity_Admin_Init {
 		$aiowps_feature_mgr  = new AIOWPSecurity_Feature_Item_Manager();
 		$aiowps_feature_mgr->initialize_features();
 		$aiowps_feature_mgr->check_and_set_feature_status();
-		$aiowps_feature_mgr->calculate_total_points(); 
+		$aiowps_feature_mgr->calculate_total_points();
 		$GLOBALS['aiowps_feature_mgr'] = $aiowps_feature_mgr;
 	}
 
 	/**
 	 * Other admin side init tasks.
 	 *
-	 * @return void
+	 * @return Void
 	 */
 	private function do_other_admin_side_init_tasks() {
-		global $aio_wp_security;
-		
+		global $aio_wp_security, $aiowps_firewall_config, $simba_two_factor_authentication;
+
 		//***New Feature improvement for Cookie Based Brute Force Protection***//
-		//The old "test cookie" used to be too easy to guess because someone could just read the code and get the value. 
+		// The old "test cookie" used to be too easy to guess because someone could just read the code and get the value.
 		//So now we will drop a more secure test cookie using a 10 digit random string
 
 		if ('1' == $aio_wp_security->configs->get_value('aiowps_enable_brute_force_attack_prevention')) {
@@ -352,9 +352,8 @@ class AIOWPSecurity_Admin_Init {
 				AIOWPSecurity_Utility::set_cookie_value($test_cookie_name, '1');
 			}
 		}
-		//For cookie test form submission case
+		// For cookie test form submission case
 		if (isset($_GET['page']) && AIOWPSEC_BRUTE_FORCE_MENU_SLUG == $_GET['page'] && isset($_GET['tab']) && 'cookie-based-brute-force-prevention' == $_GET['tab']) {
-			global $aio_wp_security;
 			if (isset($_POST['aiowps_do_cookie_test_for_bfla'])) {
 				$random_suffix = AIOWPSecurity_Utility::generate_alpha_numeric_random_string(10);
 				$test_cookie_name = 'aiowps_cookie_test_'.$random_suffix;
@@ -404,12 +403,23 @@ class AIOWPSecurity_Admin_Init {
 				$aio_wp_security->debug_logger->log_debug('Nonce check failed on export AIOS settings.', 4);
 				die('Nonce check failed on export AIOS settings.');
 			}
-			$config_data = get_option('aio_wp_security_configs');
+
+			$config_data = array();
+			$config_data['general'] = get_option('aio_wp_security_configs');
+
+			if (is_main_site() && is_super_admin()) {
+				$config_data['firewall'] = $aiowps_firewall_config->get_contents();
+
+				if (!empty($simba_two_factor_authentication->is_tfa_integrated)) {
+					$config_data['tfa'] = $simba_two_factor_authentication->get_configs();
+				}
+			}
+
 			$output = json_encode($config_data);
 			AIOWPSecurity_Utility_File::download_content_to_a_file($output);            
 		}
 	}
-	
+
 	function create_admin_menus()
 	{
 		$menu_icon_url = AIO_WP_SECURITY_URL.'/images/plugin-icon.png';
