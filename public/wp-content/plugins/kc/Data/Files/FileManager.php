@@ -2,6 +2,7 @@
 namespace KC\Data\Files;
 
 use KC\Core\Api\ContentType;
+use KC\Core\Exceptions\EmptyStringException;
 use KC\Core\Files\FileService;
 use \RecursiveDirectoryIterator;
 use \RecursiveIteratorIterator;
@@ -21,8 +22,14 @@ final readonly class FileManager {
 	 */
 	public function createFile(string $fileName, string $content, string $folder) : void {
 		$this->createFolder($folder);
-		$this->appendSlash($folder);
-		$file = fopen($folder.$fileName, 'w');
+		$path = '';
+		try {
+			$this->appendSlash($folder);
+			$path .= $folder.$fileName;
+		} catch(EmptyStringException) {
+			$path .= $fileName;
+		}
+		$file = fopen($path, 'w');
 		fwrite($file, $content);
 		fclose($file);
 	}
@@ -36,9 +43,15 @@ final readonly class FileManager {
 	 */
 	public function createZipFile(string $fileName, string $sourceFolder, string $destinationFolder) : void {
 		$this->createFolder($destinationFolder);
-		$this->appendSlash($destinationFolder);
+		$path = '';
+		try {
+			$this->appendSlash($destinationFolder);
+			$path .= $destinationFolder.$fileName;
+		} catch(EmptyStringException) {
+			$path .= $fileName;
+		}
 		$zip = new ZipArchive();
-		$zip->open($destinationFolder.$fileName, ZipArchive::CREATE);
+		$zip->open($path, ZipArchive::CREATE);
 		$files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($sourceFolder));
 		foreach($files as $file) {
 			if(!$file->isDir()) {
@@ -76,8 +89,13 @@ final readonly class FileManager {
 	 * @param string $folder the folder
 	 */
 	public function downloadFile(string $fileName, string $folder) : void {
-		$this->appendSlash($folder);
-		$file = $folder.$fileName;
+		$file = '';
+		try {
+			$this->appendSlash($folder);
+			$file .= $folder.$fileName;
+		} catch(EmptyStringException) {
+			$file .= $fileName;
+		}
 		$fileService = new FileService();
 		header('Content-Description: File Transfer');
 		header('Content-Type: '.ContentType::OctetStream->value);
@@ -97,8 +115,14 @@ final readonly class FileManager {
 	 * @param string $folder the folder
 	 */
 	public function deleteFile(string $fileName, string $folder) : void {
-		$this->appendSlash($folder);
-		unlink($folder.$fileName);
+		$path = '';
+		try {
+			$this->appendSlash($folder);
+			$path .= $folder.$fileName;
+		} catch(EmptyStringException) {
+			$path .= $fileName;
+		}
+		unlink($path);
 	}
 
 	/**
@@ -113,9 +137,11 @@ final readonly class FileManager {
 	/**
 	 * Append a slash to a string
 	 * 
-	 * @param string $str the string to append the slash to
+	 * @param string $string the string to append the slash to
+	 * @throws EmptyStringException if string is empty
 	 */
-	private function appendSlash(string &$str) : void {
-		$str .= '/';
+	private function appendSlash(string &$string) : void {
+		if($string === '') throw new EmptyStringException();
+		$string .= '/';
 	}
 }
