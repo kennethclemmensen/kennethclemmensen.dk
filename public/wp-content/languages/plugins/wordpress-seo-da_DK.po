@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Yoast SEO - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-12-20 09:28:47+0000\n"
+"PO-Revision-Date: 2023-02-24 13:05:12+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -11,6 +11,50 @@ msgstr ""
 "Language: da_DK\n"
 "Project-Id-Version: Plugins - Yoast SEO - Stable (latest release)\n"
 
+#. translators: CTA to finish the first time configuration. %s: Either
+#. first-time SEO configuration or SEO configuration.
+#: admin/class-admin.php:235
+msgid "Finish your %s"
+msgstr "Afslut din %s"
+
+#: admin/formatter/class-metabox-formatter.php:189 js/dist/block-editor.js:1
+#: js/dist/editor-modules.js:1 js/dist/externals-components.js:113
+#: js/dist/frontend-inspector-resources.js:1 js/dist/post-edit.js:11
+#: js/dist/term-edit.js:1
+msgid "Potentially non-inclusive"
+msgstr "Potentielle ikke-inklusive"
+
+#. translators: 1: Yoast SEO Premium, 2 and 3: opening and closing anchor tag.
+#: src/integrations/admin/old-premium-integration.php:122
+msgid "Please %2$supdate %1$s to the latest version%3$s to ensure you can fully use all Premium settings and features."
+msgstr "%2$sOpdater%1$s til den nyeste version%3$s for at sikre at du fuldt ud kan bruge alle Premium-indstillinger og -funktioner."
+
+#. translators: 1: Yoast SEO Premium
+#: src/integrations/admin/old-premium-integration.php:130
+msgid "Update to the latest version of %1$s!"
+msgstr "Opdater til den nyeste version af %1$s!"
+
+#. translators: %1$s and %2$s expand to a span wrap to avoid linebreaks. %3$s
+#. expands to "Yoast SEO Premium".
+#: src/presenters/admin/sidebar-presenter.php:48 js/dist/new-settings.js:20
+msgid "%1$sGet%2$s %3$s"
+msgstr "%1$sHent%2$s %3$s"
+
+#. translators: 1: Link tag to WordPress Hosts page on Yoast.com; 2: Link
+#. closing tag
+#: src/integrations/admin/unsupported-php-version.php:89
+msgid "Upgrading your PHP version is something your hosting provider can help you out with. If they can’t upgrade your PHP version, we advise you to consider %1$sswitching to a hosting provider%2$s that can provide the security and features a modern host should provide."
+msgstr "Opgradering af din PHP-version er noget, din hostingudbyder kan hjælpe dig med. Hvis de ikke kan opgradere din PHP-version, råder vi dig til at overveje at %1$sskifte til en hostingudbyder%2$s der kan give den sikkerhed og de funktioner, en moderne udbyder skal levere."
+
+#. translators: 1: Yoast SEO, 2: Yoast SEO Premium
+#: src/integrations/admin/unsupported-php-version.php:77
+msgid "By March 1st, 2023, we’ll update the minimum PHP requirement for %1$s, %2$s and all our add-ons to PHP 7.2. This, to ensure we can keep delivering state of the art features."
+msgstr "Fra 1. marts 2023 opdaterer vi minimumskravet til PHP for %1$s, %2$s og alle vores tilføjelser til PHP 7.2. Dette for at sikre, at vi kan fortsætte med at levere avancerede funktioner."
+
+#: src/integrations/admin/unsupported-php-version.php:85
+msgid "Can’t upgrade yourself? Ask your host!"
+msgstr "Kan du ikke opgradere det selv? Spørg dit webhotel!"
+
 #. translators: used in phrases such as "More information about all the Yoast
 #. plugins"
 #. translators: used in phrases such as "Buy all the Yoast plugins"
@@ -18,19 +62,272 @@ msgstr ""
 msgid "all the Yoast plugins"
 msgstr "Alle Yoast plugins"
 
-#. translators: %1$s expands to an opening strong tag, %2$s expands to a
-#. closing strong tag
-#: src/presenters/admin/sidebar-presenter.php:76
-msgid "%1$s SAVE 30%% %2$s on your 12 month subscription"
-msgstr "%1$s SPAR 30%% %2$s på dit 12 måneders abonnement"
+#: admin/views/licenses.php:31
+msgid "Reach customers that live near your business"
+msgstr "Nå ud til kunder, der bor i nærheden af din virksomhed"
 
-#: src/presenters/admin/sidebar-presenter.php:24
-msgid "CYBER MONDAY - 30% OFF"
-msgstr "CYBER MONDAY - 30% RABAT"
+#: admin/views/licenses.php:35
+msgid "Rank higher with your physical business, office, or store"
+msgstr "Ranger højere med din fysiske virksomhed, kontor eller butik"
 
-#: src/presenters/admin/sidebar-presenter.php:24
-msgid "BLACK FRIDAY - 30% OFF"
-msgstr "BLACK FRIDAY - 30% RABAT"
+#: admin/views/licenses.php:36
+msgid "Make an optimized contact page in minutes"
+msgstr "Opret en optimeret kontaktside på få minutter"
+
+#: admin/views/licenses.php:38
+msgid "Easily define your organization type to search engines"
+msgstr "Definer nemt din organisationstype til søgemaskiner"
+
+#: admin/views/licenses.php:45
+msgid "Drive more traffic to your videos"
+msgstr "Få mere trafik til dine videoer"
+
+#: admin/views/licenses.php:49
+msgid "Know that Google discovers your videos"
+msgstr "Bliv opmærksom på at Google opdager dine videoer"
+
+#: admin/views/licenses.php:50
+msgid "Load pages faster that include videos"
+msgstr "Indlæs sider, der indeholder videoer, hurtigere"
+
+#: admin/views/licenses.php:51
+msgid "Make your videos responsive for all screen sizes"
+msgstr "Gør at dine videoer tilpasser sig alle skærmstørrelser"
+
+#: admin/views/licenses.php:52
+msgid "Get XML video sitemaps"
+msgstr "Hent XML-video sitemaps"
+
+#: admin/views/licenses.php:59 admin/views/licenses.php:110
+msgid "Rank higher in Google's news carousel"
+msgstr "Ranger højere i Googles nyhedskarrusel"
+
+#: admin/views/licenses.php:64
+msgid "Ping Google on the publication of a new post"
+msgstr "Ping Google ved offentliggørelsen af et nyt indlæg"
+
+#: admin/views/licenses.php:65
+msgid "Add all necessary schema.org markup"
+msgstr "Tilføj alle nødvendige schema.org opmarkeringer"
+
+#: admin/views/licenses.php:66
+msgid "Get XML news sitemaps"
+msgstr "Hent sitemaps til XML-nyheder"
+
+#: admin/views/licenses.php:77 admin/views/licenses.php:111
+msgid "Drive more traffic to your online store"
+msgstr "Få mere trafik til din webshop"
+
+#: admin/views/licenses.php:82
+msgid "Write product pages that rank with the enhanced SEO analysis"
+msgstr "Skriv produktsider, der rangerer med den forbedrede SEO-analyse"
+
+#: admin/views/licenses.php:83
+msgid "Increase clicks of Google search with rich results"
+msgstr "Øg antallet af klik på Google-søgning med berigede resultater"
+
+#: admin/views/licenses.php:84
+msgid "Add global identifiers for variable products"
+msgstr "Tilføj globale id'er for variable produkter"
+
+#: admin/views/licenses.php:103
+msgid "Cover all your SEO bases"
+msgstr "Afdæk alle dine SEO-områder"
+
+#: admin/views/licenses.php:107
+msgid "Get all 5 Yoast plugins for WordPress with a big discount"
+msgstr "Få alle 5 Yoast-plugins til WordPress med stor rabat"
+
+#: admin/views/licenses.php:108
+msgid "Reach new customers that live near your business"
+msgstr "Nå ud til nye kunder, der bor i nærheden af din virksomhed"
+
+#: admin/views/licenses.php:109
+msgid "Drive more traffic with your videos"
+msgstr "Få mere trafik med dine videoer"
+
+#. translators: 1: expands to a opening span tag, 2: expands to a closing span
+#. tag, 3: expands to Yoast SEO Premium
+#: admin/views/licenses.php:140
+msgid "%1$sDrive more traffic to your site%2$s with %3$s"
+msgstr "%1$sFå mere trafik til dit websted%2$s med %3$s"
+
+#: admin/views/licenses.php:154
+msgid "Reach bigger audiences"
+msgstr "Nå ud til større målgrupper"
+
+#: admin/views/licenses.php:155
+msgid "Optimize a single post for synonyms and related keyphrases and get extra checks with the Premium SEO analysis"
+msgstr "Optimer et enkelt indlæg til synonymer og relaterede nøglefraser, og få ekstra kontrol med Premium SEO-analysen"
+
+#: admin/views/licenses.php:158
+msgid "Save time on doing SEO"
+msgstr "Spar tid på at lave SEO"
+
+#: admin/views/licenses.php:159
+msgid "The Yoast SEO workouts guide you through important routine SEO tasks"
+msgstr "Yoast SEO-træningen guider dig gennem vigtige rutinemæssige SEO-opgaver"
+
+#: admin/views/licenses.php:162
+msgid "Improve your internal linking structure"
+msgstr "Få forbedret din interne linkstruktur"
+
+#: admin/views/licenses.php:163
+msgid "Get tools that tell you where and how to improve internal linking"
+msgstr "Få værktøjer, der fortæller dig, hvor og hvordan du kan forbedre interne links"
+
+#: admin/views/licenses.php:166
+msgid "Reduce your site's carbon footprint"
+msgstr "Reducer dit websteds klimaaftryk"
+
+#: admin/views/licenses.php:167
+msgid "Save energy by reducing the crawlability of your site without hurting your rankings!"
+msgstr "Spar energi ved at reducere crawlbarheden af dit websted uden at skade dine placeringer!"
+
+#: admin/views/licenses.php:170
+msgid "Prevents 404s"
+msgstr "Forhindrer 404'ere"
+
+#: admin/views/licenses.php:171
+msgid "Easily create and manage redirects when you move or delete content"
+msgstr "Opret og administrer nemt omdirigeringer, når du flytter eller sletter indhold"
+
+#: admin/views/licenses.php:174
+msgid "Stand out on social media"
+msgstr "Skil dig ud på sociale medier"
+
+#: admin/views/licenses.php:175
+msgid "Check what your Facebook or Twitter post will look like before posting them"
+msgstr "Tjek, hvordan dit Facebook- eller Twitter-indlæg vil se ud, før du udgiver dem"
+
+#: admin/views/licenses.php:250
+msgid "With 30-day money-back guarantee. No questions asked."
+msgstr "Med 30-dages pengene-tilbage-garanti. Uden spørgsmål."
+
+#: admin/views/licenses.php:260
+msgid "Outrank your competitors even further"
+msgstr "Overgå dine konkurrenter endnu mere"
+
+#. translators: 1: expands to Outrank your competitors even further, 2: expands
+#. to Yoast SEO
+#: admin/views/licenses.php:265
+msgid "%1$s with %2$s extensions"
+msgstr "%1$s med %2$s udvidelser"
+
+#: inc/class-wpseo-admin-bar-menu.php:225
+msgid "not set"
+msgstr "ikke sat"
+
+#: inc/class-wpseo-admin-bar-menu.php:231
+msgid "Focus keyphrase: "
+msgstr "Fokussøgeordsfrase: "
+
+#: inc/class-wpseo-admin-bar-menu.php:467
+msgid "SEO Tools"
+msgstr "SEO værkstøjer"
+
+#: inc/class-wpseo-admin-bar-menu.php:512
+#: inc/class-wpseo-admin-bar-menu.php:564
+msgid "Learn more SEO"
+msgstr "Lær mere om SEO"
+
+#: inc/class-wpseo-admin-bar-menu.php:517
+msgid "Improve your blog post"
+msgstr "Få forbedret dit blogindlæg"
+
+#: inc/class-wpseo-admin-bar-menu.php:522
+msgid "Write better content"
+msgstr "Skriv bedre indhold"
+
+#: inc/class-wpseo-admin-bar-menu.php:541
+msgid "Help"
+msgstr "Hjælp"
+
+#: inc/class-wpseo-admin-bar-menu.php:549
+msgid "Yoast.com help section"
+msgstr "Yoast.com hjælpesektion"
+
+#: inc/class-wpseo-admin-bar-menu.php:554
+msgid "Yoast Premium support"
+msgstr "Yoast Premium support"
+
+#: inc/class-wpseo-admin-bar-menu.php:559
+msgid "WordPress.org support forums"
+msgstr "WordPress.org supportfora"
+
+#: src/integrations/admin/unsupported-php-version.php:73
+msgid "Upgrade your PHP version"
+msgstr "Opgrader din PHP-version"
+
+#: src/commands/cleanup-command.php:81
+msgid "The value for 'interval' must be a positive integer."
+msgstr "Værdien for 'interval' skal være et positivt heltal."
+
+#: src/commands/cleanup-command.php:84
+msgid "The value for 'batch-size' must be a positive integer higher than equal to 1."
+msgstr "Værdien for ‘batchstørrelse’ skal være et positivt heltal, der er højere end lig med 1."
+
+#. translators: %1$d is the number of records that are removed.
+#: src/commands/cleanup-command.php:97
+msgid "Cleaned up %1$d record."
+msgid_plural "Cleaned up %1$d records."
+msgstr[0] "Ryddede op i %1$d posten."
+msgstr[1] "Ryddede op i %1$d posterne."
+
+#. translators: %1$s is the site url of the site that is skipped. %2$s is Yoast
+#. SEO.
+#: src/commands/cleanup-command.php:146
+msgid "Skipping %1$s. %2$s is not active on this site."
+msgstr "Spring %1$s over. %2$s er ikke aktiv på dette websted."
+
+#. translators: %1$s is the site url of the site that is cleaned up. %2$s is
+#. the name of the cleanup task that is currently running.
+#: src/commands/cleanup-command.php:159
+msgid "Cleaning up %1$s [%2$s]"
+msgstr "Ryd op %1$s [%2$s]"
+
+#. translators: %1$d is the number of records that were removed. %2$s is the
+#. site url.
+#: src/commands/cleanup-command.php:183
+msgid "Cleaned up %1$d record from %2$s."
+msgid_plural "Cleaned up %1$d records from %2$s."
+msgstr[0] "Ryddede op %1$d post fra %2$s."
+msgstr[1] "Ryddede op i %1$d poster fra %2$s."
+
+#. translators: %s: expands to the post id
+#: src/exceptions/indexable/post-not-built-exception.php:20
+msgid "The post %s could not be indexed because it does not meet indexing requirements."
+msgstr "Indlægget kunne %sikke indekseres, fordi den ikke opfylder indekseringskravene."
+
+#. translators: %s: expands to the post id
+#: src/exceptions/indexable/post-not-built-exception.php:32
+msgid "The post %s could not be indexed because it's post type is excluded from indexing."
+msgstr "Indlægget %s kunne ikke indekseres, fordi dets indlægstype er udelukket fra indeksering."
+
+#. translators: %s: expands to the term id
+#: src/exceptions/indexable/term-not-built-exception.php:20
+msgid "The term %s could not be built because it's not indexable."
+msgstr "Termen %s kunne ikke bygges, fordi det ikke kan indekseres."
+
+#. translators: 1: Opening tag of the link to the Search appearance settings
+#. page, 2: Link closing tag.
+#: src/integrations/watchers/indexable-post-type-change-watcher.php:167
+msgid "It looks like you've added a new type of content to your website. We recommend that you review your %1$sSettings%2$s under Content types."
+msgstr "Det ser ud til, at du har tilføjet en ny type indhold til dit websted. Vi anbefaler, at du gennemgår dine %1$sIndstillinger%2$s under Indholdstyper."
+
+#. translators: 1: Opening tag of the link to the Search appearance settings
+#. page, 2: Link closing tag.
+#: src/integrations/watchers/indexable-taxonomy-change-watcher.php:169
+msgid "It looks like you've added a new taxonomy to your website. We recommend that you review your %1$sSettings%2$s under Categories & tags."
+msgstr "Det ser ud til, at du har tilføjet en ny taksonomi til dit websted. Vi anbefaler, at du gennemgår dine %1$sIndstillinger%2$s under Kategorier og tags."
+
+#: src/presenters/admin/indexing-notification-presenter.php:87
+msgid "We need to re-analyze some of your SEO data because of a change in the visibility of your post types. Please help us do that by running the SEO data optimization. "
+msgstr "Vi er nødt til at genanalysere nogle af dine SEO-data på grund af en ændring i synligheden af dine indlægstyper. Hjælp os med at gøre det ved at køre SEO-dataoptimeringen. "
+
+#: src/presenters/admin/indexing-notification-presenter.php:90
+msgid "We need to re-analyze some of your SEO data because of a change in the visibility of your taxonomies. Please help us do that by running the SEO data optimization. "
+msgstr "Vi er nødt til at genanalysere nogle af dine SEO-data på grund af en ændring i synligheden af dine taksonomier. Hjælp os med at gøre det ved at køre SEO-dataoptimeringen. "
 
 #: admin/views/tabs/metas/paper-content/general/knowledge-graph.php:10
 msgid "Website"
@@ -41,12 +338,12 @@ msgid "This name is shown for your site in the search results."
 msgstr "Dette navn vises for dit websted i søgeresultaterne."
 
 #: admin/views/tabs/metas/paper-content/general/knowledge-graph.php:22
-#: js/dist/new-settings.js:207 js/dist/new-settings.js:222
+#: js/dist/new-settings.js:10 js/dist/new-settings.js:224
 msgid "Alternate website name"
 msgstr "Alternativt webstedsnavn"
 
 #: admin/views/tabs/metas/paper-content/general/knowledge-graph.php:24
-#: js/dist/new-settings.js:207
+#: js/dist/new-settings.js:224
 msgid "Use the alternate website name for acronyms, or a shorter version of your website's name."
 msgstr "Brug det alternative webstedsnavn til akronymer eller en kortere version af navnet på dit websted."
 
@@ -55,35 +352,35 @@ msgid "Organization or Person"
 msgstr "Organisation eller person"
 
 #: admin/views/tabs/metas/paper-content/general/knowledge-graph.php:103
-#: js/dist/new-settings.js:222 js/dist/new-settings.js:228
+#: js/dist/new-settings.js:10 js/dist/new-settings.js:237
 msgid "Alternate organization name"
 msgstr "Alternativt organisationsnavn"
 
 #: admin/views/tabs/metas/paper-content/general/knowledge-graph.php:105
-#: js/dist/new-settings.js:228
+#: js/dist/new-settings.js:237
 msgid "Use the alternate organization name for acronyms, or a shorter version of your organization's name."
 msgstr "Brug det alternative organisationsnavn til akronymer eller en kortere version af organisationens navn."
 
-#: src/integrations/admin/crawl-settings-integration.php:145
+#: src/integrations/admin/crawl-settings-integration.php:144
 msgid "Redirect pretty URLs for search pages to raw format"
 msgstr "Omdiriger smukke webadresser til søgesider til råformat"
 
-#: src/presenters/admin/sidebar-presenter.php:93 js/dist/new-settings.js:7
+#: src/presenters/admin/sidebar-presenter.php:69 js/dist/new-settings.js:20
 msgid "Read reviews from real users"
 msgstr "Læs anmeldelser fra rigtige brugere"
 
 #. translators: %1$s expands to an opening strong tag, %2$s expands to a
 #. closing strong tag
-#: src/presenters/admin/sidebar-presenter.php:68
+#: src/presenters/admin/sidebar-presenter.php:54
 msgid "Be the first to get %1$snew features & tools%2$s, before everyone else. Get %1$s 24/7 support%2$s and boost your website’s visibility."
 msgstr "Vær den første til at få %1$snye funktioner og værktøjer%2$s, før alle andre. Få %1$s 24/7 support%2$s og øg dit websteds synlighed."
 
-#: src/integrations/admin/crawl-settings-integration.php:318
+#: src/integrations/admin/crawl-settings-integration.php:317
 msgid "This feature is not available for multisites."
 msgstr "Denne funktion er ikke tilgængelig for multisites."
 
-#: src/integrations/admin/crawl-settings-integration.php:208
-#: js/dist/new-settings.js:127
+#: src/integrations/admin/crawl-settings-integration.php:207
+#: js/dist/new-settings.js:144
 msgid "WordPress loads lots of resources, some of which your site might not need. If you’re not using these, removing them can speed up your pages and save resources."
 msgstr "WordPress indlæser mange ressourcer, og nogle af dem har dit websted måske ikke brug for. Hvis du ikke bruger dem, kan du fjerne dem for at gøre dine sider hurtigere og spare ressourcer."
 
@@ -93,16 +390,16 @@ msgstr "WordPress indlæser mange ressourcer, og nogle af dem har dit websted m�
 msgid "%1$s attempted to load the class %2$s but it could not be found."
 msgstr "%1$s forsøgte at indlæse klassen %2$s men den kunne ikke findes."
 
-#: src/integrations/admin/crawl-settings-integration.php:208
-#: js/dist/new-settings.js:127
+#: src/integrations/admin/crawl-settings-integration.php:207
+#: js/dist/new-settings.js:144
 msgid "Remove unused resources"
 msgstr "Fjern ubrugte ressourcer"
 
-#: src/integrations/admin/crawl-settings-integration.php:150
+#: src/integrations/admin/crawl-settings-integration.php:149
 msgid "Prevent search engines from crawling /wp-json/"
 msgstr "Forhindrer søgemaskiner i at crawle /wp-json/"
 
-#: src/integrations/admin/crawl-settings-integration.php:144
+#: src/integrations/admin/crawl-settings-integration.php:143
 msgid "Prevent search engines from crawling site search URLs"
 msgstr "Forhindrer søgemaskiner i at crawle URL'er til søgninger på webstedet"
 
@@ -118,8 +415,8 @@ msgstr "Denne funktion er ikke aktiv, da den ikke er understøttet med din sprog
 msgid "The inclusive language analysis offers suggestions to write more inclusive copy."
 msgstr "Den inkluderende sproganalyse giver forslag til at skrive mere inkluderende tekster."
 
-#: admin/views/class-yoast-feature-toggles.php:91 js/dist/new-settings.js:215
-#: js/dist/new-settings.js:222
+#: admin/views/class-yoast-feature-toggles.php:91 js/dist/new-settings.js:10
+#: js/dist/new-settings.js:232
 msgid "Inclusive language analysis"
 msgstr "Deaktiver inkluderende sproganalyse"
 
@@ -132,11 +429,32 @@ msgstr "Inkluderende sprog"
 msgid "Discover why inclusive language is important for SEO."
 msgstr "Find ud af, hvorfor inkluderende sprog er vigtigt for SEO."
 
+#. translators: %1$s expands to the opening anchor tag, %2$s to the closing
+#. anchor tag, %3$s to the inclusive language score.
+#: admin/formatter/class-metabox-formatter.php:172
+#: admin/formatter/class-metabox-formatter.php:179
+#: admin/formatter/class-metabox-formatter.php:186
+#: admin/formatter/class-metabox-formatter.php:193
+msgid "%1$sInclusive language%2$s: %3$s"
+msgstr "%1$sInkluderende sprog%2$s: %3$s"
+
+#: admin/views/user-profile.php:69
+msgid "Disable inclusive language analysis"
+msgstr "Deaktiver inkluderende sproganalyse"
+
+#: admin/views/user-profile.php:72
+msgid "Removes the inclusive language analysis section from the metabox and disables all inclusive language-related suggestions."
+msgstr "Fjerner afsnittet inkluderende sproganalyse fra metaboksen og deaktiverer altomfattende sprogrelaterede forslag."
+
 #. translators: 1: expands to a link opening tag; 2: expands to a link closing
 #. tag
-#: inc/language-utils.php:81
+#: inc/language-utils.php:62
 msgid "A company name and logo need to be set for structured data to work properly. Since you haven’t set these yet, we are using the site name and logo as default values. %1$sLearn more about the importance of structured data.%2$s"
 msgstr "Et firmanavn og logo skal opsættes, for at strukturerede data fungerer korrekt. Da du ikke har angivet disse endnu, bruger vi webstedets navn og logo som standardværdi. %1$sFå mere at vide om vigtigheden af strukturerede data.%2$s"
+
+#: inc/class-wpseo-admin-bar-menu.php:262
+msgid "Front-end SEO inspector"
+msgstr "Frontend SEO-inspektør"
 
 #: admin/class-yoast-form.php:912 js/dist/indexables-page.js:35
 msgid "Unlock with Premium!"
@@ -182,33 +500,33 @@ msgstr "WordProof tidsstempel"
 msgid "View this content's Timestamp certificate"
 msgstr "Se dette indholds tidsstempelcertifikat"
 
-#: src/integrations/admin/crawl-settings-integration.php:137
+#: src/integrations/admin/crawl-settings-integration.php:136
 msgid "Unregistered URL parameters"
 msgstr "Uregistrerede URL-parametre"
 
-#: src/integrations/admin/crawl-settings-integration.php:217
+#: src/integrations/admin/crawl-settings-integration.php:216
 msgid "Search cleanup settings"
 msgstr "Indstillinger for oprydning af søgning"
 
-#: src/integrations/admin/crawl-settings-integration.php:236
+#: src/integrations/admin/crawl-settings-integration.php:235
 msgid "Remove unwanted URL parameters from your URLs."
 msgstr "Fjern uønskede URL-parametre fra dine URL’er."
 
-#: src/integrations/admin/crawl-settings-integration.php:249
+#: src/integrations/admin/crawl-settings-integration.php:248
 msgid "Please use a comma to separate multiple URL parameters."
 msgstr "Brug et komma til at adskille flere URL-parametre."
 
-#: src/integrations/admin/crawl-settings-integration.php:236
+#: src/integrations/admin/crawl-settings-integration.php:235
 msgid "Permalink cleanup settings"
 msgstr "Indstillinger for permalink-oprydning"
 
-#: src/integrations/admin/crawl-settings-integration.php:223
-#: js/dist/new-settings.js:127 js/dist/new-settings.js:222
+#: src/integrations/admin/crawl-settings-integration.php:222
+#: js/dist/new-settings.js:10 js/dist/new-settings.js:144
 msgid "Max number of characters to allow in searches"
 msgstr "Maks. antal tegn, der skal tillades i søgninger"
 
-#: admin/views/class-yoast-feature-toggles.php:196 js/dist/new-settings.js:217
-#: js/dist/new-settings.js:222
+#: admin/views/class-yoast-feature-toggles.php:196 js/dist/new-settings.js:10
+#: js/dist/new-settings.js:234
 msgid "IndexNow"
 msgstr "IndexNow"
 
@@ -216,134 +534,134 @@ msgstr "IndexNow"
 msgid "Find out how IndexNow can help your site."
 msgstr "Find ud af, hvordan IndexNow kan hjælpe dit websted."
 
-#: src/integrations/admin/crawl-settings-integration.php:142
-#: js/dist/new-settings.js:127 js/dist/new-settings.js:222
+#: src/integrations/admin/crawl-settings-integration.php:141
+#: js/dist/new-settings.js:10 js/dist/new-settings.js:144
 msgid "Filter searches with emojis and other special characters"
 msgstr "Filtrer søgninger med emojis og andre specialtegn"
 
-#: src/integrations/admin/crawl-settings-integration.php:143
-#: js/dist/new-settings.js:127 js/dist/new-settings.js:222
+#: src/integrations/admin/crawl-settings-integration.php:142
+#: js/dist/new-settings.js:10 js/dist/new-settings.js:144
 msgid "Filter searches with common spam patterns"
 msgstr "Filtrer søgninger med almindelige spammønstre"
 
-#: src/integrations/admin/crawl-settings-integration.php:141
-#: js/dist/new-settings.js:127 js/dist/new-settings.js:222
+#: src/integrations/admin/crawl-settings-integration.php:140
+#: js/dist/new-settings.js:10 js/dist/new-settings.js:144
 msgid "Filter search terms"
 msgstr "Filtrer søgeord"
 
-#: src/integrations/admin/crawl-settings-integration.php:217
+#: src/integrations/admin/crawl-settings-integration.php:216
 msgid "Clean up and filter searches to prevent search spam."
 msgstr "Ryd op og filtrer søgninger for at forhindre søgespam."
 
-#: src/integrations/admin/crawl-settings-integration.php:136
+#: src/integrations/admin/crawl-settings-integration.php:135
 msgid "Campaign tracking URL parameters"
 msgstr "Parametre for URL til kampagnesporing"
 
-#: admin/views/class-yoast-feature-toggles.php:199 js/dist/new-settings.js:217
+#: admin/views/class-yoast-feature-toggles.php:199 js/dist/new-settings.js:234
 msgid "Automatically ping search engines like Bing and Yandex whenever you publish, update or delete a post."
 msgstr "Ping automatisk søgemaskiner som Bing og Yandex, når du udgiver, opdaterer eller sletter et indlæg."
 
-#: src/integrations/admin/crawl-settings-integration.php:242
-#: js/dist/new-settings.js:128 js/dist/new-settings.js:222
+#: src/integrations/admin/crawl-settings-integration.php:241
+#: js/dist/new-settings.js:10 js/dist/new-settings.js:145
 msgid "Additional URL parameters to allow"
 msgstr "Yderligere URL-parametre, der skal tillades"
 
-#: src/integrations/admin/crawl-settings-integration.php:113
+#: src/integrations/admin/crawl-settings-integration.php:112
 msgid "Global feed"
 msgstr "Globalt feed"
 
-#: src/integrations/admin/crawl-settings-integration.php:114
+#: src/integrations/admin/crawl-settings-integration.php:113
 msgid "Global comment feeds"
 msgstr "Globale kommentarfeeds"
 
-#: src/integrations/admin/crawl-settings-integration.php:116
+#: src/integrations/admin/crawl-settings-integration.php:115
 msgid "Post authors feeds"
 msgstr "Indlægsforfattere feeds"
 
-#: src/integrations/admin/crawl-settings-integration.php:117
+#: src/integrations/admin/crawl-settings-integration.php:116
 msgid "Post type feeds"
 msgstr "Feeds af indlægstyper"
 
-#: src/integrations/admin/crawl-settings-integration.php:118
+#: src/integrations/admin/crawl-settings-integration.php:117
 msgid "Category feeds"
 msgstr "Kategori feeds"
 
-#: src/integrations/admin/crawl-settings-integration.php:119
+#: src/integrations/admin/crawl-settings-integration.php:118
 msgid "Tag feeds"
 msgstr "Tag feeds"
 
-#: src/integrations/admin/crawl-settings-integration.php:120
+#: src/integrations/admin/crawl-settings-integration.php:119
 msgid "Custom taxonomy feeds"
 msgstr "Brugerdefinerede taksonomifeeds"
 
-#: src/integrations/admin/crawl-settings-integration.php:121
+#: src/integrations/admin/crawl-settings-integration.php:120
 msgid "Search results feeds"
 msgstr "Feeds til søgeresultater"
 
-#: src/integrations/admin/crawl-settings-integration.php:122
+#: src/integrations/admin/crawl-settings-integration.php:121
 msgid "Atom/RDF feeds"
 msgstr "Atom/RDF feeds"
 
-#: src/integrations/admin/crawl-settings-integration.php:126
+#: src/integrations/admin/crawl-settings-integration.php:125
 msgid "Shortlinks"
 msgstr "Kortlinks"
 
-#: src/integrations/admin/crawl-settings-integration.php:127
+#: src/integrations/admin/crawl-settings-integration.php:126
 msgid "REST API links"
 msgstr "REST API-links"
 
-#: src/integrations/admin/crawl-settings-integration.php:128
+#: src/integrations/admin/crawl-settings-integration.php:127
 msgid "RSD / WLW links"
 msgstr "RSD / WLW links"
 
-#: src/integrations/admin/crawl-settings-integration.php:129
+#: src/integrations/admin/crawl-settings-integration.php:128
 msgid "oEmbed links"
 msgstr "oEmbed links"
 
-#: src/integrations/admin/crawl-settings-integration.php:130
+#: src/integrations/admin/crawl-settings-integration.php:129
 msgid "Generator tag"
 msgstr "Generator tag"
 
-#: src/integrations/admin/crawl-settings-integration.php:149
+#: src/integrations/admin/crawl-settings-integration.php:148
 msgid "Emoji scripts"
 msgstr "Emoji-scripts"
 
-#: src/integrations/admin/crawl-settings-integration.php:131
-#: js/dist/new-settings.js:127 js/dist/new-settings.js:222
+#: src/integrations/admin/crawl-settings-integration.php:130
+#: js/dist/new-settings.js:10 js/dist/new-settings.js:144
 msgid "Pingback HTTP header"
 msgstr "Pingback HTTP-header"
 
-#: src/integrations/admin/crawl-settings-integration.php:132
+#: src/integrations/admin/crawl-settings-integration.php:131
 msgid "Powered by HTTP header"
 msgstr "Drevet af HTTP-header"
 
-#: src/integrations/admin/crawl-settings-integration.php:206
+#: src/integrations/admin/crawl-settings-integration.php:205
 msgid "Basic crawl settings"
 msgstr "Grundlæggende indstillinger for crawl"
 
-#: src/integrations/admin/crawl-settings-integration.php:206
+#: src/integrations/admin/crawl-settings-integration.php:205
 msgid "Remove links added by WordPress to the header and &lt;head&gt;."
 msgstr "Fjern links tilføjet af WordPress til overskriften og &lt;head&gt;."
 
-#: src/integrations/admin/crawl-settings-integration.php:207
+#: src/integrations/admin/crawl-settings-integration.php:206
 msgid "Feed crawl settings"
 msgstr "Indstillinger for crawl af feed"
 
-#: src/integrations/admin/crawl-settings-integration.php:207
+#: src/integrations/admin/crawl-settings-integration.php:206
 msgid "Remove feed links added by WordPress that aren't needed for this site."
 msgstr "Fjern feedlinks tilføjet af WordPress, der ikke er nødvendige for dette websted."
 
-#: src/integrations/admin/crawl-settings-integration.php:313
+#: src/integrations/admin/crawl-settings-integration.php:312
 msgid "By removing Global comments feed, Post comments feeds will be removed too."
 msgstr "Ved at fjerne det globale kommentarfeed fjernes feeds med kommentarer også."
 
-#: src/integrations/admin/first-time-configuration-notice-integration.php:138
+#: src/helpers/first-time-configuration-notice-helper.php:68
 msgid "SEO configuration"
 msgstr "SEO-konfiguration"
 
 #. translators: 1: Link start tag to the first-time configuration, 2: Link
 #. closing tag.
-#: src/integrations/admin/first-time-configuration-notice-integration.php:151
+#: src/integrations/admin/first-time-configuration-notice-integration.php:114
 msgid "We noticed that you haven't fully configured Yoast SEO yet. Optimize your SEO settings even further by using our improved %1$s First-time configuration%2$s."
 msgstr "Vi har bemærket, at du ikke har konfigureret Yoast SEO fuldt ud endnu. Optimer dine SEO-indstillinger endnu mere ved at bruge vores forbedrede %1$sførstegangskonfiguration%2$s."
 
@@ -368,13 +686,13 @@ msgstr "%1$sFå flere oplysninger om crawlindstillinger, og hvordan de kan gavne
 msgid "%1$sLearn more about crawl settings.%2$s"
 msgstr "%1$sFå flere oplysninger om crawlindstillinger.%2$s"
 
-#: src/integrations/admin/crawl-settings-integration.php:115
+#: src/integrations/admin/crawl-settings-integration.php:114
 msgid "Post comments feeds"
 msgstr "Send kommentarer feeds"
 
 #: admin/pages/network.php:28 admin/views/tabs/dashboard/crawl-settings.php:17
 #: admin/views/tabs/network/crawl-settings.php:19
-#: src/integrations/admin/crawl-settings-integration.php:165
+#: src/integrations/admin/crawl-settings-integration.php:164
 msgid "Crawl settings"
 msgstr "Indstillinger for crawl"
 
@@ -419,7 +737,7 @@ msgstr "Alle redirect-typer"
 msgid "You should finish the %1$sfirst time configuration%2$s to make sure your SEO data has been optimized and you’ve set the essential Yoast SEO settings for your site."
 msgstr "Du skal afslutte %1$sførstegangskonfiguration%2$s for at sikre, at dine SEO-data er optimeret, og du har indstillet de væsentlige Yoast SEO-indstillinger for dit websted."
 
-#: src/integrations/admin/first-time-configuration-integration.php:125
+#: src/integrations/admin/first-time-configuration-integration.php:126
 msgid "First-time configuration"
 msgstr "Førstegangskonfiguration"
 
@@ -607,7 +925,7 @@ msgstr "%s integrationen giver mulighed for at spore specifikke søgesætninger 
 #. translators: %s: expands to 'Yoast SEO Premium'.
 #. translators: 1: Yoast WooCommerce SEO
 #: src/integrations/admin/workouts-integration.php:309
-#: js/dist/integrations-page.js:13
+#: js/dist/integrations-page.js:17
 msgid "Activate %s"
 msgstr "Aktiver %s"
 
@@ -663,7 +981,7 @@ msgstr "Forny dit abonnement på %s"
 
 #. translators: 1: Link start tag to the first-time configuration, 2: Yoast
 #. SEO, 3: Link closing tag.
-#: src/integrations/admin/first-time-configuration-notice-integration.php:142
+#: src/integrations/admin/first-time-configuration-notice-integration.php:105
 msgid "Get started quickly with the %1$s%2$s First-time configuration%3$s and configure Yoast SEO with the optimal SEO settings for your site!"
 msgstr "Kom hurtigt i gang med %1$s%2$s førstegangskonfigurationen%3$s, og konfigurer Yoast SEO med de optimale SEO-indstillinger for dit websted!"
 
@@ -853,14 +1171,14 @@ msgstr "Find relevante data om dit indhold direkte i afsnittet Indblik i Yoast S
 msgid "Find out how Insights can help you improve your content."
 msgstr "Find ud af, hvordan Indblik kan hjælpe dig med at forbedre dit indhold."
 
-#: admin/views/class-yoast-feature-toggles.php:126 js/dist/new-settings.js:215
-#: js/dist/new-settings.js:222
+#: admin/views/class-yoast-feature-toggles.php:126 js/dist/new-settings.js:10
+#: js/dist/new-settings.js:232
 msgid "Link suggestions"
 msgstr "Linkforslag"
 
 #: admin/views/class-yoast-feature-toggles.php:117 js/dist/block-editor.js:447
 #: js/dist/classic-editor.js:443 js/dist/elementor.js:447
-#: js/dist/new-settings.js:215 js/dist/new-settings.js:222
+#: js/dist/new-settings.js:10 js/dist/new-settings.js:232
 msgid "Insights"
 msgstr "Indsigter"
 
@@ -904,21 +1222,21 @@ msgstr "Standard billede"
 
 #: admin/views/tabs/metas/paper-content/front-page-content.php:58
 #: src/integrations/admin/social-templates-integration.php:223
-#: js/dist/new-settings.js:34 js/dist/new-settings.js:43
-#: js/dist/new-settings.js:69 js/dist/new-settings.js:91
-#: js/dist/new-settings.js:147 js/dist/new-settings.js:163
-#: js/dist/new-settings.js:170 js/dist/new-settings.js:218
-#: js/dist/new-settings.js:222 js/dist/new-settings.js:224
+#: js/dist/new-settings.js:6 js/dist/new-settings.js:10
+#: js/dist/new-settings.js:14 js/dist/new-settings.js:49
+#: js/dist/new-settings.js:58 js/dist/new-settings.js:84
+#: js/dist/new-settings.js:106 js/dist/new-settings.js:164
+#: js/dist/new-settings.js:180 js/dist/new-settings.js:187
 msgid "Social title"
 msgstr "Social titel"
 
 #: admin/views/tabs/metas/paper-content/front-page-content.php:59
 #: src/integrations/admin/social-templates-integration.php:224
-#: js/dist/new-settings.js:34 js/dist/new-settings.js:43
-#: js/dist/new-settings.js:69 js/dist/new-settings.js:91
-#: js/dist/new-settings.js:147 js/dist/new-settings.js:163
-#: js/dist/new-settings.js:170 js/dist/new-settings.js:218
-#: js/dist/new-settings.js:222 js/dist/new-settings.js:224
+#: js/dist/new-settings.js:6 js/dist/new-settings.js:10
+#: js/dist/new-settings.js:14 js/dist/new-settings.js:49
+#: js/dist/new-settings.js:58 js/dist/new-settings.js:84
+#: js/dist/new-settings.js:106 js/dist/new-settings.js:164
+#: js/dist/new-settings.js:180 js/dist/new-settings.js:187
 msgid "Social description"
 msgstr "Social beskrivelse"
 
@@ -928,9 +1246,9 @@ msgid "To unlock this feature please update %s to the latest version."
 msgstr "Hvis du vil låse denne funktion op, skal du opdatere %s til den nyeste version."
 
 #: admin/views/redirects.php:22
-#: src/integrations/admin/crawl-settings-integration.php:332
+#: src/integrations/admin/crawl-settings-integration.php:331
 #: src/integrations/admin/social-templates-integration.php:251
-#: js/dist/integrations-page.js:3 js/dist/integrations-page.js:23
+#: js/dist/integrations-page.js:3 js/dist/integrations-page.js:27
 msgid "Unlock with Premium"
 msgstr "Lås op med Premium"
 
@@ -1034,7 +1352,7 @@ msgid "Add a block to your recipe..."
 msgstr "Tilføj en blok til din opskrift..."
 
 #. translators: %s expands to Yoast SEO Premium.
-#: admin/class-admin.php:237
+#: admin/class-admin.php:248
 msgid "Required by %s"
 msgstr "Kræves af %s"
 
@@ -1051,7 +1369,7 @@ msgstr "Automatiske opdateringer deaktiveres på basis af denne indstilling for 
 #: src/presenters/admin/badge-presenter.php:80
 #: src/presenters/admin/badge-presenter.php:87
 #: js/dist/externals/componentsNew.js:136 js/dist/integrations-page.js:3
-#: js/dist/integrations-page.js:11 js/dist/integrations-page.js:23
+#: js/dist/integrations-page.js:27
 msgid "New"
 msgstr "Tilføj"
 
@@ -1092,7 +1410,7 @@ msgstr "Denne funktion er deaktiveret, da underordnede websteder aldrig sender s
 msgid "Because of a change in your category base setting, some of your SEO data needs to be reprocessed."
 msgstr "På grund af en ændring i kategoribasisindstillingen skal nogle af SEO-dataene genbehandles."
 
-#: admin/views/class-yoast-feature-toggles.php:190 js/dist/new-settings.js:215
+#: admin/views/class-yoast-feature-toggles.php:190 js/dist/new-settings.js:232
 msgid "This adds an author byline and reading time estimate to the article’s snippet when shared on Slack."
 msgstr "Dette føjer en forfatterkreditering og et læsetidsestimat til artiklens uddrag, når det deles på Slack."
 
@@ -1133,21 +1451,21 @@ msgstr "Udvidet Slack-deling"
 msgid "Because of a change in your tag base setting, some of your SEO data needs to be reprocessed."
 msgstr "På grund af en ændring i kodebasisindstillingen skal nogle af SEO-dataene genbehandles."
 
-#. translators: %s: 'Semrush'
-#: admin/views/class-yoast-integration-toggles.php:71
-msgid "The %s integration offers suggestions and insights for keywords related to the entered focus keyphrase."
-msgstr "Den %s integration giver forslag og indsigt i nøgleord relateret til den indtastede fokusnøgleordsfrase."
-
 #. translators: %1$s expands to Yoast SEO
 #: admin/views/tabs/network/integrations.php:27
 msgid "This tab allows you to selectively disable %1$s integrations with third-party products for all sites in the network. By default all integrations are enabled, which allows site admins to choose for themselves if they want to toggle an integration on or off for their site. When you disable an integration here, site admins will not be able to use that integration at all."
 msgstr "Under denne fane kan du selektivt deaktivere %1$s integrationer med tredjepartsprodukter for alle websteder i netværket. Som standard er alle integrationer aktiveret, hvilket gør det muligt for webstedsadministratorer selv at vælge, om de vil slå en integration til eller fra for deres websted. Når du deaktiverer en integration her, kan webstedsadministratorer slet ikke bruge denne integration."
 
+#. translators: %s: 'Semrush'
+#: admin/views/class-yoast-integration-toggles.php:71
+msgid "The %s integration offers suggestions and insights for keywords related to the entered focus keyphrase."
+msgstr "Den %s integration giver forslag og indsigt i nøgleord relateret til den indtastede fokusnøgleordsfrase."
+
 #: src/presenters/admin/indexing-error-presenter.php:64
 msgid "Oops, something has gone wrong and we couldn't complete the optimization of your SEO data. Please click the button again to re-start the process. "
 msgstr "Ups, noget er gået galt, og vi kunne ikke fuldføre optimeringen af dine SEO-data. Klik på knappen igen for at genstarte processen."
 
-#: admin/class-admin.php:248
+#: admin/class-admin.php:259
 msgid "Activate your subscription"
 msgstr "Aktiver dit abonnement"
 
@@ -1298,8 +1616,8 @@ msgid "Web Page"
 msgstr "Webside"
 
 #: admin/views/class-yoast-feature-toggles.php:166
-#: admin/views/class-yoast-feature-toggles.php:167 js/dist/new-settings.js:213
-#: js/dist/new-settings.js:222
+#: admin/views/class-yoast-feature-toggles.php:167 js/dist/new-settings.js:10
+#: js/dist/new-settings.js:230
 msgid "Usage tracking"
 msgstr "Brugersporing"
 
@@ -1406,10 +1724,6 @@ msgstr "Vi vurderer, at dette vil tage lang tid, da dit websted er ret omfattend
 #: src/presenters/admin/indexing-notification-presenter.php:133
 msgid "%1$sRun the indexation process on your server%2$s using %3$sWP CLI%2$s."
 msgstr "%1$sKør indekseringsprocessen på din server%2$s ved at bruge %3$sWP CLI%2$s"
-
-#: src/integrations/front-end/theme-titles.php:49
-msgid "a theme that has proper title-tag theme support, or adapt your theme to have that support"
-msgstr "et tema der har ordentlig titel-tag understøttelse, eller ret dit tema til, så det har den understøttelse"
 
 #. translators: %1$s: link to help article about solving table issue. %2$s: is
 #. anchor closing.
@@ -1530,30 +1844,31 @@ msgstr "Dine %1$s indstillinger:"
 msgid "Import settings from another %1$s installation by pasting them here and clicking \"%2$s\"."
 msgstr "Importer indstillinger fra en anden %1$s installation ved at indsætte dem her og klikke \"%2$s\"."
 
-#: src/presenters/admin/sidebar-presenter.php:112 js/dist/new-settings.js:9
+#: src/presenters/admin/sidebar-presenter.php:88 js/dist/new-settings.js:22
 msgid "Learn SEO"
 msgstr "Lær SEO"
 
 #. translators: %1$s expands to Yoast SEO academy
 #. translators: %1$s expands to "Yoast SEO" academy
-#: src/presenters/admin/sidebar-presenter.php:129 js/dist/new-settings.js:11
+#: src/presenters/admin/sidebar-presenter.php:105 js/dist/new-settings.js:24
 msgid "Check out %1$s"
 msgstr "Tag et kig på %1$s"
 
-#: src/presenters/admin/sidebar-presenter.php:122 js/dist/new-settings.js:9
+#: src/presenters/admin/sidebar-presenter.php:98 js/dist/new-settings.js:22
 msgid "We have both free and premium online courses to learn everything you need to know about SEO."
 msgstr "Vi har både gratis og premium onlinekurser, hvor du kan lære hvad du har brug for at vide om SEO."
 
 #. translators: %1$s expands to Yoast SEO academy, which is a clickable link.
 #. translators: %1$s expands to "Yoast SEO" academy, which is a clickable link.
-#: src/presenters/admin/sidebar-presenter.php:120 js/dist/new-settings.js:9
+#: src/presenters/admin/sidebar-presenter.php:96 js/dist/new-settings.js:22
 msgid "Want to learn SEO from Team Yoast? Check out our %1$s!"
 msgstr "Vil du lære SEO af team Yoast? Så tag et kik på %1$s!"
 
 #: admin/metabox/class-metabox.php:443 js/dist/block-editor.js:464
-#: js/dist/elementor.js:447 js/dist/new-settings.js:34
-#: js/dist/new-settings.js:188 js/dist/new-settings.js:218
-#: js/dist/new-settings.js:224 js/dist/structured-data-blocks.js:13
+#: js/dist/elementor.js:447 js/dist/new-settings.js:6
+#: js/dist/new-settings.js:10 js/dist/new-settings.js:14
+#: js/dist/new-settings.js:49 js/dist/new-settings.js:205
+#: js/dist/structured-data-blocks.js:13
 msgid "Schema"
 msgstr "Skema"
 
@@ -1599,11 +1914,6 @@ msgstr "Tjek venligst formatet på den LinkedIn-URL du har indtastet. %s"
 #: admin/class-yoast-input-validation.php:167
 msgid "Please check the format of the YouTube URL you entered. %s"
 msgstr "Tjek venligst formatet på den YouTube-URL du har indtastet. %s"
-
-#. translators: %s expands to an invalid Facebook App ID.
-#: inc/options/class-wpseo-option.php:482
-msgid "%s does not seem to be a valid Facebook App ID. Please correct."
-msgstr "%s lader ikke til at være en gyldig Facebook App ID. Ret venligst."
 
 #. translators: %s: additional message with the submitted invalid value
 #: admin/class-yoast-input-validation.php:107
@@ -1678,8 +1988,8 @@ msgstr[1] "Formularen indeholder %1$s fejl. %2$s"
 msgid "Activate %s for your site on MyYoast"
 msgstr "Aktiver %s for dit websted på MyYoast"
 
-#: admin/class-customizer.php:109 js/dist/new-settings.js:92
-#: js/dist/new-settings.js:222
+#: admin/class-customizer.php:109 js/dist/new-settings.js:10
+#: js/dist/new-settings.js:107
 msgid "Show blog page in breadcrumbs"
 msgstr "Vis blogside i brødkrummestien"
 
@@ -1716,7 +2026,7 @@ msgid "SEO: %s"
 msgstr "SEO: %s"
 
 #. translators: %s: expends to Yoast SEO
-#: admin/class-admin.php:340
+#: admin/class-admin.php:351
 msgid "%s video tutorial"
 msgstr "%s videovejledning"
 
@@ -1741,13 +2051,13 @@ msgid "Google has discontinued its Crawl Errors API. Therefore, any possible cra
 msgstr "Google har afviklet deres crawl-fejl API.  Derfor bliver mulige fejl ved gennemgang, som du måtte have, ikke vist her mere. %1$sLæs vores udtalelse om dette for yderligere information%2$s."
 
 #: admin/views/tabs/metas/paper-content/general/knowledge-graph.php:113
-#: js/dist/new-settings.js:229
+#: js/dist/new-settings.js:240
 msgid "Personal info"
 msgstr "Personlig info"
 
 #: admin/views/tabs/metas/paper-content/general/knowledge-graph.php:95
-#: js/dist/first-time-configuration.js:5 js/dist/new-settings.js:222
-#: js/dist/new-settings.js:228
+#: js/dist/first-time-configuration.js:5 js/dist/new-settings.js:10
+#: js/dist/new-settings.js:237
 msgid "Organization name"
 msgstr "Organisationsnavn"
 
@@ -1765,9 +2075,9 @@ msgstr "Virksomhed eller Person"
 
 #: admin/views/tabs/metas/paper-content/general/knowledge-graph.php:63
 #: admin/views/tabs/metas/paper-content/general/knowledge-graph.php:69
-#: src/integrations/admin/first-time-configuration-integration.php:514
-#: src/integrations/admin/first-time-configuration-integration.php:527
-#: js/dist/new-settings.js:227
+#: src/integrations/admin/first-time-configuration-integration.php:511
+#: src/integrations/admin/first-time-configuration-integration.php:524
+#: js/dist/new-settings.js:236
 msgid "Organization"
 msgstr "Organisation"
 
@@ -1777,7 +2087,7 @@ msgstr "Organisation"
 msgid "You have previously set your site to represent a person. We’ve improved our functionality around Schema and the Knowledge Graph, so you should go in and %1$scomplete those settings%2$s."
 msgstr "Du har tidligere opsat dit websted til at repræsentere en person. Vi har forbedret vores funktionalitet vedrørende Schema og Knowledge Graph, så du bør gå hen og %1$sfuldføre de indstillinger%2$s."
 
-#: admin/class-admin.php:297
+#: admin/class-admin.php:308
 msgid "(if one exists)"
 msgstr "(hvis en findes)"
 
@@ -1785,31 +2095,31 @@ msgstr "(hvis en findes)"
 msgid "Uncategorized"
 msgstr "Ikke kategoriseret"
 
-#: admin/class-admin.php:291
+#: admin/class-admin.php:302
 msgid "MySpace profile URL"
 msgstr "MySpace-profil URL"
 
-#: admin/class-admin.php:293
+#: admin/class-admin.php:304
 msgid "SoundCloud profile URL"
 msgstr "SoundCloud-profil URL"
 
-#: admin/class-admin.php:294
+#: admin/class-admin.php:305
 msgid "Tumblr profile URL"
 msgstr "Tumblr-profil URL"
 
-#: admin/class-admin.php:297
+#: admin/class-admin.php:308
 msgid "Wikipedia page about you"
 msgstr "Wikipedia-side om dig"
 
-#: admin/class-admin.php:296
+#: admin/class-admin.php:307
 msgid "YouTube profile URL"
 msgstr "YouTube-profil URL"
 
-#: admin/class-admin.php:292
+#: admin/class-admin.php:303
 msgid "Pinterest profile URL"
 msgstr "Pinterest profil-URL"
 
-#: admin/class-admin.php:290
+#: admin/class-admin.php:301
 msgid "LinkedIn profile URL"
 msgstr "LinkedIn profil-URL"
 
@@ -1817,7 +2127,7 @@ msgstr "LinkedIn profil-URL"
 msgid "If a Wikipedia page for you or your organization exists, add it too."
 msgstr "Hvis en Wikipedia-side findes for dig eller din organisation, så tilføj også den."
 
-#: admin/class-admin.php:289
+#: admin/class-admin.php:300
 msgid "Instagram profile URL"
 msgstr "Instagram-profil URL"
 
@@ -1898,7 +2208,7 @@ msgstr "Med %s kan du nemt oprette denne slags viderestillinger."
 
 #. translators: %s expands to Yoast SEO Premium
 #. translators: %s expands to "Yoast SEO" Premium
-#: admin/class-premium-upsell-admin-block.php:84 js/dist/new-settings.js:234
+#: admin/class-premium-upsell-admin-block.php:84 js/dist/new-settings.js:250
 msgid "Upgrade to %s"
 msgstr "Opgrader til %s"
 
@@ -1930,13 +2240,13 @@ msgstr "Dette faneblad tillader dig at deaktivere %s funktioner for alle websted
 
 #: admin/views/tabs/network/features.php:94
 #: admin/views/tabs/network/integrations.php:81
-#: src/integrations/admin/crawl-settings-integration.php:291
+#: src/integrations/admin/crawl-settings-integration.php:290
 msgid "Allow Control"
 msgstr "Tillad kontrol"
 
 #: admin/views/tabs/network/features.php:95
 #: admin/views/tabs/network/integrations.php:82
-#: src/integrations/admin/crawl-settings-integration.php:293
+#: src/integrations/admin/crawl-settings-integration.php:292
 msgid "Disable"
 msgstr "Deaktiver"
 
@@ -1962,7 +2272,7 @@ msgstr "Denne funktion er deaktiveret af netværkets administrator."
 msgid "Clear Image"
 msgstr "Fjern billede"
 
-#: admin/class-premium-upsell-admin-block.php:54 js/dist/new-settings.js:234
+#: admin/class-premium-upsell-admin-block.php:54 js/dist/new-settings.js:250
 msgid "Multiple keyphrases"
 msgstr "Flere søgefraser"
 
@@ -1975,18 +2285,13 @@ msgstr "Fokus søgefrase ikke angivet."
 #. translators: %s expands to "Yoast SEO" Premium
 #: admin/class-premium-popup.php:81
 #: admin/class-premium-upsell-admin-block.php:67
-#: admin/formatter/class-metabox-formatter.php:357
 #: admin/watchers/class-slug-change-watcher.php:223
-#: src/deprecated/admin/add-keyword-modal.php:47
-#: src/deprecated/admin/keyword-synonyms-modal.php:47
-#: src/deprecated/admin/multiple-keywords-modal.php:47
-#: src/presenters/admin/sidebar-presenter.php:62
-#: src/presenters/admin/sidebar-presenter.php:85 js/dist/block-editor.js:382
+#: src/presenters/admin/sidebar-presenter.php:61 js/dist/block-editor.js:382
 #: js/dist/classic-editor.js:378 js/dist/elementor.js:382
 #: js/dist/externals-components.js:15 js/dist/externals-components.js:67
 #: js/dist/externals-components.js:85 js/dist/externals-components.js:87
 #: js/dist/externals-components.js:89 js/dist/externals-components.js:91
-#: js/dist/new-settings.js:7 js/dist/new-settings.js:236
+#: js/dist/new-settings.js:252
 msgid "Get %s"
 msgstr "Få %s"
 
@@ -2014,17 +2319,6 @@ msgstr "%1$s Strukturerede datablokke"
 #: inc/class-wpseo-admin-bar-menu.php:428
 msgid "Check links to this URL"
 msgstr "Tjek links til denne webadresse"
-
-#. translators: %s expands to a 'Yoast SEO Premium' text linked to the
-#. yoast.com website.
-#: admin/formatter/class-metabox-formatter.php:345
-#: src/deprecated/admin/add-keyword-modal.php:35
-#: src/deprecated/admin/keyword-synonyms-modal.php:35
-#: src/deprecated/admin/multiple-keywords-modal.php:35
-#: js/dist/block-editor.js:374 js/dist/classic-editor.js:370
-#: js/dist/elementor.js:374 js/dist/externals-components.js:7
-msgid "Great news: you can, with %s!"
-msgstr "Gode nyheder: du kan med %s!"
 
 #: inc/class-wpseo-admin-bar-menu.php:504 js/dist/structured-data-blocks.js:13
 msgid "How to"
@@ -2069,10 +2363,6 @@ msgstr "Du har ikke tilladelse til at ændre uregistrerede netværksindstillinge
 msgid "deleted"
 msgstr "slettet"
 
-#: src/deprecated/admin/multiple-keywords-modal.php:32
-msgid "Would you like to add another keyphrase?"
-msgstr "Ønsker du at tilføje endnu et søgeord?"
-
 #: inc/class-wpseo-replace-vars.php:1474
 msgid "The site's tagline"
 msgstr "Websitets taglinje"
@@ -2082,16 +2372,6 @@ msgstr "Websitets taglinje"
 msgid "Not all required fields are given. Missing field %1$s"
 msgstr "Ikke alle obligatoriske felter er angivet. Manglende felt %1$s"
 
-#: src/deprecated/admin/keyword-synonyms-modal.php:32
-#: js/dist/externals-components.js:87
-msgid "Would you like to add keyphrase synonyms?"
-msgstr "Vil du gerne tilføje søgeordssynonymer?"
-
-#: admin/formatter/class-metabox-formatter.php:342
-#: src/deprecated/admin/add-keyword-modal.php:32
-msgid "Would you like to add more than one keyphrase?"
-msgstr "Vil du gerne tilføje flere end et søgeord?"
-
 #: admin/views/tabs/metas/paper-content/post_type/woocommerce-shop-page.php:10
 msgid "You haven't set a Shop page in your WooCommerce settings. Please do this first."
 msgstr "You haven't set a Shop page in your WooCommerce settings. Please do this first."
@@ -2100,7 +2380,7 @@ msgstr "You haven't set a Shop page in your WooCommerce settings. Please do this
 #. closing anchor tag.
 #. translators: %1$s expands to an opening tag. %2$s expands to a closing tag.
 #: admin/views/tabs/metas/paper-content/post_type/woocommerce-shop-page.php:15
-#: js/dist/new-settings.js:19
+#: js/dist/new-settings.js:34
 msgid "You can edit the SEO metadata for this custom type on the %1$sShop page%2$s."
 msgstr "Du kan redigere SEO-metadataene for denne brugerdefinerede type på %1$sShop-siden%2$s."
 
@@ -2129,7 +2409,7 @@ msgid "Caption"
 msgstr "Billedtekst"
 
 #: inc/class-wpseo-replace-vars.php:1474 js/dist/externals-redux.js:1
-#: js/dist/new-settings.js:207 js/dist/new-settings.js:222
+#: js/dist/new-settings.js:10 js/dist/new-settings.js:224
 msgid "Tagline"
 msgstr "Tagline"
 
@@ -2146,6 +2426,7 @@ msgid "ID"
 msgstr "ID"
 
 #: inc/class-wpseo-replace-vars.php:1486 js/dist/externals-redux.js:1
+#: js/dist/new-settings.js:10
 msgid "Separator"
 msgstr " Separator"
 
@@ -2250,7 +2531,7 @@ msgstr "Sørg for, at du ikke går glip af trafikken!"
 msgid "Settings for %s archive"
 msgstr "Indstillinger for arkivet %s"
 
-#: admin/views/tabs/metas/post-types.php:28
+#: admin/views/tabs/metas/post-types.php:25
 msgid "The settings on this page allow you to specify what the default search appearance should be for any type of content you have. You can choose which content types appear in search results and what their default description should be."
 msgstr "Indstillingerne på denne side giver dig mulighed for at angive, hvordan søgeresultaterne skal vises som standard for enhver type indhold, du har. Du kan vælge, hvilke indholdstyper der vises i søgeresultater, og hvad deres standardbeskrivelse skal være."
 
@@ -2380,7 +2661,7 @@ msgstr "%s har ikke fundet nogen plugindata fra plugins, den kan importere fra."
 #: admin/class-premium-upsell-admin-block.php:58 js/dist/block-editor.js:378
 #: js/dist/classic-editor.js:374 js/dist/elementor.js:378
 #: js/dist/externals-components.js:11 js/dist/externals-components.js:63
-#: js/dist/new-settings.js:234
+#: js/dist/new-settings.js:250
 msgid "24/7 email support"
 msgstr "E-mailsupport 24/7"
 
@@ -2640,11 +2921,6 @@ msgstr "Vis %s i søgeresultater?"
 msgid "Toggle %1$s's XML Sitemap"
 msgstr "Slå %1$s&#39;s XML-sitemap til/fra"
 
-#: admin/menu/class-admin-menu.php:90
-#: src/presenters/meta-description-presenter.php:37
-msgid "Search Appearance"
-msgstr "Visning af søgeresultater"
-
 #: admin/views/tabs/social/twitterbox.php:27
 msgid "Enable this feature if you want Twitter to display a preview with images and a text excerpt when a link to your site is shared."
 msgstr "Aktivér denne funktion, hvis du ønsker, at Twitter skal vise et preview med billeder og et tekstuddrag, når folk deler et link til dit site."
@@ -2663,7 +2939,7 @@ msgstr "SEO-analyse kommer med forslag til, hvordan du forbedrer din teksts SEO.
 msgid "Learn how the SEO analysis can help you rank."
 msgstr "Lær, hvordan SEO-analyse kan hjælpe dig med dine søgemaskineplaceringer."
 
-#: admin/views/class-yoast-feature-toggles.php:85 js/dist/new-settings.js:215
+#: admin/views/class-yoast-feature-toggles.php:85 js/dist/new-settings.js:232
 msgid "The readability analysis offers suggestions to improve the structure and style of your text."
 msgstr "Læsbarhedsanalysen kommer med forslag til, hvordan du kan forbedre din teksts struktur og stil."
 
@@ -2706,14 +2982,18 @@ msgid "Enable this feature if you want Facebook and other social media to displa
 msgstr "Aktivér denne funktion, hvis du ønsker, at Facebook og andre sociale medier skal vise en preview med billeder og tekstuddrag, når et link til dit websted deles."
 
 #: admin/views/class-yoast-feature-toggles.php:75
-#: js/dist/externals-components.js:94 js/dist/new-settings.js:215
-#: js/dist/new-settings.js:222
+#: js/dist/externals-components.js:94 js/dist/new-settings.js:10
+#: js/dist/new-settings.js:232
 msgid "SEO analysis"
 msgstr "SEO-analyse"
 
 #: admin/views/class-yoast-feature-toggles.php:111
 msgid "The text link counter helps you improve your site structure."
 msgstr "Tekstlink-tælleren hjælper dig med at forbedre din sides struktur."
+
+#: admin/views/licenses.php:37
+msgid "Allow customers to pick up their orders locally"
+msgstr "Tillad kunder at hente deres ordre lokalt"
 
 #. Author URI of the plugin
 msgid "https://yoa.st/1uk"
@@ -2750,7 +3030,7 @@ msgstr "Fremhæv dette resultat i teksten"
 msgid "Considerations"
 msgstr "Overvejelser"
 
-#: src/integrations/admin/first-time-configuration-notice-integration.php:138
+#: src/helpers/first-time-configuration-notice-helper.php:68
 msgid "First-time SEO configuration"
 msgstr "Førstegangs SEO-opsætning"
 
@@ -2809,19 +3089,14 @@ msgstr "Markér vigtigste %1$s som 'hjørnestensindhold' for at forbedre din sid
 
 #: admin/class-admin-utils.php:78 admin/class-premium-popup.php:82
 #: admin/class-premium-upsell-admin-block.php:68 admin/class-yoast-form.php:912
-#: admin/formatter/class-metabox-formatter.php:237
-#: admin/formatter/class-metabox-formatter.php:361 admin/views/licenses.php:125
+#: admin/formatter/class-metabox-formatter.php:237 admin/views/licenses.php:125
 #: admin/watchers/class-slug-change-watcher.php:224
-#: src/deprecated/admin/add-keyword-modal.php:51
-#: src/deprecated/admin/keyword-synonyms-modal.php:51
-#: src/deprecated/admin/multiple-keywords-modal.php:51
 #: src/integrations/admin/workouts-integration.php:210
 #: src/integrations/admin/workouts-integration.php:239
 #: src/presenters/admin/help-link-presenter.php:75 js/dist/block-editor.js:464
 #: js/dist/externals/componentsNew.js:136 js/dist/externals/helpers.js:18
 #: js/dist/indexables-page.js:35 js/dist/integrations-page.js:3
-#: js/dist/integrations-page.js:11 js/dist/integrations-page.js:15
-#: js/dist/integrations-page.js:23
+#: js/dist/integrations-page.js:19 js/dist/integrations-page.js:27
 msgid "(Opens in a new browser tab)"
 msgstr "(Åbner i en ny browserfane)"
 
@@ -2871,7 +3146,7 @@ msgid "You are not receiving updates or support! Fix this problem by adding this
 msgstr "Du får ingen opdateringer eller support! Løs problemet ved at tilføje dette site og aktivere %1$s på det i %2$s."
 
 #. translators: %1$s expands to Yoast
-#: src/presenters/admin/sidebar-presenter.php:35
+#: src/presenters/admin/sidebar-presenter.php:28
 msgid "%1$s recommendations for you"
 msgstr "%1$s anbefalinger til dig"
 
@@ -2890,8 +3165,8 @@ msgstr "Mind mig om det om 4 uger."
 msgid "Request method %1$s is not valid."
 msgstr "Forespørgselsmetoden %1$s er ikke gyldig."
 
-#: admin/views/class-yoast-feature-toggles.php:109 js/dist/new-settings.js:215
-#: js/dist/new-settings.js:222
+#: admin/views/class-yoast-feature-toggles.php:109 js/dist/new-settings.js:10
+#: js/dist/new-settings.js:232
 msgid "Text link counter"
 msgstr "Tekstlinktæller"
 
@@ -2913,32 +3188,21 @@ msgstr "%s-kolonner"
 msgid "Readability score"
 msgstr "Læsbarheds-score"
 
-#. translators: %s expands to 'Yoast SEO Premium'.
-#: admin/formatter/class-metabox-formatter.php:351
-#: src/deprecated/admin/add-keyword-modal.php:41
-#: src/deprecated/admin/keyword-synonyms-modal.php:41
-#: src/deprecated/admin/multiple-keywords-modal.php:41
-#: js/dist/block-editor.js:380 js/dist/classic-editor.js:376
-#: js/dist/elementor.js:380 js/dist/externals-components.js:13
-#: js/dist/externals-components.js:65
-msgid "Other benefits of %s for you:"
-msgstr "Andre fordele, %s giver dig:"
-
 #: admin/filters/class-cornerstone-filter.php:87
 #: admin/views/class-yoast-feature-toggles.php:101
-#: js/dist/externals-components.js:18 js/dist/new-settings.js:215
-#: js/dist/new-settings.js:222
+#: js/dist/externals-components.js:18 js/dist/new-settings.js:10
+#: js/dist/new-settings.js:232
 msgid "Cornerstone content"
 msgstr "Hjørnestensindhold"
 
-#: src/integrations/admin/crawl-settings-integration.php:332
+#: src/integrations/admin/crawl-settings-integration.php:331
 msgid "Upgrade Premium"
 msgstr "Opgradér til Premium"
 
 #: admin/class-premium-upsell-admin-block.php:56 js/dist/block-editor.js:376
 #: js/dist/classic-editor.js:372 js/dist/elementor.js:376
 #: js/dist/externals-components.js:9 js/dist/externals-components.js:61
-#: js/dist/new-settings.js:234
+#: js/dist/new-settings.js:250
 msgid "Superfast internal linking suggestions"
 msgstr "Lynhurtige forslag til interne links"
 
@@ -2955,55 +3219,50 @@ msgstr "Gem ændringer"
 msgid "The plugin %2$s changes your site's output and in doing that differentiates between search engines and normal users, a process that's called cloaking. We highly recommend that you disable it."
 msgstr "Pluginnet %2$s ændrer dit sites outpunkt, men på en måde, som skelner mellem søgemaskiner og normale bruger, en proces, der kaldes tilsløring (cloaking). Vi opfordrer indtrængende til, at du deaktiverer det."
 
-#: admin/class-premium-popup.php:88
-#: admin/formatter/class-metabox-formatter.php:360
-#: src/deprecated/admin/add-keyword-modal.php:50
-#: src/deprecated/admin/keyword-synonyms-modal.php:50
-#: src/deprecated/admin/multiple-keywords-modal.php:50
-#: js/dist/block-editor.js:382 js/dist/classic-editor.js:378
-#: js/dist/elementor.js:382 js/dist/externals-components.js:15
-#: js/dist/externals-components.js:67
+#: admin/class-premium-popup.php:88 js/dist/block-editor.js:382
+#: js/dist/classic-editor.js:378 js/dist/elementor.js:382
+#: js/dist/externals-components.js:15 js/dist/externals-components.js:67
 msgid "1 year free support and updates included!"
 msgstr "1 års gratis support og opgraderinger inkluderet!"
 
 #: admin/class-premium-upsell-admin-block.php:59 js/dist/block-editor.js:378
 #: js/dist/classic-editor.js:374 js/dist/elementor.js:378
 #: js/dist/externals-components.js:11 js/dist/externals-components.js:63
-#: js/dist/new-settings.js:234
+#: js/dist/new-settings.js:250
 msgid "No ads!"
 msgstr "Ingen annoncer!"
 
-#: admin/class-premium-upsell-admin-block.php:57 js/dist/new-settings.js:234
+#: admin/class-premium-upsell-admin-block.php:57 js/dist/new-settings.js:250
 msgid "Facebook & Twitter"
 msgstr "Facebook & Twitter"
 
-#: admin/class-premium-upsell-admin-block.php:55 js/dist/new-settings.js:234
+#: admin/class-premium-upsell-admin-block.php:55 js/dist/new-settings.js:250
 msgid "No more dead links"
 msgstr "Ikke flere døde links"
 
-#: admin/class-premium-upsell-admin-block.php:54 js/dist/new-settings.js:234
+#: admin/class-premium-upsell-admin-block.php:54 js/dist/new-settings.js:250
 msgid "Increase your SEO reach"
 msgstr "Forøg din SEO-effekt"
 
-#: admin/class-premium-upsell-admin-block.php:57 js/dist/new-settings.js:234
+#: admin/class-premium-upsell-admin-block.php:57 js/dist/new-settings.js:250
 msgid "Social media preview"
 msgstr "Preview af sociale medier"
 
-#: admin/class-premium-upsell-admin-block.php:55 js/dist/new-settings.js:234
+#: admin/class-premium-upsell-admin-block.php:55 js/dist/new-settings.js:250
 msgid "Easy redirect manager"
 msgstr "Viderestillings-manager, der er nem at bruge"
 
 #: admin/views/tabs/metas/paper-content/rss-content.php:32
-#: js/dist/new-settings.js:190
+#: js/dist/new-settings.js:207
 msgid "Variable"
 msgstr "Variabel"
 
 #: admin/views/tabs/metas/paper-content/rss-content.php:25
-#: js/dist/new-settings.js:190
+#: js/dist/new-settings.js:207
 msgid "Available variables"
 msgstr "Tilgængelige variabler"
 
-#: admin/class-admin.php:341
+#: admin/class-admin.php:352
 msgid "Scroll to see the table content."
 msgstr "Scroll for at se tabelindholdet."
 
@@ -3057,7 +3316,7 @@ msgstr "Vis mig venligst ikke denne notifikation igen"
 #. translators: %1$s: '%%term_title%%' variable used in titles and meta's
 #. template that's not compatible with the given template, %2$s: expands to
 #. 'HelpScout beacon'
-#: admin/class-admin.php:335
+#: admin/class-admin.php:346
 msgid "Warning: the variable %1$s cannot be used in this template. See the %2$s for more info."
 msgstr "Advarsel: variablen %1$s kan ikke bruges i denne skabelon. Se %2$s for yderligere info."
 
@@ -3076,13 +3335,12 @@ msgstr "Vidste du forresten, at vi også har en %1$sbetalingsudgave%2$s? Den ind
 msgid "The %1$s admin bar menu contains useful links to third-party tools for analyzing pages and makes it easy to see if you have new notifications."
 msgstr "%1$s&#39;s menu i kontrolbjælken rummer en række nyttige links til tredjeparts-værktøjer, der kan analysere sider, og gør det let at se, om du har nye notifikationer."
 
-#: admin/views/class-yoast-feature-toggles.php:148 js/dist/new-settings.js:215
-#: js/dist/new-settings.js:222
+#: admin/views/class-yoast-feature-toggles.php:148 js/dist/new-settings.js:10
+#: js/dist/new-settings.js:232 js/dist/new-settings.js:233
 msgid "Admin bar menu"
 msgstr "Kontrolbjælkemenu"
 
-#: admin/pages/dashboard.php:41 admin/pages/network.php:19
-#: admin/views/tabs/dashboard/features.php:22
+#: admin/pages/network.php:19 admin/views/tabs/dashboard/features.php:22
 #: admin/views/tabs/network/features.php:22
 msgid "Features"
 msgstr "Funktioner"
@@ -3090,15 +3348,19 @@ msgstr "Funktioner"
 #: admin/metabox/class-metabox.php:181 js/dist/externals/analysis.js:221
 #: js/dist/externals/analysis.js:275 js/dist/externals/analysis.js:393
 #: js/dist/externals/replacementVariableEditor.js:78
-#: js/dist/externals/searchMetadataPreviews.js:243 js/dist/new-settings.js:30
-#: js/dist/new-settings.js:41 js/dist/new-settings.js:65
-#: js/dist/new-settings.js:88 js/dist/new-settings.js:145
-#: js/dist/new-settings.js:159 js/dist/new-settings.js:169
-#: js/dist/new-settings.js:188 js/dist/new-settings.js:217
-#: js/dist/new-settings.js:219 js/dist/new-settings.js:222
-#: js/dist/new-settings.js:224
+#: js/dist/externals/searchMetadataPreviews.js:258 js/dist/new-settings.js:5
+#: js/dist/new-settings.js:7 js/dist/new-settings.js:10
+#: js/dist/new-settings.js:14 js/dist/new-settings.js:45
+#: js/dist/new-settings.js:56 js/dist/new-settings.js:80
+#: js/dist/new-settings.js:103 js/dist/new-settings.js:162
+#: js/dist/new-settings.js:176 js/dist/new-settings.js:186
+#: js/dist/new-settings.js:205
 msgid "SEO title"
 msgstr "SEO-titel"
+
+#: admin/views/licenses.php:179
+msgid "Gain access to our 24/7 support team"
+msgstr "Få adgang til vores 24/7-supportteam."
 
 #: inc/options/class-wpseo-option-titles.php:1005
 msgid "Greater than sign"
@@ -3206,6 +3468,11 @@ msgstr "Premium-support"
 msgid "Optimize your site for Google News"
 msgstr "Optimér dit site til Google News"
 
+#. translators: %1$s expands to Yoast SEO, %2$s expands to WooCommerce
+#: admin/views/licenses.php:86
+msgid "Seamless integration between %1$s and %2$s"
+msgstr "Perfekt integration mellem %1$s og %2$s"
+
 #. translators: %s: post title
 #: admin/class-bulk-editor-list-table.php:803
 msgid "Edit &#8220;%s&#8221;"
@@ -3216,7 +3483,7 @@ msgstr "Redigér &#8220;%s&#8221;"
 msgid "Premium"
 msgstr "Premium"
 
-#: admin/class-admin.php:255
+#: admin/class-admin.php:266
 msgid "Get Premium"
 msgstr "Få Premium"
 
@@ -3254,7 +3521,7 @@ msgid "Make primary"
 msgstr "Gør primær"
 
 #. translators: %s: number of notifications
-#: admin/menu/class-admin-menu.php:120 inc/class-wpseo-admin-bar-menu.php:846
+#: admin/menu/class-admin-menu.php:118 inc/class-wpseo-admin-bar-menu.php:846
 msgid "%s notification"
 msgid_plural "%s notifications"
 msgstr[0] "%s notifikation"
@@ -3275,8 +3542,8 @@ msgid "Readability"
 msgstr "Læsbarhed"
 
 #: admin/views/class-yoast-feature-toggles.php:83
-#: js/dist/externals-components.js:34 js/dist/new-settings.js:215
-#: js/dist/new-settings.js:222
+#: js/dist/externals-components.js:34 js/dist/new-settings.js:10
+#: js/dist/new-settings.js:232
 msgid "Readability analysis"
 msgstr "Læsbarhedsanalyse"
 
@@ -3386,7 +3653,7 @@ msgstr "Ny %1$s-titel"
 #. Yoast Plugins"
 #. translators: 1: Yoast WooCommerce SEO
 #: admin/views/licenses.php:224 admin/views/licenses.php:333
-#: js/dist/integrations-page.js:15
+#: js/dist/integrations-page.js:19
 msgid "Buy %s"
 msgstr "Køb %s"
 
@@ -3399,12 +3666,12 @@ msgid "Trying to build the sitemap cache key, but the postfix and prefix combina
 msgstr "Forsøger at lave en cachenøgle for sitemaps, men kombinationen af postfix og præfix giver for lidt plads til at gøre det. Du har formentlig sendt en forespørgsel om en side, som ligger langt uden for det forventede område."
 
 #: admin/views/redirects.php:32
-#: src/integrations/admin/redirects-integration.php:48
+#: src/integrations/admin/redirects-page-integration.php:48
 msgid "Redirects"
 msgstr "Viderestillinger"
 
 #: admin/views/tabs/metas/taxonomies/category-url.php:10
-#: src/integrations/admin/crawl-settings-integration.php:280
+#: src/integrations/admin/crawl-settings-integration.php:279
 msgid "Remove"
 msgstr "Fjern"
 
@@ -3413,12 +3680,12 @@ msgid "Regular"
 msgstr "Normal"
 
 #: admin/views/tabs/metas/paper-content/breadcrumbs-content.php:32
-#: js/dist/new-settings.js:92 js/dist/new-settings.js:222
+#: js/dist/new-settings.js:10 js/dist/new-settings.js:107
 msgid "Bold the last page"
 msgstr "Sidste side med fed"
 
 #: admin/views/tabs/metas/taxonomies/category-url.php:10
-#: src/integrations/admin/crawl-settings-integration.php:279
+#: src/integrations/admin/crawl-settings-integration.php:278
 msgid "Keep"
 msgstr "Behold"
 
@@ -3426,11 +3693,10 @@ msgstr "Behold"
 msgid "Bold"
 msgstr "Fed"
 
-#: admin/pages/dashboard.php:47 admin/pages/network.php:20
-#: admin/views/tabs/dashboard/integrations.php:21
+#: admin/pages/network.php:20 admin/views/tabs/dashboard/integrations.php:21
 #: admin/views/tabs/network/integrations.php:22
 #: src/integrations/admin/integrations-page.php:73
-#: js/dist/integrations-page.js:61
+#: js/dist/integrations-page.js:69
 msgid "Integrations"
 msgstr "Integrationer"
 
@@ -3459,17 +3725,17 @@ msgstr "Vis blogside"
 
 #: admin/views/tabs/metas/archives.php:19
 #: admin/views/tabs/metas/paper-content/author-archive-settings.php:16
-#: js/dist/new-settings.js:69 js/dist/new-settings.js:224
-#: js/dist/new-settings.js:232
+#: js/dist/new-settings.js:14 js/dist/new-settings.js:84
+#: js/dist/new-settings.js:248
 msgid "Author archives"
 msgstr "Forfatterarkiver"
 
-#: src/integrations/admin/crawl-settings-integration.php:214
+#: src/integrations/admin/crawl-settings-integration.php:213
 #: src/presenters/admin/light-switch-presenter.php:120
 msgid "Enabled"
 msgstr "Aktiveret"
 
-#: src/integrations/admin/crawl-settings-integration.php:213
+#: src/integrations/admin/crawl-settings-integration.php:212
 #: src/presenters/admin/light-switch-presenter.php:120
 msgid "Disabled"
 msgstr "Deaktiveret"
@@ -3562,7 +3828,7 @@ msgstr "Vælg venligst en gyldig indholdstype for taksonomien \"%s\""
 msgid "Please select a valid taxonomy for post type \"%s\""
 msgstr "Vælg venligst en gyldig taksonomi for indholdstypen \"%s\""
 
-#: inc/options/class-wpseo-option-social.php:109
+#: inc/options/class-wpseo-option-social.php:110
 msgid "Summary with large image"
 msgstr "Resume med stort billede"
 
@@ -3576,7 +3842,7 @@ msgstr "Filterudvidelsen er ikke tilgængelig. Bed venligst din webudbyder om at
 
 #. Plugin Name of the plugin
 #: admin/capabilities/class-capability-manager-integration.php:72
-#: js/dist/block-editor.js:464
+#: src/presenters/meta-description-presenter.php:36 js/dist/block-editor.js:464
 msgid "Yoast SEO"
 msgstr "Yoast SEO"
 
@@ -3635,7 +3901,7 @@ msgid "%1$s does not seem to be a valid %2$s verification string. Please correct
 msgstr "%1$s ser ikke ud til at være en gyldig verifikationsstreng hos %2$s. Ret venligst."
 
 #. translators: %s expands to a twitter user name.
-#: inc/options/class-wpseo-option-social.php:182
+#: inc/options/class-wpseo-option-social.php:184
 msgid "%s does not seem to be a valid Twitter Username. Please correct."
 msgstr "%s ser ikke ud til at være et gyldigt Twitter brugernavn. Ret venligst."
 
@@ -3650,12 +3916,12 @@ msgid "&laquo; Back to Tools page"
 msgstr "&laquo; Tilbage til Værktøjer"
 
 #: admin/views/tabs/metas/paper-content/rss-content.php:51
-#: js/dist/new-settings.js:190
+#: js/dist/new-settings.js:207
 msgid "A link to your site, with your site's name and description as anchor text."
 msgstr "Et link til dit websted med dit websteds navn og beskrivelse som ankertekst."
 
 #: admin/views/tabs/metas/paper-content/rss-content.php:47
-#: js/dist/new-settings.js:190
+#: js/dist/new-settings.js:207
 msgid "A link to your site, with your site's name as anchor text."
 msgstr "Et link til dit websted med dit websteds navn som ankertekst."
 
@@ -3664,7 +3930,7 @@ msgid "Add Open Graph meta data"
 msgstr "Tilføj Open Graph metadata"
 
 #: admin/views/tabs/metas/paper-content/breadcrumbs-content.php:13
-#: js/dist/new-settings.js:92
+#: js/dist/new-settings.js:107
 msgid "Anchor text for the Homepage"
 msgstr "Link-tekst til forsiden"
 
@@ -3673,7 +3939,7 @@ msgid "Attachment caption"
 msgstr "Tekst til vedhæftning"
 
 #: admin/views/tabs/metas/paper-content/breadcrumbs-content.php:77
-#: js/dist/new-settings.js:236
+#: js/dist/new-settings.js:252
 msgid "Blog"
 msgstr "Blog"
 
@@ -3694,7 +3960,7 @@ msgid "Default settings"
 msgstr "Standardindstillinger"
 
 #: admin/views/tabs/metas/paper-content/rss-content.php:33
-#: admin/views/tool-bulk-editor.php:111 js/dist/new-settings.js:190
+#: admin/views/tool-bulk-editor.php:111 js/dist/new-settings.js:207
 msgid "Description"
 msgstr "Beskrivelse"
 
@@ -3703,7 +3969,7 @@ msgid "File editor"
 msgstr "Fil-editor"
 
 #: admin/views/tabs/metas/paper-content/breadcrumbs-content.php:98
-#: js/dist/new-settings.js:92
+#: js/dist/new-settings.js:107
 msgid "How to insert breadcrumbs in your theme"
 msgstr "Hvordan man indsætter brødkrummer i sit tema"
 
@@ -3749,7 +4015,7 @@ msgid "Prefix for Search Page breadcrumbs"
 msgstr "Præfiks for søgeside-brødkrummer"
 
 #: admin/views/tabs/metas/paper-content/breadcrumbs-content.php:14
-#: js/dist/new-settings.js:92 js/dist/new-settings.js:222
+#: js/dist/new-settings.js:10 js/dist/new-settings.js:107
 msgid "Prefix for the breadcrumb path"
 msgstr "Præfiks for brødkrummestien"
 
@@ -3854,7 +4120,7 @@ msgid "Replaced with the title of the post/page"
 msgstr "Erstattes med titlen på indlægget/siden"
 
 #: admin/views/tabs/metas/paper-content/breadcrumbs-content.php:12
-#: js/dist/new-settings.js:92 js/dist/new-settings.js:222
+#: js/dist/new-settings.js:10 js/dist/new-settings.js:107
 msgid "Separator between breadcrumbs"
 msgstr "Seperator imellem brødkrummer"
 
@@ -3876,7 +4142,7 @@ msgid "A link to the archive for the post author, with the authors name as ancho
 msgstr "Et link til arkivet for indlæggets forfatter, med forfatterens navn som som ankertekst."
 
 #: admin/views/tabs/metas/paper-content/rss-content.php:43
-#: js/dist/new-settings.js:190
+#: js/dist/new-settings.js:207
 msgid "A link to the post, with the title as anchor text."
 msgstr "Et link til indlægget, med titlen som ankertekst."
 
@@ -3893,12 +4159,12 @@ msgid "Add Twitter card meta data"
 msgstr "Tilføj Twitter-card-metadata"
 
 #: admin/views/tabs/metas/paper-content/rss-content.php:15
-#: js/dist/new-settings.js:190 js/dist/new-settings.js:224
+#: js/dist/new-settings.js:14 js/dist/new-settings.js:207
 msgid "Content to put after each post in the feed"
 msgstr "Indhold, der skal indsættes efter hvert indlæg i feedet"
 
 #: admin/views/tabs/metas/paper-content/rss-content.php:14
-#: js/dist/new-settings.js:190 js/dist/new-settings.js:224
+#: js/dist/new-settings.js:14 js/dist/new-settings.js:207
 msgid "Content to put before each post in the feed"
 msgstr "indhold, der skal indsættes før hvert indlæg i feedet"
 
@@ -3933,7 +4199,7 @@ msgid "Usage of this breadcrumbs feature is explained in %1$sour knowledge-base 
 msgstr "Brug af brødkrummefunktionen forklares i %1$sartiklen om implementering af brødkrummer i vores vidensbank%2$s."
 
 #: admin/views/tabs/metas/paper-content/rss-content.php:20
-#: js/dist/new-settings.js:190
+#: js/dist/new-settings.js:207
 msgid "You can use the following variables within the content, they will be replaced by the value on the right."
 msgstr "Du kan bruge følgende variabler i indholdet; de vil blive erstattet af værdien til højre."
 
@@ -3981,8 +4247,8 @@ msgstr "Du har ikke en %s-fil. Opret en her:"
 msgid "Below are your published posts' SEO scores. Now is as good a time as any to start improving some of your posts!"
 msgstr "Nedenfor kan du se din SEO-score for dine udgivne indlæg. Nu vil være et godt tidspunkt at begynde at forbedre dine indlæg!"
 
-#. Translators: %1$s resolves to the SEO menu item, %2$s resolves to the Search
-#. Appearance submenu item.
+#. translators: %1$s resolves to Yoast SEO, %2$s resolves to the Settings
+#. submenu item.
 #: src/presenters/meta-description-presenter.php:35
 msgid "Admin only notice: this page does not show a meta description because it does not have one, either write it for this page specifically or go into the [%1$s - %2$s] menu and set up a template."
 msgstr "Besked kun til administrator: Denne side viser ikke en meta-beskrivelse fordi den ikke har en. Du kan enten skrive en specifikt til denne side eller gå til menuen [%1$s - %2$s] og opsætte en skabelon."
@@ -4037,14 +4303,14 @@ msgstr "Konti"
 msgid "Authenticate"
 msgstr "Godkend"
 
-#: admin/pages/metas.php:23 js/dist/new-settings.js:91
-#: js/dist/new-settings.js:222 js/dist/new-settings.js:223
-#: js/dist/new-settings.js:232
+#: admin/pages/metas.php:23 js/dist/new-settings.js:10
+#: js/dist/new-settings.js:12 js/dist/new-settings.js:106
+#: js/dist/new-settings.js:248
 msgid "Breadcrumbs"
 msgstr "Brødkrummer"
 
 #: admin/views/tabs/metas/paper-content/general/force-rewrite-title.php:10
-#: js/dist/new-settings.js:209 js/dist/new-settings.js:222
+#: js/dist/new-settings.js:10 js/dist/new-settings.js:226
 msgid "Force rewrite titles"
 msgstr "Gennemtving omskrivning af titler"
 
@@ -4062,13 +4328,13 @@ msgid "Permalink"
 msgstr "Permanente links"
 
 #: admin/views/tabs/metas/paper-content/general/knowledge-graph.php:64
-#: src/integrations/admin/first-time-configuration-integration.php:519
-#: js/dist/new-settings.js:227
+#: src/integrations/admin/first-time-configuration-integration.php:516
+#: js/dist/new-settings.js:236
 msgid "Person"
 msgstr "Person"
 
-#: admin/pages/metas.php:24 js/dist/new-settings.js:190
-#: js/dist/new-settings.js:232
+#: admin/pages/metas.php:24 js/dist/new-settings.js:207
+#: js/dist/new-settings.js:248
 msgid "RSS"
 msgstr "RSS"
 
@@ -4129,8 +4395,8 @@ msgid "URL"
 msgstr "URL"
 
 #: admin/views/tabs/metas/paper-content/general/knowledge-graph.php:14
-#: js/dist/first-time-configuration.js:8 js/dist/new-settings.js:207
-#: js/dist/new-settings.js:222
+#: js/dist/first-time-configuration.js:8 js/dist/new-settings.js:10
+#: js/dist/new-settings.js:224
 msgid "Website name"
 msgstr "Webstedsnavn"
 
@@ -4199,14 +4465,14 @@ msgstr "Hvem der skal have adgang til indstillingerne for %1$s"
 #. translators: %1$s expands to Yoast SEO
 #. translators: %1$s expands to "Yoast SEO"
 #: admin/views/tabs/metas/paper-content/general/force-rewrite-title.php:14
-#: js/dist/new-settings.js:211
+#: js/dist/new-settings.js:228
 msgid "%1$s has auto-detected whether it needs to force rewrite the titles for your pages, if you think it's wrong and you know what you're doing, you can change the setting here."
 msgstr "%1$s har automatisk opdaget, om det skal gennemtvinge omskrivning af titler på dine sider. Hvis du synes, det er forkert, og du ved, hvad du laver, kan du ændre indstillingen her."
 
 #: admin/views/tabs/metas/archives.php:24
 #: admin/views/tabs/metas/paper-content/date-archives-settings.php:16
-#: js/dist/new-settings.js:128 js/dist/new-settings.js:224
-#: js/dist/new-settings.js:232
+#: js/dist/new-settings.js:14 js/dist/new-settings.js:145
+#: js/dist/new-settings.js:248
 msgid "Date archives"
 msgstr "Datoarkiver"
 
@@ -4218,10 +4484,6 @@ msgstr "Indtast %1$swebsite-ID%2$s for det websted, hvis indstillinger du ønske
 #: admin/views/tabs/metas/paper-content/author-archive-settings.php:39
 msgid "author archives"
 msgstr "Forfatterarkiver"
-
-#: admin/pages/dashboard.php:56
-msgid "Webmaster Tools"
-msgstr "Webmasterværktøjer"
 
 #: admin/views/tabs/network/general.php:54
 msgid "Privacy sensitive (FB admins and such), theme specific (title rewrite) and a few very site specific settings will not be imported to new sites."
@@ -4251,17 +4513,17 @@ msgstr "Du kan bestemme startsidens titel og beskrivelse ved at %1$sredigere dir
 #. translators: 1: link open tag; 2: link close tag.
 #. translators: %1$s expands to an opening tag. %2$s expands to a closing tag.
 #: admin/views/tabs/metas/paper-content/general/homepage.php:39
-#: js/dist/new-settings.js:172
+#: js/dist/new-settings.js:189
 msgid "You can determine the title and description for the homepage by %1$sediting the homepage itself%2$s."
 msgstr "Du kan bestemme titel og beskrivelse for blogsiden ved at %1$sredigere selve blogsiden%2$s."
 
-#: admin/views/tabs/metas/general.php:47 js/dist/new-settings.js:174
-#: js/dist/new-settings.js:222 js/dist/new-settings.js:232
+#: admin/views/tabs/metas/general.php:47 js/dist/new-settings.js:10
+#: js/dist/new-settings.js:191 js/dist/new-settings.js:248
 msgid "Homepage"
 msgstr "Hjemmeside"
 
-#: admin/views/tabs/metas/archives.php:29 js/dist/new-settings.js:224
-#: js/dist/new-settings.js:232
+#: admin/views/tabs/metas/archives.php:29 js/dist/new-settings.js:14
+#: js/dist/new-settings.js:243 js/dist/new-settings.js:248
 msgid "Special pages"
 msgstr "Specialsider"
 
@@ -4288,18 +4550,20 @@ msgid "Archives"
 msgstr "Arkiver"
 
 #: admin/views/tabs/metas/paper-content/post-type-content.php:96
-#: js/dist/new-settings.js:43
+#: js/dist/new-settings.js:58
 msgid "Breadcrumbs title"
 msgstr "Brødkrummetitel"
 
 #: admin/google_search_console/views/gsc-redirect-nopremium.php:27
 #: js/dist/externals-components.js:78 js/dist/externals/componentsNew.js:136
+#: js/dist/indexables-page.js:43 js/dist/indexables-page.js:44
+#: js/dist/new-settings.js:1 js/dist/new-settings.js:16
 msgid "Close"
 msgstr "Luk"
 
 #: admin/pages/social.php:19 js/dist/block-editor.js:464
-#: js/dist/first-time-configuration.js:1 js/dist/new-settings.js:229
-#: js/dist/settings.js:18
+#: js/dist/first-time-configuration.js:1 js/dist/new-settings.js:14
+#: js/dist/new-settings.js:238 js/dist/settings.js:18
 msgid "Facebook"
 msgstr "Facebook"
 
@@ -4309,7 +4573,6 @@ msgstr "Meta Desc."
 
 #: admin/formatter/class-metabox-formatter.php:129
 #: admin/formatter/class-metabox-formatter.php:159
-#: admin/formatter/class-metabox-formatter.php:189
 #: admin/statistics/class-statistics-service.php:222
 #: inc/class-wpseo-rank.php:141 inc/class-wpseo-rank.php:168
 #: inc/class-wpseo-rank.php:200 js/dist/block-editor.js:1
@@ -4319,13 +4582,13 @@ msgstr "Meta Desc."
 msgid "OK"
 msgstr "OK"
 
-#: admin/pages/social.php:21 js/dist/new-settings.js:224
-#: js/dist/new-settings.js:232
+#: admin/pages/social.php:21 js/dist/new-settings.js:14
+#: js/dist/new-settings.js:246
 msgid "Pinterest"
 msgstr "Pinterest"
 
 #: admin/pages/social.php:20 js/dist/block-editor.js:464
-#: js/dist/first-time-configuration.js:1 js/dist/new-settings.js:229
+#: js/dist/first-time-configuration.js:1 js/dist/new-settings.js:238
 #: js/dist/settings.js:18
 msgid "Twitter"
 msgstr "Twitter"
@@ -4343,7 +4606,7 @@ msgstr "Både %1$s og %2$s opretter OpenGraph-output, som kan få Facebook, Twit
 
 #. translators: %1$s: 'Facebook & Open Graph' plugin name(s) of possibly
 #. conflicting plugin(s), %2$s to Yoast SEO
-#: admin/class-yoast-plugin-conflict.php:210
+#: admin/class-yoast-plugin-conflict.php:175
 msgid "The %1$s plugin might cause issues when used in conjunction with %2$s."
 msgstr "%1$s-pluginnet kan forårsage problemer, når de anvendes sammen med %2$s."
 
@@ -4353,7 +4616,7 @@ msgid "Configure %1$s's Open Graph settings"
 msgstr "Konfigurér OpenGraph-indstillinger for %1$s"
 
 #. translators: %s: 'Facebook' plugin name of possibly conflicting plugin
-#: admin/class-yoast-plugin-conflict.php:214
+#: admin/class-yoast-plugin-conflict.php:179
 msgid "Deactivate %s"
 msgstr "Deaktivér %s"
 
@@ -4384,7 +4647,6 @@ msgid_plural "Trash <span class=\"count\">(%s)</span>"
 msgstr[0] "Papirkurv <span class=\"count\">(%s)</span>"
 msgstr[1] "Papirkurv <span class=\"count\">(%s)</span>"
 
-#: admin/class-admin-init.php:362
 #: src/services/health-check/default-tagline-runner.php:31
 msgid "Just another WordPress site"
 msgstr "Endnu et Wordpress-websted"
@@ -4446,11 +4708,11 @@ msgstr "Eksisterende Yoast meta-beskrivelse"
 msgid "Extensions"
 msgstr "Udvidelser"
 
-#: admin/class-admin.php:227 js/dist/structured-data-blocks.js:13
+#: admin/class-admin.php:229 js/dist/structured-data-blocks.js:13
 msgid "FAQ"
 msgstr "FAQ"
 
-#: admin/class-admin.php:288
+#: admin/class-admin.php:299
 msgid "Facebook profile URL"
 msgstr "Facebook-profil-URL"
 
@@ -4464,13 +4726,13 @@ msgstr "Stort SEO problem: Du blokerer adgangen for robotter."
 
 #: admin/metabox/class-metabox.php:182 js/dist/externals/analysis.js:393
 #: js/dist/externals/replacementVariableEditor.js:78
-#: js/dist/externals/searchMetadataPreviews.js:243 js/dist/new-settings.js:30
-#: js/dist/new-settings.js:41 js/dist/new-settings.js:65
-#: js/dist/new-settings.js:88 js/dist/new-settings.js:145
-#: js/dist/new-settings.js:159 js/dist/new-settings.js:169
-#: js/dist/new-settings.js:188 js/dist/new-settings.js:217
-#: js/dist/new-settings.js:219 js/dist/new-settings.js:222
-#: js/dist/new-settings.js:224
+#: js/dist/externals/searchMetadataPreviews.js:258 js/dist/new-settings.js:5
+#: js/dist/new-settings.js:7 js/dist/new-settings.js:10
+#: js/dist/new-settings.js:14 js/dist/new-settings.js:45
+#: js/dist/new-settings.js:56 js/dist/new-settings.js:80
+#: js/dist/new-settings.js:103 js/dist/new-settings.js:162
+#: js/dist/new-settings.js:176 js/dist/new-settings.js:186
+#: js/dist/new-settings.js:205
 msgid "Meta description"
 msgstr "Meta beskrivelse"
 
@@ -4491,7 +4753,7 @@ msgstr "Intet uddrag"
 #: admin/class-yoast-network-admin.php:43
 #: admin/views/tabs/metas/paper-content/breadcrumbs-content.php:47
 #: admin/views/tabs/metas/paper-content/breadcrumbs-content.php:75
-#: src/config/schema-types.php:163 js/dist/new-settings.js:236
+#: src/config/schema-types.php:163 js/dist/new-settings.js:252
 msgid "None"
 msgstr "Ingen"
 
@@ -4543,7 +4805,6 @@ msgstr "Udgivelsesdato"
 #: admin/metabox/class-metabox.php:426
 #: admin/taxonomy/class-taxonomy-metabox.php:140
 #: inc/class-wpseo-admin-bar-menu.php:694
-#: src/presenters/meta-description-presenter.php:36
 #: src/services/health-check/report-builder.php:168
 #: js/dist/structured-data-blocks.js:13
 msgid "SEO"
@@ -4553,12 +4814,13 @@ msgstr "SEO"
 msgid "SEO Title"
 msgstr "SEO titel"
 
-#: admin/menu/class-admin-menu.php:92
+#: admin/menu/class-admin-menu.php:91
 msgid "Search Console"
 msgstr "Søgekonsol"
 
-#: admin/class-admin.php:222 admin/views/redirects.php:42
-#: src/integrations/settings-integration.php:273
+#: admin/class-admin.php:224 admin/views/redirects.php:42
+#: src/integrations/settings-integration.php:301
+#: src/presenters/meta-description-presenter.php:37
 #: js/dist/structured-data-blocks.js:9
 msgid "Settings"
 msgstr "Indstillinger"
@@ -4571,17 +4833,16 @@ msgstr "Indstillingerne kunne ikke importeres:"
 msgid "Settings successfully imported."
 msgstr "Indstillingerne er importeret succesfuldt."
 
-#: admin/menu/class-admin-menu.php:96 admin/metabox/class-metabox.php:451
-#: admin/taxonomy/class-taxonomy-metabox.php:158 js/dist/new-settings.js:224
-#: js/dist/new-settings.js:226
+#: admin/metabox/class-metabox.php:451
+#: admin/taxonomy/class-taxonomy-metabox.php:158 js/dist/new-settings.js:14
 msgid "Social"
 msgstr "Social"
 
-#: admin/menu/class-admin-menu.php:97 js/dist/new-settings.js:215
+#: admin/menu/class-admin-menu.php:95 js/dist/new-settings.js:232
 msgid "Tools"
 msgstr "Værktøjer"
 
-#: admin/class-admin.php:295 js/dist/new-settings.js:226
+#: admin/class-admin.php:306
 msgid "Twitter username (without @)"
 msgstr "Twitter brugernavn (uden @)"
 
@@ -4659,7 +4920,7 @@ msgstr "Meta Robots Avanceret"
 
 #: admin/menu/class-admin-menu.php:89
 #: admin/menu/class-network-admin-menu.php:56 admin/pages/metas.php:18
-#: admin/pages/network.php:18 js/dist/new-settings.js:232
+#: admin/pages/network.php:18 js/dist/new-settings.js:248
 msgid "General"
 msgstr "Generelt"
 
@@ -4668,8 +4929,8 @@ msgstr "Generelt"
 msgid "Post has an invalid Content Type: %s."
 msgstr "Indlæg har en ugyldig indholdstype: %s."
 
-#: admin/views/class-yoast-feature-toggles.php:137 js/dist/new-settings.js:216
-#: js/dist/new-settings.js:222
+#: admin/views/class-yoast-feature-toggles.php:137 js/dist/new-settings.js:10
+#: js/dist/new-settings.js:233 js/dist/new-settings.js:234
 msgid "XML sitemaps"
 msgstr "XML-sitemaps"
 
