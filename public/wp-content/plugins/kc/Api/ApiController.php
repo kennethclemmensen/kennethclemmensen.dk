@@ -1,7 +1,10 @@
 <?php
 namespace KC\Api;
 
+use KC\Core\Api\HttpHeader;
 use KC\Core\Api\HttpMethod;
+use KC\Core\Api\HttpService;
+use KC\Core\Filter;
 use KC\Core\Security\SecurityService;
 use KC\Data\Database\DataManager;
 use \WP_REST_Controller;
@@ -21,6 +24,7 @@ final class ApiController extends WP_REST_Controller {
 	 */
 	public function __construct(private readonly DataManager $dataManager, private readonly SecurityService $securityService) {
 		$this->namespace = 'kcapi/v1';
+		$this->addHeaders();
 	}
 
 	/**
@@ -33,6 +37,17 @@ final class ApiController extends WP_REST_Controller {
 		$this->registerSlidesRoute();
 		$this->registerGalleriesRoutes();
 		$this->registerShortcutsRoute();
+	}
+
+	/**
+	 * Add headers to the http response
+	 */
+	private function addHeaders() : void {
+		add_filter(Filter::REST_PRE_SERVE_REQUEST, function() : void {
+			$httpService = new HttpService();
+			$value = $this->securityService->escapeUrl(site_url());
+			$httpService->sendHttpHeader(HttpHeader::AccessControlAllowOrigin, $value);
+		});
 	}
 
 	/**

@@ -12,6 +12,8 @@ final readonly class Filter {
 
 	public const MIMES = 'upload_mimes';
 
+	public const REST_PRE_SERVE_REQUEST = 'rest_pre_serve_request';
+
 	/**
 	 * Get the manage_{$post_type}_posts_columns filter for a post type
 	 * 

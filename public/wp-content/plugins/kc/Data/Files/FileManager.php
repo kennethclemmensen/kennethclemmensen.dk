@@ -2,6 +2,8 @@
 namespace KC\Data\Files;
 
 use KC\Core\Api\ContentType;
+use KC\Core\Api\HttpHeader;
+use KC\Core\Api\HttpService;
 use KC\Core\Exceptions\EmptyStringException;
 use KC\Core\Files\FileService;
 use \RecursiveDirectoryIterator;
@@ -97,13 +99,14 @@ final readonly class FileManager {
 			$file .= $fileName;
 		}
 		$fileService = new FileService();
-		header('Content-Description: File Transfer');
-		header('Content-Type: '.ContentType::OctetStream->value);
-		header('Content-Disposition: attachment; filename="'.basename($file).'"');
-		header('Expires: 0');
-		header('Cache-Control: must-revalidate');
-		header('Pragma: public');
-		header('Content-Length: '.$fileService->getFilesize($file));
+		$httpService = new HttpService();
+		$httpService->sendHttpHeader(HttpHeader::ContentDescription, 'File Transfer');
+		$httpService->sendHttpHeader(HttpHeader::ContentType, ContentType::OctetStream->value);
+		$httpService->sendHttpHeader(HttpHeader::ContentDisposition, 'attachment; filename="'.basename($file).'"');
+		$httpService->sendHttpHeader(HttpHeader::Expires, 0);
+		$httpService->sendHttpHeader(HttpHeader::CacheControl, 'must-revalidate');
+		$httpService->sendHttpHeader(HttpHeader::Pragma, 'public');
+		$httpService->sendHttpHeader(HttpHeader::ContentLength, $fileService->getFilesize($file));
 		readfile($file);
 		exit;
 	}
