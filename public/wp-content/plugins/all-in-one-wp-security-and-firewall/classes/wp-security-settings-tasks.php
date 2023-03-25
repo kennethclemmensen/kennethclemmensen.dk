@@ -16,8 +16,7 @@ class AIOWPSecurity_Settings_Tasks {
 	public static function enable_basic_firewall() {
 		global $aio_wp_security;
 		$msg = array();
-		$aio_wp_security->configs->set_value('aiowps_enable_basic_firewall', '1');
-		$aio_wp_security->configs->save_config();
+		$aio_wp_security->configs->set_value('aiowps_enable_basic_firewall', '1', true);
 		//Now let's write the applicable rules to the .htaccess file
 		$res = AIOWPSecurity_Utility_Htaccess::write_to_htaccess();
 		if ($res) {

@@ -28,6 +28,17 @@ class AIOWPSecurity_Deactivation_Tasks extends AIOWPSecurity_Base_Tasks {
 			// Deactivates PHP-based firewall
 			AIOWPSecurity_Utility_Firewall::remove_firewall();
 		}
+		
+		self::clear_cron_events();
+	}
+	
+	/**
+	 * Helper function which clears aiowps cron events
+	 */
+	private static function clear_cron_events() {
+		wp_clear_scheduled_hook('aiowps_hourly_cron_event');
+		wp_clear_scheduled_hook('aiowps_daily_cron_event');
+		wp_clear_scheduled_hook('aios_15_minutes_cron_event');
 	}
 
 }

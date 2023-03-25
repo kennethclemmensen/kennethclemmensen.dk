@@ -11,73 +11,28 @@ class AIOWPSecurity_Maintenance_Menu extends AIOWPSecurity_Admin_Menu {
 	 * @var string
 	 */
 	protected $menu_page_slug = AIOWPSEC_MAINTENANCE_MENU_SLUG;
-
+	
 	/**
-	 * Specify all the tabs of this menu
-	 *
-	 * @var array
-	 */
-	protected $menu_tabs;
-
-	/**
-	 * Specify all the tabs handler methods
-	 *
-	 * @var array
-	 */
-	protected $menu_tabs_handler = array(
-		'visitor-lockout' => 'render_visitor_lockout',
-	);
-
-	/**
-	 * Construct adds menu for maintenance
+	 * Constructor adds menu for Maintenance
 	 */
 	public function __construct() {
-		$this->render_menu_page();
+		parent::__construct(__('Maintenance', 'all-in-one-wp-security-and-firewall'));
 	}
 
 	/**
-	 * Populates $menu_tabs array.
+	 * This function will setup the menus tabs by setting the array $menu_tabs
 	 *
-	 * @return Void
+	 * @return void
 	 */
-	private function set_menu_tabs() {
-		$this->menu_tabs = array(
-			'visitor-lockout' => __('Visitor lockout', 'all-in-one-wp-security-and-firewall'),
+	protected function setup_menu_tabs() {
+		$menu_tabs = array(
+			'visitor-lockout' => array(
+				'title' => __('Visitor lockout', 'all-in-one-wp-security-and-firewall'),
+				'render_callback' => array($this, 'render_visitor_lockout'),
+			),
 		);
-	}
 
-	/*
-	 * Renders our tabs of this menu as nav items
-	 */
-	private function render_menu_tabs() {
-		$current_tab = $this->get_current_tab();
-
-		echo '<h2 class="nav-tab-wrapper">';
-		foreach ($this->menu_tabs as $tab_key => $tab_caption) {
-			$active = $current_tab == $tab_key ? 'nav-tab-active' : '';
-			echo '<a class="nav-tab ' . $active . '" href="?page=' . $this->menu_page_slug . '&tab=' . $tab_key . '">' . $tab_caption . '</a>';
-		}
-		echo '</h2>';
-	}
-
-	/*
-	 * The menu rendering goes here
-	 */
-	private function render_menu_page() {
-		echo '<div class="wrap">';
-		echo '<h2>'.__('Maintenance','all-in-one-wp-security-and-firewall').'</h2>'; // Interface title
-		$this->set_menu_tabs();
-		$tab = $this->get_current_tab();
-		$this->render_menu_tabs();
-		?>
-		<div id="poststuff"><div id="post-body">
-		<?php
-		// $tab_keys = array_keys($this->menu_tabs);
-		call_user_func(array($this, $this->menu_tabs_handler[$tab]));
-		?>
-		</div></div>
-		</div><!-- end of wrap -->
-		<?php
+		$this->menu_tabs = array_filter($menu_tabs, array($this, 'should_display_tab'));
 	}
 
 	/**
@@ -85,7 +40,7 @@ class AIOWPSecurity_Maintenance_Menu extends AIOWPSecurity_Admin_Menu {
 	 *
 	 * @return void
 	 */
-	private function render_visitor_lockout() {
+	protected function render_visitor_lockout() {
 		global $aio_wp_security;
 		$maint_msg = '';
 		if (isset($_POST['aiowpsec_save_site_lockout'])) {

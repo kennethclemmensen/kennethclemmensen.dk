@@ -28,7 +28,6 @@ class AIOWPSecurity_Uninstallation_Tasks extends AIOWPSecurity_Base_Tasks {
 	 * @return void
 	 */
 	protected static function run_for_a_site() {
-		self::clear_cron_events();
 		// Drop db tables and configs
 		self::drop_database_tables_and_configs();
 	}
@@ -49,6 +48,7 @@ class AIOWPSecurity_Uninstallation_Tasks extends AIOWPSecurity_Base_Tasks {
 			$wpdb->prefix.'aiowps_events',
 			$wpdb->prefix.'aiowps_permanent_block',
 			$wpdb->prefix.'aiowps_debug_log',
+			$wpdb->prefix.'aiowps_audit_log',
 		);
 
 		$aio_wp_security->configs->load_config();
@@ -76,13 +76,5 @@ class AIOWPSecurity_Uninstallation_Tasks extends AIOWPSecurity_Base_Tasks {
 			delete_option('aiowpsec_db_version');
 			delete_option('aiowpsec_firewall_version');
 		}
-	}
-
-	/**
-	 * Helper function which clears aiowps cron events
-	 */
-	private static function clear_cron_events() {
-		wp_clear_scheduled_hook('aiowps_hourly_cron_event');
-		wp_clear_scheduled_hook('aiowps_daily_cron_event');
 	}
 }

@@ -25,7 +25,7 @@ class AIOWPSecurity_WP_Footer_Content {
 
 		// Activate the copy protection feature for non-admin users
 		$copy_protection_active = $aio_wp_security->configs->get_value('aiowps_copy_protection') == '1';
-		if ($copy_protection_active && !current_user_can(apply_filters('aios_management_permission', 'manage_options'))) {
+		if ($copy_protection_active && !AIOWPSecurity_Utility_Permissions::has_manage_cap()) {
 			$this->output_copy_protection_code();
 		}
 		

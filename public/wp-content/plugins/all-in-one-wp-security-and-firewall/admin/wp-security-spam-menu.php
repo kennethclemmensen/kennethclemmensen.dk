@@ -13,69 +13,38 @@ class AIOWPSecurity_Spam_Menu extends AIOWPSecurity_Admin_Menu {
 	protected $menu_page_slug = AIOWPSEC_SPAM_MENU_SLUG;
 	
 	/**
-	 * Specify all the tabs of this menu
-	 *
-	 * @var array
+	 * Constructor adds menu for Spam prevention
 	 */
-	protected $menu_tabs;
-
-	/**
-	 * Specify all the tabs handler methods
-	 *
-	 * @var array
-	 */
-	protected $menu_tabs_handler = array(
-		'comment-spam' => 'render_comment_spam',
-		'comment-spam-ip-monitoring' => 'render_comment_spam_ip_monitoring',
-		'buddypress' => 'render_buddypress',
-		'bbpress' => 'render_bbpress',
-	);
-	
 	public function __construct() {
-		$this->render_menu_page();
+		parent::__construct(__('Spam prevention', 'all-in-one-wp-security-and-firewall'));
 	}
 	
-	private function set_menu_tabs() {
-		$this->menu_tabs = array(
-			'comment-spam' => __('Comment spam', 'all-in-one-wp-security-and-firewall'),
-			'comment-spam-ip-monitoring' => __('Comment spam IP monitoring', 'all-in-one-wp-security-and-firewall'),
-			'buddypress' => __('BuddyPress', 'all-in-one-wp-security-and-firewall'),
-			'bbpress' => __('bbPress', 'all-in-one-wp-security-and-firewall'),
+	/**
+	 * This function will setup the menus tabs by setting the array $menu_tabs
+	 *
+	 * @return void
+	 */
+	protected function setup_menu_tabs() {
+		$menu_tabs = array(
+			'comment-spam' => array(
+				'title' => __('Comment spam', 'all-in-one-wp-security-and-firewall'),
+				'render_callback' => array($this, 'render_comment_spam'),
+			),
+			'comment-spam-ip-monitoring' => array(
+				'title' => __('Comment spam IP monitoring', 'all-in-one-wp-security-and-firewall'),
+				'render_callback' => array($this, 'render_comment_spam_ip_monitoring'),
+			),
+			'buddypress' => array(
+				'title' => __('BuddyPress', 'all-in-one-wp-security-and-firewall'),
+				'render_callback' => array($this, 'render_buddypress'),
+			),
+			'bbpress' => array(
+				'title' => __('bbPress', 'all-in-one-wp-security-and-firewall'),
+				'render_callback' => array($this, 'render_bbpress'),
+			),
 		);
-	}
 
-	/*
-	 * Renders our tabs of this menu as nav items
-	 */
-	private function render_menu_tabs() {
-		$current_tab = $this->get_current_tab();
-
-		echo '<h2 class="nav-tab-wrapper">';
-		foreach( $this->menu_tabs as $tab_key => $tab_caption ) {
-			$active = $current_tab == $tab_key ? 'nav-tab-active' : '';
-			echo '<a class="nav-tab ' . $active . '" href="?page=' . $this->menu_page_slug . '&tab=' . $tab_key . '">' . $tab_caption . '</a>';	
-		}
-		echo '</h2>';
-	}
-	
-	/*
-	 * The menu rendering goes here
-	 */
-	private function render_menu_page() {
-		echo '<div class="wrap">';
-		echo '<h2>'.__('Spam prevention', 'all-in-one-wp-security-and-firewall').'</h2>'; // Interface title
-		$this->set_menu_tabs();
-		$tab = $this->get_current_tab();
-		$this->render_menu_tabs();
-		?>
-		<div id="poststuff"><div id="post-body">
-		<?php 
-		// $tab_keys = array_keys($this->menu_tabs);
-		call_user_func(array($this, $this->menu_tabs_handler[$tab]));
-		?>
-		</div></div>
-		</div><!-- end of wrap -->
-		<?php
+		$this->menu_tabs = array_filter($menu_tabs, array($this, 'should_display_tab'));
 	}
 	
 	/**
@@ -83,7 +52,7 @@ class AIOWPSecurity_Spam_Menu extends AIOWPSecurity_Admin_Menu {
 	 *
 	 * @return Void
 	 */
-	private function render_comment_spam() {
+	protected function render_comment_spam() {
 		global $aiowps_feature_mgr, $aio_wp_security;
 
 		if (isset($_POST['aiowps_apply_comment_spam_prevention_settings'])) { // Do form submission tasks
@@ -141,7 +110,7 @@ class AIOWPSecurity_Spam_Menu extends AIOWPSecurity_Admin_Menu {
 	 *
 	 * @return Void
 	 */
-	private function render_comment_spam_ip_monitoring() {
+	protected function render_comment_spam_ip_monitoring() {
 		global $aio_wp_security, $aiowps_feature_mgr, $wpdb;
 		include_once 'wp-security-list-comment-spammer-ip.php'; // For rendering the AIOWPSecurity_List_Table in tab2
 		$spammer_ip_list = new AIOWPSecurity_List_Comment_Spammer_IP();
@@ -192,19 +161,18 @@ class AIOWPSecurity_Spam_Menu extends AIOWPSecurity_Admin_Menu {
 				$error .= '<br>'.__('You entered a non numeric value for the minimum spam comments per IP field.', 'all-in-one-wp-security-and-firewall').' '.__('It has been set to the default value.', 'all-in-one-wp-security-and-firewall');
 				$min_comments_per_ip = '5'; // Set it to the default value for this field
 			}
-			
+
 			if ($error) {
 				$this->show_msg_error(__('Attention:', 'all-in-one-wp-security-and-firewall').' '.$error);
 			}
-			
+
 			// Save all the form values to the options
-			$aio_wp_security->configs->set_value('aiowps_spam_ip_min_comments', absint($min_comments_per_ip));
-			$aio_wp_security->configs->save_config();
+			$aio_wp_security->configs->set_value('aiowps_spam_ip_min_comments', absint($min_comments_per_ip), true);
+
 			$info_msg_string = sprintf(__('Displaying results for IP addresses which have posted a minimum of %s spam comments.', 'all-in-one-wp-security-and-firewall'), $min_comments_per_ip);
 			$this->show_msg_updated($info_msg_string);
-			
 		}
-		
+
 		if (isset($_REQUEST['action'])) { // Do list table form row action tasks
 			if ($_REQUEST['action'] == 'block_spammer_ip') { //The "block" link was clicked for a row in the list table
 				$spammer_ip_list->block_spammer_ip_records(strip_tags($_REQUEST['spammer_ip']));
@@ -219,7 +187,7 @@ class AIOWPSecurity_Spam_Menu extends AIOWPSecurity_Admin_Menu {
 			$total_res = $wpdb->get_results($sql);
 			$block_comments_output = '<div class="aio_yellow_box">';
 			if (empty($total_res)) {
-				$block_comments_output .= '<p><strong>'.__('You currently have no IP addresses permanently blocked due to spam.', 'all-in-one-wp-security-and-firewall').'</strong></p>';
+				$block_comments_output .= '<p><strong>'.__('You currently have no IP addresses permanently blocked due to spam.', 'all-in-one-wp-security-and-firewall').'</strong></p></div>';
 			} else {
 				$total_count = count($total_res);
 				$todays_blocked_count = 0;
@@ -244,9 +212,9 @@ class AIOWPSecurity_Spam_Menu extends AIOWPSecurity_Admin_Menu {
 	 *
 	 * @return Void
 	 */
-	private function render_buddypress() {
+	protected function render_buddypress() {
 		global $aiowps_feature_mgr, $aio_wp_security;
-		
+
 		if (isset($_POST['aiowps_save_bp_spam_settings'])) { // Do form submission tasks
 			$nonce = $_REQUEST['_wpnonce'];
 			if (!wp_verify_nonce($nonce, 'aiowpsec-bp-spam-settings-nonce')) {
@@ -255,11 +223,8 @@ class AIOWPSecurity_Spam_Menu extends AIOWPSecurity_Admin_Menu {
 			}
 
 			// Save settings
-			$aio_wp_security->configs->set_value('aiowps_enable_bp_register_captcha',isset($_POST["aiowps_enable_bp_register_captcha"])?'1':'');
+			$aio_wp_security->configs->set_value('aiowps_enable_bp_register_captcha', isset($_POST["aiowps_enable_bp_register_captcha"]) ? '1' : '', true);
 
-			// Commit the config settings
-			$aio_wp_security->configs->save_config();
-			
 			// Recalculate points after the feature status/options have been altered
 			$aiowps_feature_mgr->check_feature_status_and_recalculate_points();
 
@@ -268,13 +233,13 @@ class AIOWPSecurity_Spam_Menu extends AIOWPSecurity_Admin_Menu {
 
 		$aio_wp_security->include_template('wp-admin/spam-prevention/buddypress.php', false, array('AIOWPSecurity_Spam_Menu' => $this, 'aiowps_feature_mgr' => $aiowps_feature_mgr));
 	}
-	
+
 	/**
 	 * Renders the submenu's bbPress tab body.
 	 *
 	 * @return Void
 	 */
-	private function render_bbpress() {
+	protected function render_bbpress() {
 		global $aiowps_feature_mgr, $aio_wp_security;
 		if (isset($_POST['aiowps_save_bbp_spam_settings'])) { // Do form submission tasks
 			$nonce = $_REQUEST['_wpnonce'];
@@ -284,11 +249,8 @@ class AIOWPSecurity_Spam_Menu extends AIOWPSecurity_Admin_Menu {
 			}
 
 			// Save settings
-			$aio_wp_security->configs->set_value('aiowps_enable_bbp_new_topic_captcha',isset($_POST["aiowps_enable_bbp_new_topic_captcha"])?'1':'');
+			$aio_wp_security->configs->set_value('aiowps_enable_bbp_new_topic_captcha', isset($_POST["aiowps_enable_bbp_new_topic_captcha"]) ? '1' : '', true);
 
-			// Commit the config settings
-			$aio_wp_security->configs->save_config();
-			
 			// Recalculate points after the feature status/options have been altered
 			$aiowps_feature_mgr->check_feature_status_and_recalculate_points();
 

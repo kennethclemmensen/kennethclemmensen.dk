@@ -41,7 +41,7 @@ class AIOWPSecurity_General_Init_Tasks {
 			add_filter('retrieve_password_message', array($this, 'decode_reset_pw_msg'), 10, 4); //Fix for non decoded html entities in password reset link
 		}
 
-		if (current_user_can(apply_filters('aios_management_permission', 'manage_options')) && is_admin()) {
+		if (AIOWPSecurity_Utility_Permissions::has_manage_cap() && is_admin()) {
 			if ('1' == $aio_wp_security->configs->get_value('aios_google_recaptcha_invalid_configuration')) {
 				add_action('all_admin_notices', array($this, 'google_recaptcha_notice'));
 			}
@@ -72,7 +72,7 @@ class AIOWPSecurity_General_Init_Tasks {
 
 		// For the cookie based brute force prevention feature
 		// Already logged in user should not redirected to brute_force_redirect_url in any case so added condition !is_user_logged_in()
-		if ($aio_wp_security->should_cookie_based_brute_force_prvent()) {
+		if ('1' == $aio_wp_security->configs->get_value('aiowps_enable_brute_force_attack_prevention')) {
 			$bfcf_secret_word = $aio_wp_security->configs->get_value('aiowps_brute_force_secret_word');
 			if (isset($_GET[$bfcf_secret_word])) {
 				AIOWPSecurity_Utility_IP::check_login_whitelist_and_forbid();
@@ -422,7 +422,7 @@ class AIOWPSecurity_General_Init_Tasks {
 			$disabled_message .= '<tr id="disable-password">';
 			$disabled_message .= '<th>'.__('Disabled').'</th>';
 			$disabled_message .= '<td>'.htmlspecialchars(__('Application passwords have been disabled by All In One WP Security & Firewall plugin.', 'all-in-one-wp-security-and-firewall'));
-			if (current_user_can(apply_filters('aios_management_permission', 'manage_options'))) {
+			if (AIOWPSecurity_Utility_Permissions::has_manage_cap()) {
 				$aiowps_addtional_setting_url = 'admin.php?page=aiowpsec_userlogin&tab=additional';
 				$change_setting_url = is_multisite() ? network_admin_url($aiowps_addtional_setting_url) : admin_url($aiowps_addtional_setting_url);
 				$disabled_message .= '<p><a href="'.$change_setting_url.'"  class="button">'.__('Change setting', 'all-in-one-wp-security-and-firewall').'</a></p>';
@@ -545,11 +545,10 @@ class AIOWPSecurity_General_Init_Tasks {
 			global $aio_wp_security;
 
 			if (strip_tags($_REQUEST['aiowps_reapply_htaccess']) == 1) {
-				if (!wp_verify_nonce($_GET['_wpnonce'], 'aiowps-reapply-htaccess-yes')) {
-					$aio_wp_security->debug_logger->log_debug("Nonce check failed on reapply .htaccess rule!", 4);
-					// Temp
-					die('nonce issue');
-					return;
+				$result = AIOWPSecurity_Utility_Permissions::check_nonce_and_user_cap($_GET['_wpnonce'], 'aiowps-reapply-htaccess-yes');
+				if (is_wp_error($result)) {
+					$aio_wp_security->debug_logger->log_debug($result->get_error_message(), 4);
+					die($result->get_error_message());
 				}
 				include_once('wp-security-installer.php');
 				if (AIOWPSecurity_Installer::reactivation_tasks()) {
@@ -562,8 +561,9 @@ class AIOWPSecurity_General_Init_Tasks {
 					// Can't echo to the screen here. It will create an header already sent error.
 				}
 			} elseif (strip_tags($_REQUEST['aiowps_reapply_htaccess']) == 2) {
-				if (!wp_verify_nonce($_GET['_wpnonce'], 'aiowps-reapply-htaccess-no')) {
-					$aio_wp_security->debug_logger->log_debug("Nonce check failed on dismissing reapply .htaccess rule notice!", 4);
+				$result = AIOWPSecurity_Utility_Permissions::check_nonce_and_user_cap($_GET['_wpnonce'], 'aiowps-reapply-htaccess-no');
+				if (is_wp_error($result)) {
+					$aio_wp_security->debug_logger->log_debug($result->get_error_message(), 4);
 					return;
 				}
 				// Don't re-write the rules and just delete the temp config item

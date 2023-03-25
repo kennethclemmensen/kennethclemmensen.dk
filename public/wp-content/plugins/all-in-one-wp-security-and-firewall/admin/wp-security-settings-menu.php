@@ -14,26 +14,21 @@ class AIOWPSecurity_Settings_Menu extends AIOWPSecurity_Admin_Menu {
 	 *
 	 * @var string
 	 */
-	private $menu_page_slug = AIOWPSEC_SETTINGS_MENU_SLUG;
+	protected $menu_page_slug = AIOWPSEC_SETTINGS_MENU_SLUG;
 
 	/**
-	 * Specify all the tabs of this menu
-	 *
-	 * @var array
-	 */
-	public $menu_tabs;
-
-	/**
-	 * Class constructor
+	 * Constructor adds menu for Settings
 	 */
 	public function __construct() {
-		$this->render_menu_page();
+		parent::__construct(__('Settings', 'all-in-one-wp-security-and-firewall'));
 	}
 
 	/**
-	 * Sets the menu_tabs class variable
+	 * This function will setup the menus tabs by setting the array $menu_tabs
+	 *
+	 * @return void
 	 */
-	public function set_menu_tabs() {
+	public function setup_menu_tabs() {
 		$menu_tabs = array(
 			'general-settings' => array(
 				'title' => __('General settings', 'all-in-one-wp-security-and-firewall'),
@@ -59,64 +54,15 @@ class AIOWPSecurity_Settings_Menu extends AIOWPSecurity_Admin_Menu {
 				'title' => __('Import/Export', 'all-in-one-wp-security-and-firewall'),
 				'render_callback' => array($this, 'render_settings_file_operations'),
 			),
-		);
-
-		if (is_main_site()) {
-			$menu_tabs['advanced-settings'] =  array(
+			'advanced-settings' => array(
 				'title' => __('Advanced settings', 'all-in-one-wp-security-and-firewall'),
 				'render_callback' => array($this, 'render_advanced_settings'),
-			);
-		}
+				'display_condition_callback' => 'is_main_site',
+			),
+		);
 
 		$menu_tabs = apply_filters('aiowpsecurity_setting_tabs', $menu_tabs);
 		$this->menu_tabs = array_filter($menu_tabs, array($this, 'should_display_tab'));
-	}
-
-	/*
-	 * Renders our tabs of this menu as nav items
-	 */
-	public function render_menu_tabs() {
-		$current_tab = $this->get_current_tab();
-
-		echo '<h2 class="nav-tab-wrapper">';
-		foreach ($this->menu_tabs as $tab_key => $tab_info) {
-			$active = $current_tab == $tab_key ? 'nav-tab-active' : '';
-			echo '<a class="nav-tab ' . $active . '" href="?page=' . $this->menu_page_slug . '&tab=' . $tab_key . '">' . esc_html($tab_info['title']) . '</a>';
-		}
-		echo '</h2>';
-	}
-
-	/**
-	 * Decide whether to display the tab for the given tab information.
-	 *
-	 * @param array $tab_info tab information array cotaining element keys like title, render_callback and display_condition_callback etc..
-	 * @return boolean The tab information array contains element keys such as title, render_callback, and display_condition_callback, among others.
-	 */
-	private function should_display_tab($tab_info) {
-		if (!empty($tab_info['display_condition_callback']) && is_callable($tab_info['display_condition_callback'])) {
-			return call_user_func($tab_info['display_condition_callback']);
-		} else {
-			return true;
-		}
-	}
-
-	/*
-	 * The menu rendering goes here
-	 */
-	public function render_menu_page() {
-		echo '<div class="wrap">';
-		echo '<h2>'.__('Settings','all-in-one-wp-security-and-firewall').'</h2>'; // Interface title
-		$this->set_menu_tabs();
-		$tab = $this->get_current_tab();
-		$this->render_menu_tabs();
-		?>
-		<div id="poststuff"><div id="post-body">
-				<?php
-				call_user_func($this->menu_tabs[$tab]['render_callback']);
-				?>
-			</div></div>
-		</div><!-- end of wrap -->
-		<?php
 	}
 
 	/**
@@ -124,7 +70,7 @@ class AIOWPSecurity_Settings_Menu extends AIOWPSecurity_Admin_Menu {
 	 *
 	 * @return void
 	 */
-	private function render_general_settings() {
+	protected function render_general_settings() {
 		global $aio_wp_security;
 		if (isset($_POST['aiowpsec_disable_all_features'])) { //Do form submission tasks
 			$nonce = $_POST['_wpnonce'];
@@ -171,16 +117,15 @@ class AIOWPSecurity_Settings_Menu extends AIOWPSecurity_Admin_Menu {
 				$this->show_msg_error($msg['error']);
 			}
 		}
-		
+
 		if (isset($_POST['aiowps_save_debug_settings'])) { //Do form submission tasks
 			$nonce = $_POST['_wpnonce'];
 			if (!wp_verify_nonce($nonce, 'aiowpsec-save-debug-settings')) {
 				$aio_wp_security->debug_logger->log_debug("Nonce check failed on save debug settings.", 4);
 				die("Nonce check failed on save debug settings.");
 			}
-			
-			$aio_wp_security->configs->set_value('aiowps_enable_debug', isset($_POST["aiowps_enable_debug"]) ? '1' : '');
-			$aio_wp_security->configs->save_config();
+
+			$aio_wp_security->configs->set_value('aiowps_enable_debug', isset($_POST["aiowps_enable_debug"]) ? '1' : '', true);
 			$this->show_msg_settings_updated();
 		}
 		$aio_wp_security->include_template('wp-admin/settings/general-settings.php', false, array());
@@ -191,7 +136,7 @@ class AIOWPSecurity_Settings_Menu extends AIOWPSecurity_Admin_Menu {
 	 *
 	 * @return void
 	 */
-	private function render_htaccess_file_operations() {
+	protected function render_htaccess_file_operations() {
 		global $aio_wp_security;
 
 		$home_path = AIOWPSecurity_Utility_File::get_home_path();
@@ -260,7 +205,7 @@ class AIOWPSecurity_Settings_Menu extends AIOWPSecurity_Admin_Menu {
 	 *
 	 * @return void
 	 */
-	private function render_wp_config_file_operations() {
+	protected function render_wp_config_file_operations() {
 		global $aio_wp_security;
 
 		if (isset($_POST['aiowps_restore_wp_config'])) { // Do form submission tasks
@@ -301,7 +246,7 @@ class AIOWPSecurity_Settings_Menu extends AIOWPSecurity_Admin_Menu {
 	 *
 	 * @return void
 	 */
-	private function render_delete_plugin_settings_tab() {
+	protected function render_delete_plugin_settings_tab() {
 		global $aio_wp_security;
 
 		if (isset($_POST['aiowpsec_save_delete_plugin_settings'])) {
@@ -328,7 +273,7 @@ class AIOWPSecurity_Settings_Menu extends AIOWPSecurity_Admin_Menu {
 	 *
 	 * @return void
 	 */
-	public function render_wp_version_info() {
+	protected function render_wp_version_info() {
 		global $aio_wp_security, $aiowps_feature_mgr;
 
 		if (isset($_POST['aiowps_save_remove_wp_meta_info'])) { // Do form submission tasks
@@ -337,8 +282,7 @@ class AIOWPSecurity_Settings_Menu extends AIOWPSecurity_Admin_Menu {
 				$aio_wp_security->debug_logger->log_debug("Nonce check failed on remove wp meta info options save!",4);
 				die("Nonce check failed on remove wp meta info options save!");
 			}
-			$aio_wp_security->configs->set_value('aiowps_remove_wp_generator_meta_info',isset($_POST["aiowps_remove_wp_generator_meta_info"])?'1':'');
-			$aio_wp_security->configs->save_config();
+			$aio_wp_security->configs->set_value('aiowps_remove_wp_generator_meta_info', isset($_POST["aiowps_remove_wp_generator_meta_info"]) ? '1' : '', true);
 
 			//Recalculate points after the feature status/options have been altered
 			$aiowps_feature_mgr->check_feature_status_and_recalculate_points();
@@ -354,7 +298,7 @@ class AIOWPSecurity_Settings_Menu extends AIOWPSecurity_Admin_Menu {
 	 *
 	 * @return void
 	 */
-	public function render_settings_file_operations() {
+	protected function render_settings_file_operations() {
 		global $aio_wp_security, $aiowps_firewall_config, $simba_two_factor_authentication;
 		global $wpdb;
 
@@ -463,12 +407,12 @@ class AIOWPSecurity_Settings_Menu extends AIOWPSecurity_Admin_Menu {
 	 *
 	 * @return void
 	 */
-	public function render_advanced_settings() {
+	protected function render_advanced_settings() {
 		if (!is_main_site()) {
 			return;
 		}
 
-		global $aio_wp_security;
+		global $aio_wp_security, $aiowps_firewall_config;
 
 		if (isset($_POST['aiowps_save_advanced_settings'])) {
 			if (empty($_POST['_wpnonce']) || !wp_verify_nonce($_POST['_wpnonce'], 'aiowpsec-ip-settings-nonce')) {
@@ -479,8 +423,8 @@ class AIOWPSecurity_Settings_Menu extends AIOWPSecurity_Admin_Menu {
 			$ip_retrieve_method_id = sanitize_text_field($_POST["aiowps_ip_retrieve_method"]);
 
 			if (in_array($ip_retrieve_method_id, array_keys(AIOS_Abstracted_Ids::get_ip_retrieve_methods()))) {
-				$aio_wp_security->configs->set_value('aiowps_ip_retrieve_method', $ip_retrieve_method_id);
-				$aio_wp_security->configs->save_config(); //Save the configuration
+				$aio_wp_security->configs->set_value('aiowps_ip_retrieve_method', $ip_retrieve_method_id, true);
+				$aiowps_firewall_config->set_value('aios_ip_retrieve_method', $ip_retrieve_method_id);
 
 				//Clear logged in list because it might be showing wrong addresses
 				if (AIOWPSecurity_Utility::is_multisite_install()) {

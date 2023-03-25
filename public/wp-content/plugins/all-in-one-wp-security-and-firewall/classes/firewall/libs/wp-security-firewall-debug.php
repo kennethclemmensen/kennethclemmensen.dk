@@ -23,7 +23,9 @@ class Debug {
 	 * @return boolean
 	 */
 	public function is_debug_enabled() {
-		return (defined('AIOS_FIREWALL_DEBUG') && AIOS_FIREWALL_DEBUG);
+		global $aiowps_constants;
+
+		return $aiowps_constants->AIOS_FIREWALL_DEBUG;
 	}
 
 	/**
@@ -32,7 +34,9 @@ class Debug {
 	 * @return boolean
 	 */
 	public function is_debug_request_enabled() {
-		return (defined('AIOS_FIREWALL_DEBUG_SHOW_REQUEST') && AIOS_FIREWALL_DEBUG_SHOW_REQUEST);
+		global $aiowps_constants;
+		
+		return $aiowps_constants->AIOS_FIREWALL_DEBUG_SHOW_REQUEST;
 	}
 
 	/**

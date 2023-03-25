@@ -115,7 +115,7 @@ class AIO_WP_Security_Simba_Two_Factor_Authentication_Plugin extends Simba_Two_F
 		
 		global $current_user;
 		if ($this->is_activated_for_user($current_user->ID)) {
-			if (!current_user_can(apply_filters('aios_management_permission', 'manage_options'))) {
+			if (!AIOWPSecurity_Utility_Permissions::has_manage_cap()) {
 				$menu_icon_url = AIO_WP_SECURITY_URL . '/images/plugin-icon.png';
 				add_menu_page(__('WP Security', 'all-in-one-wp-security-and-firewall'), __('WP Security', 'all-in-one-wp-security-and-firewall'), apply_filters('aios_management_permission', 'manage_options'), AIOWPSEC_MAIN_MENU_SLUG, '', $menu_icon_url);
 			}
@@ -130,7 +130,7 @@ class AIO_WP_Security_Simba_Two_Factor_Authentication_Plugin extends Simba_Two_F
 	 * @return array Returns all tabs with callback function name
 	 */
 	public function add_two_factor_setting_tab($tabs = array()) {
-		if (!current_user_can(apply_filters('aios_management_permission', 'manage_options'))) return;
+		if (!AIOWPSecurity_Utility_Permissions::has_manage_cap()) return;
 
 		$tabs['two-factor-authentication'] = array(
 			'title' => __('Two factor authentication', 'all-in-one-wp-security-and-firewall-premium'),
@@ -161,7 +161,7 @@ class AIO_WP_Security_Simba_Two_Factor_Authentication_Plugin extends Simba_Two_F
 	 */
 	public function show_admin_settings_page() {
 
-		if (!is_admin() || !current_user_can(apply_filters('aios_management_permission', 'manage_options'))) return;
+		if (!is_admin() || !AIOWPSecurity_Utility_Permissions::has_manage_cap()) return;
 		
 		// The value for totp_controller is already set by versions of the TFA plugin after 3 Oct 2022
 		$this->include_template('admin-settings.php', array(

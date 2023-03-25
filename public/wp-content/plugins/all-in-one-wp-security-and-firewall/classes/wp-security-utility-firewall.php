@@ -209,7 +209,7 @@ class AIOWPSecurity_Utility_Firewall {
 			if (true === $file->contains_contents()) {
 
 				$removed = $file->remove_contents();
-				
+
 				if (is_wp_error($removed)) {
 					$error_message = $removed->get_error_message();
 					$error_message .= ' - ';
@@ -226,8 +226,7 @@ class AIOWPSecurity_Utility_Firewall {
 			@unlink($muplugin_path); // phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged -- ignore this
 		}
 
-		$aio_wp_security->configs->set_value('aios_firewall_dismiss', false);
-		$aio_wp_security->configs->save_config();
+		$aio_wp_security->configs->set_value('aios_firewall_dismiss', false, true);
 	}
 
 }

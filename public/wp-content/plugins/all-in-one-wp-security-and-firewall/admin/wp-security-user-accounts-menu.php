@@ -11,30 +11,12 @@ class AIOWPSecurity_User_Accounts_Menu extends AIOWPSecurity_Admin_Menu {
 	 * @var string
 	 */
 	protected $menu_page_slug = AIOWPSEC_USER_ACCOUNTS_MENU_SLUG;
-	
-	/**
-	 * Specify all the tabs of this menu
-	 *
-	 * @var array
-	 */
-	protected $menu_tabs;
 
 	/**
-	 * Specify all the tabs handler methods
-	 *
-	 * @var array
-	 */
-	protected $menu_tabs_handler = array(
-		'wp-username' => 'render_wp_username', 
-		'display-name' => 'render_display_name',
-		'password-tool' => 'render_password_tool',
-	);
-
-	/**
-	 * The class constructor, sets up the menu pages
+	 * Constructor adds menu for User accounts
 	 */
 	public function __construct() {
-		$this->render_menu_page();
+		parent::__construct(__('User accounts', 'all-in-one-wp-security-and-firewall'));
 		
 		// Add the JS library for password tool - make sure we are on our password tab
 		if (isset($_GET['page']) && strpos($_GET['page'], AIOWPSEC_USER_ACCOUNTS_MENU_SLUG) !== false) {
@@ -49,46 +31,23 @@ class AIOWPSecurity_User_Accounts_Menu extends AIOWPSecurity_Admin_Menu {
 	 *
 	 * @return Void
 	 */
-	private function set_menu_tabs() {
-		$this->menu_tabs = array(
-			'wp-username' => __('WP username', 'all-in-one-wp-security-and-firewall'),
-			'display-name' => __('Display name', 'all-in-one-wp-security-and-firewall'),
-			'password-tool' => __('Password tool', 'all-in-one-wp-security-and-firewall')
+	protected function setup_menu_tabs() {
+		$menu_tabs = array(
+			'wp-username' => array(
+				'title' => __('WP username', 'all-in-one-wp-security-and-firewall'),
+				'render_callback' => array($this, 'render_wp_username'),
+			),
+			'display-name' => array(
+				'title' => __('Display name', 'all-in-one-wp-security-and-firewall'),
+				'render_callback' => array($this, 'render_display_name'),
+			),
+			'password-tool' => array(
+				'title' => __('Password tool', 'all-in-one-wp-security-and-firewall'),
+				'render_callback' => array($this, 'render_password_tool'),
+			),
 		);
-	}
 
-	/*
-	 * Renders our tabs of this menu as nav items
-	 */
-	private function render_menu_tabs() {
-		$current_tab = $this->get_current_tab();
-
-		echo '<h2 class="nav-tab-wrapper">';
-		foreach ($this->menu_tabs as $tab_key => $tab_caption) {
-			$active = $current_tab == $tab_key ? 'nav-tab-active' : '';
-			echo '<a class="nav-tab ' . $active . '" href="?page=' . $this->menu_page_slug . '&tab=' . $tab_key . '">' . $tab_caption . '</a>';
-		}
-		echo '</h2>';
-	}
-	
-	/*
-	 * The menu rendering goes here
-	 */
-	private function render_menu_page() {
-		echo '<div class="wrap">';
-		echo '<h2>'.__('User accounts','all-in-one-wp-security-and-firewall').'</h2>'; // Interface title
-		$this->set_menu_tabs();
-		$tab = $this->get_current_tab();
-		$this->render_menu_tabs();
-		?>
-		<div id="poststuff"><div id="post-body">
-		<?php  
-		// $tab_keys = array_keys($this->menu_tabs);
-		call_user_func(array($this, $this->menu_tabs_handler[$tab]));
-		?>
-		</div></div>
-		</div><!-- end of wrap -->
-		<?php
+		$this->menu_tabs = array_filter($menu_tabs, array($this, 'should_display_tab'));
 	}
 	
 	/**
@@ -96,7 +55,7 @@ class AIOWPSecurity_User_Accounts_Menu extends AIOWPSecurity_Admin_Menu {
 	 *
 	 * @return Void
 	 */
-	private function render_wp_username() {
+	protected function render_wp_username() {
 		global $aio_wp_security, $aiowps_feature_mgr;
 
 		if (isset($_POST['aiowps_change_admin_username'])) { // Do form submission tasks
@@ -120,7 +79,7 @@ class AIOWPSecurity_User_Accounts_Menu extends AIOWPSecurity_Admin_Menu {
 	 *
 	 * @return Void
 	 */
-	private function render_display_name() {
+	protected function render_display_name() {
 		global $aio_wp_security, $aiowps_feature_mgr;
 		
 		$aio_wp_security->include_template('wp-admin/user-accounts/display-name.php', false, array('aiowps_feature_mgr' => $aiowps_feature_mgr));
@@ -131,7 +90,7 @@ class AIOWPSecurity_User_Accounts_Menu extends AIOWPSecurity_Admin_Menu {
 	 *
 	 * @return Void
 	 */
-	private function render_password_tool() {
+	protected function render_password_tool() {
 		global $aio_wp_security;
 
 		$aio_wp_security->include_template('wp-admin/user-accounts/password-tool.php', false, array());

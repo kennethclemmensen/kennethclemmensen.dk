@@ -15,82 +15,50 @@ class AIOWPSecurity_User_Login_Menu extends AIOWPSecurity_Admin_Menu {
 	 *
 	 * @var string 
 	 */
-	private $menu_page_slug = AIOWPSEC_USER_LOGIN_MENU_SLUG;
+	protected $menu_page_slug = AIOWPSEC_USER_LOGIN_MENU_SLUG;
 	
 	/**
-	 * Specify all the tabs of this menu
-	 *
-	 * @var array
+	 * Constructor adds menu for User login
 	 */
-	public $menu_tabs;
-	
-	/**
-	 * Specify all the tabs handler methods
-	 *
-	 * @var array 
-	 */
-	public $menu_tabs_handler = array(
-			'login-lockout' => 'render_login_lockout', 
-			'failed-login-records' => 'render_failed_login_records',
-			'force-logout' => 'render_force_logout',
-			'account-activity-logs' => 'render_account_activity_logs',
-			'logged-in-users' => 'render_logged_in_users',
-			'additional' => 'render_additional',
-		);
-	
-	/**
-	* Class constructor
-	*/ 
 	public function __construct()  {
-		$this->render_menu_page();
+		parent::__construct(__('User login', 'all-in-one-wp-security-and-firewall'));
 	}
 	
 	/**
-	 * Set menu tabs name.
+	 * This function will setup the menus tabs by setting the array $menu_tabs
+	 *
+	 * @return void
 	 */
-	private function set_menu_tabs() {
-		$this->menu_tabs = array(
-			'login-lockout' => __('Login lockout', 'all-in-one-wp-security-and-firewall'),
-			'failed-login-records' => __('Failed login records', 'all-in-one-wp-security-and-firewall'),
-			'force-logout' => __('Force logout', 'all-in-one-wp-security-and-firewall'),
-			'account-activity-logs' => __('Account activity logs', 'all-in-one-wp-security-and-firewall'),
-			'logged-in-users' => __('Logged in users', 'all-in-one-wp-security-and-firewall'),
-			'additional' => __('Additional settings', 'all-in-one-wp-security-and-firewall'),
+	protected function setup_menu_tabs() {
+		$menu_tabs = array(
+			'login-lockout' => array(
+				'title' => __('Login lockout', 'all-in-one-wp-security-and-firewall'),
+				'render_callback' => array($this, 'render_login_lockout'),
+			),
+			'failed-login-records' => array(
+				'title' => __('Failed login records', 'all-in-one-wp-security-and-firewall'),
+				'render_callback' => array($this, 'render_failed_login_records'),
+			),
+			'force-logout' => array(
+				'title' => __('Force logout', 'all-in-one-wp-security-and-firewall'),
+				'render_callback' => array($this, 'render_force_logout'),
+			),
+			'account-activity-logs' => array(
+				'title' => __('Account activity logs', 'all-in-one-wp-security-and-firewall'),
+				'render_callback' => array($this, 'render_account_activity_logs'),
+			),
+			'logged-in-users' => array(
+				'title' => __('Logged in users', 'all-in-one-wp-security-and-firewall'),
+				'render_callback' => array($this, 'render_logged_in_users'),
+			),
+			'additional' => array(
+				'title' => __('Additional settings', 'all-in-one-wp-security-and-firewall'),
+				'render_callback' => array($this, 'render_additional'),
+			),
 		);
-	}
 
-	/*
-	 * Renders our tabs of this menu as nav items
-	 */
-	private function render_menu_tabs() {
-		$current_tab = $this->get_current_tab();
-
-		echo '<h2 class="nav-tab-wrapper">';
-		foreach ($this->menu_tabs as $tab_key => $tab_caption) {
-			$active = $current_tab == $tab_key ? 'nav-tab-active' : '';
-			echo '<a class="nav-tab ' . $active . '" href="?page=' . $this->menu_page_slug . '&tab=' . $tab_key . '">' . $tab_caption . '</a>';	
-		}
-		echo '</h2>';
-	}
-	
-	/*
-	 * The menu rendering goes here
-	 */
-	private function render_menu_page() {
-		echo '<div class="wrap">';
-		echo '<h2>' . __('User login', 'all-in-one-wp-security-and-firewall') . '</h2>'; // Interface title
-		$this->set_menu_tabs();
-		$tab = $this->get_current_tab();
-		$this->render_menu_tabs();
-		?>
-		<div id="poststuff"><div id="post-body">
-		<?php
-		// $tab_keys = array_keys($this->menu_tabs);
-		call_user_func(array($this, $this->menu_tabs_handler[$tab]));
-		?>
-		</div></div>
-		</div><!-- end of wrap -->
-		<?php
+		$this->menu_tabs = array_filter($menu_tabs, array($this, 'should_display_tab'));
+		
 	}
 
 	/**
@@ -101,7 +69,7 @@ class AIOWPSecurity_User_Login_Menu extends AIOWPSecurity_Admin_Menu {
 	 *
 	 * @return Void
 	 */
-	private function render_login_lockout() {
+	protected function render_login_lockout() {
 		global $aio_wp_security, $aiowps_feature_mgr;
 
 		include_once 'wp-security-list-locked-ip.php'; // For rendering the AIOWPSecurity_List_Table in tab1
@@ -216,7 +184,7 @@ class AIOWPSecurity_User_Login_Menu extends AIOWPSecurity_Admin_Menu {
 				$aio_wp_security->debug_logger->log_debug("Nonce check failed for save lockout whitelist settings.", 4);
 				die('Nonce check failed for save lockout whitelist settings.');
 			}
-			
+
 			if (isset($_POST["aiowps_lockdown_enable_whitelisting"]) && empty($_POST['aiowps_lockdown_allowed_ip_addresses'])) {
 				$this->show_msg_error('You must submit at least one IP address.', 'all-in-one-wp-security-and-firewall');
 			} else {
@@ -240,14 +208,13 @@ class AIOWPSecurity_User_Login_Menu extends AIOWPSecurity_Admin_Menu {
 				}
 
 				if (1 == $result) {
-					$aio_wp_security->configs->set_value('aiowps_lockdown_enable_whitelisting', isset($_POST["aiowps_lockdown_enable_whitelisting"]) ? '1' : '');
-					$aio_wp_security->configs->save_config(); //Save the configuration
-					
+					$aio_wp_security->configs->set_value('aiowps_lockdown_enable_whitelisting', isset($_POST["aiowps_lockdown_enable_whitelisting"]) ? '1' : '', true);
+
 					$this->show_msg_settings_updated();
 				}
 			}
 		}
-		
+
 		$aio_wp_security->include_template('wp-admin/user-login/login-lockout.php', false, array('aiowps_feature_mgr' => $aiowps_feature_mgr, 'locked_ip_list' => $locked_ip_list, 'result' => $result));
 	}
 
@@ -258,7 +225,7 @@ class AIOWPSecurity_User_Login_Menu extends AIOWPSecurity_Admin_Menu {
 	 * @global wpdb $wpdb
 	 * @return void
 	 */
-	public function render_failed_login_records() {
+	protected function render_failed_login_records() {
 		global $aio_wp_security, $wpdb;
 		if (isset($_POST['aiowps_delete_failed_login_records'])) {
 			if (!isset($_POST['_wpnonce']) || !wp_verify_nonce($_POST['_wpnonce'], 'aiowpsec-delete-failed-login-records-nonce')) {
@@ -301,7 +268,7 @@ class AIOWPSecurity_User_Login_Menu extends AIOWPSecurity_Admin_Menu {
 	 * @global AIOWPSecurity_Feature_Item_Manager $aiowps_feature_mgr
 	 * @return void
 	 */
-	private function render_force_logout() {
+	protected function render_force_logout() {
 		global $aio_wp_security, $aiowps_feature_mgr;
 		
 		if (isset($_POST['aiowpsec_save_force_logout_settings'])) { //Do form submission tasks
@@ -344,7 +311,7 @@ class AIOWPSecurity_User_Login_Menu extends AIOWPSecurity_Admin_Menu {
 	 *
 	 * @return void
 	 */
-	public function render_account_activity_logs() {
+	protected function render_account_activity_logs() {
 		global $aio_wp_security;
 		
 		include_once 'wp-security-list-acct-activity.php'; // For rendering the AIOWPSecurity_List_Table in tab4
@@ -365,7 +332,7 @@ class AIOWPSecurity_User_Login_Menu extends AIOWPSecurity_Admin_Menu {
 	 * @global AIO_WP_Security $aio_wp_security
 	 * @return void
 	 */
-	public function render_logged_in_users() {
+	protected function render_logged_in_users() {
 		global $aio_wp_security;
 		
 		$logged_in_users = (is_multisite() ? get_site_transient('users_online') : get_transient('users_online'));
@@ -397,7 +364,7 @@ class AIOWPSecurity_User_Login_Menu extends AIOWPSecurity_Admin_Menu {
 	 * @global AIOWPSecurity_Feature_Item_Manager $aiowps_feature_mgr
 	 * @return void
 	 */
-	public function render_additional() {
+	protected function render_additional() {
 		global $aio_wp_security, $aiowps_feature_mgr;
 
 		if (isset($_POST['aiowpsec_save_additonal_settings'])) {
@@ -407,8 +374,7 @@ class AIOWPSecurity_User_Login_Menu extends AIOWPSecurity_Admin_Menu {
 			}
 
 			// Save all the form values to the options
-			$aio_wp_security->configs->set_value('aiowps_disable_application_password', isset($_POST['aiowps_disable_application_password']) ? '1' : '');
-			$aio_wp_security->configs->save_config();
+			$aio_wp_security->configs->set_value('aiowps_disable_application_password', isset($_POST['aiowps_disable_application_password']) ? '1' : '', true);
 
 			// Recalculate points after the feature status/options have been altered
 			$aiowps_feature_mgr->check_feature_status_and_recalculate_points();

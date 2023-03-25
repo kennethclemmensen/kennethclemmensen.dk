@@ -15,73 +15,31 @@ class AIOWPSecurity_Blacklist_Menu extends AIOWPSecurity_Admin_Menu {
 	 *
 	 * @var string
 	 */
-	private $menu_page_slug = AIOWPSEC_BLACKLIST_MENU_SLUG;
-
-	/**
-	 * Specify all the tabs of this menu
-	 *
-	 * @var array
-	 */
-	protected $menu_tabs;
-
-	/**
-	 * Specify all the tabs handler methods
-	 *
-	 * @var array
-	 */
-	protected $menu_tabs_handler = array(
-		'ban-users' => 'render_ban_users',
-	);
+	protected $menu_page_slug = AIOWPSEC_BLACKLIST_MENU_SLUG;
 	
 	/**
-	 * Construct adds menu for blacklist
+	 * Constructor adds menu for Blacklist manager
 	 */
 	public function __construct() {
-		$this->render_menu_page();
+		parent::__construct(__('Blacklist manager', 'all-in-one-wp-security-and-firewall'));
 	}
 
 	/**
-	 * Set menu tabs name.
+	 * This function will setup the menus tabs by setting the array $menu_tabs
+	 *
+	 * @return void
 	 */
-	private function set_menu_tabs() {
-		$this->menu_tabs = array(
-			'ban-users' => __('Ban users', 'all-in-one-wp-security-and-firewall'),
+	protected function setup_menu_tabs() {
+		$menu_tabs = array(
+			'ban-users' => array(
+				'title' => __('Ban users', 'all-in-one-wp-security-and-firewall'),
+				'render_callback' => array($this, 'render_ban_users'),
+			),
 		);
+
+		$this->menu_tabs = array_filter($menu_tabs, array($this, 'should_display_tab'));
 	}
 
-	/**
-	 * Renders our tabs of this menu as nav items
-	 */
-	private function render_menu_tabs() {
-		$current_tab = $this->get_current_tab();
-		echo '<h2 class="nav-tab-wrapper">';
-		foreach ($this->menu_tabs as $tab_key => $tab_caption) {
-			$active = $current_tab == $tab_key ? 'nav-tab-active' : '';
-			echo '<a class="nav-tab ' . $active . '" href="?page=' . $this->menu_page_slug . '&tab=' . $tab_key . '">' . $tab_caption . '</a>';
-		}
-		echo '</h2>';
-	}
-
-	/**
-	 * The menu rendering goes here
-	 */
-	private function render_menu_page() {
-		echo '<div class="wrap">';
-		echo '<h2>' . __('Blacklist manager', 'all-in-one-wp-security-and-firewall') . '</h2>'; // Interface title
-		$this->set_menu_tabs();
-		$tab = $this->get_current_tab();
-		$this->render_menu_tabs();
-		?>
-		<div id="poststuff"><div id="post-body">
-		<?php
-		// $tab_keys = array_keys($this->menu_tabs);
-		call_user_func(array($this, $this->menu_tabs_handler[$tab]));
-		?>
-		</div></div>
-		</div><!-- end of wrap -->
-		<?php
-	}
-	
 	/**
 	 * Renders ban user tab for blacklist IPs and user agents
 	 *
@@ -89,7 +47,7 @@ class AIOWPSecurity_Blacklist_Menu extends AIOWPSecurity_Admin_Menu {
 	 * @global $aiowps_feature_mgr
 	 * @global $aiowps_firewall_config
 	 */
-	private function render_ban_users() {
+	protected function render_ban_users() {
 		global $aio_wp_security, $aiowps_feature_mgr, $aiowps_firewall_config;
 		$result = 1;
 		if (isset($_POST['aiowps_save_blacklist_settings'])) {
@@ -134,8 +92,7 @@ class AIOWPSecurity_Blacklist_Menu extends AIOWPSecurity_Admin_Menu {
 				}
 
 				if (1 == $result) {
-					$aio_wp_security->configs->set_value('aiowps_enable_blacklisting', $aiowps_enable_blacklisting);
-					$aio_wp_security->configs->save_config(); // Save the configuration
+					$aio_wp_security->configs->set_value('aiowps_enable_blacklisting', $aiowps_enable_blacklisting, true);
 
 					// Recalculate points after the feature status/options have been altered
 					$aiowps_feature_mgr->check_feature_status_and_recalculate_points();

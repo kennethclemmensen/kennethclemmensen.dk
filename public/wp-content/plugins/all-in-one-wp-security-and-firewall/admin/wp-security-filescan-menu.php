@@ -1,7 +1,7 @@
 <?php
 
 if (!defined('ABSPATH')) {
-	exit;//Exit if accessed directly
+	exit; // Exit if accessed directly
 }
 
 /**
@@ -17,82 +17,32 @@ class AIOWPSecurity_Filescan_Menu extends AIOWPSecurity_Admin_Menu {
 	 * @var string 
 	 */
 	protected $menu_page_slug = AIOWPSEC_FILESCAN_MENU_SLUG;
-	
-	/**
-	 * Specify all the tabs of this menu
-	 *
-	 * @var array
-	 */
-	protected $menu_tabs;
 
- 	/**
-	 * Specify all the tabs handler methods
-	 *
-	 * @var array
-	 */
-	protected $menu_tabs_handler = array(
-		'file-change-detect' => 'render_file_change_detect',
-		'malware-scan' => 'render_malware_scan',
-	);
-		
 	/**
-	 * Renders the menu and current tab page.
-	 *
-	 * @return void
+	 * Constructor adds menu for Scanner
 	 */
 	public function __construct() {
-		$this->render_menu_page();
+		parent::__construct(__('Scanner', 'all-in-one-wp-security-and-firewall'));
 	}
 	
-	
 	/**
-	 * Sets the menu and tab names.
+	 * This function will setup the menus tabs by setting the array $menu_tabs
 	 *
 	 * @return void
 	 */
-	private function set_menu_tabs() {
-		$this->menu_tabs = array(
-			'file-change-detect' => __('File change detection','all-in-one-wp-security-and-firewall'),
-			'malware-scan' => __('Malware scan','all-in-one-wp-security-and-firewall'),
+	protected function setup_menu_tabs() {
+		$menu_tabs = array(
+			'file-change-detect' => array(
+				'title' => __('File change detection', 'all-in-one-wp-security-and-firewall'),
+				'render_callback' => array($this, 'render_file_change_detect'),
+			),
+			'malware-scan' => array(
+				'title' => __('Malware scan', 'all-in-one-wp-security-and-firewall'),
+				'render_callback' => array($this, 'render_malware_scan'),
+			),
 		);
-	}
 
-	/**
-	 * Renders tabs of this menu as nav items
-	 *
-	 * @return void
-	 */
-	private function render_menu_tabs() {
-		$current_tab = $this->get_current_tab();
-		
-		echo '<h2 class="nav-tab-wrapper">';
-		foreach ($this->menu_tabs as $tab_key => $tab_caption) {
-			$active = $current_tab == $tab_key ? 'nav-tab-active' : '';
-			echo '<a class="nav-tab ' . $active . '" href="?page=' . $this->menu_page_slug . '&tab=' . $tab_key . '">' . $tab_caption . '</a>';
-		}
-		echo '</h2>';
-	}
-	
-	/**
-	 * The menu rendering goes here
-	 *
-	 * @return void
-	 */
-	private function render_menu_page() {
-		echo '<div class="wrap">';
-		echo '<h2>' . __('Scanner', 'all-in-one-wp-security-and-firewall') . '</h2>'; // Interface title
-		$this->set_menu_tabs();
-		$tab = $this->get_current_tab();
-		$this->render_menu_tabs();
-		?>
-		<div id="poststuff"><div id="post-body">
-		<?php
-		// $tab_keys = array_keys($this->menu_tabs);
-		call_user_func(array($this, $this->menu_tabs_handler[$tab]));
-		?>
-		</div></div>
-		</div><!-- end of wrap -->
-		<?php
+		$this->menu_tabs = array_filter($menu_tabs, array($this, 'should_display_tab'));
 	}
 	
 	/**
@@ -102,15 +52,14 @@ class AIOWPSecurity_Filescan_Menu extends AIOWPSecurity_Admin_Menu {
 	 * @global $aio_wp_security
 	 * @global $aiowps_feature_mgr
 	 */
-	private function render_file_change_detect() {
+	protected function render_file_change_detect() {
 		global $wpdb, $aio_wp_security, $aiowps_feature_mgr;
 		if (isset($_POST['fcd_scan_info'])) {
 			// Display scan file change info and clear the global alert variable
-			
+
 			// Clear the global variable
-			$aio_wp_security->configs->set_value('aiowps_fcds_change_detected', FALSE);
-			$aio_wp_security->configs->save_config();
-			
+			$aio_wp_security->configs->set_value('aiowps_fcds_change_detected', false, true);
+
 			//Display the last scan results
 			$this->display_last_scan_results();
 		}
@@ -242,7 +191,7 @@ class AIOWPSecurity_Filescan_Menu extends AIOWPSecurity_Admin_Menu {
 	 *
 	 * @return void
 	 */
-	private function render_malware_scan() {
+	protected function render_malware_scan() {
 		global $aio_wp_security;
 		
 		$aio_wp_security->include_template('wp-admin/scanner/malware-scan.php', false, array());

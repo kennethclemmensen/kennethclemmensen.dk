@@ -1,11 +1,11 @@
 === All-In-One Security (AIOS) – Security and Firewall ===
 Contributors: DavidAnderson, pmbaldha, Tips and Tricks HQ, wpsolutions, Peter Petreski, Ruhul Amin, mbrsolution
 Donate link: https://david.dw-perspective.org.uk/donate
-Tags: security, malware scanning, two factor authentication, firewall, antivirus
+Tags: security, malware scanning, two factor authentication, firewall, login security
 Requires PHP: 5.6
 Requires at least: 5.0
-Tested up to: 6.1
-Stable tag: 5.1.5
+Tested up to: 6.2
+Stable tag: 5.1.7
 License: GPLv3 or later
 
 Protect your website investment with All-In-One Security (AIOS) – a comprehensive and easy to use security plugin designed especially for WordPress. Featuring login security tools, a cutting-edge firewall and much more.
@@ -165,6 +165,30 @@ Go to the settings menu after you activate the plugin and follow the instruction
 
 == Changelog ==
 
+= 5.1.7 - 24/March/2023 =
+
+* FIX: Prevent fatal error when calling get_server_detected_user_ip_address() when the firewall is not setup
+
+= 5.1.6 - 21/March/2023 =
+
+* FEATURE: Added an audit log
+* FEATURE: Add salt postfix option to improve your site's security
+* FEATURE: Shared library that can be used from the firewall.
+* FIX: Rename login slug used like wp-login-RANDOM_SUFFIX showing 404 page issue solved and code clean up for multisite activation.
+* FIX: Divi child theme conflict - Call to undefined function et_builder_get_fonts() in functions.php on line 208 solved.
+* FIX: Captcha settings tab in multisite installation for subsites not showing
+* FIX: Cron reschedule event error for hook aios_15_minutes_cron_event if plugin deactivated or uninstalled
+* TWEAK: Stop user enumeration now shows 403 forbidden error code instead of 500 server error
+* TWEAK: PHP 8.1 warning rawurldecode passing null instead type string is deprecated for block request string 6g rule
+* TWEAK: Code clean up for disable cookie based brute force constant as rule moved to firewall
+* TWEAK: Comment spam IP monitoring page UI
+* TWEAK: Updated seasonal notices
+* TWEAK: Improve internal code structure making way for future improvements
+* TWEAK: Remove mention of the 6g firewall rules being .htaccess based as they are now php based
+* TWEAK: Added new internal function to check user capability and nonces
+* TWEAK: Improve config code with inline saving.
+* TWEAK: Allow audit log to be filtered and exported to CSV
+
 = 5.1.5 - 13/February/2023 =
 
 * FEATURE: Added Cloudflare Turnstile CAPTCHA support
@@ -182,6 +206,8 @@ Go to the settings menu after you activate the plugin and follow the instruction
 * TWEAK: Improve internal code structure making way for future improvements
 * TWEAK: PHP 8.2 deprecation warning for dynamic properties
 * TWEAK: Remove the unintended ability for directory traversal and lack of escaping when outputting files with the "view system log" feature. This facility is only available to an administrator (who can of course already do anything on the site, so this has no security implications) and allow them to view (the last 50 lines) from any file or list any directory on the system where the web server has read access.
+* FIX: Fatal error 'Call to a member function contains_contents() on null'
+* TWEAK: Firewall gets constants from a single source.
 
 = 5.1.4 - 14/December/2022 =
 
@@ -1143,4 +1169,4 @@ those who want to enable the basic firewall but do not have "AllowOverride" opti
 - First commit to the WP repository.
 
 == Upgrade Notice ==
-* 5.1.5: Added Cloudflare Turnstile support, various fixes and tweaks. See changelog for full details. A recommended update for all.
+* 5.1.7: Resolves an error introduced in 5.1.6. See changelog for full details. A recommended update for all.

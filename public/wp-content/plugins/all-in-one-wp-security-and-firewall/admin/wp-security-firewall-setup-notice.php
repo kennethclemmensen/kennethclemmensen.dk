@@ -176,15 +176,14 @@ class AIOWPSecurity_Firewall_Setup_Notice {
 	}
 
 	/**
-	 * Dismisses the notice 
+	 * Dismisses the notice.
 	 *
 	 * @return void
 	 */
 	private function do_dismiss() {
 		global $aio_wp_security;
 
-		$aio_wp_security->configs->set_value('aios_firewall_dismiss', true);
-		$aio_wp_security->configs->save_config();
+		$aio_wp_security->configs->set_value('aios_firewall_dismiss', true, true);
 	}
 
 	/**
@@ -604,7 +603,7 @@ class AIOWPSecurity_Firewall_Setup_Notice {
             return true;
         }
 
-        if (!current_user_can(apply_filters('aios_management_permission', 'manage_options'))) {
+        if (!AIOWPSecurity_Utility_Permissions::has_manage_cap()) {
 			return true;
 		}
 

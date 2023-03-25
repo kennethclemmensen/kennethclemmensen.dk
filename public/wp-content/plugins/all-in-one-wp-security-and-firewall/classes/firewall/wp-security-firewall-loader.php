@@ -6,6 +6,7 @@ if (!defined('AIOWPS_FIREWALL_DIR')) {
 	exit();
 }
 
+
 /**
  * Loads and executes our firewall
  */
@@ -34,6 +35,9 @@ class Loader {
 			if ($this->is_preloader_directly_accessed()) return;
 			
 			$this->init();
+
+			global $aiowps_constants;
+			if ($aiowps_constants->AIOS_NO_FIREWALL) return;
 	
 			$families = new Family_Collection(Family_Builder::get_families());
 
@@ -103,6 +107,7 @@ class Loader {
 		}
 
 		$GLOBALS['aiowps_firewall_config'] = new Config($workspace . 'settings.php');
+		$GLOBALS['aiowps_constants'] = new Constants();
 		
 	 }
 
