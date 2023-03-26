@@ -17,4 +17,5 @@ public/wp-content/cache
 /.tsbuildinfo
 
 #Backup
+public/wp-content/aiowps_backups
 public/wp-content/kc_backup
