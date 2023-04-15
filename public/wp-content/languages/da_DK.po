@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 6.2.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-04-04 11:09:21+0000\n"
+"PO-Revision-Date: 2023-04-11 17:23:23+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1439,7 +1439,7 @@ msgstr "Vis beskrivelse af kategorier, tags og tilpassede klassificeringer ved v
 #: wp-includes/blocks/term-description/block.json
 msgctxt "block title"
 msgid "Term Description"
-msgstr "Term beskrivelse"
+msgstr "Term-beskrivelse"
 
 #: wp-includes/blocks/template-part/block.json
 msgctxt "block description"
@@ -3844,7 +3844,7 @@ msgstr "(Forsidelink, åbner i ny fane)"
 
 #. translators: 1: Block type, 2: Typography supports key, e.g: fontSize,
 #. lineHeight, etc. 3: block.json, 4: Old metadata key, 5: New metadata key.
-#: wp-includes/blocks.php:1218
+#: wp-includes/blocks.php:1222
 msgid "Block \"%1$s\" is declaring %2$s support in %3$s file under %4$s. %2$s support is now declared under %5$s."
 msgstr "Blok \"%1$s\" angiver %2$s support i %3$s-fil under %4$s. %2$s support angives nu under %5$s."
 
@@ -11080,7 +11080,7 @@ msgstr "Hejsa, %s"
 
 #. translators: Hidden accessibility text.
 #: wp-includes/customize/class-wp-customize-nav-menu-location-control.php:86
-#: wp-admin/nav-menus.php:811
+#: wp-admin/nav-menus.php:814
 msgid "Edit selected menu"
 msgstr "Rediger valgte menu"
 
@@ -12236,7 +12236,7 @@ msgstr "Skjul adgangskode"
 msgid "Show password"
 msgstr "Vis adgangskode"
 
-#: wp-includes/class-wp-customize-nav-menus.php:513 wp-admin/nav-menus.php:1011
+#: wp-includes/class-wp-customize-nav-menus.php:513 wp-admin/nav-menus.php:1014
 msgid "Menu Name"
 msgstr "Menunavn"
 
@@ -12661,44 +12661,44 @@ msgid "This panel is used for managing navigation menus for content you have alr
 msgstr "Dette panel bruges til at håndtere navigationsmenuer for indhold, du allerede har udgivet på dit websted. Du kan oprette menuer og tilføje punkter for eksisterende indhold såsom sider, indlæg, kategorier, tags, formater eller egne links."
 
 #. translators: 1: Item name, 2: Item position, 3: Parent item name.
-#: wp-includes/class-wp-customize-nav-menus.php:568 wp-admin/nav-menus.php:513
+#: wp-includes/class-wp-customize-nav-menus.php:568 wp-admin/nav-menus.php:516
 msgid "%1$s. Sub item number %2$d under %3$s."
 msgstr "%1$s. Underpunkt nummer %2$d under %3$s."
 
 #. translators: 1: Item name, 2: Item position, 3: Total number of items.
-#: wp-includes/class-wp-customize-nav-menus.php:566 wp-admin/nav-menus.php:511
+#: wp-includes/class-wp-customize-nav-menus.php:566 wp-admin/nav-menus.php:514
 msgid "%1$s. Menu item %2$d of %3$d."
 msgstr "%1$s. Menupunkt %2$d af %3$d."
 
 #. translators: %s: Previous item name.
-#: wp-includes/class-wp-customize-nav-menus.php:564 wp-admin/nav-menus.php:509
+#: wp-includes/class-wp-customize-nav-menus.php:564 wp-admin/nav-menus.php:512
 msgid "Out from under %s"
 msgstr "Ud fra under %s"
 
 #. translators: %s: Previous item name.
-#: wp-includes/class-wp-customize-nav-menus.php:562 wp-admin/nav-menus.php:507
+#: wp-includes/class-wp-customize-nav-menus.php:562 wp-admin/nav-menus.php:510
 msgid "Under %s"
 msgstr "Under %s"
 
 #. translators: %s: Previous item name.
-#: wp-includes/class-wp-customize-nav-menus.php:560 wp-admin/nav-menus.php:505
+#: wp-includes/class-wp-customize-nav-menus.php:560 wp-admin/nav-menus.php:508
 msgid "Move out from under %s"
 msgstr "Flyt ud fra under %s"
 
 #. translators: %s: Previous item name.
-#: wp-includes/class-wp-customize-nav-menus.php:558 wp-admin/nav-menus.php:503
+#: wp-includes/class-wp-customize-nav-menus.php:558 wp-admin/nav-menus.php:506
 msgid "Move under %s"
 msgstr "Flyt under %s"
 
-#: wp-includes/class-wp-customize-nav-menus.php:556 wp-admin/nav-menus.php:501
+#: wp-includes/class-wp-customize-nav-menus.php:556 wp-admin/nav-menus.php:504
 msgid "Move to the top"
 msgstr "Flyt til toppen"
 
-#: wp-includes/class-wp-customize-nav-menus.php:555 wp-admin/nav-menus.php:500
+#: wp-includes/class-wp-customize-nav-menus.php:555 wp-admin/nav-menus.php:503
 msgid "Move down one"
 msgstr "Flyt en ned"
 
-#: wp-includes/class-wp-customize-nav-menus.php:554 wp-admin/nav-menus.php:499
+#: wp-includes/class-wp-customize-nav-menus.php:554 wp-admin/nav-menus.php:502
 msgid "Move up one"
 msgstr "Flyt en op"
 
@@ -12728,19 +12728,19 @@ msgstr "%s (afventer)"
 msgid "%s (Invalid)"
 msgstr "%s (ugyldigt)"
 
-#: wp-includes/class-wp-customize-nav-menus.php:522 wp-admin/nav-menus.php:524
+#: wp-includes/class-wp-customize-nav-menus.php:522 wp-admin/nav-menus.php:527
 msgid "Menu item is now a sub-item"
 msgstr "Menupunkt er nu et undermenupunkt"
 
-#: wp-includes/class-wp-customize-nav-menus.php:521 wp-admin/nav-menus.php:523
+#: wp-includes/class-wp-customize-nav-menus.php:521 wp-admin/nav-menus.php:526
 msgid "Menu item moved out of submenu"
 msgstr "Menupunkt flyttet ud af undermenu"
 
-#: wp-includes/class-wp-customize-nav-menus.php:520 wp-admin/nav-menus.php:521
+#: wp-includes/class-wp-customize-nav-menus.php:520 wp-admin/nav-menus.php:524
 msgid "Menu item moved down"
 msgstr "Menupunkt flyttet ned"
 
-#: wp-includes/class-wp-customize-nav-menus.php:519 wp-admin/nav-menus.php:520
+#: wp-includes/class-wp-customize-nav-menus.php:519 wp-admin/nav-menus.php:523
 msgid "Menu item moved up"
 msgstr "Menupunkt flyttet op"
 
@@ -12756,7 +12756,7 @@ msgstr "Menu oprettet"
 msgid "Menu item deleted"
 msgstr "Menupunkt slettet"
 
-#: wp-includes/class-wp-customize-nav-menus.php:515 wp-admin/nav-menus.php:518
+#: wp-includes/class-wp-customize-nav-menus.php:515 wp-admin/nav-menus.php:521
 msgid "Menu item added"
 msgstr "Menupunkt tilføjet"
 
@@ -12768,7 +12768,7 @@ msgid "Home"
 msgstr "Forside"
 
 #: wp-includes/customize/class-wp-customize-new-menu-control.php:59
-#: wp-admin/nav-menus.php:1014 wp-admin/nav-menus.php:1179
+#: wp-admin/nav-menus.php:1017 wp-admin/nav-menus.php:1182
 msgid "Create Menu"
 msgstr "Opret menu"
 
@@ -12811,7 +12811,7 @@ msgid "Navigation Label"
 msgstr "Menutitel"
 
 #: wp-includes/customize/class-wp-customize-nav-menu-auto-add-control.php:46
-#: wp-admin/nav-menus.php:1106
+#: wp-admin/nav-menus.php:1109
 msgid "Automatically add new top-level pages to this menu"
 msgstr "Tilføj automatisk nye sider uden forældre til denne menu"
 
@@ -12821,7 +12821,7 @@ msgid "Menu Location"
 msgstr "Menu-placeringer"
 
 #: wp-includes/class-wp-customize-nav-menus.php:1106
-#: wp-admin/nav-menus.php:1173
+#: wp-admin/nav-menus.php:1176
 msgid "Delete Menu"
 msgstr "Slet menu"
 
@@ -15496,7 +15496,7 @@ msgstr "Tilpas: %s"
 #: wp-includes/widgets/class-wp-nav-menu-widget.php:190 wp-admin/export.php:223
 #: wp-admin/export.php:228 wp-admin/export.php:275 wp-admin/export.php:280
 #: wp-admin/export.php:320 wp-admin/export.php:325
-#: wp-admin/includes/template.php:746 wp-admin/nav-menus.php:896
+#: wp-admin/includes/template.php:746 wp-admin/nav-menus.php:899
 #: wp-admin/options-privacy.php:296 wp-admin/options-reading.php:121
 #: wp-admin/options-reading.php:138 wp-admin/widgets-form.php:317
 msgid "&mdash; Select &mdash;"
@@ -16755,7 +16755,7 @@ msgstr "Ét svar til %s"
 #: wp-includes/class-wp-customize-nav-menus.php:673
 #: wp-includes/customize/class-wp-customize-nav-menus-panel.php:113
 #: wp-includes/js/dist/block-library.js:30361 wp-admin/menu.php:228
-#: wp-admin/nav-menus.php:694
+#: wp-admin/nav-menus.php:32 wp-admin/nav-menus.php:697
 msgid "Menus"
 msgstr "Menuer"
 
@@ -18884,7 +18884,7 @@ msgstr "Ny side"
 #: wp-includes/media.php:4585 wp-includes/js/dist/block-editor.js:50925
 #: wp-includes/js/dist/block-library.js:56830
 #: wp-includes/js/dist/editor.js:5967 wp-admin/includes/template.php:2052
-#: wp-admin/nav-menus.php:936 wp-admin/plugin-editor.php:238
+#: wp-admin/nav-menus.php:939 wp-admin/plugin-editor.php:238
 #: wp-admin/theme-editor.php:244
 msgid "Select"
 msgstr "Vælg"
@@ -19313,7 +19313,7 @@ msgstr "Indhold"
 #: wp-admin/includes/media.php:1733 wp-admin/includes/media.php:2272
 #: wp-admin/includes/meta-boxes.php:166 wp-admin/includes/meta-boxes.php:224
 #: wp-admin/includes/template.php:510 wp-admin/includes/template.php:759
-#: wp-admin/includes/template.php:895 wp-admin/nav-menus.php:1154
+#: wp-admin/includes/template.php:895 wp-admin/nav-menus.php:1157
 #: wp-admin/options-general.php:149 wp-admin/user-edit.php:540
 #: wp-admin/user-edit.php:655 wp-admin/widgets-form.php:337
 #: wp-admin/widgets-form.php:340 wp-admin/widgets-form.php:558

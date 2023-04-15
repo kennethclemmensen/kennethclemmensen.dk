@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 6.2.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-04-03 07:14:14+0000\n"
+"PO-Revision-Date: 2023-04-12 09:03:38+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -51,7 +51,7 @@ msgstr "Fortsæt"
 #: wp-admin/export.php:60 wp-admin/includes/class-custom-background.php:101
 #: wp-admin/includes/class-custom-image-header.php:138 wp-admin/index.php:133
 #: wp-admin/link-manager.php:80 wp-admin/media-new.php:62 wp-admin/media.php:98
-#: wp-admin/my-sites.php:53 wp-admin/nav-menus.php:687
+#: wp-admin/my-sites.php:53 wp-admin/nav-menus.php:690
 #: wp-admin/options-discussion.php:33 wp-admin/options-general.php:61
 #: wp-admin/options-media.php:42 wp-admin/options-permalink.php:67
 #: wp-admin/options-reading.php:54 wp-admin/options-writing.php:54
@@ -158,42 +158,416 @@ msgstr "Kilde og destination er den samme."
 msgid "https://wordpress.org/documentation/article/changing-file-permissions/"
 msgstr "https://wordpress.org/documentation/article/changing-file-permissions/"
 
+#: wp-admin/includes/class-wp-screen.php:1119
+msgid "Expand or collapse the elements by clicking on their headings, and arrange them by dragging their headings or by clicking on the up and down arrows."
+msgstr "Udvid eller skjul elementerne ved at klikke på deres overskrifter, og arrangere dem ved at trække deres overskrifter eller ved at klikke på op- og nedpilene."
+
+#. translators: %s: Attachment title.
+#: wp-admin/includes/class-wp-media-list-table.php:870
+msgid "Download &#8220;%s&#8221;"
+msgstr "Hent &#8220;%s&#8221;"
+
+#. translators: %s: The "$dir" argument.
+#: wp-admin/includes/class-wp-automatic-updater.php:81
+msgid "The \"%s\" argument must be a non-empty string."
+msgstr "Argumentet \"%s\" skal være en ikke-tom tekststreng."
+
+#: wp-admin/edit-form-advanced.php:319
+msgid "<a href=\"https://wordpress.org/documentation/article/write-posts-classic-editor/\">Documentation on Writing and Editing Posts</a>"
+msgstr "<a href=\"https://wordpress.org/documentation/article/write-posts-classic-editor/\">Dokumentation om at skrive og redigere indlæg</a>"
+
+#: wp-admin/edit-comments.php:212 wp-admin/user-edit.php:336
+msgid "<a href=\"https://wordpress.org/documentation/article/keyboard-shortcuts-classic-editor/#keyboard-shortcuts-for-comments\">Documentation on Keyboard Shortcuts</a>"
+msgstr "<a href=\"https://wordpress.org/documentation/article/keyboard-shortcuts-classic-editor/#keyboard-shortcuts-for-comments\">Dokumentation om tastaturgenveje</a>"
+
+#: wp-admin/edit-comments.php:211
+msgid "<a href=\"https://wordpress.org/documentation/article/understand-comment-spam/\">Documentation on Comment Spam</a>"
+msgstr "<a href=\"https://wordpress.org/documentation/article/understand-comment-spam/\">Dokumentation on spamkommentarer</a>"
+
+#: wp-admin/customize.php:253
+msgid "<a href=\"https://wordpress.org/documentation/article/customizer/\">Documentation on Customizer</a>"
+msgstr "<a href=\"https://wordpress.org/documentation/article/customizer/\">Dokumentation om Tilpasser</a>"
+
+#: wp-admin/about.php:204
+msgid "Default WordPress themes offer better privacy with Google Fonts now included."
+msgstr "Standard WordPress-temaer tilbyder nu bedre privatliv med Google Fonts inkluderet."
+
+#: wp-admin/about.php:203
+msgid "Local fonts in themes"
+msgstr "Lokale fonte i temaer"
+
+#: wp-admin/about.php:194
+msgid "Options to import your favorite widgets from Classic themes to Block themes."
+msgstr "Muligheder for at importere dine yndlingswidgets fra klassiske temaer til bloktemaer."
+
+#: wp-admin/about.php:193
+msgid "Importing widgets"
+msgstr "Import af widgets"
+
+#: wp-admin/about.php:184
+msgid "Choose to keep top-level group blocks fixed to the top of a page as visitors scroll."
+msgstr "Vælg at holde gruppeblokke på øverste niveau fast til toppen af en side, mens den besøgende scroller."
+
+#: wp-admin/about.php:183
+msgid "Sticky positioning"
+msgstr "Sticky placering"
+
+#: wp-admin/about.php:171
+msgid "Power up your site any way you wish. Add CSS to your site, or your blocks, for another level of control over your site&#8217;s look and feel."
+msgstr "Styrk dit websted som du har lyst til. Tilføj CSS til dit websted, eller dine blokke, for at få endnu bedre kontrol over dit websteds udseende og funktion."
+
+#: wp-admin/about.php:164
+msgid "Perfect the design on one type of block, then copy and paste those styles to other blocks to get just the look you want."
+msgstr "Perfektionér designet på én type blok, kopier og indsæt derefter disse stilarter til andre blokke for at få lige det look, du ønsker."
+
+#: wp-admin/about.php:163
+msgid "Copy and paste styles"
+msgstr "Kopier og indsæt stilarter"
+
+#: wp-admin/about.php:157
+msgid "Use the new Style Book to get a complete overview of how every block in your site&#8217;s library looks. All in one place, all at a glance."
+msgstr "Brug den nye Stilbog for at få et komplet overblik over, hvordan hver en blok i dit websteds bibliotek ser ud. Alt på et sted, alle på en gang."
+
+#: wp-admin/about.php:147
+msgid "Stable and ready for you to dive in and explore: 6.2 is your personal invitation to discover what the next generation of WordPress—and Block themes—can do."
+msgstr "Stabil og klar til, at du kan dykke ned i og udforske: 6.2 er din personlige invitation til at opdage, hvad næste generation af WordPress – og Blok-temaer – kan gøre."
+
+#: wp-admin/about.php:146
+msgid "Experience the Site Editor, now out of beta"
+msgstr "Oplev den nye Webstedseditor, nu ude efter betatests"
+
+#: wp-admin/about.php:140
+msgid "For those times you want to be alone with your ideas. You can now hide all your panels and controls, leaving you free to bring your content to life."
+msgstr "Til de gange, du gerne vil være alene med dine ideer. Du kan nu skjule alle dine paneler og indstillinger, så du er fri til at gøre dit indhold levende."
+
+#: wp-admin/about.php:139
+msgid "Focus on writing with Distraction Free mode"
+msgstr "Fokus på skrivning med Fuldskærmsvisning"
+
+#: wp-admin/about.php:130
+msgid "Openverse&#8217;s library catalogs over 600 million free, openly licensed stock images and audio—and now it&#8217;s directly integrated into the Editor."
+msgstr "Openverses bibliotek katalogiserer over 600 millioner gratis, åbent licenserede lagerbilleder og lyd – og nu er det direkte integreret i editoren."
+
+#: wp-admin/about.php:129
+msgid "Explore Openverse media right from the Editor"
+msgstr "Udforsk Openverse-medier direkte fra editoren"
+
+#: wp-admin/about.php:123
+msgid "Discover a new collection of header and footer patterns to choose from. Use them with any block theme as a quick, high-quality starting point for your site&#8217;s templates."
+msgstr "Oplev en ny kollektion af sidehoved- og sidefodsblokgrupper at vælge imellem. Brug dem med ethvert bloktema som et hurtigt udgangspunkt i høj kvalitet for dit websteds skabeloner."
+
+#: wp-admin/about.php:122
+msgid "Build faster with headers and footers for block themes"
+msgstr "Byg hurtigere med sidehoved og -fod for bloktemaer"
+
+#: wp-admin/about.php:108
+msgid "Your block settings sidebar is better organized with tabs for Settings and Styles. So the tools you need are easy to identify and access."
+msgstr "Dit sidepanels blokindstillinger er bedre struktureret med faner for Indstilling og Stilarter. Så de redskaber du har brug for er lettere at finde og bruge."
+
+#: wp-admin/about.php:107
+msgid "Find the controls you want when you need them"
+msgstr "Find de ønskede indstillingerne, når du skal bruge dem"
+
+#: wp-admin/about.php:101
+msgid "A refreshed design gives you more visibility and easier access to the content you need. Use the Media tab to drag and drop content from your existing Media Library quickly. Find patterns faster with a split view that lets you navigate categories and see previews all at once."
+msgstr "Et opfrisket design giver dig mere synlighed og lettere adgang til det indhold, du har brug for. Brug fanen Medier til hurtigt at trække og indsætte indhold fra dit eksisterende mediebibliotek. Find blokgrupper hurtigere med en delt visning, der lader dig navigere i kategorier og se forhåndsvisninger på én gang."
+
+#: wp-admin/about.php:100
+msgid "Discover a smoother experience for the Block Inserter"
+msgstr "Opdag en smidigere oplevelse med Blokindsætteren"
+
+#: wp-admin/about.php:84
+msgid "A new sidebar experience makes it easier to edit your site&#8217;s navigation. Add, remove, and reorder menu items faster—no matter how complex your menus are."
+msgstr "En ny sidepanels-oplevelse gør det nemmere at redigere dit websteds navigation. Tilføj, fjern og omarranger menupunkter hurtigere – uanset hvor komplekse dine menuer er."
+
+#: wp-admin/about.php:83
+msgid "Manage your menu in more ways with the Navigation block"
+msgstr "Håndter din menu på flere måder med Navigationsblokken"
+
+#: wp-admin/about.php:77
+msgid "An updated interface gives you more control over your site editing experience. Browse through full previews of your templates and template parts, then jump into editing your site from wherever you choose."
+msgstr "En opdateret grænseflade giver dig mere kontrol over din oplevelse af webstedsredigering. Gennemse komplette forhåndsvisninger af dine skabeloner og skabelondele og spring derefter ud i at redigere dit websted, uanset hvorfra du vælger."
+
+#: wp-admin/about.php:76
+msgid "Explore and edit your site from the Site Editor"
+msgstr "Udforsk og rediger dit websted fra Wedstedsredigering"
+
+#. translators: 1: Count of enhancements, 2: Count of bug fixes.
+#: wp-admin/about.php:60
+msgid "WordPress 6.2 includes more than %1$s enhancements and %2$s bug fixes. This page highlights the latest features since the November 2022 release of WordPress 6.1. From quick highlights to developer resources, there&#8217;s a lot to explore."
+msgstr "WordPress 6.2 indeholder mere end %1$s forbedringer og %2$s fejlrettelser. Denne side fremhæver de seneste funktioner siden november 2022-udgivelsen af WordPress 6.1. Fra de hurtige højdepunkter til udviklerressourcer, er der meget at udforske."
+
+#. translators: The localized WordPress download URL.
+#: wp-admin/about.php:343
+msgid "https://wordpress.org/download/"
+msgstr "https://da.wordpress.org/download/"
+
+#. translators: %s: The major version of WordPress for this branch.
+#: wp-admin/about.php:340
+msgid "This is the final release of WordPress %s"
+msgstr "Dette er den endelige udgave af WordPress %s"
+
+#: wp-admin/includes/theme.php:336
+msgid "Site Editor"
+msgstr "Webstedseditor"
+
+#. translators: 1: Learn WordPress link.
+#: wp-admin/about.php:228
+msgid "Explore <a href=\"%s\">learn.wordpress.org</a> for tutorial videos, online workshops, courses, and lesson plans for Meetup organizers, including new features in WordPress."
+msgstr "Udforsk <a href=\"%s\">learn.wordpress.org</a> for selvstudievideoer, online workshops, kurser og lektionsplaner for Meetup-arrangører, inklusive nye funktioner i WordPress."
+
+#: wp-admin/users.php:66
+msgid "<strong>Send password reset</strong> sends the user an email with a link to set a new password."
+msgstr "<strong>Send nulstilling af adgangskode</strong> sender brugeren en e-mail med et link til at angive en ny adgangskode."
+
+#: wp-admin/user-edit.php:825
+msgid "https://developer.wordpress.org/apis/wp-config-php/#wp-environment-type"
+msgstr "https://developer.wordpress.org/apis/wp-config-php/#wp-environment-type"
+
+#: wp-admin/upload.php:336
+msgid "<strong>Copy URL</strong> copies the URL for the media file to your clipboard."
+msgstr "<strong>Kopiér URL</strong> kopierer URL'en for mediefilen til din udklipsholder."
+
+#: wp-admin/upload.php:335
+msgid "<strong>View</strong> will take you to a public display page for that file."
+msgstr "<strong>Vis</strong> fører dig til en offentlig visningsside for den pågældende fil."
+
+#: wp-admin/upload.php:334
+msgid "<strong>Delete Permanently</strong> will delete the file from the media library (as well as from any posts to which it is currently attached)."
+msgstr "<strong>Slet permanent</strong> vil slette filen fra mediebiblioteket (såvel som fra alle indlæg, som den nu er vedhæftet til)."
+
+#: wp-admin/upload.php:333
+msgid "<strong>Edit</strong> takes you to a simple screen to edit that individual file&#8217;s metadata. You can also reach that screen by clicking on the media file name or thumbnail."
+msgstr "<strong>Rediger</strong> fører dig til en simpel skærm, hvor du kan redigere den enkelte fils metadata. Du kan også nå denne skærm ved at klikke på mediefilnavnet eller miniaturebilledet."
+
+#: wp-admin/upload.php:331
+msgid "Hovering over a row reveals action links that allow you to manage media items. You can perform the following actions:"
+msgstr "Ved at holde markøren over en række afsløres handlingslinks, der giver dig mulighed for at administrere medieelementer. Du kan udføre følgende handlinger:"
+
 #: wp-admin/theme-install.php:209
 msgctxt "themes"
 msgid "Block Themes"
 msgstr "Blok temaer"
 
+#: wp-admin/theme-install.php:157
+msgid "<a href=\"https://wordpress.org/documentation/article/block-themes/\">Documentation on Block Themes</a>"
+msgstr "<a href=\"https://wordpress.org/documentation/article/block-themes/\">Dokumentation om Bloktemaer</a>"
+
 #: wp-admin/theme-install.php:149
 msgid "Block themes"
-msgstr "Blok temaer"
+msgstr "Bloktemaer"
+
+#: wp-admin/theme-install.php:144
+msgid "With a block theme, you can place and edit blocks without affecting your content by customizing or creating new templates."
+msgstr "Med et bloktema kan du placere og redigere blokke - uden at påvirke dit indhold - ved at tilpasse eller oprette nye skabeloner."
+
+#: wp-admin/theme-install.php:143
+msgid "A block theme is a theme that uses blocks for all parts of a site including navigation menus, header, content, and site footer. These themes are built for the features that allow you to edit and customize all parts of your site."
+msgstr "Et bloktema er et tema, der bruger blokke til alle dele af et websted, inklusive navigationsmenuer, sidehoved, indhold og sidefod. Disse temaer er bygget til de funktioner, der giver dig mulighed for at redigere og tilpasse alle dele af dit websted."
+
+#: wp-admin/site-health.php:264
+msgid "Recommended items are considered beneficial to your site, although not as important to prioritize as a critical issue, they may include improvements to things such as; Performance, user experience, and more."
+msgstr "Anbefalede elementer anses for at være gavnlige for dit websted, selvom det ikke er så vigtigt at prioritere som et kritisk emne, kan de omfatte forbedringer af ting som f.eks.: Ydeevne, brugeroplevelse og meget mere."
+
+#: wp-admin/site-health.php:251
+msgid "Critical issues are items that may have a high impact on your sites performance or security, and resolving these issues should be prioritized."
+msgstr "Kritiske problemer er elementer, der kan have en stor indvirkning på dit websteds ydeevne eller sikkerhed, og løsning af disse problemer bør prioriteres."
+
+#: wp-admin/site-editor.php:23 wp-admin/site-editor.php:28
+msgid "The theme you are currently using is not compatible with the Site Editor."
+msgstr "Det tema, du bruger i øjeblikket, er ikke kompatibelt med Webstedseditoren."
+
+#. translators: %s: wp-config.php
+#: wp-admin/setup-config.php:428
+msgid "Configuration rules for %s:"
+msgstr "Konfigurationsregler for %s:"
+
+#. translators: Hidden accessibility text.
+#: wp-admin/options-permalink.php:370
+msgid "Customize permalink structure by selecting available tags"
+msgstr "Tilpas struktur for permanente links ved at vælge tilgængelige nøgleord"
+
+#. translators: %s: %postname%
+#: wp-admin/options-permalink.php:322
+msgid "Select the permalink structure for your website. Including the %s tag makes links easy to understand, and can help your posts rank higher in search engines."
+msgstr "Vælg struktur for permanente links for dit websted. Inkludering af %s nøglen gør links lettere at forstå og kan hjælpe dine indlæg til en højere placering i søgninger."
+
+#. translators: %s: Permalink structure tag.
+#: wp-admin/options-permalink.php:313
+msgid "%s removed from permalink structure"
+msgstr "%s fjernet fra permalinkstrukturen"
 
 #. translators: %s: Number of critical Site Health checks.
 #: wp-admin/menu.php:375
 msgid "Site Health %s"
 msgstr "Webstedshelbred %s"
 
+#: wp-admin/includes/file.php:24
+msgid "Theme Styles & Block Settings"
+msgstr "Teamets Stilart & Blokke indstillinger"
+
 #. translators: %s: The minimum recommended PHP version.
 #: wp-admin/includes/dashboard.php:1887
 msgid "The minimum recommended version of PHP is %s."
 msgstr "Den mindste anbefalede version af PHP er %s."
 
+#: wp-admin/includes/dashboard.php:1882
+msgid "PHP is one of the programming languages used to build WordPress. Newer versions of PHP receive regular security updates and may increase your site&#8217;s performance."
+msgstr "PHP er et af de programmeringssprog, der bruges til at bygge WordPress. Nyere versioner af PHP modtager regelmæssige sikkerhedsopdateringer og kan øge dit websteds ydeevne."
+
+#. translators: %s: The server PHP version.
+#: wp-admin/includes/dashboard.php:1867
+msgid "Your site is running on an outdated version of PHP (%s), which soon will not be supported by WordPress. Ensure that PHP is updated on your server as soon as possible. Otherwise you will not be able to upgrade WordPress."
+msgstr "Dit websted kører på en forældet version af PHP (%s), som snart ikke vil blive understøttet af WordPress. Sørg for at PHP opdateres på din server så hurtigt som muligt. Ellers vil du ikke kunne opgradere WordPress."
+
+#. translators: %s: The server PHP version.
+#: wp-admin/includes/dashboard.php:1854
+msgid "Your site is running on an outdated version of PHP (%s), which does not receive security updates and soon will not be supported by WordPress. Ensure that PHP is updated on your server as soon as possible. Otherwise you will not be able to upgrade WordPress."
+msgstr "Dit websted kører på en forældet version af PHP (%s), som ikke modtager sikkerhedsopdateringer og snart ikke vil blive understøttet af WordPress. Sørg for at PHP opdateres på din server så hurtigt som muligt. Ellers vil du ikke kunne opgradere WordPress."
+
+#: wp-admin/includes/class-wp-site-health.php:2650
+msgid "Persistent object cache"
+msgstr "Persistent object cache"
+
+#: wp-admin/includes/class-wp-site-health.php:2643
+msgid "Page cache"
+msgstr "Sidecache"
+
+#: wp-admin/includes/class-wp-site-health.php:2503
+msgid "You should use a persistent object cache"
+msgstr "Du bør bruge en persistent object cache"
+
+#. translators: Available object caching services.
+#: wp-admin/includes/class-wp-site-health.php:2482
+msgid "Your host appears to support the following object caching services: %s."
+msgstr "Din webhost ser ud til at understøtte følgende objektcachetjenester: %s."
+
+#: wp-admin/includes/class-wp-site-health.php:2477
+msgid "Your hosting provider can tell you if a persistent object cache can be enabled on your site."
+msgstr "Din hostingudbyder kan fortælle dig, om en persistent object cache kan aktiveres på dit websted."
+
+#: wp-admin/includes/class-wp-site-health.php:2470
+msgid "A persistent object cache is not required"
+msgstr "En persistent object cache er ikke påkrævet"
+
+#: wp-admin/includes/class-wp-site-health.php:2459
+msgid "Learn more about persistent object caching."
+msgstr "Lær mere om persistent object caching."
+
+#: wp-admin/includes/class-wp-site-health.php:2454
+msgid "A persistent object cache makes your site&#8217;s database more efficient, resulting in faster load times because WordPress can retrieve your site&#8217;s content and settings much more quickly."
+msgstr "En persistent object cache gør dit websteds database mere effektiv, hvilket resulterer i hurtigere indlæsningstider, fordi WordPress kan hente dit websteds indhold og indstillinger meget hurtigere."
+
+#: wp-admin/includes/class-wp-site-health.php:2451
+msgid "A persistent object cache is being used"
+msgstr "En persistent object cache er i brug"
+
+#. translators: Localized Support reference.
+#: wp-admin/includes/class-wp-site-health.php:2441
+msgid "https://wordpress.org/documentation/article/optimization/#persistent-object-cache"
+msgstr "https://wordpress.org/documentation/article/optimization/#persistent-object-cache"
+
+#: wp-admin/includes/class-wp-site-health.php:2416
+msgid "A page cache plugin was not detected."
+msgstr "Et sidecacheplugin blev ikke fundet."
+
+#: wp-admin/includes/class-wp-site-health.php:2413
+msgid "A page cache plugin was detected."
+msgstr "Et sidecacheplugin blev fundet."
+
+#. translators: %d: Number of caching headers.
+#: wp-admin/includes/class-wp-site-health.php:2400
+msgid "There was %d client caching response header detected:"
+msgid_plural "There were %d client caching response headers detected:"
+msgstr[0] "Der blev fundet %d client caching response header:"
+msgstr[1] "Der blev fundet %d client caching response headers:"
+
+#: wp-admin/includes/class-wp-site-health.php:2395
+msgid "No client caching response headers were detected."
+msgstr "Ingen client caching response header fundet."
+
+#. translators: 1: The response time in milliseconds, 2: The recommended
+#. threshold in milliseconds.
+#: wp-admin/includes/class-wp-site-health.php:2388
+msgid "Median server response time was %1$s milliseconds. It should be less than the recommended %2$s milliseconds threshold."
+msgstr "Median serversvartid var %1$s millisekunder. Det bør være mindre end den anbefalede grænse på %2$s millisekunder."
+
+#. translators: 1: The response time in milliseconds, 2: The recommended
+#. threshold in milliseconds.
+#: wp-admin/includes/class-wp-site-health.php:2381
+msgid "Median server response time was %1$s milliseconds. This is less than the recommended %2$s milliseconds threshold."
+msgstr "Median serversvartid var %1$s millisekunder. Dette er mindre end den anbefalede grænse på %2$s millisekunder."
+
+#: wp-admin/includes/class-wp-site-health.php:2374
+msgid "Server response time could not be determined. Verify that loopback requests are working."
+msgstr "Serverens responstid kunne ikke bestemmes. Bekræft, at loopback-anmodninger virker."
+
+#: wp-admin/includes/class-wp-site-health.php:2367
+msgid "Page cache is detected but the server response time is still slow"
+msgstr "Sidecache er registreret, men serverens responstid er stadig langsom"
+
 #: wp-admin/includes/class-wp-site-health.php:2365
 msgid "Page cache is not detected and the server response time is slow"
 msgstr "Sidecache er ikke registreret, og serverens svartid er langsom"
+
+#: wp-admin/includes/class-wp-site-health.php:2361
+msgid "Page cache is detected and the server response time is good"
+msgstr "Sidecache er registreret og serverens responstid er god"
 
 #: wp-admin/includes/class-wp-site-health.php:2358
 msgid "Page cache is not detected but the server response time is OK"
 msgstr "Sidecache er ikke registreret, men serverens svartid er OK"
 
+#. translators: 1: Error message, 2: Error code.
+#: wp-admin/includes/class-wp-site-health.php:2346
+msgid "Unable to detect page cache due to possible loopback request problem. Please verify that the loopback request test is passing. Error: %1$s (Code: %2$s)"
+msgstr "Kan ikke detektere sidecache på grund af et muligt problem med anmodning om loopback. Bekræft venligst, at loopback-anmodningstesten går igennem. Fejl: %1$s (Kode: %2$s)"
+
+#: wp-admin/includes/class-wp-site-health.php:2342
+msgid "Unable to detect the presence of page cache"
+msgstr "Kan ikke registrere tilstedeværelsen af sidecache"
+
 #: wp-admin/includes/class-wp-site-health.php:2333
 msgid "Learn more about page cache"
 msgstr "Lær mere om side cache"
+
+#: wp-admin/includes/class-wp-site-health.php:2318
+msgid "Page cache is detected by looking for an active page cache plugin as well as making three requests to the homepage and looking for one or more of the following HTTP client caching response headers:"
+msgstr "Sidecache detekteres ved at lede efter et aktivt sidecache-plugin samt ved at lave tre anmodninger til hjemmesiden og lede efter en eller flere af følgende HTTP client caching response headere:"
+
+#: wp-admin/includes/class-wp-site-health.php:2317
+msgid "Page cache enhances the speed and performance of your site by saving and serving static pages instead of calling for a page every time a user visits."
+msgstr "Sidecache øger hastigheden og ydeevnen på dit websted ved at gemme og vise statiske sider i stedet for at kalde på en side, hver gang en bruger besøger den."
+
+#: wp-admin/includes/class-wp-site-health.php:2283
+msgid "If you are still seeing this warning after having tried the actions below, you may need to contact your hosting provider for further assistance."
+msgstr "Hvis du stadig ser denne advarsel efter at have prøvet nedenstående handlinger, skal du muligvis kontakte din hostingudbyder for yderligere hjælp."
+
+#: wp-admin/includes/class-wp-site-health.php:2266
+msgid "The Authorization header is used by third-party applications you have approved for this site. Without this header, those apps cannot connect to your site."
+msgstr "Autorisations-header bruges af tredjepartsapplikationer, som du har godkendt til dette websted. Uden denne header kan disse apps ikke oprette forbindelse til dit websted."
+
+#: wp-admin/includes/class-wp-site-health.php:2122
+msgid "When testing the REST API, an unexpected result was returned:"
+msgstr "Ved test af REST API blev et uventet resultat returneret:"
+
+#. translators: 1: The WordPress error code. 2: The WordPress error message.
+#. translators: 1: The WordPress error code. 2: The HTTP status code error
+#. message.
+#: wp-admin/includes/class-wp-site-health.php:2110
+#: wp-admin/includes/class-wp-site-health.php:2130
+msgid "REST API Response: (%1$s) %2$s"
+msgstr "REST API svar: (%1$s) %2$s"
 
 #. translators: %s: The REST API URL.
 #: wp-admin/includes/class-wp-site-health.php:2105
 #: wp-admin/includes/class-wp-site-health.php:2125
 msgid "REST API Endpoint: %s"
 msgstr "REST API Endpoint: %s"
+
+#: wp-admin/includes/class-wp-site-health.php:2102
+msgid "When testing the REST API, an error was encountered:"
+msgstr "Ved test af REST API, opstod der en fejl:"
 
 #. translators: %s: The server PHP version.
 #: wp-admin/includes/class-wp-site-health.php:815
@@ -215,6 +589,11 @@ msgstr "Krav"
 msgid "Your site is running on an outdated version of PHP (%s), which soon will not be supported by WordPress."
 msgstr "Dit websted kører med en forældet version af PHP (%s), som snart ikke længere understøttes af WordPress."
 
+#. translators: %s: The minimum recommended PHP version.
+#: wp-admin/includes/class-wp-site-health.php:744
+msgid "PHP is one of the programming languages used to build WordPress. Newer versions of PHP receive regular security updates and may increase your site&#8217;s performance. The minimum recommended version of PHP is %s."
+msgstr "PHP er et af de programmeringssprog, der bruges til at bygge WordPress. Nyere versioner af PHP modtager regelmæssige sikkerhedsopdateringer og kan øge dit websteds ydeevne. Den anbefalede minimumsversion af PHP er %s."
+
 #: wp-admin/includes/class-wp-site-health.php:609
 msgid "Your site does not have any installed themes."
 msgstr "Dit websted har ikke nogen installerede temaer."
@@ -222,6 +601,26 @@ msgstr "Dit websted har ikke nogen installerede temaer."
 #: wp-admin/includes/class-wp-site-health.php:441
 msgid "Your site does not have any active plugins."
 msgstr "Dit websted har ikke nogen aktive plugins."
+
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:188
+msgid "Another attempt will be made with the next release."
+msgstr "Et nyt forsøg vil blive gjort med den næste udgivelse."
+
+#. translators: 1: Name of the constant used. 2: Value of the constant used.
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:78
+msgid "The %1$s constant is defined as %2$s"
+msgstr "%1$s konstanten er defineret som %2$s"
+
+#. translators: %1$s: The argument name. %2$s: The view name.
+#: wp-admin/includes/class-wp-list-table.php:415
+#: wp-admin/includes/class-wp-list-table.php:430
+msgid "The %1$s argument must be a non-empty string for %2$s."
+msgstr "Argumentet %1$s skal være en ikke-tom tekststreng for %2$s."
+
+#. translators: %s: The $link_data argument.
+#: wp-admin/includes/class-wp-list-table.php:398
+msgid "The %s argument must be an array."
+msgstr "Argumentet %s skal være en array."
 
 #. translators: 1: Plugin name, 2: Version number, 3: Plugin URL.
 #: wp-admin/includes/class-wp-automatic-updater.php:1175
@@ -236,10 +635,28 @@ msgstr "- %1$s version %2$s%3$s"
 msgid "- %1$s (from version %2$s to %3$s)%4$s"
 msgstr "- %1$s (fra version %2$s to %3$s)%4$s"
 
+#: wp-admin/includes/class-wp-automatic-updater.php:885
+msgid "Reach out to WordPress Core developers to ensure you'll never have this problem again."
+msgstr "Tag fat i WordPress Core-udviklere for at sikre, at du aldrig får dette problem igen."
+
 #. translators: 1: WordPress version number, 2: Link to update WordPress
 #: wp-admin/about.php:337
 msgid "Important! Your version of WordPress (%1$s) will stop receiving security updates in the near future. To keep your site secure, please <a href=\"%2$s\">update to the latest version of WordPress</a>."
 msgstr "Vigtigt! Din version af WordPress (%1$s) vil ikke længere modtage sikkerhedsopdateringer i den nærmeste fremtid. For at holde dit websted sikkert, bedes du <a href=\"%2$s\">opdatere til den nyeste version af WordPress</a>."
+
+#. translators: 1: WordPress version number, 2: Link to update WordPress
+#: wp-admin/about.php:334
+msgid "Important! Your version of WordPress (%1$s) is no longer supported, you will not receive any security updates for your website. To keep your site secure, please <a href=\"%2$s\">update to the latest version of WordPress</a>."
+msgstr "Vigtig! Din version af WordPress (%1$s) understøttes ikke længere, du vil ikke modtage sikkerhedsopdateringer til dit websted. For at holde dit websted sikkert skal du <a href=\"%2$s\">opdatere til den nyeste version af WordPress</a>."
+
+#: wp-admin/about.php:249
+msgid "https://make.wordpress.org/core/2023/03/09/wordpress-6-2-field-guide/"
+msgstr "https://make.wordpress.org/core/2023/03/09/wordpress-6-2-field-guide/"
+
+#. translators: 1: WordPress Release Notes link, 2: WordPress version number.
+#: wp-admin/about.php:266
+msgid "<a href=\"%1$s\">Read the WordPress %2$s Release Notes</a> for more information on the included enhancements and issues fixed, installation information, developer notes and resources, release contributors, and the list of file changes in this release."
+msgstr "<a href=\"%1$s\">Læs WordPress %2$s Release Notes</a> for mere information om de inkluderede forbedringer og problemer, der er rettet, installationsoplysninger, udviklernoter og -ressourcer, release-bidragydere og listen over filændringer i denne udgivelse."
 
 #. translators: %s: WordPress Field Guide link.
 #: wp-admin/about.php:248
@@ -251,6 +668,11 @@ msgstr "Se den seneste version af <a href=\"%s\">WordPress Field Guide</a>. Den 
 msgid "Learn more about WordPress %s"
 msgstr "Lær mere om WordPress %s"
 
+#: wp-admin/includes/ajax-actions.php:1337
+#: wp-admin/includes/ajax-actions.php:1454
+msgid "Please type your comment text."
+msgstr "Indsæt din kommentar."
+
 #: wp-admin/users.php:411 wp-admin/users.php:443
 msgid "You cannot remove users."
 msgstr "Du kan ikke fjerne brugere. "
@@ -258,6 +680,10 @@ msgstr "Du kan ikke fjerne brugere. "
 #: wp-admin/upgrade.php:141
 msgid "WordPress has been updated! Next and final step is to update your database to the newest version."
 msgstr "WordPress er blevet opdateret! Næste, og sidste skridt, er at opdatere din database til den nyeste version. "
+
+#: wp-admin/themes.php:208
+msgid "<a href=\"https://wordpress.org/documentation/article/appearance-themes-screen/\">Documentation on Managing Themes</a>"
+msgstr "<a href=\"https://wordpress.org/documentation/article/appearance-themes-screen/\">Dokumentation om temaer</a>"
 
 #. translators: Do not translate USERNAME, ADMIN_URL, EMAIL, SITENAME, SITEURL:
 #. those are placeholders.
@@ -321,6 +747,10 @@ msgstr "Dette indlæg bliver sikkerhedskopieret i din browser, for en sikkerheds
 #: wp-admin/includes/dashboard.php:2101
 msgid "Learn about block themes"
 msgstr "Få mere at vide om bloktemaer"
+
+#: wp-admin/includes/dashboard.php:2100
+msgid "There is a new kind of WordPress theme, called a block theme, that lets you build the site you&#8217;ve always wanted &#8212; with blocks and styles."
+msgstr "Der er en ny slags WordPress-tema, kaldet et bloktema, der giver dig mulighed for at bygge det websted, du altid har ønsket - med blokke og typografier."
 
 #: wp-admin/includes/dashboard.php:2099
 msgid "Discover a new way to build your site."
@@ -402,6 +832,14 @@ msgstr "Funktionen med programadgangskode kræver HTTPS, som ikke er aktiveret p
 msgid "g:i a T"
 msgstr "H:i T"
 
+#: wp-admin/theme-editor.php:53
+msgid "<a href=\"https://wordpress.org/documentation/article/appearance-theme-file-editor-screen/\">Documentation on Editing Themes</a>"
+msgstr "<a href=\"https://wordpress.org/documentation/article/appearance-theme-file-editor-screen/\">Dokumentation om redigering af temaer</a>"
+
+#: wp-admin/site-health.php:90
+msgid "<a href=\"https://wordpress.org/documentation/article/site-health-screen/\">Documentation on Site Health tool</a>"
+msgstr "<a href=\"https://wordpress.org/documentation/article/site-health-screen/\">Dokumentation om værktøjet Webstedshelbred</a>"
+
 #: wp-admin/site-health.php:84
 msgid "In the Info tab, you will find all the details about the configuration of your WordPress site, server, and database. There is also an export feature that allows you to copy all of the information about your site to the clipboard, to help solve problems on your site when obtaining support."
 msgstr "Under fanen Info finder du alle detaljer om konfigurationen af dit WordPress-websted, din server og database. Der er også en eksportfunktion, der giver dig mulighed for at kopiere alle oplysninger om dit websted til Udklipsholderen for at hjælpe med at løse problemer på dit websted, når du får support."
@@ -413,6 +851,10 @@ msgstr "Under fanen Status kan du se vigtige oplysninger om din WordPress-konfig
 #: wp-admin/site-health.php:82
 msgid "This screen allows you to obtain a health diagnosis of your site, and displays an overall rating of the status of your installation."
 msgstr "Denne skærm giver dig mulighed for at få en sundhedsdiagnose på dit websted og viser en samlet vurdering af status for din installation."
+
+#: wp-admin/options-privacy.php:47
+msgid "<a href=\"https://wordpress.org/documentation/article/settings-privacy-screen/\">Documentation on Privacy Settings</a>"
+msgstr "<a href=\"https://wordpress.org/documentation/article/settings-privacy-screen/\">Dokumentation om privatlivsindstillinger</a>"
 
 #: wp-admin/options-privacy.php:41
 msgid "This screen includes suggestions to help you write your own privacy policy. However, it is your responsibility to use these resources correctly, to provide the information required by your privacy policy, and to keep this information current and accurate."
@@ -426,11 +868,11 @@ msgstr "På skærmbilledet Privatliv kan du enten oprette en ny side med privatl
 msgid "Individual posts may override these settings. Changes here will only be applied to new posts."
 msgstr "Individuelle indlæg kan tilsidesætte disse indstillinger. Ændringer her vil kun blive anvendt på nye indlæg."
 
-#: wp-admin/nav-menus.php:522
+#: wp-admin/nav-menus.php:525
 msgid "Menu item moved to the top"
 msgstr "Menuelement flyttet til toppen"
 
-#: wp-admin/nav-menus.php:519
+#: wp-admin/nav-menus.php:522
 msgid "Menu item removed"
 msgstr "Menuelement fjernet"
 
@@ -577,25 +1019,25 @@ msgstr "Du skal gøre filen %1$s skrivbar, før du kan gemme ændringerne. Yderl
 msgid "Rewrite rules:"
 msgstr "Omskrivningsregler:"
 
-#: wp-admin/nav-menus.php:1081
+#: wp-admin/nav-menus.php:1084
 msgid "List of menu items selected for deletion:"
 msgstr "Liste over menupunkter, der er valgt til sletning:"
 
-#: wp-admin/nav-menus.php:1079
+#: wp-admin/nav-menus.php:1082
 msgid "Remove Selected Items"
 msgstr "Fjern markerede elementer"
 
-#: wp-admin/nav-menus.php:1042 wp-admin/nav-menus.php:1077
+#: wp-admin/nav-menus.php:1045 wp-admin/nav-menus.php:1080
 msgid "Bulk Select"
 msgstr "Vælg flere"
 
 #. translators: %s: Item name.
-#: wp-admin/nav-menus.php:517
+#: wp-admin/nav-menus.php:520
 msgid "Deleted menu item: %s."
 msgstr "Slettet menupunkt: %s."
 
 #. translators: %s: Item name.
-#: wp-admin/nav-menus.php:515
+#: wp-admin/nav-menus.php:518
 msgid "item %s"
 msgstr "Eeement %s"
 
@@ -672,6 +1114,10 @@ msgstr "Nuværende"
 msgid "Please activate the <a href=\"%s\">Link Manager plugin</a> to use the link manager."
 msgstr "Aktiver <a href=\"%s\">linkstyrings-pluginet</a> for at bruge linkadministratoren."
 
+#: wp-admin/options-privacy.php:259
+msgid "Create a new Privacy Policy page"
+msgstr "Opret en ny side til privatlivspolitik"
+
 #: wp-admin/export-personal-data.php:132
 msgid "Send personal data export confirmation email."
 msgstr "Send e-mail om eksport af personoplysninger."
@@ -679,6 +1125,10 @@ msgstr "Send e-mail om eksport af personoplysninger."
 #: wp-admin/export-personal-data.php:108
 msgid "This tool helps site owners comply with local laws and regulations by exporting known data for a given user in a .zip file."
 msgstr "Dette værktøj hjælper webstedsejere med at overholde lokale love og bestemmelser ved at eksportere kendte data for en given bruger i en .zip-fil."
+
+#: wp-admin/export-personal-data.php:65
+msgid "<a href=\"https://wordpress.org/documentation/article/tools-export-personal-data-screen/\">Documentation on Export Personal Data</a>"
+msgstr "<a href=\"https://wordpress.org/documentation/article/tools-export-personal-data-screen/\">Dokumentation om eksport af persondata</a>"
 
 #: wp-admin/export-personal-data.php:58
 msgid "Plugin authors can <a href=\"https://developer.wordpress.org/plugins/privacy/adding-the-personal-data-exporter-to-your-plugin/\" target=\"_blank\">learn more about how to add the Personal Data Exporter to a plugin here</a>."
@@ -692,6 +1142,14 @@ msgstr "Mange plugins kan indsamle eller gemme personlige data enten i WordPress
 #: wp-admin/export-personal-data.php:48
 msgid "If you are not sure, check the plugin documentation or contact the plugin author to see if the plugin collects data and if it supports the Data Exporter tool. This information may be available in the <a href=\"%s\">Privacy Policy Guide</a>."
 msgstr "Hvis du ikke er sikker, skal du kontrollere plugin-dokumentationen eller kontakte plugin-forfatteren for at se, om pluginet indsamler data, og om det understøtter dataeksportværktøjet. Disse oplysninger kan være tilgængelige i <a href=\"%s\">vejledningen til beskyttelse af personlige oplysninger</a>."
+
+#: wp-admin/export-personal-data.php:41
+msgid "<strong>Comments</strong> &mdash; For user comments, Email Address, IP Address, User Agent (Browser/OS), Date/Time, Comment Content, and Content URL."
+msgstr "<strong>Kommentarer</strong> &mdash; For kommentarer fra brugeren, e-mailadresse, IP-adresse, brugeragent (browser/os), dato/klokkeslæt, kommentarindhold og URL-adresse til indhold."
+
+#: wp-admin/export-personal-data.php:25
+msgid "This screen is where you manage requests for an export of personal data."
+msgstr "På dette skærmbillede kan du administrere anmodninger om eksport af persondata."
 
 #: wp-admin/site-health.php:113
 msgid "Site URLs could not be switched to HTTPS."
@@ -771,6 +1229,14 @@ msgstr "Bekræftelsesmail"
 msgid "This tool helps site owners comply with local laws and regulations by deleting or anonymizing known data for a given user."
 msgstr "Dette værktøj hjælper webstedsejere med at overholde lokale love og bestemmelser ved at slette eller anonymisere kendte data for en given bruger."
 
+#: wp-admin/erase-personal-data.php:65
+msgid "<a href=\"https://wordpress.org/documentation/article/tools-erase-personal-data-screen/\">Documentation on Erase Personal Data</a>"
+msgstr "<a href=\"https://wordpress.org/documentation/article/tools-erase-personal-data-screen/\">Dokumentation om Sletning af persondata</a>"
+
+#: wp-admin/erase-personal-data.php:58
+msgid "If you are a plugin author, you can <a href=\"https://developer.wordpress.org/plugins/privacy/adding-the-personal-data-eraser-to-your-plugin/\" target=\"_blank\">learn more about how to add support for the Personal Data Eraser to a plugin here</a>."
+msgstr "Er du pluginudvikler, kan du <a href=\"https://developer.wordpress.org/plugins/privacy/adding-the-personal-data-eraser-to-your-plugin/\" target=\"_blank\">lære mere om, hvordan du understøtter Persondatasletning i et plugin her</a>."
+
 #: wp-admin/erase-personal-data.php:57
 msgid "Many plugins may collect or store personal data either in the WordPress database or remotely. Any Erase Personal Data request should delete data from plugins as well."
 msgstr "Mange plugins kan indsamle eller gemme personlige data enten i WordPress-databasen eller eksternt. Enhver Slet personlige data anmodning bør slette data fra plugins også."
@@ -803,6 +1269,10 @@ msgstr "<strong>Profiloplysninger</strong> – brugermailadresse, brugernavn, vi
 #: wp-admin/erase-personal-data.php:35 wp-admin/export-personal-data.php:35
 msgid "Default Data"
 msgstr "Standarddata"
+
+#: wp-admin/erase-personal-data.php:27 wp-admin/export-personal-data.php:27
+msgid "The tool associates data stored in WordPress with a supplied email address, including profile data and comments."
+msgstr "Værktøjet knytter data gemt i WordPress til en opgivet e-mail-adresse, herunder profildata og kommentarer."
 
 #: wp-admin/includes/dashboard.php:1470
 msgid "https://make.wordpress.org/community/organize-event-landing-page/"
@@ -932,6 +1402,15 @@ msgstr "Ugyldig handling for personoplysninger."
 msgid "Unable to initiate confirmation for personal data request."
 msgstr "Bekræftelsen af anmodningen om personoplysninger kan ikke startes."
 
+#: wp-admin/options-writing.php:216 wp-admin/options-writing.php:230
+msgid "https://wordpress.org/documentation/article/update-services/"
+msgstr "https://wordpress.org/documentation/article/update-services/"
+
+#. translators: %s: The server PHP version.
+#: wp-admin/includes/dashboard.php:1873
+msgid "Your site is running on an outdated version of PHP (%s), which should be updated."
+msgstr "Dit websted kører med en ældre version af PHP (%s), som bør opdateres."
+
 #: wp-admin/includes/dashboard.php:52
 msgid "PHP Update Recommended"
 msgstr "PHP opdatering anbefalet"
@@ -1039,6 +1518,14 @@ msgstr "Tilbage til temainstallering"
 #: wp-admin/includes/privacy-tools.php:294
 msgid "Go to top"
 msgstr "Gå til toppen"
+
+#. translators: %s is the name of the city we couldn't locate. Replace the
+#. examples with cities in your locale, but test that they match the expected
+#. location before including them. Use endonyms (native locale names) whenever
+#. possible.
+#: wp-admin/includes/dashboard.php:1436
+msgid "%s could not be located. Please try another nearby city. For example: Kansas City; Springfield; Portland."
+msgstr "Vi kunne ikke finde %s. Prøv venligst at finde en anden by tæt på. F.eks. København; Roskilde; Hillerød."
 
 #: wp-admin/authorize-application.php:315
 msgid "You will be returned to the WordPress Dashboard, and no changes will be made."
@@ -1348,6 +1835,14 @@ msgstr "Automatiske opdateringer er kun tilgængelige for plugins, der genkendes
 msgid "Update Incompatible"
 msgstr "Opdateringen er ikke kompatibel"
 
+#: wp-admin/update-core.php:718
+msgid "This update does not work with your version of WordPress."
+msgstr "Denne opdatering virker ikke med din version af WordPress."
+
+#: wp-admin/update-core.php:684
+msgid "This update does not work with your versions of WordPress and PHP."
+msgstr "Denne opdatering virker ikke med dine versioner af WordPress og PHP."
+
 #. translators: Hidden accessibility text.
 #: wp-admin/options-discussion.php:234 wp-admin/options-discussion.php:238
 msgid "Disallowed Comment Keys"
@@ -1616,6 +2111,10 @@ msgctxt "theme"
 msgid "Cannot Activate"
 msgstr "Kan ikke aktiveres"
 
+#: wp-admin/comment.php:46
+msgid "You cannot edit this comment because the associated post is in the Trash. Please restore the post first, then try again."
+msgstr "Du kan ikke redigere denne kommentar, fordi det tilknyttede indlæg er i Papirkurven. Gendan indlægget først og prøv derefter igen."
+
 #: wp-admin/async-upload.php:79
 msgctxt "media item"
 msgid "Success"
@@ -1658,6 +2157,10 @@ msgstr "Ugyldige data. Ukendt tilstand."
 #: wp-admin/includes/ajax-actions.php:5469
 msgid "Invalid data. No selected item."
 msgstr "Ugyldige data. Intet element er markeret."
+
+#: wp-admin/includes/ajax-actions.php:1307
+msgid "You cannot reply to a comment on a draft post."
+msgstr "Du kan ikke besvare en kommentar til et kladdeindlæg."
 
 #. translators: %s: Themes screen URL.
 #: wp-admin/includes/class-wp-automatic-updater.php:1302
@@ -1796,6 +2299,10 @@ msgstr "Udvidet visning"
 msgid "Compact view"
 msgstr "Kompakt visning"
 
+#: wp-admin/includes/user.php:183
+msgid "<strong>Error:</strong> Passwords do not match. Please enter the same password in both password fields."
+msgstr "<strong> Fejl:</strong> Adgangskoderne er ikke ens. Indtast venligst den samme adgangskode i begge adgangskodefelter."
+
 #: wp-admin/includes/meta-boxes.php:384 wp-admin/includes/meta-boxes.php:385
 #: wp-admin/js/post.js:794
 msgctxt "post action/button label"
@@ -1869,6 +2376,11 @@ msgstr "Nedgraderer temaet&#8230;"
 msgid "Updating the theme&#8230;"
 msgstr "Opdaterer temaet&#8230;"
 
+#. translators: %s: Theme error.
+#: wp-admin/includes/class-theme-upgrader.php:95
+msgid "The active theme has the following error: \"%s\"."
+msgstr "Det aktive tema har følgende fejl: \"%s\"."
+
 #: wp-admin/includes/class-wp-plugins-list-table.php:1183
 #: wp-admin/themes.php:707 wp-admin/js/updates.js:2990
 #: wp-admin/includes/class-wp-ms-themes-list-table.php:809
@@ -1933,10 +2445,28 @@ msgstr "Den overførte fil er udløbet. Gå venligst tilbage og overfør filen i
 msgid "Cancel and go back"
 msgstr "Annuller og gå tilbage"
 
+#: wp-admin/includes/class-theme-installer-skin.php:348
+msgctxt "theme"
+msgid "Replace active with uploaded"
+msgstr "Erstat aktive med uploaded"
+
 #. translators: %s: Documentation URL.
 #: wp-admin/includes/class-theme-installer-skin.php:336
 msgid "You are updating a theme. Be sure to <a href=\"%s\">back up your database and files</a> first."
 msgstr "Du er ved at opdatere et tema. Vær sikker på at <a href=\"%s\">tage backup af din database og filer</a> først."
+
+#: wp-admin/includes/class-plugin-installer-skin.php:296
+#: wp-admin/includes/class-plugin-installer-skin.php:302
+#: wp-admin/includes/class-theme-installer-skin.php:331
+#: wp-admin/includes/class-theme-installer-skin.php:337
+#: wp-admin/update-core.php:268
+msgid "https://wordpress.org/documentation/article/wordpress-backups/"
+msgstr "https://wordpress.org/documentation/article/wordpress-backups/"
+
+#. translators: %s: Documentation URL.
+#: wp-admin/includes/class-theme-installer-skin.php:330
+msgid "You are uploading an older version of the active theme. You can continue to install the older version, but be sure to <a href=\"%s\">back up your database and files</a> first."
+msgstr "Du er ved at uploade en ældre version af det aktive tema. Du kan fortsætte med at installere den ældre version, men husk at tage en <a href=\"%s\">backup af din database og filer</a> først."
 
 #. translators: 1: Current WordPress version, 2: Version required by the
 #. uploaded theme.
@@ -2057,6 +2587,11 @@ msgstr "Spam"
 msgid "Unable to write to %s file."
 msgstr "Kunne ikke skrive til %s filen."
 
+#. translators: %s: The options page name.
+#: wp-admin/options.php:248
+msgid "<strong>Error:</strong> The %s options page is not in the allowed options list."
+msgstr "<strong>Fejl:</strong> Indstillingssiden %s blev ikke fundet på hvidlisten for indstillinger."
+
 #: wp-admin/import.php:65 wp-admin/themes.php:305 wp-admin/users.php:329
 #: wp-admin/includes/network.php:116 wp-admin/includes/network.php:142
 msgid "Error:"
@@ -2129,6 +2664,16 @@ msgstr "En test er ikke tilgængelig"
 #: wp-admin/includes/class-wp-site-health.php:2972
 msgid "Error: %1$s (%2$s)"
 msgstr "Fejl: %1$s (%2$s)"
+
+#. translators: %s: The server PHP version.
+#: wp-admin/includes/class-wp-site-health.php:796
+msgid "Your site is running on an older version of PHP (%s), which should be updated"
+msgstr "Dit websted kører med en ældre version af PHP (%s), som bør opdateres"
+
+#. translators: %s: The server PHP version.
+#: wp-admin/includes/class-wp-site-health.php:767
+msgid "Your site is running on an older version of PHP (%s)"
+msgstr "Dit websted kører med en ældre version af PHP (%s)"
 
 #. translators: %s: The current PHP version.
 #: wp-admin/includes/class-wp-site-health.php:732
@@ -2219,6 +2764,12 @@ msgstr "PHP standard tidszonen blev konfigureret af WordPress under indlæsning.
 msgid "PHP default timezone is valid"
 msgstr "PHP standard tidszonen er gyldig"
 
+#. translators: %s: add_menu_page()
+#. translators: %s: add_submenu_page()
+#: wp-admin/includes/plugin.php:1333 wp-admin/includes/plugin.php:1437
+msgid "The seventh parameter passed to %s should be numeric representing menu position."
+msgstr "Den syvende parameter, der sendes til %s, skal være et heltal, der repræsenterer menupositionen."
+
 #. translators: 1: WordPress version number, 2: The PHP extension name needed.
 #: wp-admin/includes/update-core.php:1214
 msgid "The update cannot be installed because WordPress %1$s requires the %2$s PHP extension."
@@ -2231,6 +2782,14 @@ msgstr "UTF8MB4 er tegnsættet, som WordPress foretrækker til databaselagring, 
 #: wp-admin/privacy.php:52
 msgid "https://wordpress.org/about/stats/"
 msgstr "https://wordpress.org/about/stats/"
+
+#: wp-admin/export.php:59
+msgid "<a href=\"https://wordpress.org/documentation/article/tools-export-screen/\">Documentation on Export</a>"
+msgstr "<a href=\"https://wordpress.org/documentation/article/tools-export-screen/\">Dokumentation om Eksportering</a>"
+
+#: wp-admin/plugin-install.php:121
+msgid "<a href=\"https://wordpress.org/documentation/article/plugins-add-new-screen/\">Documentation on Installing Plugins</a>"
+msgstr "<a href=\"https://wordpress.org/documentation/article/plugins-add-new-screen/\">Dokumentation om Installering af plugins</a>"
 
 #: wp-admin/options.php:362
 msgid "This page allows direct access to your site settings. You can break things here. Please be cautious!"
@@ -2911,7 +3470,7 @@ msgid "Great job!"
 msgstr "Godt arbejde!"
 
 #: wp-admin/about.php:38 wp-admin/credits.php:42 wp-admin/freedoms.php:39
-#: wp-admin/includes/ms.php:1119 wp-admin/nav-menus.php:724
+#: wp-admin/includes/ms.php:1119 wp-admin/nav-menus.php:727
 #: wp-admin/options-privacy.php:161 wp-admin/privacy-policy-guide.php:44
 #: wp-admin/privacy.php:33 wp-admin/site-health.php:131
 msgid "Secondary menu"
@@ -3875,21 +4434,21 @@ msgstr "Du kan ikke opdatere fordi <a href=\"%1$s\">WordPress %2$s</a> kræver M
 msgid "You cannot update because <a href=\"%1$s\">WordPress %2$s</a> requires PHP version %3$s or higher. You are running version %4$s."
 msgstr "Du kan ikke opdatere fordi <a href=\"%1$s\">WordPress %2$s</a> kræver PHP-version %3$s eller højere. Du bruger version %4$s."
 
-#: wp-admin/nav-menus.php:980
+#: wp-admin/nav-menus.php:983
 msgid "Add menu items"
 msgstr "Tilføj menuelementer"
 
 #. translators: Hidden accessibility text.
-#: wp-admin/nav-menus.php:886 wp-admin/nav-menus.php:956
+#: wp-admin/nav-menus.php:889 wp-admin/nav-menus.php:959
 msgid "Click the Save Menu button to save your changes."
 msgstr "Klik på Gem menu-knappen for at gemme dine ændringer."
 
 #. translators: Hidden accessibility text.
-#: wp-admin/nav-menus.php:862
+#: wp-admin/nav-menus.php:865
 msgid "Fill in the Menu Name and click the Create Menu button to create your first menu."
 msgstr "Udfyld Menunavnet og klik på Opret menu-knappen for at oprette din første menu."
 
-#: wp-admin/nav-menus.php:858
+#: wp-admin/nav-menus.php:861
 msgid "Create your first menu below."
 msgstr "Opret din første menu herunder."
 
@@ -5354,7 +5913,7 @@ msgstr "Skjul knapper"
 msgid "Expand Sidebar"
 msgstr "Udfold sidebar"
 
-#: wp-admin/nav-menus.php:1113
+#: wp-admin/nav-menus.php:1116
 msgid "Display location"
 msgstr "Visningsplacering"
 
@@ -5594,7 +6153,7 @@ msgstr "Du har desværre ikke tilladelse til at ændre uregistrerede indstilling
 msgid "Sorry, you are not allowed to manage options for this site."
 msgstr "Du har desværre ikke tilladelse til at administrere indstillinger på dette websted."
 
-#: wp-admin/nav-menus.php:709 wp-admin/widgets-form.php:393
+#: wp-admin/nav-menus.php:712 wp-admin/widgets-form.php:393
 msgid "Manage with Live Preview"
 msgstr "Håndter i Live forhåndsvisning"
 
@@ -6257,7 +6816,7 @@ msgid "Send User Notification"
 msgstr "Send brugernotifikation"
 
 #. translators: %s: Menu name.
-#: wp-admin/nav-menus.php:1133
+#: wp-admin/nav-menus.php:1136
 msgctxt "menu location"
 msgid "(Currently set to: %s)"
 msgstr "(på nuværende tidspunkt sat til: %s)"
@@ -6902,7 +7461,7 @@ msgid "Show more details"
 msgstr "Vis for flere detaljer"
 
 #. translators: %s: Number of menus.
-#: wp-admin/nav-menus.php:753
+#: wp-admin/nav-menus.php:756
 msgid "Your theme supports %s menu. Select which menu appears in each location."
 msgid_plural "Your theme supports %s menus. Select which menu appears in each location."
 msgstr[0] "Dit tema understøtter %s menu. Vælg hvilken menu, der skal vises ved hvert sted."
@@ -7095,7 +7654,7 @@ msgctxt "timezone date format"
 msgid "Y-m-d H:i:s"
 msgstr "Y-m-d H:i:s"
 
-#: wp-admin/nav-menus.php:658
+#: wp-admin/nav-menus.php:661
 msgid "To add a custom link, <strong>expand the Custom Links section, enter a URL and link text, and click Add to Menu</strong>"
 msgstr "For at tilføje dit tilpasset link <strong>udvid sektionen Egne links, indtast en URL og link-tekst og klik på Tilføj til menu</strong>"
 
@@ -8058,12 +8617,12 @@ msgstr "Disse størrelser angiver de maksimale dimensioner i pixel, der kan brug
 msgid "Comment must be manually approved"
 msgstr "Kommentarer skal godkendes manuelt"
 
-#: wp-admin/nav-menus.php:656
+#: wp-admin/nav-menus.php:659
 msgid "<strong>Clicking the arrow to the right of any menu item</strong> in the editor will reveal a standard group of settings. Additional settings such as link target, CSS classes, link relationships, and link descriptions can be enabled and disabled via the Screen Options tab."
 msgstr "<strong>Ved at klikke på pilen til højre for et menupunkt</strong> i editoren vil du få vist en række standardindstillinger. Yderligere indstillinger såsom link target, CSS-klasser, link-relationer, og link-beskrivelser kan aktiveres og deaktiveres via fanebladet Skærmindstillinger."
 
 #. translators: %s: URL to Widgets screen.
-#: wp-admin/nav-menus.php:616
+#: wp-admin/nav-menus.php:619
 msgid "Your theme does not natively support menus, but you can use them in sidebars by adding a &#8220;Navigation Menu&#8221; widget on the <a href=\"%s\">Widgets</a> screen."
 msgstr "Dit tema understøtter som udgangspunkt ikke menuer, men du kan bruge dem i sidebars ved at tilføje en &#8220;Brugerdefineret menu&#8221; widget i <a href=\"%s\">Widgets</a> skærmbilledet."
 
@@ -8341,7 +8900,7 @@ msgstr "Emnet du prøver at gendanne fra papirkurven findes ikke længere."
 msgid "The item you are trying to move to the Trash no longer exists."
 msgstr "Emnet du prøver at flytte til papirkurven findes ikke længere."
 
-#: wp-admin/nav-menus.php:1031
+#: wp-admin/nav-menus.php:1034
 msgid "Drag the items into the order you prefer. Click the arrow on the right of the item to reveal additional configuration options."
 msgstr "Træk hvert emne i den rækkefølge, du foretrækker. Klik på pilen til højre for emnet for at afsløre yderligere indstillinger."
 
@@ -8381,97 +8940,97 @@ msgctxt "Followed by post revision info"
 msgid "From:"
 msgstr "Fra:"
 
-#: wp-admin/nav-menus.php:832
+#: wp-admin/nav-menus.php:835
 msgctxt "menu"
 msgid "Use new menu"
 msgstr "Brug ny menu"
 
-#: wp-admin/nav-menus.php:808
+#: wp-admin/nav-menus.php:811
 msgctxt "menu"
 msgid "Edit"
 msgstr "Rediger"
 
-#: wp-admin/nav-menus.php:777
+#: wp-admin/nav-menus.php:780
 msgid "Select a Menu"
 msgstr "Vælg en menu"
 
-#: wp-admin/nav-menus.php:768
+#: wp-admin/nav-menus.php:771
 msgid "Assigned Menu"
 msgstr "Tildelt menu"
 
-#: wp-admin/nav-menus.php:767
+#: wp-admin/nav-menus.php:770
 msgid "Theme Location"
 msgstr "Temaområde"
 
-#: wp-admin/nav-menus.php:736
+#: wp-admin/nav-menus.php:739
 msgid "Manage Locations"
 msgstr "Håndter områder"
 
-#: wp-admin/nav-menus.php:725
+#: wp-admin/nav-menus.php:728
 msgid "Edit Menus"
 msgstr "Rediger menuer"
 
-#: wp-admin/nav-menus.php:673
+#: wp-admin/nav-menus.php:676
 msgid "To add a new menu instead of assigning an existing one, <strong>click the &#8217;Use new menu&#8217; link</strong>. Your new menu will be automatically assigned to that theme location"
 msgstr "For at tilføje en ny menu i stedet for at tildele en eksiterende, så <strong>klik på Brug ny menu linket</strong>"
 
-#: wp-admin/nav-menus.php:672
+#: wp-admin/nav-menus.php:675
 msgid "To edit a menu currently assigned to a theme location, <strong>click the adjacent &#8217;Edit&#8217; link</strong>"
 msgstr "For at redigere en menu, der er tildelt et temaområde, så <strong>klik det tilstødende Rediger link</strong>"
 
-#: wp-admin/nav-menus.php:670
+#: wp-admin/nav-menus.php:673
 msgid "This screen is used for globally assigning menus to locations defined by your theme."
 msgstr "Dette skærmbillede bruges til at tildele overordnede menuer til områder, der er defineret i dit tema."
 
-#: wp-admin/nav-menus.php:665
+#: wp-admin/nav-menus.php:668
 msgid "Editing Menus"
 msgstr "Redigering af menuer"
 
-#: wp-admin/nav-menus.php:660
+#: wp-admin/nav-menus.php:663
 msgid "Delete a menu item by <strong>expanding it and clicking the Remove link</strong>"
 msgstr "Slet en menu ved at <strong>udvide det og klikke på Fjern linket</strong>"
 
-#: wp-admin/nav-menus.php:659
+#: wp-admin/nav-menus.php:662
 msgid "To reorganize menu items, <strong>drag and drop items with your mouse or use your keyboard</strong>. Drag or move a menu item a little to the right to make it a submenu"
 msgstr "For at omorganisere, så <strong>træk og slip elementer med musen eller brug tastaturet</strong>. Træk eller flyt et element en smule til højre for at gøre det til en undermenu"
 
-#: wp-admin/nav-menus.php:657
+#: wp-admin/nav-menus.php:660
 msgid "Add one or several items at once by <strong>selecting the checkbox next to each item and clicking Add to Menu</strong>"
 msgstr "Tilføj en eller flere elementer på én gang ved at <strong>sætte flueben i afkrydsningsfeltet ved siden af hvert element og klikke Tilføj til menu</strong>"
 
-#: wp-admin/nav-menus.php:655
+#: wp-admin/nav-menus.php:658
 msgid "Each navigation menu may contain a mix of links to pages, categories, custom URLs or other content types. Menu links are added by selecting items from the expanding boxes in the left-hand column below."
 msgstr "Menuer kan indeholde links til sider, kategorier, brugerdefinerede links eller andre indholdstyper. Menulinks tilføjes ved at vælge elementer fra boksene i venstre kolonne nedenfor."
 
-#: wp-admin/nav-menus.php:650
+#: wp-admin/nav-menus.php:653
 msgid "Menu Management"
 msgstr "Menuhåndtering"
 
-#: wp-admin/nav-menus.php:645
+#: wp-admin/nav-menus.php:648
 msgid "You can assign theme locations to individual menus by <strong>selecting the desired settings</strong> at the bottom of the menu editor. To assign menus to all theme locations at once, <strong>visit the Manage Locations tab</strong> at the top of the screen."
 msgstr "Du kan tildele temaområder til individuelle menuer ved at <strong>vælge de ønskede indstillinger</strong> i bunden af menu-editoren. For at tildele menuer til alle temaområder på én gang, så <strong>spring til Håndter menuområder-fanebladet</strong> øverst i skærmbilledet."
 
-#: wp-admin/nav-menus.php:642
+#: wp-admin/nav-menus.php:645
 msgid "The menu management box at the top of the screen is used to control which menu is opened in the editor below."
 msgstr "Menuhåndteringsboksen øverst i skærmbilledet bruges til at kontrollere hvilken menu, der er åben i editoren nedenunder."
 
-#: wp-admin/nav-menus.php:632
+#: wp-admin/nav-menus.php:635
 msgid "Add, organize, and modify individual menu items"
 msgstr "Tilføj, organiser og lav ændringer i individuelle menuelementer"
 
-#: wp-admin/nav-menus.php:631
+#: wp-admin/nav-menus.php:634
 msgid "Create, edit, and delete menus"
 msgstr "Opret, rediger og slet menuer"
 
-#: wp-admin/nav-menus.php:630 wp-admin/themes.php:133
+#: wp-admin/nav-menus.php:633 wp-admin/themes.php:133
 msgid "From this screen you can:"
 msgstr "I dette skærmbillede kan du:"
 
-#: wp-admin/nav-menus.php:622
+#: wp-admin/nav-menus.php:625
 msgid "This screen is used for managing your navigation menus."
 msgstr "Dette skærmbillede bruges til at håndtere dine brugerdefinerede menuer."
 
-#: wp-admin/nav-menus.php:468
+#: wp-admin/nav-menus.php:471
 msgid "Menu locations updated."
 msgstr "Menuområder opdateret."
 
@@ -8521,11 +9080,11 @@ msgstr "Nægtet: %s"
 msgid "Capabilities"
 msgstr "Rettigheder"
 
-#: wp-admin/nav-menus.php:1088 wp-admin/network/settings.php:501
+#: wp-admin/nav-menus.php:1091 wp-admin/network/settings.php:501
 msgid "Menu Settings"
 msgstr "Menu indstillinger"
 
-#: wp-admin/nav-menus.php:988
+#: wp-admin/nav-menus.php:991
 msgid "Menu structure"
 msgstr "Menustruktur"
 
@@ -8560,7 +9119,7 @@ msgstr "Du kan ikke flytte dette emne til papirkurven. %s redigerer det i øjebl
 msgid "%s has taken over and is currently editing."
 msgstr "%s har taget over og redigerer i øjeblikket."
 
-#: wp-admin/nav-menus.php:893
+#: wp-admin/nav-menus.php:896
 msgid "Select a menu to edit:"
 msgstr "Vælg en menu du vil redigere:"
 
@@ -8577,19 +9136,19 @@ msgstr "Sådan, mester! Du har klaret dig igennem denne første del af installat
 msgid "Client version"
 msgstr "Klientversion"
 
-#: wp-admin/nav-menus.php:1104
+#: wp-admin/nav-menus.php:1107
 msgid "Auto add pages"
 msgstr "Tilføj automatisk sider"
 
-#: wp-admin/nav-menus.php:1058
+#: wp-admin/nav-menus.php:1061
 msgid "Give your menu a name, then click Create Menu."
 msgstr "Giv din menu et navn og klik derefter Opret menu."
 
-#: wp-admin/nav-menus.php:1029
+#: wp-admin/nav-menus.php:1032
 msgid "Edit your default menu by adding or removing items. Drag the items into the order you prefer. Click Create Menu to save your changes."
 msgstr "Rediger din standardmenu ved at tilføje eller fjerne elementer. Træk hvert element i den rækkefølge du foretrækker. Klik på Opret menu for at gemme dine ændringer."
 
-#: wp-admin/nav-menus.php:326
+#: wp-admin/nav-menus.php:329
 msgid "Selected menus have been successfully deleted."
 msgstr "De valgte menuer er blevet slettet."
 
@@ -9884,8 +10443,8 @@ msgstr "Navigationsmenuen i venstre side indeholder links til alle sider i admin
 #: wp-admin/includes/class-custom-image-header.php:100
 #: wp-admin/includes/class-wp-screen.php:856 wp-admin/includes/ms.php:1134
 #: wp-admin/index.php:44 wp-admin/link-manager.php:57 wp-admin/media-new.php:49
-#: wp-admin/media.php:86 wp-admin/my-sites.php:44 wp-admin/nav-menus.php:637
-#: wp-admin/nav-menus.php:678 wp-admin/options-discussion.php:24
+#: wp-admin/media.php:86 wp-admin/my-sites.php:44 wp-admin/nav-menus.php:640
+#: wp-admin/nav-menus.php:681 wp-admin/options-discussion.php:24
 #: wp-admin/options-general.php:53 wp-admin/options-media.php:34
 #: wp-admin/options-permalink.php:23 wp-admin/options-privacy.php:38
 #: wp-admin/options-reading.php:25 wp-admin/options-writing.php:23
@@ -10044,7 +10603,7 @@ msgstr "Indstillinger gemt."
 #: wp-admin/includes/class-custom-image-header.php:136
 #: wp-admin/includes/ms.php:1156 wp-admin/index.php:131
 #: wp-admin/link-manager.php:78 wp-admin/media-new.php:60 wp-admin/media.php:96
-#: wp-admin/my-sites.php:51 wp-admin/nav-menus.php:685
+#: wp-admin/my-sites.php:51 wp-admin/nav-menus.php:688
 #: wp-admin/options-discussion.php:31 wp-admin/options-general.php:59
 #: wp-admin/options-media.php:40 wp-admin/options-permalink.php:59
 #: wp-admin/options-privacy.php:46 wp-admin/options-reading.php:52
@@ -11035,7 +11594,7 @@ msgstr "Du kan tilpasse visningen af dette skærmbillede på en række måder:"
 msgid "Search Installed Plugins"
 msgstr "Søg i installerede plugins"
 
-#: wp-admin/nav-menus.php:749
+#: wp-admin/nav-menus.php:752
 msgid "Your theme supports one menu. Select which menu you would like to use."
 msgstr "Dit tema understøtter en menu. Vælg hvilken menu du ønsker at bruge."
 
@@ -11178,7 +11737,7 @@ msgstr "For at bruge subdomæne-indstillingerne, skal du have et jokertegn eller
 msgid "The installer attempted to contact a random hostname (%s) on your domain."
 msgstr "Installeringsfunktionen forsøgte at kontakte et tilfældigt værtsnavn (%s) på dit domæne."
 
-#: wp-admin/nav-menus.php:281
+#: wp-admin/nav-menus.php:284
 msgid "The menu item has been successfully deleted."
 msgstr "Menupunktet er blevet slettet."
 
@@ -11340,7 +11899,7 @@ msgstr "Brugernavne kan desværre ikke ændres."
 msgid "items"
 msgstr "emner"
 
-#: wp-admin/nav-menus.php:304
+#: wp-admin/nav-menus.php:307
 msgid "The menu has been successfully deleted."
 msgstr "Menuen er nu slettet."
 
@@ -11363,7 +11922,7 @@ msgstr "CSS klasser (valgfri)"
 msgid "Link Target"
 msgstr "Linkmål"
 
-#: wp-admin/nav-menus.php:1014 wp-admin/nav-menus.php:1179
+#: wp-admin/nav-menus.php:1017 wp-admin/nav-menus.php:1182
 msgid "Save Menu"
 msgstr "Gem menu"
 
@@ -11505,7 +12064,7 @@ msgstr "Denne tidszone er pt. i sommertid."
 msgid "View All"
 msgstr "Vis alle"
 
-#: wp-admin/nav-menus.php:400 wp-admin/nav-menus.php:422
+#: wp-admin/nav-menus.php:403 wp-admin/nav-menus.php:425
 msgid "Please enter a valid menu name."
 msgstr "Indtast venligst navnet på en eksisterende menu."
 
@@ -14377,7 +14936,7 @@ msgid "Custom Header"
 msgstr "Egen header"
 
 #: wp-admin/includes/dashboard.php:251 wp-admin/includes/template.php:2592
-#: wp-admin/nav-menus.php:841 wp-admin/options.php:413
+#: wp-admin/nav-menus.php:844 wp-admin/options.php:413
 msgid "Save Changes"
 msgstr "Gem ændringer"
 
