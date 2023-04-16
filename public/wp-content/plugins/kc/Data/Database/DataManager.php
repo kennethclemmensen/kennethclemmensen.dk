@@ -17,9 +17,9 @@ use \WP_Query;
  */
 final readonly class DataManager {
 
-	private readonly PostTypeService $postTypeService;
-	private readonly SecurityService $securityService;
-	private readonly ImageService $imageService;
+	private PostTypeService $postTypeService;
+	private SecurityService $securityService;
+	private ImageService $imageService;
 
 	/**
 	 * DataManager constructor

@@ -22,14 +22,14 @@ use KC\Gallery\Settings\GallerySettings;
 /**
  * The GalleryModule class contains functionality to handle galleries
  */
-final class GalleryModule implements IModule {
+final readonly class GalleryModule implements IModule {
 
-	private readonly GallerySettings $gallerySettings;
-	private readonly string $fieldParentPage;
-	private readonly TranslationService $translationService;
-	private readonly PostTypeService $postTypeService;
-	private readonly ImageService $imageService;
-	private readonly DataManager $dataManager;
+	private GallerySettings $gallerySettings;
+	private string $fieldParentPage;
+	private TranslationService $translationService;
+	private PostTypeService $postTypeService;
+	private ImageService $imageService;
+	private DataManager $dataManager;
 
 	/**
 	 * Initialize a new instance of the GalleryModule class

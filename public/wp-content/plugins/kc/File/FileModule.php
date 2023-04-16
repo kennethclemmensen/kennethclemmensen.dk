@@ -17,7 +17,7 @@ use KC\Core\Translations\TranslationString;
  */
 final readonly class FileModule implements IModule {
 
-	private readonly TranslationService $translationService;
+	private TranslationService $translationService;
 
 	/**
 	 * FileModule constructor

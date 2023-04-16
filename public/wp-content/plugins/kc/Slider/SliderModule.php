@@ -17,7 +17,7 @@ use KC\Slider\Settings\SliderSettings;
  */
 final readonly class SliderModule implements IModule {
 
-	private readonly TranslationService $translationService;
+	private TranslationService $translationService;
 
 	/**
 	 * SliderModule constructor
