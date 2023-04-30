@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 6.2.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-04-11 17:23:23+0000\n"
+"PO-Revision-Date: 2023-04-25 08:06:58+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -464,19 +464,19 @@ msgstr "Tjek venligst, at %s PHP ekstension er installeret og aktiveret."
 msgid "When using the %1$s constant, make sure to set these globals to an array: %2$s."
 msgstr "Når du bruger konstanten %1$s, skal du sørge for at sætte disse globaler til et array: %2$s."
 
-#: wp-includes/html-api/class-wp-html-tag-processor.php:2136
+#: wp-includes/html-api/class-wp-html-tag-processor.php:2193
 msgid "The query argument must be an array or a tag name."
 msgstr "Forespørgselsargumentet skal være et array eller et tagnavn."
 
-#: wp-includes/html-api/class-wp-html-tag-processor.php:1825
+#: wp-includes/html-api/class-wp-html-tag-processor.php:1882
 msgid "Invalid attribute name."
 msgstr "Ugyldigt egenskabsnavn."
 
-#: wp-includes/html-api/class-wp-html-tag-processor.php:1497
+#: wp-includes/html-api/class-wp-html-tag-processor.php:1553
 msgid "Too many calls to seek() - this can lead to performance issues."
 msgstr "For mange kald til seek() - dette kan føre til ydelsesproblemer."
 
-#: wp-includes/html-api/class-wp-html-tag-processor.php:1488
+#: wp-includes/html-api/class-wp-html-tag-processor.php:1544
 msgid "Unknown bookmark name."
 msgstr "Ukendt bogmærke."
 
@@ -3196,7 +3196,7 @@ msgstr "Få besøgende til at udføre en handling med en gruppe af knapper."
 #: wp-includes/blocks/button/block.json wp-includes/blocks/tag-cloud/block.json
 msgctxt "block style label"
 msgid "Outline"
-msgstr "Omrids"
+msgstr "Overblik"
 
 #: wp-includes/blocks/button/block.json
 msgctxt "block style label"
