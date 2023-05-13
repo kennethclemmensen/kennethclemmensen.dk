@@ -1,5 +1,5 @@
 # Set the base image
-FROM php:8.2.5-apache
+FROM php:8.2.6-apache
 
 # Install the mysqli php extension and enable mod_rewrite
 RUN docker-php-ext-install mysqli && a2enmod rewrite
