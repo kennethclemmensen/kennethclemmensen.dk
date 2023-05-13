@@ -14,7 +14,6 @@ These technologies includes:
 * [HTML](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
 * [LESS](http://lesscss.org/)
 * [Lightbox](https://lokeshdhakar.com/projects/lightbox2/)
-* [Lodash](https://lodash.com/)
 * [NodeJS](https://nodejs.org/en/)/[NPM](https://npmjs.com/)
 * [PHP](http://php.net/)
 * [RxJS](https://rxjs.dev/)

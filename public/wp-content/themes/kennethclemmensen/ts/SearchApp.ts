@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import { fromEvent } from 'rxjs';
 import { EventType } from './enums/EventType';
 import { HttpMethod } from './enums/HttpMethod';
@@ -24,17 +23,21 @@ export class SearchApp {
 			data(): object {
 				return {
 					searchString: '',
-					results: []
+					results: [],
+					timeoutId: null
 				};
 			},
 			watch: {
 				searchString: function(): void {
-					this.debouncedSearch();
+					if(this.timeoutId != null) {
+						clearTimeout(this.timeoutId);
+					}
+					const delay: number = 500;
+					this.timeoutId = setTimeout(() => {
+						this.search();
+						this.timeoutId = null;
+					}, delay);
 				}
-			},
-			created: function(): void {
-				const delay: number = 500;
-				this.debouncedSearch = _.debounce(this.search, delay);
 			},
 			methods: {
 				search: function(): void {

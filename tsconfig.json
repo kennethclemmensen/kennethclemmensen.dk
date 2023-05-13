@@ -17,10 +17,7 @@
     "outDir": "./public/wp-content/themes/kennethclemmensen/js/compiled",
     "strict": true,
     "target": "ES2022",
-    "tsBuildInfoFile": "./.tsbuildinfo",
-    "types": [
-      "lodash"
-    ]
+    "tsBuildInfoFile": "./.tsbuildinfo"
   },
   "include": [
     "./public/wp-content/themes/kennethclemmensen/ts/**/*.ts"
