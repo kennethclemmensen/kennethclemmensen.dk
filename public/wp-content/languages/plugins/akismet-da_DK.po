@@ -1,5 +1,5 @@
-# Translation of Plugins - Akismet Spam Protection - Stable (latest release) in Danish
-# This file is distributed under the same license as the Plugins - Akismet Spam Protection - Stable (latest release) package.
+# Translation of Plugins - Akismet Anti-Spam: Spam Protection - Stable (latest release) in Danish
+# This file is distributed under the same license as the Plugins - Akismet Anti-Spam: Spam Protection - Stable (latest release) package.
 msgid ""
 msgstr ""
 "PO-Revision-Date: 2022-09-29 18:38:59+0000\n"
@@ -9,7 +9,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: GlotPress/4.0.0-alpha.4\n"
 "Language: da_DK\n"
-"Project-Id-Version: Plugins - Akismet Spam Protection - Stable (latest release)\n"
+"Project-Id-Version: Plugins - Akismet Anti-Spam: Spam Protection - Stable (latest release)\n"
 
 #. translators: %1$s is a human-readable time difference, like "3 hours ago",
 #. and %2$s is an already-translated phrase describing how a comment's status
@@ -248,10 +248,6 @@ msgstr "Din n&#248;gle er ugyldig. Dobbelttjek den."
 #: views/notice.php:23 views/notice.php:31
 msgid "Akismet has detected a problem."
 msgstr "Akismet har fundet et problem."
-
-#. Author of the plugin
-msgid "Automattic"
-msgstr "Automattic"
 
 #. translators: the placeholder is a clickable URL that leads to more
 #. information regarding an error code.

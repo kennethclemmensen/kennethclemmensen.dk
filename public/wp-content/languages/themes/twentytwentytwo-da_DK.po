@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Twenty Twenty-Two package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-11-20 16:17:01+0000\n"
+"PO-Revision-Date: 2023-05-15 23:51:34+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -245,10 +245,6 @@ msgstr "12. Februar, 2021"
 #: inc/patterns/page-sidebar-poster.php:40
 msgid "Date"
 msgstr "Dato"
-
-#: inc/patterns/page-sidebar-poster.php:14
-msgid "<em>Flutter</em>, a collection of bird-related ephemera"
-msgstr "<em>Flagre</em>, en samling af fuglerelaterede skitser"
 
 #: inc/patterns/page-sidebar-poster.php:6
 msgid "Poster with right sidebar"
@@ -876,6 +872,10 @@ msgstr "The Swell Theater<br>120 River Rd.<br>Rainfall, NH"
 #: inc/patterns/general-pricing-table.php:6
 msgid "Pricing table"
 msgstr "Pristabel"
+
+#: inc/patterns/page-sidebar-poster.php:14
+msgid "<em>Flutter</em>, a collection of bird-related ephemera"
+msgstr "<em>Flakse</em>, en samling af fuglerelaterede skitser"
 
 #: inc/patterns/general-pricing-table.php:84
 msgid "$150"
