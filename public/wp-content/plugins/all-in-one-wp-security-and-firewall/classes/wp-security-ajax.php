@@ -2,9 +2,11 @@
 
 if (!defined('ABSPATH')) die('Access denied.');
 
-if (!class_exists('AIOS_Ajax')) :
+if (!class_exists('AIOWPSecurity_Ajax')) :
 
-	class AIOS_Ajax {
+	class AIOWPSecurity_Ajax {
+
+		private $commands_object;
 
 		private $nonce;
 
@@ -18,13 +20,16 @@ if (!class_exists('AIOS_Ajax')) :
 		 * Constructor
 		 */
 		private function __construct() {
+			if (!class_exists('AIOWPSecurity_Commands')) include_once(AIO_WP_SECURITY_PATH.'/classes/wp-security-commands.php');
+			$this->commands_object = new AIOWPSecurity_Commands();
+
 			add_action('wp_ajax_aios_ajax', array($this, 'handle_ajax_requests'));
 		}
 
 		/**
 		 * Return singleton instance
 		 *
-		 * @return AIOS_Ajax Returns AIOS_Ajax object
+		 * @return AIOWPSecurity_Ajax Returns AIOWPSecurity_Ajax object
 		 */
 		public static function get_instance() {
 			static $instance = null;
@@ -44,7 +49,7 @@ if (!class_exists('AIOS_Ajax')) :
 			$this->set_subaction();
 			$this->set_data();
 
-			$result = AIOWPSecurity_Utility_Permissions::check_nonce_and_user_cap($this->nonce, 'aios-ajax-nonce');
+			$result = AIOWPSecurity_Utility_Permissions::check_nonce_and_user_cap($this->nonce, 'wp-security-ajax-nonce');
 			if (is_wp_error($result)) {
 				wp_send_json(array(
 					'result' => false,
@@ -80,25 +85,9 @@ if (!class_exists('AIOS_Ajax')) :
 		}
 
 		/**
-		 * Get IP address of given method.
-		 *
-		 * @return array
-		 */
-		public function get_ip_address_of_given_method() {
-			$ip_method_id = $this->data['ip_retrieve_method'];
-			$ip_retrieve_methods = AIOS_Abstracted_Ids::get_ip_retrieve_methods();
-			if (isset($ip_retrieve_methods[$ip_method_id])) {
-				return array(
-					'ip_address' => isset($_SERVER[$ip_retrieve_methods[$ip_method_id]]) ? $_SERVER[$ip_retrieve_methods[$ip_method_id]] : '',
-				);
-			} else {
-				return new WP_Error('aios-invalid-ip-retrieve-method', __('Invalid IP retrieve method.', 'all-in-one-wp-security-and-firewall'));
-			}
-			die;
-		}
-
-		/**
 		 * Sets nonce property value
+		 *
+		 * @return void
 		 */
 		private function set_nonce() {
 			$this->nonce = empty($_POST['nonce']) ? '' : $_POST['nonce'];
@@ -106,6 +95,8 @@ if (!class_exists('AIOS_Ajax')) :
 
 		/**
 		 * Sets subaction property value
+		 *
+		 * @return void
 		 */
 		private function set_subaction() {
 			$this->subaction = empty($_POST['subaction']) ? '' : sanitize_text_field(wp_unslash($_POST['subaction']));
@@ -113,6 +104,8 @@ if (!class_exists('AIOS_Ajax')) :
 
 		/**
 		 * Sets data property value
+		 *
+		 * @return void
 		 */
 		private function set_data() {
 			$this->data = isset($_POST['data']) ? wp_unslash($_POST['data']) : null;
@@ -131,6 +124,11 @@ if (!class_exists('AIOS_Ajax')) :
 			return !in_array($this->subaction, $allowed_commands);
 		}
 
+		/**
+		 * Sends the invalid multisite command error response
+		 *
+		 * @return void
+		 */
 		private function send_invalid_multisite_command_error_response() {
 			wp_send_json(array(
 				'result' => false,
@@ -145,11 +143,13 @@ if (!class_exists('AIOS_Ajax')) :
 		 * @return bool Returns true if ajax command is an invalid command, false otherwise
 		 */
 		private function is_invalid_command() {
-			return !is_callable(array($this, $this->subaction));
+			return !is_callable(array($this->commands_object, $this->subaction));
 		}
 
 		/**
 		 * Log an error message for invalid ajax command
+		 *
+		 * @return void
 		 */
 		private function add_invalid_command_error_log_entry() {
 			error_log("AIOS: ajax_handler: no such command (" . $this->subaction . ")");
@@ -170,13 +170,17 @@ if (!class_exists('AIOS_Ajax')) :
 
 		/**
 		 * Execute the ajax command
+		 *
+		 * @return void
 		 */
 		private function execute_command() {
-			$this->results = call_user_func(array($this, $this->subaction));
+			$this->results = call_user_func(array($this->commands_object, $this->subaction), $this->data);
 		}
 
 		/**
 		 * Set `results` property with error message
+		 *
+		 * @return void
 		 */
 		private function set_error_response_on_wp_error() {
 			if (is_wp_error($this->results)) {
@@ -191,6 +195,8 @@ if (!class_exists('AIOS_Ajax')) :
 
 		/**
 		 * Set `results` property to null, if it is not yet set
+		 *
+		 * @return void
 		 */
 		private function maybe_set_results_as_null() {
 			// if nothing was returned for some reason, set as result null.
@@ -221,6 +227,8 @@ if (!class_exists('AIOS_Ajax')) :
 
 		/**
 		 * Json encode the `results` property value
+		 *
+		 * @return void
 		 */
 		private function json_encode_results() {
 			$this->results = json_encode($this->results);
