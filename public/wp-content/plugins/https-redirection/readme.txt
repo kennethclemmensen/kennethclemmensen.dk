@@ -1,10 +1,10 @@
 ﻿=== Easy HTTPS Redirection (SSL) ===
 Contributors: Tips and Tricks HQ
-Donate link: http://www.tipsandtricks-hq.com/development-center
-Tags: redirection, https, automatic redirection, htaccess, ssl, https redirection, ssl certificate, secure page, secure, force ssl, force https
-Requires at least: 3.5
-Tested up to: 5.3
-Stable tag: 1.9.1
+Donate link: https://www.tipsandtricks-hq.com/development-center
+Tags: ssl, https, force ssl, insecure content, redirection, automatic redirection, htaccess, https redirection, ssl certificate, secure page, secure, force https
+Requires at least: 5.5
+Tested up to: 6.2
+Stable tag: 1.9.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -33,6 +33,12 @@ https://www.example.com/checkout
 So you are always forcing the visitor to view the HTTPS version of the page or site in question.
 
 You can force your entire domain to be auto redirected to the HTTPS URL or selectively choose a few pages to be re-directed.
+
+= Video Tutorials =
+
+https://www.youtube.com/watch?v=oyJgRFCM6u8
+
+https://www.youtube.com/watch?v=LtyBraB64v8
 
 = Force Load Static Files Using HTTPS =
 
@@ -92,6 +98,9 @@ Here is an example for German language files.
 1. Plugin settings page.
 
 == Changelog ==
+
+= v1.9.2 =
+- Added rule to handle sites that are sitting behind a reverse-proxy. Thanks to @canadiannaginata for pointing it out.
 
 = v1.9.1 =
 - WP 5.3 warning fix for the add_submenu_page() function call. Thanks to @vfontj for pointing this out.
