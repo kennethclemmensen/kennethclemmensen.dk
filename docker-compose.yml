@@ -1,21 +1,19 @@
-version: "3.8"
-
 services:
   app:
     build: .
     depends_on:
       - db
-    hostname: kennethclemmensen.test
     ports:
-      - "80:80"
-    volumes:
-      - ./public:/var/www/html/
+      - 80:80
 
   db:
-    image: mysql:8.0.33
     environment:
+      MYSQL_ROOT_PASSWORD: root
       MYSQL_USER: TestUser
-      MYSQL_ROOT_PASSWORD: TestUserForLocalhost
+      MYSQL_PASSWORD: TestUserForLocalhost
       MYSQL_DATABASE: kennethclemmensen_test_db
-    volumes:
-      - ./tests/_data:/docker-entrypoint-initdb.d
+    build:
+      dockerfile_inline: |
+        FROM mysql:8.0.33
+        ADD https://raw.githubusercontent.com/kennethclemmensen/kennethclemmensen.dk/master/tests/_data/dump.sql /docker-entrypoint-initdb.d
+        RUN chmod -R 777 /docker-entrypoint-initdb.d
