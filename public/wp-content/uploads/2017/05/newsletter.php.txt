@@ -1,0 +1,39 @@
+<h1>Subscribe/Unsubscribe newsletter</h1>
+<form action="" method="post">
+    <label for="email">E-mail</label>
+    <input type="text" name="email" id="email" /><br/>
+    <input type="submit" name="subscribe" value="Subscribe" />
+    <input type="submit" name="unsubscribe" value="Unsubscribe" />
+</form>
+<?php
+if(isset($_POST['email']) && $_POST['email'] != "") {
+    $db = new mysqli("server", "user", "password", "database");
+    if(isset($_POST['subscribe'])) {
+        $subscribe = $db->query("INSERT INTO newsletter (email) VALUES ('".$_POST['email']."')");
+        echo ($subscribe) ? "Subscribe" : "Error";
+    }
+    if(isset($_POST['unsubscribe'])) {
+        $unsubscribe = $db->query("DELETE FROM newsletter WHERE email='".$_POST['email']."'");
+        echo ($unsubscribe) ? "Unsubscribe" : "Error";
+    }
+}
+?>
+<h1>Send newsletter</h1>
+<form action="" method="post">
+    <label for="subject">Subject</label>
+    <input type="text" name="subject" id="subject" /><br/>
+    <label for="text">Text</label>
+    <textarea name="text" id="text"></textarea>
+    <input type="submit" value="Send" />
+</form>
+<?php
+if(isset($_POST['subject']) && $_POST['subject'] != "" && isset($_POST['text']) && $_POST['text'] != "") {
+    $db = new mysqli("server", "user", "password", "database");
+    $sql = $db->query("SELECT email FROM newsletter");
+    while($data = $sql->fetch_assoc()) 
+        $receivers[] = $data['email'];
+    $receiver = implode(",", $receivers);
+    $sendNewsletter = mail($receiver, $_POST['subject'], $_POST['text']);
+    echo ($sendNewsletter) ? "The newsletter is send" : "Error";
+}
+?>

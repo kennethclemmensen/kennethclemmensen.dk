@@ -1,0 +1,276 @@
+<?php
+/**
+ * The poll class contains methods to create, edit and delete both polls
+ * and options. There are also methods to show the poll or result and
+ * vote on a poll 
+ */
+class poll {
+
+    private $db; //the conntection to the database
+    private $poll_table, $voting_option_table; //the tables from the database
+    private $image; //the image to show the result
+    private $vote_cookie_name; //the name of the cookie which is set the a vote is made
+    
+    /**
+     * The constructer of the class. If you don't want an image to show the result
+     * skip the last parameter
+     * 
+     * @param resource $db the connection to the database
+     * @param string $poll_table the poll table
+     * @param string $voting_option_table the voting option table
+     * @param string $image the path to the image
+     */
+    public function __construct($db, $poll_table, $voting_option_table, $image = "") {
+        $this->db = $db;
+        $this->poll_table = $poll_table;
+        $this->voting_option_table = $voting_option_table;
+        $this->image = $image;
+        $this->vote_cookie_name = "voted";
+    }
+
+    /**
+     * Create a poll
+     * 
+     * @param string $poll_name the name of the poll
+     * @return bool true if the poll is created. False otherwise
+     */
+    public function create_poll($poll_name) {
+        $prepared_name = $this->prepare_input($poll_name);
+        $create_poll = $this->db->query("INSERT INTO ".$this->poll_table." (name) VALUES ('".$prepared_name."')");
+        return $create_poll;
+    }
+
+    /**
+     * Edit a poll
+     * 
+     * @param int $poll_id the id of the poll
+     * @param string $poll_name the new name of the poll
+     * @return bool true if the poll is edited. False otherwise
+     */
+    public function edit_poll($poll_id, $poll_name) {
+        $prepared_id = $this->prepare_input($poll_id);
+        $prepared_name = $this->prepare_input($poll_name);
+        $edit_poll = $this->db->query("UPDATE ".$this->poll_table." SET name='".$prepared_name."' WHERE poll_id=".$prepared_id);
+        return $edit_poll;
+    }
+    
+    /**
+     * Delete a poll
+     * 
+     * @param int $poll_id the id of the poll
+     * @return bool true if the poll is deleted. False otherwise
+     */
+    public function delete_poll($poll_id) {
+        $prepared_id = $this->prepare_input($poll_id);
+        $delete_poll = $this->db->query("DELETE FROM ".$this->poll_table." WHERE poll_id=".$prepared_id);
+        return $delete_poll;
+    }
+    
+    /**
+     * Create a voting option
+     * 
+     * @param int $poll_id the id of the poll
+     * @param string $text the text of the option
+     * @return bool true if the option was created. False otherwise
+     */
+    public function create_voting_option($poll_id, $text) {
+        $prepared_id = $this->prepare_input($poll_id);
+        $prepared_text = $this->prepare_input($text);
+        $sql = "INSERT INTO ".$this->voting_option_table." (text, quantity, poll_id) VALUES ('".$prepared_text."', 0, ".$prepared_id.")";
+        $create_voting_option = $this->db->query($sql);
+        return $create_voting_option;
+    }
+
+    /**
+     * Edit a voting option
+     * 
+     * @param int $voting_option_id the id of the voting option
+     * @param string $text the text of the option
+     * @return bool true if the option was edited. False otherwise
+     */
+    public function edit_voting_option($voting_option_id, $text) {
+        $prepared_id = $this->prepare_input($voting_option_id);
+        $prepared_text = $this->prepare_input($text);
+        $sql = "UPDATE ".$this->voting_option_table." SET text='".$prepared_text."' WHERE voting_option_id=".$prepared_id;
+        $edit_voting_option = $this->db->query($sql);
+        return $edit_voting_option;
+    }
+    
+    /**
+     * Delete a voting option
+     * 
+     * @param int $voting_option_id the id of the voting option
+     * @return bool true if the option was deleted. False otherwise
+     */
+    public function delete_voting_option($voting_option_id) {
+        $prepared_id = $this->prepare_input($voting_option_id);
+        $sql = "DELETE FROM ".$this->voting_option_table." WHERE voting_option_id=".$prepared_id;
+        $delete_voting_option = $this->db->query($sql);
+        return $delete_voting_option;
+    }
+    
+    /**
+     * Show a poll
+     * 
+     * @param int $poll_id the id of the poll
+     * @return string the poll if there not have been voted.
+     * If there has been voted the result will be returned
+     */
+    public function show_poll($poll_id) {
+        $prepared_id = $this->prepare_input($poll_id);
+        if(!$this->has_voted($prepared_id)) {
+            $sql_poll = $this->db->query("SELECT * FROM ".$this->poll_table." WHERE poll_id=".$prepared_id);
+            $data_poll = $sql_poll->fetch_assoc();
+            $res = "<h3>".$data_poll['name']."</h3>\n";
+            $res.= "<form action='".$_SERVER['REQUEST_URI']."' method='post'>\n";
+            $sql_voting_options = $this->db->query("SELECT * FROM ".$this->voting_option_table." WHERE poll_id=".$prepared_id);
+            while($data_voting_options = $sql_voting_options->fetch_assoc()) {
+                $radio_button = "<p><input type='radio' name='poll' value='".$data_voting_options['voting_option_id']."' />";
+                $radio_button .= $data_voting_options['text']."</p>\n"; 
+                $res.= $radio_button;
+            }
+            $res.= "<input type='submit' name='vote_button' value='Vote' />\n";
+            $res.= "<a href='".$_SERVER['REQUEST_URI']."?show_result=yes'>Show result</a>";
+            $res.= "</form>";
+            return $res;
+        } else {
+            return $this->show_result($prepared_id);
+        }
+    }
+
+    /**
+     * Vote on an option
+     * 
+     * @param int $vote_option_id the id of the option
+     * @return boolean true if there has been voted. False otherwise
+     */
+    public function vote($vote_option_id) {
+        $prepared_option_id = $this->prepare_input($vote_option_id);
+        $sql_vote = $this->db->query("SELECT poll_id, quantity FROM ".$this->voting_option_table." WHERE voting_option_id=".$prepared_option_id);
+        $data_vote = $sql_vote->fetch_assoc();
+        $quantity = ++$data_vote['quantity'];
+        $vote = mysqli_query($this->db, "UPDATE ".$this->voting_option_table." SET quantity=".$quantity." WHERE voting_option_id=".$prepared_option_id);
+        if($vote == true) {
+            $expire_time = time() + 60 * 60 * 24 * 30 * 12;
+            setcookie($this->vote_cookie_name, $data_vote['poll_id'], $expire_time);
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    /**
+     * Show the result of a poll
+     * 
+     * @param int $poll_id the id of the poll
+     * @return string the result
+     */
+    public function show_result($poll_id) {
+        $prepared_id = $this->prepare_input($poll_id);
+        $sql_poll = $this->db->query("SELECT name FROM ".$this->poll_table." WHERE poll_id=".$prepared_id);
+        $data_poll = $sql_poll->fetch_assoc();
+        $res = "<h3>".$data_poll['name']."</h3>";
+        $sql_number_of_votes = $this->db->query("SELECT text, quantity, SUM(quantity) FROM ".$this->voting_option_table." WHERE poll_id=".$prepared_id);
+        $number_of_votes = $sql_number_of_votes->fetch_assoc();
+        $quantity = $number_of_votes['SUM(quantity)'];
+        $sql_vote_options = $this->db->query("SELECT text, quantity FROM ".$this->voting_option_table." WHERE poll_id=".$prepared_id);
+        while($vote_options = $sql_vote_options->fetch_assoc()) {
+            $percent = ($vote_options['quantity'] != 0) ? $vote_options['quantity'] / $quantity * 100 : 0;
+            $res.= "<p class='afstemning'>".$vote_options['text']." - ".round($percent, 2)."%</p>";
+            if($this->image != "") {
+                for($i = 0; $i <= $percent; $i++) {
+                    $res.= "<img src='".$this->image."' alt='Poll image' />";
+                }
+            }
+        }
+        $text = "<p>There are ";
+        $text .= ($quantity == 1) ? "1 vote" : $quantity." votes";
+        $text .= "</p>";
+        $res .= $text;
+        if(!$this->has_voted($prepared_id))
+            $res.= "<a href='".$_SERVER['PHP_SELF']."'>Show poll</a>";
+        return $res;
+    }
+
+    /**
+     * Prepare the input before adding it to the database
+     * 
+     * @param string $input the input to prepare
+     * @return string the prepared input
+     */
+    private function prepare_input($input) {
+        $removed_html = strip_tags($input);
+        return $this->db->real_escape_string($removed_html);
+    }
+    
+    /**
+     * Check if there has been voted on a poll
+     * 
+     * @param int $poll_id the id of the poll
+     * @return bool true if there has been voted. False otherwise
+     */
+    private function has_voted($poll_id) {
+        return $_COOKIE[$this->vote_cookie_name] == $poll_id;
+    }
+}
+
+/*
+THE STRUCTURE OF THE DATABASE
+
+CREATE TABLE `poll` (
+  `poll_id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  PRIMARY KEY (`poll_id`),
+  UNIQUE KEY `name_UNIQUE` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `voting_option` (
+  `voting_option_id` int(11) NOT NULL AUTO_INCREMENT,
+  `text` varchar(100) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `poll_id` int(11) NOT NULL,
+  PRIMARY KEY (`voting_option_id`),
+  KEY `fk_poll_idx` (`poll_id`),
+  CONSTRAINT `fk_poll` FOREIGN KEY (`poll_id`) REFERENCES `poll` (`poll_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+*/
+
+//EXAMPLE ON USE
+
+//make a connection to the database
+//$db = new mysqli("server", "user", "password", "database");
+
+//make an object of the class
+//$poll = new poll($db, "poll", "voting_option");
+
+//create a poll
+//$poll->create_poll("TestPoll");
+
+//edit a poll
+//$poll->edit_poll(1, "What do you think about...");
+
+//delete a poll
+//$poll->delete_poll(1);
+
+//create a voting option
+//$poll->create_voting_option(1, "Yes");
+
+//edit a voting option
+//$poll->edit_voting_option(1, "No");
+
+//delete a voting option
+//$poll->delete_voting_option(1);
+
+//show the poll or the result
+/*$poll_id = 1;
+if(isset($_GET['show_result']) && $_GET['show_result'] == "yes") {
+    echo $poll->show_result($poll_id);
+} else { 
+    echo $poll->show_poll($poll_id);
+}*/
+
+//votes on an option
+//$poll->vote(1);
+?>

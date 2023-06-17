@@ -1,0 +1,79 @@
+<?php
+/**
+ * The uploader class contains methods to handle file uploads
+ */
+class uploader {
+
+    private $allowed_filetypes; //allowed filetypes
+    private $error_files; //files which can't be uploaded
+
+    /**
+     * Construct an object of the class
+     * where the allowed filetypes are set
+     * 
+     * @param string $allowed_filetypes the allowed filetypes should be seperated with a -
+     */
+    public function __construct($allowed_filetypes) {
+        $this->allowed_filetypes = strtolower($allowed_filetypes);
+        $this->error_files = array();
+    }
+
+    /**
+     * Upload the files
+     * 
+     * @param array $files the files to upload
+     * @param string $folder the folder to upload the files to 
+     */
+    public function upload($files, $folder) {
+        for($i = 0; $i < count($files['name']); $i++) {
+            $file = strtolower($files['name'][$i]);
+            $file_tmp = $files['tmp_name'][$i];
+            if($this->is_file_valid($file)) {
+                copy($file_tmp, $folder."/".$file);
+            } else {
+                $this->error_files[] = $file;
+            }
+        }
+    }
+
+    /**
+     * Get the files that wasn't uploaded
+     * 
+     * @return array the files that wasn't uploaded 
+     */
+    public function get_error_files() {
+        return $this->error_files;
+    }
+
+    /**
+     * Check if a file is valid
+     * 
+     * @param string $file the file to check
+     * @return boolean true if the file is valid. False otherwise
+     */
+    private function is_file_valid($file) {
+        $filetypes = explode("-", $this->allowed_filetypes);
+        $small_filetype = substr($file, -2);
+        $medium_filetype = substr($file, -3);
+        $long_filetype = substr($file, -4);
+        return in_array($small_filetype, $filetypes) || in_array($medium_filetype, $filetypes) || in_array($long_filetype, $filetypes);
+    }
+}
+
+//EXAMPLE ON USE
+
+//make an object of the class
+//$uploader = new uploader("php-txt");
+
+//the html form
+/*echo '<form action="" method="post" enctype="multipart/form-data">
+        <input type="file" name="file[]" multiple="multiple" />
+        <input type="submit" value="Upload" />
+        </form>';*/
+
+//upload the files
+//$uploader->upload($_FILES['file'], "upload");
+
+//get the files that wasn't uploaded
+//print_r($uploader->get_error_files());
+?>

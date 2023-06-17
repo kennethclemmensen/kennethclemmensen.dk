@@ -4,9 +4,6 @@
 #Node
 /node_modules
 
-#Uploads
-public/wp-content/uploads
-
 #Composer
 /vendor
 

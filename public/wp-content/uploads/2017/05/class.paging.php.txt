@@ -1,0 +1,165 @@
+<?php
+class paging {
+    
+    private $db, $sql, $pr_site; //the connection to the database, the sql and number of results per site
+    private $offset; //the offset where the results should be shown from
+    private $number_of_results; //the number of results
+    private $number_of_pages; //the number of pages
+
+    /**
+     * Construct an object of the class
+     * 
+     * @param resource $db the connection to the database
+     * @param string $sql the sql string
+     * @param int $pr_site the number of results pr site
+     */
+    public function __construct($db, $sql, $pr_site) {
+        $this->db = $db;
+        $this->sql = $sql;
+        $this->pr_site = $pr_site;
+    }
+    
+    /**
+     * Set the offset. This method should be called BEFORE show_results()
+     * 
+     * @param int $offset the offset
+     */
+    public function setOffset($offset) {
+        $this->offset = (is_numeric($offset) && $offset != "" && $offset > 0) ? $offset : 0;
+    }
+    
+    /**
+     * Show the results
+     * 
+     * @return array the results
+     */
+    public function show_results() {
+        $number_of_results = $this->db->query($this->sql);
+        $this->number_of_results = $number_of_results->num_rows;
+        //uses ceil to be sure to get all results
+        $this->number_of_pages = ceil($this->number_of_results / $this->pr_site);
+        $sql = $this->db->query($this->sql." LIMIT ".$this->offset.", ".$this->pr_site);
+        while($data = $sql->fetch_assoc()) {
+            $res[] = $data;
+        }
+        return $res;
+    }
+    
+    /**
+     * Show a small menu with previous and next links
+     * 
+     * @return string the menu
+     */
+    public function smallMenu() {
+        return $this->get_previous_link().$this->get_next_link();
+    }
+    
+    /**
+     * Show the medium menu with previous and next links and all pages
+     * 
+     * @return string the menu
+     */
+    public function mediumMenu() {
+        $res = $this->get_previous_link();
+        if($this->number_of_pages > 1) {
+            $site = 1;
+            for($i = 0; $i < $this->number_of_results; $i = $i + $this->pr_site) {
+                $current_site = $site * $this->pr_site - $this->pr_site;
+                if($this->offset != $current_site) {
+                    $res.= "<a href='".$_SERVER['PHP_SELF']."?offset=".$i."'>".$site."</a> ";
+                } else {
+                    $res.= $site." ";
+                }
+                $site++;
+            }
+        }
+        $res .= $this->get_next_link();
+        return $res;
+    }
+    
+    /**
+     * Show a large menu with first, previous, next and last links
+     * and a number of sites before and after the current site
+     * 
+     * @param int $sites the number of sites to show before and after the current site
+     * @return string the large menu
+     */
+    public function largeMenu($sites = 2) {
+        if(!is_int($sites)) $sites = 2;
+        $res = "<a href='".$_SERVER['PHP_SELF']."?offset=0'>First</a> ";
+        $res .= $this->get_previous_link();
+        if($this->number_of_pages > 1) {
+            $site = 1;
+            for($i = 0; $i < $this->number_of_results; $i = $i + $this->pr_site) {
+                $current_site = $site * $this->pr_site - $this->pr_site;
+                if($current_site >= $this->offset - ($this->pr_site * $sites) && $current_site <= $this->offset + ($this->pr_site * $sites)) {
+                    if($this->offset != $current_site) {
+                        $res.= "<a href='".$_SERVER['PHP_SELF']."?offset=".$i."'>".$site."</a> ";
+                    } else {
+                        $res.= $site." ";
+                    }
+                }
+                $site++;
+            }
+        }
+        $res .= $this->get_next_link();
+        $last = $this->number_of_pages * $this->pr_site - $this->pr_site;
+        $res .= " <a href='".$_SERVER['PHP_SELF']."?offset=".$last."'>Last</a>";
+        return $res;
+    }
+    
+    /**
+     * Get a previous site link
+     * 
+     * @return string the link
+     */
+    private function get_previous_link() {
+        $res = "";
+        if($this->offset > 0) {
+            $previous = $this->offset - $this->pr_site;
+            $res.= "<a href='".$_SERVER['PHP_SELF']."?offset=".$previous."'>Previous</a> ";
+        }        
+        return $res;
+    }
+    
+    /**
+     * Get a next site link
+     * 
+     * @return string the link
+     */
+    private function get_next_link() {
+        $res = "";
+        if($this->offset < $this->number_of_results - $this->pr_site) {
+            $next = $this->offset + $this->pr_site;
+            $res.= " <a href='".$_SERVER['PHP_SELF']."?offset=".$next."'>Next</a>";
+        }
+        return $res;
+    }
+}
+
+//EXAMPLE ON USE
+
+//connect to the database
+//$db = new mysqli("server", "user", "password", "database");
+
+//make an object of the class
+//$paging = new paging($db, "SELECT * FROM paging", 2);
+
+//set the offset
+//$paging->setOffset($_GET['offset']);
+
+//show the results
+/*$array = $paging->show_results();
+for($i = 0; $i < count($array); $i++) {
+    echo $array[$i]['text']."<br/>";
+}*/
+
+//show the small menu
+//echo $paging->smallMenu();
+
+//show the medium menu
+//echo $paging->mediumMenu();
+
+//show the large menu
+//echo $paging->largeMenu();
+?>

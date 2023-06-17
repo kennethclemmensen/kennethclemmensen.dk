@@ -1,0 +1,313 @@
+<?php
+/**
+ * The news class contains methods to handle news, images and comments
+ */
+class news {
+    
+    private $db; //the connection to the database
+    private $category_table, $news_table, $comment_table, $image_table; //the tables from the database
+    private $image_folder; //the image folder
+
+    /**
+     * Make an object of the class
+     * 
+     * @param resource $db the connection to the database
+     * @param string $category_table the category table
+     * @param string $news_table the news table
+     * @param string $comment_table the comment table
+     * @param string $image_table the image table
+     * @param string $image_folder the image folder
+     */
+    public function __construct($db, $category_table, $news_table, $comment_table, $image_table, $image_folder) {
+        $this->db = $db;
+        $this->category_table = $category_table;
+        $this->news_table = $news_table;
+        $this->comment_table = $comment_table;
+        $this->image_table = $image_table;
+        $this->image_folder = $image_folder;
+    }
+    
+    /**
+     * Create a category
+     * 
+     * @param string $name the name of the category
+     * @return boolean true if the category is created. False otherwise
+     */
+    public function create_category($name) {
+        $prepared_name = $this->prepare_input($name);
+        return $this->db->query("INSERT INTO ".$this->category_table." (name) VALUES ('".$prepared_name."')");
+    }
+    
+    /**
+     * Edit a category
+     * 
+     * @param int $id the id of the category
+     * @param string $name the new name
+     * @return boolean true if the category is edited. False otherwise
+     */
+    public function edit_category($id, $name) {
+        $prepared_id = $this->prepare_input($id);
+        $prepared_name = $this->prepare_input($name);
+        return $this->db->query("UPDATE ".$this->category_table." SET name='".$prepared_name."' WHERE id=".$prepared_id);
+    }
+    
+    /**
+     * Delete a category
+     * 
+     * @param int $id the id of the category
+     * @return boolean true if the category is deleted. False otherwise
+     */
+    public function delete_category($id) {
+        $prepared_id = $this->prepare_input($id);
+        return $this->db->query("DELETE FROM ".$this->category_table." WHERE id=".$prepared_id);
+    }
+    
+    /**
+     * Create a news
+     * 
+     * @param string $headline
+     * @param int $date the date as a timestamp
+     * @param string $text the text
+     * @param int $category_id the category id
+     * @param int $image_id the image id. For no image set $image_id to null
+     * @return boolean true if the news is created. False otherwise
+     */
+    public function create_news($headline, $date, $text, $category_id, $image_id) {
+        if(!is_int($image_id)) $image_id = "NULL";
+        if(!is_int($date)) $date = time();
+        $prepared_headline = $this->prepare_input($headline);
+        $prepared_date = $this->prepare_input($date);
+        $prepared_text = $this->prepare_input($text);
+        $prepared_category_id = $category_id;
+        $prepared_image_id = $this->prepare_input($image_id);
+        $sql = "INSERT INTO ".$this->news_table." (headline, date, text, category_id, image_id) ";
+        $sql .= "VALUES ('".$prepared_headline."', ".$prepared_date.", '".$prepared_text."', ".$prepared_category_id.", ".$prepared_image_id.")";
+        return $this->db->query($sql);
+    }
+    
+    /**
+     * Edit a news
+     * 
+     * @param int $id the id of the news
+     * @param string $headline the headline
+     * @param string $text the text
+     * @param int $category_id the category id
+     * @param int $image_id the image id. For no image set $image_id to null
+     * @return boolean true if the news is edited. False otherwise
+     */
+    public function edit_news($id, $headline, $text, $category_id, $image_id) {
+        if(!is_int($image_id)) $image_id = "NULL";
+        $prepared_id = $this->prepare_input($id);
+        $prepared_headline = $this->prepare_input($headline);
+        $prepared_text = $this->prepare_input($text);
+        $prepared_category_id = $this->prepare_input($category_id);
+        $prepared_image_id = $this->prepare_input($image_id);
+        $sql = "UPDATE ".$this->news_table." SET headline='".$prepared_headline."', text='".$prepared_text."', ";
+        $sql .= "category_id=".$prepared_category_id.", image_id=".$prepared_image_id." WHERE id=".$prepared_id;
+        return $this->db->query($sql);
+    }
+    
+    /**
+     * Delete a news
+     * 
+     * @param int $id the id of the news
+     * @return boolean true if the news is deleted. False otherwise
+     */
+    public function delete_news($id) {
+        $prepared_id = $this->prepare_input($id);
+        return $this->db->query("DELETE FROM ".$this->news_table." WHERE id=".$prepared_id);
+    }
+    
+    /**
+     * Upload an image
+     * 
+     * @param resource $image the image to upload
+     * @param string $title the title
+     * @param string $image_text the image text
+     * @return boolean true if the image is uploaded. False otherwise
+     */
+    public function upload_image($image, $title, $image_text) {
+        if($image == "") return false;
+        $image_path = $this->image_folder."/".time()."_".$image['name'];
+        if(copy($image['tmp_name'], $image_path)) {
+            $prepared_title = $this->prepare_input($title);
+            $prepared_image_text = $this->prepare_input($image_text);
+            $sql = "INSERT INTO ".$this->image_table." (path, title, image_text) ";
+            $sql .= "VALUES ('".$image_path."', '".$prepared_title."', '".$prepared_image_text."')";
+            $this->db->query($sql);
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    /**
+     * Delete an image
+     * 
+     * @param int $id the id of the image
+     * @return boolean true if the image is deleted. False otherwise
+     */
+    public function delete_image($id) {
+        $prepared_id = $id;
+        $sql_image = $this->db->query("SELECT path FROM ".$this->image_table." WHERE id=".$prepared_id);
+        $image = $sql_image->fetch_assoc();
+        if(unlink($image['path'])) {
+            $this->db->query("DELETE FROM ".$this->image_table." WHERE id=".$prepared_id);
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    /**
+     * Create a comment
+     * 
+     * @param string $name the name of the person who write the comment
+     * @param int $date the date
+     * @param string $comment the comment
+     * @param int $news_id the id of the news
+     * @return boolean true if the comment is created. False otherwise
+     */
+    public function create_comment($name, $date, $comment, $news_id) {
+        $prepared_name = $this->prepare_input($name);
+        if(!is_int($date)) $date = time();
+        $prepared_date = $this->prepare_input($date);
+        $prepared_comment = $this->prepare_input($comment);
+        $prepared_news_id = $this->prepare_input($news_id);
+        $sql = "INSERT INTO ".$this->comment_table." (name, date, comment, news_id) ";
+        $sql .= "VALUES ('".$prepared_name."', ".$prepared_date.", '".$prepared_comment."', ".$prepared_news_id.")";
+        return $this->db->query($sql);
+    }
+    
+    /**
+     * Delete a comment
+     * 
+     * @param int $id the id of the comment
+     * @return boolean true if the comment is deleted. False otherwise
+     */
+    public function delete_comment($id) {
+        $prepared_id = $this->prepare_input($id);
+        return $this->db->query("DELETE FROM ".$this->comment_table." WHERE id=".$prepared_id);
+    }
+    
+    /**
+     * Show a news with the comments
+     * 
+     * @param int $id the id of the news
+     * @return string the news
+     */
+    public function show_news($id) {
+        $prepared_id = $this->prepare_input($id);
+        $sql_news = $this->db->query("SELECT * FROM ".$this->news_table." WHERE id=".$prepared_id);
+        $news = $sql_news->fetch_assoc();
+        $res = "<h1>".$news['headline']."</h1>";
+        $date_format = "d-m-Y H:i";
+        $res .= "<p>".date($date_format, $news['date'])."</p>";
+        $res .= "<p>".$news['text']."</p><hr/>";
+        $sql_comments = $this->db->query("SELECT * FROM ".$this->comment_table." WHERE news_id=".$news['id']);
+        while($comments = $sql_comments->fetch_assoc()) {
+            $res .= "<p>".date($date_format, $comments['date'])." - ".$comments['name']."</p>";
+            $res .= "<p>".$comments['comment']."</p><br/>";
+        }
+        return $res;
+    }
+    
+    /**
+     * Prepare the input before adding it to the database
+     * 
+     * @param string $input the input to prepare
+     * @return string the prepared input
+     */
+    private function prepare_input($input) {
+        $removed_html = strip_tags($input);
+        return $this->db->real_escape_string($removed_html);
+    }
+}
+
+/* 
+THE STRUCTURE TO THE DATABASE
+
+CREATE TABLE `category` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name_UNIQUE` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+
+CREATE TABLE `comment` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `date` int(20) NOT NULL,
+  `comment` mediumtext NOT NULL,
+  `news_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_news_idx` (`news_id`),
+  CONSTRAINT `fk_news` FOREIGN KEY (`news_id`) REFERENCES `news` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+
+CREATE TABLE `image` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `path` varchar(100) NOT NULL,
+  `title` varchar(45) NOT NULL,
+  `image_text` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `path_UNIQUE` (`path`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+
+CREATE TABLE `news` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `headline` varchar(50) NOT NULL,
+  `date` int(20) NOT NULL,
+  `text` text NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `image_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_category_idx` (`category_id`),
+  KEY `fk_image_idx` (`image_id`),
+  CONSTRAINT `fk_image` FOREIGN KEY (`image_id`) REFERENCES `image` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
+  CONSTRAINT `fk_category` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+
+*/
+
+//EXAMPLE ON USE
+
+//connect to the database
+//$db = new mysqli("server", "user", "password", "database");
+
+//make an object of the class
+//$news = new news($db, "category", "news", "comment", "image", "images");
+
+//create a category
+//$news->create_category("Category");
+
+//edit a category
+//$news->edit_category(1, "News");
+
+//delete a category
+//$news->delete_category(1);
+
+//create a news
+//$news->create_news("Headline", time(), "Text", 1, null);
+
+//edit a news
+//$news->edit_news(1, "New Headline", "New Text", 1, null);
+
+//delete a news
+//$news->delete_news(1);
+
+//upload an image
+//$news->upload_image($_FILES['image'], "Title", "Image text");
+
+//delete an image
+//$news->delete_image(1);
+
+//create a comment
+//$news->create_comment("My name", time(), "My comment", 1);
+
+//delete a comment
+//$news->delete_comment(1);
+
+//show a news
+//echo $news->show_news(1);
+?>

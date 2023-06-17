@@ -1,0 +1,181 @@
+<?php
+/**
+ * The database class contains methods to use on a database
+ */
+class database {
+
+    private $db; //the connection to the database
+
+    /**
+     * Make an object of the class and set the charset to utf8
+     *
+     * @param string $server the server
+     * @param string $username the username
+     * @param string $password the users password
+     * @param string $database the database
+     */
+    public function __construct($server, $username, $password, $database) {
+        $this->db = new mysqli($server, $username, $password, $database);
+        $this->db->query("SET CHARACTER SET utf8");
+    }
+    
+    /**
+     * Get the connection
+     *
+     * @return resource the connection
+     */
+    public function getConnection() {
+        return $this->db;
+    }
+    
+    /**
+     * Close the connection
+     *
+     * @return boolean true if connection is closed
+     */
+    public function closeConnection() {
+        return $this->db->close();
+    }
+    
+    /**
+     * Make a select statement. If there are multiple
+     * $fields and $values they should be seperated by a -
+     * 
+     * @param string $table the table
+     * @param string $columns the columns
+     * @param string $fields the fields in the WHERE clause 
+     * @param string $values the values in the WHERE clause
+     * @return resource the rows from the select statement
+     */
+    public function select($table, $columns, $fields = "", $values = "") {
+        $prepared_table = $this->prepare_input($table);
+        $prepared_columns = explode("-", $this->prepare_input($columns));
+        $prepared_fields = $this->prepare_input($fields);
+        $prepared_values = $this->prepare_input($values);
+        $select_data = "";
+        foreach($prepared_columns as $key => $value) {
+            if(count($prepared_columns) - 1 != $key) $select_data .= $value.", "; //not the last item in the array
+            else $select_data .= $value; //the last item in the array
+        }
+        $conditions = "";
+        if($prepared_fields != "" && $prepared_values != "") {
+            $prepared_fields = explode("-", $prepared_fields);
+            $prepared_values = explode("-", $prepared_values);
+            $conditions = "WHERE ";
+            foreach($prepared_fields as $key => $value) {
+                if(count($prepared_fields) - 1 != $key)
+                    $conditions .= $prepared_fields[$key]." = '".$prepared_values[$key]."' AND "; //not the last item in the array
+                else
+                    $conditions .= $prepared_fields[$key]." = '".$prepared_values[$key]."'"; //the last item in the array
+            }
+        }
+        return $this->db->query("SELECT ".$select_data." FROM ".$prepared_table." ".$conditions);
+    }
+    
+    /**
+     * Insert a row in the table. If there are multiple
+     * $columns and $values they should be seperated by a -
+     * 
+     * @param string $table the table to insert the row in
+     * @param string $columns the columns to insert the values in
+     * @param string $values the values to insert
+     * @return boolean true if the row is inserted. False otherwise
+     */
+    public function insert($table, $columns, $values) {
+        $prepared_table = $this->prepare_input($table);
+        $prepared_columns = explode("-", $this->prepare_input($columns));
+        $prepared_values = explode("-", $this->prepare_input($values));
+        $columns_text = "";
+        $values_text = "";
+        foreach($prepared_columns as $key => $value) {
+            if(count($prepared_columns) - 1 != $key) { //not the last item in the array
+                $columns_text .= $value.", ";
+                $values_text .= "'".$prepared_values[$key]."', ";
+            } else { //the last item in the array
+                $columns_text .= $value;
+                $values_text .= "'".$prepared_values[$key]."'";
+            }
+        }
+        return $this->db->query("INSERT INTO ".$prepared_table." (".$columns_text.") VALUES (".$values_text.")");
+    }
+    
+    /**
+     * Update a row in the table. If there are multiple
+     * $columns and $values they should be seperated by a -
+     * 
+     * @param string $table the table to update
+     * @param string $columns the columns to update
+     * @param string $values the values of the columns
+     * @param string $field the field in the WHERE clause
+     * @param string $value the value in the WHERE clause
+     * @return boolean true if the row is updated. False otherwise
+     */
+    public function update($table, $columns, $values, $field, $value) {
+        $prepared_table = $this->prepare_input($table);
+        $prepared_columns = explode("-", $this->prepare_input($columns));
+        $prepared_data = explode("-", $this->prepare_input($values));
+        $prepared_field = $this->prepare_input($field);
+        $prepared_value = $this->prepare_input($value);
+        $data_text = "";
+        foreach($prepared_columns as $key => $value) {
+            $data_text .= $value." = '".$prepared_data[$key]."'";
+            if(count($prepared_columns) - 1 != $key) $data_text .= ", "; //not the last item in the array
+        }
+        return $this->db->query("UPDATE ".$prepared_table." SET ".$data_text." WHERE ".$prepared_field." = '".$prepared_value."'");
+    }
+    
+    /**
+     * Delete a row in the table. If there are multiple
+     * $columns and $values they should be seperated by a -
+     * 
+     * @param string $table the table
+     * @param string $columns the columns in the WHERE clause
+     * @param string $values the values in the WHERE clause
+     * @return boolean true if the row is deleted. False otherwise
+     */
+    public function delete($table, $columns, $values) {
+        $table = $this->prepare_input($table);
+        $columns = explode("-", $this->prepare_input($columns));
+        $values = explode("-", $this->prepare_input($values));
+        $delete_text = "";
+        foreach($columns as $key => $value) {
+            $delete_text .= $value." = '".$values[$key]."'";
+            if(count($columns) - 1 != $key) $delete_text .= " AND "; //not the last item in the array
+        }
+        return $this->db->query("DELETE FROM ".$table." WHERE ".$delete_text);
+    }
+    
+    /**
+     * Prepare the input before adding it to the database
+     * 
+     * @param string $input the input to prepare
+     * @return string the prepared input
+     */
+    private function prepare_input($input) {
+        return strip_tags($this->db->real_escape_string($input));
+    }
+}
+
+//EXAMPLE ON USE
+
+//make an object of the class
+//$database = new database("server", "user", "password", "database");
+
+//select rows in the table
+/*$res = $database->select("user", "email-password");
+while($data = $res->fetch_assoc()) {
+    echo $data['email']." ".$data['password']."<br/>";
+}*/
+
+//insert a row into the table
+//$database->insert("user", "email-password", "mail@mail.com-1234");
+
+//update a row in the database
+//$database->update("user", "email-password", "my_mail@gmail.com-123456", "id", "1");
+
+//delete a row in the database
+//$database->delete("user", "id", "2");
+
+//close the connection to the database
+//$database->closeConnection();
+?>

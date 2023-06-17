@@ -1,0 +1,36 @@
+<?php
+/**
+ * Send a html formatted email with an attached file
+ * 
+ * @param string $filename the name of the file
+ * @param strin $to the email of the receiver
+ * @param string $from the email of the sender
+ * @param string $reply_to the email to reply to
+ * @param string $subject the subject
+ * @param string $message the message
+ */
+function html_mail($filename, $to, $from, $reply_to, $subject, $message) {
+    $filesize = filesize($filename);
+    $file = fopen($filename, "r");
+    $file_content = fread($file, $filesize);
+    fclose($file);
+    $content = chunk_split(base64_encode($file_content));
+    $time = md5(time());
+    $header = "From: <".$from.">\r\n";
+    $header .= "Reply-To: ".$reply_to."\r\n";
+    $header .= "MIME-Version: 1.0\r\n";
+    $header .= "Content-Type: multipart/mixed; boundary=\"".$time."\"\r\n\r\n";
+    $header .= "This is a multi-part message in MIME format.\r\n";
+    $header .= "--".$time."\r\n";
+    $header .= "Content-type: text/html; charset=utf-8\r\n";
+    $header .= "Content-Transfer-Encoding: 7bit\r\n\r\n";
+    $header .= $message."\r\n\r\n";
+    $header .= "--".$time."\r\n";
+    $header .= "Content-Type: application/octet-stream; name=\"".$filename."\"\r\n";
+    $header .= "Content-Transfer-Encoding: base64\r\n";
+    $header .= "Content-Disposition: attachment; filename=\"".$filename."\"\r\n\r\n";
+    $header .= $content."\r\n\r\n";
+    $header .= "--".$time."--";
+    echo (mail($to, $subject, $message, $header)) ? "The mail is send" : "The mail is not send";
+}
+?>

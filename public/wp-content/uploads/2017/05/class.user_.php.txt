@@ -1,0 +1,264 @@
+<?php
+/**
+ * The user class contains methods to handle users
+ */
+class user {
+
+    private $db; //the connection to the database
+    private $user_table; //the table from the database
+	
+	/**
+     * Create an object of the class
+     * 
+     * @param $db the database connection
+     * @param $user_table the user table
+     */
+    public function __construct($db, $user_table) {
+		$this->db = $db;
+		$this->user_table = $user_table;
+	}
+    
+    /**
+     * Log the user in if the email and password exists in the database
+     * 
+     * @param string $email the email of the user
+     * @param string $password the password of the user
+     * @return boolean true if the email and password exists in the database. False otherwise
+     */
+    public function login($email, $password) {
+        $email = $this->prepare_input($email);
+        $password = $this->prepare_input($password);
+        $sql = "SELECT email FROM ".$this->user_table." WHERE email='".$email."' AND password='".$this->encrypt_password($password)."'";
+        $get_user = $this->db->query($sql);
+        if($get_user->num_rows == 1) {
+            $this->set_email_cookie($email);
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    /**
+     * Log the user off
+     * 
+     * @return boolean true if the user is logged of. False otherwise
+     */
+    public function logoff() {
+        if($this->is_logged_in()) {
+            $expire_time = time() - 100;
+            $this->set_email_cookie($this->get_email(), $expire_time);
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    /**
+     * Check if the user is logged in
+     * 
+     * @return boolean true if the user is logged in. False otherwise
+     */
+    public function is_logged_in() {
+        $email = $this->get_email();
+        return !empty($email);
+    }
+    
+    /**
+     * Create an user
+     * 
+     * @param string $email the email of the user
+     * @param string $password the password of the user
+     * @return boolean true if the user is created. False otherwise
+     */
+    public function create_user($email, $password) {
+        $email = $this->prepare_input($email);
+        $password = $this->prepare_input($password);
+		$sql = "INSERT INTO ".$this->user_table." (email, password)";
+        $sql .= "VALUES ('".$email."', '".$this->encrypt_password($password)."')";
+        $create_user = $this->db->query($sql);
+        if($create_user) {
+            $this->set_email_cookie($email);
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    /**
+     * Delete an user
+     * 
+     * @param string $email the email of the user
+     * @return boolean true if the user is deleted. False otherwise
+     */
+    public function delete_user($email) {
+        $email = $this->prepare_input($email);
+        $delete_user = $this->db->query("DELETE FROM ".$this->user_table." WHERE email='".$email."'");
+        if($delete_user) {
+            $expire_time = time() - 100;
+            $this->set_email_cookie($email, $expire_time);
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    /**
+     * Get the user's email
+     * 
+     * @return string the user's email
+     */
+    public function get_email() {
+        return $_COOKIE['email'];
+    }
+
+    /**
+     * Edit the users password
+     * 
+     * @param string $password the new password
+     * @return boolean true if the password is edited. False otherwise
+     */
+    public function edit_password($password) {
+        $prepared_password = $this->prepare_input($password);
+		$sql = "UPDATE ".$this->user_table." SET password='".$this->encrypt_password($prepared_password)."' WHERE email='".$this->get_email()."'";
+        return $this->db->query($sql);
+    }
+    
+    /**
+     * Send a mail with a new password
+     * 
+     * @param string $email the email to send the mail to
+     * @return boolean true if the mail is send. False otherwise
+     */
+    public function forgot_password($email) {
+    	$email = $this->prepare_input($email);
+    	$sql_email = $this->db->query("SELECT password FROM ".$this->user_table." WHERE email='".$email."'");
+    	if($sql_email->num_rows == 1) {
+            $subject = "New password";
+            $new_password = $this->generate_password();
+            $message = "Your new password is ".$new_password;
+            $header = "From: from@mail.com\r\n";
+            $header .= "Reply-to:noreply\r\n";
+            if(mail($email, $subject, $message, $header)) {
+				$this->db->query("UPDATE ".$this->user_table." SET password='".$this->encrypt_password($new_password)."' WHERE email='".$email."'");
+                return true;
+            } else {
+                return false;
+            }
+    	} else {
+            return false;
+    	}
+    }
+    
+    /**
+     * Set two cookies to remember the email and password
+     * if the checkbox is checked. Otherwise the cookies will be deleted 
+     * 
+     * @param string $checkbox the checkbox to check
+     * @param string $email the email
+     * @param string $password the password
+     */
+    public function remember_me($checkbox, $email, $password) {
+        $year = 60 * 60 * 24 * 30 * 12;
+        $expire_time = time() - $year;
+        if(isset($checkbox))
+            $expire_time = time() + $year;
+        setcookie("remember_email", $email, $expire_time);
+        setcookie("remember_password", $password, $expire_time);
+    }
+    
+    /**
+     * Set a cookie to know the user's email
+     * 
+     * @param string $email the user's email
+     * @param int $expire_time the expire time of the cookie
+     */
+    private function set_email_cookie($email, $expire_time = 0) {
+        setcookie("email", $email, $expire_time);
+    }
+
+    /**
+     * Prepare the input before adding it to the database
+     * 
+     * @param string $input the input to prepare
+     * @return string the prepared input
+     */
+    private function prepare_input($input) {
+        return $this->db->real_escape_string(strip_tags($input));
+    }
+    
+    /**
+     * Encrypt a password
+     * 
+     * @param string $password the password to encrypt
+     * @param string $salt the salt used to encrypt the password
+     * @return string the encrypted password
+     */
+	private function encrypt_password($password) {
+		return password_hash($password, PASSWORD_BCRYPT);
+	}
+    
+    /**
+     * Generate a password
+     * 
+     * @return string the new password
+     */
+    private function generate_password() {
+        $signs = "123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        $length = 12;
+        $password = "";
+        for($i = 0; $i < $length; $i++) {
+            $sign_number = mt_rand(0, strlen($signs));
+            $password .= substr($signs, $sign_number, 1);
+        }
+        return $password;
+    }
+}
+
+/*
+THE DATABASE STRUCTURE
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email_UNIQUE` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+*/
+
+//EXAMPLE ON USE
+
+//connect to the database
+//$db = new mysqli("localhost", "user", "password", "database");
+
+//make an object of the class
+//$user = new user($db, "user");
+
+//log the user in
+//$user->login("email", "password");
+
+//check if the user is logged in
+//$user->is_logged_in();
+
+//log the user off
+//$user->logoff();
+
+//create an user
+//$user->create_user("email", "password");
+
+//delete an user
+//$user->delete_user("email");
+
+//get the user's email
+//$user->get_email();
+
+//edit the password
+//$user->edit_password("password");
+
+//send an email if you forgot your password
+//$user->forgot_password("email");
+
+//remember the email and password if the checkbox is checked
+//$user->remember_me($_POST['checkbox'], $email, $password);
+?>

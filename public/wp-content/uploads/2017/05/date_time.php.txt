@@ -1,0 +1,25 @@
+<?php
+/**
+ * The datetime function returns a given timestamp
+ * in a danish format. By changing the values in
+ * the days and months array other languages can be used
+ * 
+ * @param int $timestamp the timestamp to format to a date
+ * @return string the formatted timestamp
+ */
+function date_time($timestamp) {
+    if(!is_int($timestamp)) $timestamp = time();
+    $date_string = date("w-n-Y-H-i", $timestamp);
+    $date_from_timestamp = explode("-", $date_string);
+    $days = array("S&oslash;ndag", "Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "L&oslash;rdag");
+    $day_number = $date_from_timestamp[0];
+    $months = array("", "januar", "februar", "marts", "april", "maj", "juni", "juli", "august", "september", "oktober", "november", "december");
+    $month_number = $date_from_timestamp[1];
+    $day_of_month = date("j", $timestamp);
+    $year = $date_from_timestamp[2];
+    $hours = $date_from_timestamp[3];
+    $minutes = $date_from_timestamp[4];
+    return $days[$day_number]." den ".$day_of_month." ".$months[$month_number]." ".$year." kl. ".$hours.":".$minutes;
+}
+echo date_time(1234567890);
+?>

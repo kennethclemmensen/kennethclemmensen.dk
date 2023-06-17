@@ -1,0 +1,166 @@
+<?php
+/**
+ * The image class contains methods to handle upload images and create thumbnails
+ */
+class image {
+
+    private $folder; //the folder to upload the image to
+    private $image; //the image to upload ex $_FILES['image']
+    private $name; //the name of the image
+    private $thumb_prefix; //the thumbnail prefix text
+    
+    /**
+     * The constructor sets which folder to upload
+     * the images to
+     * 
+     * @param string $folder the folder to upload the images to
+     */
+    public function __construct($folder) {
+        if(substr($folder, -1) != "/") $folder .= "/";
+        $this->folder = $folder;
+        $this->thumb_prefix = "thumb_";
+    }
+
+    /**
+     * Get the upload form
+     * 
+     * @return string the upload form
+     */
+    public function upload_form() {
+        return '<form action="'.$_SERVER['REQUEST_URI'].'" method="post" enctype="multipart/form-data">
+            File: <input type="file" name="image" /><br />
+            <input type="submit" name="upload" value="Upload" />
+            </form>';
+    }
+
+    /**
+     * Set the image which should be uploaded.
+     * WARNING: Call this method before calling upload
+     * 
+     * @param type $files the image upload field like $_FILES['image'] 
+     */
+    public function setImage($files) {
+        $this->image = $files;
+        $this->name = time()."_".strtolower($files['name']);
+    }
+
+    /**
+     * Upload the image
+     * 
+     * @return boolean true if the image is uploaded. False otherwise
+     */
+    public function upload() {
+        if($this->image != "") {
+            $types = array("jpg", "jpeg", "gif", "png");
+            $file_type = substr($this->name, -3);
+            $file_type2 = substr($this->name, -4);
+            if(!in_array($file_type, $types) && !in_array($file_type2, $types))
+                return false;
+            return copy($this->image['tmp_name'], $this->folder.$this->name);
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Show the image
+     * 
+     * @param string $name the name of the image
+     * @return string the image
+     */
+    public function show_image($name) {
+        return "<img src='".$this->folder.$name."' alt='".$name."' />";
+    }
+
+    /**
+     * Create a thumbnail from an image
+     * 
+     * @param string $name the name of the image to create the thumbnail from
+     * @param int $width the width of the thumbnail
+     * @param int $height the height of the thumbnail
+     */
+    public function create_thumbnail($name, $width = 100, $height = 100) {
+        $properties = @getimagesize($this->folder.$name);
+        $type = $properties[2];
+        $gif = 1;
+        $jpeg = 2;
+        $new_name = $this->folder.$this->thumb_prefix.$name;
+        copy($this->folder.$name, $new_name);
+        $thumbnail = imagecreatetruecolor($width, $height);
+        if($type == $gif) {
+            $image = imagecreatefromgif($new_name);
+        } else if($type == $jpeg) {
+            $image = imagecreatefromjpeg($new_name);
+        } else { //png
+            $image = imagecreatefrompng($new_name);
+        }
+        $image_size = getimagesize($new_name);
+        imagecopyresampled($thumbnail, $image, 0, 0, 0, 0, $width, $height, $image_size[0], $image_size[1]);
+        if($type == $gif) {
+            imagegif($thumbnail, $new_name);
+        } else if($type == $jpeg) {
+            imagejpeg($thumbnail, $new_name);
+        } else { //png
+            imagepng($thumbnail, $new_name);
+        }
+    }
+
+    /**
+     * Create a proportional thumbnail
+     * 
+     * @param string $name the name of the image to create the thumbnail from
+     * @param int $maxWidth the max width of the thumbnail
+     * @param int $maxHeight the max height of the thumbnail
+     */
+    public function create_proportional_thumbnail($name, $maxWidth = 100, $maxHeight = 100) {
+        $properties = @getimagesize($this->folder.$name);
+        $width = $properties[0];
+        $height = $properties[1];
+        if($width >= $height) {
+            $newWidth = floor($width * ($maxWidth / $width));
+            $newHeight = floor($height * ($maxWidth / $width));
+        } else {
+            $newHeight = floor($height * ($maxHeight / $height));
+            $newWidth = floor($width * ($maxWidth / $width));
+        }
+        $this->create_thumbnail($name, $newWidth, $newHeight);
+    }
+
+    /**
+     * Delete an image and the thumbnail
+     * 
+     * @param string $name the name of the image
+     */
+    public function delete($name) {
+        unlink($this->folder.$name);
+        $thumbnail = $this->thumb_prefix.$name;
+        unlink($this->folder.$thumbnail);
+    }
+}
+
+//EXAMPLE ON USE
+
+//make an object of the class
+//$image = new image("images");
+
+//get the upload form
+//echo $image->upload_form();
+
+//set the image
+//$image->setImage($_FILES['image']);
+
+//upload the image
+//if(isset($_POST['upload'])) $image->upload();
+
+//show the image
+//echo $image->show_image("name_of_the_image.jpg");
+
+//create a thumbnail
+//$image->create_thumbnail("name_of_the_image.jpg");
+
+//create a proportional thumbnail
+//$image->create_proportional_thumbnail("name_of_the_image.jpg");
+
+//delete an image
+//$image->delete("name_of_the_image.jpg");
+?>

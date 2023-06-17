@@ -1,0 +1,195 @@
+<?php
+/**
+ * The friends class contains methods to implement a friend system like Facebook
+ */
+class friends {
+    
+    private $db; //the connection to the database
+    private $friends_table; //the table from the database
+
+    /**
+     * Make an object of the class
+     * 
+     * @param resource $db the connection to the database
+     * @param string $friends_table the table from the database
+     */
+    public function __construct($db, $friends_table) {
+        $this->db = $db;
+        $this->friends_table = $friends_table;
+    }
+    
+    /**
+     * Add a friend
+     * 
+     * @param int $friend1 the id of friend 1
+     * @param int $friend2 the id of friend 2
+     * @return boolean true if the friend is added. False otherwise
+     */
+    public function add_friend($friend1, $friend2) {
+        $prepared_friend1 = $this->prepare_input($friend1);
+        $prepared_friend2 = $this->prepare_input($friend2);
+        $sql = "INSERT INTO ".$this->friends_table." (friend1_id, friend2_id) VALUES (".$prepared_friend1.", ".$prepared_friend2.")";
+        return $this->db->query($sql);
+    }
+    
+    /**
+     * Approves a friendship
+     * 
+     * @param int $friendship_id the id of the friendship
+     * @return boolean true if the friendship is approved. False otherwise
+     */
+    public function approve_friendship($friendship_id) {
+        $prepared_friendship_id = $this->prepare_input($friendship_id);
+        return $this->db->query("UPDATE ".$this->friends_table." SET approved=1 WHERE friendship_id=".$prepared_friendship_id);
+    }
+    
+    /**
+     * Delete a friendship
+     * 
+     * @param int $friendship_id the id of the friendship
+     * @return boolean true if the friendship is deleted. False otherwise
+     */
+    public function delete_friendship($friendship_id) {
+        $prepared_friendship_id = $this->prepare_input($friendship_id);
+        return $this->db->query("DELETE FROM ".$this->friends_table." WHERE friendship_id=".$prepared_friendship_id);
+    }
+    
+    /**
+     * Check if 2 persons are friends
+     * 
+     * @param int $friend1 the id of friend 1
+     * @param int $friend2 the id of friend 2
+     * @return boolean true if they are friends. False otherwise
+     */
+    public function are_friends($friend1, $friend2) {
+        $prepared_friend1 = $this->prepare_input($friend1);
+        $prepared_friend2 = $this->prepare_input($friend2);
+        $sql = "SELECT approved FROM ".$this->friends_table." WHERE friend1_id=".$prepared_friend1." AND friend2_id=".$prepared_friend2;
+        $sql .= " OR friend1_id=".$prepared_friend2." AND friend2_id=".$prepared_friend1;
+        $sql_friendship = $this->db->query($sql) or die($this->db->error);
+        $friendship = $sql_friendship->fetch_assoc();
+        return $friendship['approved'] == 1;
+    }
+    
+    /**
+     * Show all friend requests for a friend
+     * 
+     * @param int $friend_id the id of the friend
+     * @return string all friend requests
+     */
+    public function show_friend_requests($friend_id) {
+        $res = "";
+        $prepared_friend_id = $this->prepare_input($friend_id);
+        $sql = "SELECT friend1_id, friend2_id, approved FROM ".$this->friends_table." WHERE friend1_id=".$prepared_friend_id." OR friend2_id=".$prepared_friend_id;
+        $sql_request = $this->db->query($sql);
+        while($request = $sql_request->fetch_assoc()) {
+            if($request['approved'] == 0) {
+                if($request['friend1_id'] != $prepared_friend_id) {
+                    $res.= $request['friend1_id'];
+                    continue;
+                }
+                if($request['friend2_id'] != $prepared_friend_id) {
+                    $res.= $request['friend2_id'];
+                    continue;
+                }
+            }
+        }
+        return $res;
+    }
+    
+    /**
+     * Show all friends for a friend
+     * 
+     * @param int $friend_id the id of the friend
+     * @return string all friends
+     */
+    public function show_friends($friend_id) {
+        $prepared_friend_id = $this->prepare_input($friend_id);
+        $res = "";
+        $sql = "SELECT friend1_id, friend2_id, approved FROM ".$this->friends_table;
+        $sql .= " WHERE friend1_id='".$prepared_friend_id."' OR friend2_id='".$prepared_friend_id."'";
+        $sql_friends = $this->db->query($sql);
+        while($friends = $sql_friends->fetch_assoc()) {
+            if($friends['approved'] == 1) {
+                if($friends['friend1_id'] != $friend_id) {
+                    $res.= $friends['friend1_id'];
+                    continue;
+                }
+                if($friends['friend2_id'] != $friend_id) {
+                    $res.= $friends['friend2_id'];
+                    continue;
+                }
+            }
+        }
+        return $res;
+    }
+    
+    /**
+     * Show the number of friends for a friend
+     * 
+     * @param int $friend_id the id of the friend
+     * @return string the number of friends
+     */
+    public function show_number_of_friends($friend_id) {
+        $prepared_friend_id = $this->prepare_input($friend_id);
+        $sql = "SELECT friendship_id FROM ".$this->friends_table." WHERE friend1_id=".$prepared_friend_id." OR friend2_id=".$prepared_friend_id." AND approved=1";
+        $sql_number_of_friends = $this->db->query($sql);
+        $number_of_friends = $sql_number_of_friends->num_rows;
+        $res = ($number_of_friends == 1) ? "friend" : "friends";
+        return $number_of_friends." ".$res;
+    }
+
+    /**
+     * Prepare the input before adding it to the database
+     * 
+     * @param string $input the input to prepare
+     * @return string the prepared input
+     */
+    private function prepare_input($input) {
+        $removed_html = strip_tags($input);
+        return $this->db->real_escape_string($removed_html);
+    }
+}
+
+/* 
+THE DATABASE STRUCTURE
+
+CREATE TABLE `friendship` (
+  `friendship_id` int(11) NOT NULL AUTO_INCREMENT,
+  `friend1_id` int(11) NOT NULL,
+  `friend2_id` int(11) NOT NULL,
+  `approved` int(1) NOT NULL,
+  PRIMARY KEY (`friendship_id`,`friend1_id`,`friend2_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+
+*/
+
+//EXAMPLE ON USE
+
+//connect to the database
+//$db = new mysqli("server", "user", "password", "database");
+
+//make an object of the class
+//$friends = new friends($db, "friendship");
+
+//add a friend
+//$friends->add_friend(1, 2);
+
+//approve a friendship
+//$friends->approve_friendship(1);
+
+//delete a friendship
+//$friends->delete_friendship(1);
+
+//check if 2 persons are friends
+//$friends->are_friends(1, 2);
+
+//show all friend requests
+//echo $friends->show_friend_requests(1);
+
+//show all friends
+//echo $friends->show_friends(1);
+
+//show the number of friends
+//echo $friends->show_number_of_friends(1);
+?>

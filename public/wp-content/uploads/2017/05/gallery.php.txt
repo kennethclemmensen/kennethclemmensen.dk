@@ -1,0 +1,98 @@
+<?php
+/**
+ * Show a gallery of images with or without paging
+ * 
+ * @param string $folder the folder which contains the images
+ */
+function gallery($folder) {
+    //GALLERY WITHOUT PAGING
+    /*$dir = opendir($folder);
+    while($file = readdir($dir)) {
+        if($file != "." && $file != "..")
+            $files[] = $file;
+    }
+    natcasesort($files);
+    foreach($files as $image) {
+        if(preg_match("[_]", $image)) {
+            $title_parts = explode("_", $image);
+            $title = $title_parts[0];
+        } else {
+            $title_parts = explode(".", $image);
+            $title = $title_parts[0];
+        }
+        if(preg_match("[Ae]", $title))
+            $title = str_replace("Ae", "Æ", $title);
+        if(preg_match("[ae]", $title))
+            $title = str_replace("ae", "æ", $title);
+        if(preg_match("[OE]", $title))
+            $title = str_replace("OE", "Ø", $title);
+        if(preg_match("[oe]", $title))
+            $title = str_replace("oe", "ø", $title);
+        if(preg_match("[AA]", $title))
+            $title = str_replace("AA", "Å", $title);
+        if(preg_match("[aa]", $title))
+            $title = str_replace("aa", "å", $title);
+        if(preg_match("[!]", $title))
+            $title = str_replace("!", "oe", $title);
+        if(preg_match("[=]", $title))
+            $title = str_replace("=", " ", $image);
+    
+        echo "<a href='".$folder."/".$image."' title='".$title."'>";
+        echo "<img src='".$folder."/".$image."' alt='".$title."' /></a>\n";
+    }*/
+    
+    /* GALLERY WITH PAGING */
+    $dir = opendir($folder);
+    while($file = readdir($dir)) {
+        if($file != "." && $file != "..") {
+            $files1[] = $file;
+        }
+    }
+    natcasesort($files1);
+    foreach($files1 as $value)
+        $files[] = $value;
+    $per_site = 3;
+    $offset = (!is_numeric($_GET['offset'])) ? 0 : $_GET['offset'];
+    $pics = $offset + $per_site;
+    $i = $offset;
+    while($i < $pics && $files[$i] != "") {
+        if(preg_match("[_]", $files[$i])) {
+            $title_parts = explode("_", $files[$i]);
+            $title = $title_parts[0];
+        } else {
+            $title_parts = explode(".", $files[$i]);
+            $title = $title_parts[0];
+        }
+        if(preg_match("[Ae]", $title))
+            $title = str_replace("Ae", "Æ", $title);
+        if(preg_match("[ae]", $title))
+            $title = str_replace("ae", "æ", $title);
+        if(preg_match("[OE]", $title))
+            $title = str_replace("OE", "Ø", $title);
+        if(preg_match("[oe]", $title))
+            $title = str_replace("oe", "ø", $title);
+        if(preg_match("[AA]", $title))
+            $title = str_replace("AA", "Å", $title);
+        if(preg_match("[aa]", $title))
+            $title = str_replace("aa", "å", $title);
+        if(preg_match("[!]", $title))
+            $title = str_replace("!", "oe", $title);
+        if(preg_match("[=]", $title))
+            $title = str_replace("=", " ", $title);
+
+        echo "<a href='".$folder."/".$files[$i]."' title='".$title."'>";
+        echo "<img src='".$folder."/".$files[$i]."' alt='".$title."' /></a>\n";
+        $i++;
+    }
+    echo "<nav>";
+    if($offset >= $per_site) {
+        $previous = $offset - $per_site;
+        echo "<a href='".$_SERVER['PHP_SELF']."?offset=".$previous."'>Previous</a> ";
+    }
+    if(count($files) > $offset + $per_site) {
+        $next = $offset + $per_site;
+        echo " <a href='".$_SERVER['PHP_SELF']."?offset=".$next."'>Next</a>";
+    }
+    echo "</nav>\n";
+}
+?>

@@ -1,0 +1,278 @@
+<?php
+/**
+ * The video class contains methods to handle videos, categories and comments
+ */
+class video {
+    
+    private $db; //the connection to the database
+    private $category_table, $video_table, $comment_table; //the tables from the database
+    private $video_folder; //the folder to the video
+
+    /**
+     * Create an object of the class
+     * 
+     * @param resource $db the database connection
+     * @param string $category_table the category table
+     * @param string $video_table the video table
+     * @param string $comment_table the comment table
+     * @param string $video_folder the video folder
+     */
+    public function __construct($db, $category_table, $video_table, $comment_table, $video_folder) {
+        $this->db = $db;
+        $this->category_table = $category_table;
+        $this->video_table = $video_table;
+        $this->comment_table = $comment_table;
+        $this->video_folder = $video_folder;
+    }
+
+    /**
+     * Create a category
+     * 
+     * @param string $name the name of the category
+     * @return boolean true if the category is created. False otherwise
+     */
+    public function create_category($name) {
+        $prepared_name = $this->prepare_input($name);
+        return $this->db->query("INSERT INTO ".$this->category_table." (name) VALUES ('".$prepared_name."')");
+    }
+    
+    /**
+     * Edit a category
+     * 
+     * @param int $id the id of the category
+     * @param string $name the new name of the category
+     * @return boolean true if the category is edited. False otherwise
+     */
+    public function edit_category($id, $name) {
+        $prepared_id = $this->prepare_input($id);
+        $prepared_name = $this->prepare_input($name);
+        $sql = "UPDATE ".$this->category_table." SET name='".$prepared_name."' WHERE id=".$prepared_id;
+        return $this->db->query($sql);
+    }
+    
+    /**
+     * Delete a category and the videos and comments in the category
+     * 
+     * @param int $id the id of the category
+     * @return boolean true if the category is deleted. False otherwise
+     */
+    public function delete_category($id) {
+        $prepared_id = $this->prepare_input($id);
+        $sql_video = $this->db->query("SELECT * FROM ".$this->video_table." WHERE category_id=".$prepared_id);
+        while($video = $sql_video->fetch_assoc()) {
+            $this->delete_video_file($video['file']);
+        }
+        return $this->db->query("DELETE FROM ".$this->category_table." WHERE id=".$prepared_id);
+    }
+    
+    /**
+     * Upload a video
+     * 
+     * @param resource $video the video to upload
+     * @param string $title the title
+     * @param string $description the description
+     * @param int $category_id the category id
+     * @return boolean true if the video is uploaded. False otherwise
+     */
+    public function upload_video($video, $title, $description, $category_id) {
+        $filename = $video['name'];
+        $filesize = $video['size'];
+        $filetype = strtolower(substr($filename, -3));
+        $maxsize = 80000000; //80.000.000 bytes or 80 megabytes
+        if($filetype == "wmv" || $filetype == "avi" || $filetype == "mpg" || $filetype == "mp4" && $filesize <= $maxsize) {
+            $time = time();
+            $filename = $time."_".$filename;
+            copy($video['tmp_name'], $this->video_folder."/".$filename);
+            $prepared_title = $this->prepare_input($title);
+            $prepared_description = $this->prepare_input($description);
+            $prepared_category_id = $this->prepare_input($category_id);
+            $sql = "INSERT INTO ".$this->video_table." (file, title, upload_date, size, description, category_id) ";
+            $sql .= "VALUES ('".$filename."', '".$prepared_title."', '".$time."', '".$filesize."', '".$prepared_description."', '".$prepared_category_id."')";
+            return $this->db->query($sql);
+        } else {
+            return false;
+        }
+    }
+    
+    /**
+     * Edit a video
+     * 
+     * @param int $id the id of the video
+     * @param string $title the new title
+     * @param string $description the new description
+     * @param int $category_id the new category id
+     * @return boolean true if the video is edited. False otherwise
+     */
+    public function edit_video($id, $title, $description, $category_id) {
+        $prepared_id = $this->prepare_input($id);
+        $prepared_title = $this->prepare_input($title);
+        $prepared_description = $this->prepare_input($description);
+        $prepared_category_id = $this->prepare_input($category_id);
+        $sql = "UPDATE ".$this->video_table." SET title='".$prepared_title."', description='".$prepared_description."', ";
+        $sql .= "category_id=".$prepared_category_id." WHERE id=".$prepared_id;
+        return $this->db->query($sql);
+    }
+    
+    /**
+     * Delete a video
+     * 
+     * @param int $id the id of the video
+     * @return boolean true if the video is deleted. False otherwise
+     */
+    public function delete_video($id) {
+        $prepared_id = $this->prepare_input($id);
+        $sql_video = $this->db->query("SELECT file FROM ".$this->video_table." WHERE id=".$prepared_id);
+        $video = $sql_video->fetch_assoc();
+        if($this->delete_video_file($video['file'])) {
+            $this->db->query("DELETE FROM ".$this->video_table." WHERE id=".$prepared_id);
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    /**
+     * Create a comment
+     * 
+     * @param string $name the name of the person who comments
+     * @param string $comment the comment
+     * @param int $video_id the id of the video
+     * @return boolean true if the comment is created. False otherwise
+     */
+    public function create_comment($name, $comment, $video_id) {
+        $prepared_name = $this->prepare_input($name);
+        $prepared_comment = $this->prepare_input($comment);
+        $prepared_video_id = $this->prepare_input($video_id);
+        $sql = "INSERT INTO ".$this->comment_table." (name, date, comment, video_id) ";
+        $sql .= "VALUES ('".$prepared_name."', ".time().", '".$prepared_comment."', ".$prepared_video_id.")";
+        return $this->db->query($sql);
+    }
+    
+    /**
+     * Delete a comment
+     * 
+     * @param int $id the id of the comment
+     * @return boolean true if the comment is deleted. False otherwise
+     */
+    public function delete_comment($id) {
+        $prepared_id = $this->prepare_input($id);
+        return $this->db->query("DELETE FROM ".$this->comment_table." WHERE id=".$prepared_id);
+    }
+    
+    /**
+     * Show a video with the Html5 video tag
+     * 
+     * @param int $id the id of the video
+     * @return string the video
+     */
+    public function show_video($id) {
+        $prepared_id = $this->prepare_input($id);
+        $sql_video = $this->db->query("SELECT * FROM ".$this->video_table." WHERE id=".$prepared_id);
+        $video = $sql_video->fetch_assoc();
+        $res = "<h1>".$video['title']."</h1>";
+        $date_format = "d-m-Y H:i";
+        $res .= "<video controls='controls'><source src='".$this->video_folder."/".$video['file']."' /></video>";
+        $res .= "<p><i>Uploaded: ".date($date_format, $video['upload_date'])."</i></p>";
+        $res .= "<p>Description: ".$video['description']."</p>";
+        $res .= "<h3>Comments</h3>";
+        $sql_comments = $this->db->query("SELECT name, date, comment FROM ".$this->comment_table." WHERE video_id=".$video['id']);
+        while($comments = $sql_comments->fetch_assoc()) {
+            $res .= "<p><b>".$comments['name']."</b><br/>".date($date_format, $comments['date'])."</p>";
+            $res .= "<p>".$comments['comment']."</p>";
+        }
+        return $res;
+    }
+
+    /**
+     * Prepare the input before adding it to the database
+     * 
+     * @param string $input the input to prepare
+     * @return string the prepared input
+     */
+    private function prepare_input($input) {
+        $removed_html = strip_tags($input);
+        return $this->db->real_escape_string($removed_html);
+    }
+    
+    /**
+     * Delete a video file
+     * 
+     * @param string $file the video file to delete
+     * @return boolean true if the video file is deleted. False otherwise
+     */
+    private function delete_video_file($file) {
+        return unlink($this->video_folder."/".$file);
+    }
+}
+
+/* 
+THE DATABASE STRUCTURE
+
+CREATE TABLE `category` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name_UNIQUE` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `video` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `file` varchar(100) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `upload_date` int(20) NOT NULL,
+  `size` int(20) NOT NULL,
+  `description` mediumtext NOT NULL,
+  `category_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `file_UNIQUE` (`file`),
+  KEY `fk_category_idx` (`category_id`),
+  CONSTRAINT `fk_category` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `comment` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `date` int(20) NOT NULL,
+  `comment` tinytext NOT NULL,
+  `video_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_video_idx` (`video_id`),
+  CONSTRAINT `fk_video` FOREIGN KEY (`video_id`) REFERENCES `video` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+*/
+
+//EXAMPLE ON USE
+
+//connect to the database
+//$db = new mysqli("server", "user", "password", "database");
+
+//make an object of the class
+//$video = new video($db, "category", "video", "comment", "video");
+
+//create a category
+//$video->create_category("Category");
+
+//edit a category
+//$video->edit_category(1, "Video");
+
+//delete a category
+//$video->delete_category(1);
+
+//uploads a video
+//$video->upload_video($_FILES['video'], "The title", "The description", 1);
+
+//edit a video
+//$video->edit_video(1, "New title", "New description", 1);
+
+//delete a video
+//$video->delete_video(1);
+
+//create a comment
+//$video->create_comment("Me", "Nice video", 1);
+
+//delete a comment
+//$video->delete_comment(1);
+
+//show the video
+//echo $video->show_video(1);
+?>

@@ -1,0 +1,131 @@
+<?php
+/**
+ * The validation class contains methods to validate input
+ */
+class validation {
+    
+    /**
+     * Check if the email is valid
+     * 
+     * @param string $email the email to check
+     * @return boolean true if the email is valid. False otherwise
+     */
+    public function is_email($email) {
+        return preg_match("/[[:alnum:]][a-z0-9_\.\-]*@[a-z0-9\.\-]+\.[a-z]{2,4}$/", $email);
+    }    
+    
+    /**
+     * Check if the input is an integer
+     * 
+     * @param int $input the input to check
+     * @return boolean true if the input is an integer. False otherwise
+     */
+    public function is_integer($input) {
+        return is_int($input);
+    }
+    
+    /**
+     * Check if the input is empty
+     * 
+     * @param string $input the input to check
+     * @return boolean true if the input is empty. False otherwise
+     */
+    public function is_empty($input) {
+        return empty($input);
+    }
+    
+    /**
+     * Check if the zip code is valid
+     * 
+     * @param int $zip_code the zip code to check
+     * @return boolean true if the zip code is valid. False otherwise
+     */
+    public function is_zip_code($zip_code) {
+        return preg_match("/^\d{4}$/", $zip_code);
+    }
+    
+    /**
+     * Check if the number is valid
+     * 
+     * @param int $number the number to check
+     * @return boolean true if the number is valid. False otherwise
+     */
+    public function is_number($number) {
+        return is_numeric($number);
+    }
+    
+    /**
+     * Check if the url is valid
+     * 
+     * @param string $url the url to check
+     * @return boolean true if the url is valid. False otherwise
+     */
+    public function is_url($url) {
+        return preg_match("/^[a-zA-Z]+[:\/\/]+[A-Za-z0-9\-_]+\\.+[A-Za-z0-9\.\/%&=\?\-_]+$/i", $url);
+    }
+    
+    /**
+     * Check if the input is too long
+     * 
+     * @param string $input the input to check
+     * @param int $maxsize the maxsize
+     * @return boolean true if the input is too long. False otherwise
+     */
+    public function is_input_too_long($input, $maxsize) {
+        return strlen($input) > $maxsize;
+    }
+    
+    /**
+     * Check if the input is too short
+     * 
+     * @param string $input the input to check
+     * @param int $minsize the minimum size
+     * @return boolean true if the input is too short. False otherwise
+     */
+    public function is_input_too_short($input, $minsize) {
+        return strlen($input) < $minsize;
+    }
+    
+    /**
+     * Check if the password is strong
+     * 
+     * @param string $password the password to check
+     * @return boolean true if the password is strong. False otherwise
+     */
+    public function is_strong_password($password) {
+        return preg_match("/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,1000}$/", $password);
+    }
+}
+
+//EXAMPLE ON USE
+
+//make an object of the class
+//$validation = new validation();
+
+//check an email
+//$validation->is_email("mail@mail.com");
+
+//check an integer
+//$validation->is_integer(1);
+
+//check an empty input
+//$validation->is_empty("");
+
+//check a zip code
+//$validation->is_zip_code(1234);
+
+//check a number
+//$validation->is_number(1.00);
+
+//check an url
+//$validation->is_url("http://google.com");
+
+//check if the input is too long
+//$validation->is_input_too_long("input", 5);
+
+//check if the input is too short
+//$validation->is_input_too_short("123", 4);
+
+//check if the password is strong
+//$validation->is_strong_password("1234");
+?>

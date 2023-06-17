@@ -1,0 +1,148 @@
+<?php
+/**
+ * The pages class contains methods to handle pages
+ */
+class pages {
+
+    private $db; //the connection to the database
+    private $page_table; //the page table from the database
+    
+    /**
+     * Make an object of the class
+     * 
+     * @param resource $db the connection to the database
+     * @param type $page_table the page table from the database
+     */
+    public function __construct($db, $page_table) {
+        $this->db = $db;
+        $this->page_table = $page_table;
+    }
+    
+    /**
+     * Create a page
+     * 
+     * @param string $title the title
+     * @param string $text the text
+     * @param int $order the order in the menu
+     * @param int $parent the id of the parent page. 0 if there isn't a parent page
+     * @return boolean true if the page is created. False otherwise
+     */
+    public function create_page($title, $text, $order, $parent = 0) {
+        $prepared_title = $this->prepare_input($title);
+        $prepared_text = $this->prepare_input($text, "<h1><p><a>");
+        $sql = "INSERT INTO ".$this->page_table." (title, text, `order`, parent)";
+        $sql.= " VALUES ('".$prepared_title."', '".$prepared_text."', ".$order.", ".$parent.")";
+        return $this->db->query($sql);
+    }
+    
+    /**
+     * Edit a page
+     * 
+     * @param int $page_id the id of the page
+     * @param string $title the title
+     * @param string $text the text
+     * @param int $order the order
+     * @param int $parent the id of the parent page. 0 if there isn't a parent page
+     * @return boolean true if the page is edited. False otherwise
+     */
+    public function edit_page($page_id, $title, $text, $order, $parent) {
+        $prepared_title = $this->prepare_input($title);
+        $prepared_text = $this->prepare_input($text, "<h1><p><a>");
+        $sql = "UPDATE ".$this->page_table." SET title='".$prepared_title."', text='".$prepared_text."', `order`=".$order.", ";
+        $sql .= "parent=".$parent." WHERE id=".$page_id."";
+        return $this->db->query($sql);
+    }
+    
+    /**
+     * Delete a page
+     * 
+     * @param int $page_id the id of the page
+     * @return boolean true if the page is deleted. False otherwise
+     */
+    public function delete_page($page_id) {
+        return $this->db->query("DELETE FROM ".$this->page_table." WHERE id=".$page_id);
+    }
+    
+    /**
+     * Show the menu
+     * 
+     * @param int $parent the id of the parent page
+     * @return null|string the menu
+     */
+    public function show_menu($parent = 0) {
+        $sql = $this->db->query("SELECT * FROM ".$this->page_table." WHERE parent=".$parent." ORDER BY `order` ASC");
+	if($sql->num_rows == 0) return null;
+        static $menu = "";
+	while($data = $sql->fetch_assoc()) {
+            $menu.= "<ul>\n";
+            $menu.= "<li><a href='".$_SERVER['PHP_SELF']."?page_id=".$data['id']."'>".$data['title']."</a></li>\n";
+            $parent = $data['id'];
+            $this->show_menu($parent);
+            $menu.= "</ul>\n";
+	}
+	return $menu;
+    }
+    
+    /**
+     * Show a page
+     * 
+     * @param int $page_id the id of the page
+     * @return string the page
+     */
+    public function show_page($page_id) {
+        $sql = $this->db->query("SELECT title, text FROM ".$this->page_table." WHERE id=".$page_id);
+        $data = $sql->fetch_assoc();
+        return $data['title']."<br/>".$data['text'];
+    }
+    
+    /**
+     * Prepare the input before adding it to the database
+     * 
+     * @param string $input the input to prepare
+     * @param string $allowed_tags the html tags that are allowed
+     * @return string the prepared input
+     */
+    private function prepare_input($input, $allowed_tags = "") {
+        $removed_html = strip_tags($input, $allowed_tags);
+        return $this->db->real_escape_string($removed_html);
+    }
+}
+
+/*
+THE DATABASE STRUCTURE
+
+CREATE TABLE `pages` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(25) NOT NULL,
+  `text` text NOT NULL,
+  `order` int(11) NOT NULL,
+  `parent` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `title_UNIQUE` (`title`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+
+*/
+
+//EXAMPLE ON USE
+
+//connect to the database
+//$db = new mysqli("server", "user", "password", "database");
+
+//make an object of the class
+//$pages = new pages($db, "pages");
+
+//create a page
+//$pages->create_page("Title", "<p>Text</p>", 1, 0);
+
+//edit a page
+//$pages->edit_page(1, "New title", "Text", 1, 0);
+
+//delete a page
+//$pages->delete_page(1);
+
+//show the menu
+//echo $pages->show_menu();
+
+//show a page
+//echo $pages->show_page(1);
+?>
