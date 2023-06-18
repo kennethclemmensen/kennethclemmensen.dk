@@ -50,7 +50,7 @@
     "gulp-clean-css": "^4.3.0",
     "gulp-cli": "^2.3.0",
     "gulp-dart-sass": "^1.1.0",
-    "gulp-imagemin": "^8.0.0",
+    "gulp-imagemin": "^7.1.0",
     "gulp-less": "^5.0.0",
     "gulp-shell": "^0.8.0",
     "terser-webpack-plugin": "^5.3.9",
