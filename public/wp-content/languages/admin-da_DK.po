@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 6.2.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-05-20 20:08:45+0000\n"
+"PO-Revision-Date: 2023-06-21 07:41:19+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -2951,6 +2951,10 @@ msgstr "Denne side giver direkte adgang til dine websteds indstillinger. Du kan 
 msgid "The %s setting is unregistered. Unregistered settings are deprecated. See https://developer.wordpress.org/plugins/settings/settings-api/"
 msgstr "Indstillingen %s er ikke registreret. Uregistrerede indstillinger er forældede. Se https://developer.wordpress.org/plugins/settings/settings-api/"
 
+#: wp-admin/edit-form-advanced.php:380
+msgid "<strong>Format</strong> &mdash; Post Formats designate how your theme will display a specific post. For example, you could have a <em>standard</em> blog post with a title and paragraphs, or a short <em>aside</em> that omits the title and contains a short text blurb. Your theme could enable all or some of 10 possible formats. <a href=\"https://wordpress.org/documentation/article/post-formats/#supported-formats\">Learn more about each post format</a>."
+msgstr "<strong>Format</strong> &mdash; Indlægsformater angiver, hvordan dit tema vil vise et specifikt indlæg. For eksempel kan du have et <em>standard</em> blogindlæg med en titel og afsnit eller en kort <em>aside</em> der udelader titlen og indeholder en kort tekstudblæsning. Dit tema kan aktivere alle eller nogle af 10 mulige formater. <a href=\"https://wordpress.org/support/article/post-formats/#supported-formats\">Lær mere om hvert indlægsformat</a>."
+
 #: wp-admin/edit-form-advanced.php:337
 msgid "<a href=\"https://wordpress.org/documentation/article/pages-screen/\">Documentation on Editing Pages</a>"
 msgstr "<a href=\"https://wordpress.org/documentation/article/pages-screen/\">Dokumentation om Redigering af sider</a>"
@@ -3639,6 +3643,10 @@ msgid_plural "Your site has %d inactive themes."
 msgstr[0] "Dit websted har %d inaktivt tema."
 msgstr[1] "Dit websted har %d inaktive temaer."
 
+#: wp-admin/includes/class-wp-site-health.php:465
+msgid "Inactive plugins are tempting targets for attackers. If you are not going to use a plugin, you should consider removing it."
+msgstr "Deaktiverede plugins er fristende mål for hackere. Vi anbefaler, at du fjerner plugins, du ikke skal bruge."
+
 #. translators: %d: The number of inactive plugins.
 #: wp-admin/includes/class-wp-site-health.php:458
 msgid "Your site has %d inactive plugin."
@@ -3691,6 +3699,12 @@ msgctxt "plugin"
 msgid "Cannot Update"
 msgstr "Kan ikke opdatere"
 
+#. translators: 1: Plugin name, 2: Details URL, 3: Additional link attributes,
+#. 4: Version number 5: URL to Update PHP page.
+#: wp-admin/includes/update.php:545
+msgid "There is a new version of %1$s available, but it does not work with your version of PHP. <a href=\"%2$s\" %3$s>View version %4$s details</a> or <a href=\"%5$s\">learn more about updating PHP</a>."
+msgstr "Der er en ny version af %1$s tilgængelig, men den virker ikke med din version af PHP. <a href=\"%2$s\" %3$s>Se version %4$s detaljer</a> eller <a href=\"%5$s\">lær mere om at opdatere PHP</a>."
+
 #: wp-admin/includes/class-wp-plugins-list-table.php:1143
 msgid "This plugin failed to load properly and is paused during recovery mode."
 msgstr "Dette plugin forårsagede en fejl og er sat på pause i genopretningstilstand."
@@ -3728,6 +3742,10 @@ msgid "%s recommended improvement"
 msgid_plural "%s recommended improvements"
 msgstr[0] "%s anbefalet forbedring"
 msgstr[1] "%s anbefalede forbedringer"
+
+#: wp-admin/site-health.php:241
+msgid "The site health check shows information about your WordPress configuration and items that may need your attention."
+msgstr "Helbredstjek af dit websted viser kritiske oplysninger om din WordPress-konfiguration og elementer, der kræver din opmærksomhed."
 
 #: wp-admin/includes/dashboard.php:68 wp-admin/site-health.php:238
 msgid "Site Health Status"
@@ -3837,6 +3855,10 @@ msgstr "REST API'et stødte på et uventet resultat"
 #: wp-admin/includes/class-wp-site-health.php:2098
 msgid "The REST API encountered an error"
 msgstr "REST API'et stødte på en fejl"
+
+#: wp-admin/includes/class-wp-site-health.php:2063
+msgid "The REST API is one way that WordPress and other applications communicate with the server. For example, the block editor screen relies on the REST API to display and save your posts and pages."
+msgstr "REST API'et er en måde hvorpå WordPress og andre applikationer kommunikerer med serveren. Et eksempel er blokeditor skærmbilledet, som er afhængig af API'et for at kunne vise og gemme dine indlæg og sider."
 
 #: wp-admin/includes/class-wp-site-health.php:2055
 msgid "The REST API is available"
@@ -4075,6 +4097,18 @@ msgstr "Dit websted har ikke et standardtema. WordPress bruger standardtemaer, h
 msgid "Have a default theme available"
 msgstr "Hav et standard-tema tilgængeligt"
 
+#. translators: 1: The default theme for WordPress. 2: The currently active
+#. theme. 3: The active theme's parent theme.
+#: wp-admin/includes/class-wp-site-health.php:656
+msgid "To enhance your site&#8217;s security, you should consider removing any themes you are not using. You should keep %1$s, the default WordPress theme, %2$s, your active theme, and %3$s, its parent theme."
+msgstr "For at forbedre dit websteds sikkerhed anbefaler vi, at du fjerner alle temaer, du ikke bruger. Du skal beholde %1$s, standard WordPress-temaet, %2$s, dit aktuelle tema og %3$s, dets hovedtema."
+
+#. translators: 1: The currently active theme. 2: The active theme's parent
+#. theme.
+#: wp-admin/includes/class-wp-site-health.php:637
+msgid "To enhance your site&#8217;s security, you should consider removing any themes you are not using. You should keep your active theme, %1$s, and %2$s, its parent theme."
+msgstr "For at forbedre dit websteds sikkerhed anbefaler vi, at du fjerner alle temaer, du ikke bruger. Du skal beholde dit aktuelle tema, %1$s og %2$s, der er dets hovedtema."
+
 #: wp-admin/includes/class-wp-site-health.php:452
 msgid "You should remove inactive plugins"
 msgstr "Du bør slette inaktive plugins"
@@ -4197,6 +4231,10 @@ msgstr "Dette kan betyde, at der ikke er forbindelse til WordPress.org."
 msgid "Couldn't retrieve a list of the checksums for WordPress %s."
 msgstr "Kunne ikke modtage en liste med checksummer for WordPress %s."
 
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:297
+msgid "Your installation of WordPress does not require FTP credentials to perform updates."
+msgstr "Din installation af WordPress kræver ikke FTP-oplysninger for at installere opdateringer."
+
 #: wp-admin/includes/class-wp-site-health-auto-updates.php:288
 msgid "(Your site is performing updates over FTP due to file ownership. Talk to your hosting company.)"
 msgstr "(Dit websted udfører opdateringer over FTP på grund af filejerskab. Kontakt dit hostingfirma)"
@@ -4228,6 +4266,10 @@ msgstr "En tidligere automatisk baggrundsopdatering kunne ikke udføres."
 #: wp-admin/includes/class-wp-site-health-auto-updates.php:191
 msgid "The error code was %s."
 msgstr "Fejlkoden var %s."
+
+#: wp-admin/includes/class-wp-site-health-auto-updates.php:171
+msgid "When you've been able to update using the \"Update now\" button on Dashboard > Updates, this error will be cleared for future update attempts."
+msgstr "Når du har kunnet opdatere ved hjælp af knappen \"Opdater nu\" ved Kontrolpanel > Opdateringer, fjerner vi denne fejl ved fremtidige opdateringsforsøg."
 
 #: wp-admin/includes/class-wp-site-health-auto-updates.php:170
 #: wp-admin/includes/class-wp-site-health-auto-updates.php:185
@@ -4666,6 +4708,10 @@ msgstr "Næste tema"
 msgid "Previous theme"
 msgstr "Forrige tema"
 
+#: wp-admin/user-edit.php:523
+msgid "If you change this, an email will be sent at your new address to confirm it. <strong>The new address will not become active until confirmed.</strong>"
+msgstr "Hvis du ændrer dette, vil vi sende dig en e-mail til din nye adresse for at bekræfte det. <strong>Den nye adresse vil ikke være aktiv, før den bekræftes.</strong>"
+
 #: wp-admin/themes.php:286
 msgid "Theme resumed."
 msgstr "Tema genoptaget."
@@ -4710,10 +4756,20 @@ msgstr "Du kan ikke opdatere fordi <a href=\"%1$s\">WordPress %2$s</a> kræver P
 msgid "Add menu items"
 msgstr "Tilføj menuelementer"
 
+#. translators: %s: URL to create a new menu.
+#: wp-admin/nav-menus.php:944
+msgid "or <a href=\"%s\">create a new menu</a>. Do not forget to save your changes!"
+msgstr "eller <a href=\"%s\">opret en ny menu</a>. Glem ikke at gemme dine ændringer!"
+
 #. translators: Hidden accessibility text.
 #: wp-admin/nav-menus.php:889 wp-admin/nav-menus.php:959
 msgid "Click the Save Menu button to save your changes."
 msgstr "Klik på Gem menu-knappen for at gemme dine ændringer."
+
+#. translators: %s: URL to create a new menu.
+#: wp-admin/nav-menus.php:874
+msgid "Edit your menu below, or <a href=\"%s\">create a new menu</a>. Do not forget to save your changes!"
+msgstr "Rediger din menu herunder, eller <a href=\"%s\">opret en ny menu</a>. Glem ikke at gemme dine ændringer!"
 
 #. translators: Hidden accessibility text.
 #: wp-admin/nav-menus.php:865
@@ -4899,6 +4955,10 @@ msgstr "Aktiver venligst den <a href=\"%s\">klassiske editor</a> for at bruge de
 msgid "Please install the <a href=\"%s\">Classic Editor plugin</a> to use this meta box."
 msgstr "Installer venligst den <a href=\"%s\">klassiske editor</a> for at bruge denne metaboks."
 
+#: wp-admin/includes/template.php:1186
+msgid "This meta box is not compatible with the block editor."
+msgstr "Denne metaboks er ikke kompatibel med blokeditoren."
+
 #: wp-admin/freedoms.php:77
 msgid "To distribute copies of your modified versions to others."
 msgstr "At distribuere kopier af dine ændrede versioner til andre."
@@ -5010,6 +5070,11 @@ msgstr[1] "%s blokke opdateret."
 msgid "<strong>Error:</strong> \"Table Prefix\" must not be empty."
 msgstr "<strong>Fejl:</strong>: \"Tabelpræfiks\" må ikke være tomt."
 
+#. translators: %s: The name of the plugin that generated this meta box.
+#: wp-admin/includes/template.php:1184 wp-admin/includes/template.php:1437
+msgid "This meta box, from the %s plugin, is not compatible with the block editor."
+msgstr "Denne metaboks fra %s plugin, er ikke kompatibel med blokeditoren."
+
 #. translators: Header for the About section in a personal data export.
 #: wp-admin/includes/privacy-tools.php:368
 msgctxt "personal data group label"
@@ -5059,6 +5124,14 @@ msgstr "Den anbefalede privatlivspolitik er blevet ændret. Vær så venlig <a h
 #: wp-admin/options-privacy.php:261
 msgid "There are no pages."
 msgstr "Der er ingen sider."
+
+#. translators: 1: Privacy Policy guide URL, 2: Additional link attributes, 3:
+#. Accessibility text.
+#: wp-admin/options-privacy.php:233
+msgid "Need help putting together your new Privacy Policy page? <a href=\"%1$s\" %2$s>Check out our privacy policy guide%3$s</a> for recommendations on what content to include, along with policies suggested by your plugins and theme."
+msgstr ""
+"Brug for hjælp til at lave din egen side om Privatlivspolitik? \n"
+"<a href=\"%1$s\" %2$s>Se vores guide%3$s</a> med anbefalinger til indhold, du bør have med, samt retningslinjer foreslået fra dine plugins og tema."
 
 #: wp-admin/privacy-policy-guide.php:21 wp-admin/privacy-policy-guide.php:68
 #: wp-admin/privacy-policy-guide.php:77
