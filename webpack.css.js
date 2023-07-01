@@ -22,7 +22,6 @@ module.exports = merge(common, {
             files: [{
                 src: [
                     'node_modules/@fortawesome/fontawesome-free/css/all.min.css',
-                    'node_modules/lightbox2/dist/css/lightbox.min.css',
                     package.config.cssCompiledFile
                 ],
                 dest: cssFile
@@ -30,7 +29,6 @@ module.exports = merge(common, {
         }),
         new CopyPlugin({
             patterns: [
-                { from: 'node_modules/lightbox2/dist/images', to: '../images' },
                 { from: 'node_modules/@fortawesome/fontawesome-free/webfonts', to: '../webfonts' }
             ]
         })

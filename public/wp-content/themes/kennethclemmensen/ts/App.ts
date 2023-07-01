@@ -1,9 +1,10 @@
-import { fromEvent, scan } from 'rxjs';
+import { fromEvent } from 'rxjs';
 import { EventType } from './enums/EventType';
 import { HttpMethod } from './enums/HttpMethod';
 import { HttpStatusCode } from './enums/HttpStatusCode';
 import { SliderAnimation } from './enums/SliderAnimation';
 import { FilesApp } from './FilesApp';
+import { Gallery } from './Gallery';
 import { SearchApp } from './SearchApp';
 import { Slider } from './Slider';
 import { Shortcut } from './types/Shortcut';
@@ -21,14 +22,11 @@ class App {
 	public constructor() {
 		this.#body = document.body;
 		fromEvent(document, EventType.DOMContentLoaded)
-		.pipe(scan((): string => `${this.#body.dataset.imageText} %1 ${this.#body.dataset.ofText} %2`, ''))
-		.subscribe((albumLabel: string): void => {
+		.subscribe((): void => {
 			this.setupSlider();
 			this.setupMobileMenu();
 			this.setupShortcuts();
-			lightbox.option({
-				albumLabel: albumLabel
-			});
+			new Gallery();
 			new FilesApp();
 			new SearchApp();
 		});

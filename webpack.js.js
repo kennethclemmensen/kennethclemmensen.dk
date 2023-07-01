@@ -14,8 +14,6 @@ module.exports = merge(common, {
         new mergeIntoSingleFilePlugin({
             files: [{
                 src: [
-                    'node_modules/jquery/dist/jquery.min.js',
-                    'node_modules/lightbox2/dist/js/lightbox.min.js',
                     'node_modules/vue/dist/vue.global.prod.js'
                 ],
                 dest: 'libraries.min.js'
