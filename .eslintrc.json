@@ -16,7 +16,20 @@
         "no-undef": "off",
         "no-unused-vars": "off",
         "prefer-const": "warn",
-        "semi": ["error", "always"],
-        "quotes": ["error", "single"]
+        "semi": ["warn", "always"],
+        "quotes": ["warn", "single"],
+        "@typescript-eslint/naming-convention": [
+            "warn",
+            {
+                "selector": ["class", "enum", "typeAlias"],
+                "format": ["PascalCase"]
+            },
+            {
+                "selector": "memberLike",
+                "modifiers": ["private", "public"],
+                "format": ["camelCase"],
+                "leadingUnderscore": "forbid"
+            }
+        ]
     }
 }
