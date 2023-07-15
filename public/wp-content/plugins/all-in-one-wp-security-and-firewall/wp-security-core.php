@@ -8,9 +8,9 @@ if (!class_exists('AIO_WP_Security')) {
 
 	class AIO_WP_Security {
 
-		public $version = '5.1.9';
+		public $version = '5.2.1';
 
-		public $db_version = '2.0.0';
+		public $db_version = '2.0.2';
 		
 		public $firewall_version = '1.0.4';
 
@@ -241,6 +241,7 @@ if (!class_exists('AIO_WP_Security')) {
 			$this->debug_logger = new AIOWPSecurity_Logger($debug_enabled);
 
 			$this->load_ajax_handler();
+			$this->set_pagenow_for_renamed_loginpage();
 		}
 
 		/**
@@ -502,8 +503,8 @@ if (!class_exists('AIO_WP_Security')) {
 			global $aio_wp_security;
 			if (isset($_GET['aiowpsec_do_log_out'])) {
 				$nonce = isset($_GET['_wpnonce']) ? $_GET['_wpnonce'] : '';
-				$result = AIOWPSecurity_Utility_Permissions::check_nonce_and_user_cap($nonce, 'aio_logout');
-				if (is_wp_error($result)) {
+				// We can not use AIOWPSecurity_Utility_Permissions::check_nonce_and_user_cap to check user capabilities = manage_option as subscriber, editor etc users do not have it only administrators will have. If that check is applied it can not force the logout user and creates too many redirect errors.
+				if (!wp_verify_nonce($nonce, 'aio_logout')) {
 					return;
 				}
 				wp_logout();
@@ -599,9 +600,26 @@ if (!class_exists('AIO_WP_Security')) {
 															&& isset($_GET['page'])
 															&& 'aiowpsec_brute_force' == $_GET['page']
 															&& isset($_GET['tab'])
-															&& 'tab3' == $_GET['tab']
+															&& 'captcha-settings' == $_GET['tab']
 			);
 			return $this->is_aiowps_google_recaptcha_tab_page;
+		}
+		
+		/**
+		 * Set pagenow global variable to wp-login.php for renamed login page
+		 *
+		 * @return void
+		 */
+		public function set_pagenow_for_renamed_loginpage() {
+			global $pagenow;
+			if ('1' == $this->configs->get_value('aiowps_enable_rename_login_page')) {
+				include_once(AIO_WP_SECURITY_PATH . '/classes/wp-security-process-renamed-login-page.php');
+				$login_slug = $this->configs->get_value('aiowps_login_page_slug');
+				if (AIOWPSecurity_Process_Renamed_Login_Page::is_renamed_login_page_requested($login_slug)) {
+					//wp-login.php pagenow varaible required in determine_locale method for language change to work by login page dropdown
+					$pagenow = 'wp-login.php';
+				}
+			}
 		}
 
 		/**

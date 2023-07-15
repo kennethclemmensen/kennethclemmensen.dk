@@ -6,6 +6,8 @@ if (!defined('ABSPATH') && !defined('AIOWPS_FIREWALL_DIR')) {
 /**
  * All ids and static names, array.
  */
+if (class_exists('AIOS_Abstracted_Ids')) return;
+
 class AIOS_Abstracted_Ids {
 
 	/**

@@ -5,6 +5,12 @@ if (!defined('ABSPATH')) {
 
 class AIOWPSecurity_Installer {
 
+	private static $db_tasks = array(
+		'2.0.2' => array(
+			'clean_audit_log_stacktraces',
+		)
+	);
+
 	/**
 	 * Run installer function.
 	 *
@@ -20,6 +26,7 @@ class AIOWPSecurity_Installer {
 					switch_to_blog($blog_id);
 					AIOWPSecurity_Installer::create_db_tables();
 					AIOWPSecurity_Installer::migrate_db_tables();
+					AIOWPSecurity_Installer::check_tasks();
 					AIOWPSecurity_Configure_Settings::add_option_values();
 					restore_current_blog();
 				}
@@ -27,8 +34,28 @@ class AIOWPSecurity_Installer {
 		} else {
 			AIOWPSecurity_Installer::create_db_tables();
 			AIOWPSecurity_Installer::migrate_db_tables();
+			AIOWPSecurity_Installer::check_tasks();
 			AIOWPSecurity_Configure_Settings::add_option_values();
 			AIOWPSecurity_Installer::create_db_backup_dir(); //Create a backup dir in the WP uploads directory
+		}
+	}
+
+	/**
+	 * See if any database tasks need to be run, and perform them if so.
+	 *
+	 * @return void
+	 */
+	public static function check_tasks() {
+		$our_version = AIO_WP_SECURITY_DB_VERSION;
+		$db_version = get_option('aiowpsec_db_version', '1.0');
+		if (version_compare($our_version, $db_version, '>')) {
+			foreach (self::$db_tasks as $version => $updates) {
+				if (version_compare($version, $db_version, '>')) {
+					foreach ($updates as $update) {
+						call_user_func(array(__CLASS__, $update));
+					}
+				}
+			}
 		}
 	}
 
@@ -230,6 +257,16 @@ class AIOWPSecurity_Installer {
 				$wpdb->query("DROP TABLE IF EXISTS `$failed_login_tbl_name`");
 			}
 		}
+	}
+
+	/**
+	 * This function will run SQL to clean sensitive information from the audit log table stacktrace
+	 *
+	 * @return void
+	 */
+	public static function clean_audit_log_stacktraces() {
+		global $wpdb;
+		$wpdb->query("UPDATE ".AIOWPSEC_TBL_AUDIT_LOG." SET stacktrace = '' WHERE event_type = 'failed_login' OR event_type = 'successful_login' OR event_type = 'user_registration'");
 	}
 
 	public static function create_db_backup_dir() {

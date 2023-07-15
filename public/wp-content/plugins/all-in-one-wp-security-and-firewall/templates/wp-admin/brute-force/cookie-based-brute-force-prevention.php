@@ -10,7 +10,6 @@
 	<?php
 		$tutorial_link = '<a href="https://aiosplugin.com/how-to-use-cookie-based-brute-force-login-attack-prevention-feature/" target="_blank">' . __('tutorial', 'all-in-one-wp-security-and-firewall') . '</a>';
 		$info_msg = sprintf(__('To learn more about how to use this feature, please read the following %s.', 'all-in-one-wp-security-and-firewall'), $tutorial_link);
-		$brute_force_login_feature_link = '<a href="admin.php?page='.AIOWPSEC_FIREWALL_MENU_SLUG.'&tab=tab4" target="_blank">'.__('Cookie-based brute force login prevention', 'all-in-one-wp-security-and-firewall').'</a>';
 		echo '<p>' . $info_msg . '</p>';
 	?>
 </div>

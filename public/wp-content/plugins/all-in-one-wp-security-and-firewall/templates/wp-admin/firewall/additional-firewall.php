@@ -3,7 +3,7 @@
 <h2><?php _e('Additional firewall protection', 'all-in-one-wp-security-and-firewall'); ?></h2>
 		<div class="aio_blue_box">
 			<?php
-			$backup_tab_link = '<a href="admin.php?page='.AIOWPSEC_SETTINGS_MENU_SLUG.'&tab=tab2" target="_blank">backup</a>';
+			$backup_tab_link = '<a href="admin.php?page='.AIOWPSEC_SETTINGS_MENU_SLUG.'&tab=htaccess-file-operations" target="_blank">backup</a>';
 			$info_msg = sprintf(__('Due to the nature of the code being inserted to the .htaccess file, this feature may break some functionality for certain plugins and you are therefore advised to take a %s of .htaccess before applying this configuration.', 'all-in-one-wp-security-and-firewall'), $backup_tab_link);
 
 			echo '<p>'.__('This feature allows you to activate more advanced firewall settings to your site.', 'all-in-one-wp-security-and-firewall').

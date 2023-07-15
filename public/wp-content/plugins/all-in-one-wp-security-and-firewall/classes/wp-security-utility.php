@@ -248,12 +248,14 @@ class AIOWPSecurity_Utility {
 	}
 
 	/**
-	 * This is a general yellow box message for when we want to suppress a feature's config items because site is subsite of multi-site
+	 * This is a general yellow box message for when we want to suppress a feature's config items on multisite because current user is not super admin.
+	 *
+	 * @return void
 	 */
-	public static function display_multisite_message() {
+	public static function display_multisite_super_admin_message() {
 		echo '<div class="aio_yellow_box">';
 		echo '<p>' . __('The plugin has detected that you are using a Multi-Site WordPress installation.', 'all-in-one-wp-security-and-firewall') . '</p>
-			  <p>' . __('This feature can only be configured by the "superadmin" on the main site.', 'all-in-one-wp-security-and-firewall') . '</p>';
+			  <p>' . __('Some features on this page can only be configured by the "superadmin".', 'all-in-one-wp-security-and-firewall') . '</p>';
 		echo '</div>';
 	}
 
@@ -810,10 +812,21 @@ class AIOWPSecurity_Utility {
 	public static function normalise_call_stack_args($backtrace) {
 		foreach ($backtrace as $index => $element) {
 			if (!isset($element['args']) || !is_array($element['args']) || !isset($element['args'][0])) $backtrace[$index]['args'] = array('');
-			if (is_object($backtrace[$index]['args'][0])) {
-				$backtrace[$index]['args'] = array(get_class($backtrace[$index]['args'][0]));
-			} elseif (!is_string($backtrace[$index]['args'][0])) {
-				$backtrace[$index]['args'] = array('');
+			foreach ($backtrace[$index]['args'] as $key => $arg) {
+				if (is_object($arg)) {
+					$backtrace[$index]['args'][$key] = array(get_class($backtrace[$index]['args'][$key]));
+				} elseif (!is_string($arg)) {
+					$backtrace[$index]['args'] = array('');
+				}
+			}
+			
+			if ('apply_filters' == $backtrace[$index]['function'] && 'authenticate' == $backtrace[$index]['args'][0]) {
+				$backtrace[$index]['args'] = array('authenticate');
+			}
+			
+			$keys_to_filter = array('wp_create_user', 'wpmu_create_user', 'wp_authenticate', 'post_authenticate');
+			if (in_array($backtrace[$index]['function'], $keys_to_filter)) {
+				$backtrace[$index]['args'] = array();
 			}
 		}
 		return $backtrace;

@@ -56,7 +56,7 @@ class AIOWPSecurity_Notices extends Updraft_Notices_1_2 {
 								'</p>',
 				'button_link' => add_query_arg(array(
 					'page' => 'aiowpsec_database',
-					'tab'  => 'tab2',
+					'tab'  => 'database-backup',
 				), admin_url('admin.php')) . '#automated-scheduled-backups-heading',
 				'button_meta' => __('Setup UpdraftPlus backup plugin', 'all-in-one-wp-security-and-firewall'),
 				'dismiss_time' => 'dismiss_automated_database_backup_notice',
@@ -104,7 +104,7 @@ class AIOWPSecurity_Notices extends Updraft_Notices_1_2 {
 				'text' 		  => $login_whitelist_notice_text,
 				'button_link' => add_query_arg(array(
 					'page' => AIOWPSEC_BRUTE_FORCE_MENU_SLUG,
-					'tab'  => 'tab4',
+					'tab'  => 'login-whitelist',
 				), admin_url('admin.php')) . '#poststuff',
 				'action_button_text' => __('Turn it back on', 'all-in-one-wp-security-and-firewall'),
 				'button_meta' => __('Edit the settings', 'all-in-one-wp-security-and-firewall'),
@@ -271,7 +271,7 @@ class AIOWPSecurity_Notices extends Updraft_Notices_1_2 {
 	 * @return Boolean True if the current tab is the database backup tab, otherwise false.
 	 */
 	private function is_database_backup_tab() {
-		return (isset($_GET['tab']) && 'tab2' == $_GET['tab']);
+		return (isset($_GET['tab']) && 'database-backup' == $_GET['tab']);
 	}
 
 	/**
@@ -458,7 +458,7 @@ class AIOWPSecurity_Notices extends Updraft_Notices_1_2 {
 	 * @return Boolean True if the current tab is the advanced settings tab, otherwise false.
 	 */
 	private function is_login_whitelist_tab() {
-		return (isset($_GET['tab']) && 'tab4' == $_GET['tab']);
+		return (isset($_GET['tab']) && 'login-whitelist' == $_GET['tab']);
 	}
 
 	/**
@@ -479,7 +479,7 @@ class AIOWPSecurity_Notices extends Updraft_Notices_1_2 {
 	 * @return integer AIOS Plugin installation timestamp.
 	 */
 	public function get_aiowps_plugin_installed_timestamp() {
-		$installed_at = @filemtime(AIO_WP_SECURITY_PATH.'/index.html'); // phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
+		$installed_at = @filemtime(AIO_WP_SECURITY_PATH.'/index.html'); // phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged -- ignore warning as we handle it below
 		if (false === $installed_at) {
 			global $aio_wp_security;
 			$installed_at = (int) $aio_wp_security->configs->get_value('installed-at');

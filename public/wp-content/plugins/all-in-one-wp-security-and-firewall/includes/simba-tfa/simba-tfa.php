@@ -132,7 +132,9 @@ class Simba_Two_Factor_Authentication_1 {
 		}
 		
 		add_action('show_user_profile', array($this, 'show_user_profile'), 1);
-		
+
+		add_action('enqueue_block_assets', array($this, 'enqueue_gutenberg_block_scripts'));
+
 		add_filter('pre_update_option', array($this, 'setup_secret_encryption'), 10, 2);
 
 		if (defined('DOING_AJAX') && DOING_AJAX && defined('WP_ADMIN') && WP_ADMIN && !empty($_REQUEST['action']) && 'simbatfa-init-otp' == $_REQUEST['action']) {
@@ -155,7 +157,27 @@ class Simba_Two_Factor_Authentication_1 {
 		$settings_url = admin_url('admin.php').'?page='.$this->get_user_settings_page_slug();
 		printf('<a target="_blank" href="%s">%s</a>', $settings_url, __('Go here for your two factor authentication settings...', 'all-in-one-wp-security-and-firewall'));
 	}
+
+	/**
+	 * Enqueues scripts for Gutenberg blocks.
+	 *
+	 * @return void
+	 */
+	public function enqueue_gutenberg_block_scripts() {
+		global $pagenow;
+		
+		if ($pagenow == 'post.php' || has_block('twofactor/user-settings')) {
+			$script_ver = (defined('WP_DEBUG') && WP_DEBUG) ? time() : filemtime($this->includes_dir() . '/gutenberg-blocks.js');
+			wp_enqueue_script('twofactor-gutenberg-blocks', $this->includes_url() . '/gutenberg-blocks.js', array('wp-blocks', 'wp-element', 'wp-server-side-render'), $script_ver);
 	
+			wp_localize_script('twofactor-gutenberg-blocks', 'tfa_trans',
+				array(
+					'block_title' => __('Two Factor Authentication Settings', 'two-factor-authentication'),
+				)
+			);
+		}
+	}
+
 	/**
 	 * This function is called via the filter `pre_update_option` if the option being saved is `tfa_encrypt_secrets` then we will proceed to setup the encryption
 	 *
@@ -959,6 +981,10 @@ class Simba_Two_Factor_Authentication_1 {
 	 * @return WP_Error|WP_User
 	 */
 	public function tfaVerifyCodeAndUser($user, $username, $password) {
+
+		// Do not require a TFA code when authenticating via cookie (or other non-login-form mechanism)
+		if ('' === $username && is_multisite()) return $user;
+		
 		// When both the AIOWPS and Two Factor Authentication plugins are active, this function is called more than once; that should be short-circuited.
 		if (isset(self::$is_authenticated[$this->authentication_slug]) && self::$is_authenticated[$this->authentication_slug]) {
 			return $user;

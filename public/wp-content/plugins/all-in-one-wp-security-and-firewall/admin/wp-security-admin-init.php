@@ -112,6 +112,7 @@ class AIOWPSecurity_Admin_Init {
 				'menu_slug' => AIOWPSEC_USER_REGISTRATION_MENU_SLUG,
 				'render_callback' => array($this, 'handle_user_registration_menu_rendering'),
 				'icon' => 'user_registration',
+				'display_condition_callback' => 'is_main_site',
 				'order' => 60,
 			),
 			array(
@@ -120,6 +121,7 @@ class AIOWPSecurity_Admin_Init {
 				'menu_slug' => AIOWPSEC_DB_SEC_MENU_SLUG,
 				'render_callback' => array($this, 'handle_database_menu_rendering'),
 				'icon' => 'database_security',
+				'display_condition_callback' => 'is_super_admin',
 				'order' => 70,
 			),
 			array(
@@ -128,7 +130,7 @@ class AIOWPSecurity_Admin_Init {
 				'menu_slug' => AIOWPSEC_FILESYSTEM_MENU_SLUG,
 				'render_callback' => array($this, 'handle_filesystem_menu_rendering'),
 				'icon' => 'filesystem_security',
-				'display_condition_callback' => 'is_main_site',
+				'display_condition_callback' => array('AIOWPSecurity_Utility_Permissions', 'is_main_site_and_super_admin'),
 				'order' => 80,
 			),
 			array(
@@ -137,7 +139,7 @@ class AIOWPSecurity_Admin_Init {
 				'menu_slug' => AIOWPSEC_BLACKLIST_MENU_SLUG,
 				'render_callback' => array($this, 'handle_blacklist_menu_rendering'),
 				'icon' => 'blacklist_manager',
-				'display_condition_callback' => 'is_main_site',
+				'display_condition_callback' => array('AIOWPSecurity_Utility_Permissions', 'is_main_site_and_super_admin'),
 				'order' => 90,
 			),
 			array(
@@ -146,7 +148,7 @@ class AIOWPSecurity_Admin_Init {
 				'menu_slug' => AIOWPSEC_FIREWALL_MENU_SLUG,
 				'render_callback' => array($this, 'handle_firewall_menu_rendering'),
 				'icon' => 'firewall',
-				'display_condition_callback' => 'is_main_site',
+				'display_condition_callback' => array('AIOWPSecurity_Utility_Permissions', 'is_main_site_and_super_admin'),
 				'order' => 100,
 			),
 			array(
@@ -171,7 +173,7 @@ class AIOWPSecurity_Admin_Init {
 				'menu_slug' => AIOWPSEC_FILESCAN_MENU_SLUG,
 				'render_callback' => array($this, 'handle_filescan_menu_rendering'),
 				'icon' => 'scanner',
-				'display_condition_callback' => 'is_main_site',
+				'display_condition_callback' => array('AIOWPSecurity_Utility_Permissions', 'is_main_site_and_super_admin'),
 				'order' => 130,
 			),
 			array(

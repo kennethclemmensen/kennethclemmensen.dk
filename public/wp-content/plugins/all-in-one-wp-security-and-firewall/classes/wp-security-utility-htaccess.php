@@ -109,15 +109,17 @@ class AIOWPSecurity_Utility_Htaccess {
 		$home_path = AIOWPSecurity_Utility_File::get_home_path();
 		$htaccess = $home_path . '.htaccess';
 
-		if (!$f = @fopen($htaccess, 'a+')) {// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged,Squiz.PHP.DisallowMultipleAssignments.FoundInControlStructure
-			@chmod($htaccess, 0644);// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
-			if (!$f = @fopen($htaccess, 'a+')) {// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged,Squiz.PHP.DisallowMultipleAssignments.FoundInControlStructure
+		$f = @fopen($htaccess, 'a+'); // phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged -- ignore warning as we try to handle it below
+		if (!$f) {
+			@chmod($htaccess, 0644); // phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged -- ignore warning as we try to handle it below
+			$f = @fopen($htaccess, 'a+'); // phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged -- ignore warning as we try to handle it below
+			if (!$f) {
 				$aio_wp_security->debug_logger->log_debug("chmod operation on .htaccess failed.", 4);
 				return false;
 			}
 		}
-		AIOWPSecurity_Utility_File::backup_and_rename_htaccess($htaccess); //TODO - we dont want to continually be backing up the htaccess file
-		$ht = explode(PHP_EOL, implode('', file($htaccess))); //parse each line of file into array
+		AIOWPSecurity_Utility_File::backup_and_rename_htaccess($htaccess); // TODO - we dont want to continually be backing up the htaccess file
+		$ht = explode(PHP_EOL, implode('', file($htaccess))); // parse each line of file into array
 
 		$rules = AIOWPSecurity_Utility_Htaccess::getrules();
 
@@ -125,7 +127,8 @@ class AIOWPSecurity_Utility_Htaccess {
 		$rulesarray = apply_filters('aiowps_htaccess_rules_before_writing', $rulesarray);
 		$contents = array_merge($rulesarray, $ht);
 
-		if (!$f = @fopen($htaccess, 'w+')) {// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged,Squiz.PHP.DisallowMultipleAssignments.FoundInControlStructure
+		$f = @fopen($htaccess, 'w+'); // phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged -- ignore warning as we try to handle it below
+		if (!$f) {
 			$aio_wp_security->debug_logger->log_debug("Write operation on .htaccess failed.", 4);
 			return false; //we can't write to the file
 		}
@@ -144,7 +147,7 @@ class AIOWPSecurity_Utility_Htaccess {
 				fwrite($f, PHP_EOL . trim($insertline));
 			}
 		}
-		@fclose($f);// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
+		if (is_resource($f)) @fclose($f);
 		return true; //success
 	}
 
@@ -160,13 +163,13 @@ class AIOWPSecurity_Utility_Htaccess {
 		$htaccess = $home_path . '.htaccess';
 
 		if (!file_exists($htaccess)) {
-			$ht = @fopen($htaccess, 'a+');// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
+			$ht = @fopen($htaccess, 'a+');// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged -- ignore warning as we try to handle it below
 			if (false === $ht) {
 				global $aio_wp_security;
 				$aio_wp_security->debug_logger->log_debug('Failed to create .htaccess file', 4);
 				return -1;
 			}
-			@fclose($ht);// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
+			if (is_resource($ht)) @fclose($ht);
 		}
 
 		// Bug Fix: On some environments such as windows (xampp) this function was clobbering the non-aiowps-related .htaccess contents for certain cases.
@@ -189,11 +192,11 @@ class AIOWPSecurity_Utility_Htaccess {
 		
 		if ($ht_contents) { //as long as there are lines in the file
 			$state = true;
-			if (!$f = @fopen($htaccess, 'w+')) {// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged,Squiz.PHP.DisallowMultipleAssignments.FoundInControlStructure
-				@chmod($htaccess, 0644);// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
-				if (!$f = @fopen($htaccess, 'w+')) {// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged,Squiz.PHP.DisallowMultipleAssignments.FoundInControlStructure
-					return -1;
-				}
+			$f = @fopen($htaccess, 'w+'); // phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged -- ignore warning as we try to handle it below
+			if (!$f) {
+				@chmod($htaccess, 0644);// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged -- ignore warning as we try to handle it below
+				$f = @fopen($htaccess, 'w+'); // phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged -- ignore warning as we try to handle it below
+				if (!$f) return -1;
 			}
 
 			foreach ($ht_contents as $markerline) { //for each line in the file
@@ -207,7 +210,7 @@ class AIOWPSecurity_Utility_Htaccess {
 					$state = true;
 				}
 			}
-			@fclose($f);// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
+			if (is_resource($f)) @fclose($f);
 			return 1;
 		}
 		return 1;

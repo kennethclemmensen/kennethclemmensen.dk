@@ -13,11 +13,6 @@
 		<?php
 		// Display security info badge
 		$aiowps_feature_mgr->output_feature_details_badge("manually-approve-registrations");
-		$blog_id = get_current_blog_id();
-		if (is_multisite() && !is_main_site($blog_id)) {
-			// Hide config settings if MS and not main site
-			AIOWPSecurity_Utility::display_multisite_message();
-		} else {
 		?>
 		<form action="" method="POST">
 			<?php wp_nonce_field('aiowpsec-user-registration-settings-nonce'); ?>
@@ -32,7 +27,6 @@
 			</table>
 			<input type="submit" name="aiowps_save_user_registration_settings" value="<?php _e('Save settings', 'all-in-one-wp-security-and-firewall'); ?>" class="button-primary">
 		</form>
-		<?php } // End if statement ?>
 	</div>
 </div>
 <div class="postbox">

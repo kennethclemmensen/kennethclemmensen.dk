@@ -10,16 +10,8 @@
 	<h3 class="hndle"><label for="title"><?php _e('Registration page CAPTCHA settings', 'all-in-one-wp-security-and-firewall'); ?></label></h3>
 	<div class="inside">
 		<?php
-		if (!is_main_site()) {
-			// Hide config settings if MS and not main site
-			$special_msg = '<div class="aio_yellow_box">';
-			$special_msg .= '<p>'.__('The core default behaviour for WordPress Multi Site regarding user registration is that all users are registered via the main site.', 'all-in-one-wp-security-and-firewall').'</p>';
-			$special_msg .= '<p>'.__('Therefore, if you would like to add a CAPTCHA form to the registration page for a Multi Site, please go to "Registration CAPTCHA" settings on the main site.', 'all-in-one-wp-security-and-firewall').'</p>';
-			$special_msg .= '</div>';
-			echo $special_msg;
-		} else {
-			// Display security info badge
-			$aiowps_feature_mgr->output_feature_details_badge("user-registration-captcha");
+		// Display security info badge
+		$aiowps_feature_mgr->output_feature_details_badge("user-registration-captcha");
 		?>
 		<form action="" method="POST">
 			<?php wp_nonce_field('aiowpsec-registration-captcha-settings-nonce'); ?>
@@ -35,8 +27,5 @@
 			</table>
 			<input type="submit" name="aiowpsec_save_registration_captcha_settings" value="<?php _e('Save settings', 'all-in-one-wp-security-and-firewall'); ?>" class="button-primary">
 		</form>
-		<?php
-		}
-		?>
 	</div>
 </div>

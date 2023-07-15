@@ -144,8 +144,8 @@ class AIO_WP_Security_Simba_Two_Factor_Authentication_Plugin extends Simba_Two_F
 	 * Display the Two Factor Authentication tab & handle the operations
 	 */
 	public function render_two_factor_authentication() {
-		
-		if (false !== ($plugin = $this->is_incompatible_plugin_active())) { // phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged,Squiz.PHP.DisallowMultipleAssignments.FoundInControlStructure
+		$plugin = $this->is_incompatible_plugin_active();
+		if (false !== $plugin) {
 			global $aio_wp_security;
 			$aio_wp_security->include_template('admin/incompatible-plugin.php', false, array(
 				'incompatible_plugin' => $plugin,

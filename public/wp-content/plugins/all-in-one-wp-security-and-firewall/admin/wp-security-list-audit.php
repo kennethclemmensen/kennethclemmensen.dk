@@ -379,7 +379,7 @@ class AIOWPSecurity_List_Audit_Log extends AIOWPSecurity_List_Table {
 		$where_sql = '';
 
 		if ('' == $search_term) {
-			$where_sql = (is_multisite() && !is_main_site()) ? 'WHERE site_id = '.get_current_blog_id() : '';
+			$where_sql = (!is_super_admin()) ? 'WHERE site_id = '.get_current_blog_id() : '';
 			$extra_where = '';
 			
 			if (!empty($filters)) {
@@ -392,7 +392,7 @@ class AIOWPSecurity_List_Audit_Log extends AIOWPSecurity_List_Table {
 
 			$where_sql .= $extra_where;
 		} else {
-			$where_sql = (is_multisite() && !is_main_site()) ? 'WHERE site_id = '.get_current_blog_id().' AND ' : 'WHERE ';
+			$where_sql = (!is_super_admin()) ? 'WHERE site_id = '.get_current_blog_id().' AND ' : 'WHERE ';
 			$extra_where = '';
 
 			if (!empty($filters)) {
