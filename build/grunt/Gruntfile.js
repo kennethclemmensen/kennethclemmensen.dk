@@ -1,7 +1,7 @@
 module.exports = function(grunt) {
 
     grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
+        pkg: grunt.file.readJSON('../../package.json'),
 
         //Setup the browserSync task to synchronize browsers on different devices
         browserSync: {

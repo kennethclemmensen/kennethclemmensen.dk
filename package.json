@@ -3,22 +3,22 @@
   "version": "1.0.0",
   "private": true,
   "config": {
-    "appJsFile": "public/wp-content/themes/kennethclemmensen/js/compiled/App.js",
-    "cssCompiledFile": "public/wp-content/themes/kennethclemmensen/css/compiled/compiled.css",
-    "cssCompiledFolder": "public/wp-content/themes/kennethclemmensen/css/compiled",
-    "cssFiles": "public/wp-content/themes/kennethclemmensen/css/*.css",
-    "jsCompiledFiles": "public/wp-content/themes/kennethclemmensen/js/compiled/**/*.js",
-    "jsDistFiles": "public/wp-content/themes/kennethclemmensen/js/dist/*.js",
-    "lessFiles": "public/wp-content/themes/kennethclemmensen/less/**/*.less",
+    "appJsFile": "../../public/wp-content/themes/kennethclemmensen/js/compiled/App.js",
+    "cssCompiledFile": "../../public/wp-content/themes/kennethclemmensen/css/compiled/compiled.css",
+    "cssCompiledFolder": "../../public/wp-content/themes/kennethclemmensen/css/compiled",
+    "cssFiles": "../../public/wp-content/themes/kennethclemmensen/css/*.css",
+    "jsCompiledFiles": "../../public/wp-content/themes/kennethclemmensen/js/compiled/**/*.js",
+    "jsDistFiles": "../../public/wp-content/themes/kennethclemmensen/js/dist/*.js",
+    "lessFiles": "../../public/wp-content/themes/kennethclemmensen/less/**/*.less",
     "npmTscCommand": "npm run tsc",
-    "npmWebpackJsCommand": "npm run webpack-js",
     "npmWebpackCssCommand": "npm run webpack-css",
-    "phpFiles": "public/wp-content/themes/kennethclemmensen/**/*.php",
-    "scssFiles": "public/wp-content/themes/kennethclemmensen/sass/**/*.scss",
-    "styleLessFile": "public/wp-content/themes/kennethclemmensen/less/style.less",
-    "styleScssFile": "public/wp-content/themes/kennethclemmensen/sass/style.scss",
+    "npmWebpackJsCommand": "npm run webpack-js",
+    "phpFiles": "../../public/wp-content/themes/kennethclemmensen/**/*.php",
+    "scssFiles": "../../public/wp-content/themes/kennethclemmensen/sass/**/*.scss",
+    "styleLessFile": "../../public/wp-content/themes/kennethclemmensen/less/style.less",
+    "styleScssFile": "../../public/wp-content/themes/kennethclemmensen/sass/style.scss",
     "testDomain": "kennethclemmensen.test",
-    "uploadsFolder": "public/wp-content/uploads/"
+    "uploadsFolder": "../../public/wp-content/uploads/"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.4.0",
@@ -59,12 +59,12 @@
     "webpack-merge-and-include-globally": "2.1.26"
   },
   "scripts": {
-    "grunt": "grunt",
-    "grunt-imagemin": "grunt imagemin",
-    "gulp": "gulp",
-    "gulp-imagemin": "gulp imagemin",
+    "grunt": "grunt --gruntfile build/grunt/Gruntfile.js",
+    "grunt-imagemin": "grunt imagemin --gruntfile build/grunt/Gruntfile.js",
+    "gulp": "gulp -f build/gulp/gulpfile.js",
+    "gulp-imagemin": "gulp imagemin -f build/gulp/gulpfile.js",
     "tsc": "tsc -w",
-    "webpack-css": "webpack --config webpack.css.js",
-    "webpack-js": "webpack --config webpack.js.js"
+    "webpack-css": "webpack --config build/webpack/webpack.css.js",
+    "webpack-js": "webpack --config build/webpack/webpack.js.js"
   }
 }

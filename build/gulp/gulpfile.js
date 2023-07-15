@@ -3,7 +3,7 @@ const browserSyncPlugin = require('browser-sync');
 const cleanCssPlugin = require('gulp-clean-css');
 const imageminPlugin = require('gulp-imagemin');
 const lessPlugin = require('gulp-less');
-const package = require('./package.json');
+const package = require('../../package.json');
 const sassPlugin = require('gulp-dart-sass');
 const shellPlugin = require('gulp-shell');
 
@@ -73,7 +73,7 @@ function runNpmWebpackCssCommand() {
 
 //Run the npm tsc command
 function runNpmTscCommand() {
-    return src('public/wp-content/themes/kennethclemmensen/ts/App.ts')
+    return src('../../public/wp-content/themes/kennethclemmensen/ts/App.ts')
         .pipe(shellPlugin(package.config.npmTscCommand))
         .on('error', (error) => {
             console.log(error.toString());
