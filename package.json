@@ -4,7 +4,7 @@
   "private": true,
   "config": {
     "appJsFile": "../../public/wp-content/themes/kennethclemmensen/js/compiled/App.js",
-    "cssCompiledFile": "../../public/wp-content/themes/kennethclemmensen/css/compiled/compiled.css",
+    "cssCompiledFile": "../../public/wp-content/themes/kennethclemmensen/css/compiled/style.css",
     "cssCompiledFolder": "../../public/wp-content/themes/kennethclemmensen/css/compiled",
     "cssFiles": "../../public/wp-content/themes/kennethclemmensen/css/*.css",
     "jsCompiledFiles": "../../public/wp-content/themes/kennethclemmensen/js/compiled/**/*.js",

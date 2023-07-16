@@ -1,10 +1,9 @@
 const { merge } = require('webpack-merge');
 const common = require('./webpack.common.js');
-const package = require('../../package.json');
 const path = require('path');
 const mergeIntoSingleFilePlugin = require('webpack-merge-and-include-globally');
 const cssFile = 'style.min.css';
-const compiledCssFile = './public/wp-content/themes/kennethclemmensen/css/compiled/compiled.css';
+const compiledCssFile = './public/wp-content/themes/kennethclemmensen/css/compiled/style.css';
 const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = merge(common, {
