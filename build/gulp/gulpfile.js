@@ -96,12 +96,14 @@ function sass() {
         }));
 }
 
-//Register the tasks
-exports.default = parallel(browserSync, runNpmTscCommand);
-exports.imagemin = imagemin;
+//Watch for file changes
+function watcher() {
+    watch([package.config.cssCompiledFile], runNpmWebpackCssCommand);
+    watch([package.config.jsCompiledFiles], runNpmWebpackJsCommand);
+    watch(package.config.lessFiles, less);
+    watch(package.config.scssFiles, sass);
+}
 
-//Look for changes in files
-watch([package.config.cssCompiledFile], runNpmWebpackCssCommand);
-watch([package.config.jsCompiledFiles], runNpmWebpackJsCommand);
-watch(package.config.lessFiles, less);
-watch(package.config.scssFiles, sass);
+//Register the tasks
+exports.default = parallel(browserSync, runNpmTscCommand, watcher);
+exports.imagemin = imagemin;
