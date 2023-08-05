@@ -38,11 +38,11 @@
 		?>
 		<form id="tables-filter" method="get">
 			<!-- For plugins, we also need to ensure that the form posts back to our current page -->
-			<input type="hidden" name="page" value="<?php echo esc_attr($_REQUEST['page']); ?>" />
+			<input type="hidden" name="page" value="<?php echo esc_attr($page); ?>" />
 			<?php
 			$user_list->search_box(__('Search', 'all-in-one-wp-security-and-firewall'), 'search_user_registration');
-			if (isset($_REQUEST["tab"])) {
-				echo '<input type="hidden" name="tab" value="' . esc_attr($_REQUEST["tab"]) . '" />';
+			if (!empty($tab)) {
+				echo '<input type="hidden" name="tab" value="' . esc_attr($tab) . '" />';
 			}
 			?>
 			<!-- Now we can render the completed list table -->

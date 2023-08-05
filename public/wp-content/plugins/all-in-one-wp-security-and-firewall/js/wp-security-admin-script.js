@@ -330,4 +330,39 @@ jQuery(function($) {
 		}
 	});
 	// End of database table prefix handling
+	
+	//Login white list page - fetch user's IPv6/IPv4 address as another type IPv4/IPv6 only considered.
+	if (jQuery('#aios_user_ip_v4').length) {
+		var selector = '#aios-ipify-ip-address';
+		var ipv4_field = '#aios_user_ip_v4';
+		var ipv6_field = '#aios_user_ip_v6';
+		jQuery(selector).removeClass('aio_hidden');
+		aios_send_command('get_user_ip_all_version', {
+		}, function (resp) {
+			if (resp.hasOwnProperty('ip_v4')) {
+				jQuery(ipv4_field).val(resp.ip_v4);
+				jQuery(ipv4_field).removeClass('aio_hidden');
+			}
+			if (resp.hasOwnProperty('ip_v6')) {
+				jQuery(ipv6_field).val(resp.ip_v6);
+				jQuery(ipv6_field).removeClass('aio_hidden');
+			}
+			if (!resp.hasOwnProperty('ip_v4') && !resp.hasOwnProperty('ip_v6')) { // if ip_v4 and ip_v6 both not returned show error_message
+				console.log(resp);
+				jQuery(selector).html(resp.error_message); // show error message instead getting...
+			} else {
+				jQuery(selector).addClass('aio_hidden'); // hide getting... message
+			}
+		}, {
+			error_callback: function (response, status, error_code, resp) {
+				if (typeof resp !== 'undefined' && resp.hasOwnProperty('fatal_error')) {
+					console.error(resp.fatal_error);
+				} else {
+					var error_message = "Error: " + status + " (" + error_code + ")";
+					jQuery(selector).html(error_message); // show error message instead getting...
+					console.log(response);
+				}
+			}
+		});
+	};
 });

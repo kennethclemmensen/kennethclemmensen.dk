@@ -58,6 +58,7 @@ class AIOS_Abstracted_Ids {
 		return array(
 			'login-whitelist-disabled-on-upgrade',
 			'ip-blacklist-settings-on-upgrade',
+			'upgrade-firewall-tab-rules',
 		);
 	}
 

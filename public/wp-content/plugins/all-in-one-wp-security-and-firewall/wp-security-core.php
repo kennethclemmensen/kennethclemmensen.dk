@@ -8,11 +8,11 @@ if (!class_exists('AIO_WP_Security')) {
 
 	class AIO_WP_Security {
 
-		public $version = '5.2.1';
+		public $version = '5.2.2';
 
-		public $db_version = '2.0.2';
+		public $db_version = '2.0.3';
 		
-		public $firewall_version = '1.0.4';
+		public $firewall_version = '1.0.5';
 
 		public $plugin_url;
 

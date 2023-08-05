@@ -211,4 +211,22 @@ class AIOWPSecurity_Utility_IP {
 		
 		return AIOS_Helper::is_user_ip_address_within_list($ip_list_array);
 	}
+
+	/**
+	 * Get user IPv4 address using ipify api
+	 *
+	 * @return string IPv4 address.
+	 */
+	public static function get_user_ipv4() {
+		return AIOS_Helper::request_remote('https://api.ipify.org/');
+	}
+	
+	/**
+	 * Get user IPv6 address using ipify api
+	 *
+	 * @return string IPv6 address.
+	 */
+	public static function get_user_ipv6() {
+		return AIOS_Helper::request_remote('https://api64.ipify.org/');
+	}
 }

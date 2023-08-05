@@ -213,7 +213,9 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu {
 			}
 		}
 
-		$aio_wp_security->include_template('wp-admin/brute-force/cookie-based-brute-force-prevention.php', false, array('aiowps_feature_mgr' => $aiowps_feature_mgr));
+		$aiowps_cookie_test = isset($_POST['aiowps_cookie_test']) ? $_POST['aiowps_cookie_test'] : '';
+
+		$aio_wp_security->include_template('wp-admin/brute-force/cookie-based-brute-force-prevention.php', false, array('aiowps_feature_mgr' => $aiowps_feature_mgr, 'aiowps_cookie_test' => $aiowps_cookie_test));
 	}
 
 	/**
@@ -245,12 +247,16 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu {
 			// Save all the form values to the options
 			$random_20_digit_string = AIOWPSecurity_Utility::generate_alpha_numeric_random_string(20); // Generate random 20 char string for use during CAPTCHA encode/decode
 			$aio_wp_security->configs->set_value('aiowps_captcha_secret_key', $random_20_digit_string);
-			$aio_wp_security->configs->set_value('aiowps_enable_login_captcha',isset($_POST["aiowps_enable_login_captcha"])?'1':'');
-			$aio_wp_security->configs->set_value('aiowps_enable_woo_login_captcha',isset($_POST["aiowps_enable_woo_login_captcha"])?'1':'');
-			$aio_wp_security->configs->set_value('aiowps_enable_woo_register_captcha',isset($_POST["aiowps_enable_woo_register_captcha"])?'1':'');
-			$aio_wp_security->configs->set_value('aiowps_enable_woo_lostpassword_captcha',isset($_POST["aiowps_enable_woo_lostpassword_captcha"])?'1':'');
-			$aio_wp_security->configs->set_value('aiowps_enable_custom_login_captcha',isset($_POST["aiowps_enable_custom_login_captcha"])?'1':'');
-			$aio_wp_security->configs->set_value('aiowps_enable_lost_password_captcha',isset($_POST["aiowps_enable_lost_password_captcha"])?'1':'');
+			$aio_wp_security->configs->set_value('aiowps_enable_login_captcha', isset($_POST["aiowps_enable_login_captcha"]) ? '1' : '');
+			$aio_wp_security->configs->set_value('aiowps_enable_registration_page_captcha', isset($_POST["aiowps_enable_registration_page_captcha"]) ? '1' : '');
+			$aio_wp_security->configs->set_value('aiowps_enable_comment_captcha', isset($_POST["aiowps_enable_comment_captcha"]) ? '1' : '');
+			$aio_wp_security->configs->set_value('aiowps_enable_bp_register_captcha', isset($_POST["aiowps_enable_bp_register_captcha"]) ? '1' : '');
+			$aio_wp_security->configs->set_value('aiowps_enable_bbp_new_topic_captcha', isset($_POST["aiowps_enable_bbp_new_topic_captcha"]) ? '1' : '');
+			$aio_wp_security->configs->set_value('aiowps_enable_woo_login_captcha', isset($_POST["aiowps_enable_woo_login_captcha"]) ? '1' : '');
+			$aio_wp_security->configs->set_value('aiowps_enable_woo_register_captcha', isset($_POST["aiowps_enable_woo_register_captcha"]) ? '1' : '');
+			$aio_wp_security->configs->set_value('aiowps_enable_woo_lostpassword_captcha', isset($_POST["aiowps_enable_woo_lostpassword_captcha"]) ? '1' : '');
+			$aio_wp_security->configs->set_value('aiowps_enable_custom_login_captcha', isset($_POST["aiowps_enable_custom_login_captcha"]) ? '1' : '');
+			$aio_wp_security->configs->set_value('aiowps_enable_lost_password_captcha', isset($_POST["aiowps_enable_lost_password_captcha"]) ? '1' : '');
 
 			$aio_wp_security->configs->set_value('aiowps_turnstile_site_key', stripslashes($_POST['aiowps_turnstile_site_key']));
 			$aio_wp_security->configs->set_value('aiowps_recaptcha_site_key', stripslashes($_POST['aiowps_recaptcha_site_key']));
@@ -304,7 +310,7 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu {
 	protected function render_login_whitelist() {
 		global $aio_wp_security, $aiowps_feature_mgr;
 		$result = 0;
-		$your_ip_address = AIOWPSecurity_Utility_IP::get_user_ip_address();
+		
 		if (isset($_POST['aiowps_save_whitelist_settings'])) {
 			$nonce = $_POST['_wpnonce'];
 			if (!wp_verify_nonce($nonce, 'aiowpsec-whitelist-settings-nonce')) {
@@ -351,7 +357,10 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu {
 			}
 		}
 
-		$aio_wp_security->include_template('wp-admin/brute-force/login-whitelist.php', false, array('aiowps_feature_mgr' => $aiowps_feature_mgr, 'your_ip_address' => $your_ip_address, 'result' => $result));
+		$aiowps_allowed_ip_addresses = isset($_POST['aiowps_allowed_ip_addresses']) ? wp_unslash($_POST['aiowps_allowed_ip_addresses']) : '';
+		$aiowps_allowed_ip_addresses = -1 == $result ? $aiowps_allowed_ip_addresses : $aio_wp_security->configs->get_value('aiowps_allowed_ip_addresses');
+
+		$aio_wp_security->include_template('wp-admin/brute-force/login-whitelist.php', false, array('aiowps_feature_mgr' => $aiowps_feature_mgr, 'aiowps_allowed_ip_addresses' => $aiowps_allowed_ip_addresses));
 	}
 
 	/**
@@ -374,7 +383,9 @@ class AIOWPSecurity_Brute_Force_Menu extends AIOWPSecurity_Admin_Menu {
 			}
 
 			// Save all the form values to the options
-			$aio_wp_security->configs->set_value('aiowps_enable_login_honeypot', isset($_POST["aiowps_enable_login_honeypot"]) ? '1' : '', true);
+			$aio_wp_security->configs->set_value('aiowps_enable_login_honeypot', isset($_POST["aiowps_enable_login_honeypot"]) ? '1' : '');
+			$aio_wp_security->configs->set_value('aiowps_enable_registration_honeypot', isset($_POST["aiowps_enable_registration_honeypot"]) ? '1' : '');
+			$aio_wp_security->configs->save_config(); // Save the configuration
 
 			// Recalculate points after the feature status/options have been altered
 			$aiowps_feature_mgr->check_feature_status_and_recalculate_points();

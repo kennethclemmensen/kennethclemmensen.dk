@@ -816,7 +816,7 @@ class AIOWPSecurity_Utility {
 				if (is_object($arg)) {
 					$backtrace[$index]['args'][$key] = array(get_class($backtrace[$index]['args'][$key]));
 				} elseif (!is_string($arg)) {
-					$backtrace[$index]['args'] = array('');
+					$backtrace[$index]['args'][$key] = array('');
 				}
 			}
 			

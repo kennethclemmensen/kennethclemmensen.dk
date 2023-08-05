@@ -182,7 +182,6 @@ class AIOWPSecurity_User_Login {
 		global $aio_wp_security;
 		if (!is_wp_error($user)) {
 			// Authentication has been successful, there's nothing to do here.
-			AIOWPSecurity_Audit_Events::event_successful_login($username);
 			return $user;
 		}
 		if (empty($username) || empty($password)) {
@@ -541,34 +540,26 @@ class AIOWPSecurity_User_Login {
 	}
 
 	/**
-	 * Updates the last login time in user meta, the login activity table and the users online transient.
+	 * Updates the audit log, the last login time in user meta, the login activity table and the users online transient.
 	 *
 	 * @global wpdb $wpdb
 	 * @global AIO_WP_Security $aio_wp_security
 	 *
 	 * @param string  $user_login
 	 * @param WP_User $user
-	 * @param string  $login_activity_table
 	 *
 	 * @return void
 	 */
-	private static function update_login_activity($user_login, $user, $login_activity_table) {
-		global $wpdb, $aio_wp_security;
-
+	private static function update_login_activity($user_login, $user) {
+		AIOWPSecurity_Audit_Events::event_successful_login($user_login);
 		$login_date_time = current_time('mysql', true);
+
 		update_user_meta($user->ID, 'aiowps_last_login_time', $login_date_time); //store last login time in meta table
-		$curr_ip_address = AIOWPSecurity_Utility_IP::get_user_ip_address();
-		$data = array('user_id' => $user->ID, 'user_login' => $user_login, 'login_date' => $login_date_time, 'login_ip' => $curr_ip_address);
-		$format = array('%d', '%s', '%s', '%s');
-		$result = $wpdb->insert($login_activity_table, $data, $format);
-		if (false === $result) {
-			$aio_wp_security->debug_logger->log_debug("Error inserting record into ".$login_activity_table, 4);//Log the highly unlikely event of DB error
-		}
 		self::update_users_online_transient($user->ID);
 	}
 
 	public static function wp_login_action_handler($user_login, $user = '') {
-		global $wpdb, $aio_wp_security;
+		global $aio_wp_security;
 
 		if ('' == $user) {
 			//Try and get user object
@@ -597,15 +588,12 @@ class AIOWPSecurity_User_Login {
 		}
 
 		if ($logging_into_correct_site) {
-			$login_activity_table = $wpdb->prefix . 'aiowps_login_activity';
-			self::update_login_activity($user_login, $user, $login_activity_table);
+			self::update_login_activity($user_login, $user);
 		} else {
 			$user_primary_site = get_active_blog_for_user($user->ID);
 			switch_to_blog($user_primary_site->blog_id);
 
-			$login_activity_table = $wpdb->prefix . 'aiowps_login_activity';
-
-			self::update_login_activity($user_login, $user, $login_activity_table);
+			self::update_login_activity($user_login, $user);
 
 			restore_current_blog();
 		}
@@ -618,20 +606,12 @@ class AIOWPSecurity_User_Login {
 	 * an auto logout occurs due to the "force logout" feature).
 	 */
 	public function wp_logout_action_handler() {
-		global $wpdb, $aio_wp_security;
 		$current_user = wp_get_current_user();
 		$ip_addr = AIOWPSecurity_Utility_IP::get_user_ip_address();
 		$user_id = $current_user->ID;
 		//Clean up transients table
 		$this->cleanup_users_online_transient($user_id, $ip_addr);
-		$login_activity_table = AIOWPSEC_TBL_USER_LOGIN_ACTIVITY;
-		$logout_date_time = current_time('mysql', true);
-		$data = array('logout_date' => $logout_date_time);
-		$where = array('user_id' => $user_id, 'login_ip' => $ip_addr, 'logout_date' => '1000-10-10 10:00:00');
-		$result = $wpdb->update($login_activity_table, $data, $where);
-		if (false === $result) {
-			$aio_wp_security->debug_logger->log_debug("Error inserting record into ".$login_activity_table, 4);//Log the highly unlikely event of DB error
-		}
+		// TODO: log a logout event in the audit log
 	}
 
 	/**

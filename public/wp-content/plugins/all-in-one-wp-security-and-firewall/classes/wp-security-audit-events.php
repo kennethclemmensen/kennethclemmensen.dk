@@ -153,12 +153,14 @@ class AIOWPSecurity_Audit_Events {
 		// If this is empty then we have no way to know if this is a plugin/theme install/update so return as we catch this in plugin_installed()
 		if (empty($hook_extra)) return;
 		if ('plugin' !== $hook_extra['type'] || 'update' !== $hook_extra['action']) return;
-		$plugin = '';
-		if (isset($hook_extra['plugin'])) $plugin = $hook_extra['plugin'];
-		if (isset($hook_extra['plugins'])) $plugin = $hook_extra['plugins'][0];
-		if (empty($plugin)) return;
-
-		self::event_plugin_changed('updated', $plugin, '');
+		if (isset($hook_extra['plugin'])) {
+			$plugin = $hook_extra['plugin'];
+			self::event_plugin_changed('updated', $plugin, '');
+		} elseif (isset($hook_extra['plugins'])) {
+			foreach ($hook_extra['plugins'] as $plugin) {
+				self::event_plugin_changed('updated', $plugin, '');
+			}
+		}
 	}
 	
 	/**
@@ -280,12 +282,14 @@ class AIOWPSecurity_Audit_Events {
 		// If this is empty then we have no way to know if this is a plugin/theme install/update so return as we catch this in plugin_installed()
 		if (empty($hook_extra)) return;
 		if ('theme' !== $hook_extra['type'] || 'update' !== $hook_extra['action']) return;
-		$theme = '';
-		if (isset($hook_extra['theme'])) $theme = $hook_extra['theme'];
-		if (isset($hook_extra['themes'])) $theme = $hook_extra['themes'][0];
-		if (empty($theme)) return;
-
-		self::event_theme_changed('updated', $theme, '');
+		if (isset($hook_extra['theme'])) {
+			$theme = $hook_extra['theme'];
+			self::event_theme_changed('updated', $theme, '');
+		} elseif (isset($hook_extra['themes'])) {
+			foreach ($hook_extra['themes'] as $theme) {
+				self::event_theme_changed('updated', $theme, '');
+			}
+		}
 	}
 
 	/**
@@ -362,6 +366,10 @@ class AIOWPSecurity_Audit_Events {
 	 * @return void
 	 */
 	public static function translation_updated($upgrader, $hook_extra) {
+
+		// If this is empty then we have no way to know if this is a plugin/theme/translation install/update so return as we catch this in plugin_installed()
+		if (empty($hook_extra)) return;
+
 		if ('translation' !== $hook_extra['type'] || 'update' !== $hook_extra['action']) return;
 
 		if (!isset($hook_extra['translations']) || empty($hook_extra['translations'])) return;

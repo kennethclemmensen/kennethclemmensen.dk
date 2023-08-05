@@ -34,6 +34,7 @@ class AIO_WP_Security_Simba_Two_Factor_Authentication_Plugin extends Simba_Two_F
 	public function __construct() {
 
 		add_filter('aiowpsecurity_setting_tabs', array($this, 'add_two_factor_setting_tab'));
+		add_filter('tfa_user_ip_address', array($this, 'aios_set_user_ip_address'));
 
 		if (false !== $this->is_incompatible_plugin_active()) return;
 
@@ -121,6 +122,15 @@ class AIO_WP_Security_Simba_Two_Factor_Authentication_Plugin extends Simba_Two_F
 			}
 			add_submenu_page(AIOWPSEC_MAIN_MENU_SLUG, __('Two Factor Auth', 'all-in-one-wp-security-and-firewall'),  __('Two Factor Auth', 'all-in-one-wp-security-and-firewall'), 'read', AIOWPSEC_TWO_FACTOR_AUTH_MENU_SLUG, array($this, 'show_dashboard_user_settings_page'));
 		}
+	}
+	
+	/**
+	 * AIOS settings based user IP address
+	 *
+	 * @return string IP address
+	 */
+	public function aios_set_user_ip_address() {
+		return AIOS_Helper::get_user_ip_address();
 	}
 	
 	/**

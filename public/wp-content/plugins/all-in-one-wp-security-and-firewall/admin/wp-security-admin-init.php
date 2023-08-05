@@ -250,27 +250,6 @@ class AIOWPSecurity_Admin_Init {
 	 */
 	public function aiowps_csv_download() {
 		global $aio_wp_security;
-		if (isset($_POST['aiowpsec_export_acct_activity_logs_to_csv'])) { //Export account activity logs
-			$nonce = $_REQUEST['_wpnonce'];
-			$result = AIOWPSecurity_Utility_Permissions::check_nonce_and_user_cap($nonce, 'aiowpsec-export-acct-activity-logs-to-csv-nonce');
-			if (is_wp_error($result)) {
-				$aio_wp_security->debug_logger->log_debug($result->get_error_message(), 4);
-				die($result->get_error_message());
-			}
-			include_once 'wp-security-list-acct-activity.php';
-			$acct_activity_list = new AIOWPSecurity_List_Account_Activity();
-			$acct_activity_list->prepare_items(true);
-			//Let's build a list of items we want to export and give them readable names
-			$export_keys = array(
-				'user_id' => 'User ID',
-				'user_login' => 'Username',
-				'login_date' => 'Login Date',
-				'logout_date' => 'Logout Date',
-				'login_ip' => 'IP'
-			);
-			$this->aiowps_output_csv($acct_activity_list->items, $export_keys, 'account_activity_logs.csv');
-			exit();
-		}
 		if (isset($_POST['aiowps_export_audit_event_logs_to_csv'])) {
 			$nonce = $_REQUEST['_wpnonce'];
 			$result = AIOWPSecurity_Utility_Permissions::check_nonce_and_user_cap($nonce, 'bulk-items');
@@ -481,10 +460,8 @@ class AIOWPSecurity_Admin_Init {
 	 * @return void
 	 */
 	private function initialize_feature_manager() {
-		$aiowps_feature_mgr  = new AIOWPSecurity_Feature_Item_Manager();
-		$aiowps_feature_mgr->initialize_features();
-		$aiowps_feature_mgr->check_and_set_feature_status();
-		$aiowps_feature_mgr->calculate_total_points();
+		$aiowps_feature_mgr = new AIOWPSecurity_Feature_Item_Manager();
+		$aiowps_feature_mgr->check_feature_status_and_recalculate_points();
 		$GLOBALS['aiowps_feature_mgr'] = $aiowps_feature_mgr;
 	}
 

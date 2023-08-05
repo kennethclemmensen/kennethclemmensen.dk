@@ -51,6 +51,10 @@ class AIOWPSecurity_Audit_Event_Handler {
 			return;
 		}
 
+		$record_event = apply_filters('aios_audit_log_record_event', true, $event_type, $details, $event_level, $username);
+
+		if (!$record_event) return;
+
 		$user = wp_get_current_user();
 		$username = (is_a($user, 'WP_User') && 0 !== $user->ID) ? $user->user_login : $username;
 		$ip = apply_filters('aios_audit_log_event_user_ip', AIOWPSecurity_Utility_IP::get_user_ip_address());

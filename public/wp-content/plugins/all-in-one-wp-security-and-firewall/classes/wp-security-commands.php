@@ -25,6 +25,27 @@ class AIOWPSecurity_Commands {
 		}
 		die;
 	}
+	
+	/**
+	 * Get User IPv4 and IPv6 addresses
+	 *
+	 * @return array|WP_Error - an array response or a WP_Error if there was an error
+	 */
+	public function get_user_ip_all_version() {
+		$ip_v4 = AIOWPSecurity_Utility_IP::get_user_ipv4();
+		$ip_v6 = AIOWPSecurity_Utility_IP::get_user_ipv6();
+		
+		$user_ip_all = array();
+		if (!empty($ip_v4)) $user_ip_all['ip_v4'] = $ip_v4;
+		if (!empty($ip_v6) && $ip_v6 != $ip_v4) $user_ip_all['ip_v6'] = $ip_v6; // Sometimes get_user_ipv6 - api64.ipify.org returns the IPv4 address so check with $ip_v4 requried.
+		
+		if (!empty($user_ip_all)) {
+			return $user_ip_all;
+		} else {
+			return new WP_Error('aios-error-user-ip-request', __('Error in getting user IPv4 and IPv6 address(es).', 'all-in-one-wp-security-and-firewall'));
+		}
+		die;
+	}
 
 	/**
 	 * Dismiss a notice
@@ -66,6 +87,23 @@ class AIOWPSecurity_Commands {
 				AIOWPSecurity_Configure_Settings::set_user_agent_firewall_configs();
 			}
 			$aio_wp_security->configs->delete_value('aiowps_is_ip_blacklist_settings_notice_on_upgrade');
+		} elseif ('dismiss_firewall_settings_disabled_on_upgrade_notice' == $data['notice']) {
+			$is_reactivated = (isset($data['turn_it_back_on']) && '1' == $data['turn_it_back_on']);
+				if ($is_reactivated) {
+					global $aiowps_firewall_config;
+					$active_settings = $aio_wp_security->configs->get_value('aiowps_firewall_active_upgrade');
+	
+					if (!empty($active_settings)) {
+						$active_settings = json_decode($active_settings);
+						if (!empty($active_settings)) {
+							foreach ($active_settings as $setting) {
+								$aiowps_firewall_config->set_value($setting, true);
+							}
+						}
+					}
+				}
+
+				$aio_wp_security->configs->delete_value('aiowps_firewall_active_upgrade');
 		}
 		
 
