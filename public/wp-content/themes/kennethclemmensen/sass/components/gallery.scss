@@ -45,6 +45,7 @@
 	opacity: 0;
 	&:hover {
 		opacity: 1;
+		cursor: pointer;
 	}
 	&::before {
 		display: flex;
@@ -112,5 +113,6 @@
 		content: '\f00d';
 		font-size: 2em;
 		color: $color-gray;
+		cursor: pointer;
 	}
 }

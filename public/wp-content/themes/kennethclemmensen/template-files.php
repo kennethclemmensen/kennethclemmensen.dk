@@ -19,7 +19,6 @@ while(have_posts()) {
 			<?php the_content(); ?>
 			<div id="files-app">
 				<files file-types="<?php echo $themeService->getFileTypes(); ?>"
-					per-page="<?php echo ThemeSettings::getInstance()->getFilesPerPage(); ?>"
 					previous-text="<?php echo $previousText; ?>"
 					next-text="<?php echo $nextText; ?>" 
 					number-of-downloads-text="<?php echo $downloadsText; ?>"></files>

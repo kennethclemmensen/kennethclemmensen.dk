@@ -6,7 +6,7 @@ import { EventType } from './enums/EventType';
  */
 export class Gallery {
 
-	private readonly template: string = `
+	readonly #template: string = `
 		<div class="gallery-overlay" id="gallery-overlay"></div>
 		<div class="gallery" id="gallery">
 			<div class="gallery__image-container">
@@ -25,82 +25,82 @@ export class Gallery {
 			</div>
 		</div>
 	`;
-	private readonly images: NodeListOf<HTMLElement>;
-	private readonly numberOfImages: number;
-	private currentImageIndex: number;
-	private readonly linkHiddenClass: string;
-	private readonly overlayVisibleClass: string;
-	private readonly galleryVisibleClass: string;
-	private readonly previousLink: HTMLElement | null;
-	private readonly nextLink: HTMLElement | null;
-	private readonly gallery: HTMLElement | null;
-	private readonly galleryOverlay: HTMLElement | null;
+	readonly #images: NodeListOf<HTMLElement>;
+	readonly #numberOfImages: number;
+	#currentImageIndex: number;
+	readonly #linkHiddenClass: string;
+	readonly #overlayVisibleClass: string;
+	readonly #galleryVisibleClass: string;
+	readonly #previousLink: HTMLElement | null;
+	readonly #nextLink: HTMLElement | null;
+	readonly #gallery: HTMLElement | null;
+	readonly #galleryOverlay: HTMLElement | null;
 
 	/**
 	 * Initialize a new instance of the Gallery class
 	 */
 	public constructor() {
-		document.body.insertAdjacentHTML('beforeend', this.template);
-		this.images = document.querySelectorAll('.page__gallery-thumbnail-link');
-		this.numberOfImages = this.images.length;
-		this.currentImageIndex = 0;
-		this.linkHiddenClass = 'gallery__navigation-link--hidden';
-		this.overlayVisibleClass = 'gallery-overlay--visible';
-		this.galleryVisibleClass = 'gallery--visible';
-		this.previousLink = document.getElementById('previous-link');
-		this.nextLink = document.getElementById('next-link');
-		this.gallery = document.getElementById('gallery');
-		this.galleryOverlay = document.getElementById('gallery-overlay');
-		this.images.forEach((image: HTMLElement): void => {
+		document.body.insertAdjacentHTML('beforeend', this.#template);
+		this.#images = document.querySelectorAll('.page__gallery-thumbnail-link');
+		this.#numberOfImages = this.#images.length;
+		this.#currentImageIndex = 0;
+		this.#linkHiddenClass = 'gallery__navigation-link--hidden';
+		this.#overlayVisibleClass = 'gallery-overlay--visible';
+		this.#galleryVisibleClass = 'gallery--visible';
+		this.#previousLink = document.getElementById('previous-link');
+		this.#nextLink = document.getElementById('next-link');
+		this.#gallery = document.getElementById('gallery');
+		this.#galleryOverlay = document.getElementById('gallery-overlay');
+		this.#images.forEach((image: HTMLElement): void => {
 			fromEvent(image, EventType.Click).subscribe((event: Event): void => {
 				event.preventDefault();
-				this.currentImageIndex = parseInt(image.getAttribute('data-index') ?? '0');
-				if(this.currentImageIndex === 0) {
+				this.#currentImageIndex = parseInt(image.getAttribute('data-index') ?? '0');
+				if(this.#currentImageIndex === 0) {
 					this.hidePreviousLink();
-				} else if((this.currentImageIndex + 1) === this.numberOfImages) {
+				} else if((this.#currentImageIndex + 1) === this.#numberOfImages) {
 					this.hideNextLink();
 				}
 				this.showImage();
 				this.updateTitle();
 				this.showOverlay();
 				this.updateImageInfo();
-			});
-		});
-		const galleryClose: HTMLElement | null = document.getElementById('gallery-close');
+				const galleryClose: HTMLElement | null = document.getElementById('gallery-close');
 		if (galleryClose != null) {
 			fromEvent(galleryClose, EventType.Click).subscribe((event: Event): void => {
 				event.preventDefault();
 				this.hideOverlay();
 			});
 		}
-		if (this.galleryOverlay != null) {
-			fromEvent(this.galleryOverlay, EventType.Click).subscribe((event: Event): void => {
+		if (this.#galleryOverlay != null) {
+			fromEvent(this.#galleryOverlay, EventType.Click).subscribe((event: Event): void => {
 				event.preventDefault();
 				this.hideOverlay();
 			});
 		}
-		if (this.previousLink != null) {
-			fromEvent(this.previousLink, EventType.Click).subscribe((event: Event): void => {
+			});
+		});
+		if (this.#previousLink != null) {
+			fromEvent(this.#previousLink, EventType.Click).subscribe((event: Event): void => {
 				event.preventDefault();
-				this.currentImageIndex--;
+				this.#currentImageIndex--;
 				this.showImage();
 				this.updateTitle();
 				this.updateImageInfo();
 				this.showNextLink();
-				if(this.currentImageIndex === 0) {
+				if(this.#currentImageIndex === 0) {
 					this.hidePreviousLink();
 				}
 			});
 		}
-		if (this.nextLink != null) {
-			fromEvent(this.nextLink, EventType.Click).subscribe((event: Event): void => {
+		if (this.#nextLink != null) {
+			fromEvent(this.#nextLink, EventType.Click).subscribe((event: Event): void => {
 				event.preventDefault();
-				this.currentImageIndex++;
+				this.#currentImageIndex++;
 				this.showImage();
 				this.updateTitle();
 				this.updateImageInfo();
 				this.showPreviousLink();
-				if((this.currentImageIndex + 1) === this.numberOfImages) {
+				if((this.#currentImageIndex + 1) === this.#numberOfImages) {
 					this.hideNextLink();
 				}
 			});
@@ -111,7 +111,7 @@ export class Gallery {
 	 * Show the image
 	 */
 	private showImage(): void {
-		const image: HTMLElement | undefined = this.images[this.currentImageIndex];
+		const image: HTMLElement | undefined = this.#images[this.#currentImageIndex];
 		if(image != null) {
 			(document.getElementById('image') as HTMLImageElement).src = image.getAttribute('href') ?? '';
 		}
@@ -122,7 +122,7 @@ export class Gallery {
 	 */
 	private updateTitle(): void {
 		const title: HTMLElement | null = document.getElementById('image-title');
-		const image: HTMLElement | undefined = this.images[this.currentImageIndex];
+		const image: HTMLElement | undefined = this.#images[this.#currentImageIndex];
 		if (title != null && image != null) {
 			title.innerHTML = image.getAttribute('data-title') ?? '';
 		}
@@ -134,7 +134,7 @@ export class Gallery {
 	private updateImageInfo(): void {
 		const imageText: string | undefined = document.body.dataset.imageText;
 		const ofText: string | undefined = document.body.dataset.ofText;
-		const html: string = `${imageText} ${this.currentImageIndex + 1} ${ofText} ${this.numberOfImages}`;
+		const html: string = `${imageText} ${this.#currentImageIndex + 1} ${ofText} ${this.#numberOfImages}`;
 		const imageInfo: HTMLElement | null = document.getElementById('image-info');
 		if(imageInfo != null) {
 			imageInfo.innerHTML = html;
@@ -145,43 +145,43 @@ export class Gallery {
 	 * Show the previous link
 	 */
 	private showPreviousLink(): void {
-		this.previousLink?.classList.remove(this.linkHiddenClass);
+		this.#previousLink?.classList.remove(this.#linkHiddenClass);
 	}
 
 	/**
 	 * Hide the previous link
 	 */
 	private hidePreviousLink(): void {
-		this.previousLink?.classList.add(this.linkHiddenClass);
+		this.#previousLink?.classList.add(this.#linkHiddenClass);
 	}
 
 	/**
 	 * Show the next link
 	 */
 	private showNextLink(): void {
-		this.nextLink?.classList.remove(this.linkHiddenClass);
+		this.#nextLink?.classList.remove(this.#linkHiddenClass);
 	}
 
 	/**
 	 * Hide the next link
 	 */
 	private hideNextLink(): void {
-		this.nextLink?.classList.add(this.linkHiddenClass);
+		this.#nextLink?.classList.add(this.#linkHiddenClass);
 	}
 
 	/**
 	 * Show the overlay
 	 */
 	private showOverlay(): void {
-		this.galleryOverlay?.classList.add(this.overlayVisibleClass);
-		this.gallery?.classList.add(this.galleryVisibleClass);
+		this.#galleryOverlay?.classList.add(this.#overlayVisibleClass);
+		this.#gallery?.classList.add(this.#galleryVisibleClass);
 	}
 
 	/**
 	 * Hide the overlay
 	 */
 	private hideOverlay(): void {
-		this.galleryOverlay?.classList.remove(this.overlayVisibleClass);
-		this.gallery?.classList.remove(this.galleryVisibleClass);
+		this.#galleryOverlay?.classList.remove(this.#overlayVisibleClass);
+		this.#gallery?.classList.remove(this.#galleryVisibleClass);
 	}
 }

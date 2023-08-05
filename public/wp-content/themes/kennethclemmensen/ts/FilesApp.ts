@@ -26,7 +26,8 @@ export class FilesApp {
 					data: (): object => {
 						return {
 							files: [],
-							offset: 0
+							offset: 0,
+							perPage: 7
 						};
 					},
 					created: function(): void {
@@ -60,10 +61,6 @@ export class FilesApp {
 						fileTypes: {
 							required: true,
 							type: String
-						},
-						perPage: {
-							required: true,
-							type: Number
 						},
 						previousText: {
 							required: true,

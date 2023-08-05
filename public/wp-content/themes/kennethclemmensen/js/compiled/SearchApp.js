@@ -57,7 +57,8 @@ export class SearchApp {
                 'search-results': {
                     data: () => {
                         return {
-                            offset: 0
+                            offset: 0,
+                            perPage: 5
                         };
                     },
                     methods: {
@@ -72,10 +73,6 @@ export class SearchApp {
                         results: {
                             required: true,
                             type: Array
-                        },
-                        perPage: {
-                            required: true,
-                            type: Number
                         },
                         previousText: {
                             required: true,
