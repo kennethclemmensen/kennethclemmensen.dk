@@ -48,6 +48,9 @@ msgstr "Download tæller"
 msgid "Dropbox"
 msgstr "Dropbox"
 
+msgid "Email"
+msgstr "Email"
+
 msgid "Encryption"
 msgstr "Kryptering"
 
@@ -68,6 +71,12 @@ msgstr "Filtype"
 
 msgid "File types"
 msgstr "Filtyper"
+
+msgid "From email"
+msgstr "Fra email"
+
+msgid "From name"
+msgstr "Fra navn"
 
 msgid "Galleries"
 msgstr "Gallerier"
@@ -96,8 +105,14 @@ msgstr "Billedeoplysninger"
 msgid "Key"
 msgstr "Tast"
 
+msgid "Message"
+msgstr "Besked"
+
 msgid "Meta Box is not activated"
 msgstr "Meta Box er ikke aktiveret"
+
+msgid "None"
+msgstr "Ingen"
 
 msgid "Parent page"
 msgstr "Forælderside"
@@ -105,8 +120,17 @@ msgstr "Forælderside"
 msgid "Password"
 msgstr "Kodeord"
 
+msgid "Port"
+msgstr "Port"
+
 msgid "Redirect uri"
 msgstr "Redirect uri"
+
+msgid "Send mail"
+msgstr "Send mail"
+
+msgid "Server"
+msgstr "Server"
 
 msgid "Settings"
 msgstr "Indstillinger"
@@ -123,8 +147,20 @@ msgstr "Slide"
 msgid "Slides"
 msgstr "Slides"
 
+msgid "Subject"
+msgstr "Emne"
+
+msgid "Test mail"
+msgstr "Test mail"
+
+msgid "Tls"
+msgstr "Tls"
+
 msgid "Type"
 msgstr "Type"
 
 msgid "Upload"
 msgstr "Upload"
+
+msgid "Username"
+msgstr "Brugernavn"

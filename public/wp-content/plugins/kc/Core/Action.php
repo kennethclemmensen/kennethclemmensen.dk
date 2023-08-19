@@ -18,6 +18,8 @@ final readonly class Action {
 
 	public const INIT = 'init';
 
+	public const PHPMAILER_INIT = 'phpmailer_init';
+
 	public const PLUGINS_LOADED = 'plugins_loaded';
 
 	public const REST_API_INIT = 'rest_api_init';

@@ -47,6 +47,9 @@ msgstr ""
 msgid "Dropbox"
 msgstr ""
 
+msgid "Email"
+msgstr ""
+
 msgid "Encryption"
 msgstr ""
 
@@ -66,6 +69,12 @@ msgid "File type"
 msgstr ""
 
 msgid "File types"
+msgstr ""
+
+msgid "From email"
+msgstr ""
+
+msgid "From name"
 msgstr ""
 
 msgid "Galleries"
@@ -95,7 +104,13 @@ msgstr ""
 msgid "Key"
 msgstr ""
 
+msgid "Message"
+msgstr ""
+
 msgid "Meta Box is not activated"
+msgstr ""
+
+msgid "None"
 msgstr ""
 
 msgid "Parent page"
@@ -104,7 +119,16 @@ msgstr ""
 msgid "Password"
 msgstr ""
 
+msgid "Port"
+msgstr ""
+
 msgid "Redirect uri"
+msgstr ""
+
+msgid "Send mail"
+msgstr ""
+
+msgid "Server"
 msgstr ""
 
 msgid "Settings"
@@ -122,8 +146,20 @@ msgstr ""
 msgid "Slides"
 msgstr ""
 
+msgid "Subject"
+msgstr ""
+
+msgid "Test mail"
+msgstr ""
+
+msgid "Tls"
+msgstr ""
+
 msgid "Type"
 msgstr ""
 
 msgid "Upload"
+msgstr ""
+
+msgid "Username"
 msgstr ""
