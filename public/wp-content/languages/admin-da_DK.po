@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 6.3.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-07-08 16:43:19+0000\n"
+"PO-Revision-Date: 2023-08-14 11:17:57+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -36,6 +36,339 @@ msgstr "1"
 msgctxt "default GMT offset or timezone string"
 msgid "0"
 msgstr "Europe/Copenhagen"
+
+#: wp-admin/contribute.php:103 wp-admin/credits.php:63 wp-admin/credits.php:71
+msgid "https://make.wordpress.org/contribute/"
+msgstr "https://make.wordpress.org/contribute/"
+
+#: wp-admin/update-core.php:1057
+msgid "Updates may take several minutes to complete. If there is no feedback after 5 minutes, or if there are errors please refer to the Help section above."
+msgstr "Det kan tage flere minutter at gennemføre opdateringen. Hvis der ikke er nogen tilbagemelding efter 5 minutter, eller hvis der er fejl, bedes du se afsnittet Hjælp ovenfor."
+
+#: wp-admin/update-core.php:1037
+msgid "<a href=\"https://wordpress.org/documentation/article/common-wordpress-errors/\">Common Errors</a>"
+msgstr "<a href=\"https://wordpress.org/documentation/article/common-wordpress-errors/\">Hyppige fejl</a>"
+
+#: wp-admin/update-core.php:1032
+msgid "Restore Plugin or Theme"
+msgstr "Gendan plugin eller tema"
+
+#: wp-admin/site-editor.php:175
+msgid "The site editor requires JavaScript. Please enable JavaScript in your browser settings."
+msgstr "Sidens editor kræver JavaScript. Aktiver venligst JavaScript i dine browserindstillinger."
+
+#: wp-admin/options-permalink.php:227
+msgid "https://wordpress.org/documentation/article/customize-permalinks/"
+msgstr "https://wordpress.org/documentation/article/customize-permalinks/"
+
+#. translators: %s: Site tagline example.
+#: wp-admin/options-general.php:90
+msgid "In a few words, explain what this site is about. Example: &#8220;%s.&#8221;"
+msgstr "Forklar med et par ord, hvad denne side handler om. Eksempel: &#8220;%s.&#8221;"
+
+#: wp-admin/includes/template.php:755
+msgid "New custom field name"
+msgstr "Nyt brugerdefineret felt"
+
+#. translators: Hidden accessibility text.
+#: wp-admin/includes/media.php:2747
+msgid "Search Media:"
+msgstr "Søg medier:"
+
+#: wp-admin/includes/image-edit.php:269
+msgid "Clear Crop"
+msgstr "Ryd beskæring"
+
+#: wp-admin/includes/image-edit.php:269
+msgid "Apply Crop"
+msgstr "Anvend beskæring"
+
+#: wp-admin/includes/image-edit.php:192
+msgid "Crop Image"
+msgstr "Beskær billede"
+
+#: wp-admin/includes/image-edit.php:161 wp-admin/includes/image-edit.php:908
+msgid "Images cannot be scaled to a size larger than the original."
+msgstr "Billeder kan ikke skaleres til en størrelse, der er større end originalen."
+
+#: wp-admin/includes/image-edit.php:100
+msgid "Save Edits"
+msgstr "Gem ændringer"
+
+#: wp-admin/includes/image-edit.php:99
+msgid "Cancel Editing"
+msgstr "Fortryd redigering"
+
+#: wp-admin/includes/image-edit.php:79
+msgid "Rotate 180°"
+msgstr "Roter 180°"
+
+#: wp-admin/includes/image-edit.php:78
+msgid "Rotate 90° right"
+msgstr "Roter mod højre"
+
+#: wp-admin/includes/image-edit.php:77
+msgid "Rotate 90° left"
+msgstr "Roter mod venstre"
+
+#: wp-admin/includes/file.php:1945
+msgid "Could not create the destination directory."
+msgstr "Kunne ikke oprette destinationsmappen."
+
+#: wp-admin/includes/class-wp-users-list-table.php:397
+#: wp-admin/includes/class-wp-ms-users-list-table.php:217
+msgid "Table ordered by E-mail."
+msgstr "Tabel sorteret efter e-mail."
+
+#: wp-admin/includes/class-wp-users-list-table.php:396
+#: wp-admin/includes/class-wp-ms-users-list-table.php:215
+msgid "Table ordered by Username."
+msgstr "Tabel sorteret efter brugernavn."
+
+#. translators: %s: The plugin or theme slug.
+#: wp-admin/includes/class-wp-upgrader.php:214
+msgid "Could not restore the original version of %s."
+msgstr "Kunne ikke genskabe den oprindelige version af %s."
+
+#: wp-admin/includes/class-wp-terms-list-table.php:224
+msgid "Table ordered by Links."
+msgstr "Tabel sorteret efter links."
+
+#: wp-admin/includes/class-wp-terms-list-table.php:223
+msgid "Table ordered by Posts Count."
+msgstr "Tabel sorteret efter antal indlæg."
+
+#: wp-admin/includes/class-wp-terms-list-table.php:221
+msgid "Table ordered by Description."
+msgstr "Tabel sorteret efter beskrivelse."
+
+#: wp-admin/includes/class-wp-terms-list-table.php:214
+msgid "Table ordered hierarchically."
+msgstr "Tabel sorteret hierarkisk."
+
+#: wp-admin/includes/class-wp-site-health.php:2798
+msgid "Available disk space"
+msgstr "Tilgængelig diskplads"
+
+#: wp-admin/includes/class-wp-site-health.php:2794
+msgid "Plugin and theme temporary backup directory access"
+msgstr "Adgang til midlertidig backupmappe for plugins og temaer"
+
+#: wp-admin/includes/class-wp-site-health.php:2108
+msgid "The upgrade directory cannot be created"
+msgstr "Opgraderingsmappen kan ikke oprettes"
+
+#: wp-admin/includes/class-wp-site-health.php:2097
+msgid "The upgrade directory exists but is not writable"
+msgstr "Opgraderingsmappen findes, men kan ikke skrives i"
+
+#: wp-admin/includes/class-wp-site-health.php:2075
+msgid "Theme temporary backup directory exists but is not writable"
+msgstr "Temaets midlertidig backup-mappe findes, men kan ikke skrives i."
+
+#: wp-admin/includes/class-wp-site-health.php:1997
+msgid "Plugin and theme temporary backup directory is writable"
+msgstr "Den midlertidige backupmappe til plugins og temaer er skrivbar"
+
+#: wp-admin/includes/class-wp-site-health.php:1977
+msgid "Could not determine available disk space for updates."
+msgstr "Kunne ikke finde ledig diskplads til opdateringer."
+
+#: wp-admin/includes/class-wp-site-health.php:1972
+msgid "Available disk space is critically low, less than 20 MB available. Proceed with caution, updates may fail."
+msgstr "Den tilgængelige diskplads er kritisk lav, mindre end 20 MB tilgængelig. Fortsæt med forsigtighed, opdateringer kan mislykkes."
+
+#: wp-admin/includes/class-wp-site-health.php:1967
+msgid "Available disk space is low, less than 100 MB available."
+msgstr "Den tilgængelige diskplads er lav, mindre end 100 MB tilgængelig."
+
+#. translators: %s: Available disk space in MB or GB.
+#: wp-admin/includes/class-wp-site-health.php:1959
+msgid "%s available disk space was detected, update routines can be performed safely."
+msgstr "%s ledig diskplads blev fundet, opdateringsprocedurer kan udføres sikkert."
+
+#: wp-admin/includes/class-wp-site-health.php:1951
+msgid "Disk space available to safely perform updates"
+msgstr "Diskplads til rådighed til at udføre opdateringer korrekt"
+
+#: wp-admin/includes/class-wp-posts-list-table.php:767
+#: wp-admin/includes/class-wp-posts-list-table.php:776
+msgid "Table ordered by Title."
+msgstr "Tabel sorteret efter titel."
+
+#: wp-admin/includes/class-wp-media-list-table.php:404
+#: wp-admin/includes/class-wp-posts-list-table.php:772
+#: wp-admin/includes/class-wp-posts-list-table.php:779
+msgid "Table ordered by Date."
+msgstr "Tabel sorteret efter dato."
+
+#: wp-admin/includes/class-wp-media-list-table.php:403
+#: wp-admin/includes/class-wp-posts-list-table.php:771
+#: wp-admin/includes/class-wp-posts-list-table.php:778
+msgid "Table ordered by Comments."
+msgstr "Tabel sorteret efter kommentarer."
+
+#: wp-admin/includes/class-wp-media-list-table.php:402
+msgid "Table ordered by Uploaded To."
+msgstr "Tabel sorteret efter uploadet til."
+
+#: wp-admin/includes/class-wp-media-list-table.php:401
+msgid "Table ordered by Author."
+msgstr "Tabel sorteret efter forfatter."
+
+#: wp-admin/includes/class-wp-media-list-table.php:400
+msgid "Table ordered by File Name."
+msgstr "Tabel sorteret efter filnavn."
+
+#. translators: Hidden accessibility text.
+#: wp-admin/includes/class-wp-list-table.php:1552
+msgid "Descending."
+msgstr "Faldende."
+
+#. translators: Hidden accessibility text.
+#: wp-admin/includes/class-wp-list-table.php:1550
+msgid "Ascending."
+msgstr "Stigende."
+
+#. translators: Hidden accessibility text.
+#: wp-admin/includes/class-wp-list-table.php:1451
+msgid "Sort descending."
+msgstr "Sorterer efter faldende."
+
+#. translators: Hidden accessibility text.
+#: wp-admin/includes/class-wp-list-table.php:1449
+msgid "Sort ascending."
+msgstr "Sorterer efter stigende."
+
+#: wp-admin/includes/class-wp-links-list-table.php:149
+msgid "Table ordered by Rating."
+msgstr "Tabel sorteret efter bedømmelse."
+
+#: wp-admin/includes/class-wp-links-list-table.php:148
+msgid "Table ordered by Visibility."
+msgstr "Tabel sorteret efter synlighed."
+
+#: wp-admin/includes/class-wp-links-list-table.php:147
+msgid "Table ordered by URL."
+msgstr "Tabel sorteret efter URL."
+
+#: wp-admin/includes/class-wp-links-list-table.php:146
+#: wp-admin/includes/class-wp-terms-list-table.php:216
+#: wp-admin/includes/class-wp-ms-users-list-table.php:216
+msgid "Table ordered by Name."
+msgstr "Tabel sorteret efter navn."
+
+#: wp-admin/includes/class-wp-debug-data.php:858
+msgid "Current Server time"
+msgstr "Nuværende server tid"
+
+#: wp-admin/includes/class-wp-debug-data.php:854
+msgid "Current UTC time"
+msgstr "Nuværende UTC-tid"
+
+#: wp-admin/includes/class-wp-debug-data.php:850
+msgid "Current time"
+msgstr "Aktuel tid"
+
+#: wp-admin/includes/class-core-upgrader.php:37
+msgid "Attempting to restore the previous version."
+msgstr "Forsøger at gendanne den tidligere version."
+
+#: wp-admin/includes/class-bulk-upgrader-skin.php:157
+msgid "More details."
+msgstr "Flere detaljer."
+
+#: wp-admin/contribute.php:101
+msgid "Shape the future of the web with WordPress"
+msgstr "Skab fremtidens web med WordPress"
+
+#: wp-admin/contribute.php:94
+msgid "WordPress app: Kotlin, Java, Swift, Objective-C, Vue, Python, and TypeScript"
+msgstr "WordPress app: Kotlin, Java, Swift, Objective-C, Vue, Python, and TypeScript"
+
+#: wp-admin/contribute.php:93
+msgid "Core and Block Editor: HTML, CSS, PHP, SQL, JavaScript, and React"
+msgstr "Core- og blokeditor: HTML, CSS, PHP, SQL, JavaScript og React"
+
+#: wp-admin/contribute.php:91
+msgid "WordPress embraces new technologies, while being committed to backward compatibility. The WordPress project uses the following languages and libraries:"
+msgstr "WordPress omfavner nye teknologier, samtidig med at det er forpligtet til bagudkompatibilitet. WordPress-projektet bruger følgende sprog og biblioteker:"
+
+#: wp-admin/contribute.php:89
+msgid "<strong>Contribute</strong> to the code, improve the UX, and test the WordPress app."
+msgstr "<strong>Bidrage</strong> til koden, forbedre UX og teste WordPress-appen."
+
+#: wp-admin/contribute.php:86
+msgid "<strong>Find</strong> and report bugs in the WordPress core software."
+msgstr "<strong>Find</strong> og rapporter fejl i WordPress Core."
+
+#: wp-admin/contribute.php:84
+msgid "If you do code, or want to learn how, you can contribute technically in numerous ways:"
+msgstr "Hvis du kan kode eller har lyst til at lære det, kan du bidrage teknisk på mange måder:"
+
+#: wp-admin/contribute.php:83
+msgid "Code-based contribution"
+msgstr "Kodebaseret bidrag"
+
+#: wp-admin/contribute.php:71
+msgid "<strong>Explore</strong> ways to reduce the environmental impact of millions of websites."
+msgstr "<strong>Udforsk</strong> måder at reducere miljøpåvirkningen fra millioner af hjemmesider."
+
+#: wp-admin/contribute.php:70
+msgid "<strong>Edit</strong> videos and add captions to WordPress.tv."
+msgstr "<strong>Rediger</strong> videoer og tilføj undertekster til WordPress.tv."
+
+#: wp-admin/contribute.php:69
+msgid "<strong>Lend</strong> your creative imagination to the WordPress UI design."
+msgstr "<strong>Brug</strong> din kreative fantasi til WordPress' brugergrænsefladedesign."
+
+#: wp-admin/contribute.php:66
+msgid "<strong>Promote</strong> the WordPress project to your community."
+msgstr "<strong>Promover</strong> WordPress-projektet til dit fællesskab."
+
+#: wp-admin/contribute.php:65
+msgid "<strong>Create</strong> and improve WordPress educational materials."
+msgstr "<strong>Opret</strong> og forbedr WordPress' undervisningsmaterialer."
+
+#: wp-admin/contribute.php:64
+msgid "<strong>Translate</strong> WordPress into your local language."
+msgstr "<strong>Oversæt</strong> WordPress til dit lokale sprog."
+
+#: wp-admin/contribute.php:63
+msgid "<strong>Write</strong> or improve documentation for WordPress."
+msgstr "<strong>Skrive</strong> eller forbedre dokumentation til WordPress."
+
+#: wp-admin/contribute.php:62
+msgid "<strong>Share</strong> your knowledge in the WordPress support forums."
+msgstr "<strong>Del</strong> din viden i WordPress' supportfora."
+
+#: wp-admin/contribute.php:52
+msgid "Grow your network and make friends."
+msgstr "Udvid dit netværk, og få nye venner."
+
+#: wp-admin/contribute.php:51
+msgid "Apply your skills or learn new ones."
+msgstr "Brug dine færdigheder, eller lær nye."
+
+#: wp-admin/contribute.php:50
+msgid "Be part of a global open source community."
+msgstr "Vær en del af et globalt open source-fællesskab."
+
+#: wp-admin/contribute.php:47
+msgid "Join the WordPress contributor community and connect with others who are passionate about maintaining a free and open web."
+msgstr "Bliv en del af WordPress' bidragsyderfællesskabet, og mød andre, der brænder for at bevare et frit og åbent web."
+
+#: wp-admin/contribute.php:29
+msgid "Be the future of WordPress"
+msgstr "Vær fremtiden for WordPress"
+
+#: wp-admin/about.php:145
+msgid "Performance gets a boost"
+msgstr "Ydeevnen får et boost"
+
+#: wp-admin/about.php:70
+msgid "Do everything in the Site Editor"
+msgstr "Gør alt i webstedseditoren"
 
 #: wp-admin/comment.php:72 wp-admin/edit-comments.php:232
 #: wp-admin/edit-form-advanced.php:320 wp-admin/edit-form-advanced.php:338
@@ -759,7 +1092,7 @@ msgstr "Indstil webstedets logo, overskrift, menuer og meget mere i Tilpasseren.
 
 #: wp-admin/includes/dashboard.php:2084
 msgid "Start Customizing"
-msgstr "Begynd at tilpasse"
+msgstr "Kom i gang med at tilpasse"
 
 #: wp-admin/includes/dashboard.php:2082
 msgid "Open site editor"
@@ -6046,6 +6379,10 @@ msgstr "Kør %s"
 msgctxt "comment status"
 msgid "Open"
 msgstr "Åben"
+
+#: wp-admin/includes/image-edit.php:65
+msgid "Image Rotation"
+msgstr "Billedrotation"
 
 #. translators: %s: User's display name.
 #: wp-admin/user-edit.php:44
