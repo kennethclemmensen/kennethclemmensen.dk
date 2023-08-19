@@ -97,7 +97,7 @@ class Utility {
 		$wrapper = null;
 	
 		// Strip the protocol.
-		if (wp_is_stream($target)) {
+		if (self::wp_is_stream($target)) {
 			list($wrapper, $target) = explode('://', $target, 2);
 		}
 	
@@ -181,4 +181,36 @@ class Utility {
 		return in_array($stream, stream_get_wrappers(), true);
 	}
 
+
+	/**
+	 * Attempts to give us access to the $wpdb object from the firewall.
+	 * This should only be used when you're sure WordPress will not be loading after the firewall.
+	 *
+	 * @return bool
+	 */
+	public static function attempt_to_access_wpdb() {
+		
+		// wpdb is already accessible
+		if (isset($GLOBALS['wpdb'])) return true;
+
+		$wp_path = self::get_wordpress_dir() . 'wp-load.php';
+			
+		clearstatcache();
+		if (!file_exists($wp_path)) return false;
+
+		define('SHORTINIT', true);
+	
+		$included = (bool) include $wp_path;
+	
+		global $wpdb;
+
+		// If $wpdb is inaccessible by this point, it means loading wp-settings didn't complete.
+		// So we have to manually include the wp-config (which includes wp-settings) for it to complete.
+		if (empty($wpdb) && $included) include self::get_wpconfig_path();
+		
+		global $wpdb;
+
+		return !empty($wpdb);
+		
+	}
 }

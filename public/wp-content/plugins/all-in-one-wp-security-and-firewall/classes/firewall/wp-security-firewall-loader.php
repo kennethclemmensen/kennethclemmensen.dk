@@ -52,6 +52,9 @@ class Loader {
 				$member->apply_all();
 			}
 			
+		} catch (Exit_Exception $e) {
+			$this->log_message($e->getMessage());
+			exit();
 		} catch (\Exception $e) {
 			$this->log_message($e->getMessage());
 		} catch (\Error $e) {
@@ -61,7 +64,7 @@ class Loader {
 	}
 
 	/**
-	 * Performs general initalisation
+	 * Performs general initialisation
 	 *
 	 * @return void
 	 */
@@ -189,7 +192,7 @@ class Loader {
 		}
 
 		if (Context::wordpress_safe()) {
-			include_once(AIOWPS_FIREWALL_DIR_PARENT.'/wp-security-utility-file.php');
+			include_once("{$classes_dir}/wp-security-utility-file.php");
 		}
 	}
 

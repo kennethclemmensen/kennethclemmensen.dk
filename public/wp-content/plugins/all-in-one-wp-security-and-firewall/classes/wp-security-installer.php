@@ -86,6 +86,7 @@ class AIOWPSecurity_Installer {
 			$perm_block_tbl_name = AIOWPSEC_TBL_PERM_BLOCK;
 		}
 
+		$message_store_log_tbl_name = AIOWPSEC_TBL_MESSAGE_STORE;
 		$audit_log_tbl_name = AIOWPSEC_TBL_AUDIT_LOG;
 		$debug_log_tbl_name = AIOWPSEC_TBL_DEBUG_LOG;
 
@@ -189,6 +190,15 @@ class AIOWPSecurity_Installer {
 			PRIMARY KEY  (id)
 			)" . $charset_collate . ";";
 		dbDelta($debug_log_tbl_sql);
+
+		$message_store_log_tbl_sql = "CREATE TABLE " . $message_store_log_tbl_name . " (
+			id bigint(20) NOT NULL AUTO_INCREMENT,
+			message_key text NOT NULL DEFAULT '',
+			message_value text NOT NULL DEFAULT '',
+			created INTEGER UNSIGNED,
+			PRIMARY KEY  (id)
+			)" . $charset_collate . ";";
+		dbDelta($message_store_log_tbl_sql);
 	}
 
 	/**

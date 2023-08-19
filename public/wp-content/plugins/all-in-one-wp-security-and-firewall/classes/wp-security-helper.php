@@ -12,6 +12,44 @@ require_once(__DIR__.'/wp-security-abstract-ids.php');
 if (class_exists('AIOS_Helper')) return;
 
 class AIOS_Helper {
+
+	/**
+	 * Maps a firewall rule to its admin URL
+	 *
+	 * @param string $rule - The key to the rule's URL. The key format is '<rule_name>::<rule_family>'
+	 * @return string
+	 */
+	public static function get_firewall_rule_location($rule) {
+		//normalise key
+		$rule = strtolower($rule);
+
+		$basic_firewall = array(
+			'completely block xmlrpc::general' => 'page=aiowpsec_firewall',
+		);
+		$additional_firewall = array(
+			'advanced character filter::general' => 'page=aiowpsec_firewall&tab=additional-firewall',
+			'bad query strings::general' => 'page=aiowpsec_firewall&tab=additional-firewall',
+			'proxy comment posting::general' => 'page=aiowpsec_firewall&tab=additional-firewall',
+		);
+		$bruteforce = array(
+			'cookie based prevent bruteforce::bruteforce' => 'page=aiowpsec_brute_force&tab=cookie-based-brute-force-prevention',
+		);
+		$blacklist = array(
+			'blocked ips::blacklist' => 'page=aiowpsec_blacklist',
+			'blocked user agents::blacklist' => 'page=aiowpsec_blacklist',
+		);
+		$firewall_6g = array(
+			'block request methods::6g' => 'page=aiowpsec_firewall&tab=6g-firewall',
+			'block query strings::6g' => 'page=aiowpsec_firewall&tab=6g-firewall',
+			'block referrer strings::6g' => 'page=aiowpsec_firewall&tab=6g-firewall',
+			'block request strings::6g' => 'page=aiowpsec_firewall&tab=6g-firewall',
+			'block user-agents::6g' => 'page=aiowpsec_firewall&tab=6g-firewall',
+		);
+
+		// merge all the locations to one
+		$locations = array_merge($firewall_6g, $blacklist, $bruteforce, $basic_firewall, $additional_firewall);
+		return isset($locations[$rule]) ? $locations[$rule] : '';
+	}
 	
 	/**
 	 * Get server detected visitor IP Address.

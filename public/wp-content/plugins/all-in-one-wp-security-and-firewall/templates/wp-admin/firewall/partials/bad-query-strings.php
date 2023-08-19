@@ -18,9 +18,8 @@
 				<div class="aiowps_more_info_body">
 					<p class="description">
 						<?php
-						_e('This feature will write rules in your .htaccess file to prevent malicious string attacks on your site using XSS.', 'all-in-one-wp-security-and-firewall');
+						_e('This feature will prevent malicious string attacks on your site using XSS.', 'all-in-one-wp-security-and-firewall');
 						echo '<br />'.__('NOTE: Some of these strings might be used for plugins or themes and hence this might break some functionality.', 'all-in-one-wp-security-and-firewall');
-						echo '<br /><strong>'.__('You are therefore strongly advised to take a backup of your active .htaccess file before applying this feature.', 'all-in-one-wp-security-and-firewall').'<strong>';
 						?>
 					</p>
 				</div>

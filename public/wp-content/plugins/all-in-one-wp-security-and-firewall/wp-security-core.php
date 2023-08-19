@@ -8,9 +8,9 @@ if (!class_exists('AIO_WP_Security')) {
 
 	class AIO_WP_Security {
 
-		public $version = '5.2.2';
+		public $version = '5.2.4';
 
-		public $db_version = '2.0.3';
+		public $db_version = '2.0.4';
 		
 		public $firewall_version = '1.0.5';
 
@@ -177,6 +177,7 @@ if (!class_exists('AIO_WP_Security')) {
 			$base_prefix = $this->get_table_prefix();
 			define('AIOWPSEC_TBL_AUDIT_LOG', $base_prefix . 'aiowps_audit_log');
 			define('AIOWPSEC_TBL_DEBUG_LOG', $base_prefix . 'aiowps_debug_log');
+			define('AIOWPSEC_TBL_MESSAGE_STORE', $base_prefix . 'aiowps_message_store');
 		}
 
 		public function includes() {
@@ -187,6 +188,9 @@ if (!class_exists('AIO_WP_Security')) {
 			}
 
 			// Load common files for everywhere
+			if (!class_exists('Updraft_Semaphore_3_0')) {
+				include_once AIO_WP_SECURITY_PATH.'/vendor/team-updraft/common-libs/src/updraft-semaphore/class-updraft-semaphore.php';
+			}
 			include_once(AIO_WP_SECURITY_PATH.'/classes/wp-security-audit-event-handler.php');
 			include_once(AIO_WP_SECURITY_PATH.'/classes/wp-security-debug-logger.php');
 			include_once(AIO_WP_SECURITY_PATH.'/classes/wp-security-abstract-ids.php');

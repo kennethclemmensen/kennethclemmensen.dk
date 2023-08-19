@@ -11,7 +11,6 @@ class AIOWPSecurity_Configure_Settings {
 	 * @return boolean True if the settings options was updated, false otherwise.
 	 */
 	public static function set_default_settings() {
-
 		global $aio_wp_security;
 		global $aiowps_firewall_config;
 
@@ -190,8 +189,9 @@ class AIOWPSecurity_Configure_Settings {
 	 * @return Void
 	 */
 	public static function add_option_values() {
+
 		global $aio_wp_security;
-		global $aiowps_firewall_config;
+
 		$blog_email_address = get_bloginfo('admin_email'); //Get the blog admin email address - we will use as the default value
 
 		$aio_wp_security->configs->load_config();
@@ -264,15 +264,11 @@ class AIOWPSecurity_Configure_Settings {
 		//Firewall features
 		$aio_wp_security->configs->add_value('aiowps_enable_basic_firewall', '');//Checkbox
 		$aio_wp_security->configs->add_value('aiowps_max_file_upload_size', AIOS_FIREWALL_MAX_FILE_UPLOAD_LIMIT_MB);
-		$aiowps_firewall_config->set_value('aiowps_enable_pingback_firewall', false);//Checkbox - blocks all access to XMLRPC
 		$aio_wp_security->configs->add_value('aiowps_disable_xmlrpc_pingback_methods', '');//Checkbox - Disables only pingback methods in XMLRPC functionality
 		$aio_wp_security->configs->set_value('aiowps_disable_rss_and_atom_feeds', ''); // Checkbox
 		$aio_wp_security->configs->add_value('aiowps_block_debug_log_file_access', '');//Checkbox
 		$aio_wp_security->configs->add_value('aiowps_disable_index_views', '');//Checkbox
 		$aio_wp_security->configs->add_value('aiowps_disable_trace_and_track', '');//Checkbox
-		$aiowps_firewall_config->set_value('aiowps_forbid_proxy_comments', false);//Checkbox
-		$aiowps_firewall_config->set_value('aiowps_deny_bad_query_strings', false);//Checkbox
-		$aiowps_firewall_config->set_value('aiowps_advanced_char_string_filter', false);//Checkbox
 		$aio_wp_security->configs->add_value('aiowps_enable_5g_firewall', '');//Checkbox
 		$aio_wp_security->configs->add_value('aiowps_enable_6g_firewall', '');//Checkbox
 		$aio_wp_security->configs->add_value('aiowps_enable_custom_rules', '');//Checkbox
@@ -388,6 +384,16 @@ class AIOWPSecurity_Configure_Settings {
 			$aio_wp_security->configs->set_value('aiowps_spam_comments_should', '0');
 			$aio_wp_security->configs->save_config();
 		}
+
+
+		if (is_main_site() && version_compare(get_option('aiowpsec_db_version'), '2.0.3', '<')) {
+			$aio_wp_security->configs->set_value('aiowps_enable_pingback_firewall', '0');//Checkbox - blocks all access to XMLRPC
+			$aio_wp_security->configs->set_value('aiowps_forbid_proxy_comments', '0');//Checkbox
+			$aio_wp_security->configs->set_value('aiowps_deny_bad_query_strings', '0');//Checkbox
+			$aio_wp_security->configs->set_value('aiowps_advanced_char_string_filter', '0');//Checkbox
+			$aio_wp_security->configs->save_config();
+		}
+
 		
 		update_option('aiowpsec_db_version', AIO_WP_SECURITY_DB_VERSION);
 	}
@@ -414,10 +420,11 @@ class AIOWPSecurity_Configure_Settings {
 		foreach ($settings as $setting) {
 			if (('1' === $aio_wp_security->configs->get_value($setting))) {
 				$active[] = $setting;
+				$aiowps_firewall_config->set_value($setting, false);
+				$aio_wp_security->configs->delete_value($setting);
+				$aio_wp_security->configs->save_config();
 			}
-			$aiowps_firewall_config->set_value($setting, false);
-			$aio_wp_security->configs->delete_value($setting);
-			$aio_wp_security->configs->save_config();
+
 		}
 
 		if (!empty($active)) {
