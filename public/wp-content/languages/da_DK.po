@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 6.3.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-08-14 12:01:59+0000\n"
+"PO-Revision-Date: 2023-08-19 15:27:26+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -288,6 +288,13 @@ msgstr "januar"
 #, gp-priority: high
 msgid "Uncategorized"
 msgstr "Ikke-kategoriseret"
+
+#: wp-includes/update.php:1125
+#: wp-admin/includes/class-wp-automatic-updater.php:465
+#: wp-admin/includes/class-wp-upgrader.php:189 wp-admin/includes/file.php:1588
+#: wp-admin/includes/plugin.php:938 wp-admin/includes/theme.php:62
+msgid "Could not access filesystem."
+msgstr "Kunne ikke få adgang til filsystem."
 
 #: wp-includes/blocks/post-title/block.json
 msgctxt "block title"
