@@ -14,9 +14,6 @@ use KC\Core\Users\UserRole;
  */
 final class SliderSettings extends BaseSettings {
 
-	private readonly string $settingOptionsName;
-	private readonly array | bool $settingsOption;
-	private readonly string $settingsPageSlug;
 	private readonly string $slideWidth;
 	private readonly string $slideHeight;
 
@@ -26,9 +23,7 @@ final class SliderSettings extends BaseSettings {
 	 * @param TranslationService $translationService the translation service
 	 */
 	public function __construct(private readonly TranslationService $translationService) {
-		$this->settingOptionsName = 'kc-slides-settings-options';
-		$this->settingsOption = get_option($this->settingOptionsName);
-		$this->settingsPageSlug = 'kc-slides-settings';
+		parent::__construct('kc-slides-settings', 'kc-slides-settings-options');
 		$prefix = 'slide_';
 		$this->slideWidth = $prefix.'width';
 		$this->slideHeight = $prefix.'height';
@@ -40,13 +35,13 @@ final class SliderSettings extends BaseSettings {
 	public function createSettingsPage() : void {
 		add_action(Action::ADMIN_MENU, function() : void {
 			$title = $this->translationService->getTranslatedString(TranslationString::Settings);
-			add_submenu_page('edit.php?post_type='.PostType::Slides->value, $title, $title, UserRole::Administrator->value, $this->settingsPageSlug, function() : void {
+			add_submenu_page('edit.php?post_type='.PostType::Slides->value, $title, $title, UserRole::Administrator->value, $this->settingsPage, function() : void {
 				settings_errors();
 				?>
 				<form action="options.php" method="post">
 					<?php
-					settings_fields($this->settingOptionsName);
-					do_settings_sections($this->settingsPageSlug);
+					settings_fields($this->settingsName);
+					do_settings_sections($this->settingsPage);
 					submit_button();
 					?>
 				</form>
@@ -62,16 +57,16 @@ final class SliderSettings extends BaseSettings {
 	 */
 	private function registerSettingInputs() : void {
 		add_action(Action::ADMIN_INIT, function() : void {
-			$sectionID = $this->settingsPageSlug.'-section-slider';
-			$prefix = $this->settingsPageSlug;
-			add_settings_section($sectionID, '', function() : void {}, $this->settingsPageSlug);
+			$sectionID = $this->settingsPage.'-section-slider';
+			$prefix = $this->settingsPage;
+			add_settings_section($sectionID, '', function() : void {}, $this->settingsPage);
 			add_settings_field($prefix.'slideWidth', $this->translationService->getTranslatedString(TranslationString::ImageWidth), function() : void {
-				echo '<input type="number" name="'.$this->settingOptionsName.'['.$this->slideWidth.']" value="'.$this->getSlideWidth().'" min="1">';
-			}, $this->settingsPageSlug, $sectionID);
+				echo '<input type="number" name="'.$this->settingsName.'['.$this->slideWidth.']" value="'.$this->getSlideWidth().'" min="1">';
+			}, $this->settingsPage, $sectionID);
 			add_settings_field($prefix.'slideHeight', $this->translationService->getTranslatedString(TranslationString::ImageHeight), function() : void {
-				echo '<input type="number" name="'.$this->settingOptionsName.'['.$this->slideHeight.']" value="'.$this->getSlideHeight().'" min="1">';
-			}, $this->settingsPageSlug, $sectionID);
-			$this->registerSetting($this->settingOptionsName);
+				echo '<input type="number" name="'.$this->settingsName.'['.$this->slideHeight.']" value="'.$this->getSlideHeight().'" min="1">';
+			}, $this->settingsPage, $sectionID);
+			$this->registerSetting($this->settingsName);
 		});
 	}
 
@@ -92,7 +87,7 @@ final class SliderSettings extends BaseSettings {
 	 * @return int the slide width
 	 */
 	private function getSlideWidth() : int {
-		return $this->settingsOption[$this->slideWidth] ?? 1;
+		return $this->settings[$this->slideWidth] ?? 1;
 	}
 
 	/**
@@ -101,6 +96,6 @@ final class SliderSettings extends BaseSettings {
 	 * @return int the slide height
 	 */
 	private function getSlideHeight() : int {
-		return $this->settingsOption[$this->slideHeight] ?? 1;
+		return $this->settings[$this->slideHeight] ?? 1;
 	}
 }

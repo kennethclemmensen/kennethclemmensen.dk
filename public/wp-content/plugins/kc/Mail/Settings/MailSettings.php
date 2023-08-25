@@ -15,9 +15,6 @@ use KC\Core\Users\UserRole;
  */
 final class MailSettings extends BaseSettings {
 
-	private readonly string $settingsPageSlug;
-	private readonly string $settingOptionsName;
-	private readonly array | bool $settingsOption;
 	private readonly string $mailServer;
 	private readonly string $mailPort;
 	private readonly string $mailEncryption;
@@ -26,7 +23,7 @@ final class MailSettings extends BaseSettings {
 	private readonly string $username;
 	private readonly string $password;
 	private readonly string $encryptionSettingsPage;
-	private readonly string $encryptionOptionName;
+	private readonly string $encryptionSettingsName;
 	private readonly array | bool $encryptionOptions;
 	private readonly string $encryptionPassword;
 	private readonly string $nonce;
@@ -38,9 +35,7 @@ final class MailSettings extends BaseSettings {
 	 * @param TranslationService $translationService the translation service
 	 */
 	public function __construct(private readonly SecurityService $securityService, private readonly TranslationService $translationService) {
-		$this->settingsPageSlug = 'kc-mail';
-		$this->settingOptionsName = $this->settingsPageSlug.'-options';
-		$this->settingsOption = get_option($this->settingOptionsName);
+		parent::__construct('kc-mail', 'kc-mail-options');
 		$prefix = 'mail_';
 		$this->mailServer = $prefix.'server';
 		$this->mailPort = $prefix.'port';
@@ -50,8 +45,8 @@ final class MailSettings extends BaseSettings {
 		$this->username = $prefix.'username';
 		$this->password = $prefix.'password';
 		$this->encryptionSettingsPage = 'kc-mail-encryption-settings';
-		$this->encryptionOptionName = $this->encryptionSettingsPage.'-options';
-		$this->encryptionOptions = get_option($this->encryptionOptionName);
+		$this->encryptionSettingsName = $this->encryptionSettingsPage.'-options';
+		$this->encryptionOptions = get_option($this->encryptionSettingsName);
 		$prefix = 'encryption_';
 		$this->encryptionPassword = $prefix.'password';
 		$this->nonce = $prefix.'nonce';
@@ -65,30 +60,26 @@ final class MailSettings extends BaseSettings {
 	 */
 	public function createSettingsPage() : void {
 		add_action(Action::ADMIN_MENU, function() : void {
-			$title = 'Mail';
-			add_management_page($title, $title, UserRole::Administrator->value, $this->settingsPageSlug, function() : void {
-				settings_errors();
-				$settingsTab = 'settings';
-				$testMailTab = 'testmail';
-				$encryptionTab = 'encryption';
-				$currentTab = (isset($_GET['tab'])) ? $_GET['tab'] : $settingsTab;
-				$activeTabClass = 'nav-tab-active';
-				?>
-				<div class="wrap">
-					<h2 class="nav-tab-wrapper">
-						<a href="?page=<?php echo $this->settingsPageSlug.'&tab='.$settingsTab; ?>" class="nav-tab <?php echo ($currentTab === $settingsTab) ? $activeTabClass : ''; ?>">
-							<?php echo $this->translationService->getTranslatedString(TranslationString::Settings); ?>
-						</a>
-						<a href="?page=<?php echo $this->settingsPageSlug.'&tab='.$testMailTab; ?>" class="nav-tab <?php echo ($currentTab === $testMailTab) ? $activeTabClass : ''; ?>">
-							<?php echo $this->translationService->getTranslatedString(TranslationString::TestMail); ?>
-						</a>
-						<a href="?page=<?php echo $this->settingsPageSlug.'&tab='.$encryptionTab; ?>" class="nav-tab <?php echo ($currentTab === $encryptionTab) ? $activeTabClass : ''; ?>">
-							<?php echo $this->translationService->getTranslatedString(TranslationString::Encryption); ?>
-						</a>
-					</h2>
-					<?php
-					switch($currentTab) {
-						case $testMailTab:
+			$title = $this->translationService->getTranslatedString(TranslationString::Mail);
+			add_management_page($title, $title, UserRole::Administrator->value, $this->settingsPage, function() : void {
+				$tabs = [
+					'settings' => [
+						'title' => $this->translationService->getTranslatedString(TranslationString::Settings),
+						'content' => function() : void {
+							?>
+							<form action="options.php" method="post">
+								<?php
+								settings_fields($this->settingsName);
+								do_settings_sections($this->settingsPage);
+								submit_button();
+								?>
+							</form>
+							<?php
+						}
+					],
+					'testmail' => [
+						'title' => $this->translationService->getTranslatedString(TranslationString::TestMail),
+						'content' => function() : void {
 							$value = $this->translationService->getTranslatedString(TranslationString::SendMail);
 							if(isset($_POST['sendMail'])) {
 								$to = $_POST['email'];
@@ -112,27 +103,24 @@ final class MailSettings extends BaseSettings {
 								<textarea name="message" id="message" required></textarea>
 								<input type="submit" name="sendMail" value="<?php echo $value; ?>" class="button button-primary">
 							<?php
-							break;
-						default:
+						}
+					],
+					'encryption' => [
+						'title' => $this->translationService->getTranslatedString(TranslationString::Encryption),
+						'content' => function() : void {
 							?>
 							<form action="options.php" method="post">
 								<?php
-								if ($currentTab === $encryptionTab) {
-									settings_fields($this->encryptionOptionName);
-									do_settings_sections($this->encryptionSettingsPage);
-								} else {
-									settings_fields($this->settingOptionsName);
-									do_settings_sections($this->settingsPageSlug);
-								}
+								settings_fields($this->encryptionSettingsName);
+								do_settings_sections($this->encryptionSettingsPage);
 								submit_button();
 								?>
 							</form>
 							<?php
-							break;
-					}
-					?>
-				</div>
-				<?php
+						}
+					]
+				];
+				$this->showTabs($tabs);
 			});
 		});
 	}
@@ -142,24 +130,24 @@ final class MailSettings extends BaseSettings {
 	 */
 	private function registerSettingInputs() : void {
 		add_action(Action::ADMIN_INIT, function() : void {
-			$sectionID = $this->settingsPageSlug.'-section-mail';
-			$prefix = $this->settingsPageSlug;
+			$sectionID = $this->settingsPage.'-section-mail';
+			$prefix = $this->settingsPage;
 			$server = $this->translationService->getTranslatedString(TranslationString::Server);
 			$port = $this->translationService->getTranslatedString(TranslationString::Port);
 			$fromEmail = $this->translationService->getTranslatedString(TranslationString::FromEmail);
 			$fromName = $this->translationService->getTranslatedString(TranslationString::FromName);
 			$username = $this->translationService->getTranslatedString(TranslationString::Username);
 			$password = $this->translationService->getTranslatedString(TranslationString::Password);
-			add_settings_section($sectionID, '', function() : void {}, $this->settingsPageSlug);
+			add_settings_section($sectionID, '', function() : void {}, $this->settingsPage);
 			add_settings_field($prefix.'server', $server, function() : void {
-				echo '<input type="text" name="'.$this->settingOptionsName.'['.$this->mailServer.']" value="'.$this->getMailServer().'">';
-			}, $this->settingsPageSlug, $sectionID);
+				echo '<input type="text" name="'.$this->settingsName.'['.$this->mailServer.']" value="'.$this->getMailServer().'">';
+			}, $this->settingsPage, $sectionID);
 			add_settings_field($prefix.'port', $port, function() : void {
-				echo '<input type="number" name="'.$this->settingOptionsName.'['.$this->mailPort.']" value="'.$this->getMailPort().'">';
-			}, $this->settingsPageSlug, $sectionID);
+				echo '<input type="number" name="'.$this->settingsName.'['.$this->mailPort.']" value="'.$this->getMailPort().'">';
+			}, $this->settingsPage, $sectionID);
 			add_settings_field($prefix.'encryption', $this->translationService->getTranslatedString(TranslationString::Encryption), function() : void {
 				?>
-				<select name="<?php echo $this->settingOptionsName.'['.$this->mailEncryption.']'; ?>">
+				<select name="<?php echo $this->settingsName.'['.$this->mailEncryption.']'; ?>">
 					<?php
 					$mailEncryption = $this->getMailEncryption();
 					$none = $this->translationService->getTranslatedString(TranslationString::None);
@@ -169,20 +157,20 @@ final class MailSettings extends BaseSettings {
 					?>
 				</select>
 				<?php
-			}, $this->settingsPageSlug, $sectionID);
+			}, $this->settingsPage, $sectionID);
 			add_settings_field($prefix.'from_email', $fromEmail, function() : void {
-				echo '<input type="email" name="'.$this->settingOptionsName.'['.$this->fromEmail.']" value="'.$this->getFromEmail().'">';
-			}, $this->settingsPageSlug, $sectionID);
+				echo '<input type="email" name="'.$this->settingsName.'['.$this->fromEmail.']" value="'.$this->getFromEmail().'">';
+			}, $this->settingsPage, $sectionID);
 			add_settings_field($prefix.'from_name', $fromName, function() : void {
-				echo '<input type="text" name="'.$this->settingOptionsName.'['.$this->fromName.']" value="'.$this->getFromName().'">';
-			}, $this->settingsPageSlug, $sectionID);
+				echo '<input type="text" name="'.$this->settingsName.'['.$this->fromName.']" value="'.$this->getFromName().'">';
+			}, $this->settingsPage, $sectionID);
 			add_settings_field($prefix.'username', $username, function() : void {
-				echo '<input type="text" name="'.$this->settingOptionsName.'['.$this->username.']" value="'.$this->getUsername().'">';
-			}, $this->settingsPageSlug, $sectionID);
+				echo '<input type="text" name="'.$this->settingsName.'['.$this->username.']" value="'.$this->getUsername().'">';
+			}, $this->settingsPage, $sectionID);
 			add_settings_field($prefix.'password', $password, function() : void {
-				echo '<input type="password" name="'.$this->settingOptionsName.'['.$this->password.']" value="'.$this->getPassword().'">';
-			}, $this->settingsPageSlug, $sectionID);
-			$this->registerSetting($this->settingOptionsName);
+				echo '<input type="password" name="'.$this->settingsName.'['.$this->password.']" value="'.$this->getPassword().'">';
+			}, $this->settingsPage, $sectionID);
+			$this->registerSetting($this->settingsName);
 		});
 	}
 
@@ -196,12 +184,12 @@ final class MailSettings extends BaseSettings {
 			$password = $this->translationService->getTranslatedString(TranslationString::Password);
 			add_settings_section($sectionId, '', function() : void {}, $this->encryptionSettingsPage);
 			add_settings_field($prefix.'password', $password, function() : void {
-				echo '<input type="password" name="'.$this->encryptionOptionName.'['.$this->encryptionPassword.']" required>';
+				echo '<input type="password" name="'.$this->encryptionSettingsName.'['.$this->encryptionPassword.']" required>';
 			}, $this->encryptionSettingsPage, $sectionId);
 			add_settings_field($prefix.'nonce', '', function() : void {
-				echo '<input type="hidden" name="'.$this->encryptionOptionName.'['.$this->nonce.']">';
+				echo '<input type="hidden" name="'.$this->encryptionSettingsName.'['.$this->nonce.']">';
 			}, $this->encryptionSettingsPage, $sectionId);
-			$this->registerSetting($this->encryptionOptionName);
+			$this->registerSetting($this->encryptionSettingsName);
 		});
 	}
 
@@ -209,14 +197,14 @@ final class MailSettings extends BaseSettings {
 	 * Handle the options saving
 	 */
 	private function handleOptionsSaving() : void {
-		add_filter(Filter::getPreUpdateOptionFilter($this->encryptionOptionName), function(array $value) : array {
+		add_filter(Filter::getPreUpdateOptionFilter($this->encryptionSettingsName), function(array $value) : array {
 			$key = $this->securityService->generateEncryptionKey($value[$this->encryptionPassword]);
 			$value[$this->encryptionPassword] = $this->convertToHexadecimal($key);
 			$nonce = $this->securityService->generateNonce();
 			$value[$this->nonce] = $this->convertToHexadecimal($nonce);
 			return $value;
 		});
-		add_filter(Filter::getPreUpdateOptionFilter($this->settingOptionsName), function(array $value) : array {
+		add_filter(Filter::getPreUpdateOptionFilter($this->settingsName), function(array $value) : array {
 			$nonce = $this->getNonce();
 			$key = $this->getEncryptionPassword();
 			$password = $this->securityService->encryptMessage($value[$this->password], $nonce, $key);
@@ -257,7 +245,7 @@ final class MailSettings extends BaseSettings {
 	 * @return string the mail server
 	 */
 	public function getMailServer() : string {
-		return $this->settingsOption[$this->mailServer] ?? '';
+		return $this->settings[$this->mailServer] ?? '';
 	}
 
 	/**
@@ -266,8 +254,7 @@ final class MailSettings extends BaseSettings {
 	 * @return int the mail port
 	 */
 	public function getMailPort() : ?int {
-		$port = $this->settingsOption[$this->mailPort];
-		return ($port !== '') ? $port : null;
+		return $this->settings[$this->mailPort] ?? null;
 	}
 
 	/**
@@ -276,7 +263,7 @@ final class MailSettings extends BaseSettings {
 	 * @return string the mail encryption
 	 */
 	public function getMailEncryption() : string {
-		return $this->settingsOption[$this->mailEncryption] ?? Encryption::None->value;
+		return $this->settings[$this->mailEncryption] ?? Encryption::None->value;
 	}
 
 	/**
@@ -285,7 +272,7 @@ final class MailSettings extends BaseSettings {
 	 * @return string the from email
 	 */
 	public function getFromEmail() : string {
-		return $this->settingsOption[$this->fromEmail] ?? '';
+		return $this->settings[$this->fromEmail] ?? '';
 	}
 
 	/**
@@ -294,7 +281,7 @@ final class MailSettings extends BaseSettings {
 	 * @return string the from name
 	 */
 	public function getFromName() : string {
-		return $this->settingsOption[$this->fromName] ?? '';
+		return $this->settings[$this->fromName] ?? '';
 	}
 
 	/**
@@ -303,7 +290,7 @@ final class MailSettings extends BaseSettings {
 	 * @return string the username
 	 */
 	public function getUsername() : string {
-		return $this->settingsOption[$this->username] ?? '';
+		return $this->settings[$this->username] ?? '';
 	}
 
 	/**
@@ -312,8 +299,8 @@ final class MailSettings extends BaseSettings {
 	 * @return string the password
 	 */
 	public function getPassword() : string {
-		if(isset($this->settingsOption[$this->password])) {
-			$message = $this->convertToBinary($this->settingsOption[$this->password]);
+		if(isset($this->settings[$this->password])) {
+			$message = $this->convertToBinary($this->settings[$this->password]);
 			$nonce = $this->getNonce();
 			$key = $this->getEncryptionPassword();
 			return $this->securityService->decryptMessage($message, $nonce, $key);

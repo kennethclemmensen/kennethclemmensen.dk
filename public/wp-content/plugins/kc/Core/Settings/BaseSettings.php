@@ -8,6 +8,22 @@ use KC\Core\Security\SecurityService;
  */
 abstract class BaseSettings {
 
+	protected readonly string $settingsPage;
+	protected readonly string $settingsName;
+	protected readonly array | bool $settings;
+
+	/**
+	 * BaseSettings constructor
+	 * 
+	 * @param string $settingsPage the settings page
+	 * @param string $settingsName the settings name
+	 */
+	protected function __construct(string $settingsPage, string $settingsName) {
+		$this->settingsPage = $settingsPage;
+		$this->settingsName = $settingsName;
+		$this->settings = get_option($this->settingsName);
+	}
+
 	/**
 	 * Create a settings page
 	 */
@@ -45,5 +61,39 @@ abstract class BaseSettings {
 	 */
 	protected function convertToBinary(string $hexadecimalString) : string {
 		return hex2bin($hexadecimalString);
+	}
+
+	/**
+	 * Show tabs
+	 * 
+	 * @param array $tabs the tabs to show
+	 */
+	protected function showTabs(array $tabs) : void {
+		settings_errors();
+		$currentTab = (isset($_GET['tab'])) ? $_GET['tab'] : array_key_first($tabs);
+		$activeTabClass = 'nav-tab-active';
+		$content = '';
+		?>
+		<div class="wrap">
+			<h2 class="nav-tab-wrapper">
+				<?php
+				foreach($tabs as $key => $tab) {
+					if($currentTab === $key) {
+						$class = $activeTabClass;
+						$content = $tab['content'];
+					} else {
+						$class = '';
+					}
+					echo '<a href="?page='.$this->settingsPage.'&tab='.$key.'" class="nav-tab '.$class.'">'.$tab['title'].'</a>';
+				}
+				?>
+			</h2>
+			<?php
+			if ($content !== '') {
+				echo $content();
+			}
+			?>
+		</div>
+		<?php
 	}
 }

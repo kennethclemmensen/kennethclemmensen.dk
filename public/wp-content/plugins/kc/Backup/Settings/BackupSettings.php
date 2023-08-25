@@ -19,11 +19,11 @@ final class BackupSettings extends BaseSettings {
 
 	private const BACKUP_FOLDER = WP_CONTENT_DIR.'/kc_backup';
 	private readonly string $dropboxSettingsPage;
-	private readonly string $dropboxOptionGroup;
-	private readonly array | bool $dropboxOptions;
+	private readonly string $dropboxSettingsName;
+	private readonly array | bool $dropboxSettings;
 	private readonly string $encryptionSettingsPage;
-	private readonly string $encryptionOptionGroup;
-	private readonly array | bool $encryptionOptions;
+	private readonly string $encryptionSettingsName;
+	private readonly array | bool $encryptionSettings;
 	private readonly string $appKey;
 	private readonly string $appSecret;
 	private readonly string $redirectUri;
@@ -38,12 +38,13 @@ final class BackupSettings extends BaseSettings {
 	 * @param TranslationService $translationService the translation service
 	 */
 	public function __construct(private readonly FileManager $fileManager, private readonly SecurityService $securityService, private readonly TranslationService $translationService) {
+		parent::__construct('kc-backup', '');
 		$this->dropboxSettingsPage = 'kc-backup-dropbox-settings';
-		$this->dropboxOptionGroup = $this->dropboxSettingsPage.'-option-group';
-		$this->dropboxOptions = get_option($this->dropboxOptionGroup);
+		$this->dropboxSettingsName = $this->dropboxSettingsPage.'-option-group';
+		$this->dropboxSettings = get_option($this->dropboxSettingsName);
 		$this->encryptionSettingsPage = 'kc-backup-encryption-settings';
-		$this->encryptionOptionGroup = $this->encryptionSettingsPage.'-option-group';
-		$this->encryptionOptions = get_option($this->encryptionOptionGroup);
+		$this->encryptionSettingsName = $this->encryptionSettingsPage.'-option-group';
+		$this->encryptionSettings = get_option($this->encryptionSettingsName);
 		$prefix = 'dropbox_';
 		$this->appKey = $prefix.'app_key';
 		$this->appSecret = $prefix.'app_secret';
@@ -63,78 +64,40 @@ final class BackupSettings extends BaseSettings {
 	public function createSettingsPage() : void {
 		add_action(Action::ADMIN_MENU, function() : void {
 			$title = $this->translationService->getTranslatedString(TranslationString::Backup);
-			$menuSlug = 'kc-backup';
-			add_management_page($title, $title, UserRole::Administrator->value, $menuSlug, function() use ($title, $menuSlug) : void {
-				$createBackup = $this->translationService->getTranslatedString(TranslationString::CreateBackup);
-				$download = $this->translationService->getTranslatedString(TranslationString::Download);
-				$delete = $this->translationService->getTranslatedString(TranslationString::Delete);
-				$type = $this->translationService->getTranslatedString(TranslationString::Type);
-				$database = $this->translationService->getTranslatedString(TranslationString::Database);
-				$files = $this->translationService->getTranslatedString(TranslationString::Files);
-				$everything = $this->translationService->getTranslatedString(TranslationString::Everything);
+			add_management_page($title, $title, UserRole::Administrator->value, $this->settingsPage, function() use ($title) : void {
 				$dropbox = $this->translationService->getTranslatedString(TranslationString::Dropbox);
-				$upload = $this->translationService->getTranslatedString(TranslationString::Upload);
-				$encryption = $this->translationService->getTranslatedString(TranslationString::Encryption);
-				$name = 'createBackup';
-				$databaseType = 'database';
-				$filesType = 'files';
-				if(isset($_POST[$name])) {
-					$fileName = 'backup_'.time().'.zip';
-					$sourceFolder = realpath(ABSPATH);
-					$destinationFolder = self::BACKUP_FOLDER;
-					switch($_POST['type']) {
-						case $databaseType:
-							$this->createDatabaseBackupFile();
-							break;
-						case $filesType:
-							$this->fileManager->createZipFile($fileName, $sourceFolder, $destinationFolder);
-							break;
-						default:
-							$this->createDatabaseBackupFile();
-							$this->fileManager->createZipFile($fileName, $sourceFolder, $destinationFolder);
-							break;
-					}
-				}
-				?>
-				<div class="wrap">
-					<h2 class="nav-tab-wrapper">
-						<?php
-						$activeTab = (isset($_GET['tab'])) ? $_GET['tab'] : '';
-						$dropboxTab = 'dropbox';
-						$encryptionTab = 'encryption';
-						$activeTabClass = 'nav-tab-active';
-						?>
-						<a href="?page=<?php echo $menuSlug; ?>" class="nav-tab <?php echo ($activeTab === '') ? $activeTabClass : ''; ?>">
-							<?php echo $title; ?>
-						</a>
-						<a href="?page=<?php echo $menuSlug; ?>&tab=<?php echo $dropboxTab; ?>" class="nav-tab <?php echo ($activeTab === $dropboxTab) ? $activeTabClass : ''; ?>">
-							<?php echo $dropbox; ?>
-						</a>
-						<a href="?page=<?php echo $menuSlug; ?>&tab=<?php echo $encryptionTab; ?>" class="nav-tab <?php echo ($activeTab === $encryptionTab) ? $activeTabClass : ''; ?>">
-							<?php echo $encryption; ?>
-						</a>
-					</h2>
-					<?php
-					switch($activeTab) {
-						case $dropboxTab:
-						case $encryptionTab:
-							settings_errors();
-							?>
-							<form action="options.php" method="post">
-								<?php
-								if($activeTab === $dropboxTab) {
-									settings_fields($this->dropboxOptionGroup);
-									do_settings_sections($this->dropboxSettingsPage);
-								} else {
-									settings_fields($this->encryptionOptionGroup);
-									do_settings_sections($this->encryptionSettingsPage);
+				$tabs = [
+					'backup' => [
+						'title' => $title,
+						'content' => function() use($dropbox, $title) : void {
+							$name = 'createBackup';
+							$databaseType = 'database';
+							$filesType = 'files';
+							if(isset($_POST[$name])) {
+								$fileName = 'backup_'.time().'.zip';
+								$sourceFolder = realpath(ABSPATH);
+								$destinationFolder = self::BACKUP_FOLDER;
+								switch($_POST['type']) {
+									case $databaseType:
+										$this->createDatabaseBackupFile();
+										break;
+									case $filesType:
+										$this->fileManager->createZipFile($fileName, $sourceFolder, $destinationFolder);
+										break;
+									default:
+										$this->createDatabaseBackupFile();
+										$this->fileManager->createZipFile($fileName, $sourceFolder, $destinationFolder);
+										break;
 								}
-								submit_button();
-								?>
-							</form>
-							<?php
-							break;
-						default:
+							}
+							$createBackup = $this->translationService->getTranslatedString(TranslationString::CreateBackup);
+							$download = $this->translationService->getTranslatedString(TranslationString::Download);
+							$delete = $this->translationService->getTranslatedString(TranslationString::Delete);
+							$type = $this->translationService->getTranslatedString(TranslationString::Type);
+							$database = $this->translationService->getTranslatedString(TranslationString::Database);
+							$files = $this->translationService->getTranslatedString(TranslationString::Files);
+							$everything = $this->translationService->getTranslatedString(TranslationString::Everything);
+							$upload = $this->translationService->getTranslatedString(TranslationString::Upload);
 							?>
 							<div class="kc-settings">
 								<form action="" method="post">
@@ -194,11 +157,38 @@ final class BackupSettings extends BaseSettings {
 								</table>
 							</div>
 							<?php
-							break;
-					}
-					?>
-				</div>
-				<?php
+						}
+					],
+					'dropbox' => [
+						'title' => $dropbox,
+						'content' => function() : void {
+							?>
+							<form action="options.php" method="post">
+								<?php
+								settings_fields($this->dropboxSettingsName);
+								do_settings_sections($this->dropboxSettingsPage);
+								submit_button();
+								?>
+							</form>
+							<?php
+						}
+					],
+					'encryption' => [
+						'title' => $this->translationService->getTranslatedString(TranslationString::Encryption),
+						'content' => function() : void {
+							?>
+							<form action="options.php" method="post">
+								<?php
+								settings_fields($this->encryptionSettingsName);
+								do_settings_sections($this->encryptionSettingsPage);
+								submit_button();
+								?>
+							</form>
+							<?php
+						}
+					]
+				];
+				$this->showTabs($tabs);
 			});
 		});
 	}
@@ -215,15 +205,15 @@ final class BackupSettings extends BaseSettings {
 			$redirectUriLabel = $this->translationService->getTranslatedString(TranslationString::RedirectUri);
 			add_settings_section($sectionId, '', function() : void {}, $this->dropboxSettingsPage);
 			add_settings_field($prefix.'app-key', $appKeyLabel, function() : void {
-				echo '<input type="text" name="'.$this->dropboxOptionGroup.'['.$this->appKey.']" value="'.$this->getAppKey().'">';
+				echo '<input type="text" name="'.$this->dropboxSettingsName.'['.$this->appKey.']" value="'.$this->getAppKey().'">';
 			}, $this->dropboxSettingsPage, $sectionId);
 			add_settings_field($prefix.'app-secret', $appSecretLabel, function() : void {
-				echo '<input type="text" name="'.$this->dropboxOptionGroup.'['.$this->appSecret.']" value="'.$this->getAppSecret().'">';
+				echo '<input type="text" name="'.$this->dropboxSettingsName.'['.$this->appSecret.']" value="'.$this->getAppSecret().'">';
 			}, $this->dropboxSettingsPage, $sectionId);
 			add_settings_field($prefix.'redirect-uri', $redirectUriLabel, function() : void {
-				echo '<input type="url" name="'.$this->dropboxOptionGroup.'['.$this->redirectUri.']" value="'.$this->getRedirectUri().'">';
+				echo '<input type="url" name="'.$this->dropboxSettingsName.'['.$this->redirectUri.']" value="'.$this->getRedirectUri().'">';
 			}, $this->dropboxSettingsPage, $sectionId);
-			$this->registerSetting($this->dropboxOptionGroup);
+			$this->registerSetting($this->dropboxSettingsName);
 		});
 	}
 
@@ -237,12 +227,12 @@ final class BackupSettings extends BaseSettings {
 			$password = $this->translationService->getTranslatedString(TranslationString::Password);
 			add_settings_section($sectionId, '', function() : void {}, $this->encryptionSettingsPage);
 			add_settings_field($prefix.'password', $password, function() : void {
-				echo '<input type="password" name="'.$this->encryptionOptionGroup.'['.$this->password.']" required>';
+				echo '<input type="password" name="'.$this->encryptionSettingsName.'['.$this->password.']" required>';
 			}, $this->encryptionSettingsPage, $sectionId);
 			add_settings_field($prefix.'nonce', '', function() : void {
-				echo '<input type="hidden" name="'.$this->encryptionOptionGroup.'['.$this->nonce.']">';
+				echo '<input type="hidden" name="'.$this->encryptionSettingsName.'['.$this->nonce.']">';
 			}, $this->encryptionSettingsPage, $sectionId);
-			$this->registerSetting($this->encryptionOptionGroup);
+			$this->registerSetting($this->encryptionSettingsName);
 		});
 	}
 
@@ -267,14 +257,14 @@ final class BackupSettings extends BaseSettings {
 	 * Handle the options saving
 	 */
 	private function handleOptionsSaving() : void {
-		add_filter(Filter::getPreUpdateOptionFilter($this->encryptionOptionGroup), function(array $value) : array {
+		add_filter(Filter::getPreUpdateOptionFilter($this->encryptionSettingsName), function(array $value) : array {
 			$key = $this->securityService->generateEncryptionKey($value[$this->password]);
 			$value[$this->password] = $this->convertToHexadecimal($key);
 			$nonce = $this->securityService->generateNonce();
 			$value[$this->nonce] = $this->convertToHexadecimal($nonce);
 			return $value;
 		});
-		add_filter(Filter::getPreUpdateOptionFilter($this->dropboxOptionGroup), function(array $value) : array {
+		add_filter(Filter::getPreUpdateOptionFilter($this->dropboxSettingsName), function(array $value) : array {
 			$nonce = $this->getNonce();
 			$key = $this->getPassword();
 			$appKey = $this->securityService->encryptMessage($value[$this->appKey], $nonce, $key);
@@ -303,8 +293,8 @@ final class BackupSettings extends BaseSettings {
 	 * @return string the app key
 	 */
 	private function getAppKey() : string {
-		if(isset($this->dropboxOptions[$this->appKey])) {
-			$message = $this->convertToBinary($this->dropboxOptions[$this->appKey]);
+		if(isset($this->dropboxSettings[$this->appKey])) {
+			$message = $this->convertToBinary($this->dropboxSettings[$this->appKey]);
 			$nonce = $this->getNonce();
 			$key = $this->getPassword();
 			return $this->securityService->decryptMessage($message, $nonce, $key);
@@ -319,8 +309,8 @@ final class BackupSettings extends BaseSettings {
 	 * @return string the app secret
 	 */
 	private function getAppSecret() : string {
-		if(isset($this->dropboxOptions[$this->appSecret])) {
-			$message = $this->convertToBinary($this->dropboxOptions[$this->appSecret]);
+		if(isset($this->dropboxSettings[$this->appSecret])) {
+			$message = $this->convertToBinary($this->dropboxSettings[$this->appSecret]);
 			$nonce = $this->getNonce();
 			$key = $this->getPassword();
 			return $this->securityService->decryptMessage($message, $nonce, $key);
@@ -335,8 +325,8 @@ final class BackupSettings extends BaseSettings {
 	 * @return string the redirect uri
 	 */
 	private function getRedirectUri() : string {
-		if(isset($this->dropboxOptions[$this->redirectUri])) {
-			$message = $this->convertToBinary($this->dropboxOptions[$this->redirectUri]);
+		if(isset($this->dropboxSettings[$this->redirectUri])) {
+			$message = $this->convertToBinary($this->dropboxSettings[$this->redirectUri]);
 			$nonce = $this->getNonce();
 			$key = $this->getPassword();
 			$url = $this->securityService->decryptMessage($message, $nonce, $key);
@@ -352,8 +342,8 @@ final class BackupSettings extends BaseSettings {
 	 * @return string the nonce
 	 */
 	private function getNonce() : string {
-		if(isset($this->encryptionOptions[$this->nonce])) {
-			return $this->convertToBinary($this->encryptionOptions[$this->nonce]);
+		if(isset($this->encryptionSettings[$this->nonce])) {
+			return $this->convertToBinary($this->encryptionSettings[$this->nonce]);
 		} else {
 			return '';
 		}
@@ -365,8 +355,8 @@ final class BackupSettings extends BaseSettings {
 	 * @return string the password
 	 */
 	private function getPassword() : string {
-		if(isset($this->encryptionOptions[$this->password])) {
-			return $this->convertToBinary($this->encryptionOptions[$this->password]);
+		if(isset($this->encryptionSettings[$this->password])) {
+			return $this->convertToBinary($this->encryptionSettings[$this->password]);
 		} else {
 			return '';
 		}

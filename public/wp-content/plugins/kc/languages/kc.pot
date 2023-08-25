@@ -104,6 +104,9 @@ msgstr ""
 msgid "Key"
 msgstr ""
 
+msgid "Mail"
+msgstr ""
+
 msgid "Message"
 msgstr ""
 

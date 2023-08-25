@@ -18,9 +18,6 @@ use KC\Data\Database\DataManager;
  */
 final class GallerySettings extends BaseSettings {
 
-	private readonly string $settingOptionsName;
-	private readonly array | bool $settingsOption;
-	private readonly string $settingsPageSlug;
 	private readonly string $galleryImageWidth;
 	private readonly string $galleryImageHeight;
 	private readonly string $galleryParentPage;
@@ -31,9 +28,7 @@ final class GallerySettings extends BaseSettings {
 	 * @param TranslationService $translationService the translation service
 	 */
 	public function __construct(private readonly TranslationService $translationService) {
-		$this->settingOptionsName = 'kc-gallery-settings-options';
-		$this->settingsOption = get_option($this->settingOptionsName);
-		$this->settingsPageSlug = 'kc-gallery-settings';
+		parent::__construct('kc-gallery-settings', 'kc-gallery-settings-options');
 		$prefix = 'gallery_';
 		$this->galleryImageWidth = $prefix.'image_width';
 		$this->galleryImageHeight = $prefix.'image_height';
@@ -46,13 +41,13 @@ final class GallerySettings extends BaseSettings {
 	public function createSettingsPage() : void {
 		add_action(Action::ADMIN_MENU, function() : void {
 			$title = $this->translationService->getTranslatedString(TranslationString::Settings);
-			add_submenu_page('edit.php?post_type='.PostType::Gallery->value, $title, $title, UserRole::Administrator->value, $this->settingsPageSlug, function() : void {
+			add_submenu_page('edit.php?post_type='.PostType::Gallery->value, $title, $title, UserRole::Administrator->value, $this->settingsPage, function() : void {
 				settings_errors();
 				?>
 				<form action="options.php" method="post">
 					<?php
-					settings_fields($this->settingOptionsName);
-					do_settings_sections($this->settingsPageSlug);
+					settings_fields($this->settingsName);
+					do_settings_sections($this->settingsPage);
 					submit_button();
 					?>
 				</form>
@@ -69,7 +64,7 @@ final class GallerySettings extends BaseSettings {
 	 * @return string the parent page path
 	 */
 	public function getParentPagePath() : string {
-		return $this->settingsOption[$this->galleryParentPage] ?? '/';
+		return $this->settings[$this->galleryParentPage] ?? '/';
 	}
 
 	/**
@@ -77,18 +72,18 @@ final class GallerySettings extends BaseSettings {
 	 */
 	private function registerSettingInputs() : void {
 		add_action(Action::ADMIN_INIT, function() : void {
-			$sectionID = $this->settingsPageSlug.'-section-gallery';
-			$prefix = $this->settingsPageSlug.'galleryImage';
-			add_settings_section($sectionID, '', function() : void {}, $this->settingsPageSlug);
+			$sectionID = $this->settingsPage.'-section-gallery';
+			$prefix = $this->settingsPage.'galleryImage';
+			add_settings_section($sectionID, '', function() : void {}, $this->settingsPage);
 			add_settings_field($prefix.'Width', $this->translationService->getTranslatedString(TranslationString::ImageWidth), function() : void {
-				echo '<input type="number" name="'.$this->settingOptionsName.'['.$this->galleryImageWidth.']" value="'.$this->getGalleryImageWidth().'" min="1">';
-			}, $this->settingsPageSlug, $sectionID);
+				echo '<input type="number" name="'.$this->settingsName.'['.$this->galleryImageWidth.']" value="'.$this->getGalleryImageWidth().'" min="1">';
+			}, $this->settingsPage, $sectionID);
 			add_settings_field($prefix.'Height', $this->translationService->getTranslatedString(TranslationString::ImageHeight), function() : void {
-				echo '<input type="number" name="'.$this->settingOptionsName.'['.$this->galleryImageHeight.']" value="'.$this->getGalleryImageHeight().'" min="1">';
-			}, $this->settingsPageSlug, $sectionID);
-			add_settings_field($this->settingsPageSlug.'parentPage', $this->translationService->getTranslatedString(TranslationString::ParentPage), function() : void {
+				echo '<input type="number" name="'.$this->settingsName.'['.$this->galleryImageHeight.']" value="'.$this->getGalleryImageHeight().'" min="1">';
+			}, $this->settingsPage, $sectionID);
+			add_settings_field($this->settingsPage.'parentPage', $this->translationService->getTranslatedString(TranslationString::ParentPage), function() : void {
 				?>
-				<select name="<?php echo $this->settingOptionsName.'['.$this->galleryParentPage.']'; ?>">
+				<select name="<?php echo $this->settingsName.'['.$this->galleryParentPage.']'; ?>">
 					<?php
 					$dataManager = new DataManager(new PostTypeService(), new SecurityService(), new ImageService());
 					$pages = $dataManager->getPages();
@@ -98,8 +93,8 @@ final class GallerySettings extends BaseSettings {
 					?>
 				</select>
 				<?php
-			}, $this->settingsPageSlug, $sectionID);
-			$this->registerSetting($this->settingOptionsName);
+			}, $this->settingsPage, $sectionID);
+			$this->registerSetting($this->settingsName);
 		});
 	}
 
@@ -120,7 +115,7 @@ final class GallerySettings extends BaseSettings {
 	 * @return int the gallery image width
 	 */
 	private function getGalleryImageWidth() : int {
-		return $this->settingsOption[$this->galleryImageWidth] ?? 1;
+		return $this->settings[$this->galleryImageWidth] ?? 1;
 	}
 
 	/**
@@ -129,6 +124,6 @@ final class GallerySettings extends BaseSettings {
 	 * @return int the gallery image height
 	 */
 	private function getGalleryImageHeight() : int {
-		return $this->settingsOption[$this->galleryImageHeight] ?? 1;
+		return $this->settings[$this->galleryImageHeight] ?? 1;
 	}
 }

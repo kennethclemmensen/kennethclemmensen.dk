@@ -36,6 +36,7 @@ enum TranslationString: string {
 	case ImageWidth = 'Image width';
 	case ImageInformations = 'Image informations';
 	case Key = 'Key';
+	case Mail = 'Mail';
 	case Message = 'Message';
 	case MetaBoxIsNotActivated = 'Meta Box is not activated';
 	case None = 'None';

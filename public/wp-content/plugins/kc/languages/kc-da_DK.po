@@ -105,6 +105,9 @@ msgstr "Billedeoplysninger"
 msgid "Key"
 msgstr "Tast"
 
+msgid "Mail"
+msgstr "Mail"
+
 msgid "Message"
 msgstr "Besked"
 
