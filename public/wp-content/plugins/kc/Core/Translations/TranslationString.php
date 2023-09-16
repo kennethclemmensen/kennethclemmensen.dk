@@ -53,6 +53,8 @@ enum TranslationString: string {
 	case Slides = 'Slides';
 	case Subject = 'Subject';
 	case TestMail = 'Test mail';
+	case TheEmailWasNotSent = 'The email was not sent';
+	case TheEmailWasSent = 'The email was sent';
 	case Tls = 'Tls';
 	case Type = 'Type';
 	case Upload = 'Upload';

@@ -155,6 +155,12 @@ msgstr ""
 msgid "Test mail"
 msgstr ""
 
+msgid "The email was not sent"
+msgstr ""
+
+msgid "The email was sent"
+msgstr ""
+
 msgid "Tls"
 msgstr ""
 

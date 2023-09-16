@@ -1,3 +1,7 @@
 .kc-settings {
 	margin: 10px 20px 0 2px;
 }
+
+.kc-mail-form label, .kc-mail-form textarea {
+	display: block;
+}

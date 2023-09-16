@@ -2,6 +2,7 @@
 namespace KC\Mail;
 
 use KC\Core\Action;
+use KC\Core\Mail\MailService;
 use KC\Core\Modules\IModule;
 use KC\Core\Security\SecurityService;
 use KC\Core\Translations\TranslationService;
@@ -21,7 +22,8 @@ final readonly class MailModule implements IModule {
 	public function __construct() {
 		$securityService = new SecurityService();
 		$translationService = new TranslationService();
-		$this->mailSettings = new MailSettings($securityService, $translationService);
+		$mailService = new MailService();
+		$this->mailSettings = new MailSettings($securityService, $translationService, $mailService);
 	}
 
 	/**

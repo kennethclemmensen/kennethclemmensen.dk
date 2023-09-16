@@ -4,6 +4,7 @@ namespace KC\Mail\Settings;
 use KC\Core\Action;
 use KC\Core\Filter;
 use KC\Core\Mail\Encryption;
+use KC\Core\Mail\MailService;
 use KC\Core\Settings\BaseSettings;
 use KC\Core\Security\SecurityService;
 use KC\Core\Translations\TranslationService;
@@ -27,14 +28,18 @@ final class MailSettings extends BaseSettings {
 	private readonly array | bool $encryptionOptions;
 	private readonly string $encryptionPassword;
 	private readonly string $nonce;
+	private readonly SecurityService $securityService;
+	private readonly TranslationService $translationService;
+	private readonly MailService $mailService;
 
 	/**
 	 * MailSettings constructor
 	 * 
 	 * @param SecurityService $securityService the security service
 	 * @param TranslationService $translationService the translation service
+	 * @param MailService $mailService the mail service
 	 */
-	public function __construct(private readonly SecurityService $securityService, private readonly TranslationService $translationService) {
+	public function __construct(SecurityService $securityService, TranslationService $translationService, MailService $mailService) {
 		parent::__construct('kc-mail', 'kc-mail-options');
 		$prefix = 'mail_';
 		$this->mailServer = $prefix.'server';
@@ -50,6 +55,9 @@ final class MailSettings extends BaseSettings {
 		$prefix = 'encryption_';
 		$this->encryptionPassword = $prefix.'password';
 		$this->nonce = $prefix.'nonce';
+		$this->securityService = $securityService;
+		$this->translationService = $translationService;
+		$this->mailService = $mailService;
 		$this->registerSettingInputs();
 		$this->registerEncryptionSettings();
 		$this->handleOptionsSaving();
@@ -85,10 +93,15 @@ final class MailSettings extends BaseSettings {
 								$to = $_POST['email'];
 								$subject = $_POST['subject'];
 								$message = $_POST['message'];
-								wp_mail($to, $subject, $message);
+								$isSend = $this->mailService->sendMail($to, $subject, $message);
+								if ($isSend === true) {
+									echo '<p>'.$this->translationService->getTranslatedString(TranslationString::TheEmailWasSent).'</p>';
+								} else {
+									echo '<p>'.$this->translationService->getTranslatedString(TranslationString::TheEmailWasNotSent).'</p>';
+								}
 							}
 							?>
-							<form action="" method="post">
+							<form action="" method="post" class="kc-mail-form">
 								<label for="email">
 									<?php echo $this->translationService->getTranslatedString(TranslationString::Email); ?>
 								</label>

@@ -156,6 +156,12 @@ msgstr "Emne"
 msgid "Test mail"
 msgstr "Test mail"
 
+msgid "The email was not sent"
+msgstr "Emailen blev ikke sendt"
+
+msgid "The email was sent"
+msgstr "Emailen blev sendt"
+
 msgid "Tls"
 msgstr "Tls"
 
