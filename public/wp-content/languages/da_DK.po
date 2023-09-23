@@ -526,23 +526,23 @@ msgstr "Tjek venligst, at %s PHP ekstension er installeret og aktiveret."
 msgid "When using the %1$s constant, make sure to set these globals to an array: %2$s."
 msgstr "Når du bruger konstanten %1$s, skal du sørge for at sætte disse globaler til et array: %2$s."
 
-#: wp-includes/html-api/class-wp-html-tag-processor.php:2195
+#: wp-includes/html-api/class-wp-html-tag-processor.php:2241
 msgid "The query argument must be an array or a tag name."
 msgstr "Forespørgselsargumentet skal være et array eller et tagnavn."
 
-#: wp-includes/html-api/class-wp-html-tag-processor.php:1891
+#: wp-includes/html-api/class-wp-html-tag-processor.php:1937
 msgid "Invalid attribute name."
 msgstr "Ugyldigt egenskabsnavn."
 
-#: wp-includes/html-api/class-wp-html-tag-processor.php:1544
+#: wp-includes/html-api/class-wp-html-tag-processor.php:1590
 msgid "Too many calls to seek() - this can lead to performance issues."
 msgstr "For mange kald til seek() - dette kan føre til ydelsesproblemer."
 
-#: wp-includes/html-api/class-wp-html-tag-processor.php:1535
+#: wp-includes/html-api/class-wp-html-tag-processor.php:1581
 msgid "Unknown bookmark name."
 msgstr "Ukendt bogmærke."
 
-#: wp-includes/html-api/class-wp-html-tag-processor.php:679
+#: wp-includes/html-api/class-wp-html-tag-processor.php:707
 msgid "Too many bookmarks: cannot create any more."
 msgstr "For mange bogmærker; kan ikke oprette flere."
 
