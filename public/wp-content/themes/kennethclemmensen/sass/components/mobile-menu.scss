@@ -6,11 +6,16 @@
 	top: $header-height;
 	bottom: $footer-height;
 	z-index: 1;
-	@include translateX(-100%);
 	@include transition();
 	overflow-y: auto;
 	@media #{$tablet} {
 		display: none;
+	}
+	&--slide-left {
+		@include translateX(100%);
+	}
+	&--slide-right {
+		@include translateX(-100%);
 	}
 	&--active {
 		@include translateX(0);

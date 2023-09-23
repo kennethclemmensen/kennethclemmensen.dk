@@ -4,19 +4,13 @@
  */
 final class GallerySettings extends BaseSettings {
 
-	private readonly string $galleryPageSlug;
-	private readonly string $galleryOptionsName;
-	private readonly array | bool $galleryOptions;
 	private readonly string $imagesPerPage;
 
 	/**
 	 * GallerySettings constructor
 	 */
 	public function __construct() {
-		parent::__construct();
-		$this->galleryPageSlug = $this->prefix.'gallery';
-		$this->galleryOptionsName = $this->galleryPageSlug.$this->postfix;
-		$this->galleryOptions = get_option($this->galleryOptionsName);
+		parent::__construct('kc-theme-settings-gallery', 'kc-theme-settings-gallery-options');
 		$this->imagesPerPage = 'images_per_page';
 	}
 
@@ -24,21 +18,21 @@ final class GallerySettings extends BaseSettings {
 	 * Show the fields
 	 */
 	public function showFields() : void {
-		settings_fields($this->galleryOptionsName);
-		do_settings_sections($this->galleryPageSlug);
+		settings_fields($this->settingsName);
+		do_settings_sections($this->settingsPage);
 	}
 
 	/**
 	 * Create the fields
 	 */
 	public function createFields() : void {
-		$sectionID = $this->galleryPageSlug.'-section-other';
-		$prefix = $this->galleryPageSlug;
-		add_settings_section($sectionID, '', function() {}, $this->galleryPageSlug);
+		$sectionID = $this->settingsPage.'-section-gallery';
+		$prefix = $this->settingsPage;
+		add_settings_section($sectionID, '', function() {}, $this->settingsPage);
 		add_settings_field($prefix.'images-per-page', $this->translationStrings->getTranslatedString(TranslationStrings::IMAGES_PER_PAGE), function() : void {
-			echo '<input type="number" name="'.$this->galleryOptionsName.'['.$this->imagesPerPage.']" value="'.$this->getImagesPerPage().'" min="1" max="50">';
-		}, $this->galleryPageSlug, $sectionID);
-		$this->registerSetting($this->galleryOptionsName);
+			echo '<input type="number" name="'.$this->settingsName.'['.$this->imagesPerPage.']" value="'.$this->getImagesPerPage().'" min="1" max="50">';
+		}, $this->settingsPage, $sectionID);
+		$this->registerSetting($this->settingsName);
 	}
 
 	/**
@@ -47,6 +41,8 @@ final class GallerySettings extends BaseSettings {
 	 * @return int the number of images per page
 	 */
 	public function getImagesPerPage() : int {
-		return intval($this->galleryOptions[$this->imagesPerPage]);
+		$defaultImagesPerPage = 10;
+		$value = $this->settings[$this->imagesPerPage] ?? $defaultImagesPerPage;
+		return intval($value);
 	}
 }

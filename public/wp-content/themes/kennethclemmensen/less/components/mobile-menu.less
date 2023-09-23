@@ -6,11 +6,16 @@
 	top: @header-height;
 	bottom: @footer-height;
 	z-index: 1;
-	.translateX(-100%);
 	.transition();
 	overflow-y: auto;
 	@media @tablet {
 		display: none;
+	}
+	&--slide-left {
+		.translateX(100%);
+	}
+	&--slide-right {
+		.translateX(-100%);
 	}
 	&--active {
 		.translateX(0);

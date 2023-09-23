@@ -4,9 +4,6 @@
  */
 final class ContactSettings extends BaseSettings {
 	
-	private readonly string $contactPageSlug;
-	private readonly string $contactOptionsName;
-	private readonly array | bool $contactOptions;
 	private readonly string $email;
 	private readonly string $linkedIn;
 	private readonly string $gitHub;
@@ -18,11 +15,7 @@ final class ContactSettings extends BaseSettings {
 	 * ContactSettings constructor
 	 */
 	public function __construct() {
-		parent::__construct();
-		$prefix = $this->prefix;
-		$this->contactPageSlug = substr($prefix, 0, strlen($prefix) - 1);
-		$this->contactOptionsName = $prefix.'contact'.$this->postfix;
-		$this->contactOptions = get_option($this->contactOptionsName);
+		parent::__construct('kc-theme-settings', 'kc-theme-settings-contact-options');
 		$this->email = 'email';
 		$this->linkedIn = 'linkedin';
 		$this->gitHub = 'github';
@@ -39,37 +32,37 @@ final class ContactSettings extends BaseSettings {
 	 * @return string the contact page slug
 	 */
 	public function getContactPageSlug() : string {
-		return $this->contactPageSlug;
+		return $this->settingsPage;
 	}
 
 	/**
 	 * Show the fields
 	 */
 	public function showFields() : void {
-		settings_fields($this->contactOptionsName);
-		do_settings_sections($this->contactPageSlug);
+		settings_fields($this->settingsName);
+		do_settings_sections($this->settingsPage);
 	}
 
 	/**
 	 * Create the fields
 	 */
 	public function createFields() : void {
-		$sectionID = $this->contactPageSlug.'-section-contact';
-		$prefix = $this->contactPageSlug;
-		add_settings_section($sectionID, '', function() {}, $this->contactPageSlug);
+		$sectionID = $this->settingsPage.'-section-contact';
+		$prefix = $this->settingsPage;
+		add_settings_section($sectionID, '', function() {}, $this->settingsPage);
 		add_settings_field($prefix.'email', $this->translationStrings->getTranslatedString(TranslationStrings::EMAIL), function() : void {
-			echo '<input type="email" name="'.$this->contactOptionsName.'['.$this->email.']" value="'.$this->getEmail().'" class="regular-text" required> ';
+			echo '<input type="email" name="'.$this->settingsName.'['.$this->email.']" value="'.$this->getEmail().'" class="regular-text" required> ';
 			echo '['.$this->emailShortcode.']';
-		}, $this->contactPageSlug, $sectionID);
+		}, $this->settingsPage, $sectionID);
 		add_settings_field($prefix.'linkedin', $this->translationStrings->getTranslatedString(TranslationStrings::LINKEDIN), function() : void {
-			echo '<input type="url" name="'.$this->contactOptionsName.'['.$this->linkedIn.']" value="'.$this->getLinkedInUrl().'" class="regular-text" required> ';
+			echo '<input type="url" name="'.$this->settingsName.'['.$this->linkedIn.']" value="'.$this->getLinkedInUrl().'" class="regular-text" required> ';
 			echo '['.$this->linkedInShortcode.']';
-		}, $this->contactPageSlug, $sectionID);
+		}, $this->settingsPage, $sectionID);
 		add_settings_field($prefix.'github', $this->translationStrings->getTranslatedString(TranslationStrings::GITHUB), function() : void {
-			echo '<input type="url" name="'.$this->contactOptionsName.'['.$this->gitHub.']" value="'.$this->getGitHubUrl().'" class="regular-text" required> ';
+			echo '<input type="url" name="'.$this->settingsName.'['.$this->gitHub.']" value="'.$this->getGitHubUrl().'" class="regular-text" required> ';
 			echo '['.$this->gitHubShortcode.']';
-		}, $this->contactPageSlug, $sectionID);
-		$this->registerSetting($this->contactOptionsName);
+		}, $this->settingsPage, $sectionID);
+		$this->registerSetting($this->settingsName);
 	}
 
 	/**
@@ -78,7 +71,8 @@ final class ContactSettings extends BaseSettings {
 	 * @return string the email
 	 */
 	private function getEmail() : string {
-		return stripslashes($this->contactOptions[$this->email]);
+		$string = $this->settings[$this->email] ?? '';
+		return stripslashes($string);
 	}
 
 	/**
@@ -87,7 +81,8 @@ final class ContactSettings extends BaseSettings {
 	 * @return string the LinkedIn url
 	 */
 	private function getLinkedInUrl() : string {
-		return esc_url($this->contactOptions[$this->linkedIn]);
+		$url = $this->settings[$this->linkedIn] ?? '';
+		return esc_url($url);
 	}
 
 	/**
@@ -96,7 +91,8 @@ final class ContactSettings extends BaseSettings {
 	 * @return string the GitHub url
 	 */
 	private function getGitHubUrl() : string {
-		return esc_url($this->contactOptions[$this->gitHub]);
+		$url = $this->settings[$this->gitHub] ?? '';
+		return esc_url($url);
 	}
 
 	/**

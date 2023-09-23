@@ -1,4 +1,4 @@
-import { SliderAnimation } from './enums/SliderAnimation';
+import { SliderAnimation } from './SliderAnimation';
 /**
  * The Slider class contains methods to handle the functionality of the slider
  */
@@ -6,6 +6,9 @@ export class Slider {
     #slides;
     #sliderImage;
     #currentRandomNumber;
+    #delay;
+    #duration;
+    #animation;
     /**
      * Initialize a new instance of the Slider class
      */
@@ -13,36 +16,39 @@ export class Slider {
         this.#slides = document.getElementsByClassName('slider__slide');
         this.#sliderImage = document.getElementById('slider-image');
         this.#currentRandomNumber = -1;
+        const slider = document.getElementById('slider');
+        const dataset = slider?.dataset;
+        const defaultDelay = 500;
+        this.#delay = (dataset?.delay) ? parseInt(dataset.delay) : defaultDelay;
+        const defaultDuration = 8000;
+        this.#duration = (dataset?.duration) ? parseInt(dataset.duration) : defaultDuration;
+        this.#animation = dataset?.animation ?? SliderAnimation.Fade;
     }
     /**
      * Show the slides
-     *
-     * @param delay the delay between two slides
-     * @param duration the duration of a slide
-     * @param animation the animation for the slides
      */
-    showSlides(delay, duration, animation) {
+    showSlides() {
         let randomNumber = this.getRandomNumber();
         const name = 'data-slide-image';
         let backgroundImageUrl = this.#slides[randomNumber]?.getAttribute(name);
         if (!backgroundImageUrl)
             return;
         this.setBackgroundImage(backgroundImageUrl);
-        const startKeyframes = this.getStartKeyframes(animation);
-        const endKeyframes = this.getEndKeyframes(animation);
+        const startKeyframes = this.getStartKeyframes(this.#animation);
+        const endKeyframes = this.getEndKeyframes(this.#animation);
         setInterval(() => {
             if (this.#sliderImage) {
                 this.#sliderImage.animate(startKeyframes, {
-                    duration: delay
+                    duration: this.#delay
                 }).onfinish = () => {
                     randomNumber = this.getRandomNumber();
                     backgroundImageUrl = this.#slides[randomNumber]?.getAttribute(name);
                     if (backgroundImageUrl)
                         this.setBackgroundImage(backgroundImageUrl);
-                    this.#sliderImage?.animate(endKeyframes, { duration: delay });
+                    this.#sliderImage?.animate(endKeyframes, { duration: this.#delay });
                 };
             }
-        }, duration);
+        }, this.#duration);
     }
     /**
      * Get a random number between 0 and the number of slides minus 1

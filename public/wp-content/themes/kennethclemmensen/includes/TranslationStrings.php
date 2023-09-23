@@ -21,6 +21,7 @@ final class TranslationStrings {
 	public const IMAGES_PER_PAGE = 'Images per page';
 	public const LINK = 'Link';
 	public const LINKEDIN = 'LinkedIn';
+	public const MOBILE_MENU = 'Mobile menu';
 	public const NEXT = 'Next';
 	public const NO_RESULTS = 'Your search returned no results';
 	public const NUMBER_OF_DOWNLOADS = 'Number of downloads:';
@@ -64,6 +65,7 @@ final class TranslationStrings {
 			pll_register_string(self::IMAGES_PER_PAGE, self::IMAGES_PER_PAGE, $context);
 			pll_register_string(self::LINK, self::LINK, $context);
 			pll_register_string(self::LINKEDIN, self::LINKEDIN, $context);
+			pll_register_string(self::MOBILE_MENU, self::MOBILE_MENU, $context);
 			pll_register_string(self::NEXT, self::NEXT, $context);
 			pll_register_string(self::NO_RESULTS, self::NO_RESULTS, $context);
 			pll_register_string(self::NUMBER_OF_DOWNLOADS, self::NUMBER_OF_DOWNLOADS, $context);

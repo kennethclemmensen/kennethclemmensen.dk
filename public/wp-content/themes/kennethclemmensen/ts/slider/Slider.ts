@@ -1,4 +1,4 @@
-import { SliderAnimation } from './enums/SliderAnimation';
+import { SliderAnimation } from './SliderAnimation';
 
 /**
  * The Slider class contains methods to handle the functionality of the slider
@@ -8,6 +8,9 @@ export class Slider {
 	readonly #slides: HTMLCollectionOf<Element>;
 	readonly #sliderImage: HTMLElement | null;
 	#currentRandomNumber: number;
+	readonly #delay: number;
+	readonly #duration: number;
+	readonly #animation: string;
 
 	/**
 	 * Initialize a new instance of the Slider class
@@ -16,35 +19,38 @@ export class Slider {
 		this.#slides = document.getElementsByClassName('slider__slide');
 		this.#sliderImage = document.getElementById('slider-image');
 		this.#currentRandomNumber = -1;
+		const slider: HTMLElement | null = document.getElementById('slider');
+		const dataset: DOMStringMap | undefined = slider?.dataset;
+		const defaultDelay: number = 500;
+		this.#delay = (dataset?.delay) ? parseInt(dataset.delay) : defaultDelay;
+		const defaultDuration: number = 8000;
+		this.#duration = (dataset?.duration) ? parseInt(dataset.duration) : defaultDuration;
+		this.#animation = dataset?.animation ?? SliderAnimation.Fade;
 	}
 
 	/**
 	 * Show the slides
-	 *
-	 * @param delay the delay between two slides
-	 * @param duration the duration of a slide
-	 * @param animation the animation for the slides
 	 */
-	public showSlides(delay: number, duration: number, animation: string): void {
+	public showSlides(): void {
 		let randomNumber: number = this.getRandomNumber();
 		const name: string = 'data-slide-image';
 		let backgroundImageUrl: string | null | undefined = this.#slides[randomNumber]?.getAttribute(name);
 		if(!backgroundImageUrl) return;
 		this.setBackgroundImage(backgroundImageUrl);
-		const startKeyframes: Keyframe[] = this.getStartKeyframes(animation);
-		const endKeyframes: Keyframe[] = this.getEndKeyframes(animation);
+		const startKeyframes: Keyframe[] = this.getStartKeyframes(this.#animation);
+		const endKeyframes: Keyframe[] = this.getEndKeyframes(this.#animation);
 		setInterval((): void => {
 			if(this.#sliderImage) {
 				this.#sliderImage.animate(startKeyframes, {
-					duration: delay
+					duration: this.#delay
 				}).onfinish = (): void => {
 					randomNumber = this.getRandomNumber();
 					backgroundImageUrl = this.#slides[randomNumber]?.getAttribute(name);
 					if(backgroundImageUrl) this.setBackgroundImage(backgroundImageUrl);
-					this.#sliderImage?.animate(endKeyframes, { duration: delay });
+					this.#sliderImage?.animate(endKeyframes, { duration: this.#delay });
 				};
 			}
-		}, duration);
+		}, this.#duration);
 	}
 
 	/**

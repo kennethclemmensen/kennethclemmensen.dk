@@ -2,12 +2,14 @@
 /**
  * The ThemeSettings class contains methods to handle the theme settings
  */
-final class ThemeSettings extends BaseSettings {
+final class ThemeSettings {
 
+	private readonly TranslationStrings $translationStrings;
 	private readonly ContactSettings $contactSettings;
 	private readonly SliderSettings $sliderSettings;
 	private readonly ScriptSettings $scriptSettings;
 	private readonly GallerySettings $gallerySettings;
+	private readonly MobileMenuSettings $mobileMenuSettings;
 	private readonly string $contactPageSlug;
 	private static ?self $instance = null;
 
@@ -15,11 +17,12 @@ final class ThemeSettings extends BaseSettings {
 	 * ThemeSettings constructor
 	 */
 	private function __construct() {
-		parent::__construct();
+		$this->translationStrings = new TranslationStrings();
 		$this->contactSettings = new ContactSettings();
 		$this->sliderSettings = new SliderSettings();
 		$this->scriptSettings = new ScriptSettings();
 		$this->gallerySettings = new GallerySettings();
+		$this->mobileMenuSettings = new MobileMenuSettings();
 		$this->contactPageSlug = $this->contactSettings->getContactPageSlug();
 		$this->createSettingsPage();
 		$this->registerSettingInputs();
@@ -41,6 +44,51 @@ final class ThemeSettings extends BaseSettings {
 	}
 
 	/**
+	 * Get the number of images per page
+	 *
+	 * @return int the number of images per page
+	 */
+	public function getImagesPerPage() : int {
+		return $this->gallerySettings->getImagesPerPage();
+	}
+
+	/**
+	 * Get the slider delay
+	 * 
+	 * @return int the slider delay
+	 */
+	public function getSliderDelay() : int {
+		return $this->sliderSettings->getSliderDelay();
+	}
+
+	/**
+	 * Get the slider duration
+	 * 
+	 * @return int the slider duration
+	 */
+	public function getSliderDuration() : int {
+		return $this->sliderSettings->getSliderDuration();
+	}
+
+	/**
+	 * Get the slider animation
+	 * 
+	 * @return string the slider animation
+	 */
+	public function getSliderAnimation() : string {
+		return $this->sliderSettings->getSliderAnimation();
+	}
+
+	/**
+	 * Get the mobile menu animation
+	 * 
+	 * @return string the mobile menu animation
+	 */
+	public function getMobileMenuAnimation() : string {
+		return $this->mobileMenuSettings->getMobileMenuAnimation();
+	}
+
+	/**
 	 * Use the admin_menu action to create a settings page
 	 */
 	private function createSettingsPage() : void {
@@ -56,6 +104,7 @@ final class ThemeSettings extends BaseSettings {
 						$scriptsTab = 'scripts';
 						$sliderTab = 'slider';
 						$galleryTab = 'gallery';
+						$mobileMenuTab = 'mobile-menu';
 						$activeTab = (isset($_GET['tab'])) ? $_GET['tab'] : $contactTab;
 						$currentTab = 'nav-tab-active';
 						?>
@@ -75,6 +124,10 @@ final class ThemeSettings extends BaseSettings {
 						   class="nav-tab <?php echo ($activeTab === $galleryTab) ? $currentTab : ''; ?>">
 						   <?php echo $this->translationStrings->getTranslatedString(TranslationStrings::GALLERY); ?>
 						</a>
+						<a href="?page=<?php echo $this->contactPageSlug; ?>&tab=<?php echo $mobileMenuTab; ?>"
+						   class="nav-tab <?php echo ($activeTab === $mobileMenuTab) ? $currentTab : ''; ?>">
+						   <?php echo $this->translationStrings->getTranslatedString(TranslationStrings::MOBILE_MENU); ?>
+						</a>
 					</h2>
 					<form action="options.php" method="post">
 						<?php
@@ -87,6 +140,9 @@ final class ThemeSettings extends BaseSettings {
 								break;
 							case $galleryTab:
 								$this->gallerySettings->showFields();
+								break;
+							case $mobileMenuTab:
+								$this->mobileMenuSettings->showFields();
 								break;
 							default:
 								$this->contactSettings->showFields();
@@ -110,6 +166,7 @@ final class ThemeSettings extends BaseSettings {
 			$this->scriptSettings->createFields();
 			$this->sliderSettings->createFields();
 			$this->gallerySettings->createFields();
+			$this->mobileMenuSettings->createFields();
 		});
 	}
 
@@ -204,41 +261,5 @@ final class ThemeSettings extends BaseSettings {
 	 */
 	private function removeVersionQueryString(string $src) : string {
 		return explode('?ver', $src)[0];
-	}
-
-	/**
-	 * Get the number of images per page
-	 *
-	 * @return int the number of images per page
-	 */
-	public function getImagesPerPage() : int {
-		return $this->gallerySettings->getImagesPerPage();
-	}
-
-	/**
-	 * Get the slider sliderDelay
-	 * 
-	 * @return int the slider sliderDelay
-	 */
-	public function getSliderDelay() : int {
-		return $this->sliderSettings->getSliderDelay();
-	}
-
-	/**
-	 * Get the slider sliderDuration
-	 * 
-	 * @return int the slider sliderDuration
-	 */
-	public function getSliderDuration() : int {
-		return $this->sliderSettings->getSliderDuration();
-	}
-
-	/**
-	 * Get the slider sliderAnimation
-	 * 
-	 * @return string the slider sliderAnimation
-	 */
-	public function getSliderAnimation() : string {
-		return $this->sliderSettings->getSliderAnimation();
 	}
 }

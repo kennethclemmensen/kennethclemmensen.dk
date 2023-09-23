@@ -1,5 +1,5 @@
 import { fromEvent } from 'rxjs';
-import { EventType } from './enums/EventType';
+import { EventType } from '../enums/EventType';
 
 /**
  * The Gallery class contains methods to handle the functionality of the gallery

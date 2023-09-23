@@ -4,19 +4,24 @@
  */
 class BaseSettings {
 
+	protected readonly string $settingsPage;
+	protected readonly string $settingsName;
+	protected readonly array | bool $settings;
 	protected readonly TranslationStrings $translationStrings;
 	protected readonly string $checkboxCheckedValue;
-	protected readonly string $prefix;
-	protected readonly string $postfix;
 
 	/**
 	 * BaseSettings constructor
+	 * 
+	 * @param string $settingsPage the settings page
+	 * @param string $settingsName the settings name
 	 */
-	public function __construct() {
+	protected function __construct(string $settingsPage, string $settingsName) {
+		$this->settingsPage = $settingsPage;
+		$this->settingsName = $settingsName;
+		$this->settings = get_option($this->settingsName);
 		$this->translationStrings = new TranslationStrings();
 		$this->checkboxCheckedValue = 'on';
-		$this->prefix = 'kc-theme-settings-';
-		$this->postfix = '-options';
 	}
 
 	/**

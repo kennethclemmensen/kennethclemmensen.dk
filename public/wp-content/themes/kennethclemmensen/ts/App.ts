@@ -1,49 +1,29 @@
 import { fromEvent } from 'rxjs';
 import { EventType } from './enums/EventType';
-import { HttpMethod } from './enums/HttpMethod';
-import { HttpStatusCode } from './enums/HttpStatusCode';
-import { SliderAnimation } from './enums/SliderAnimation';
 import { FilesApp } from './FilesApp';
-import { Gallery } from './Gallery';
+import { Gallery } from './gallery/Gallery';
 import { SearchApp } from './SearchApp';
-import { Slider } from './Slider';
-import { Shortcut } from './types/Shortcut';
+import { Slider } from './slider/Slider';
+import { Shortcuts } from './shortcuts/Shortcuts';
 
 /**
  * The App class contains methods to handle the functionality of the app
  */
 class App {
 
-	readonly #body: HTMLElement;
-
 	/**
 	 * Initialize a new instance of the App class
 	 */
 	public constructor() {
-		this.#body = document.body;
 		fromEvent(document, EventType.DOMContentLoaded)
 		.subscribe((): void => {
-			this.setupSlider();
 			this.setupMobileMenu();
-			this.setupShortcuts();
+			new Slider().showSlides();
+			new Shortcuts().setupShortcuts();
 			new Gallery();
 			new FilesApp();
 			new SearchApp();
 		});
-	}
-
-	/**
-	 * Setup the slider
-	 */
-	private setupSlider(): void {
-		const slider: HTMLElement | null = document.getElementById('slider');
-		const dataset: DOMStringMap | undefined = slider?.dataset;
-		const defaultDelay: number = 500;
-		const delay: number = (dataset?.delay) ? parseInt(dataset.delay) : defaultDelay;
-		const defaultDuration: number = 8000;
-		const duration: number = (dataset?.duration) ? parseInt(dataset.duration) : defaultDuration;
-		const animation: string = dataset?.animation ?? SliderAnimation.Fade;
-		new Slider().showSlides(delay, duration, animation);
 	}
 
 	/**
@@ -59,7 +39,7 @@ class App {
 			mobileMenuTrigger.classList.toggle('header__mobile-menu-trigger--active');
 			mobileMenu?.classList.toggle('mobile-menu--active');
 			document.documentElement.classList.toggle(showMobileMenuClass);
-			this.#body.classList.toggle(showMobileMenuClass);
+			document.body.classList.toggle(showMobileMenuClass);
 		});
 		const mobileMenuArrows: NodeListOf<HTMLElement> = document.querySelectorAll('.mobile-menu__arrow');
 		mobileMenuArrows.forEach((arrow: HTMLElement): void => {
@@ -70,27 +50,6 @@ class App {
 				subMenu?.classList.toggle('show');
 			});
 		});
-	}
-
-	/**
-	 * Setup the shortcuts
-	 */
-	private setupShortcuts(): void {
-		const xhr: XMLHttpRequest = new XMLHttpRequest();
-		xhr.open(HttpMethod.Get, '/wp-json/kcapi/v1/shortcuts/', true);
-		fromEvent(xhr, EventType.Load).subscribe((): void => {
-			const shortcuts: Shortcut[] = (xhr.status === HttpStatusCode.Ok) ? JSON.parse(xhr.responseText) : [];
-			fromEvent(document, EventType.Keydown).subscribe((event: Event): void => {
-				const e = event as KeyboardEvent;
-				for(const shortcut of shortcuts) {
-					if (e.altKey === shortcut.altKey && e.ctrlKey === shortcut.ctrlKey && e.shiftKey === shortcut.shiftKey && e.key === shortcut.key) {
-						location.href = shortcut.url;
-						break;
-					}
-				}
-			});
-		});
-		xhr.send();
 	}
 }
 
