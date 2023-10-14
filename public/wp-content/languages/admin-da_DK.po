@@ -2,12 +2,12 @@
 # This file is distributed under the same license as the WordPress - 6.3.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-09-19 11:54:24+0000\n"
+"PO-Revision-Date: 2023-10-12 12:32:40+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: GlotPress/4.0.0-alpha.7\n"
+"X-Generator: GlotPress/4.0.0-alpha.9\n"
 "Language: da_DK\n"
 "Project-Id-Version: WordPress - 6.3.x - Development - Administration\n"
 
@@ -38,7 +38,7 @@ msgid "0"
 msgstr "Europe/Copenhagen"
 
 #. translators: %s: WordPress version.
-#: wp-admin/about.php:68
+#: wp-admin/about.php:68 wp-admin/about.php:93
 msgid "https://wordpress.org/support/wordpress-version/version-%s/"
 msgstr "https://wordpress.org/support/wordpress-version/version-%s/"
 
@@ -199,6 +199,11 @@ msgstr "Opgraderingsmappen findes, men kan ikke skrives i"
 msgid "Theme temporary backup directory exists but is not writable"
 msgstr "Temaets midlertidig backup-mappe findes, men kan ikke skrives i."
 
+#. translators: %s: wp-content
+#: wp-admin/includes/class-wp-site-health.php:2026
+msgid "The %s directory cannot be located."
+msgstr "Mappen %s kan ikke findes."
+
 #: wp-admin/includes/class-wp-site-health.php:1989
 msgid "Plugin and theme temporary backup directory is writable"
 msgstr "Den midlertidige backupmappe til plugins og temaer er skrivbar"
@@ -254,22 +259,22 @@ msgid "Table ordered by File Name."
 msgstr "Tabel sorteret efter filnavn."
 
 #. translators: Hidden accessibility text.
-#: wp-admin/includes/class-wp-list-table.php:1552
+#: wp-admin/includes/class-wp-list-table.php:1566
 msgid "Descending."
 msgstr "Faldende."
 
 #. translators: Hidden accessibility text.
-#: wp-admin/includes/class-wp-list-table.php:1550
+#: wp-admin/includes/class-wp-list-table.php:1564
 msgid "Ascending."
 msgstr "Stigende."
 
 #. translators: Hidden accessibility text.
-#: wp-admin/includes/class-wp-list-table.php:1451
+#: wp-admin/includes/class-wp-list-table.php:1465
 msgid "Sort descending."
 msgstr "Sorterer efter faldende."
 
 #. translators: Hidden accessibility text.
-#: wp-admin/includes/class-wp-list-table.php:1449
+#: wp-admin/includes/class-wp-list-table.php:1463
 msgid "Sort ascending."
 msgstr "Sorterer efter stigende."
 
@@ -395,11 +400,11 @@ msgstr "Bliv en del af WordPress' bidragsyderfællesskabet, og mød andre, der b
 msgid "Be the future of WordPress"
 msgstr "Vær fremtiden for WordPress"
 
-#: wp-admin/about.php:176
+#: wp-admin/about.php:201
 msgid "Performance gets a boost"
 msgstr "Ydeevnen får et boost"
 
-#: wp-admin/about.php:101
+#: wp-admin/about.php:126
 msgid "Do everything in the Site Editor"
 msgstr "Gør alt i webstedseditoren"
 
@@ -551,12 +556,12 @@ msgid "<a href=\"https://wordpress.org/documentation/article/customizer/\">Docum
 msgstr "<a href=\"https://wordpress.org/documentation/article/customizer/\">Dokumentation om Tilpasser</a>"
 
 #. translators: The localized WordPress download URL.
-#: wp-admin/about.php:408
+#: wp-admin/about.php:433
 msgid "https://wordpress.org/download/"
 msgstr "https://da.wordpress.org/download/"
 
 #. translators: %s: The major version of WordPress for this branch.
-#: wp-admin/about.php:405
+#: wp-admin/about.php:430
 msgid "This is the final release of WordPress %s"
 msgstr "Dette er den endelige udgave af WordPress %s"
 
@@ -655,21 +660,21 @@ msgid "Theme Styles & Block Settings"
 msgstr "Teamets Stilart & Blokke indstillinger"
 
 #. translators: %s: The minimum recommended PHP version.
-#: wp-admin/includes/dashboard.php:1888
+#: wp-admin/includes/dashboard.php:1897
 msgid "The minimum recommended version of PHP is %s."
 msgstr "Den mindste anbefalede version af PHP er %s."
 
-#: wp-admin/includes/dashboard.php:1883
+#: wp-admin/includes/dashboard.php:1892
 msgid "PHP is one of the programming languages used to build WordPress. Newer versions of PHP receive regular security updates and may increase your site&#8217;s performance."
 msgstr "PHP er et af de programmeringssprog, der bruges til at bygge WordPress. Nyere versioner af PHP modtager regelmæssige sikkerhedsopdateringer og kan øge dit websteds ydeevne."
 
 #. translators: %s: The server PHP version.
-#: wp-admin/includes/dashboard.php:1868
+#: wp-admin/includes/dashboard.php:1877
 msgid "Your site is running on an outdated version of PHP (%s), which soon will not be supported by WordPress. Ensure that PHP is updated on your server as soon as possible. Otherwise you will not be able to upgrade WordPress."
 msgstr "Dit websted kører på en forældet version af PHP (%s), som snart ikke vil blive understøttet af WordPress. Sørg for at PHP opdateres på din server så hurtigt som muligt. Ellers vil du ikke kunne opgradere WordPress."
 
 #. translators: %s: The server PHP version.
-#: wp-admin/includes/dashboard.php:1855
+#: wp-admin/includes/dashboard.php:1864
 msgid "Your site is running on an outdated version of PHP (%s), which does not receive security updates and soon will not be supported by WordPress. Ensure that PHP is updated on your server as soon as possible. Otherwise you will not be able to upgrade WordPress."
 msgstr "Dit websted kører på en forældet version af PHP (%s), som ikke modtager sikkerhedsopdateringer og snart ikke vil blive understøttet af WordPress. Sørg for at PHP opdateres på din server så hurtigt som muligt. Ellers vil du ikke kunne opgradere WordPress."
 
@@ -823,7 +828,7 @@ msgstr "Ved test af REST API, opstod der en fejl:"
 
 #. translators: %s: The server PHP version.
 #: wp-admin/includes/class-wp-site-health.php:817
-#: wp-admin/includes/dashboard.php:1861
+#: wp-admin/includes/dashboard.php:1870
 msgid "Your site is running on an outdated version of PHP (%s), which does not receive security updates. It should be updated."
 msgstr "Dit websted kører på en forældet version af PHP (%s), som ikke modtager sikkerhedsopdateringer. Den bør opdateres."
 
@@ -892,27 +897,27 @@ msgid "Reach out to WordPress Core developers to ensure you'll never have this p
 msgstr "Tag fat i WordPress Core-udviklere for at sikre, at du aldrig får dette problem igen."
 
 #. translators: 1: WordPress version number, 2: Link to update WordPress
-#: wp-admin/about.php:402
+#: wp-admin/about.php:427
 msgid "Important! Your version of WordPress (%1$s) will stop receiving security updates in the near future. To keep your site secure, please <a href=\"%2$s\">update to the latest version of WordPress</a>."
 msgstr "Vigtigt! Din version af WordPress (%1$s) vil ikke længere modtage sikkerhedsopdateringer i den nærmeste fremtid. For at holde dit websted sikkert, bedes du <a href=\"%2$s\">opdatere til den nyeste version af WordPress</a>."
 
 #. translators: 1: WordPress version number, 2: Link to update WordPress
-#: wp-admin/about.php:399
+#: wp-admin/about.php:424
 msgid "Important! Your version of WordPress (%1$s) is no longer supported, you will not receive any security updates for your website. To keep your site secure, please <a href=\"%2$s\">update to the latest version of WordPress</a>."
 msgstr "Vigtig! Din version af WordPress (%1$s) understøttes ikke længere, du vil ikke modtage sikkerhedsopdateringer til dit websted. For at holde dit websted sikkert skal du <a href=\"%2$s\">opdatere til den nyeste version af WordPress</a>."
 
 #. translators: 1: WordPress Release Notes link, 2: WordPress version number.
-#: wp-admin/about.php:322
+#: wp-admin/about.php:347
 msgid "<a href=\"%1$s\">Read the WordPress %2$s Release Notes</a> for more information on the included enhancements and issues fixed, installation information, developer notes and resources, release contributors, and the list of file changes in this release."
 msgstr "<a href=\"%1$s\">Læs WordPress %2$s Release Notes</a> for mere information om de inkluderede forbedringer og problemer, der er rettet, installationsoplysninger, udviklernoter og -ressourcer, release-bidragydere og listen over filændringer i denne udgivelse."
 
 #. translators: %s: WordPress Field Guide link.
-#: wp-admin/about.php:304
+#: wp-admin/about.php:329
 msgid "Check out the latest version of the <a href=\"%s\">WordPress Field Guide</a>. It is overflowing with detailed developer notes to help you build with WordPress."
 msgstr "Se den seneste version af <a href=\"%s\">WordPress Field Guide</a>. Den er fyldt med detaljerede udviklernoter, der hjælper dig med at bygge med WordPress."
 
 #. translators: %s: Version number.
-#: wp-admin/about.php:274
+#: wp-admin/about.php:299
 msgid "Learn more about WordPress %s"
 msgstr "Lær mere om WordPress %s"
 
@@ -1095,64 +1100,64 @@ msgid_plural "This will grant access to <a href=\"%1$s\">all %2$s sites on the n
 msgstr[0] "Dette giver adgang til <a href=\"%1$s\">dette%2$s websted på netværket, da du har Super Admin-rettigheder</a>."
 msgstr[1] "Dette giver adgang til <a href=\"%1$s\">alle%2$s websteder på netværket, da du har Super Admin-rettigheder</a>."
 
-#: wp-admin/includes/dashboard.php:2105
+#: wp-admin/includes/dashboard.php:2114
 msgid "Learn about block themes"
 msgstr "Få mere at vide om bloktemaer"
 
-#: wp-admin/includes/dashboard.php:2104
+#: wp-admin/includes/dashboard.php:2113
 msgid "There is a new kind of WordPress theme, called a block theme, that lets you build the site you&#8217;ve always wanted &#8212; with blocks and styles."
 msgstr "Der er en ny slags WordPress-tema, kaldet et bloktema, der giver dig mulighed for at bygge det websted, du altid har ønsket - med blokke og typografier."
 
-#: wp-admin/includes/dashboard.php:2103
+#: wp-admin/includes/dashboard.php:2112
 msgid "Discover a new way to build your site."
 msgstr "Opdag en ny måde at bygge dit websted på."
 
-#: wp-admin/includes/dashboard.php:2100
+#: wp-admin/includes/dashboard.php:2109
 msgid "Tweak your site, or give it a whole new look! Get creative &#8212; how about a new color palette or font?"
 msgstr "Juster dit websted, eller giv det et helt nyt udseende! Vær kreativ – hvad med en ny farvepalet eller skrifttype?"
 
-#: wp-admin/includes/dashboard.php:2099
+#: wp-admin/includes/dashboard.php:2108
 msgid "Switch up your site&#8217;s look & feel with Styles"
 msgstr "Skift dit websteds udseende med Typografier"
 
-#: wp-admin/includes/dashboard.php:2087
+#: wp-admin/includes/dashboard.php:2096
 msgid "Open the Customizer"
 msgstr "Åbn Tilpasseren"
 
-#: wp-admin/includes/dashboard.php:2085
+#: wp-admin/includes/dashboard.php:2094
 msgid "Configure your site&#8217;s logo, header, menus, and more in the Customizer."
 msgstr "Indstil webstedets logo, overskrift, menuer og meget mere i Tilpasseren."
 
-#: wp-admin/includes/dashboard.php:2084
+#: wp-admin/includes/dashboard.php:2093
 msgid "Start Customizing"
 msgstr "Kom i gang med at tilpasse"
 
-#: wp-admin/includes/dashboard.php:2082
+#: wp-admin/includes/dashboard.php:2091
 msgid "Open site editor"
 msgstr "Åbn webstedseditor"
 
-#: wp-admin/includes/dashboard.php:2081
+#: wp-admin/includes/dashboard.php:2090
 msgid "Design everything on your site &#8212; from the header down to the footer, all using blocks and patterns."
 msgstr "Design alt på dit websted - fra overskriften ned til sidefoden, det hele ved hjælp af blokke og mønstre."
 
-#: wp-admin/includes/dashboard.php:2080
+#: wp-admin/includes/dashboard.php:2089
 msgid "Customize your entire site with block themes"
 msgstr "Tilpas hele webstedet med bloktemaer"
 
-#: wp-admin/includes/dashboard.php:2070
+#: wp-admin/includes/dashboard.php:2079
 msgid "Add a new page"
 msgstr "Tilføj en ny side"
 
-#: wp-admin/includes/dashboard.php:2069
+#: wp-admin/includes/dashboard.php:2078
 msgid "Block patterns are pre-configured block layouts. Use them to get inspired or create new pages in a flash."
 msgstr "Blokmønstre er forudindstillede bloklayouts. Brug dem til at blive inspireret eller oprette nye sider i en fart."
 
-#: wp-admin/includes/dashboard.php:2068
+#: wp-admin/includes/dashboard.php:2077
 msgid "Author rich content with blocks and patterns"
 msgstr "Opret rigt indhold med blokke og mønstre"
 
 #. translators: %s: Current WordPress version.
-#: wp-admin/includes/dashboard.php:2056
+#: wp-admin/includes/dashboard.php:2065
 msgid "Learn more about the %s version."
 msgstr "Få mere at vide om den %s versionen."
 
@@ -1235,11 +1240,11 @@ msgstr "Kontrolpanelet er det første sted, du kommer til, hver gang du logger i
 msgid "Welcome to your WordPress Dashboard!"
 msgstr "Velkommen til dit WordPress’ kontrolpanel!"
 
-#: wp-admin/includes/user.php:680
+#: wp-admin/includes/user.php:678
 msgid "The application ID must be a UUID."
 msgstr "Program-ID skal være et UUID."
 
-#: wp-admin/includes/dashboard.php:1375
+#: wp-admin/includes/dashboard.php:1384
 msgid "Select location"
 msgstr "Vælg placering"
 
@@ -1407,20 +1412,20 @@ msgstr "Personoplysningerne kan ikke kodes til eksport. Fejl: %s"
 msgid "The %s post meta must be an array."
 msgstr "Den %s postmeta skal være en matrice."
 
-#: wp-admin/includes/dashboard.php:1997
+#: wp-admin/includes/dashboard.php:2006
 msgid "Your site&#8217;s health is looking good, but there is still one thing you can do to improve its performance and security."
 msgstr "Dit websteds helbred ser godt ud, men der er stadig én ting, som du kan gøre for at forbedre dets ydeevne og sikkerhed."
 
-#: wp-admin/includes/dashboard.php:1993
+#: wp-admin/includes/dashboard.php:2002
 msgid "Your site has a critical issue that should be addressed as soon as possible to improve its performance and security."
 msgstr "Dit websted har et kritisk problem, der skal løses så hurtigt som muligt for at forbedre dets ydeevne og sikkerhed."
 
 #. translators: %s: Browse Happy URL.
-#: wp-admin/includes/dashboard.php:1729
+#: wp-admin/includes/dashboard.php:1738
 msgid "Learn how to <a href=\"%s\" class=\"update-browser-link\">browse happy</a>"
 msgstr "Se hvordan du kan <a href=\"%s\" class=\"update-browser-link\">browse happy</a>"
 
-#: wp-admin/includes/dashboard.php:1696
+#: wp-admin/includes/dashboard.php:1705
 msgid "Internet Explorer does not give you the best WordPress experience. Switch to Microsoft Edge, or another more modern browser to get the most from your site."
 msgstr "Internet Explorer giver dig ikke den bedste WordPress-oplevelse. Skift til Microsoft Edge eller en anden mere moderne browser for at få mest muligt ud af dit websted."
 
@@ -1625,21 +1630,21 @@ msgstr "Standarddata"
 msgid "The tool associates data stored in WordPress with a supplied email address, including profile data and comments."
 msgstr "Værktøjet knytter data gemt i WordPress til en opgivet e-mail-adresse, herunder profildata og kommentarer."
 
-#: wp-admin/includes/dashboard.php:1471
+#: wp-admin/includes/dashboard.php:1480
 msgid "https://make.wordpress.org/community/organize-event-landing-page/"
 msgstr "https://make.wordpress.org/community/organize-event-landing-page/"
 
 #. translators: %s: Localized meetup organization documentation URL.
-#: wp-admin/includes/dashboard.php:1470
+#: wp-admin/includes/dashboard.php:1479
 msgid "Want more events? <a href=\"%s\">Help organize the next one</a>!"
 msgstr "Vil du have flere begivenheder? <a href=\"%s\">Hjælp med at planlægge den næste</a>!"
 
 #. translators: %s: User's display name.
-#: wp-admin/includes/ajax-actions.php:5584
+#: wp-admin/includes/ajax-actions.php:5600
 msgid "A password reset link was emailed to %s."
 msgstr "Der blev sendt en mail til et link til nulstilling af adgangskode til %s."
 
-#: wp-admin/includes/ajax-actions.php:5574
+#: wp-admin/includes/ajax-actions.php:5590
 msgid "Cannot send password reset, permission denied."
 msgstr "Der kan ikke sendes nulstilling af adgangskode, da tilladelsen er nægtet."
 
@@ -1758,7 +1763,7 @@ msgid "https://wordpress.org/documentation/article/update-services/"
 msgstr "https://wordpress.org/documentation/article/update-services/"
 
 #. translators: %s: The server PHP version.
-#: wp-admin/includes/dashboard.php:1874
+#: wp-admin/includes/dashboard.php:1883
 msgid "Your site is running on an outdated version of PHP (%s), which should be updated."
 msgstr "Dit websted kører med en ældre version af PHP (%s), som bør opdateres."
 
@@ -1837,7 +1842,7 @@ msgstr "Tilføj en nyt applikation adgangskode"
 msgid "Required to create an Application Password, but not to update the user."
 msgstr "Kræves for at oprette en applikation adgangskode, men ikke for at opdatere brugeren."
 
-#: wp-admin/about.php:343
+#: wp-admin/about.php:368
 msgid "Go to Updates"
 msgstr "Gå til opdateringer"
 
@@ -1870,7 +1875,7 @@ msgstr "Gå til toppen"
 #. examples with cities in your locale, but test that they match the expected
 #. location before including them. Use endonyms (native locale names) whenever
 #. possible.
-#: wp-admin/includes/dashboard.php:1437
+#: wp-admin/includes/dashboard.php:1446
 msgid "%s could not be located. Please try another nearby city. For example: Kansas City; Springfield; Portland."
 msgstr "Vi kunne ikke finde %s. Prøv venligst at finde en anden by tæt på. F.eks. København; Roskilde; Hillerød."
 
@@ -1998,10 +2003,10 @@ msgstr "Senest anvendt"
 
 #. translators: 1: The Site Health action that is no longer used by core. 2:
 #. The new function that replaces it.
-#: wp-admin/includes/ajax-actions.php:5312
-#: wp-admin/includes/ajax-actions.php:5345
-#: wp-admin/includes/ajax-actions.php:5378
-#: wp-admin/includes/ajax-actions.php:5428
+#: wp-admin/includes/ajax-actions.php:5328
+#: wp-admin/includes/ajax-actions.php:5361
+#: wp-admin/includes/ajax-actions.php:5394
+#: wp-admin/includes/ajax-actions.php:5444
 msgid "The Site Health check for %1$s has been replaced with %2$s."
 msgstr "Webstedets helbredstjek for %1$s er blevet erstattet med %2$s."
 
@@ -2051,14 +2056,6 @@ msgstr "Nogle skærmelementer kan vises eller skjules ved hjælp af afkrydsnings
 #: wp-admin/includes/class-wp-screen.php:1116
 msgid "Screen elements"
 msgstr "Skærmelementer"
-
-#: wp-admin/includes/user.php:672
-msgid "The rejection URL must be served over a secure connection."
-msgstr "URL'en for afvisning skal ekspederes via en sikker forbindelse."
-
-#: wp-admin/includes/user.php:661
-msgid "The success URL must be served over a secure connection."
-msgstr "URL'en for at det lykkedes skal ekspederes via en sikker forbindelse."
 
 #. translators: Default privacy policy text.
 #: wp-admin/includes/class-wp-privacy-policy-content.php:571
@@ -2240,7 +2237,7 @@ msgctxt "theme"
 msgid "Activate &#8220;%s&#8221;"
 msgstr "Aktiver &#8220;%s&#8221;"
 
-#: wp-admin/includes/ajax-actions.php:5518
+#: wp-admin/includes/ajax-actions.php:5534
 msgid "Sorry, you are not allowed to modify plugins."
 msgstr "Beklager, du har ikke tilladelse til at ændre plugins."
 
@@ -2488,20 +2485,20 @@ msgctxt "plugin"
 msgid "<strong>Error:</strong> Current versions of WordPress (%1$s) and PHP (%2$s) do not meet minimum requirements for %3$s. The plugin requires WordPress %4$s and PHP %5$s."
 msgstr "<strong>Fejl:</strong> De nuværende versioner af WordPress (%1$s) og PHP (%2$s) opfylder ikke minimumskravene til %3$s. Pluginet kræver WordPress %4$s og PHP %5$s."
 
-#: wp-admin/includes/ajax-actions.php:5540
+#: wp-admin/includes/ajax-actions.php:5556
 msgid "Invalid data. The item does not exist."
 msgstr "Ugyldige data. Emnet findes ikke."
 
-#: wp-admin/includes/ajax-actions.php:5511
-#: wp-admin/includes/ajax-actions.php:5536
+#: wp-admin/includes/ajax-actions.php:5527
+#: wp-admin/includes/ajax-actions.php:5552
 msgid "Invalid data. Unknown type."
 msgstr "Ugyldige data. Ukendt type."
 
-#: wp-admin/includes/ajax-actions.php:5506
+#: wp-admin/includes/ajax-actions.php:5522
 msgid "Invalid data. Unknown state."
 msgstr "Ugyldige data. Ukendt tilstand."
 
-#: wp-admin/includes/ajax-actions.php:5500
+#: wp-admin/includes/ajax-actions.php:5516
 msgid "Invalid data. No selected item."
 msgstr "Ugyldige data. Intet element er markeret."
 
@@ -2688,14 +2685,14 @@ msgstr "Du er ved at uploade en ældre version af det nuværende plugin. Du kan 
 #. translators: 1: Current WordPress version, 2: Version required by the
 #. uploaded plugin.
 #: wp-admin/includes/class-plugin-installer-skin.php:280
-#: wp-admin/includes/class-plugin-upgrader.php:476
+#: wp-admin/includes/class-plugin-upgrader.php:512
 msgid "Your WordPress version is %1$s, however the uploaded plugin requires %2$s."
 msgstr "Din WordPress-version er %1$s, men det overførte plugin kræver %2$s."
 
 #. translators: 1: Current PHP version, 2: Version required by the uploaded
 #. plugin.
 #: wp-admin/includes/class-plugin-installer-skin.php:268
-#: wp-admin/includes/class-plugin-upgrader.php:465
+#: wp-admin/includes/class-plugin-upgrader.php:501
 msgid "The PHP version on your server is %1$s, however the uploaded plugin requires %2$s."
 msgstr "PHP-versionen på din server er %1$s, men det plugin, du har overført, kræver version %2$s."
 
@@ -2961,30 +2958,30 @@ msgid "This localized version contains both the translation and various other lo
 msgstr "Denne sprogversionerede udgave indeholder både oversættelsen og andre sprogrettelser."
 
 #. translators: 1: Number of issues. 2: URL to Site Health screen.
-#: wp-admin/includes/dashboard.php:2009
+#: wp-admin/includes/dashboard.php:2018
 msgid "Take a look at the <strong>%1$d item</strong> on the <a href=\"%2$s\">Site Health screen</a>."
 msgid_plural "Take a look at the <strong>%1$d items</strong> on the <a href=\"%2$s\">Site Health screen</a>."
 msgstr[0] "Tag et kik på <strong>%1$d elementet</strong> på <a href=\"%2$s\">Skærmbilledet med webstedets helbred</a>."
 msgstr[1] "Tag et kik på <strong>%1$d elementerne</strong> på <a href=\"%2$s\">Skærmbilledet med webstedets sundhed</a>."
 
-#: wp-admin/includes/dashboard.php:1999
+#: wp-admin/includes/dashboard.php:2008
 msgid "Your site&#8217;s health is looking good, but there are still some things you can do to improve its performance and security."
 msgstr "Dit websteds helbred har det godt, men der er stadig nogle ting, som du kan gøre for at forbedre ydelsen og sikkerheden."
 
-#: wp-admin/includes/dashboard.php:1991
+#: wp-admin/includes/dashboard.php:2000
 msgid "Great job! Your site currently passes all site health checks."
 msgstr "Godt gået! Dit websted klarer lige nu alle helbredstjek uden problemer."
 
-#: wp-admin/includes/dashboard.php:1995
+#: wp-admin/includes/dashboard.php:2004
 msgid "Your site has critical issues that should be addressed as soon as possible to improve its performance and security."
 msgstr "Dit websted har nogle kritiske problemer, der bør tages hånd om så hurtigt som muligt for at forbedre webstedets ydelse og sikkerhed."
 
 #. translators: %s: URL to Site Health screen.
-#: wp-admin/includes/dashboard.php:1983
+#: wp-admin/includes/dashboard.php:1992
 msgid "Site health checks will automatically run periodically to gather information about your site. You can also <a href=\"%s\">visit the Site Health screen</a> to gather information about your site now."
 msgstr "Webstedshelbred vil automatisk køre med mellemrum for at samle information om dit websted. Du kan også <a href=\"%s\">besøge skærmbilledet med Webstedshelbred</a> for at samle information om dit websted lige nu."
 
-#: wp-admin/includes/dashboard.php:1970
+#: wp-admin/includes/dashboard.php:1979
 msgid "No information yet&hellip;"
 msgstr "Ingen information endnu&hellip;"
 
@@ -3232,7 +3229,7 @@ msgstr "<a href=\"https://wordpress.org/documentation/article/users-add-new-scre
 msgid "This page can show you every detail about the configuration of your WordPress website. For any improvements that could be made, see the <a href=\"%s\">Site Health Status</a> page."
 msgstr "Denne side kan vise dig alle detaljer omkring konfigurationen af dit WordPress websted. Se siden <a href=\"%s\"> Webstedets sundhedsstatus </a> for eventuelle forbedringer."
 
-#: wp-admin/includes/dashboard.php:1972 wp-admin/site-health.php:127
+#: wp-admin/includes/dashboard.php:1981 wp-admin/site-health.php:127
 msgid "Results are still loading&hellip;"
 msgstr "Resultater hentes stadig&hellip;"
 
@@ -3390,7 +3387,7 @@ msgstr "https://wordpress.org/documentation/article/introduction-to-blogging/#ma
 msgid "https://wordpress.org/documentation/article/introduction-to-blogging/#comments"
 msgstr "https://wordpress.org/documentation/article/introduction-to-blogging/#comments"
 
-#: wp-admin/includes/dashboard.php:2105
+#: wp-admin/includes/dashboard.php:2114
 msgid "https://wordpress.org/documentation/article/block-themes/"
 msgstr "https://wordpress.org/documentation/article/block-themes/"
 
@@ -3780,17 +3777,17 @@ msgid "The authenticity of %s could not be verified as signature verification is
 msgstr "%s kan ikke verificeres som ægte da verifikation af signaturer ikke er tilgængeligt på dette system."
 
 #. translators: %s: Eraser friendly name.
-#: wp-admin/includes/ajax-actions.php:5187
+#: wp-admin/includes/ajax-actions.php:5203
 msgid "Eraser callback is not valid: %s."
 msgstr "Eraser callback er ikke gyldig: %s."
 
 #. translators: %s: Eraser friendly name.
-#: wp-admin/includes/ajax-actions.php:5177
+#: wp-admin/includes/ajax-actions.php:5193
 msgid "Eraser does not include a callback: %s."
 msgstr "Eraser inkluderer ikke et callback: %s."
 
-#: wp-admin/includes/ajax-actions.php:4899
-#: wp-admin/includes/ajax-actions.php:5090
+#: wp-admin/includes/ajax-actions.php:4915
+#: wp-admin/includes/ajax-actions.php:5106
 msgid "Sorry, you are not allowed to perform this action."
 msgstr "Du har desværre ikke rettigheder til at udføre denne handling."
 
@@ -5019,11 +5016,11 @@ msgid "You cannot install because <a href=\"%1$s\">WordPress %2$s</a> requires P
 msgstr "Du kan ikke installere fordi <a href=\"%1$s\">WordPress %2$s</a> kræver PHP-version %3$s eller højere. Du bruger version %4$s."
 
 #: wp-admin/includes/class-wp-site-health.php:751
-#: wp-admin/includes/dashboard.php:1900
+#: wp-admin/includes/dashboard.php:1909
 msgid "Learn more about updating PHP"
 msgstr "Lær mere om at opdatere PHP"
 
-#: wp-admin/includes/dashboard.php:1881
+#: wp-admin/includes/dashboard.php:1890
 msgid "What is PHP and how does it affect my site?"
 msgstr "Hvad er PHP og hvordan påvirker det mit websted?"
 
@@ -5712,7 +5709,7 @@ msgid "Report generated for"
 msgstr "Rapport genereret for"
 
 #. translators: %s: Exporter array index.
-#: wp-admin/includes/ajax-actions.php:4983
+#: wp-admin/includes/ajax-actions.php:4999
 msgid "Exporter array at index %s does not include a friendly name."
 msgstr "Eksportering array på index %s mangler et friendly name."
 
@@ -5724,72 +5721,72 @@ msgstr "Beklager, du har ikke tilladelse til at slette data fra dette websted."
 msgid "Sorry, you are not allowed to export personal data on this site."
 msgstr "Beklager, men du har ikke tilladelse til at eksportere personlige på dette websted."
 
-#: wp-admin/includes/ajax-actions.php:5150
+#: wp-admin/includes/ajax-actions.php:5166
 msgid "Eraser index is out of range."
 msgstr "Slette index er uden for rækkefølge."
 
-#: wp-admin/includes/ajax-actions.php:5109
+#: wp-admin/includes/ajax-actions.php:5125
 msgid "Missing eraser index."
 msgstr "Mangler slette index."
 
 #. translators: %s: Exporter friendly name.
-#: wp-admin/includes/ajax-actions.php:5034
+#: wp-admin/includes/ajax-actions.php:5050
 msgid "Expected done (boolean) in response array from exporter: %s."
 msgstr "Forventet færdig (boolean) i svar-array fra eksporter: %s."
 
 #. translators: %s: Exporter friendly name.
-#: wp-admin/includes/ajax-actions.php:5027
+#: wp-admin/includes/ajax-actions.php:5043
 msgid "Expected data array in response array from exporter: %s."
 msgstr "Forventet data array i svar-array fra eksporter: %s."
 
 #. translators: %s: Exporter friendly name.
-#: wp-admin/includes/ajax-actions.php:5020
+#: wp-admin/includes/ajax-actions.php:5036
 msgid "Expected data in response array from exporter: %s."
 msgstr "Forventede data i svar-array fra eksporter: %s."
 
 #. translators: %s: Exporter friendly name.
-#: wp-admin/includes/ajax-actions.php:5013
+#: wp-admin/includes/ajax-actions.php:5029
 msgid "Expected response as an array from exporter: %s."
 msgstr "Forventet svar som et array fra eksporter: %s."
 
 #. translators: %s: Exporter friendly name.
-#: wp-admin/includes/ajax-actions.php:4999
+#: wp-admin/includes/ajax-actions.php:5015
 msgid "Exporter callback is not a valid callback: %s."
 msgstr "Eksportering callback er ikke et gyldigt callback: %s."
 
 #. translators: %s: Exporter friendly name.
-#: wp-admin/includes/ajax-actions.php:4992
+#: wp-admin/includes/ajax-actions.php:5008
 msgid "Exporter does not include a callback: %s."
 msgstr "Eksporter har ikke et callback: %s."
 
 #. translators: %s: Exporter array index.
-#: wp-admin/includes/ajax-actions.php:4976
+#: wp-admin/includes/ajax-actions.php:4992
 msgid "Expected an array describing the exporter at index %s."
 msgstr "Forventede et array der beskriver eksporteren på index %s."
 
-#: wp-admin/includes/ajax-actions.php:4962
+#: wp-admin/includes/ajax-actions.php:4978
 msgid "Exporter index is out of range."
 msgstr "Eksporter index uden for rækkevidde."
 
-#: wp-admin/includes/ajax-actions.php:4958
+#: wp-admin/includes/ajax-actions.php:4974
 msgid "Exporter index cannot be negative."
 msgstr "Eksporter index kan ikke være negativ."
 
-#: wp-admin/includes/ajax-actions.php:4952
+#: wp-admin/includes/ajax-actions.php:4968
 msgid "An exporter has improperly used the registration filter."
 msgstr "En eksporter har på forkert en måde brugt registreringsfilteret."
 
-#: wp-admin/includes/ajax-actions.php:4923
-#: wp-admin/includes/ajax-actions.php:5115
+#: wp-admin/includes/ajax-actions.php:4939
+#: wp-admin/includes/ajax-actions.php:5131
 msgid "Missing page index."
 msgstr "Mangler side index."
 
-#: wp-admin/includes/ajax-actions.php:4917
+#: wp-admin/includes/ajax-actions.php:4933
 msgid "Missing exporter index."
 msgstr "Mangler eksporter index."
 
-#: wp-admin/includes/ajax-actions.php:4908
-#: wp-admin/includes/ajax-actions.php:5099
+#: wp-admin/includes/ajax-actions.php:4924
+#: wp-admin/includes/ajax-actions.php:5115
 msgid "Invalid request type."
 msgstr "Ugyldig forespørgselstype."
 
@@ -5910,7 +5907,7 @@ msgstr "Personlige data eksport"
 msgid "Personal Data Export for %s"
 msgstr "Personlige data eksport for %s"
 
-#: wp-admin/includes/ajax-actions.php:4913
+#: wp-admin/includes/ajax-actions.php:4929
 msgid "A valid email address must be given."
 msgstr "En gyldig e-mailadresse skal angives."
 
@@ -5981,61 +5978,61 @@ msgstr "Bekræftelsesanmodning sendt igen uden problemer."
 msgid "Unable to initiate confirmation request."
 msgstr "Kunne ikke igangsætte bekræftelsesanmodning."
 
-#: wp-admin/includes/ajax-actions.php:4895
-#: wp-admin/includes/ajax-actions.php:5085
+#: wp-admin/includes/ajax-actions.php:4911
+#: wp-admin/includes/ajax-actions.php:5101
 msgid "Invalid request ID."
 msgstr "Ugyldig forespørgsel ID."
 
 #. translators: 1: Eraser friendly name, 2: Eraser array index.
-#: wp-admin/includes/ajax-actions.php:5259
+#: wp-admin/includes/ajax-actions.php:5275
 msgid "Expected done flag in response array from %1$s eraser (index %2$d)."
 msgstr "Forventet afsluttet flag i svar array fra %1$s sletter (index %2$d)."
 
 #. translators: 1: Eraser friendly name, 2: Eraser array index.
-#: wp-admin/includes/ajax-actions.php:5248
+#: wp-admin/includes/ajax-actions.php:5264
 msgid "Expected messages key to reference an array in response array from %1$s eraser (index %2$d)."
 msgstr "Forventede beskeder nøgle til reference i et array i svar array fra %1$s sletter (index %2$d)."
 
 #. translators: 1: Eraser friendly name, 2: Eraser array index.
-#: wp-admin/includes/ajax-actions.php:5237
+#: wp-admin/includes/ajax-actions.php:5253
 msgid "Expected messages key in response array from %1$s eraser (index %2$d)."
 msgstr "Forventede beskeder nøgle i svar array fra %1$s sletter (index %2$d)."
 
 #. translators: 1: Eraser friendly name, 2: Eraser array index.
-#: wp-admin/includes/ajax-actions.php:5226
+#: wp-admin/includes/ajax-actions.php:5242
 msgid "Expected items_retained key in response array from %1$s eraser (index %2$d)."
 msgstr "Forventede items_retained nøgle i svar array fra %1$s sletter (index %2$d)."
 
 #. translators: 1: Eraser friendly name, 2: Eraser array index.
-#: wp-admin/includes/ajax-actions.php:5215
+#: wp-admin/includes/ajax-actions.php:5231
 msgid "Expected items_removed key in response array from %1$s eraser (index %2$d)."
 msgstr "Forventede items_removed nøgle i svar array fra %1$s sletter (index %2$d)."
 
 #. translators: 1: Eraser friendly name, 2: Eraser array index.
-#: wp-admin/includes/ajax-actions.php:5204
+#: wp-admin/includes/ajax-actions.php:5220
 msgid "Did not receive array from %1$s eraser (index %2$d)."
 msgstr "Modtog ikke array fra %1$s sletter (index %2$d)."
 
 #. translators: %d: Eraser array index.
-#: wp-admin/includes/ajax-actions.php:5168
+#: wp-admin/includes/ajax-actions.php:5184
 msgid "Eraser array at index %d does not include a friendly name."
 msgstr "Sletter array ved index %d har ikke et friendly name."
 
 #. translators: %d: Eraser array index.
-#: wp-admin/includes/ajax-actions.php:5163
+#: wp-admin/includes/ajax-actions.php:5179
 msgid "Expected an array describing the eraser at index %d."
 msgstr "Forventede et array der beskriver sletteren ved index %d."
 
-#: wp-admin/includes/ajax-actions.php:4966
-#: wp-admin/includes/ajax-actions.php:5154
+#: wp-admin/includes/ajax-actions.php:4982
+#: wp-admin/includes/ajax-actions.php:5170
 msgid "Page index cannot be less than one."
 msgstr "Side index kan ikke være mindre end én."
 
-#: wp-admin/includes/ajax-actions.php:5146
+#: wp-admin/includes/ajax-actions.php:5162
 msgid "Eraser index cannot be less than one."
 msgstr "Sletter index kan ikke være mindre end én."
 
-#: wp-admin/includes/ajax-actions.php:5105
+#: wp-admin/includes/ajax-actions.php:5121
 msgid "Invalid email address in request."
 msgstr "Ugyldig e-mailadresse i anmodning."
 
@@ -6324,7 +6321,7 @@ msgstr "Kunne ikke skrive til filen."
 
 #. translators: If a Rosetta site exists (e.g. https://es.wordpress.org/news/),
 #. then use that. Otherwise, leave untranslated.
-#: wp-admin/includes/dashboard.php:1327
+#: wp-admin/includes/dashboard.php:1336
 msgctxt "Events and News dashboard widget"
 msgid "https://wordpress.org/news/"
 msgstr "https://wordpress.org/news/"
@@ -6427,32 +6424,32 @@ msgstr "Rediger bruger %s"
 msgid "Edit widget: %s"
 msgstr "Rediger widget: %s"
 
-#: wp-admin/includes/dashboard.php:1487 wp-admin/includes/dashboard.php:1496
+#: wp-admin/includes/dashboard.php:1496 wp-admin/includes/dashboard.php:1505
 msgid "https://make.wordpress.org/community/handbook/meetup-organizer/welcome/"
 msgstr "https://make.wordpress.org/community/handbook/meetup-organizer/welcome/"
 
 #. translators: %s: The name of a city.
-#: wp-admin/includes/dashboard.php:1423
+#: wp-admin/includes/dashboard.php:1432
 msgid "Attend an upcoming event near %s."
 msgstr "Deltag i et kommende arrangement i nærheden af %s."
 
-#: wp-admin/includes/dashboard.php:1393
+#: wp-admin/includes/dashboard.php:1402
 msgid "Cincinnati"
 msgstr "København"
 
-#: wp-admin/includes/dashboard.php:1381
+#: wp-admin/includes/dashboard.php:1390
 msgid "City:"
 msgstr "By:"
 
-#: wp-admin/includes/dashboard.php:1315
+#: wp-admin/includes/dashboard.php:1324
 msgid "WordCamps"
 msgstr "WordCamps"
 
-#: wp-admin/includes/dashboard.php:1303
+#: wp-admin/includes/dashboard.php:1312
 msgid "Meetups"
 msgstr "Meetups"
 
-#: wp-admin/includes/dashboard.php:1352 wp-admin/js/dashboard.js:585
+#: wp-admin/includes/dashboard.php:1361 wp-admin/js/dashboard.js:585
 msgid "An error occurred. Please try again."
 msgstr "Der opstod en fejl. Prøv venligst igen."
 
@@ -6696,7 +6693,7 @@ msgstr "Du har desværre ikke tilladelse til at tilføje brugere til dette netv�
 msgid "Sorry, you are not allowed to edit this changeset."
 msgstr "Beklager, du har ikke ret til at redigere dette ændringssæt."
 
-#: wp-admin/includes/ajax-actions.php:4313 wp-admin/update.php:207
+#: wp-admin/includes/ajax-actions.php:4329 wp-admin/update.php:207
 #: wp-admin/update.php:230
 msgid "Sorry, you are not allowed to update themes for this site."
 msgstr "Du har desværre ikke tilladelse til at opdatere temaer på dette websted."
@@ -6803,7 +6800,7 @@ msgstr "Portefølje"
 msgid "Photography"
 msgstr "Fotografi"
 
-#: wp-admin/includes/dashboard.php:1328 wp-admin/includes/theme.php:319
+#: wp-admin/includes/dashboard.php:1337 wp-admin/includes/theme.php:319
 msgid "News"
 msgstr "Nyheder"
 
@@ -6902,37 +6899,37 @@ msgstr "Du har desværre ikke tilladelse til at redigere links på dette websted
 msgid "Sorry, you are not allowed to manage privacy options on this site."
 msgstr "Beklager, du har ikke tilladelse til at håndtere privatlivsindstillinger på dette websted."
 
-#: wp-admin/includes/ajax-actions.php:4738
+#: wp-admin/includes/ajax-actions.php:4754
 msgid "Plugin could not be deleted."
 msgstr "Plugin kunne ikke slettes."
 
-#: wp-admin/includes/ajax-actions.php:4592 wp-admin/update.php:29
+#: wp-admin/includes/ajax-actions.php:4608 wp-admin/update.php:29
 #: wp-admin/update.php:57 wp-admin/update.php:80
 msgid "Sorry, you are not allowed to update plugins for this site."
 msgstr "Du har desværre ikke tilladelse til at opdatere plugins på dette websted."
 
-#: wp-admin/includes/ajax-actions.php:4468
-#: wp-admin/includes/ajax-actions.php:4577
-#: wp-admin/includes/ajax-actions.php:4685
+#: wp-admin/includes/ajax-actions.php:4484
+#: wp-admin/includes/ajax-actions.php:4593
+#: wp-admin/includes/ajax-actions.php:4701
 msgid "No plugin specified."
 msgstr "Intet plugin angivet."
 
-#: wp-admin/includes/ajax-actions.php:4444
+#: wp-admin/includes/ajax-actions.php:4460
 msgid "Theme could not be deleted."
 msgstr "Temaet kunne ikke slettes."
 
-#: wp-admin/includes/ajax-actions.php:4406
+#: wp-admin/includes/ajax-actions.php:4422
 msgid "Sorry, you are not allowed to delete themes on this site."
 msgstr "Du har desværre ikke tilladelse til at slette temaer på dette websted."
 
-#: wp-admin/includes/ajax-actions.php:4186 wp-admin/theme-install.php:16
+#: wp-admin/includes/ajax-actions.php:4202 wp-admin/theme-install.php:16
 #: wp-admin/update.php:258 wp-admin/update.php:300 wp-admin/update.php:334
 msgid "Sorry, you are not allowed to install themes on this site."
 msgstr "Du har desværre ikke tilladelse til at installere temaer på dette websted."
 
-#: wp-admin/includes/ajax-actions.php:4173
-#: wp-admin/includes/ajax-actions.php:4299
-#: wp-admin/includes/ajax-actions.php:4394
+#: wp-admin/includes/ajax-actions.php:4189
+#: wp-admin/includes/ajax-actions.php:4315
+#: wp-admin/includes/ajax-actions.php:4410
 msgid "No theme specified."
 msgstr "Intet tema angivet."
 
@@ -7235,12 +7232,12 @@ msgstr "Dato-skabelon"
 msgid "Taxonomy Template"
 msgstr "Taksonomi-skabelon"
 
-#: wp-admin/includes/dashboard.php:1743
+#: wp-admin/includes/dashboard.php:1752
 msgid "Dismiss the browser warning panel"
 msgstr "Afvis advarselspanelet for browser"
 
 #. translators: Hidden accessibility text.
-#: wp-admin/includes/dashboard.php:1113
+#: wp-admin/includes/dashboard.php:1122
 msgid "View more comments"
 msgstr "Vis flere kommentarer"
 
@@ -7331,16 +7328,16 @@ msgctxt "attachment filter"
 msgid "Trash"
 msgstr "Papirkurv"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:820
+#: wp-admin/includes/class-wp-comments-list-table.php:833
 msgid "Quick edit this comment inline"
 msgstr "Lynrediger denne kommentar inline"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:808
+#: wp-admin/includes/class-wp-comments-list-table.php:821
 #: wp-admin/includes/dashboard.php:751
 msgid "Edit this comment"
 msgstr "Rediger denne kommentar"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:771
+#: wp-admin/includes/class-wp-comments-list-table.php:784
 msgid "Restore this comment from the spam"
 msgstr "Genskab denne kommentar fra spam"
 
@@ -7404,7 +7401,7 @@ msgid "(Currently set to: %s)"
 msgstr "(på nuværende tidspunkt sat til: %s)"
 
 #. translators: %s: WordPress version number.
-#: wp-admin/about.php:373
+#: wp-admin/about.php:398
 msgid "<strong>Version %s</strong> addressed one security issue."
 msgstr "<strong>Version %s</strong> tog hånd om ét sikkerhedsproblem."
 
@@ -7416,15 +7413,15 @@ msgstr "https://da.gravatar.com/"
 msgid "Profile Picture"
 msgstr "Profilbillede"
 
-#: wp-admin/about.php:370
+#: wp-admin/about.php:48 wp-admin/about.php:395
 msgid "Maintenance and Security Releases"
 msgstr "Vedligeholdelses- og sikkerhedsudgivelser"
 
-#: wp-admin/about.php:367
+#: wp-admin/about.php:392
 msgid "Security Releases"
 msgstr "Sikkerhedsudgivelser"
 
-#: wp-admin/about.php:364
+#: wp-admin/about.php:389
 msgid "Maintenance Releases"
 msgstr "Vedligeholdelsesudgivelser"
 
@@ -7801,7 +7798,7 @@ msgid "Network Active"
 msgstr "Aktiveret på netværk"
 
 #. translators: Hidden accessibility text.
-#: wp-admin/includes/class-wp-list-table.php:900
+#: wp-admin/includes/class-wp-list-table.php:914
 msgid "No pending comments"
 msgstr "Ingen afventende kommentarer"
 
@@ -7952,7 +7949,7 @@ msgstr "Kommentarer (%s)"
 msgid "Comments (%1$s) on &#8220;%2$s&#8221;"
 msgstr "Kommentarer (%1$s) til &#8220;%2$s&#8221;"
 
-#: wp-admin/includes/ajax-actions.php:5528
+#: wp-admin/includes/ajax-actions.php:5544
 msgid "Sorry, you are not allowed to modify themes."
 msgstr "Du har desværre ikke tilladelse til at ændre temaer."
 
@@ -7997,7 +7994,7 @@ msgid "You will need this password to log&nbsp;in. Please store it in a secure l
 msgstr "Du skal bruge denne adgangskode til at logge ind. Opbevar det venligst et sikkert sted."
 
 #. translators: Hidden accessibility text.
-#: wp-admin/includes/class-wp-list-table.php:867
+#: wp-admin/includes/class-wp-list-table.php:881
 msgid "No approved comments"
 msgstr "Ingen godkendte kommentarer"
 
@@ -8015,7 +8012,7 @@ msgid_plural "%s approved comments"
 msgstr[0] "%s godkendt kommentar"
 msgstr[1] "%s godkendte kommentarer"
 
-#: wp-admin/includes/ajax-actions.php:3997
+#: wp-admin/includes/ajax-actions.php:4013
 msgid "Image could not be processed."
 msgstr "Billede kunne ikke behandles."
 
@@ -8031,9 +8028,9 @@ msgstr "Mens du ændrer filen %1$s, så brug et øjeblik på at sørge for, at d
 
 #. translators: Hidden accessibility text.
 #: wp-admin/includes/class-wp-application-passwords-list-table.php:258
-#: wp-admin/includes/class-wp-comments-list-table.php:881
+#: wp-admin/includes/class-wp-comments-list-table.php:894
 #: wp-admin/includes/class-wp-list-table.php:650
-#: wp-admin/includes/class-wp-list-table.php:1773
+#: wp-admin/includes/class-wp-list-table.php:1787
 #: wp-admin/includes/update.php:957
 msgid "Show more details"
 msgstr "Vis for flere detaljer"
@@ -8417,11 +8414,11 @@ msgstr "Brugernavne må kun indholde alfanumeriske tegn, mellemrum, understregni
 msgid "Enable full-height editor and distraction-free functionality."
 msgstr "Aktiver fuld højde i editoren og distraktionsfri funktionalitet."
 
-#: wp-admin/includes/dashboard.php:1564
+#: wp-admin/includes/dashboard.php:1573
 msgid "https://planet.wordpress.org/feed/"
 msgstr "https://planet.wordpress.org/feed/"
 
-#: wp-admin/includes/dashboard.php:1555 wp-admin/index.php:98
+#: wp-admin/includes/dashboard.php:1564 wp-admin/index.php:98
 msgid "https://planet.wordpress.org/"
 msgstr "https://planet.wordpress.org/"
 
@@ -8439,15 +8436,15 @@ msgid "Filter by comment type"
 msgstr "Filtrer efter kommentartype"
 
 #. translators: %s: User's display name.
-#: wp-admin/includes/ajax-actions.php:3972
+#: wp-admin/includes/ajax-actions.php:3988
 msgid "%s has been logged out."
 msgstr "%s er blevet logget ud."
 
-#: wp-admin/includes/ajax-actions.php:3968
+#: wp-admin/includes/ajax-actions.php:3984
 msgid "You are now logged out everywhere else."
 msgstr "Du er nu logget ud ved alle andre placeringer."
 
-#: wp-admin/includes/ajax-actions.php:3959
+#: wp-admin/includes/ajax-actions.php:3975
 msgid "Could not log out user sessions. Please try again."
 msgstr "Kunne ikke logge ud fra brugersessioner. Prøv venligst igen."
 
@@ -8809,12 +8806,12 @@ msgid "If you would like to see more themes to choose from, click on the &#8220;
 msgstr "Hvis du ønsker flere temaer at vælge imellem, så klik på knappen &#8220;Tilføj nyt&#8221;, og du vil kunne gennemse eller søge efter yderligere temaer fra <a href=\"%s\">WordPress.org-temabiblioteket</a>. Temaer i WordPress-temabiblioteket er designet og udviklet af tredjeparter, og bruger samme licens som WordPress. Nå ja, og de er gratis!"
 
 #. translators: 1: Number of megabytes, 2: Percentage.
-#: wp-admin/includes/dashboard.php:1662
+#: wp-admin/includes/dashboard.php:1671
 msgid "%1$s MB (%2$s%%) Space Used"
 msgstr "%1$s MB (%2$s%%) plads brugt"
 
 #. translators: %s: Number of megabytes.
-#: wp-admin/includes/dashboard.php:1647
+#: wp-admin/includes/dashboard.php:1656
 msgid "%s MB Space Allowed"
 msgstr "%s MB plads tilladt"
 
@@ -8988,7 +8985,7 @@ msgid "<strong>Screen Options</strong> &mdash; Use the Screen Options tab to cho
 msgstr "<strong>Skærmindstillinger</strong> &mdash; Brug fanebladet Skærmindstillinger for at vælge, hvilke kontrolpanelbokse der skal vises."
 
 #. translators: Hidden accessibility text.
-#: wp-admin/includes/dashboard.php:1655 wp-admin/includes/dashboard.php:1671
+#: wp-admin/includes/dashboard.php:1664 wp-admin/includes/dashboard.php:1680
 msgid "Manage Uploads"
 msgstr "Håndter uploads"
 
@@ -9478,7 +9475,7 @@ msgid "To navigate between revisions, <strong>drag the slider handle left or rig
 msgstr "For at navigere mellem revisionerne, så <strong>træk skydehåndtaget til venstre eller højre</strong> eller <strong>brug Forrige- og Næste knapperne</strong>."
 
 #: wp-admin/customize.php:151 wp-admin/includes/class-wp-debug-data.php:438
-#: wp-admin/includes/dashboard.php:1161 wp-admin/includes/dashboard.php:1359
+#: wp-admin/includes/dashboard.php:1170 wp-admin/includes/dashboard.php:1368
 msgid "Loading&hellip;"
 msgstr "Indlæser&hellip;"
 
@@ -9914,7 +9911,7 @@ msgstr "Dit WordPress.org brugernavn:"
 msgid "If you have marked plugins as favorites on WordPress.org, you can browse them here."
 msgstr "Har du markeret plugins som favoritter på WordPress.org kan du gennemse dem her."
 
-#: wp-admin/includes/dashboard.php:2051
+#: wp-admin/includes/dashboard.php:2060
 msgid "Welcome to WordPress!"
 msgstr "Velkommen til WordPress!"
 
@@ -9977,7 +9974,7 @@ msgid "Contextual Help Tab"
 msgstr "Kontekstuel hjælp-faneblad"
 
 #. translators: Hidden accessibility text.
-#: wp-admin/includes/class-wp-comments-list-table.php:902
+#: wp-admin/includes/class-wp-comments-list-table.php:915
 msgid "Select comment"
 msgstr "Vælg kommentar"
 
@@ -10140,7 +10137,7 @@ msgid "https://wordpress.org/about/"
 msgstr "https://wordpress.org/about/"
 
 #. translators: Hidden accessibility text.
-#: wp-admin/includes/class-wp-list-table.php:1376
+#: wp-admin/includes/class-wp-list-table.php:1390
 #: wp-admin/includes/nav-menu.php:811 wp-admin/includes/nav-menu.php:1106
 #: wp-admin/update-core.php:490 wp-admin/update-core.php:614
 #: wp-admin/update-core.php:666 wp-admin/update-core.php:790
@@ -10188,7 +10185,7 @@ msgid "Plugin"
 msgstr "Plugin"
 
 #: wp-admin/includes/class-wp-comments-list-table.php:373
-#: wp-admin/includes/class-wp-comments-list-table.php:782
+#: wp-admin/includes/class-wp-comments-list-table.php:795
 #: wp-admin/includes/class-wp-media-list-table.php:184
 #: wp-admin/includes/class-wp-media-list-table.php:778
 #: wp-admin/includes/class-wp-posts-list-table.php:438
@@ -10588,13 +10585,13 @@ msgstr "Vis værktøjslinje på webstedet"
 
 #. translators: %s: HelpHub URL.
 #. translators: %s: Documentation URL.
-#: wp-admin/about.php:65 wp-admin/about.php:396
+#: wp-admin/about.php:65 wp-admin/about.php:90 wp-admin/about.php:421
 msgid "For more information, see <a href=\"%s\">the release notes</a>."
 msgstr "Hvis du vil vide mere, så læs <a href=\"%s\">udgivelsesnoterne</a>."
 
 #. translators: 1: WordPress version number, 2: Plural number of bugs. More
 #. than one security issue.
-#: wp-admin/about.php:390
+#: wp-admin/about.php:53 wp-admin/about.php:415
 msgid "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bugs."
 msgstr[0] "<strong>Version %1$s</strong> lukkede nogle sikkerhedshuller og rettede %2$s fejl."
@@ -10602,33 +10599,33 @@ msgstr[1] "<strong>Version %1$s</strong> lukkede nogle sikkerhedshuller og rette
 
 #. translators: 1: WordPress version number, 2: Plural number of bugs. Singular
 #. security issue.
-#: wp-admin/about.php:384
+#: wp-admin/about.php:409
 msgid "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bugs."
 msgstr[0] "<strong>Version %1$s</strong> lukkede et sikkerhedshul og rettede %2$s fejl."
 msgstr[1] "<strong>Version %1$s</strong> lukkede et sikkerhedshul og rettede %2$s fejl."
 
 #. translators: 1: WordPress version number, 2: Plural number of bugs.
-#: wp-admin/about.php:53 wp-admin/about.php:378
+#: wp-admin/about.php:78 wp-admin/about.php:403
 msgid "<strong>Version %1$s</strong> addressed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed %2$s bugs."
 msgstr[0] "<strong>Version %1$s</strong> rettede %2$s fejl."
 msgstr[1] "<strong>Version %1$s</strong> rettede %2$s fejl."
 
 #. translators: %s: WordPress version number.
-#: wp-admin/about.php:375
+#: wp-admin/about.php:400
 msgid "<strong>Version %s</strong> addressed some security issues."
 msgstr "<strong>Version %s</strong> tog sig af nogle sikkerhedsproblemer."
 
-#: wp-admin/about.php:369
+#: wp-admin/about.php:394
 msgid "Maintenance and Security Release"
 msgstr "Vedligeholdelse- og sikkerhedsudgivelse"
 
-#: wp-admin/about.php:366
+#: wp-admin/about.php:391
 msgid "Security Release"
 msgstr "Sikkerhedsudgivelse"
 
-#: wp-admin/about.php:48 wp-admin/about.php:363
+#: wp-admin/about.php:388
 msgid "Maintenance Release"
 msgstr "Vedligeholdelsesudgivelse"
 
@@ -10893,11 +10890,11 @@ msgstr "<strong>Rediger</strong> tager dig til redigeringsskærmbilledet for ind
 msgid "Because this is a multisite installation, you may add accounts that already exist on the Network by specifying a username or email, and defining a role. For more options, such as specifying a password, you have to be a Network Administrator and use the hover link under an existing user&#8217;s name to Edit the user profile under Network Admin > All Users."
 msgstr "Da dette er en Multisite-installation, kan du tilføje konti, der allerede findes på netværket, ved at angive et brugernavn eller e-mailadresse, og tildele brugeren en rolle. For at få flere muligheder, såsom at angive en adgangskode, skal du være en netværksadministrator og føre markøren over linket til en eksisterende brugers navn. Derefter kan du gå til Rediger brugerprofil under Netværkadministrator > Alle brugere."
 
-#: wp-admin/about.php:350
+#: wp-admin/about.php:375
 msgid "Go to Dashboard &rarr; Home"
 msgstr "Gå til Kontrolpanel &rarr; Forside"
 
-#: wp-admin/about.php:343
+#: wp-admin/about.php:368
 msgid "Go to Dashboard &rarr; Updates"
 msgstr "Tilbage til Kontrolpanel &rarr; Opdateringer"
 
@@ -10928,7 +10925,7 @@ msgstr ""
 msgid "Core Developer"
 msgstr "Kerneudvikler"
 
-#: wp-admin/includes/class-plugin-upgrader.php:456
+#: wp-admin/includes/class-plugin-upgrader.php:492
 msgid "No valid plugins were found."
 msgstr "Ingen gyldige plugins blev fundet."
 
@@ -10994,7 +10991,7 @@ msgid "Tumblr"
 msgstr "Tumblr"
 
 #. translators: 1: Browser update URL, 2: Browser name, 3: Browse Happy URL.
-#: wp-admin/includes/dashboard.php:1735
+#: wp-admin/includes/dashboard.php:1744
 msgid "<a href=\"%1$s\" class=\"update-browser-link\">Update %2$s</a> or learn how to <a href=\"%3$s\" class=\"browse-happy-link\">browse happy</a>"
 msgstr "<a href=\"%1$s\" class=\"update-browser-link\">Opdater %2$s</a> eller lær at <a href=\"%3$s\" class=\"browse-happy-link\">browse happy</a>"
 
@@ -11139,8 +11136,8 @@ msgstr "Superadministrator"
 #. translators: %s: Theme version number.
 #. translators: %s: WordPress version.
 #. translators: %s: Theme version.
-#: wp-admin/includes/ajax-actions.php:4602
-#: wp-admin/includes/ajax-actions.php:4645
+#: wp-admin/includes/ajax-actions.php:4618
+#: wp-admin/includes/ajax-actions.php:4661
 #: wp-admin/includes/class-wp-debug-data.php:971
 #: wp-admin/includes/class-wp-debug-data.php:1018
 #: wp-admin/includes/class-wp-debug-data.php:1340
@@ -11295,12 +11292,12 @@ msgid "Featured Image Header"
 msgstr "Udvalgt header-billede"
 
 #. translators: %s: Browser name and link.
-#: wp-admin/includes/dashboard.php:1706
+#: wp-admin/includes/dashboard.php:1715
 msgid "It looks like you're using an old version of %s. For the best WordPress experience, please update your browser."
 msgstr "Det ser ud til, at du bruger en gammel version af %s. Opdatér venligst din browser, hvis du ønsker at opleve WordPress bedst muligt."
 
 #. translators: %s: Browser name and link.
-#: wp-admin/includes/dashboard.php:1700
+#: wp-admin/includes/dashboard.php:1709
 msgid "It looks like you're using an insecure version of %s. Using an outdated browser makes your computer unsafe. For the best WordPress experience, please update your browser."
 msgstr "Det ser ud til, at du bruger en usikker version af %s. Bruger du en gammel browser, gør du din computer usikker. Opdatér venligst din browser, hvis du ønsker den bedste WordPress-oplevelse."
 
@@ -11432,7 +11429,7 @@ msgstr "Du har sat denne bruger til sletning:"
 msgid "%s Page Template"
 msgstr "%s sideskabelon"
 
-#: wp-admin/includes/ajax-actions.php:4707 wp-admin/plugins.php:624
+#: wp-admin/includes/ajax-actions.php:4723 wp-admin/plugins.php:624
 msgid "You cannot delete a plugin while it is active on the main site."
 msgstr "Du kan ikke slette et plugin, mens det er aktivt på hovedwebstedet."
 
@@ -11565,7 +11562,7 @@ msgstr "Opdater plugin"
 msgid "Theme updated successfully."
 msgstr "Tema opdateret uden problemer."
 
-#: wp-admin/includes/ajax-actions.php:4373
+#: wp-admin/includes/ajax-actions.php:4389
 #: wp-admin/includes/class-theme-upgrader.php:63
 #: wp-admin/includes/class-theme-upgrader.php:100
 msgid "Theme update failed."
@@ -11576,7 +11573,7 @@ msgstr "Temaopdatering mislykkedes."
 msgid "Plugin updated successfully."
 msgstr "Plugin opdateret uden problemer."
 
-#: wp-admin/includes/ajax-actions.php:4664
+#: wp-admin/includes/ajax-actions.php:4680
 #: wp-admin/includes/class-plugin-upgrader.php:64
 #: wp-admin/includes/class-plugin-upgrader.php:91
 msgid "Plugin update failed."
@@ -11704,8 +11701,8 @@ msgid "To perform the requested action, WordPress needs to access your web serve
 msgstr "For at udføre den handling, du har anmodet om, skal WordPress have adgang til din webserver."
 
 #. translators: Hidden accessibility text.
-#: wp-admin/includes/class-wp-list-table.php:1058
-#: wp-admin/includes/class-wp-list-table.php:1067
+#: wp-admin/includes/class-wp-list-table.php:1072
+#: wp-admin/includes/class-wp-list-table.php:1081
 msgid "Current Page"
 msgstr "Aktuel side"
 
@@ -11743,11 +11740,11 @@ msgid_plural "%s users"
 msgstr[0] "%s bruger"
 msgstr[1] "%s brugere"
 
-#: wp-admin/includes/dashboard.php:1531
+#: wp-admin/includes/dashboard.php:1540
 msgid "https://wordpress.org/news/feed/"
 msgstr "https://wordpress.org/news/feed/"
 
-#: wp-admin/includes/dashboard.php:1522
+#: wp-admin/includes/dashboard.php:1531
 msgid "https://wordpress.org/news/"
 msgstr "https://wordpress.org/news/"
 
@@ -11788,7 +11785,7 @@ msgstr "Gå til pluginside"
 msgid "Click Save Menu to make pending menu items public."
 msgstr "Klik Gem menu for at gøre afventende menupunkter tilgængelige."
 
-#: wp-admin/includes/dashboard.php:1640
+#: wp-admin/includes/dashboard.php:1649
 msgid "Storage Space"
 msgstr "Tildelt plads"
 
@@ -12137,12 +12134,12 @@ msgstr "Dette vil fjerne header-billedet. Du vil ikke være i stand til at genop
 msgid "Default Images"
 msgstr "Standardbilleder"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:791
+#: wp-admin/includes/class-wp-comments-list-table.php:804
 #: wp-admin/includes/dashboard.php:777
 msgid "Delete this comment permanently"
 msgstr "Slet denne kommentar permanent"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:781
+#: wp-admin/includes/class-wp-comments-list-table.php:794
 msgid "Restore this comment from the Trash"
 msgstr "Gendan denne kommentar fra papirkurven"
 
@@ -12254,7 +12251,7 @@ msgstr "Du har version %1$s installeret. Opdater til %2$s."
 msgid "Enabled"
 msgstr "Aktiveret"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:772
+#: wp-admin/includes/class-wp-comments-list-table.php:785
 msgctxt "comment"
 msgid "Not Spam"
 msgstr "Ikke spam"
@@ -12263,7 +12260,7 @@ msgstr "Ikke spam"
 msgid "This will restore the original background image. You will not be able to restore any customizations."
 msgstr "Dette vil gendanne det originale baggrundsbillede. Det vil ikke være muligt at gendanne eventuelle tilpasninger."
 
-#: wp-admin/includes/dashboard.php:1540
+#: wp-admin/includes/dashboard.php:1549
 msgid "WordPress Blog"
 msgstr "WordPress Blog"
 
@@ -12591,7 +12588,7 @@ msgstr "WordPress-opdateringer"
 msgid "Edit menu item"
 msgstr "Rediger menupunkt"
 
-#: wp-admin/about.php:350 wp-admin/includes/network.php:148
+#: wp-admin/about.php:375 wp-admin/includes/network.php:148
 msgid "Go to Dashboard"
 msgstr "Gå til kontrolpanelet"
 
@@ -13140,7 +13137,7 @@ msgstr "Pluginfiler"
 msgid "Select plugin to edit:"
 msgstr "Vælg plugin, der skal redigeres:"
 
-#: wp-admin/includes/ajax-actions.php:4875 wp-admin/plugin-editor.php:187
+#: wp-admin/includes/ajax-actions.php:4891 wp-admin/plugin-editor.php:187
 #: wp-admin/theme-editor.php:194
 msgid "File edited successfully."
 msgstr "Filredigering gennemført."
@@ -14027,7 +14024,7 @@ msgctxt "column name"
 msgid "Title"
 msgstr "Titel"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:821
+#: wp-admin/includes/class-wp-comments-list-table.php:834
 #: wp-admin/includes/class-wp-posts-list-table.php:1476
 #: wp-admin/includes/class-wp-terms-list-table.php:492
 msgid "Quick&nbsp;Edit"
@@ -14861,7 +14858,7 @@ msgstr "RTL Stylesheet"
 msgid "Main Index Template"
 msgstr "Index"
 
-#: wp-admin/includes/dashboard.php:1161 wp-admin/includes/dashboard.php:1348
+#: wp-admin/includes/dashboard.php:1170 wp-admin/includes/dashboard.php:1357
 msgid "This widget requires JavaScript."
 msgstr "Denne widget kræver JavaScript."
 
@@ -14882,7 +14879,7 @@ msgstr "[Afventer]"
 msgid "From %1$s on %2$s %3$s"
 msgstr "Fra %1$s til %2$s %3$s"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:800
+#: wp-admin/includes/class-wp-comments-list-table.php:813
 #: wp-admin/includes/class-wp-media-list-table.php:786
 #: wp-admin/includes/class-wp-posts-list-table.php:1496
 #: wp-admin/includes/dashboard.php:786
@@ -14890,36 +14887,36 @@ msgctxt "verb"
 msgid "Trash"
 msgstr "Papirkurv"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:799
+#: wp-admin/includes/class-wp-comments-list-table.php:812
 #: wp-admin/includes/dashboard.php:785
 msgid "Move this comment to the Trash"
 msgstr "Flyt denne kommentar til papirkurven"
 
 #. translators: "Mark as spam" link.
-#: wp-admin/includes/class-wp-comments-list-table.php:764
+#: wp-admin/includes/class-wp-comments-list-table.php:777
 #: wp-admin/includes/dashboard.php:769
 msgctxt "verb"
 msgid "Spam"
 msgstr "Spam"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:762
+#: wp-admin/includes/class-wp-comments-list-table.php:775
 #: wp-admin/includes/dashboard.php:767
 msgid "Mark this comment as spam"
 msgstr "Marker kommentar som spam"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:830
+#: wp-admin/includes/class-wp-comments-list-table.php:843
 #: wp-admin/includes/dashboard.php:759
 msgid "Reply to this comment"
 msgstr "Besvar denne kommentar"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:727
-#: wp-admin/includes/class-wp-comments-list-table.php:752
+#: wp-admin/includes/class-wp-comments-list-table.php:740
+#: wp-admin/includes/class-wp-comments-list-table.php:765
 #: wp-admin/includes/dashboard.php:744
 msgid "Unapprove this comment"
 msgstr "Godkend ikke"
 
-#: wp-admin/includes/class-wp-comments-list-table.php:735
-#: wp-admin/includes/class-wp-comments-list-table.php:744
+#: wp-admin/includes/class-wp-comments-list-table.php:748
+#: wp-admin/includes/class-wp-comments-list-table.php:757
 #: wp-admin/includes/dashboard.php:736
 msgid "Approve this comment"
 msgstr "Godkend kommentar"
@@ -14932,7 +14929,7 @@ msgstr "Indstil"
 msgid "View all"
 msgstr "Vis alle"
 
-#: wp-admin/includes/dashboard.php:1573
+#: wp-admin/includes/dashboard.php:1582
 msgid "Other WordPress News"
 msgstr "Andre WordPress-nyheder"
 
@@ -15376,15 +15373,15 @@ msgid "Pings"
 msgstr "Pings"
 
 #: wp-admin/includes/class-wp-comments-list-table.php:365
-#: wp-admin/includes/class-wp-comments-list-table.php:736
-#: wp-admin/includes/class-wp-comments-list-table.php:745
+#: wp-admin/includes/class-wp-comments-list-table.php:749
+#: wp-admin/includes/class-wp-comments-list-table.php:758
 #: wp-admin/includes/dashboard.php:737
 msgid "Approve"
 msgstr "Godkend"
 
 #: wp-admin/includes/class-wp-comments-list-table.php:361
-#: wp-admin/includes/class-wp-comments-list-table.php:728
-#: wp-admin/includes/class-wp-comments-list-table.php:753
+#: wp-admin/includes/class-wp-comments-list-table.php:741
+#: wp-admin/includes/class-wp-comments-list-table.php:766
 #: wp-admin/includes/dashboard.php:745
 msgid "Unapprove"
 msgstr "Godkend ikke"
@@ -15458,7 +15455,7 @@ msgid "View &#8220;%s&#8221;"
 msgstr "Se &#8220;%s&#8221;"
 
 #: wp-admin/edit-form-comment.php:242
-#: wp-admin/includes/class-wp-comments-list-table.php:792
+#: wp-admin/includes/class-wp-comments-list-table.php:805
 #: wp-admin/includes/class-wp-media-list-table.php:799
 #: wp-admin/includes/class-wp-posts-list-table.php:1506
 #: wp-admin/includes/dashboard.php:778 wp-admin/includes/media.php:1733
