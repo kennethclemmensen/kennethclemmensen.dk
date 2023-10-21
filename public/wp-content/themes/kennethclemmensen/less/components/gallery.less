@@ -9,6 +9,7 @@
 	opacity: 0.8;
 	&--visible {
 		display: block;
+		.animation(fade-in, 1.2s);
 	}
 }
 
@@ -18,9 +19,11 @@
 	top: 50px;
 	left: 50%;
 	z-index: 10000;
+	opacity: 0.8;
 	.translateX(-50%);
 	&--visible {
 		display: block;
+		.animation(fade-in, 2.4s);
 	}
 }
 

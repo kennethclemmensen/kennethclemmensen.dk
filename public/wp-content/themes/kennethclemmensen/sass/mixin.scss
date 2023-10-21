@@ -1,3 +1,7 @@
+@mixin animation($animation, $duration) {
+	animation: $animation $duration;
+}
+
 @mixin border-radius($value) {
 	border-radius: $value;
 }
