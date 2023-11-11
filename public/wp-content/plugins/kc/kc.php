@@ -5,7 +5,7 @@ Description: The plugin for the site
 Version: 1.0
 Author: Kenneth Clemmensen
 Author URI: https://kennethclemmensen.dk
-Requires at least: 6.3
+Requires at least: 6.4
 Requires PHP: 8.2
 Domain Path: /languages
 */
