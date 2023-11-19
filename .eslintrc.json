@@ -18,15 +18,16 @@
         "prefer-const": "warn",
         "semi": ["warn", "always"],
         "quotes": ["warn", "single"],
+        "no-console": "warn",
         "@typescript-eslint/naming-convention": [
             "warn",
             {
                 "selector": ["class", "enum", "typeAlias"],
-                "format": ["PascalCase"]
+                "format": ["PascalCase"],
+                "leadingUnderscore": "forbid"
             },
             {
-                "selector": "memberLike",
-                "modifiers": ["private", "public"],
+                "selector": "classProperty",
                 "format": ["camelCase"],
                 "leadingUnderscore": "forbid"
             }
