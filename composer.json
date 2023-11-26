@@ -4,7 +4,7 @@
     "codeception/module-db": "^3.1.0",
     "codeception/module-phpbrowser": "^3.0.0",
     "codeception/module-rest": "^3.3.2",
-    "lucatume/wp-browser": "^4.0.10"
+    "lucatume/wp-browser": "^4.0.12"
   },
   "scripts": {
     "codecept": "codecept run"
