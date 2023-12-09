@@ -1,3 +1,4 @@
+import { interval, tap } from 'rxjs';
 import { SliderAnimation } from './SliderAnimation';
 /**
  * The Slider class contains methods to handle the functionality of the slider
@@ -13,16 +14,16 @@ export class Slider {
      * Initialize a new instance of the Slider class
      */
     constructor() {
-        this.#slides = document.getElementsByClassName('slider__slide');
-        this.#sliderImage = document.getElementById('slider-image');
-        this.#currentRandomNumber = -1;
         const slider = document.getElementById('slider');
         const dataset = slider?.dataset;
         const defaultDelay = 500;
-        this.#delay = (dataset?.delay) ? parseInt(dataset.delay) : defaultDelay;
         const defaultDuration = 8000;
-        this.#duration = (dataset?.duration) ? parseInt(dataset.duration) : defaultDuration;
-        this.#animation = dataset?.animation ?? SliderAnimation.Fade;
+        this.#slides = document.getElementsByClassName('slider__slide');
+        this.#sliderImage = document.getElementById('slider-image');
+        this.#currentRandomNumber = -1;
+        this.#delay = (dataset?.delay != null) ? parseInt(dataset.delay) : defaultDelay;
+        this.#duration = (dataset?.duration != null) ? parseInt(dataset.duration) : defaultDuration;
+        this.#animation = (dataset?.animation ?? SliderAnimation.Fade);
     }
     /**
      * Show the slides
@@ -31,24 +32,26 @@ export class Slider {
         let randomNumber = this.getRandomNumber();
         const name = 'data-slide-image';
         let backgroundImageUrl = this.#slides[randomNumber]?.getAttribute(name);
-        if (!backgroundImageUrl)
-            return;
-        this.setBackgroundImage(backgroundImageUrl);
         const startKeyframes = this.getStartKeyframes(this.#animation);
         const endKeyframes = this.getEndKeyframes(this.#animation);
-        setInterval(() => {
-            if (this.#sliderImage) {
-                this.#sliderImage.animate(startKeyframes, {
-                    duration: this.#delay
-                }).onfinish = () => {
-                    randomNumber = this.getRandomNumber();
-                    backgroundImageUrl = this.#slides[randomNumber]?.getAttribute(name);
-                    if (backgroundImageUrl)
-                        this.setBackgroundImage(backgroundImageUrl);
-                    this.#sliderImage?.animate(endKeyframes, { duration: this.#delay });
-                };
-            }
-        }, this.#duration);
+        if (backgroundImageUrl != null) {
+            this.setBackgroundImage(backgroundImageUrl);
+            const interval$ = interval(this.#duration);
+            interval$.pipe(tap(() => {
+                if (this.#sliderImage) {
+                    this.#sliderImage.animate(startKeyframes, {
+                        duration: this.#delay
+                    }).onfinish = () => {
+                        randomNumber = this.getRandomNumber();
+                        backgroundImageUrl = this.#slides[randomNumber]?.getAttribute(name);
+                        if (backgroundImageUrl != null && this.#sliderImage != null) {
+                            this.setBackgroundImage(backgroundImageUrl);
+                            this.#sliderImage.animate(endKeyframes, { duration: this.#delay });
+                        }
+                    };
+                }
+            })).subscribe();
+        }
     }
     /**
      * Get a random number between 0 and the number of slides minus 1
@@ -68,8 +71,9 @@ export class Slider {
      * @param backgroundImageUrl the background image url
      */
     setBackgroundImage(backgroundImageUrl) {
-        if (this.#sliderImage)
+        if (this.#sliderImage != null) {
             this.#sliderImage.style.backgroundImage = 'url("' + backgroundImageUrl + '")';
+        }
     }
     /**
      * Get the start keyframes based on the animation
@@ -79,7 +83,7 @@ export class Slider {
      */
     getStartKeyframes(animation) {
         let startKeyframes = [];
-        if (this.#sliderImage) {
+        if (this.#sliderImage != null) {
             const width = this.#sliderImage.clientWidth;
             const height = this.#sliderImage.clientHeight;
             const px = 'px';

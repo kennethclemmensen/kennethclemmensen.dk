@@ -1,5 +1,5 @@
-import { fromEvent } from 'rxjs';
-import { EventType } from './enums/EventType';
+import { map } from 'rxjs';
+import { ajax } from 'rxjs/ajax';
 import { HttpMethod } from './enums/HttpMethod';
 import { HttpStatusCode } from './enums/HttpStatusCode';
 /**
@@ -27,15 +27,14 @@ export class FilesApp {
                         };
                     },
                     created: function () {
-                        const xhr = new XMLHttpRequest();
-                        xhr.open(HttpMethod.Get, '/wp-json/kcapi/v1/files?type=' + this.fileTypes, true);
-                        fromEvent(xhr, EventType.Load).subscribe(() => {
-                            this.files = (xhr.status === HttpStatusCode.Ok) ? JSON.parse(xhr.responseText) : [];
-                        });
-                        fromEvent(xhr, EventType.Error).subscribe(() => {
-                            this.files = [];
-                        });
-                        xhr.send();
+                        const files$ = ajax({
+                            url: '/wp-json/kcapi/v1/files?type=' + this.fileTypes,
+                            method: HttpMethod.Get,
+                            responseType: 'text'
+                        }).pipe(map((response) => {
+                            this.files = (response.status === HttpStatusCode.Ok) ? JSON.parse(response.xhr.responseText) : [];
+                        }));
+                        files$.subscribe();
                     },
                     methods: {
                         previousPage: function () {
@@ -45,13 +44,22 @@ export class FilesApp {
                             this.offset += parseInt(this.perPage);
                         },
                         updateFileDownloads: (file) => {
-                            const xhr = new XMLHttpRequest();
+                            /*const xhr: XMLHttpRequest = new XMLHttpRequest();
+                            const load$ = fromEvent(xhr, EventType.Load);
                             xhr.open(HttpMethod.Put, '/wp-json/kcapi/v1/fileDownloads?fileid=' + file.id, true);
-                            fromEvent(xhr, EventType.Load).subscribe(() => {
-                                if (xhr.status === HttpStatusCode.Ok)
-                                    file.downloads++;
+                            load$.subscribe((): void => {
+                                if(xhr.status === HttpStatusCode.Ok) file.downloads++;
                             });
-                            xhr.send();
+                            xhr.send();*/
+                            const downloads$ = ajax({
+                                url: '/wp-json/kcapi/v1/fileDownloads?fileid=' + file.id,
+                                method: HttpMethod.Put,
+                                responseType: 'text'
+                            }).pipe(map((response) => {
+                                if (response.status === HttpStatusCode.Ok)
+                                    file.downloads++;
+                            }));
+                            downloads$.subscribe();
                         }
                     },
                     props: {

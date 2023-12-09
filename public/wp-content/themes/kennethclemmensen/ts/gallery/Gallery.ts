@@ -1,4 +1,4 @@
-import { fromEvent } from 'rxjs';
+import { Observable, fromEvent, tap } from 'rxjs';
 import { EventType } from '../enums/EventType';
 
 /**
@@ -51,59 +51,55 @@ export class Gallery {
 		this.#nextLink = document.getElementById('next-link');
 		this.#gallery = document.getElementById('gallery');
 		this.#galleryOverlay = document.getElementById('gallery-overlay');
+		const galleryClose: HTMLElement | null = document.getElementById('gallery-close');
 		this.#images.forEach((image: HTMLElement): void => {
-			fromEvent(image, EventType.Click).subscribe((event: Event): void => {
-				event.preventDefault();
-				this.#currentImageIndex = parseInt(image.getAttribute('data-index') ?? '0');
-				if(this.#currentImageIndex === 0) {
-					this.hidePreviousLink();
-				} else if((this.#currentImageIndex + 1) === this.#numberOfImages) {
-					this.hideNextLink();
-				}
-				this.showImage();
-				this.updateTitle();
-				this.showOverlay();
-				this.updateImageInfo();
-				const galleryClose: HTMLElement | null = document.getElementById('gallery-close');
-		if (galleryClose != null) {
-			fromEvent(galleryClose, EventType.Click).subscribe((event: Event): void => {
-				event.preventDefault();
-				this.hideOverlay();
-			});
-		}
-		if (this.#galleryOverlay != null) {
-			fromEvent(this.#galleryOverlay, EventType.Click).subscribe((event: Event): void => {
-				event.preventDefault();
-				this.hideOverlay();
-			});
-		}
-			});
+			const imageClick$: Observable<Event> = fromEvent(image, EventType.Click);
+			imageClick$.pipe(
+				tap((event: Event): void => {
+					event.preventDefault();
+					this.#currentImageIndex = parseInt(image.getAttribute('data-index') ?? '0');
+					if(this.#currentImageIndex === 0) {
+						this.hidePreviousLink();
+					} else if((this.#currentImageIndex + 1) === this.#numberOfImages) {
+						this.hideNextLink();
+					}
+					this.showImage();
+					this.updateTitle();
+					this.showOverlay();
+					this.updateImageInfo();
+				})
+			).subscribe();
 		});
-		if (this.#previousLink != null) {
-			fromEvent(this.#previousLink, EventType.Click).subscribe((event: Event): void => {
-				event.preventDefault();
-				this.#currentImageIndex--;
-				this.showImage();
-				this.updateTitle();
-				this.updateImageInfo();
-				this.showNextLink();
-				if(this.#currentImageIndex === 0) {
-					this.hidePreviousLink();
-				}
-			});
-		}
-		if (this.#nextLink != null) {
-			fromEvent(this.#nextLink, EventType.Click).subscribe((event: Event): void => {
-				event.preventDefault();
-				this.#currentImageIndex++;
-				this.showImage();
-				this.updateTitle();
-				this.updateImageInfo();
-				this.showPreviousLink();
-				if((this.#currentImageIndex + 1) === this.#numberOfImages) {
-					this.hideNextLink();
-				}
-			});
+		if(galleryClose != null && this.#galleryOverlay != null && this.#previousLink != null && this.#nextLink != null) {
+			const galleryCloseClick$: Observable<Event> = fromEvent([galleryClose, this.#galleryOverlay], EventType.Click);
+			const linksClick$: Observable<Event> = fromEvent([this.#previousLink, this.#nextLink], EventType.Click);
+			galleryCloseClick$.pipe(
+				tap((event: Event): void => {
+					event.preventDefault();
+					this.hideOverlay();
+				})
+			).subscribe();
+			linksClick$.pipe(
+				tap((event: Event): void => {
+					event.preventDefault();
+					if(event.target === this.#previousLink) {
+						this.#currentImageIndex--;
+						this.showNextLink();
+						if(this.#currentImageIndex === 0) {
+							this.hidePreviousLink();
+						}
+					} else {
+						this.#currentImageIndex++;
+						this.showPreviousLink();
+						if((this.#currentImageIndex + 1) === this.#numberOfImages) {
+							this.hideNextLink();
+						}	
+					}
+					this.showImage();
+					this.updateTitle();
+					this.updateImageInfo();
+				})
+			).subscribe();
 		}
 	}
 
@@ -123,7 +119,7 @@ export class Gallery {
 	private updateTitle(): void {
 		const title: HTMLElement | null = document.getElementById('image-title');
 		const image: HTMLElement | undefined = this.#images[this.#currentImageIndex];
-		if (title != null && image != null) {
+		if(title != null && image != null) {
 			title.innerHTML = image.getAttribute('data-title') ?? '';
 		}
 	}
@@ -145,43 +141,55 @@ export class Gallery {
 	 * Show the previous link
 	 */
 	private showPreviousLink(): void {
-		this.#previousLink?.classList.remove(this.#linkHiddenClass);
+		if(this.#previousLink != null) {
+			this.#previousLink.classList.remove(this.#linkHiddenClass);
+		}
 	}
 
 	/**
 	 * Hide the previous link
 	 */
 	private hidePreviousLink(): void {
-		this.#previousLink?.classList.add(this.#linkHiddenClass);
+		if(this.#previousLink != null) {
+			this.#previousLink.classList.add(this.#linkHiddenClass);
+		}
 	}
 
 	/**
 	 * Show the next link
 	 */
 	private showNextLink(): void {
-		this.#nextLink?.classList.remove(this.#linkHiddenClass);
+		if(this.#nextLink != null) {
+			this.#nextLink.classList.remove(this.#linkHiddenClass);
+		}
 	}
 
 	/**
 	 * Hide the next link
 	 */
 	private hideNextLink(): void {
-		this.#nextLink?.classList.add(this.#linkHiddenClass);
+		if(this.#nextLink != null) {
+			this.#nextLink.classList.add(this.#linkHiddenClass);
+		}
 	}
 
 	/**
 	 * Show the overlay
 	 */
 	private showOverlay(): void {
-		this.#galleryOverlay?.classList.add(this.#overlayVisibleClass);
-		this.#gallery?.classList.add(this.#galleryVisibleClass);
+		if(this.#galleryOverlay != null && this.#gallery != null) {
+			this.#galleryOverlay.classList.add(this.#overlayVisibleClass);
+			this.#gallery.classList.add(this.#galleryVisibleClass);
+		}
 	}
 
 	/**
 	 * Hide the overlay
 	 */
 	private hideOverlay(): void {
-		this.#galleryOverlay?.classList.remove(this.#overlayVisibleClass);
-		this.#gallery?.classList.remove(this.#galleryVisibleClass);
+		if(this.#galleryOverlay != null && this.#gallery != null) {
+			this.#galleryOverlay.classList.remove(this.#overlayVisibleClass);
+			this.#gallery.classList.remove(this.#galleryVisibleClass);
+		}
 	}
 }

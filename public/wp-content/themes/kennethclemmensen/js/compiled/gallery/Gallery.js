@@ -1,4 +1,4 @@
-import { fromEvent } from 'rxjs';
+import { fromEvent, tap } from 'rxjs';
 import { EventType } from '../enums/EventType';
 /**
  * The Gallery class contains methods to handle the functionality of the gallery
@@ -48,8 +48,10 @@ export class Gallery {
         this.#nextLink = document.getElementById('next-link');
         this.#gallery = document.getElementById('gallery');
         this.#galleryOverlay = document.getElementById('gallery-overlay');
+        const galleryClose = document.getElementById('gallery-close');
         this.#images.forEach((image) => {
-            fromEvent(image, EventType.Click).subscribe((event) => {
+            const imageClick$ = fromEvent(image, EventType.Click);
+            imageClick$.pipe(tap((event) => {
                 event.preventDefault();
                 this.#currentImageIndex = parseInt(image.getAttribute('data-index') ?? '0');
                 if (this.#currentImageIndex === 0) {
@@ -62,46 +64,35 @@ export class Gallery {
                 this.updateTitle();
                 this.showOverlay();
                 this.updateImageInfo();
-                const galleryClose = document.getElementById('gallery-close');
-                if (galleryClose != null) {
-                    fromEvent(galleryClose, EventType.Click).subscribe((event) => {
-                        event.preventDefault();
-                        this.hideOverlay();
-                    });
-                }
-                if (this.#galleryOverlay != null) {
-                    fromEvent(this.#galleryOverlay, EventType.Click).subscribe((event) => {
-                        event.preventDefault();
-                        this.hideOverlay();
-                    });
-                }
-            });
+            })).subscribe();
         });
-        if (this.#previousLink != null) {
-            fromEvent(this.#previousLink, EventType.Click).subscribe((event) => {
+        if (galleryClose != null && this.#galleryOverlay != null && this.#previousLink != null && this.#nextLink != null) {
+            const galleryCloseClick$ = fromEvent([galleryClose, this.#galleryOverlay], EventType.Click);
+            const linksClick$ = fromEvent([this.#previousLink, this.#nextLink], EventType.Click);
+            galleryCloseClick$.pipe(tap((event) => {
                 event.preventDefault();
-                this.#currentImageIndex--;
+                this.hideOverlay();
+            })).subscribe();
+            linksClick$.pipe(tap((event) => {
+                event.preventDefault();
+                if (event.target === this.#previousLink) {
+                    this.#currentImageIndex--;
+                    this.showNextLink();
+                    if (this.#currentImageIndex === 0) {
+                        this.hidePreviousLink();
+                    }
+                }
+                else {
+                    this.#currentImageIndex++;
+                    this.showPreviousLink();
+                    if ((this.#currentImageIndex + 1) === this.#numberOfImages) {
+                        this.hideNextLink();
+                    }
+                }
                 this.showImage();
                 this.updateTitle();
                 this.updateImageInfo();
-                this.showNextLink();
-                if (this.#currentImageIndex === 0) {
-                    this.hidePreviousLink();
-                }
-            });
-        }
-        if (this.#nextLink != null) {
-            fromEvent(this.#nextLink, EventType.Click).subscribe((event) => {
-                event.preventDefault();
-                this.#currentImageIndex++;
-                this.showImage();
-                this.updateTitle();
-                this.updateImageInfo();
-                this.showPreviousLink();
-                if ((this.#currentImageIndex + 1) === this.#numberOfImages) {
-                    this.hideNextLink();
-                }
-            });
+            })).subscribe();
         }
     }
     /**
@@ -139,38 +130,50 @@ export class Gallery {
      * Show the previous link
      */
     showPreviousLink() {
-        this.#previousLink?.classList.remove(this.#linkHiddenClass);
+        if (this.#previousLink != null) {
+            this.#previousLink.classList.remove(this.#linkHiddenClass);
+        }
     }
     /**
      * Hide the previous link
      */
     hidePreviousLink() {
-        this.#previousLink?.classList.add(this.#linkHiddenClass);
+        if (this.#previousLink != null) {
+            this.#previousLink.classList.add(this.#linkHiddenClass);
+        }
     }
     /**
      * Show the next link
      */
     showNextLink() {
-        this.#nextLink?.classList.remove(this.#linkHiddenClass);
+        if (this.#nextLink != null) {
+            this.#nextLink.classList.remove(this.#linkHiddenClass);
+        }
     }
     /**
      * Hide the next link
      */
     hideNextLink() {
-        this.#nextLink?.classList.add(this.#linkHiddenClass);
+        if (this.#nextLink != null) {
+            this.#nextLink.classList.add(this.#linkHiddenClass);
+        }
     }
     /**
      * Show the overlay
      */
     showOverlay() {
-        this.#galleryOverlay?.classList.add(this.#overlayVisibleClass);
-        this.#gallery?.classList.add(this.#galleryVisibleClass);
+        if (this.#galleryOverlay != null && this.#gallery != null) {
+            this.#galleryOverlay.classList.add(this.#overlayVisibleClass);
+            this.#gallery.classList.add(this.#galleryVisibleClass);
+        }
     }
     /**
      * Hide the overlay
      */
     hideOverlay() {
-        this.#galleryOverlay?.classList.remove(this.#overlayVisibleClass);
-        this.#gallery?.classList.remove(this.#galleryVisibleClass);
+        if (this.#galleryOverlay != null && this.#gallery != null) {
+            this.#galleryOverlay.classList.remove(this.#overlayVisibleClass);
+            this.#gallery.classList.remove(this.#galleryVisibleClass);
+        }
     }
 }

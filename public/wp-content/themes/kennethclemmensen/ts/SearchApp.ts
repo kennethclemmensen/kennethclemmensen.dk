@@ -1,5 +1,5 @@
-import { fromEvent } from 'rxjs';
-import { EventType } from './enums/EventType';
+import { Observable, map } from 'rxjs';
+import { AjaxResponse, ajax } from 'rxjs/ajax';
 import { HttpMethod } from './enums/HttpMethod';
 import { HttpStatusCode } from './enums/HttpStatusCode';
 
@@ -45,15 +45,16 @@ export class SearchApp {
 						this.results = [];
 						return;
 					}
-					const xhr: XMLHttpRequest = new XMLHttpRequest();
-					xhr.open(HttpMethod.Get, '/wp-json/kcapi/v1/pages/' + this.searchString, true);
-					fromEvent(xhr, EventType.Load).subscribe((): void => {
-						this.results = (xhr.status === HttpStatusCode.Ok) ? JSON.parse(xhr.responseText) : [];
-					});
-					fromEvent(xhr, EventType.Error).subscribe((): void => {
-						this.results = [];
-					});
-					xhr.send();
+					const searchResults$: Observable<unknown> = ajax({
+						url: '/wp-json/kcapi/v1/pages/' + this.searchString,
+						method: HttpMethod.Get,
+						responseType: 'text'
+					}).pipe(
+						map((response: AjaxResponse<unknown>) => {
+							this.results = (response.status === HttpStatusCode.Ok) ? JSON.parse(response.xhr.responseText) : [];
+						})
+					);
+					searchResults$.subscribe();
 				}
 			},
 			components: {

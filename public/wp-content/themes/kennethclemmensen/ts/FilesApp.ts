@@ -1,5 +1,5 @@
-import { fromEvent } from 'rxjs';
-import { EventType } from './enums/EventType';
+import { Observable, map } from 'rxjs';
+import { AjaxResponse, ajax } from 'rxjs/ajax';
 import { HttpMethod } from './enums/HttpMethod';
 import { HttpStatusCode } from './enums/HttpStatusCode';
 import { File } from './types/File';
@@ -31,15 +31,16 @@ export class FilesApp {
 						};
 					},
 					created: function(): void {
-						const xhr: XMLHttpRequest = new XMLHttpRequest();
-						xhr.open(HttpMethod.Get, '/wp-json/kcapi/v1/files?type=' + this.fileTypes, true);
-						fromEvent(xhr, EventType.Load).subscribe((): void => {
-							this.files = (xhr.status === HttpStatusCode.Ok) ? JSON.parse(xhr.responseText) : [];
-						});
-						fromEvent(xhr, EventType.Error).subscribe((): void => {
-							this.files = [];
-						});
-						xhr.send();
+						const files$: Observable<unknown> = ajax({
+							url: '/wp-json/kcapi/v1/files?type=' + this.fileTypes,
+							method: HttpMethod.Get,
+							responseType: 'text'
+						}).pipe(
+							map((response: AjaxResponse<unknown>): void => {
+								this.files = (response.status === HttpStatusCode.Ok) ? JSON.parse(response.xhr.responseText) : [];
+							})
+						);
+						files$.subscribe();
 					},
 					methods: {
 						previousPage: function(): void {
@@ -49,12 +50,23 @@ export class FilesApp {
 							this.offset += parseInt(this.perPage);
 						},
 						updateFileDownloads: (file: File): void => {
-							const xhr: XMLHttpRequest = new XMLHttpRequest();
+							/*const xhr: XMLHttpRequest = new XMLHttpRequest();
+							const load$ = fromEvent(xhr, EventType.Load);
 							xhr.open(HttpMethod.Put, '/wp-json/kcapi/v1/fileDownloads?fileid=' + file.id, true);
-							fromEvent(xhr, EventType.Load).subscribe((): void => {
+							load$.subscribe((): void => {
 								if(xhr.status === HttpStatusCode.Ok) file.downloads++;
 							});
-							xhr.send();
+							xhr.send();*/
+							const downloads$: Observable<unknown> = ajax({
+								url: '/wp-json/kcapi/v1/fileDownloads?fileid=' + file.id,
+								method: HttpMethod.Put,
+								responseType: 'text'
+							}).pipe(
+								map((response: AjaxResponse<unknown>): void => {
+									if(response.status === HttpStatusCode.Ok) file.downloads++;
+								})
+							);
+							downloads$.subscribe();
 						}
 					},
 					props: {

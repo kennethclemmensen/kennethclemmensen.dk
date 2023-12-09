@@ -1,4 +1,4 @@
-import { fromEvent } from 'rxjs';
+import { from, fromEvent, tap } from 'rxjs';
 import { EventType } from './enums/EventType';
 import { FilesApp } from './FilesApp';
 import { Gallery } from './gallery/Gallery';
@@ -13,40 +13,44 @@ class App {
      * Initialize a new instance of the App class
      */
     constructor() {
-        fromEvent(document, EventType.DOMContentLoaded)
-            .subscribe(() => {
+        const contentLoaded$ = fromEvent(document, EventType.DOMContentLoaded);
+        contentLoaded$.pipe(tap(() => {
             this.setupMobileMenu();
             new Slider().showSlides();
             new Shortcuts().setupShortcuts();
             new Gallery();
             new FilesApp();
             new SearchApp();
-        });
+        })).subscribe();
     }
     /**
      * Setup the event listeners for the mobile menu
      */
     setupMobileMenu() {
         const mobileMenuTrigger = document.getElementById('mobile-menu-trigger');
-        if (!mobileMenuTrigger)
-            return;
         const mobileMenu = document.getElementById('mobile-menu');
         const showMobileMenuClass = 'show-mobile-menu';
-        fromEvent(mobileMenuTrigger, EventType.Click).subscribe((event) => {
-            event.preventDefault();
-            mobileMenuTrigger.classList.toggle('header__mobile-menu-trigger--active');
-            mobileMenu?.classList.toggle('mobile-menu--active');
-            document.documentElement.classList.toggle(showMobileMenuClass);
-            document.body.classList.toggle(showMobileMenuClass);
-        });
-        const mobileMenuArrows = document.querySelectorAll('.mobile-menu__arrow');
-        mobileMenuArrows.forEach((arrow) => {
-            fromEvent(arrow, EventType.Click).subscribe((event) => {
+        const mobileMenuArrows$ = from(document.querySelectorAll('.mobile-menu__arrow'));
+        if (mobileMenuTrigger != null && mobileMenu != null) {
+            const mobileMenuTriggerClick$ = fromEvent(mobileMenuTrigger, EventType.Click);
+            mobileMenuTriggerClick$.pipe(tap((event) => {
+                event.preventDefault();
+                mobileMenuTrigger.classList.toggle('header__mobile-menu-trigger--active');
+                mobileMenu.classList.toggle('mobile-menu--active');
+                document.documentElement.classList.toggle(showMobileMenuClass);
+                document.body.classList.toggle(showMobileMenuClass);
+            })).subscribe();
+        }
+        mobileMenuArrows$.forEach((arrow) => {
+            const arrowClick$ = fromEvent(arrow, EventType.Click);
+            arrowClick$.pipe(tap((event) => {
                 event.preventDefault();
                 arrow.classList.toggle('mobile-menu__arrow--rotated');
                 const subMenu = arrow.parentNode?.parentElement?.getElementsByClassName('sub-menu')[0];
-                subMenu?.classList.toggle('show');
-            });
+                if (subMenu != null) {
+                    subMenu.classList.toggle('show');
+                }
+            })).subscribe();
         });
     }
 }
