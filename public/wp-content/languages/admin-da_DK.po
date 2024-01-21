@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 6.4.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-12-07 09:43:49+0000\n"
+"PO-Revision-Date: 2024-01-20 10:05:06+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -36,6 +36,28 @@ msgstr "1"
 msgctxt "default GMT offset or timezone string"
 msgid "0"
 msgstr "Europe/Copenhagen"
+
+#: wp-admin/my-sites.php:81 wp-admin/network/menu.php:53
+#: wp-admin/network/site-new.php:182 wp-admin/network/site-new.php:192
+#: wp-admin/network/sites.php:381
+msgid "Add New Site"
+msgstr "Tilføj nyt websted"
+
+#: wp-admin/menu.php:305 wp-admin/plugins.php:752 wp-admin/network/menu.php:106
+msgid "Add New Plugin"
+msgstr "Tilføj nyt plugin"
+
+#: wp-admin/includes/image-edit.php:80
+msgid "Rotate 180&deg;"
+msgstr "Roter 180&deg;"
+
+#: wp-admin/includes/image-edit.php:79
+msgid "Rotate 90&deg; right"
+msgstr "Roter 90&deg; mod højre"
+
+#: wp-admin/includes/image-edit.php:78
+msgid "Rotate 90&deg; left"
+msgstr "Roter 90&deg; mod venstre"
 
 #. translators: %s: WordPress version.
 #: wp-admin/about.php:68 wp-admin/about.php:93
@@ -317,6 +339,14 @@ msgstr "Aktuel tid"
 msgid "Ordered by Comment Date, descending."
 msgstr "Sorteret efter kommentar-dato, faldende."
 
+#: wp-admin/includes/class-wp-comments-list-table.php:547
+msgid "Table ordered by Post Replied To."
+msgstr "Tabel sorteret efter indlægssvar."
+
+#: wp-admin/includes/class-wp-comments-list-table.php:546
+msgid "Table ordered by Comment Author."
+msgstr "Tabel sorteret efter kommentarforfatter."
+
 #: wp-admin/includes/class-core-upgrader.php:37
 msgid "Attempting to restore the previous version."
 msgstr "Forsøger at gendanne den tidligere version."
@@ -324,6 +354,10 @@ msgstr "Forsøger at gendanne den tidligere version."
 #: wp-admin/includes/class-bulk-upgrader-skin.php:163
 msgid "More details."
 msgstr "Flere detaljer."
+
+#: wp-admin/contribute.php:101
+msgid "Find your team &rarr;"
+msgstr "Find dit hold &rarr;"
 
 #: wp-admin/contribute.php:99
 msgid "Shape the future of the web with WordPress"

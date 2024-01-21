@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 6.4.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-12-07 09:53:23+0000\n"
+"PO-Revision-Date: 2024-01-20 10:02:42+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -454,6 +454,10 @@ msgstr "Class %1$s er <strong>forældet</strong> siden version %2$s! Brug %3$s i
 msgid "Font font-weight must be a properly formatted string or integer."
 msgstr "Font font-weight skal være en korrekt formateret tekststreng eller et heltal."
 
+#: wp-includes/blocks/search.php:176
+msgid "Submit Search"
+msgstr "Søg"
+
 #: wp-includes/blocks/query.php:34
 msgid "Page Loaded."
 msgstr "Side indlæst."
@@ -520,8 +524,18 @@ msgstr "Fodnoter"
 
 #: wp-includes/blocks/details/block.json
 msgctxt "block keyword"
+msgid "summary"
+msgstr "sammenfatning"
+
+#: wp-includes/blocks/details/block.json
+msgctxt "block keyword"
 msgid "disclosure"
 msgstr "fold ud"
+
+#: wp-includes/blocks/details/block.json
+msgctxt "block description"
+msgid "Hide and show additional content."
+msgstr "Skjul og vis yderligere indhold."
 
 #: wp-includes/blocks/details/block.json
 msgctxt "block title"
@@ -725,7 +739,7 @@ msgstr "Position"
 msgid "Sticky"
 msgstr "Fastgjort"
 
-#: wp-login.php:1318
+#: wp-login.php:1320
 msgid "https://wordpress.org/documentation/article/cookies/"
 msgstr "https://wordpress.org/documentation/article/cookies/"
 
@@ -1441,7 +1455,7 @@ msgstr "Standardavatar"
 msgid "There is already a ping from that URL for this post."
 msgstr "Der er allerede et ping fra den URL til dette indlæg."
 
-#: wp-login.php:968
+#: wp-login.php:970
 msgid "The password cannot be a space or all spaces."
 msgstr "Adgangskoden kan ikke være et mellemrum eller kun bestå af mellemrum."
 
@@ -3453,19 +3467,19 @@ msgstr "Tryk / for at vælge en blok"
 msgid "Layout"
 msgstr "Layout"
 
-#: wp-login.php:1434
+#: wp-login.php:1436
 msgid "<strong>Error:</strong> User registration is currently not allowed."
 msgstr "<strong>Fejl:</strong> Bruger-registrering er ikke tilladt på nuværende tidspunkt."
 
-#: wp-login.php:974
+#: wp-login.php:976
 msgid "<strong>Error:</strong> The passwords do not match."
 msgstr "<strong>Fejl:</strong> Adgangskoderne er ikke ens."
 
-#: wp-login.php:838
+#: wp-login.php:840
 msgid "<strong>Error:</strong> Your password reset link has expired. Please request a new link below."
 msgstr "<strong>Fejl:</strong> Dit link til at nulstille din adgangskode er forældet. Du kan bede om et nyt link nedenfor."
 
-#: wp-login.php:836
+#: wp-login.php:838
 msgid "<strong>Error:</strong> Your password reset link appears to be invalid. Please request a new link below."
 msgstr "<strong>Fejl:</strong> Dit link til at nulstille din adgangskode er ugyldigt. Du kan bede om et nyt link nedenfor."
 
@@ -4598,15 +4612,15 @@ msgstr "Beklager, du har ikke rettigheder til at se det aktive tema."
 msgid "[block rendering halted]"
 msgstr "[blokrendering afbrudt]"
 
-#: wp-login.php:1064
+#: wp-login.php:1066
 msgid "Save Password"
 msgstr "Gem adgangskode"
 
-#: wp-login.php:1063
+#: wp-login.php:1065
 msgid "Generate Password"
 msgstr "Generer adgangskode"
 
-#: wp-login.php:1010
+#: wp-login.php:1012
 msgid "Enter your new password below or generate one."
 msgstr "Indtast din nye adgangskode nedenfor eller dan en ny."
 
@@ -5878,17 +5892,17 @@ msgstr "Andre felter end %s understøttes i øjeblikket ikke til sitemaps."
 msgid "Fields other than %s are not currently supported for the sitemap index."
 msgstr "Andre felter end %s understøttes i øjeblikket ikke til sitemap-indekset."
 
-#: wp-login.php:1229
+#: wp-login.php:1231
 msgid "Check your email"
 msgstr "Tjek din e-mail"
 
 #. translators: %s: Link to the login page.
-#: wp-login.php:1219
+#: wp-login.php:1221
 msgid "Registration complete. Please check your email, then visit the <a href=\"%s\">login page</a>."
 msgstr "Registrering gennemført. Tjek din mail, og besøg derefter <a href=\"%s\">login-siden</a>."
 
 #. translators: %s: Link to the login page.
-#: wp-login.php:1209
+#: wp-login.php:1211
 msgid "Check your email for the confirmation link, then visit the <a href=\"%s\">login page</a>."
 msgstr "Tjek din mail for bekræftelseslink, og besøg derefter <a href=\"%s\">login-siden</a>."
 
@@ -6139,7 +6153,7 @@ msgctxt "minimum input length for searching post links"
 msgid "3"
 msgstr "3"
 
-#: wp-login.php:866
+#: wp-login.php:868
 msgid "Please enter your username or email address. You will receive an email message with instructions on how to reset your password."
 msgstr "Indtast venligst dit brugernavn eller e-mailadresse. Du vil modtage en e-mailbesked med en vejledning i, hvordan du nulstiller din adgangskode."
 
@@ -6410,41 +6424,41 @@ msgstr "Et uventet svar fra serveren. Filen kan være uploadet uden problemer. T
 msgid "https://wordpress.org/documentation/article/editing-wp-config-php/"
 msgstr "https://wordpress.org/support/article/editing-wp-config-php/"
 
-#: wp-login.php:742
+#: wp-login.php:744
 msgid "Remind me later"
 msgstr "Påmind mig senere"
 
-#: wp-login.php:726
+#: wp-login.php:728
 msgid "The email is correct"
 msgstr "E-mailen er korrekt"
 
-#: wp-login.php:714
+#: wp-login.php:716
 msgid "This email may be different from your personal email address."
 msgstr "Denne e-mailadresse kan være forskellig fra din personlige e-mailadresse."
 
 #. translators: %s: Admin email address.
-#: wp-login.php:707
+#: wp-login.php:709
 msgid "Current administration email: %s"
 msgstr "Nuværende administrator e-mail: %s"
 
-#: wp-login.php:696
+#: wp-login.php:698
 msgid "Why is this important?"
 msgstr "Hvorfor er dette vigtigt?"
 
 #. translators: URL to the WordPress help section about admin email.
-#: wp-login.php:685
+#: wp-login.php:687
 msgid "https://wordpress.org/documentation/article/settings-general-screen/#email-address"
 msgstr "https://wordpress.org/support/article/settings-general-screen/#email-address"
 
-#: wp-login.php:681
+#: wp-login.php:683
 msgid "Please verify that the <strong>administration email</strong> for this website is still correct."
 msgstr "Bekræft venligst at <strong>administrator e-mailen</strong> for dette websted er korrekt."
 
-#: wp-login.php:678
+#: wp-login.php:680
 msgid "Administration email verification"
 msgstr "Administrator e-mail-bekræftelse"
 
-#: wp-login.php:649
+#: wp-login.php:651
 msgid "Confirm your administration email"
 msgstr "Bekræft din administrator e-mail"
 
@@ -6639,7 +6653,7 @@ msgstr "Gendan fra papirkurv"
 #: wp-includes/load.php:191
 #: wp-includes/rest-api/endpoints/class-wp-rest-pattern-directory-controller.php:150
 #: wp-includes/update.php:209 wp-includes/update.php:447
-#: wp-includes/update.php:728 wp-login.php:1319
+#: wp-includes/update.php:728 wp-login.php:1321
 #: wp-admin/includes/class-wp-automatic-updater.php:887
 #: wp-admin/includes/class-wp-automatic-updater.php:1323
 #: wp-admin/includes/class-wp-site-health.php:1458
@@ -6856,19 +6870,19 @@ msgstr[1] "%s kommentarer til godkendelse"
 msgid "Quote from Hello Dolly song, by Jerry Herman:"
 msgstr "Citat fra Hello Dolly-sang af Jerry Herman:"
 
-#: wp-login.php:1438
+#: wp-login.php:1440
 msgid "Recovery Mode Initialized. Please log in to continue."
 msgstr "Gendannelsetilstand initialiseret. Log ind for at fortsætte."
 
-#: wp-login.php:1329
+#: wp-login.php:1331
 msgid "https://wordpress.org/documentation/article/cookies/#enable-cookies-in-your-browser"
 msgstr "https://wordpress.org/support/article/cookies/#enable-cookies-in-your-browser"
 
-#: wp-login.php:1239
+#: wp-login.php:1241
 msgid "Missing confirm key."
 msgstr "Manglende bekræftelsesnøgle."
 
-#: wp-login.php:1235 wp-admin/includes/ajax-actions.php:4905
+#: wp-login.php:1237 wp-admin/includes/ajax-actions.php:4905
 #: wp-admin/includes/ajax-actions.php:5095
 msgid "Missing request ID."
 msgstr "Manglende anmodnings-ID."
@@ -7184,7 +7198,7 @@ msgstr "Element tilføjet."
 #: wp-includes/class-wp-customize-manager.php:5722
 #: wp-includes/customize/class-wp-customize-nav-menu-locations-control.php:58
 #: wp-includes/functions.php:8404 wp-includes/media-template.php:167
-#: wp-includes/widgets/class-wp-widget-custom-html.php:322 wp-login.php:690
+#: wp-includes/widgets/class-wp-widget-custom-html.php:322 wp-login.php:692
 #: wp-includes/js/dist/components.js:61982
 #: wp-includes/js/dist/customize-widgets.js:1439
 #: wp-includes/js/dist/edit-post.js:3811 wp-includes/js/dist/edit-site.js:33390
@@ -7626,7 +7640,7 @@ msgstr "WordPress medie"
 msgid "Privacy Policy"
 msgstr "Privatlivspolitik"
 
-#: wp-login.php:1267
+#: wp-login.php:1269
 msgid "User action confirmed."
 msgstr "Brugerhandling bekræftet."
 
@@ -10887,7 +10901,7 @@ msgctxt "previous set of posts"
 msgid "Previous"
 msgstr "Forrige"
 
-#: wp-includes/general-template.php:525 wp-login.php:885 wp-login.php:1497
+#: wp-includes/general-template.php:525 wp-login.php:887 wp-login.php:1499
 msgid "Username or Email Address"
 msgstr "Brugernavn eller e-mailadresse"
 
@@ -11332,7 +11346,7 @@ msgid "Sorry, you are not allowed to delete this post."
 msgstr "Du har desværre ikke tilladelse til at slette dette indlæg."
 
 #. translators: %s: Site title.
-#: wp-login.php:326
+#: wp-login.php:328
 msgctxt "site"
 msgid "&larr; Go to %s"
 msgstr "&larr; Gå til %s"
@@ -11355,7 +11369,7 @@ msgstr "I dag"
 msgid "Deleted:"
 msgstr "Slettet:"
 
-#: wp-login.php:1038 wp-admin/install.php:173 wp-admin/user-edit.php:702
+#: wp-login.php:1040 wp-admin/install.php:173 wp-admin/user-edit.php:702
 #: wp-admin/user-new.php:611 wp-admin/js/user-profile.js:52
 msgid "Confirm use of weak password"
 msgstr "Bekræft brug af svag adgangskode"
@@ -11485,7 +11499,7 @@ msgstr "At fjerne %1$s manuelt vil udløse PHP-advarsler. Brug i stedet %2$s fil
 msgid "The next group of formatting shortcuts are applied as you type or when you insert them around plain text in the same paragraph. Press Escape or the Undo button to undo."
 msgstr "Den næste gruppe af formateringsgenveje anvendes, mens du skriver, eller når du indsætter dem rundt om almindelig tekst i samme afsnit. Tryk Escape eller på knappen Fortryd for at fortryde."
 
-#: wp-login.php:1427
+#: wp-login.php:1429
 msgid "Your session has expired. Please log in to continue where you left off."
 msgstr "Din session er udløbet. Log ind igen for at fortsætte, hvor du slap."
 
@@ -12342,13 +12356,13 @@ msgstr "Fjern menupunkt: %1$s (%2$s)"
 msgid "Edit menu item: %1$s (%2$s)"
 msgstr "Rediger menupunkt: %1$s (%2$s)"
 
-#: wp-login.php:1031 wp-admin/install.php:147 wp-admin/options-writing.php:183
+#: wp-login.php:1033 wp-admin/install.php:147 wp-admin/options-writing.php:183
 #: wp-admin/user-edit.php:675 wp-admin/user-new.php:592
 #: wp-admin/js/password-toggle.js:26 wp-admin/js/user-profile.js:83
 msgid "Hide password"
 msgstr "Skjul adgangskode"
 
-#: wp-login.php:1505 wp-admin/setup-config.php:239
+#: wp-login.php:1507 wp-admin/setup-config.php:239
 #: wp-admin/js/password-toggle.js:33 wp-admin/js/user-profile.js:83
 msgid "Show password"
 msgstr "Vis adgangskode"
@@ -12379,7 +12393,7 @@ msgstr "Som browserikon"
 msgid "No items"
 msgstr "Ingen elementer"
 
-#: wp-login.php:1174
+#: wp-login.php:1176
 msgid "Registration confirmation will be emailed to you."
 msgstr "En registreringsbekræftelse vil blive sendt til din e-mail."
 
@@ -13461,7 +13475,7 @@ msgctxt "add new from admin bar"
 msgid "Link"
 msgstr "Link"
 
-#: wp-login.php:1436
+#: wp-login.php:1438
 msgid "<strong>You have successfully updated WordPress!</strong> Please log back in to see what&#8217;s new."
 msgstr "<strong>Du har nu opdateret WordPress!</strong> Log venligst ind igen for at se hvad der er nyt."
 
@@ -13644,12 +13658,12 @@ msgid "Keyboard Shortcuts"
 msgstr "Tastaturgenveje"
 
 #. translators: %s: Browser cookie documentation URL.
-#: wp-login.php:1328
+#: wp-login.php:1330
 msgid "<strong>Error:</strong> Cookies are blocked or not supported by your browser. You must <a href=\"%s\">enable cookies</a> to use WordPress."
 msgstr "<strong>Fejl:</strong> Cookies er blokeret eller understøttes ikke af din browser. Du skal <a href=\"%s\">aktivere cookies</a> for at bruge WordPress."
 
 #. translators: 1: Browser cookie documentation URL, 2: Support forums URL.
-#: wp-login.php:1317
+#: wp-login.php:1319
 msgid "<strong>Error:</strong> Cookies are blocked due to unexpected output. For help, please see <a href=\"%1$s\">this documentation</a> or try the <a href=\"%2$s\">support forums</a>."
 msgstr "<strong>Fejl:</strong> Cookies er blokeret på grund af uventet output. For hjælp, se venligst <a href=\"%1$s\">denne dokumentation</a> eller prøv <a href=\"%2$s\">supportfora</a>."
 
@@ -14521,7 +14535,7 @@ msgstr "Bland uploadede headere"
 msgid "https://wordpress.org/support/forum/requests-and-feedback"
 msgstr "https://wordpress.org/support/forum/requests-and-feedback"
 
-#: wp-login.php:411 wp-admin/includes/class-wp-users-list-table.php:318
+#: wp-login.php:413 wp-admin/includes/class-wp-users-list-table.php:318
 msgid "Change"
 msgstr "Skift"
 
@@ -16246,23 +16260,23 @@ msgstr "Højde på miniature"
 msgid "Thumbnail Width"
 msgstr "Bredde på miniature"
 
-#: wp-login.php:1043
+#: wp-login.php:1045
 msgid "Confirm new password"
 msgstr "Bekræft ny adgangskode"
 
-#: wp-login.php:1025
+#: wp-login.php:1027
 msgid "New password"
 msgstr "Ny adgangskode"
 
-#: wp-login.php:1008
+#: wp-login.php:1010
 msgid "Reset Password"
 msgstr "Nulstil adgangskode"
 
-#: wp-login.php:993
+#: wp-login.php:995
 msgid "Your password has been reset."
 msgstr "Din adgangskode er blevet nulstillet."
 
-#: wp-login.php:991 wp-admin/user-edit.php:711
+#: wp-login.php:993 wp-admin/user-edit.php:711
 msgid "Password Reset"
 msgstr "Nulstilling af adgangskode"
 
@@ -17144,32 +17158,32 @@ msgstr "Der lader ikke til at være nogen ny e-mail."
 msgid "Slow down cowboy, no need to check for new mails so often!"
 msgstr "Klap lige hesten, cowboy. Du behøver ikke tjekke mail så tit!"
 
-#: wp-login.php:1432
+#: wp-login.php:1434
 msgid "You are now logged out."
 msgstr "Du er nu logget ud."
 
-#: wp-login.php:1349
+#: wp-login.php:1351
 msgid "You have logged in successfully."
 msgstr "Du er logget ind."
 
-#: wp-includes/user.php:194 wp-includes/user.php:266 wp-login.php:1188
-#: wp-login.php:1562
+#: wp-includes/user.php:194 wp-includes/user.php:266 wp-login.php:1190
+#: wp-login.php:1564
 msgid "Lost your password?"
 msgstr "Mistet din adgangskode?"
 
-#: wp-login.php:1144
+#: wp-login.php:1146
 msgid "Register For This Site"
 msgstr "Registrer på dette websted"
 
-#: wp-login.php:1142
+#: wp-login.php:1144
 msgid "Registration Form"
 msgstr "Registreringsformular"
 
-#: wp-login.php:900
+#: wp-login.php:902
 msgid "Get New Password"
 msgstr "Få ny adgangskode"
 
-#: wp-login.php:864
+#: wp-login.php:866
 msgid "Lost Password"
 msgstr "Mistet adgangskode"
 
@@ -17945,7 +17959,7 @@ msgstr "Afsnit"
 
 #. translators: Hidden accessibility text.
 #. translators: The user language selection field label.
-#: wp-includes/class-wp-editor.php:1235 wp-login.php:372
+#: wp-includes/class-wp-editor.php:1235 wp-login.php:374
 #: wp-includes/js/dist/format-library.js:1723 wp-admin/user-edit.php:381
 #: wp-admin/user-new.php:557
 msgid "Language"
@@ -18167,12 +18181,12 @@ msgstr "Søgeresultater %1$s %2$s"
 msgid "Site Admin"
 msgstr "Webstedsadministrator"
 
-#: wp-includes/general-template.php:693 wp-login.php:909 wp-login.php:1073
-#: wp-login.php:1178 wp-login.php:1554
+#: wp-includes/general-template.php:693 wp-login.php:911 wp-login.php:1075
+#: wp-login.php:1180 wp-login.php:1556
 msgid "Register"
 msgstr "Registrer"
 
-#: wp-includes/general-template.php:527 wp-login.php:1520
+#: wp-includes/general-template.php:527 wp-login.php:1522
 msgid "Remember Me"
 msgstr "Husk mig"
 
@@ -18181,8 +18195,8 @@ msgstr "Husk mig"
 msgid "Log out"
 msgstr "Log ud"
 
-#: wp-includes/general-template.php:386 wp-login.php:905 wp-login.php:993
-#: wp-login.php:1069 wp-login.php:1183
+#: wp-includes/general-template.php:386 wp-login.php:907 wp-login.php:995
+#: wp-login.php:1071 wp-login.php:1185
 msgid "Log in"
 msgstr "Log ind"
 
@@ -18776,7 +18790,7 @@ msgstr "Klokkeslætformat"
 msgid "Date Format"
 msgstr "Datoformat"
 
-#: wp-includes/comment-template.php:2526 wp-login.php:1160
+#: wp-includes/comment-template.php:2526 wp-login.php:1162
 #: wp-admin/comment.php:189 wp-admin/edit-form-comment.php:63
 #: wp-admin/includes/class-wp-users-list-table.php:375
 #: wp-admin/includes/template.php:495 wp-admin/user-edit.php:540
@@ -18894,13 +18908,13 @@ msgstr "Ja"
 msgid "Edit Category"
 msgstr "Rediger kategori"
 
-#: wp-includes/general-template.php:528 wp-login.php:1473 wp-login.php:1522
+#: wp-includes/general-template.php:528 wp-login.php:1475 wp-login.php:1524
 #: wp-admin/install.php:229 wp-admin/install.php:448
 #: wp-admin/includes/network.php:757
 msgid "Log In"
 msgstr "Log ind"
 
-#: wp-login.php:1034
+#: wp-login.php:1036
 msgid "Strength indicator"
 msgstr "Styrkeindikator"
 
@@ -19182,7 +19196,7 @@ msgid "Add or remove tags"
 msgstr "Tilføj eller fjern tags"
 
 #: wp-includes/media.php:4763 wp-includes/script-loader.php:1249
-#: wp-login.php:725 wp-includes/js/dist/edit-site.js:22589
+#: wp-login.php:727 wp-includes/js/dist/edit-site.js:22589
 #: wp-includes/js/dist/edit-widgets.js:3361 wp-includes/js/dist/editor.js:7877
 #: wp-admin/edit-form-comment.php:245 wp-admin/edit-tag-form.php:300
 #: wp-admin/includes/class-wp-plugins-list-table.php:619
@@ -19374,7 +19388,7 @@ msgstr "Skaler"
 msgid "Redo"
 msgstr "Annuller fortryd"
 
-#: wp-includes/general-template.php:526 wp-login.php:1502
+#: wp-includes/general-template.php:526 wp-login.php:1504
 #: wp-includes/js/dist/edit-site.js:28876
 #: wp-admin/includes/class-wp-posts-list-table.php:1772
 #: wp-admin/includes/file.php:2534 wp-admin/install.php:137
@@ -19383,7 +19397,7 @@ msgstr "Annuller fortryd"
 msgid "Password"
 msgstr "Adgangskode"
 
-#: wp-login.php:1156 wp-admin/includes/class-wp-users-list-table.php:373
+#: wp-login.php:1158 wp-admin/includes/class-wp-users-list-table.php:373
 #: wp-admin/includes/class-wp-users-list-table.php:396
 #: wp-admin/includes/file.php:2533 wp-admin/install.php:118
 #: wp-admin/install.php:434 wp-admin/setup-config.php:230
