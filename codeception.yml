@@ -1,14 +1,21 @@
+namespace: Tests
+support_namespace: Support
 paths:
-    tests: tests
-    output: tests/_output
-    data: tests/_data
-    support: tests/_support
-    envs: tests/_envs
+    tests: tests/wpbrowser
+    output: tests/wpbrowser/_output
+    data: tests/wpbrowser/Support/Data
+    support: tests/wpbrowser/Support
+    envs: tests/wpbrowser/_envs
 actor_suffix: Tester
+params:
+    - tests/wpbrowser/.env
 extensions:
     enabled:
         - Codeception\Extension\RunFailed
+    config: {  }
     commands:
-        - Codeception\Command\GenerateWPUnit
-params:
-    - .env.testing
+        - lucatume\WPBrowser\Command\RunOriginal
+        - lucatume\WPBrowser\Command\RunAll
+        - lucatume\WPBrowser\Command\GenerateWPUnit
+        - lucatume\WPBrowser\Command\DbExport
+        - lucatume\WPBrowser\Command\DbImport
