@@ -8,21 +8,21 @@ use KC\Core\PostTypes\PostType;
  */
 final readonly class Action {
 
-	public const ADMIN_ENQUEUE_SCRIPTS = 'admin_enqueue_scripts';
+	public const string ADMIN_ENQUEUE_SCRIPTS = 'admin_enqueue_scripts';
 
-	public const ADMIN_INIT = 'admin_init';
+	public const string ADMIN_INIT = 'admin_init';
 
-	public const ADMIN_MENU = 'admin_menu';
+	public const string ADMIN_MENU = 'admin_menu';
 
-	public const AFTER_SETUP_THEME = 'after_setup_theme';
+	public const string AFTER_SETUP_THEME = 'after_setup_theme';
 
-	public const INIT = 'init';
+	public const string INIT = 'init';
 
-	public const PHPMAILER_INIT = 'phpmailer_init';
+	public const string PHPMAILER_INIT = 'phpmailer_init';
 
-	public const PLUGINS_LOADED = 'plugins_loaded';
+	public const string PLUGINS_LOADED = 'plugins_loaded';
 
-	public const REST_API_INIT = 'rest_api_init';
+	public const string REST_API_INIT = 'rest_api_init';
 
 	/**
 	 * Get the save_post_{$post->post_type} action for a post type

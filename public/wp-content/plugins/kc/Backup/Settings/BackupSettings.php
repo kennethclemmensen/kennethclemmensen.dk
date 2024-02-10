@@ -17,7 +17,7 @@ use KC\Data\Files\FileManager;
  */
 final class BackupSettings extends BaseSettings {
 
-	private const BACKUP_FOLDER = WP_CONTENT_DIR.'/kc_backup';
+	private const string BACKUP_FOLDER = WP_CONTENT_DIR.'/kc_backup';
 	private readonly string $dropboxSettingsPage;
 	private readonly string $dropboxSettingsName;
 	private readonly array | bool $dropboxSettings;

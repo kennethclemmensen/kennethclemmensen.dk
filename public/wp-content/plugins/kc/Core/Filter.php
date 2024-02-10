@@ -8,11 +8,11 @@ use KC\Core\PostTypes\PostType;
  */
 final readonly class Filter {
 
-	public const META_BOXES = 'rwmb_meta_boxes';
+	public const string META_BOXES = 'rwmb_meta_boxes';
 
-	public const MIMES = 'upload_mimes';
+	public const string MIMES = 'upload_mimes';
 
-	public const REST_PRE_SERVE_REQUEST = 'rest_pre_serve_request';
+	public const string REST_PRE_SERVE_REQUEST = 'rest_pre_serve_request';
 
 	/**
 	 * Get the manage_{$post_type}_posts_columns filter for a post type
