@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f75a05e10bb9fba704b14b1663dce558",
+    "content-hash": "fad881bcf7b42203d6a0c1bec610299e",
     "packages": [],
     "packages-dev": [
         {
@@ -631,26 +631,26 @@
         },
         {
             "name": "codeception/module-webdriver",
-            "version": "3.2.1",
+            "version": "3.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/module-webdriver.git",
-                "reference": "59b6fe426dddbe889c23593f8698c52e08bba6e9"
+                "reference": "06fe128460a313e171bfef894882c7c880aef6b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/module-webdriver/zipball/59b6fe426dddbe889c23593f8698c52e08bba6e9",
-                "reference": "59b6fe426dddbe889c23593f8698c52e08bba6e9",
+                "url": "https://api.github.com/repos/Codeception/module-webdriver/zipball/06fe128460a313e171bfef894882c7c880aef6b8",
+                "reference": "06fe128460a313e171bfef894882c7c880aef6b8",
                 "shasum": ""
             },
             "require": {
-                "codeception/codeception": "^5.0.0-RC2",
+                "codeception/codeception": "^5.0.0",
                 "codeception/lib-web": "^1.0.1",
                 "codeception/stub": "^4.0",
                 "ext-json": "*",
                 "ext-mbstring": "*",
                 "php": "^8.0",
-                "php-webdriver/webdriver": "^1.8.0",
+                "php-webdriver/webdriver": "^1.14.0",
                 "phpunit/phpunit": "^9.5"
             },
             "suggest": {
@@ -686,9 +686,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Codeception/module-webdriver/issues",
-                "source": "https://github.com/Codeception/module-webdriver/tree/3.2.1"
+                "source": "https://github.com/Codeception/module-webdriver/tree/3.2.2"
             },
-            "time": "2023-02-03T21:46:32+00:00"
+            "time": "2024-02-16T13:09:30+00:00"
         },
         {
             "name": "codeception/stub",
@@ -1249,16 +1249,16 @@
         },
         {
             "name": "lucatume/wp-browser",
-            "version": "4.0.19",
+            "version": "4.0.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lucatume/wp-browser.git",
-                "reference": "fa02ca577268d91bdcec2b9ad307875a0c676e35"
+                "reference": "f42a921aaf5ea7f73888f6aedb361fee7e4d2310"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lucatume/wp-browser/zipball/fa02ca577268d91bdcec2b9ad307875a0c676e35",
-                "reference": "fa02ca577268d91bdcec2b9ad307875a0c676e35",
+                "url": "https://api.github.com/repos/lucatume/wp-browser/zipball/f42a921aaf5ea7f73888f6aedb361fee7e4d2310",
+                "reference": "f42a921aaf5ea7f73888f6aedb361fee7e4d2310",
                 "shasum": ""
             },
             "require": {
@@ -1335,7 +1335,7 @@
             ],
             "support": {
                 "issues": "https://github.com/lucatume/wp-browser/issues",
-                "source": "https://github.com/lucatume/wp-browser/tree/4.0.19"
+                "source": "https://github.com/lucatume/wp-browser/tree/4.0.21"
             },
             "funding": [
                 {
@@ -1343,7 +1343,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-02-09T13:23:42+00:00"
+            "time": "2024-02-12T20:28:26+00:00"
         },
         {
             "name": "masterminds/html5",
