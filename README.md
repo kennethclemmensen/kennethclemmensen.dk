@@ -4,7 +4,6 @@ The repository for my [personal website](https://kennethclemmensen.dk/).
 
 The website is created using [WordPress](https://wordpress.org/) and a number of other technologies.
 These technologies includes:
-* [Codeception](http://codeception.com/)/[wp-browser](https://wpbrowser.wptestkit.dev/)
 * [Composer](https://getcomposer.org/)
 * [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
 * [Docker](https://docker.com)
@@ -19,4 +18,6 @@ These technologies includes:
 * [SASS](https://sass-lang.com/)
 * [TypeScript](https://www.typescriptlang.org/)
 * [Vue](https://v3.vuejs.org/)
+* [WebdriverIO](https://webdriver.io/)
 * [Webpack](https://webpack.js.org/)
+* [WPBrowser](https://wpbrowser.wptestkit.dev/)/[Codeception](http://codeception.com/)
