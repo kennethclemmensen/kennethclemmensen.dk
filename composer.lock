@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fad881bcf7b42203d6a0c1bec610299e",
+    "content-hash": "7c43e2602477df375d16c0e51759820e",
     "packages": [],
     "packages-dev": [
         {
@@ -72,16 +72,16 @@
         },
         {
             "name": "codeception/codeception",
-            "version": "5.1.0",
+            "version": "5.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/Codeception.git",
-                "reference": "cb80cae36a97113b09065bb1d0225d0fc7746540"
+                "reference": "fcfa1d0ec2eb7439e5290fd3ea685b5d1f90075a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/cb80cae36a97113b09065bb1d0225d0fc7746540",
-                "reference": "cb80cae36a97113b09065bb1d0225d0fc7746540",
+                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/fcfa1d0ec2eb7439e5290fd3ea685b5d1f90075a",
+                "reference": "fcfa1d0ec2eb7439e5290fd3ea685b5d1f90075a",
                 "shasum": ""
             },
             "require": {
@@ -176,7 +176,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Codeception/Codeception/issues",
-                "source": "https://github.com/Codeception/Codeception/tree/5.1.0"
+                "source": "https://github.com/Codeception/Codeception/tree/5.1.1"
             },
             "funding": [
                 {
@@ -184,7 +184,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2024-02-04T13:50:11+00:00"
+            "time": "2024-02-23T21:42:47+00:00"
         },
         {
             "name": "codeception/lib-asserts",
@@ -1249,16 +1249,16 @@
         },
         {
             "name": "lucatume/wp-browser",
-            "version": "4.0.21",
+            "version": "4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lucatume/wp-browser.git",
-                "reference": "f42a921aaf5ea7f73888f6aedb361fee7e4d2310"
+                "reference": "4a8301cef69758a36912bfa2691403302dd56522"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lucatume/wp-browser/zipball/f42a921aaf5ea7f73888f6aedb361fee7e4d2310",
-                "reference": "f42a921aaf5ea7f73888f6aedb361fee7e4d2310",
+                "url": "https://api.github.com/repos/lucatume/wp-browser/zipball/4a8301cef69758a36912bfa2691403302dd56522",
+                "reference": "4a8301cef69758a36912bfa2691403302dd56522",
                 "shasum": ""
             },
             "require": {
@@ -1288,7 +1288,7 @@
                 "phpstan/extension-installer": "^1.3",
                 "phpstan/phpstan": "*",
                 "phpstan/phpstan-symfony": "^1.3",
-                "rector/rector": "^0.18.12",
+                "rector/rector": "0.19.8",
                 "squizlabs/php_codesniffer": "^3.7",
                 "szepeviktor/phpstan-wordpress": "^1.3"
             },
@@ -1303,7 +1303,7 @@
             "autoload": {
                 "files": [
                     "src/version-4-aliases.php",
-                    "src/Deprecated/deprecated-functions.php",
+                    "src/deprecated-functions.php",
                     "src/functions.php"
                 ],
                 "psr-4": {
@@ -1312,6 +1312,7 @@
                         "src/",
                         "src/Deprecated"
                     ],
+                    "Codeception\\Extension\\": "src/Extension",
                     "lucatume\\WPBrowser\\Opis\\Closure\\": "includes/opis/closure/src"
                 }
             },
@@ -1335,7 +1336,7 @@
             ],
             "support": {
                 "issues": "https://github.com/lucatume/wp-browser/issues",
-                "source": "https://github.com/lucatume/wp-browser/tree/4.0.21"
+                "source": "https://github.com/lucatume/wp-browser/tree/4.1.0"
             },
             "funding": [
                 {
@@ -1343,7 +1344,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-02-12T20:28:26+00:00"
+            "time": "2024-02-20T10:19:35+00:00"
         },
         {
             "name": "masterminds/html5",
@@ -1473,16 +1474,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v5.0.0",
+            "version": "v5.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "4a21235f7e56e713259a6f76bf4b5ea08502b9dc"
+                "reference": "2218c2252c874a4624ab2f613d86ac32d227bc69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/4a21235f7e56e713259a6f76bf4b5ea08502b9dc",
-                "reference": "4a21235f7e56e713259a6f76bf4b5ea08502b9dc",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/2218c2252c874a4624ab2f613d86ac32d227bc69",
+                "reference": "2218c2252c874a4624ab2f613d86ac32d227bc69",
                 "shasum": ""
             },
             "require": {
@@ -1525,9 +1526,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nikic/PHP-Parser/issues",
-                "source": "https://github.com/nikic/PHP-Parser/tree/v5.0.0"
+                "source": "https://github.com/nikic/PHP-Parser/tree/v5.0.1"
             },
-            "time": "2024-01-07T17:17:35+00:00"
+            "time": "2024-02-21T19:24:10+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -2102,16 +2103,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "9.6.16",
+            "version": "9.6.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "3767b2c56ce02d01e3491046f33466a1ae60a37f"
+                "reference": "1a156980d78a6666721b7e8e8502fe210b587fcd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/3767b2c56ce02d01e3491046f33466a1ae60a37f",
-                "reference": "3767b2c56ce02d01e3491046f33466a1ae60a37f",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/1a156980d78a6666721b7e8e8502fe210b587fcd",
+                "reference": "1a156980d78a6666721b7e8e8502fe210b587fcd",
                 "shasum": ""
             },
             "require": {
@@ -2185,7 +2186,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.6.16"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.6.17"
             },
             "funding": [
                 {
@@ -2201,7 +2202,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-01-19T07:03:14+00:00"
+            "time": "2024-02-23T13:14:51+00:00"
         },
         {
             "name": "psr/container",
