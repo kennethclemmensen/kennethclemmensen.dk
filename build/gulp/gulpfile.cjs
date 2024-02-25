@@ -3,7 +3,7 @@ const browserSyncPlugin = require('browser-sync');
 const cleanCssPlugin = require('gulp-clean-css');
 const imageminPlugin = require('gulp-imagemin');
 const lessPlugin = require('gulp-less');
-const package = require('../../package.json');
+const pkg = require('../../package.json');
 const sassPlugin = require('gulp-dart-sass');
 const shellPlugin = require('gulp-shell');
 
@@ -12,34 +12,34 @@ function browserSync() {
     browserSyncPlugin.init({
         debugInfo: true,
         files: [
-            package.config.cssFiles,
-            package.config.phpFiles,
-            package.config.jsDistFiles
+            pkg.config.cssFiles,
+            pkg.config.phpFiles,
+            pkg.config.jsDistFiles
         ],
         logConnections: true,
         notify: true,
-        proxy: package.config.testDomain,
+        proxy: pkg.config.testDomain,
         watchTask: true
     });
 }
 
 //Optimize images
 function imagemin() {
-    return src(package.config.uploadsFolder + '**')
+    return src(pkg.config.uploadsFolder + '**')
         .pipe(imageminPlugin())
-        .pipe(dest(package.config.uploadsFolder));
+        .pipe(dest(pkg.config.uploadsFolder));
 }
 
 //Translate less to css
 function less() {
-    return src(package.config.styleLessFile)
+    return src(pkg.config.styleLessFile)
         .pipe(lessPlugin())
         .on('error', (error) => {
             console.log(error.toString());
             this.emit('end');
         })
         .pipe(cleanCssPlugin())
-        .pipe(dest(package.config.cssCompiledFolder))
+        .pipe(dest(pkg.config.cssCompiledFolder))
         .pipe(browserSyncPlugin.reload({
             stream: true
         }));
@@ -47,8 +47,8 @@ function less() {
 
 //Run the npm webpack js command
 function runNpmWebpackJsCommand() {
-    return src(package.config.appJsFile)
-        .pipe(shellPlugin(package.config.npmWebpackJsCommand))
+    return src(pkg.config.appJsFile)
+        .pipe(shellPlugin(pkg.config.npmWebpackJsCommand))
         .on('error', (error) => {
             console.log(error.toString());
             this.emit('end');
@@ -60,8 +60,8 @@ function runNpmWebpackJsCommand() {
 
 //Run the npm webpack css command
 function runNpmWebpackCssCommand() {
-    return src(package.config.cssCompiledFile)
-        .pipe(shellPlugin(package.config.npmWebpackCssCommand))
+    return src(pkg.config.cssCompiledFile)
+        .pipe(shellPlugin(pkg.config.npmWebpackCssCommand))
         .on('error', (error) => {
             console.log(error.toString());
             this.emit('end');
@@ -74,7 +74,7 @@ function runNpmWebpackCssCommand() {
 //Run the npm tsc command
 function runNpmTscCommand() {
     return src('../../public/wp-content/themes/kennethclemmensen/ts/App.ts')
-        .pipe(shellPlugin(package.config.npmTscCommand))
+        .pipe(shellPlugin(pkg.config.npmTscCommand))
         .on('error', (error) => {
             console.log(error.toString());
             this.emit('end');
@@ -83,14 +83,14 @@ function runNpmTscCommand() {
 
 //Translate sass to css
 function sass() {
-    return src(package.config.styleScssFile)
+    return src(pkg.config.styleScssFile)
         .pipe(sassPlugin())
         .on('error', (error) => {
             console.log(error.toString());
             this.emit('end');
         })
         .pipe(cleanCssPlugin())
-        .pipe(dest(package.config.cssCompiledFolder))
+        .pipe(dest(pkg.config.cssCompiledFolder))
         .pipe(browserSyncPlugin.reload({
             stream: true
         }));
@@ -98,10 +98,10 @@ function sass() {
 
 //Watch for file changes
 function watcher() {
-    watch([package.config.cssCompiledFile], runNpmWebpackCssCommand);
-    watch([package.config.jsCompiledFiles], runNpmWebpackJsCommand);
-    watch(package.config.lessFiles, less);
-    watch(package.config.scssFiles, sass);
+    watch([pkg.config.cssCompiledFile], runNpmWebpackCssCommand);
+    watch([pkg.config.jsCompiledFiles], runNpmWebpackJsCommand);
+    watch(pkg.config.lessFiles, less);
+    watch(pkg.config.scssFiles, sass);
 }
 
 //Register the tasks

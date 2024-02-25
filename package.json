@@ -67,8 +67,8 @@
   "scripts": {
     "grunt": "grunt --gruntfile build/grunt/Gruntfile.cjs",
     "grunt-imagemin": "grunt imagemin --gruntfile build/grunt/Gruntfile.cjs",
-    "gulp": "gulp -f build/gulp/gulpfile.js",
-    "gulp-imagemin": "gulp imagemin -f build/gulp/gulpfile.js",
+    "gulp": "gulp -f build/gulp/gulpfile.cjs",
+    "gulp-imagemin": "gulp imagemin -f build/gulp/gulpfile.cjs",
     "tsc": "tsc -w",
     "wdio": "wdio run ./tests/webdriverio/wdio.conf.ts",
     "webpack-css": "webpack --config build/webpack/webpack.css.js",
