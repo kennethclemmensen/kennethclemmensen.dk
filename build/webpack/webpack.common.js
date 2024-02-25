@@ -1,6 +1,6 @@
-const TerserPlugin = require('terser-webpack-plugin');
+import TerserPlugin from 'terser-webpack-plugin';
 
-module.exports = {
+export default {
     mode: 'production',
     optimization: {
         minimize: true,
@@ -16,6 +16,6 @@ module.exports = {
         ]
     },
     performance: {
-        maxAssetSize: 400000
+        maxAssetSize: 500000
     }
 };

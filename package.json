@@ -2,6 +2,7 @@
   "name": "kennethclemmensen.dk",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "config": {
     "appJsFile": "../../public/wp-content/themes/kennethclemmensen/js/compiled/App.js",
     "cssCompiledFile": "../../public/wp-content/themes/kennethclemmensen/css/compiled/style.css",
