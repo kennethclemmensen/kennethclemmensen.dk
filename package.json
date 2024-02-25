@@ -65,8 +65,8 @@
     "webpack-merge-and-include-globally": "2.1.26"
   },
   "scripts": {
-    "grunt": "grunt --gruntfile build/grunt/Gruntfile.js",
-    "grunt-imagemin": "grunt imagemin --gruntfile build/grunt/Gruntfile.js",
+    "grunt": "grunt --gruntfile build/grunt/Gruntfile.cjs",
+    "grunt-imagemin": "grunt imagemin --gruntfile build/grunt/Gruntfile.cjs",
     "gulp": "gulp -f build/gulp/gulpfile.js",
     "gulp-imagemin": "gulp imagemin -f build/gulp/gulpfile.js",
     "tsc": "tsc -w",
