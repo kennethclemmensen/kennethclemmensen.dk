@@ -516,6 +516,10 @@ class AIOWPSecurity_Utility {
 
 		$lock_seconds = $lock_minutes * MINUTE_IN_SECONDS;
 		$lock_time = current_time('mysql', true);
+		$ip_lookup_result = AIOS_Helper::get_ip_reverse_lookup($ip);
+		$ip_lookup_result = json_encode($ip_lookup_result);
+		if (false === $ip_lookup_result) $ip_lookup_result = null;
+
 		$release_time = date('Y-m-d H:i:s', time() + ($lock_seconds));
 		$data = array(
 			'user_id' => $user_id,
@@ -524,14 +528,15 @@ class AIOWPSecurity_Utility {
 			'release_date' => $release_time,
 			'failed_login_IP' => $ip,
 			'lock_reason' => $lock_reason,
-			'lock_seconds' => $lock_seconds
+			'lock_seconds' => $lock_seconds,
+			'ip_lookup_result' => $ip_lookup_result
 		);
 		
 		$result = AIOWPSecurity_Utility::add_lockout($data);
 
-		if ($result > 0) {
-		} elseif (false === $result) {
-			$aio_wp_security->debug_logger->log_debug("lock_IP: Error inserting record into " . $login_lockdown_table, 4);//Log the highly unlikely event of DB error
+		if (false === $result) {
+			$error_msg = empty($wpdb->last_error) ? "lock_IP: Error inserting record into " . $login_lockdown_table : $wpdb->last_error;
+			$aio_wp_security->debug_logger->log_debug($error_msg, 4);//Log the highly unlikely event of DB error
 		}
 	}
 	
@@ -1104,6 +1109,40 @@ class AIOWPSecurity_Utility {
 	 */
 	public static function get_wp_datetime_format() {
 		return get_option('date_format') . ' ' . get_option('time_format');
+	}
+
+	/**
+	 * This function gets the timezone of the site as a DateTimeZone object
+	 *
+	 * @see https://developer.wordpress.org/reference/functions/wp_timezone/
+	 *
+	 * @return DateTimeZone - the timezone of the site as a DateTimeZone object
+	 */
+	public static function get_wp_timezone() {
+		return new DateTimeZone(self::get_wp_timezone_string());
+	}
+
+	/**
+	 * This function gets the timezone of the site as a string
+	 *
+	 * @see https://developer.wordpress.org/reference/functions/wp_timezone_string/
+	 *
+	 * @return string - PHP timezone name or a ±HH:MM offset
+	 */
+	public static function get_wp_timezone_string() {
+		$timezone_string = get_option('timezone_string');
+		
+		if ($timezone_string) return $timezone_string;
+		
+		$offset  = (float) get_option('gmt_offset');
+		$hours   = (int) $offset;
+		$minutes = ($offset - $hours);
+		$sign    = ($offset < 0) ? '-' : '+';
+		$abs_hour = abs($hours);
+		$abs_mins = abs($minutes * 60);
+		$tz_offset = sprintf('%s%02d:%02d', $sign, $abs_hour, $abs_mins);
+		
+		return $tz_offset;
 	}
 
 	/**
