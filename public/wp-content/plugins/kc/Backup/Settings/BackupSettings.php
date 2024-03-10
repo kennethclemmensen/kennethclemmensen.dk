@@ -21,13 +21,10 @@ final class BackupSettings extends BaseSettings {
 	private readonly string $dropboxSettingsPage;
 	private readonly string $dropboxSettingsName;
 	private readonly array | bool $dropboxSettings;
-	private readonly string $encryptionSettingsPage;
-	private readonly string $encryptionSettingsName;
-	private readonly array | bool $encryptionSettings;
 	private readonly string $appKey;
 	private readonly string $appSecret;
 	private readonly string $redirectUri;
-	private readonly string $password;
+	private readonly string $encryptionPassword;
 	private readonly string $nonce;
 
 	/**
@@ -42,19 +39,14 @@ final class BackupSettings extends BaseSettings {
 		$this->dropboxSettingsPage = 'kc-backup-dropbox-settings';
 		$this->dropboxSettingsName = $this->dropboxSettingsPage.'-option-group';
 		$this->dropboxSettings = get_option($this->dropboxSettingsName);
-		$this->encryptionSettingsPage = 'kc-backup-encryption-settings';
-		$this->encryptionSettingsName = $this->encryptionSettingsPage.'-option-group';
-		$this->encryptionSettings = get_option($this->encryptionSettingsName);
 		$prefix = 'dropbox_';
 		$this->appKey = $prefix.'app_key';
 		$this->appSecret = $prefix.'app_secret';
 		$this->redirectUri = $prefix.'redirect_uri';
-		$prefix = 'encryption_';
-		$this->password = $prefix.'password';
+		$this->encryptionPassword = $prefix.'encryption_password';
 		$this->nonce = $prefix.'nonce';
 		$this->handleBackups();
 		$this->createDropboxSettings();
-		$this->createEncryptionSettings();
 		$this->handleOptionsSaving();
 	}
 
@@ -172,20 +164,6 @@ final class BackupSettings extends BaseSettings {
 							</form>
 							<?php
 						}
-					],
-					'encryption' => [
-						'title' => $this->translationService->getTranslatedString(TranslationString::Encryption),
-						'content' => function() : void {
-							?>
-							<form action="options.php" method="post">
-								<?php
-								settings_fields($this->encryptionSettingsName);
-								do_settings_sections($this->encryptionSettingsPage);
-								submit_button();
-								?>
-							</form>
-							<?php
-						}
 					]
 				];
 				$this->showTabs($tabs);
@@ -213,26 +191,13 @@ final class BackupSettings extends BaseSettings {
 			add_settings_field($prefix.'redirect-uri', $redirectUriLabel, function() : void {
 				echo '<input type="url" name="'.$this->dropboxSettingsName.'['.$this->redirectUri.']" value="'.$this->getRedirectUri().'">';
 			}, $this->dropboxSettingsPage, $sectionId);
-			$this->registerSetting($this->dropboxSettingsName);
-		});
-	}
-
-	/**
-	 * Create the encryption settings
-	 */
-	private function createEncryptionSettings() : void {
-		add_action(Action::ADMIN_INIT, function() : void {
-			$sectionId = $this->encryptionSettingsPage.'-section-encryption';
-			$prefix = $this->encryptionSettingsPage;
-			$password = $this->translationService->getTranslatedString(TranslationString::Password);
-			add_settings_section($sectionId, '', function() : void {}, $this->encryptionSettingsPage);
-			add_settings_field($prefix.'password', $password, function() : void {
-				echo '<input type="password" name="'.$this->encryptionSettingsName.'['.$this->password.']" required>';
-			}, $this->encryptionSettingsPage, $sectionId);
+			add_settings_field($prefix.'encryption-password', '', function() : void {
+				echo '<input type="hidden" name="'.$this->dropboxSettingsName.'['.$this->encryptionPassword.']">';
+			}, $this->dropboxSettingsPage, $sectionId);
 			add_settings_field($prefix.'nonce', '', function() : void {
-				echo '<input type="hidden" name="'.$this->encryptionSettingsName.'['.$this->nonce.']">';
-			}, $this->encryptionSettingsPage, $sectionId);
-			$this->registerSetting($this->encryptionSettingsName);
+				echo '<input type="hidden" name="'.$this->dropboxSettingsName.'['.$this->nonce.']">';
+			}, $this->dropboxSettingsPage, $sectionId);
+			$this->registerSetting($this->dropboxSettingsName);
 		});
 	}
 
@@ -257,16 +222,11 @@ final class BackupSettings extends BaseSettings {
 	 * Handle the options saving
 	 */
 	private function handleOptionsSaving() : void {
-		add_filter(Filter::getPreUpdateOptionFilter($this->encryptionSettingsName), function(array $value) : array {
-			$key = $this->securityService->generateEncryptionKey($value[$this->password]);
-			$value[$this->password] = $this->convertToHexadecimal($key);
+		add_filter(Filter::getPreUpdateOptionFilter($this->dropboxSettingsName), function(array $value) : array {
+			$key = $this->securityService->generateEncryptionKey($this->securityService->generatePassword());
+			$value[$this->encryptionPassword] = $this->convertToHexadecimal($key);
 			$nonce = $this->securityService->generateNonce();
 			$value[$this->nonce] = $this->convertToHexadecimal($nonce);
-			return $value;
-		});
-		add_filter(Filter::getPreUpdateOptionFilter($this->dropboxSettingsName), function(array $value) : array {
-			$nonce = $this->getNonce();
-			$key = $this->getPassword();
 			$appKey = $this->securityService->encryptMessage($value[$this->appKey], $nonce, $key);
 			$appSecret = $this->securityService->encryptMessage($value[$this->appSecret], $nonce, $key);
 			$redirectUri = $this->securityService->encryptMessage($value[$this->redirectUri], $nonce, $key);
@@ -342,8 +302,8 @@ final class BackupSettings extends BaseSettings {
 	 * @return string the nonce
 	 */
 	private function getNonce() : string {
-		if(isset($this->encryptionSettings[$this->nonce])) {
-			return $this->convertToBinary($this->encryptionSettings[$this->nonce]);
+		if(isset($this->dropboxSettings[$this->nonce])) {
+			return $this->convertToBinary($this->dropboxSettings[$this->nonce]);
 		} else {
 			return '';
 		}
@@ -355,8 +315,8 @@ final class BackupSettings extends BaseSettings {
 	 * @return string the password
 	 */
 	private function getPassword() : string {
-		if(isset($this->encryptionSettings[$this->password])) {
-			return $this->convertToBinary($this->encryptionSettings[$this->password]);
+		if(isset($this->dropboxSettings[$this->encryptionPassword])) {
+			return $this->convertToBinary($this->dropboxSettings[$this->encryptionPassword]);
 		} else {
 			return '';
 		}

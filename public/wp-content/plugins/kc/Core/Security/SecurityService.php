@@ -105,4 +105,23 @@ final readonly class SecurityService {
 	public function generateNonce() : string {
 		return random_bytes(12);
 	}
+
+	/**
+	 * Generate a password
+	 * 
+	 * @return string the password
+	 */
+	public function generatePassword() : string {
+		$password = '';
+		$passwordLength = 32;
+		$letters = 'abcdefghijklmnopqrstuvwxyz';
+		$digits = '0123456789';
+		$specialCharacters = '!@#$%^&*()_+-={}[]|:;"<>,.?/';
+		$characters = $letters.mb_strtoupper($letters).$digits.$specialCharacters;
+		for($i = 0; $i < $passwordLength; $i++) {
+			$index = random_int(0, mb_strlen($characters) - 1);
+			$password .= $characters[$index];
+		}
+		return $password;
+	}
 }

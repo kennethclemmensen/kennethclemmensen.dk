@@ -23,9 +23,6 @@ final class MailSettings extends BaseSettings {
 	private readonly string $fromName;
 	private readonly string $username;
 	private readonly string $password;
-	private readonly string $encryptionSettingsPage;
-	private readonly string $encryptionSettingsName;
-	private readonly array | bool $encryptionOptions;
 	private readonly string $encryptionPassword;
 	private readonly string $nonce;
 	private readonly SecurityService $securityService;
@@ -49,17 +46,12 @@ final class MailSettings extends BaseSettings {
 		$this->fromName = $prefix.'from_name';
 		$this->username = $prefix.'username';
 		$this->password = $prefix.'password';
-		$this->encryptionSettingsPage = 'kc-mail-encryption-settings';
-		$this->encryptionSettingsName = $this->encryptionSettingsPage.'-options';
-		$this->encryptionOptions = get_option($this->encryptionSettingsName);
-		$prefix = 'encryption_';
-		$this->encryptionPassword = $prefix.'password';
+		$this->encryptionPassword = $prefix.'encryption_password';
 		$this->nonce = $prefix.'nonce';
 		$this->securityService = $securityService;
 		$this->translationService = $translationService;
 		$this->mailService = $mailService;
 		$this->registerSettingInputs();
-		$this->registerEncryptionSettings();
 		$this->handleOptionsSaving();
 	}
 
@@ -117,20 +109,6 @@ final class MailSettings extends BaseSettings {
 								<input type="submit" name="sendMail" value="<?php echo $value; ?>" class="button button-primary">
 							<?php
 						}
-					],
-					'encryption' => [
-						'title' => $this->translationService->getTranslatedString(TranslationString::Encryption),
-						'content' => function() : void {
-							?>
-							<form action="options.php" method="post">
-								<?php
-								settings_fields($this->encryptionSettingsName);
-								do_settings_sections($this->encryptionSettingsPage);
-								submit_button();
-								?>
-							</form>
-							<?php
-						}
 					]
 				];
 				$this->showTabs($tabs);
@@ -183,26 +161,13 @@ final class MailSettings extends BaseSettings {
 			add_settings_field($prefix.'password', $password, function() : void {
 				echo '<input type="password" name="'.$this->settingsName.'['.$this->password.']" value="'.$this->getPassword().'">';
 			}, $this->settingsPage, $sectionID);
-			$this->registerSetting($this->settingsName);
-		});
-	}
-
-	/**
-	 * Register the encryption settings
-	 */
-	private function registerEncryptionSettings() : void {
-		add_action(Action::ADMIN_INIT, function() : void {
-			$sectionId = $this->encryptionSettingsPage.'-section-encryption';
-			$prefix = $this->encryptionSettingsPage;
-			$password = $this->translationService->getTranslatedString(TranslationString::Password);
-			add_settings_section($sectionId, '', function() : void {}, $this->encryptionSettingsPage);
-			add_settings_field($prefix.'password', $password, function() : void {
-				echo '<input type="password" name="'.$this->encryptionSettingsName.'['.$this->encryptionPassword.']" required>';
-			}, $this->encryptionSettingsPage, $sectionId);
+			add_settings_field($prefix.'encryption-password', '', function() : void {
+				echo '<input type="hidden" name="'.$this->settingsName.'['.$this->encryptionPassword.']">';
+			}, $this->settingsPage, $sectionID);
 			add_settings_field($prefix.'nonce', '', function() : void {
-				echo '<input type="hidden" name="'.$this->encryptionSettingsName.'['.$this->nonce.']">';
-			}, $this->encryptionSettingsPage, $sectionId);
-			$this->registerSetting($this->encryptionSettingsName);
+				echo '<input type="hidden" name="'.$this->settingsName.'['.$this->nonce.']">';
+			}, $this->settingsPage, $sectionID);
+			$this->registerSetting($this->settingsName);
 		});
 	}
 
@@ -210,16 +175,11 @@ final class MailSettings extends BaseSettings {
 	 * Handle the options saving
 	 */
 	private function handleOptionsSaving() : void {
-		add_filter(Filter::getPreUpdateOptionFilter($this->encryptionSettingsName), function(array $value) : array {
-			$key = $this->securityService->generateEncryptionKey($value[$this->encryptionPassword]);
+		add_filter(Filter::getPreUpdateOptionFilter($this->settingsName), function(array $value) : array {
+			$key = $this->securityService->generateEncryptionKey($this->securityService->generatePassword());
 			$value[$this->encryptionPassword] = $this->convertToHexadecimal($key);
 			$nonce = $this->securityService->generateNonce();
 			$value[$this->nonce] = $this->convertToHexadecimal($nonce);
-			return $value;
-		});
-		add_filter(Filter::getPreUpdateOptionFilter($this->settingsName), function(array $value) : array {
-			$nonce = $this->getNonce();
-			$key = $this->getEncryptionPassword();
 			$password = $this->securityService->encryptMessage($value[$this->password], $nonce, $key);
 			$value[$this->password] = $this->convertToHexadecimal($password);
 			return $value;
@@ -232,8 +192,8 @@ final class MailSettings extends BaseSettings {
 	 * @return string the nonce
 	 */
 	private function getNonce() : string {
-		if(isset($this->encryptionOptions[$this->nonce])) {
-			return $this->convertToBinary($this->encryptionOptions[$this->nonce]);
+		if(isset($this->settings[$this->nonce])) {
+			return $this->convertToBinary($this->settings[$this->nonce]);
 		} else {
 			return '';
 		}
@@ -245,8 +205,8 @@ final class MailSettings extends BaseSettings {
 	 * @return string the encryption password
 	 */
 	private function getEncryptionPassword() : string {
-		if(isset($this->encryptionOptions[$this->encryptionPassword])) {
-			return $this->convertToBinary($this->encryptionOptions[$this->encryptionPassword]);
+		if(isset($this->settings[$this->encryptionPassword])) {
+			return $this->convertToBinary($this->settings[$this->encryptionPassword]);
 		} else {
 			return '';
 		}
