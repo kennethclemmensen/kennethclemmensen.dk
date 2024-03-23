@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "403c6adfa8ff5bf44e19219f58d15136",
+    "content-hash": "ba0904b4059fd2aca7a1b04a3beb5c6b",
     "packages": [],
     "packages-dev": [
         {
@@ -1254,16 +1254,16 @@
         },
         {
             "name": "lucatume/wp-browser",
-            "version": "4.1.3",
+            "version": "4.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lucatume/wp-browser.git",
-                "reference": "d6f566df815bd277b97b791a7f2aa6f94999fab2"
+                "reference": "531d01d9e1fb0b154a2231afc7572ac48bebb1f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lucatume/wp-browser/zipball/d6f566df815bd277b97b791a7f2aa6f94999fab2",
-                "reference": "d6f566df815bd277b97b791a7f2aa6f94999fab2",
+                "url": "https://api.github.com/repos/lucatume/wp-browser/zipball/531d01d9e1fb0b154a2231afc7572ac48bebb1f6",
+                "reference": "531d01d9e1fb0b154a2231afc7572ac48bebb1f6",
                 "shasum": ""
             },
             "require": {
@@ -1341,7 +1341,7 @@
             ],
             "support": {
                 "issues": "https://github.com/lucatume/wp-browser/issues",
-                "source": "https://github.com/lucatume/wp-browser/tree/4.1.3"
+                "source": "https://github.com/lucatume/wp-browser/tree/4.1.4"
             },
             "funding": [
                 {
@@ -1349,7 +1349,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-03-13T10:39:40+00:00"
+            "time": "2024-03-19T10:03:44+00:00"
         },
         {
             "name": "masterminds/html5",
@@ -2115,16 +2115,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "9.6.17",
+            "version": "9.6.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "1a156980d78a6666721b7e8e8502fe210b587fcd"
+                "reference": "32c2c2d6580b1d8ab3c10b1e9e4dc263cc69bb04"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/1a156980d78a6666721b7e8e8502fe210b587fcd",
-                "reference": "1a156980d78a6666721b7e8e8502fe210b587fcd",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/32c2c2d6580b1d8ab3c10b1e9e4dc263cc69bb04",
+                "reference": "32c2c2d6580b1d8ab3c10b1e9e4dc263cc69bb04",
                 "shasum": ""
             },
             "require": {
@@ -2198,7 +2198,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.6.17"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.6.18"
             },
             "funding": [
                 {
@@ -2214,7 +2214,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-02-23T13:14:51+00:00"
+            "time": "2024-03-21T12:07:32+00:00"
         },
         {
             "name": "psr/container",
