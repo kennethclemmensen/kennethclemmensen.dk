@@ -13,7 +13,6 @@ defined( 'ABSPATH' ) || exit;
  * @phpstan-import-type DBInfoWithType from PLL_Translatable_Object_With_Types_Interface
  */
 class PLL_Translated_Post extends PLL_Translated_Object implements PLL_Translatable_Object_With_Types_Interface {
-
 	use PLL_Translatable_Object_With_Types_Trait;
 
 	/**
@@ -145,7 +144,7 @@ class PLL_Translated_Post extends PLL_Translated_Object implements PLL_Translata
 			 * @param string[] $post_types  List of post type names (as array keys and values).
 			 * @param bool     $is_settings True when displaying the list of custom post types in Polylang settings.
 			 */
-			$post_types = apply_filters( 'pll_get_post_types', $post_types, false );
+			$post_types = (array) apply_filters( 'pll_get_post_types', $post_types, false );
 
 			if ( did_action( 'after_setup_theme' ) ) {
 				$this->model->cache->set( 'post_types', $post_types );
@@ -375,7 +374,7 @@ class PLL_Translated_Post extends PLL_Translated_Object implements PLL_Translata
 	}
 
 	/**
-	 * Returns database-related informations that can be used in some of this class methods.
+	 * Returns database-related information that can be used in some of this class methods.
 	 * These are specific to the table containing the objects.
 	 *
 	 * @see PLL_Translatable_Object::join_clause()
