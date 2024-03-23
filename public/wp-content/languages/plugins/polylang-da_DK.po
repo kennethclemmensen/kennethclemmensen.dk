@@ -2,16 +2,24 @@
 # This file is distributed under the same license as the Plugins - Polylang - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-06-02 11:00:52+0000\n"
+"PO-Revision-Date: 2024-03-18 10:27:30+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: GlotPress/4.0.0-alpha.4\n"
+"X-Generator: GlotPress/4.0.0\n"
 "Language: da_DK\n"
 "Project-Id-Version: Plugins - Polylang - Stable (latest release)\n"
 
-#: admin/admin-model.php:184
+#: modules/machine-translation/settings-preview-machine-translation.php:40
+msgid "Allows linkage to DeepL Translate."
+msgstr "Tillader at der linkes til DeepL Translate."
+
+#: modules/machine-translation/settings-preview-machine-translation.php:39
+msgid "Machine Translation"
+msgstr "Maskinoversættelse"
+
+#: admin/admin-model.php:182
 msgid "The language does not seem to exist."
 msgstr "Sproget lader ikke til at findes."
 
@@ -22,44 +30,44 @@ msgctxt "content type setting choice"
 msgid "%1$s (%2$s)"
 msgstr "%1$s (%2$s)"
 
-#: modules/site-health/admin-site-health.php:176
+#: modules/site-health/admin-site-health.php:175
 msgid "Synchronization disabled"
 msgstr "Synkronisering deaktiveret"
 
-#: modules/site-health/admin-site-health.php:171
+#: modules/site-health/admin-site-health.php:170
 msgid "The media are translated"
 msgstr "Mediet er oversat"
 
-#: modules/site-health/admin-site-health.php:168
+#: modules/site-health/admin-site-health.php:167
 msgid "The media are not translated"
 msgstr "Mediet er ikke oversat"
 
-#: modules/site-health/admin-site-health.php:163
+#: modules/site-health/admin-site-health.php:162
 msgid "The front page URL contains the page name or page id instead of the language code"
 msgstr "Forside url indeholder sidenavnet eller side id i stedet for sprogkoden."
 
-#: modules/site-health/admin-site-health.php:140
+#: modules/site-health/admin-site-health.php:139
 msgid "Display URL language information for default language"
 msgstr "Vis URL sproginformation for standardsprog"
 
-#: modules/site-health/admin-site-health.php:126
+#: modules/site-health/admin-site-health.php:125
 msgid "Detect browser language activated"
 msgstr "Find browsersprog aktiveret"
 
-#: modules/site-health/admin-site-health.php:123
+#: modules/site-health/admin-site-health.php:122
 msgid "Detect browser language deactivated"
 msgstr "Find browsersprog deaktiveret"
 
 #. translators: placeholder is the plugin name
-#: modules/site-health/admin-site-health.php:442
+#: modules/site-health/admin-site-health.php:441
 msgid "%s information"
 msgstr "%s information"
 
-#: modules/site-health/admin-site-health.php:434
+#: modules/site-health/admin-site-health.php:433
 msgid "Not loaded. Contact your host provider."
 msgstr "Kunne ikke indlæses. Kontakt dit webhotel."
 
-#: modules/site-health/admin-site-health.php:433
+#: modules/site-health/admin-site-health.php:432
 msgid "PHP SimpleXML extension"
 msgstr "PHP SimpleXML udvidelse"
 
@@ -100,46 +108,46 @@ msgstr "Du skal kun aktivere sprog og medieoversættelse, hvis du har behov for 
 msgid "When the front page is visited, redirects to itself in the browser preferred language. As this doesn't work if it is cached, Polylang will attempt to disable the front page cache for known cache plugins."
 msgstr "Når forsiden besøges, videresendes den til sig selv i det sprog, som er det foretrukne sprog i browseren. Da dette ikke virker, hvis forsiden er cached, vil Polylang forsøge at deaktivere cachen på forsiden ved at tjekke for kendte cache plugins."
 
-#: modules/site-health/admin-site-health.php:422
+#: modules/site-health/admin-site-health.php:421
 msgid "Terms without language"
 msgstr "Termer uden sprog"
 
-#: modules/site-health/admin-site-health.php:415
+#: modules/site-health/admin-site-health.php:414
 msgid "Posts without language"
 msgstr "Indlæg uden sprog"
 
-#: modules/site-health/admin-site-health.php:394
+#: modules/site-health/admin-site-health.php:393
 msgid "The homepage is not translated in all languages"
 msgstr "Webstedet er ikke oversat til alle sprog"
 
-#: modules/site-health/admin-site-health.php:384
+#: modules/site-health/admin-site-health.php:383
 msgid "It is mandatory to translate the static front page in all languages."
 msgstr "Det er obligatorisk at oversætte den statiske forside til alle sprog."
 
-#: modules/site-health/admin-site-health.php:376
+#: modules/site-health/admin-site-health.php:375
 msgid "All languages have a translated homepage"
 msgstr "Alle sprog har en oversat forside"
 
-#: modules/site-health/admin-site-health.php:360
+#: modules/site-health/admin-site-health.php:359
 msgid "Homepage translated"
 msgstr "Forside oversat"
 
-#: modules/site-health/admin-site-health.php:345
+#: modules/site-health/admin-site-health.php:344
 msgid "Undefined"
 msgstr "Udefineret"
 
 #. translators: placeholder is the flag image
-#: modules/site-health/admin-site-health.php:297
+#: modules/site-health/admin-site-health.php:296
 msgid "Flag used in the language switcher: %s"
 msgstr "Flag der bruges i sprogomskifteren: %s"
 
 #. translators: placeholder is the language name
-#: modules/site-health/admin-site-health.php:295
+#: modules/site-health/admin-site-health.php:294
 msgid "Language: %s"
 msgstr "Sprog: %s"
 
 #. translators: placeholder is the plugin name
-#: modules/site-health/admin-site-health.php:252
+#: modules/site-health/admin-site-health.php:251
 msgid "%s options"
 msgstr "%s Indstillinger"
 
@@ -451,7 +459,7 @@ msgstr "For at dit websted skal fungere ordentligt, så skal du tildele et sprog
 msgid "Content without language"
 msgstr "Indhold uden sprog"
 
-#: include/license.php:284
+#: include/license.php:286
 msgid "Your license key has been disabled."
 msgstr "Din licensnøgle virker ikke længere."
 
@@ -475,19 +483,19 @@ msgid "North Macedonia"
 msgstr "Nord Makedonien"
 
 #. translators: %1$s is a date, %2$s is link start tag, %3$s is link end tag.
-#: include/license.php:332
+#: include/license.php:334
 msgid "Your license key will expire soon! Precisely, it will expire on %1$s. %2$sRenew your license key today!%3$s"
 msgstr "Din licensnøgle vil udløbe snart! Helt præcist, vil den udløbe den %1$s. %2$sForny din licensnøgle i dag!%3$s."
 
-#: settings/settings-module.php:318
+#: settings/settings-module.php:352
 msgid "To enable this feature, you need Polylang Pro."
 msgstr "For at aktivere denne mulighed, så skal du bruge Polylang Pro."
 
-#: admin/admin-classic-editor.php:359
+#: admin/admin-classic-editor.php:364
 msgid "If you attempt to modify them anyway, your changes will not be saved."
 msgstr "Hvis du forsøger at ændre dem alligevel, så vil dine ændringer ikke blive gemt."
 
-#: admin/admin-classic-editor.php:357
+#: admin/admin-classic-editor.php:362
 msgid "Some taxonomies or metadata may be synchronized with existing translations that you are not allowed to modify."
 msgstr "Nogle taksonomier eller metadata kunne blive synkroniseret med eksisterende oversættelser, som du ikke har tilladelse til at ændre."
 
@@ -512,26 +520,27 @@ msgid "Before upgrading to %2$s, please upgrade to %1$s."
 msgstr "Før du opgraderer til %2$s, så opgrader venligst til %1$s."
 
 #. Author of the plugin
+#: polylang.php
 msgid "WP SYNTEX"
 msgstr "WP SYNTEX"
 
 #. translators: accessibility text
 #: admin/admin-notices.php:217 modules/wizard/wizard.php:371
 #: modules/wizard/wizard.php:472 modules/wizard/wizard.php:661
-#: settings/settings.php:327
+#: settings/settings.php:323
 msgid "Dismiss this notice."
 msgstr "Afvis denne meddelelse."
 
-#: include/filters.php:409
+#: include/filters.php:432
 msgid "User"
 msgstr "Bruger"
 
 #. translators: %s is a language native name
-#: include/filters.php:400
+#: include/filters.php:423
 msgid "User description - %s"
 msgstr "Brugerbeskrivelse - %s"
 
-#: include/filters.php:376
+#: include/filters.php:399
 msgid "Translated user descriptions"
 msgstr "Oversatte brugerbeskrivelser"
 
@@ -541,6 +550,7 @@ msgstr "Tibet"
 
 #. Plugin URI of the plugin
 #. Author URI of the plugin
+#: polylang.php
 msgid "https://polylang.pro"
 msgstr "https://polylang.pro"
 
@@ -549,42 +559,42 @@ msgstr "https://polylang.pro"
 msgid "Support and extra features are available to %1$sPolylang Pro%2$s users."
 msgstr "Support og ekstra muligheder er tilgængelige for %1$sPolylang Pro%2$s brugere."
 
-#: settings/settings-module.php:320
+#: settings/settings-module.php:354
 msgid "Upgrade now."
 msgstr "Opgrader nu"
 
 #. translators: %s is a date
-#: include/license.php:340
+#: include/license.php:342
 msgid "Your license key expires on %s."
 msgstr "Din licensnøgle udløber den %s."
 
-#: include/license.php:327
+#: include/license.php:329
 msgid "The license key never expires."
 msgstr "Licensnøglen udløber aldrig."
 
 #. translators: %1$s is link start tag, %2$s is link end tag
-#: include/license.php:315
+#: include/license.php:317
 msgid "Your license key has reached its activation limit. %1$sView possible upgrades%2$s now."
 msgstr "Din licensnøgle har ramt grænsen for sin aktivering. %1$sSe på mulige opgraderinger%2$s nu."
 
 #. translators: %s is a product name
-#: include/license.php:309
+#: include/license.php:311
 msgid "This is not a %s license key."
 msgstr "Dette er ikke en %s licensnøgle."
 
 #. translators: %1$s is a product name, %2$s is link start tag, %3$s is link
 #. end tag.
-#: include/license.php:300
+#: include/license.php:302
 msgid "Your %1$s license key is not active for this URL. Please %2$svisit your account page%3$s to manage your license key URLs."
 msgstr "Din %1$s licensnøgle er ikke aktiveret for denne URL. Gå til %2$sdin konto side%3$s og administrer din licensnøgles URL."
 
 #. translators: %1$s is link start tag, %2$s is link end tag.
-#: include/license.php:290
+#: include/license.php:292
 msgid "Invalid license. Please %1$svisit your account page%2$s and verify it."
 msgstr "Ugyldig licens. Vær så venlig at %1$sbesøge din kontoside%2$s og bekræft den."
 
 #. translators: %1$s is a date, %2$s is link start tag, %3$s is link end tag.
-#: include/license.php:275
+#: include/license.php:277
 msgid "Your license key expired on %1$s. Please %2$srenew your license key%3$s."
 msgstr "Din licensnøgle udløber den %1$s. Forny %2$sdin licensnøgle%3$s."
 
@@ -596,19 +606,19 @@ msgstr "Administrer licenser for Polylang Pro eller udvidelser."
 msgid "License keys"
 msgstr "Licensnøgler"
 
-#: modules/translate-slugs/settings-preview-translate-slugs.php:46
+#: modules/translate-slugs/settings-preview-translate-slugs.php:54
 msgid "Allows to translate custom post types and taxonomies slugs in URLs."
 msgstr "Tillader at oversætte tilpassede indlægstyper og taxonomiers korttitler i urler."
 
-#: modules/translate-slugs/settings-preview-translate-slugs.php:32
+#: modules/translate-slugs/settings-preview-translate-slugs.php:38
 msgid "Translate slugs"
 msgstr "Oversættelse slugs"
 
-#: modules/share-slug/settings-preview-share-slug.php:46
+#: modules/share-slug/settings-preview-share-slug.php:54
 msgid "Allows to share the same URL slug across languages for posts and terms."
 msgstr "Tillader at du bruger den samme korttitel på tværs af sprog til indlæg og vilkår."
 
-#: modules/share-slug/settings-preview-share-slug.php:32
+#: modules/share-slug/settings-preview-share-slug.php:38
 msgid "Share slugs"
 msgstr "Del korttitel"
 
@@ -652,11 +662,11 @@ msgstr "Forklaring"
 msgid "Module"
 msgstr "Modul"
 
-#: settings/settings-module.php:140
+#: settings/settings-module.php:170
 msgid "Save Changes"
 msgstr "Gem ændringerne"
 
-#: settings/settings-module.php:139 js/build/block-editor.js:80
+#: settings/settings-module.php:169 js/build/block-editor.js:80
 #: js/build/classic-editor.js:80
 msgid "Cancel"
 msgstr "Annullér"
@@ -678,22 +688,22 @@ msgstr "Vælg som standard sprog"
 msgid "Edit this language"
 msgstr "Rediger dette sprog"
 
-#: settings/settings.php:345
+#: settings/settings.php:341
 msgid "You can set them all to the default language."
 msgstr "Du kan indstille dem alle til standard sproget."
 
 #: modules/wizard/view-wizard-step-untranslated-contents.php:18
-#: settings/settings.php:343
+#: settings/settings.php:339
 msgid "There are posts, pages, categories or tags without language."
 msgstr "Der er indlæg, sider, kategorier eller tags uden sprog."
 
 #. translators: %s is an url
-#: settings/settings-url.php:326
+#: settings/settings-url.php:324
 msgid "Polylang was unable to access the %s URL. Please check that the URL is valid."
 msgstr "Polylang var ude af stand til at få adgang til URL%s. Kontroller at webadressen er gyldig."
 
 #. translators: %s is a native language name
-#: settings/settings-url.php:270
+#: settings/settings-url.php:269
 msgid "Please enter a valid URL for %s."
 msgstr "Indtast en gyldig URL til %s"
 
@@ -701,23 +711,23 @@ msgstr "Indtast en gyldig URL til %s"
 msgid "Decide how your URLs will look like."
 msgstr "Vælg hvordan dine URL'er skal se ud."
 
-#: settings/settings-module.php:135
+#: settings/settings-module.php:165
 msgid "Deactivated"
 msgstr "Deaktiveret"
 
-#: settings/settings-module.php:130
+#: settings/settings-module.php:160
 msgid "Activate this module"
 msgstr "Aktivér dette modul"
 
-#: include/license.php:324 settings/settings-module.php:126
+#: include/license.php:326 settings/settings-module.php:156
 msgid "Deactivate"
 msgstr "Deaktiver"
 
-#: settings/settings-module.php:124
+#: settings/settings-module.php:154
 msgid "Deactivate this module"
 msgstr "Deaktiver dette modul"
 
-#: settings/settings-module.php:118
+#: settings/settings-module.php:148
 msgid "Configure this module"
 msgstr "Konfigurer dette modul"
 
@@ -1718,7 +1728,7 @@ msgid "Andorra"
 msgstr "Andorra"
 
 #. translators: accessibility text
-#: admin/view-translations-post.php:58 admin/view-translations-term.php:77
+#: admin/view-translations-post.php:57 admin/view-translations-term.php:77
 msgid "Translation"
 msgstr "Oversættelse"
 
@@ -1734,7 +1744,7 @@ msgstr "Forside"
 msgid "Add to Menu"
 msgstr "Tilføj til menu"
 
-#: admin/admin-model.php:399 modules/wizard/wizard.php:487
+#: admin/admin-model.php:397 modules/wizard/wizard.php:487
 msgid "The flag does not exist"
 msgstr "Flaget findes ikke"
 
@@ -1760,18 +1770,20 @@ msgid "Edit this item in %s"
 msgstr "Rediger dette indlæg på %s"
 
 #. Description of the plugin
+#: polylang.php
 msgid "Adds multilingual capability to WordPress"
 msgstr "Tilføjer flersproget funktionalitet til WordPress"
 
 #. Plugin Name of the plugin
+#: polylang.php
 msgid "Polylang"
 msgstr "Polylang"
 
-#: settings/settings-module.php:132
+#: settings/settings-module.php:162
 msgid "Activate"
 msgstr "Aktivér"
 
-#: settings/settings-module.php:134
+#: settings/settings-module.php:164
 msgid "Activated"
 msgstr "Aktiveret"
 
@@ -1886,27 +1898,27 @@ msgstr "Find browser sprog"
 msgid "Example: %1$s instead of %2$s"
 msgstr "Eksempel: %1$s i stedet for %2$s"
 
-#: modules/site-health/admin-site-health.php:160 settings/settings-url.php:183
+#: modules/site-health/admin-site-health.php:159 settings/settings-url.php:183
 msgid "The front page URL contains the language code instead of the page name or page id"
 msgstr "Forside url'en indeholder sprogkoden, i stedet for sidenavn eller side-id"
 
-#: modules/site-health/admin-site-health.php:133 settings/settings-url.php:161
+#: modules/site-health/admin-site-health.php:132 settings/settings-url.php:161
 msgid "Keep /language/ in pretty permalinks"
 msgstr "Behold /language/ i pæne permalinks"
 
-#: modules/site-health/admin-site-health.php:130 settings/settings-url.php:150
+#: modules/site-health/admin-site-health.php:129 settings/settings-url.php:150
 msgid "Remove /language/ in pretty permalinks"
 msgstr "Fjern /language/ i pæne permalinks"
 
-#: modules/site-health/admin-site-health.php:137 settings/settings-url.php:128
+#: modules/site-health/admin-site-health.php:136 settings/settings-url.php:128
 msgid "Hide URL language information for default language"
 msgstr "Skjul URL sprog information for standardsprog"
 
-#: modules/site-health/admin-site-health.php:154 settings/settings-url.php:93
+#: modules/site-health/admin-site-health.php:153 settings/settings-url.php:93
 msgid "The language is set from different domains"
 msgstr "Sproget er indstillet fra forskellige domæner"
 
-#: modules/site-health/admin-site-health.php:151 settings/settings-url.php:82
+#: modules/site-health/admin-site-health.php:150 settings/settings-url.php:82
 msgid "The language is set from the subdomain name in pretty permalinks"
 msgstr "Sproget er sat fra subdomæne navnet i pæne permalinks"
 
@@ -1919,7 +1931,7 @@ msgstr "Eksempel:"
 msgid "The language is set from the code in the URL"
 msgstr "Sproget er sat fra koden i URL'en"
 
-#: modules/site-health/admin-site-health.php:148 settings/settings-url.php:71
+#: modules/site-health/admin-site-health.php:147 settings/settings-url.php:71
 msgid "The language is set from the directory name in pretty permalinks"
 msgstr "Sproget er sat fra mappenavet i pæne permalinks"
 
@@ -1927,7 +1939,7 @@ msgstr "Sproget er sat fra mappenavet i pæne permalinks"
 msgid "Posts, pages, categories and tags URLs will not be modified."
 msgstr "Indlæg, sider, kategorier og tags url'er er ikke ændret."
 
-#: modules/site-health/admin-site-health.php:145 settings/settings-url.php:61
+#: modules/site-health/admin-site-health.php:144 settings/settings-url.php:61
 msgid "The language is set from content"
 msgstr "Sproget er sat fra indholdet"
 
@@ -2017,7 +2029,7 @@ msgid "View all groups"
 msgstr "Vis alle grupper"
 
 #: admin/admin-base.php:129 admin/view-translations-media.php:13
-#: admin/view-translations-post.php:12 admin/view-translations-term.php:14
+#: admin/view-translations-post.php:10 admin/view-translations-term.php:14
 #: admin/view-translations-term.php:21 settings/table-string.php:164
 msgid "Translations"
 msgstr "Oversættelser"
@@ -2066,51 +2078,51 @@ msgstr "Slet"
 msgid "You are about to permanently delete this language. Are you sure?"
 msgstr "Du er ved at slette dette sprog permanent. Er du sikker?"
 
-#: modules/sync/settings-sync.php:111
+#: modules/sync/settings-sync.php:112
 msgid "Featured image"
 msgstr "Fremhævet billede"
 
-#: modules/sync/settings-sync.php:110
+#: modules/sync/settings-sync.php:111
 msgid "Page order"
 msgstr "Side rækkefølge"
 
-#: modules/sync/settings-sync.php:109
+#: modules/sync/settings-sync.php:110
 msgid "Page template"
 msgstr "Sideskabelon"
 
-#: modules/sync/settings-sync.php:108
+#: modules/sync/settings-sync.php:109
 msgid "Page parent"
 msgstr "Side forælder"
 
-#: modules/sync/settings-sync.php:107
+#: modules/sync/settings-sync.php:108
 msgid "Post format"
 msgstr "Indlægsformat"
 
-#: modules/sync/settings-sync.php:106
+#: modules/sync/settings-sync.php:107
 msgid "Published date"
 msgstr "Dato udgivet"
 
-#: modules/sync/settings-sync.php:105
+#: modules/sync/settings-sync.php:106
 msgid "Sticky posts"
 msgstr "Fastgjorte indlæg"
 
-#: modules/sync/settings-sync.php:104
+#: modules/sync/settings-sync.php:105
 msgid "Ping status"
 msgstr "Ping status"
 
-#: modules/sync/settings-sync.php:103
+#: modules/sync/settings-sync.php:104
 msgid "Comment status"
 msgstr "Kommentar status"
 
-#: modules/sync/settings-sync.php:102
+#: modules/sync/settings-sync.php:103
 msgid "Custom fields"
 msgstr "Egne felter"
 
-#: modules/sync/settings-sync.php:101
+#: modules/sync/settings-sync.php:102
 msgid "Taxonomies"
 msgstr "Taksonomier"
 
-#: settings/settings-licenses.php:113 settings/settings-module.php:259
+#: settings/settings-licenses.php:113 settings/settings-module.php:293
 msgid "Settings saved."
 msgstr "Indstillinger gemt."
 
@@ -2118,28 +2130,28 @@ msgstr "Indstillinger gemt."
 msgid "Translations updated."
 msgstr "Oversættelser opdateret."
 
-#: settings/settings.php:146
+#: settings/settings.php:147
 msgid "Strings translations"
 msgstr "Strings oversættelser"
 
-#: settings/settings.php:116
+#: settings/settings.php:117
 msgid "About Polylang"
 msgstr "Om Polylang"
 
-#: settings/settings.php:194
+#: settings/settings.php:192
 msgid "The language was created, but the WordPress language file was not downloaded. Please install it manually."
 msgstr "Sproget var oprettet, men WordPress sprogfilen blev ikke downloadet. Du skal installere den manuelt."
 
-#: admin/admin-base.php:496 admin/admin-base.php:514
+#: admin/admin-base.php:505 admin/admin-base.php:523
 msgid "Filters content by language"
 msgstr "Filtrerer indhold efter sprog"
 
-#: admin/admin-base.php:487
+#: admin/admin-base.php:496
 msgid "Show all languages"
 msgstr "Vis alle sprog"
 
 #: admin/admin-base.php:132 admin/admin.php:104
-#: settings/settings-module.php:120
+#: settings/settings-module.php:150
 msgid "Settings"
 msgstr "Indstillinger"
 
@@ -2156,31 +2168,31 @@ msgstr "Widget titel"
 msgid "Language switcher"
 msgstr "Sprog skifter"
 
-#: admin/admin-model.php:387 modules/wizard/wizard.php:486
+#: admin/admin-model.php:385 modules/wizard/wizard.php:486
 msgid "The language must have a name"
 msgstr "Sproget skal have et navn"
 
-#: admin/admin-model.php:380 modules/wizard/wizard.php:485
+#: admin/admin-model.php:378 modules/wizard/wizard.php:485
 msgid "The language code must be unique"
 msgstr "Sprogkoden skal være unik"
 
-#: admin/admin-model.php:374 modules/wizard/wizard.php:484
+#: admin/admin-model.php:372 modules/wizard/wizard.php:484
 msgid "The language code contains invalid characters"
 msgstr "Sprogkoden indeholder ugyldige tegn"
 
-#: admin/admin-model.php:369 modules/wizard/wizard.php:483
+#: admin/admin-model.php:367 modules/wizard/wizard.php:483
 msgid "Enter a valid WordPress locale"
 msgstr "Indtast en gyldig WordPress locale"
 
-#: settings/settings.php:224
+#: settings/settings.php:220
 msgid "Language updated."
 msgstr "Sprog opdateret"
 
-#: settings/settings.php:209
+#: settings/settings.php:207
 msgid "Language deleted."
 msgstr "Sprog slettet."
 
-#: settings/settings.php:187
+#: settings/settings.php:185
 msgid "Language added."
 msgstr "Sprog tilføjet."
 
@@ -2188,7 +2200,7 @@ msgstr "Sprog tilføjet."
 msgid "Impossible to add the language."
 msgstr "Umuligt at tilføje sproget."
 
-#: include/filters-widgets-options.php:51 include/translated-post.php:194
+#: include/filters-widgets-options.php:51 include/translated-post.php:188
 msgid "All languages"
 msgstr "Alle sprog"
 
@@ -2196,11 +2208,11 @@ msgstr "Alle sprog"
 msgid "The widget is displayed for:"
 msgstr "Widget vises i:"
 
-#: admin/admin-filters-term.php:462
+#: admin/admin-filters-term.php:465
 msgid "None"
 msgstr "Ingen"
 
-#: admin/admin-filters-term.php:138 admin/admin-filters-term.php:211
+#: admin/admin-filters-term.php:140 admin/admin-filters-term.php:213
 msgid "Sets the language"
 msgstr "Indstiller sproget"
 
@@ -2216,15 +2228,15 @@ msgstr "(ingen forælder)"
 #: admin/admin-classic-editor.php:75 admin/admin-nav-menu.php:72
 #: admin/admin-nav-menu.php:75 admin/admin-nav-menu.php:108
 #: admin/admin-notices.php:110 include/nav-menu.php:71
-#: include/translated-post.php:192
+#: include/translated-post.php:186
 #: modules/wizard/view-wizard-step-languages.php:28
-#: modules/wizard/wizard.php:498 settings/settings.php:126
+#: modules/wizard/wizard.php:498 settings/settings.php:127
 msgid "Languages"
 msgstr "Sprog"
 
 #: admin/admin-classic-editor.php:127 admin/admin-filters-columns.php:234
-#: admin/admin-filters-media.php:62 admin/admin-filters-term.php:136
-#: admin/admin-filters-term.php:209 include/translated-post.php:193
+#: admin/admin-filters-media.php:62 admin/admin-filters-term.php:138
+#: admin/admin-filters-term.php:211 include/translated-post.php:187
 #: modules/wizard/view-wizard-step-languages.php:62
 msgid "Language"
 msgstr "Sprog"
