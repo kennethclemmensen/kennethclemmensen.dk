@@ -1,7 +1,8 @@
-import { Observable, map } from 'rxjs';
+import { map } from 'rxjs';
 import { AjaxResponse, ajax } from 'rxjs/ajax';
 import { HttpMethod } from './enums/HttpMethod';
 import { HttpStatusCode } from './enums/HttpStatusCode';
+import { ResponseType } from './enums/ResponseType';
 
 /**
  * The SearchApp class contains methods to handle the search functionality
@@ -45,16 +46,18 @@ export class SearchApp {
 						this.results = [];
 						return;
 					}
-					const searchResults$: Observable<unknown> = ajax({
+					ajax({
 						url: '/wp-json/kcapi/v1/pages/' + this.searchString,
 						method: HttpMethod.Get,
-						responseType: 'text'
+						responseType: ResponseType.Text,
+						headers: {
+							'X-WP-Nonce': httpHeaderValue.nonce
+						}
 					}).pipe(
 						map((response: AjaxResponse<unknown>) => {
 							this.results = (response.status === HttpStatusCode.Ok) ? JSON.parse(response.xhr.responseText) : [];
 						})
-					);
-					searchResults$.subscribe();
+					).subscribe();
 				}
 			},
 			components: {

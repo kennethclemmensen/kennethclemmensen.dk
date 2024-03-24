@@ -1,4 +1,4 @@
-import { Observable, fromEvent, map, tap } from 'rxjs';
+import { fromEvent, map, tap } from 'rxjs';
 import { AjaxResponse, ajax } from 'rxjs/ajax';
 import { EventType } from '../enums/EventType';
 import { HttpMethod } from '../enums/HttpMethod';
@@ -13,14 +13,16 @@ export class Shortcuts {
 	 * Setup the shortcuts
 	 */
 	public setupShortcuts(): void {
-		const keydown$: Observable<Event> = fromEvent(document, EventType.Keydown);
-		const shortcuts$: Observable<unknown> = ajax({
+		ajax({
 			url: '/wp-json/kcapi/v1/shortcuts/',
-			method: HttpMethod.Get
+			method: HttpMethod.Get,
+			headers: {
+				'X-WP-Nonce': httpHeaderValue.nonce
+			}
 		}).pipe(
 			map((response: AjaxResponse<unknown>) => {
 				const shortcuts: Shortcut[] = response.response as Shortcut[];
-				keydown$.pipe(
+				fromEvent(document, EventType.Keydown).pipe(
 					tap((event: Event): void => {
 						const e = event as KeyboardEvent;
 						for(const shortcut of shortcuts) {
@@ -32,7 +34,6 @@ export class Shortcuts {
 					})
 				).subscribe();
 			})
-		);
-		shortcuts$.subscribe();
+		).subscribe();
 	}
 }

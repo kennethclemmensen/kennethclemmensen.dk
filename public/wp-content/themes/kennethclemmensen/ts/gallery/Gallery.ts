@@ -1,4 +1,4 @@
-import { Observable, fromEvent, tap } from 'rxjs';
+import { fromEvent, tap } from 'rxjs';
 import { EventType } from '../enums/EventType';
 
 /**
@@ -53,8 +53,7 @@ export class Gallery {
 		this.#galleryOverlay = document.getElementById('gallery-overlay');
 		const galleryClose: HTMLElement | null = document.getElementById('gallery-close');
 		this.#images.forEach((image: HTMLElement): void => {
-			const imageClick$: Observable<Event> = fromEvent(image, EventType.Click);
-			imageClick$.pipe(
+			fromEvent(image, EventType.Click).pipe(
 				tap((event: Event): void => {
 					event.preventDefault();
 					this.#currentImageIndex = parseInt(image.getAttribute('data-index') ?? '0');
@@ -71,15 +70,13 @@ export class Gallery {
 			).subscribe();
 		});
 		if(galleryClose != null && this.#galleryOverlay != null && this.#previousLink != null && this.#nextLink != null) {
-			const galleryCloseClick$: Observable<Event> = fromEvent([galleryClose, this.#galleryOverlay], EventType.Click);
-			const linksClick$: Observable<Event> = fromEvent([this.#previousLink, this.#nextLink], EventType.Click);
-			galleryCloseClick$.pipe(
+			fromEvent([galleryClose, this.#galleryOverlay], EventType.Click).pipe(
 				tap((event: Event): void => {
 					event.preventDefault();
 					this.hideOverlay();
 				})
 			).subscribe();
-			linksClick$.pipe(
+			fromEvent([this.#previousLink, this.#nextLink], EventType.Click).pipe(
 				tap((event: Event): void => {
 					event.preventDefault();
 					if(event.target === this.#previousLink) {

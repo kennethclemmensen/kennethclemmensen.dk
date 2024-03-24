@@ -50,8 +50,7 @@ export class Gallery {
         this.#galleryOverlay = document.getElementById('gallery-overlay');
         const galleryClose = document.getElementById('gallery-close');
         this.#images.forEach((image) => {
-            const imageClick$ = fromEvent(image, EventType.Click);
-            imageClick$.pipe(tap((event) => {
+            fromEvent(image, EventType.Click).pipe(tap((event) => {
                 event.preventDefault();
                 this.#currentImageIndex = parseInt(image.getAttribute('data-index') ?? '0');
                 if (this.#currentImageIndex === 0) {
@@ -67,13 +66,11 @@ export class Gallery {
             })).subscribe();
         });
         if (galleryClose != null && this.#galleryOverlay != null && this.#previousLink != null && this.#nextLink != null) {
-            const galleryCloseClick$ = fromEvent([galleryClose, this.#galleryOverlay], EventType.Click);
-            const linksClick$ = fromEvent([this.#previousLink, this.#nextLink], EventType.Click);
-            galleryCloseClick$.pipe(tap((event) => {
+            fromEvent([galleryClose, this.#galleryOverlay], EventType.Click).pipe(tap((event) => {
                 event.preventDefault();
                 this.hideOverlay();
             })).subscribe();
-            linksClick$.pipe(tap((event) => {
+            fromEvent([this.#previousLink, this.#nextLink], EventType.Click).pipe(tap((event) => {
                 event.preventDefault();
                 if (event.target === this.#previousLink) {
                     this.#currentImageIndex--;

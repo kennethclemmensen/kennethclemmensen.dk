@@ -1,8 +1,9 @@
-import { Observable, map } from 'rxjs';
+import { map } from 'rxjs';
 import { AjaxResponse, ajax } from 'rxjs/ajax';
 import { HttpMethod } from './enums/HttpMethod';
 import { HttpStatusCode } from './enums/HttpStatusCode';
 import { File } from './types/File';
+import { ResponseType } from './enums/ResponseType';
 
 /**
  * The FilesApp class contains methods to handle the functionality of the files
@@ -31,16 +32,18 @@ export class FilesApp {
 						};
 					},
 					created: function(): void {
-						const files$: Observable<unknown> = ajax({
+						ajax({
 							url: '/wp-json/kcapi/v1/files?type=' + this.fileTypes,
 							method: HttpMethod.Get,
-							responseType: 'text'
+							responseType: ResponseType.Text,
+							headers: {
+								'X-WP-Nonce': httpHeaderValue.nonce
+							}
 						}).pipe(
 							map((response: AjaxResponse<unknown>): void => {
 								this.files = (response.status === HttpStatusCode.Ok) ? JSON.parse(response.xhr.responseText) : [];
 							})
-						);
-						files$.subscribe();
+						).subscribe();
 					},
 					methods: {
 						previousPage: function(): void {
@@ -50,23 +53,18 @@ export class FilesApp {
 							this.offset += parseInt(this.perPage);
 						},
 						updateFileDownloads: (file: File): void => {
-							/*const xhr: XMLHttpRequest = new XMLHttpRequest();
-							const load$ = fromEvent(xhr, EventType.Load);
-							xhr.open(HttpMethod.Put, '/wp-json/kcapi/v1/fileDownloads?fileid=' + file.id, true);
-							load$.subscribe((): void => {
-								if(xhr.status === HttpStatusCode.Ok) file.downloads++;
-							});
-							xhr.send();*/
-							const downloads$: Observable<unknown> = ajax({
+							ajax({
 								url: '/wp-json/kcapi/v1/fileDownloads?fileid=' + file.id,
 								method: HttpMethod.Put,
-								responseType: 'text'
+								responseType: ResponseType.Text,
+								headers: {
+									'X-WP-Nonce': httpHeaderValue.nonce
+								}
 							}).pipe(
 								map((response: AjaxResponse<unknown>): void => {
 									if(response.status === HttpStatusCode.Ok) file.downloads++;
 								})
-							);
-							downloads$.subscribe();
+							).subscribe();
 						}
 					},
 					props: {

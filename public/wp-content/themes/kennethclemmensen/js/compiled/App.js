@@ -13,8 +13,7 @@ class App {
      * Initialize a new instance of the App class
      */
     constructor() {
-        const contentLoaded$ = fromEvent(document, EventType.DOMContentLoaded);
-        contentLoaded$.pipe(tap(() => {
+        fromEvent(document, EventType.DOMContentLoaded).pipe(tap(() => {
             this.setupMobileMenu();
             new Slider().showSlides();
             new Shortcuts().setupShortcuts();
@@ -30,10 +29,8 @@ class App {
         const mobileMenuTrigger = document.getElementById('mobile-menu-trigger');
         const mobileMenu = document.getElementById('mobile-menu');
         const showMobileMenuClass = 'show-mobile-menu';
-        const mobileMenuArrows$ = from(document.querySelectorAll('.mobile-menu__arrow'));
         if (mobileMenuTrigger != null && mobileMenu != null) {
-            const mobileMenuTriggerClick$ = fromEvent(mobileMenuTrigger, EventType.Click);
-            mobileMenuTriggerClick$.pipe(tap((event) => {
+            fromEvent(mobileMenuTrigger, EventType.Click).pipe(tap((event) => {
                 event.preventDefault();
                 mobileMenuTrigger.classList.toggle('header__mobile-menu-trigger--active');
                 mobileMenu.classList.toggle('mobile-menu--active');
@@ -41,9 +38,8 @@ class App {
                 document.body.classList.toggle(showMobileMenuClass);
             })).subscribe();
         }
-        mobileMenuArrows$.forEach((arrow) => {
-            const arrowClick$ = fromEvent(arrow, EventType.Click);
-            arrowClick$.pipe(tap((event) => {
+        from(document.querySelectorAll('.mobile-menu__arrow')).forEach((arrow) => {
+            fromEvent(arrow, EventType.Click).pipe(tap((event) => {
                 event.preventDefault();
                 arrow.classList.toggle('mobile-menu__arrow--rotated');
                 const subMenu = arrow.parentNode?.parentElement?.getElementsByClassName('sub-menu')[0];

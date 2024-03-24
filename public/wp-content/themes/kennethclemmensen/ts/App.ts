@@ -1,4 +1,4 @@
-import { Observable, from, fromEvent, tap } from 'rxjs';
+import { from, fromEvent, tap } from 'rxjs';
 import { EventType } from './enums/EventType';
 import { FilesApp } from './FilesApp';
 import { Gallery } from './gallery/Gallery';
@@ -15,8 +15,7 @@ class App {
 	 * Initialize a new instance of the App class
 	 */
 	public constructor() {
-		const contentLoaded$: Observable<Event> = fromEvent(document, EventType.DOMContentLoaded);
-		contentLoaded$.pipe(
+		fromEvent(document, EventType.DOMContentLoaded).pipe(
 			tap((): void => {
 				this.setupMobileMenu();
 				new Slider().showSlides();
@@ -35,10 +34,8 @@ class App {
 		const mobileMenuTrigger: HTMLElement | null = document.getElementById('mobile-menu-trigger');
 		const mobileMenu: HTMLElement | null = document.getElementById('mobile-menu');
 		const showMobileMenuClass: string = 'show-mobile-menu';
-		const mobileMenuArrows$: Observable<Element> = from(document.querySelectorAll('.mobile-menu__arrow'));
 		if(mobileMenuTrigger != null && mobileMenu != null) {
-			const mobileMenuTriggerClick$: Observable<Event> = fromEvent(mobileMenuTrigger, EventType.Click);
-			mobileMenuTriggerClick$.pipe(
+			fromEvent(mobileMenuTrigger, EventType.Click).pipe(
 				tap((event: Event): void => {
 					event.preventDefault();
 					mobileMenuTrigger.classList.toggle('header__mobile-menu-trigger--active');
@@ -48,9 +45,8 @@ class App {
 				})
 			).subscribe();
 		}
-		mobileMenuArrows$.forEach((arrow: Element): void => {
-			const arrowClick$ = fromEvent(arrow, EventType.Click);
-			arrowClick$.pipe(
+		from(document.querySelectorAll('.mobile-menu__arrow')).forEach((arrow: Element): void => {
+			fromEvent(arrow, EventType.Click).pipe(
 				tap((event: Event): void => {
 					event.preventDefault();
 					arrow.classList.toggle('mobile-menu__arrow--rotated');

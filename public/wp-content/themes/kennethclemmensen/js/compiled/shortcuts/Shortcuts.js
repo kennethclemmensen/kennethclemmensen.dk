@@ -10,13 +10,15 @@ export class Shortcuts {
      * Setup the shortcuts
      */
     setupShortcuts() {
-        const keydown$ = fromEvent(document, EventType.Keydown);
-        const shortcuts$ = ajax({
+        ajax({
             url: '/wp-json/kcapi/v1/shortcuts/',
-            method: HttpMethod.Get
+            method: HttpMethod.Get,
+            headers: {
+                'X-WP-Nonce': httpHeaderValue.nonce
+            }
         }).pipe(map((response) => {
             const shortcuts = response.response;
-            keydown$.pipe(tap((event) => {
+            fromEvent(document, EventType.Keydown).pipe(tap((event) => {
                 const e = event;
                 for (const shortcut of shortcuts) {
                     if (e.altKey === shortcut.altKey && e.ctrlKey === shortcut.ctrlKey && e.shiftKey === shortcut.shiftKey && e.key === shortcut.key) {
@@ -25,7 +27,6 @@ export class Shortcuts {
                     }
                 }
             })).subscribe();
-        }));
-        shortcuts$.subscribe();
+        })).subscribe();
     }
 }

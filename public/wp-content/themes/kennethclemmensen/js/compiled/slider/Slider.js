@@ -36,8 +36,7 @@ export class Slider {
         const endKeyframes = this.getEndKeyframes(this.#animation);
         if (backgroundImageUrl != null) {
             this.setBackgroundImage(backgroundImageUrl);
-            const interval$ = interval(this.#duration);
-            interval$.pipe(tap(() => {
+            interval(this.#duration).pipe(tap(() => {
                 if (this.#sliderImage) {
                     this.#sliderImage.animate(startKeyframes, {
                         duration: this.#delay
