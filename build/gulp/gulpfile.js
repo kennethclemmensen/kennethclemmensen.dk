@@ -1,11 +1,14 @@
-const { dest, parallel, src, watch } = require('gulp');
-const browserSyncPlugin = require('browser-sync');
-const cleanCssPlugin = require('gulp-clean-css');
-const imageminPlugin = require('gulp-imagemin');
-const lessPlugin = require('gulp-less');
-const pkg = require('../../package.json');
-const sassPlugin = require('gulp-dart-sass');
-const shellPlugin = require('gulp-shell');
+import gulp from 'gulp';
+import browserSyncPlugin from 'browser-sync';
+import cleanCssPlugin from 'gulp-clean-css';
+import imageminPlugin from 'gulp-imagemin';
+import lessPlugin from 'gulp-less';
+import fs from 'node:fs';
+import sassPlugin from 'gulp-dart-sass';
+import shellPlugin from 'gulp-shell';
+
+const { parallel, src, dest, task, watch } = gulp;
+const pkg = JSON.parse(fs.readFileSync('../../package.json'));
 
 //Setup the browserSync task to synchronize browsers on different devices
 function browserSync() {
@@ -21,13 +24,6 @@ function browserSync() {
         proxy: pkg.config.testDomain,
         watchTask: true
     });
-}
-
-//Optimize images
-function imagemin() {
-    return src(pkg.config.uploadsFolder + '**')
-        .pipe(imageminPlugin())
-        .pipe(dest(pkg.config.uploadsFolder));
 }
 
 //Translate less to css
@@ -104,6 +100,10 @@ function watcher() {
     watch(pkg.config.scssFiles, sass);
 }
 
-//Register the tasks
-exports.default = parallel(browserSync, runNpmTscCommand, watcher);
-exports.imagemin = imagemin;
+task('default', parallel(browserSync, runNpmTscCommand, watcher));
+
+task('imagemin', () => {
+	return src(pkg.config.uploadsFolder + '**')
+        .pipe(imageminPlugin())
+        .pipe(dest(pkg.config.uploadsFolder));
+});
