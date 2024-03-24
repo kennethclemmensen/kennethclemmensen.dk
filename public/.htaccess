@@ -134,16 +134,6 @@ RewriteRule .* - [F]
 								RewriteRule .* - [F]
 						</IfModule>
 #AIOWPS_FIVE_G_BLACKLIST_END
-#AIOWPS_PREVENT_IMAGE_HOTLINKS_START
-<IfModule mod_rewrite.c>
-RewriteEngine On
-RewriteCond %{HTTP_REFERER} !^$
-RewriteCond %{REQUEST_FILENAME} -f
-RewriteCond %{REQUEST_FILENAME} \.(gif|jpe?g?|png)$ [NC]
-RewriteCond %{HTTP_REFERER} !^http(s)?://kennethclemmensen\.test [NC]
-RewriteRule \.(gif|jpe?g?|png)$ - [F,NC,L]
-</IfModule>
-#AIOWPS_PREVENT_IMAGE_HOTLINKS_END
 # END All In One WP Security
 
 AddType application/x-httpd-php83 .php
