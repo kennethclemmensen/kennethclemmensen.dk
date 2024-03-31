@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ba0904b4059fd2aca7a1b04a3beb5c6b",
+    "content-hash": "f4fa96279035f3ba9a3ddc5831a378a0",
     "packages": [],
     "packages-dev": [
         {
@@ -1254,16 +1254,16 @@
         },
         {
             "name": "lucatume/wp-browser",
-            "version": "4.1.4",
+            "version": "4.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lucatume/wp-browser.git",
-                "reference": "531d01d9e1fb0b154a2231afc7572ac48bebb1f6"
+                "reference": "b39a71f5f9c488e628c1b86ffc3b2f3678484fb5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lucatume/wp-browser/zipball/531d01d9e1fb0b154a2231afc7572ac48bebb1f6",
-                "reference": "531d01d9e1fb0b154a2231afc7572ac48bebb1f6",
+                "url": "https://api.github.com/repos/lucatume/wp-browser/zipball/b39a71f5f9c488e628c1b86ffc3b2f3678484fb5",
+                "reference": "b39a71f5f9c488e628c1b86ffc3b2f3678484fb5",
                 "shasum": ""
             },
             "require": {
@@ -1341,7 +1341,7 @@
             ],
             "support": {
                 "issues": "https://github.com/lucatume/wp-browser/issues",
-                "source": "https://github.com/lucatume/wp-browser/tree/4.1.4"
+                "source": "https://github.com/lucatume/wp-browser/tree/4.1.5"
             },
             "funding": [
                 {
@@ -1349,7 +1349,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-03-19T10:03:44+00:00"
+            "time": "2024-03-28T08:53:35+00:00"
         },
         {
             "name": "masterminds/html5",
