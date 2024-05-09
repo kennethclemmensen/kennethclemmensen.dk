@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Twenty Twenty-Four package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-11-20 16:14:04+0000\n"
+"PO-Revision-Date: 2024-04-25 04:18:24+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,27 @@ msgstr ""
 "X-Generator: GlotPress/4.0.1\n"
 "Language: da_DK\n"
 "Project-Id-Version: Themes - Twenty Twenty-Four\n"
+
+#: patterns/footer.php:95
+msgid "Twitter/X"
+msgstr "Twitter/X"
+
+#: patterns/footer.php:73
+msgid "Contact Us"
+msgstr "Kontakt os"
+
+#: patterns/footer.php:72
+msgid "Terms and Conditions"
+msgstr "Handelsbetingelser"
+
+#: patterns/footer.php:71
+msgid "Privacy Policy"
+msgstr "Privatlivspolitik"
+
+#: functions.php:199
+msgctxt "Block pattern category"
+msgid "Pages"
+msgstr "Sider"
 
 #: theme.json
 msgctxt "Template part name"
