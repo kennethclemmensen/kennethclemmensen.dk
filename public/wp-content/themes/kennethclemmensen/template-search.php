@@ -1,24 +1,22 @@
 <?php
 //Template Name: Search
 get_header();
+$themeService = new ThemeService();
+$translationStrings = new TranslationStrings();
+$searchText = $translationStrings->getTranslatedString(TranslationStrings::SEARCH);
+$previousText = $translationStrings->getTranslatedString(TranslationStrings::PREVIOUS);
+$nextText = $translationStrings->getTranslatedString(TranslationStrings::NEXT);
 while(have_posts()) {
 	the_post();
 	?>
 	<div class="page">
 		<?php
-		$themeService = new ThemeService();
-		$translationStrings = new TranslationStrings();
 		$themeService->loadSliderTemplate();
 		$themeService->loadBreadcrumbTemplate();
 		?>
 		<section class="page__content">
 			<h1><?php the_title(); ?></h1>
-			<?php
-			the_content();
-			$searchText = $translationStrings->getTranslatedString(TranslationStrings::SEARCH);
-			$previousText = $translationStrings->getTranslatedString(TranslationStrings::PREVIOUS);
-			$nextText = $translationStrings->getTranslatedString(TranslationStrings::NEXT);
-			?>
+			<?php the_content(); ?>
 			<div id="search-app">
 				<form method="post" action="<?php echo $_SERVER['REQUEST_URI']; ?>" @submit.prevent="search">
 					<input type="search" name="search" placeholder="<?php echo $searchText; ?>" v-model="searchString" required>

@@ -13,11 +13,11 @@ final readonly class ThemeService {
 		if(!is_front_page()) {
 			global $post;
 			$pages[] = $post->ID;
-			$parent = $post->post_parent;
-			while($parent !== 0) {
-				$page = get_post($parent);
+			$postParent = $post->post_parent;
+			while($postParent !== 0) {
+				$page = get_post($postParent);
 				$pages[] = $page->ID;
-				$parent = $page->post_parent;
+				$postParent = $page->post_parent;
 			}
 		}
 		$pages[] = get_option('page_on_front');

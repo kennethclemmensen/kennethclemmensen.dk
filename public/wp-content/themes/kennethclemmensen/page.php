@@ -1,11 +1,11 @@
 <?php
 get_header();
+$themeService = new ThemeService();
 while(have_posts()) {
 	the_post();
 	?>
 	<div class="page">
 		<?php
-		$themeService = new ThemeService();
 		$themeService->loadSliderTemplate();
 		$themeService->loadBreadcrumbTemplate();
 		?>

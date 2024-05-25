@@ -17,7 +17,10 @@ class App {
             this.setupMobileMenu();
             new Slider().showSlides();
             new Shortcuts().setupShortcuts();
-            new Gallery();
+            new Gallery({
+                imageText: document.body.dataset.imageText ?? '',
+                ofText: document.body.dataset.ofText ?? ''
+            });
             new FilesApp();
             new SearchApp();
         })).subscribe();

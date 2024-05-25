@@ -4,25 +4,7 @@ import { EventType } from '../enums/EventType';
  * The Gallery class contains methods to handle the functionality of the gallery
  */
 export class Gallery {
-    #template = `
-		<div class="gallery-overlay" id="gallery-overlay"></div>
-		<div class="gallery" id="gallery">
-			<div class="gallery__image-container">
-				<div class="gallery__navigation">
-					<a class="gallery__navigation-link gallery__navigation-link--previous" id="previous-link"></a>
-					<a class="gallery__navigation-link gallery__navigation-link--next" id="next-link"></a>
-				</div>
-				<img class="gallery__image" id="image">
-			</div>
-			<div class="gallery__image-info-container">
-				<div class="gallery__text-container">
-					<span class="gallery__info-text" id="image-title"></span>
-					<span class="gallery__info-text gallery__info-text--small" id="image-info"></span>
-				</div>
-				<a class="gallery__close" id="gallery-close"></a>
-			</div>
-		</div>
-	`;
+    #settings;
     #images;
     #numberOfImages;
     #currentImageIndex;
@@ -34,11 +16,36 @@ export class Gallery {
     #gallery;
     #galleryOverlay;
     /**
-     * Initialize a new instance of the Gallery class
+     * Initialize a new instance of the Gallery class with the gallery settings
+     *
+     * @param settings the gallery settings
      */
-    constructor() {
-        document.body.insertAdjacentHTML('beforeend', this.#template);
-        this.#images = document.querySelectorAll('.page__gallery-thumbnail-link');
+    constructor(settings) {
+        document.body.insertAdjacentHTML('beforeend', `
+			<div class="gallery-overlay" id="gallery-overlay"></div>
+			<div class="gallery" id="gallery">
+				<div class="gallery__image-container">
+					<div class="gallery__navigation">
+						<a class="gallery__navigation-link gallery__navigation-link--previous" id="previous-link"></a>
+						<a class="gallery__navigation-link gallery__navigation-link--next" id="next-link"></a>
+					</div>
+					<img class="gallery__image" id="image">
+				</div>
+				<div class="gallery__image-info-container">
+					<div class="gallery__text-container">
+						<span class="gallery__info-text" id="image-title"></span>
+						<span class="gallery__info-text gallery__info-text--small" id="image-info"></span>
+					</div>
+					<a class="gallery__close" id="gallery-close"></a>
+				</div>
+			</div>
+		`);
+        this.#settings = settings;
+        this.#images = [];
+        const images = document.querySelectorAll('.page__gallery-thumbnail-link');
+        for (const image of images) {
+            this.#images.push(image);
+        }
         this.#numberOfImages = this.#images.length;
         this.#currentImageIndex = 0;
         this.#linkHiddenClass = 'gallery__navigation-link--hidden';
@@ -48,11 +55,17 @@ export class Gallery {
         this.#nextLink = document.getElementById('next-link');
         this.#gallery = document.getElementById('gallery');
         this.#galleryOverlay = document.getElementById('gallery-overlay');
+        this.setupEventHandlers();
+    }
+    /**
+     * Setup the event handlers
+     */
+    setupEventHandlers() {
         const galleryClose = document.getElementById('gallery-close');
-        this.#images.forEach((image) => {
+        for (const image of this.#images) {
             fromEvent(image, EventType.Click).pipe(tap((event) => {
                 event.preventDefault();
-                this.#currentImageIndex = parseInt(image.getAttribute('data-index') ?? '0');
+                this.#currentImageIndex = this.#images.indexOf(image);
                 if (this.#currentImageIndex === 0) {
                     this.hidePreviousLink();
                 }
@@ -64,7 +77,7 @@ export class Gallery {
                 this.showOverlay();
                 this.updateImageInfo();
             })).subscribe();
-        });
+        }
         if (galleryClose != null && this.#galleryOverlay != null && this.#previousLink != null && this.#nextLink != null) {
             fromEvent([galleryClose, this.#galleryOverlay], EventType.Click).pipe(tap((event) => {
                 event.preventDefault();
@@ -98,7 +111,24 @@ export class Gallery {
     showImage() {
         const image = this.#images[this.#currentImageIndex];
         if (image != null) {
-            document.getElementById('image').src = image.getAttribute('href') ?? '';
+            const imageElement = document.getElementById('image');
+            const href = image.getAttribute('href') ?? '';
+            const img = new Image();
+            imageElement.src = href;
+            img.onload = function () {
+                let imageWidth, imageHeight;
+                // @ts-expect-error
+                [imageWidth, imageHeight] = [this.width, this.height];
+                if (window.innerWidth < imageWidth) {
+                    const aspectRatio = imageWidth / imageHeight;
+                    imageWidth = window.innerWidth;
+                    imageHeight = imageWidth / aspectRatio;
+                    imageWidth = imageHeight * aspectRatio;
+                }
+                imageElement.style.width = imageWidth + 'px';
+                imageElement.style.height = imageHeight + 'px';
+            };
+            img.src = href;
         }
     }
     /**
@@ -115,8 +145,8 @@ export class Gallery {
      * Update the image info
      */
     updateImageInfo() {
-        const imageText = document.body.dataset.imageText;
-        const ofText = document.body.dataset.ofText;
+        const imageText = this.#settings.imageText;
+        const ofText = this.#settings.ofText;
         const html = `${imageText} ${this.#currentImageIndex + 1} ${ofText} ${this.#numberOfImages}`;
         const imageInfo = document.getElementById('image-info');
         if (imageInfo != null) {

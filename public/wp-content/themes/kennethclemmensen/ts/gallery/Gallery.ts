@@ -1,31 +1,14 @@
 import { fromEvent, tap } from 'rxjs';
 import { EventType } from '../enums/EventType';
+import { GallerySettings } from './GallerySettings';
 
 /**
  * The Gallery class contains methods to handle the functionality of the gallery
  */
 export class Gallery {
 
-	readonly #template: string = `
-		<div class="gallery-overlay" id="gallery-overlay"></div>
-		<div class="gallery" id="gallery">
-			<div class="gallery__image-container">
-				<div class="gallery__navigation">
-					<a class="gallery__navigation-link gallery__navigation-link--previous" id="previous-link"></a>
-					<a class="gallery__navigation-link gallery__navigation-link--next" id="next-link"></a>
-				</div>
-				<img class="gallery__image" id="image">
-			</div>
-			<div class="gallery__image-info-container">
-				<div class="gallery__text-container">
-					<span class="gallery__info-text" id="image-title"></span>
-					<span class="gallery__info-text gallery__info-text--small" id="image-info"></span>
-				</div>
-				<a class="gallery__close" id="gallery-close"></a>
-			</div>
-		</div>
-	`;
-	readonly #images: NodeListOf<HTMLElement>;
+	readonly #settings: GallerySettings;
+	readonly #images: HTMLElement[];
 	readonly #numberOfImages: number;
 	#currentImageIndex: number;
 	readonly #linkHiddenClass: string;
@@ -37,11 +20,36 @@ export class Gallery {
 	readonly #galleryOverlay: HTMLElement | null;
 
 	/**
-	 * Initialize a new instance of the Gallery class
+	 * Initialize a new instance of the Gallery class with the gallery settings
+	 * 
+	 * @param settings the gallery settings
 	 */
-	public constructor() {
-		document.body.insertAdjacentHTML('beforeend', this.#template);
-		this.#images = document.querySelectorAll('.page__gallery-thumbnail-link');
+	public constructor(settings: GallerySettings) {
+		document.body.insertAdjacentHTML('beforeend', `
+			<div class="gallery-overlay" id="gallery-overlay"></div>
+			<div class="gallery" id="gallery">
+				<div class="gallery__image-container">
+					<div class="gallery__navigation">
+						<a class="gallery__navigation-link gallery__navigation-link--previous" id="previous-link"></a>
+						<a class="gallery__navigation-link gallery__navigation-link--next" id="next-link"></a>
+					</div>
+					<img class="gallery__image" id="image">
+				</div>
+				<div class="gallery__image-info-container">
+					<div class="gallery__text-container">
+						<span class="gallery__info-text" id="image-title"></span>
+						<span class="gallery__info-text gallery__info-text--small" id="image-info"></span>
+					</div>
+					<a class="gallery__close" id="gallery-close"></a>
+				</div>
+			</div>
+		`);
+		this.#settings = settings;
+		this.#images = [];
+		const images: NodeListOf<HTMLElement> = document.querySelectorAll('.page__gallery-thumbnail-link');
+		for(const image of images) {
+			this.#images.push(image);
+		}
 		this.#numberOfImages = this.#images.length;
 		this.#currentImageIndex = 0;
 		this.#linkHiddenClass = 'gallery__navigation-link--hidden';
@@ -51,12 +59,19 @@ export class Gallery {
 		this.#nextLink = document.getElementById('next-link');
 		this.#gallery = document.getElementById('gallery');
 		this.#galleryOverlay = document.getElementById('gallery-overlay');
+		this.setupEventHandlers();
+	}
+
+	/**
+	 * Setup the event handlers
+	 */
+	private setupEventHandlers(): void {
 		const galleryClose: HTMLElement | null = document.getElementById('gallery-close');
-		this.#images.forEach((image: HTMLElement): void => {
+		for(const image of this.#images) {
 			fromEvent(image, EventType.Click).pipe(
 				tap((event: Event): void => {
 					event.preventDefault();
-					this.#currentImageIndex = parseInt(image.getAttribute('data-index') ?? '0');
+					this.#currentImageIndex = this.#images.indexOf(image);
 					if(this.#currentImageIndex === 0) {
 						this.hidePreviousLink();
 					} else if((this.#currentImageIndex + 1) === this.#numberOfImages) {
@@ -68,7 +83,7 @@ export class Gallery {
 					this.updateImageInfo();
 				})
 			).subscribe();
-		});
+		}
 		if(galleryClose != null && this.#galleryOverlay != null && this.#previousLink != null && this.#nextLink != null) {
 			fromEvent([galleryClose, this.#galleryOverlay], EventType.Click).pipe(
 				tap((event: Event): void => {
@@ -106,7 +121,24 @@ export class Gallery {
 	private showImage(): void {
 		const image: HTMLElement | undefined = this.#images[this.#currentImageIndex];
 		if(image != null) {
-			(document.getElementById('image') as HTMLImageElement).src = image.getAttribute('href') ?? '';
+			const imageElement: HTMLImageElement = (document.getElementById('image') as HTMLImageElement);
+			const href: string = image.getAttribute('href') ?? '';
+			const img: HTMLImageElement = new Image();
+			imageElement.src = href;
+			img.onload = function() {
+				let imageWidth: number, imageHeight: number;
+				// @ts-expect-error
+				[imageWidth, imageHeight] = [this.width, this.height];
+				if (window.innerWidth < imageWidth) {
+					const aspectRatio: number = imageWidth / imageHeight;
+					imageWidth = window.innerWidth;
+					imageHeight = imageWidth / aspectRatio;
+					imageWidth = imageHeight * aspectRatio;
+				}
+				imageElement.style.width = imageWidth + 'px';
+				imageElement.style.height = imageHeight + 'px';
+			}
+			img.src = href;
 		}
 	}
 
@@ -125,8 +157,8 @@ export class Gallery {
 	 * Update the image info
 	 */
 	private updateImageInfo(): void {
-		const imageText: string | undefined = document.body.dataset.imageText;
-		const ofText: string | undefined = document.body.dataset.ofText;
+		const imageText: string = this.#settings.imageText;
+		const ofText: string = this.#settings.ofText;
 		const html: string = `${imageText} ${this.#currentImageIndex + 1} ${ofText} ${this.#numberOfImages}`;
 		const imageInfo: HTMLElement | null = document.getElementById('image-info');
 		if(imageInfo != null) {

@@ -1,13 +1,13 @@
 <?php
 //Template Name: Images
 get_header();
+$themeService = new ThemeService();
+$apiClient = new ApiClient();		
 while(have_posts()) {
 	the_post();
 	?>
 	<div class="page">
 		<?php
-		$themeService = new ThemeService();
-		$apiClient = new ApiClient();
 		$themeService->loadSliderTemplate();
 		$themeService->loadBreadcrumbTemplate();
 		?>

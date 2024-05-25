@@ -3,20 +3,23 @@
 		<?php
 		$themeService = new ThemeService();
 		$translationStrings = new TranslationStrings();
+		$pages = $themeService->getBreadcrumb();
+		$numberOfPages = count($pages);
+		$frontPage = $translationStrings->getTranslatedString(TranslationStrings::FRONT_PAGE);
 		echo $translationStrings->getTranslatedString(TranslationStrings::YOU_ARE_HERE);
 		?>
 	</span>
 	<ul class="breadcrumb__list">
 		<?php
-		$pages = $themeService->getBreadcrumb();
-		$count = count($pages);
-		for($i = 0; $i < $count; $i++) {
-			$pageID = $pages[$i];
-			$title = ($i === 0) ? $translationStrings->getTranslatedString(TranslationStrings::FRONT_PAGE) : get_the_title($pageID);
+		for($i = 0; $i < $numberOfPages; $i++) {
+			$pageId = $pages[$i];
+			$title = ($i === 0) ? $frontPage : get_the_title($pageId);
+			$isLastPage = ($i + 1) === $numberOfPages;
+			$link = get_permalink($pageId);
 			?>
 			<li class="breadcrumb__list-item">
 				<?php
-				echo (($i + 1) === $count) ? '<em>'.$title.'</em>' : '<a href="'.get_permalink($pageID).'">'.$title.'</a>';
+				echo ($isLastPage) ? '<em>'.$title.'</em>' : '<a href="'.$link.'">'.$title.'</a>';
 				?>
 			</li>
 			<?php
