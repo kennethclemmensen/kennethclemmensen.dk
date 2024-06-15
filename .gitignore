@@ -8,11 +8,11 @@
 /vendor
 
 #Cache
-public/wp-content/cache
+/public/wp-content/cache
 
 #TypeScript
 /.tsbuildinfo
 
 #Backup
-public/wp-content/aiowps_backups
-public/wp-content/kc_backup
+/public/wp-content/aiowps_backups
+/public/wp-content/kc_backup
