@@ -15,6 +15,10 @@ export class Gallery {
     #nextLink;
     #gallery;
     #galleryOverlay;
+    #imageElement;
+    #originalWidth;
+    #originalHeight;
+    #pixel;
     /**
      * Initialize a new instance of the Gallery class with the gallery settings
      *
@@ -55,6 +59,8 @@ export class Gallery {
         this.#nextLink = document.getElementById('next-link');
         this.#gallery = document.getElementById('gallery');
         this.#galleryOverlay = document.getElementById('gallery-overlay');
+        this.#imageElement = document.getElementById('image');
+        this.#pixel = 'px';
         this.setupEventHandlers();
     }
     /**
@@ -104,29 +110,75 @@ export class Gallery {
                 this.updateImageInfo();
             })).subscribe();
         }
+        fromEvent(window, EventType.Resize).pipe(tap(() => {
+            if (this.#originalWidth != null && this.#originalHeight != null) {
+                if (window.innerWidth < this.#originalWidth) {
+                    const aspectRatio = this.getAspectRatio(this.#originalWidth, this.#originalHeight);
+                    let imageWidth = window.innerWidth;
+                    const imageHeight = this.getHeight(imageWidth, aspectRatio);
+                    imageWidth = this.getWidth(imageHeight, aspectRatio);
+                    if (this.#imageElement != null) {
+                        this.#imageElement.style.width = imageWidth + this.#pixel;
+                        this.#imageElement.style.height = imageHeight + this.#pixel;
+                    }
+                }
+            }
+        })).subscribe();
+    }
+    /**
+     * Get the aspect ration based on the width and height
+     *
+     * @param width the width
+     * @param height the height
+     * @returns the aspect ration
+     */
+    getAspectRatio(width, height) {
+        return width / height;
+    }
+    /**
+     * Get the width based on the height and the aspect ratio
+     *
+     * @param height the height
+     * @param aspectRatio the aspect ratio
+     * @returns the width
+     */
+    getWidth(height, aspectRatio) {
+        return height * aspectRatio;
+    }
+    /**
+     * Get the height based on the width and the aspect ratio
+     *
+     * @param width the width
+     * @param aspectRatio the aspect ratio
+     * @returns the height
+     */
+    getHeight(width, aspectRatio) {
+        return width / aspectRatio;
     }
     /**
      * Show the image
      */
     showImage() {
         const image = this.#images[this.#currentImageIndex];
-        if (image != null) {
-            const imageElement = document.getElementById('image');
+        if (image != null && this.#imageElement != null) {
             const href = image.getAttribute('href') ?? '';
             const img = new Image();
-            imageElement.src = href;
+            this.#imageElement.src = href;
+            const that = this;
             img.onload = function () {
                 let imageWidth, imageHeight;
                 // @ts-expect-error
-                [imageWidth, imageHeight] = [this.width, this.height];
+                [imageWidth, imageHeight, that.#originalWidth, that.#originalHeight] = [this.width, this.height, this.width, this.height];
                 if (window.innerWidth < imageWidth) {
-                    const aspectRatio = imageWidth / imageHeight;
+                    const aspectRatio = that.getAspectRatio(imageWidth, imageHeight);
                     imageWidth = window.innerWidth;
-                    imageHeight = imageWidth / aspectRatio;
-                    imageWidth = imageHeight * aspectRatio;
+                    imageHeight = that.getHeight(imageWidth, aspectRatio);
+                    imageWidth = that.getWidth(imageHeight, aspectRatio);
                 }
-                imageElement.style.width = imageWidth + 'px';
-                imageElement.style.height = imageHeight + 'px';
+                if (that.#imageElement != null) {
+                    that.#imageElement.style.width = imageWidth + that.#pixel;
+                    that.#imageElement.style.height = imageHeight + that.#pixel;
+                }
             };
             img.src = href;
         }

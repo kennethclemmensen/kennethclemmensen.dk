@@ -4,5 +4,6 @@
 export enum EventType {
 	Click = 'click',
 	DOMContentLoaded = 'DOMContentLoaded',
-	Keydown = 'keydown'
+	Keydown = 'keydown',
+	Resize = 'resize'
 }

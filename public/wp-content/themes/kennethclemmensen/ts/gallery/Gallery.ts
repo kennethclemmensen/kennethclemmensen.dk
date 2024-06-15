@@ -18,6 +18,10 @@ export class Gallery {
 	readonly #nextLink: HTMLElement | null;
 	readonly #gallery: HTMLElement | null;
 	readonly #galleryOverlay: HTMLElement | null;
+	readonly #imageElement: HTMLImageElement | null;
+	#originalWidth: number | undefined;
+	#originalHeight: number | undefined;
+	readonly #pixel: string;
 
 	/**
 	 * Initialize a new instance of the Gallery class with the gallery settings
@@ -59,6 +63,8 @@ export class Gallery {
 		this.#nextLink = document.getElementById('next-link');
 		this.#gallery = document.getElementById('gallery');
 		this.#galleryOverlay = document.getElementById('gallery-overlay');
+		this.#imageElement = document.getElementById('image') as HTMLImageElement | null;
+		this.#pixel = 'px';
 		this.setupEventHandlers();
 	}
 
@@ -113,6 +119,55 @@ export class Gallery {
 				})
 			).subscribe();
 		}
+		fromEvent(window, EventType.Resize).pipe(
+			tap(() => {
+				if(this.#originalWidth != null && this.#originalHeight != null) {
+					if(window.innerWidth < this.#originalWidth) {
+						const aspectRatio: number = this.getAspectRatio(this.#originalWidth, this.#originalHeight);
+						let imageWidth: number = window.innerWidth;
+						const imageHeight: number = this.getHeight(imageWidth, aspectRatio);
+						imageWidth = this.getWidth(imageHeight, aspectRatio);
+						if(this.#imageElement != null) {
+							this.#imageElement.style.width = imageWidth + this.#pixel;
+							this.#imageElement.style.height = imageHeight + this.#pixel;
+						}
+					}
+				}
+			})
+		).subscribe();
+	}
+
+	/**
+	 * Get the aspect ration based on the width and height
+	 * 
+	 * @param width the width
+	 * @param height the height
+	 * @returns the aspect ration
+	 */
+	private getAspectRatio(width: number, height: number): number {
+		return width / height;
+	}
+
+	/**
+	 * Get the width based on the height and the aspect ratio
+	 * 
+	 * @param height the height
+	 * @param aspectRatio the aspect ratio
+	 * @returns the width
+	 */
+	private getWidth(height: number, aspectRatio: number): number {
+		return height * aspectRatio;
+	}
+
+	/**
+	 * Get the height based on the width and the aspect ratio
+	 * 
+	 * @param width the width
+	 * @param aspectRatio the aspect ratio
+	 * @returns the height
+	 */
+	private getHeight(width: number, aspectRatio: number): number {
+		return width / aspectRatio;
 	}
 
 	/**
@@ -120,23 +175,25 @@ export class Gallery {
 	 */
 	private showImage(): void {
 		const image: HTMLElement | undefined = this.#images[this.#currentImageIndex];
-		if(image != null) {
-			const imageElement: HTMLImageElement = (document.getElementById('image') as HTMLImageElement);
+		if(image != null && this.#imageElement != null) {
 			const href: string = image.getAttribute('href') ?? '';
 			const img: HTMLImageElement = new Image();
-			imageElement.src = href;
+			this.#imageElement.src = href;
+			const that: this = this;
 			img.onload = function() {
 				let imageWidth: number, imageHeight: number;
 				// @ts-expect-error
-				[imageWidth, imageHeight] = [this.width, this.height];
+				[imageWidth, imageHeight, that.#originalWidth, that.#originalHeight] = [this.width, this.height, this.width, this.height];
 				if (window.innerWidth < imageWidth) {
-					const aspectRatio: number = imageWidth / imageHeight;
+					const aspectRatio: number = that.getAspectRatio(imageWidth, imageHeight);
 					imageWidth = window.innerWidth;
-					imageHeight = imageWidth / aspectRatio;
-					imageWidth = imageHeight * aspectRatio;
+					imageHeight = that.getHeight(imageWidth, aspectRatio);
+					imageWidth = that.getWidth(imageHeight, aspectRatio);
 				}
-				imageElement.style.width = imageWidth + 'px';
-				imageElement.style.height = imageHeight + 'px';
+				if (that.#imageElement != null) {
+					that.#imageElement.style.width = imageWidth + that.#pixel;
+					that.#imageElement.style.height = imageHeight + that.#pixel;
+				}
 			}
 			img.src = href;
 		}
