@@ -15,7 +15,19 @@ export default tseslint.config(
 			'prefer-const': 'warn',
 			'semi': ['warn', 'always'],
 			'quotes': ['warn', 'single'],
-			'no-console': 'warn'
+			'no-console': 'warn',
+			'padding-line-between-statements': ['warn',
+				{ blankLine: 'always', prev: ['const', 'let'], next: 'if' }
+			],
+			'@typescript-eslint/naming-convention': ['warn', {
+                'selector': ['class', 'enum', 'typeAlias'],
+                'format': ['PascalCase'],
+                'leadingUnderscore': 'forbid'
+            }, {
+                'selector': 'classProperty',
+                'format': ['camelCase'],
+                'leadingUnderscore': 'forbid'
+            }]
 		}
 	}
 );
