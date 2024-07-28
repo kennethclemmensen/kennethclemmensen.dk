@@ -1,4 +1,13 @@
 /**
- * Declares the Vue variable from the vue javascript
+ * Declares the Vue constant from the vue javascript
  */
-declare const Vue: any;
+declare const Vue: {
+	createApp(setting: {
+		data?: object,
+		watch?: object,
+		methods?: object,
+		components: object
+	}): {
+		mount: (elementId: string) => void
+	};
+};
