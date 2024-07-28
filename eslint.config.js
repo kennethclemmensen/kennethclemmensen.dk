@@ -27,7 +27,9 @@ export default tseslint.config(
                 'selector': 'classProperty',
                 'format': ['camelCase'],
                 'leadingUnderscore': 'forbid'
-            }]
+            }],
+			'@typescript-eslint/no-explicit-any': 'off',
+			'@typescript-eslint/no-this-alias': 'off'
 		}
 	}
 );

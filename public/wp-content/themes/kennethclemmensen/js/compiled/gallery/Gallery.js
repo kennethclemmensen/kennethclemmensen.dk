@@ -164,7 +164,6 @@ export class Gallery {
             const href = image.getAttribute('href') ?? '';
             const img = new Image();
             this.#imageElement.src = href;
-            // eslint-disable-next-line @typescript-eslint/no-this-alias
             const that = this;
             img.onload = function () {
                 let imageWidth, imageHeight;

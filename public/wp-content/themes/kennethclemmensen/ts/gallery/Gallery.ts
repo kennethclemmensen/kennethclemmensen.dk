@@ -180,7 +180,6 @@ export class Gallery {
 			const href: string = image.getAttribute('href') ?? '';
 			const img: HTMLImageElement = new Image();
 			this.#imageElement.src = href;
-			// eslint-disable-next-line @typescript-eslint/no-this-alias
 			const that: this = this;
 			img.onload = function() {
 				let imageWidth: number, imageHeight: number;
