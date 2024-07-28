@@ -175,14 +175,16 @@ export class Gallery {
 	 */
 	private showImage(): void {
 		const image: HTMLElement | undefined = this.#images[this.#currentImageIndex];
+
 		if(image != null && this.#imageElement != null) {
 			const href: string = image.getAttribute('href') ?? '';
 			const img: HTMLImageElement = new Image();
 			this.#imageElement.src = href;
+			// eslint-disable-next-line @typescript-eslint/no-this-alias
 			const that: this = this;
 			img.onload = function() {
 				let imageWidth: number, imageHeight: number;
-				// @ts-expect-error
+				// @ts-expect-error Property 'width' does not exist on type 'GlobalEventHandlers'
 				[imageWidth, imageHeight, that.#originalWidth, that.#originalHeight] = [this.width, this.height, this.width, this.height];
 				if (window.innerWidth < imageWidth) {
 					const aspectRatio: number = that.getAspectRatio(imageWidth, imageHeight);
@@ -194,7 +196,7 @@ export class Gallery {
 					that.#imageElement.style.width = imageWidth + that.#pixel;
 					that.#imageElement.style.height = imageHeight + that.#pixel;
 				}
-			}
+			};
 			img.src = href;
 		}
 	}
@@ -205,6 +207,7 @@ export class Gallery {
 	private updateTitle(): void {
 		const title: HTMLElement | null = document.getElementById('image-title');
 		const image: HTMLElement | undefined = this.#images[this.#currentImageIndex];
+
 		if(title != null && image != null) {
 			title.innerHTML = image.getAttribute('data-title') ?? '';
 		}
@@ -218,6 +221,7 @@ export class Gallery {
 		const ofText: string = this.#settings.ofText;
 		const html: string = `${imageText} ${this.#currentImageIndex + 1} ${ofText} ${this.#numberOfImages}`;
 		const imageInfo: HTMLElement | null = document.getElementById('image-info');
+
 		if(imageInfo != null) {
 			imageInfo.innerHTML = html;
 		}

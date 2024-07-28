@@ -164,10 +164,11 @@ export class Gallery {
             const href = image.getAttribute('href') ?? '';
             const img = new Image();
             this.#imageElement.src = href;
+            // eslint-disable-next-line @typescript-eslint/no-this-alias
             const that = this;
             img.onload = function () {
                 let imageWidth, imageHeight;
-                // @ts-expect-error
+                // @ts-expect-error Property 'width' does not exist on type 'GlobalEventHandlers'
                 [imageWidth, imageHeight, that.#originalWidth, that.#originalHeight] = [this.width, this.height, this.width, this.height];
                 if (window.innerWidth < imageWidth) {
                     const aspectRatio = that.getAspectRatio(imageWidth, imageHeight);

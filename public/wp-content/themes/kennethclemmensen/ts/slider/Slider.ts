@@ -38,6 +38,7 @@ export class Slider {
 		let backgroundImageUrl: string | null | undefined = this.#slides[randomNumber]?.getAttribute(name);
 		const startKeyframes: Keyframe[] = this.getStartKeyframes(this.#animation);
 		const endKeyframes: Keyframe[] = this.getEndKeyframes(this.#animation);
+
 		if(backgroundImageUrl != null) {
 			this.setBackgroundImage(backgroundImageUrl);
 			interval(this.#duration).pipe(
@@ -66,6 +67,7 @@ export class Slider {
 	 */
 	private getRandomNumber(): number {
 		const randomNumber: number = Math.floor(Math.random() * this.#slides.length);
+
 		if(this.#currentRandomNumber === randomNumber) return this.getRandomNumber();
 		this.#currentRandomNumber = randomNumber;
 		return this.#currentRandomNumber;
@@ -90,6 +92,7 @@ export class Slider {
 	 */
 	private getStartKeyframes(animation: SliderAnimation) : Keyframe[] {
 		let startKeyframes: Keyframe[] = [];
+
 		if(this.#sliderImage != null) {
 			const width: number = this.#sliderImage.clientWidth;
 			const height: number = this.#sliderImage.clientHeight;
@@ -123,6 +126,7 @@ export class Slider {
 	 */
 	private getEndKeyframes(animation: SliderAnimation) : Keyframe[] {
 		let endKeyframes: Keyframe[] = [];
+		
 		if(this.#sliderImage) {
 			const width: number = this.#sliderImage.clientWidth;
 			const height: number = this.#sliderImage.clientHeight;

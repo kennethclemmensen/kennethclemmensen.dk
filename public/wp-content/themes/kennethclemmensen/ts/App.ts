@@ -37,6 +37,7 @@ class App {
 		const mobileMenuTrigger: HTMLElement | null = document.getElementById('mobile-menu-trigger');
 		const mobileMenu: HTMLElement | null = document.getElementById('mobile-menu');
 		const showMobileMenuClass: string = 'show-mobile-menu';
+
 		if(mobileMenuTrigger != null && mobileMenu != null) {
 			fromEvent(mobileMenuTrigger, EventType.Click).pipe(
 				tap((event: Event): void => {
@@ -54,6 +55,7 @@ class App {
 					event.preventDefault();
 					arrow.classList.toggle('mobile-menu__arrow--rotated');
 					const subMenu: Element | undefined = arrow.parentNode?.parentElement?.getElementsByClassName('sub-menu')[0];
+					
 					if(subMenu != null) {
 						subMenu.classList.toggle('show');
 					}
