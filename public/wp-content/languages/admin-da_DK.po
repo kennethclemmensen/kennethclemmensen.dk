@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 6.6.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2024-05-28 12:45:26+0000\n"
+"PO-Revision-Date: 2024-07-31 08:14:51+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -36,6 +36,136 @@ msgstr "1"
 msgctxt "default GMT offset or timezone string"
 msgid "0"
 msgstr "Europe/Copenhagen"
+
+#: wp-admin/update-core.php:1048
+msgid "<a href=\"https://developer.wordpress.org/advanced-administration/wordpress/common-errors/\">Common Errors</a>"
+msgstr "<a href=\"https://developer.wordpress.org/advanced-administration/wordpress/common-errors/\">Kendte fejl</a>"
+
+#: wp-admin/theme-editor.php:54
+msgid "<a href=\"https://developer.wordpress.org/advanced-administration/wordpress/edit-files/\">Documentation on Editing Files</a>"
+msgstr "<a href=\"https://developer.wordpress.org/advanced-administration/wordpress/edit-files/\">Dokumentation om redigering af filer</a>"
+
+#: wp-admin/plugin-editor.php:151
+msgid "<a href=\"https://developer.wordpress.org/advanced-administration/plugins/editor-screen/\">Documentation on Editing Plugins</a>"
+msgstr "<a href=\"https://developer.wordpress.org/advanced-administration/plugins/editor-screen/\">Dokumentation om redigering af plugins</a>"
+
+#: wp-admin/options.php:330
+msgid "https://developer.wordpress.org/plugins/settings/settings-api/"
+msgstr "https://developer.wordpress.org/plugins/settings/settings-api/"
+
+#: wp-admin/options-writing.php:228 wp-admin/options-writing.php:242
+msgid "https://developer.wordpress.org/advanced-administration/wordpress/update-services/"
+msgstr "https://developer.wordpress.org/advanced-administration/wordpress/update-services/"
+
+#: wp-admin/options-reading.php:35 wp-admin/options-reading.php:200
+msgid "https://developer.wordpress.org/advanced-administration/wordpress/feeds/"
+msgstr "https://developer.wordpress.org/advanced-administration/wordpress/feeds/"
+
+#: wp-admin/options-permalink.php:64
+msgid "<a href=\"https://developer.wordpress.org/advanced-administration/server/web-server/nginx/\">Documentation on Nginx configuration</a>."
+msgstr "<a href=\"https://developer.wordpress.org/advanced-administration/server/web-server/nginx/\">Dokumentation om Nginx-konfiguration</a>."
+
+#: wp-admin/options-general.php:35 wp-admin/options-general.php:238
+msgid "https://developer.wordpress.org/advanced-administration/server/wordpress-in-directory/"
+msgstr "https://developer.wordpress.org/advanced-administration/server/wordpress-in-directory/"
+
+#: wp-admin/includes/ms.php:1172 wp-admin/network/site-new.php:32
+#: wp-admin/network/sites.php:44
+msgid "<a href=\"https://developer.wordpress.org/advanced-administration/multisite/admin/#network-admin-sites-screen\">Documentation on Site Management</a>"
+msgstr "<a href=\"https://developer.wordpress.org/advanced-administration/multisite/admin/#network-admin-sites-screen\">Dokumentation om site management</a>"
+
+#. translators: xfn (friendship relation): http://gmpg.org/xfn
+#. translators: xfn (geographical relation): http://gmpg.org/xfn
+#. translators: xfn (family relation): http://gmpg.org/xfn
+#: wp-admin/includes/meta-boxes.php:1357 wp-admin/includes/meta-boxes.php:1408
+#: wp-admin/includes/meta-boxes.php:1437
+msgctxt "Type of relation"
+msgid "none"
+msgstr "ingen"
+
+#: wp-admin/includes/file.php:1158
+msgid "No URL Provided."
+msgstr "Ingen URL'er angivet."
+
+#: wp-admin/includes/file.php:329 wp-admin/options-permalink.php:468
+#: wp-admin/options-permalink.php:500 wp-admin/options-permalink.php:536
+#: wp-admin/plugin-editor.php:326 wp-admin/setup-config.php:487
+#: wp-admin/theme-editor.php:362
+msgid "https://developer.wordpress.org/advanced-administration/server/file-permissions/"
+msgstr "https://developer.wordpress.org/advanced-administration/server/file-permissions/"
+
+#: wp-admin/includes/class-wp-site-health.php:2675
+msgid "https://developer.wordpress.org/advanced-administration/performance/optimization/#autoloaded-options"
+msgstr "https://developer.wordpress.org/advanced-administration/performance/optimization/#autoloaded-options"
+
+#. translators: Localized Support reference.
+#: wp-admin/includes/class-wp-site-health.php:2510
+msgid "https://developer.wordpress.org/advanced-administration/performance/optimization/#persistent-object-cache"
+msgstr "https://developer.wordpress.org/advanced-administration/performance/optimization/#persistent-object-cache"
+
+#: wp-admin/includes/class-wp-site-health.php:2401
+msgid "https://developer.wordpress.org/advanced-administration/performance/optimization/#caching"
+msgstr "https://developer.wordpress.org/advanced-administration/performance/optimization/#caching"
+
+#: wp-admin/includes/class-wp-debug-data.php:497
+msgid "Fonts directory size"
+msgstr "Størrelse på skrifttype-mappe"
+
+#: wp-admin/includes/class-wp-debug-data.php:493
+msgid "Fonts directory location"
+msgstr "Placering af skrifttype-mappe"
+
+#: wp-admin/includes/class-wp-debug-data.php:382
+msgid "The fonts directory"
+msgstr "Mappen med skrifttyper"
+
+#: wp-admin/includes/class-plugin-installer-skin.php:302
+#: wp-admin/includes/class-plugin-installer-skin.php:308
+#: wp-admin/includes/class-theme-installer-skin.php:337
+#: wp-admin/includes/class-theme-installer-skin.php:343
+#: wp-admin/update-core.php:261
+msgid "https://developer.wordpress.org/advanced-administration/security/backup/"
+msgstr "https://developer.wordpress.org/advanced-administration/security/backup/"
+
+#: wp-admin/export-personal-data.php:59
+msgid "If you are a plugin author, you can learn more about <a href=\"https://developer.wordpress.org/plugins/privacy/adding-the-personal-data-exporter-to-your-plugin/\">how to add the Personal Data Exporter to a plugin</a>."
+msgstr "Hvis du er plugin-skaber, kan du få mere at vide om <a href=\"https://developer.wordpress.org/plugins/privacy/adding-the-personal-data-exporter-to-your-plugin/\">hvordan du tilføjer Personal Data Exporter til et plugin</a>."
+
+#: wp-admin/erase-personal-data.php:59
+msgid "If you are a plugin author, you can learn more about <a href=\"https://developer.wordpress.org/plugins/privacy/adding-the-personal-data-eraser-to-your-plugin/\">how to add the Personal Data Eraser to a plugin</a>."
+msgstr "Hvis du er plugin-skaber, kan du få mere at vide om <a href=\"https://developer.wordpress.org/plugins/privacy/adding-the-personal-data-eraser-to-your-plugin/\">hvordan du tilføjer Personal Data Eraser til et plugin</a>."
+
+#: wp-admin/about.php:187
+msgid "See everything new"
+msgstr "Se alt, hvad der er nyt"
+
+#: wp-admin/about.php:187
+msgid "https://wordpress.org/download/releases/6-6/"
+msgstr "https://wordpress.org/download/releases/6-6/"
+
+#: wp-admin/about.php:183
+msgid "For a comprehensive overview of all the new features and enhancements in WordPress 6.6, please visit the feature-showcase website."
+msgstr "For et samlet overblik over alle de nye funktioner og forbedringer i WordPress 6.6, besøg venligst feature-showcase websitet."
+
+#: wp-admin/about.php:181
+msgid "And much more"
+msgstr "Og meget mere"
+
+#: wp-admin/about.php:119
+msgid "Auto-update your plugins with peace of mind."
+msgstr "Opdater dine plugins automatisk med ro i sindet."
+
+#: wp-admin/about.php:111
+msgid "Quick previews for pages"
+msgstr "Hurtig forhåndsvisning af sider"
+
+#: wp-admin/about.php:95
+msgid "Add more design options to any block theme."
+msgstr "Tilføj flere designmuligheder til ethvert bloktema."
+
+#: wp-admin/about.php:94
+msgid "Color palettes & font sets"
+msgstr "Farvepaletter og skrifttypesæt"
 
 #: wp-admin/menu.php:209
 msgctxt "patterns menu item"
