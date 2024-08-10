@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 6.6.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2024-07-31 08:14:51+0000\n"
+"PO-Revision-Date: 2024-08-07 09:36:21+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -194,7 +194,7 @@ msgstr "Opdater nu"
 #: wp-admin/includes/theme-install.php:207
 msgctxt "theme"
 msgid "Install Now"
-msgstr "Installer Nu"
+msgstr "Installer nu"
 
 #: wp-admin/includes/class-wp-plugins-list-table.php:1585
 msgid "This plugin cannot be activated because required plugins are missing or inactive."
@@ -300,7 +300,7 @@ msgstr "%s er allerede aktiv."
 #: wp-admin/js/updates.js:2684
 msgctxt "plugin"
 msgid "Install Now"
-msgstr "Installer Nu"
+msgstr "Installer nu"
 
 #: wp-admin/credits.php:32
 msgid "Created by a worldwide team of passionate individuals"
@@ -1055,7 +1055,7 @@ msgstr "Ved at holde markøren over en række afsløres handlingslinks, der give
 #: wp-admin/theme-install.php:213
 msgctxt "themes"
 msgid "Block Themes"
-msgstr "Blok temaer"
+msgstr "Bloktemaer"
 
 #: wp-admin/theme-install.php:156
 msgid "<a href=\"https://wordpress.org/documentation/article/block-themes/\">Documentation on Block Themes</a>"
