@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 6.6.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2024-07-31 08:05:06+0000\n"
+"PO-Revision-Date: 2024-08-15 10:52:59+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -94,7 +94,7 @@ msgstr "j. F Y H:i"
 #. https://www.php.net/manual/datetime.format.php
 #. translators: Last update date format. See
 #. https://www.php.net/manual/datetime.format.php
-#: wp-includes/class-wp-locale.php:396 wp-includes/media.php:4357
+#: wp-includes/class-wp-locale.php:396 wp-includes/media.php:4361
 #: wp-includes/script-loader.php:161 wp-includes/script-loader.php:471
 #: wp-admin/admin.php:113 wp-admin/edit-form-advanced.php:656
 #: wp-admin/edit-form-advanced.php:663 wp-admin/includes/ajax-actions.php:1639
@@ -285,6 +285,28 @@ msgstr "januar"
 #, gp-priority: high
 msgid "Uncategorized"
 msgstr "Ikke-kategoriseret"
+
+#: wp-includes/blocks/widget-group/block.json
+msgctxt "block title"
+msgid "Widget Group"
+msgstr "Widgetgruppe"
+
+#: wp-includes/js/dist/patterns.js:1370
+#: wp-admin/includes/class-wp-ms-themes-list-table.php:472
+#: wp-admin/includes/class-wp-ms-themes-list-table.php:617
+msgid "Disable"
+msgstr "Deaktiver"
+
+#: wp-includes/js/dist/patterns.js:372 wp-includes/js/dist/patterns.js:1451
+#: wp-admin/about.php:135
+msgid "Overrides"
+msgstr "Overskrivning"
+
+#. translators: Hidden accessibility text.
+#: wp-includes/js/dist/editor.js:12064 wp-includes/js/dist/editor.js:26892
+#: wp-admin/edit-form-comment.php:133
+msgid "Comment status"
+msgstr "Kommentarstatus"
 
 #: wp-includes/blocks/footnotes/block.json
 msgctxt "block description"
@@ -740,7 +762,7 @@ msgid "sub item"
 msgstr "underemne"
 
 #. translators: 1: theme.json, 2: settings.spacing.spacingScale
-#: wp-includes/class-wp-theme-json.php:3891
+#: wp-includes/class-wp-theme-json.php:3896
 msgid "Some of the %1$s %2$s values are invalid"
 msgstr "Nogle af værdierne %1$s %2$s er ugyldige"
 
@@ -932,6 +954,10 @@ msgstr "harmonika"
 msgid "Export as JSON"
 msgstr "Eksporter som jSON"
 
+#: wp-includes/post.php:434
+msgid "Template part updated."
+msgstr "Skabelondel opdateret."
+
 #: wp-includes/taxonomy.php:235
 msgctxt "taxonomy singular name"
 msgid "Pattern Category"
@@ -1096,11 +1122,11 @@ msgstr "Font font-family skal være en ikke-tom streng."
 msgid "Submit Search"
 msgstr "Søg"
 
-#: wp-includes/interactivity-api/class-wp-interactivity-api.php:1065
+#: wp-includes/interactivity-api/class-wp-interactivity-api.php:1066
 msgid "Page Loaded."
 msgstr "Side indlæst."
 
-#: wp-includes/interactivity-api/class-wp-interactivity-api.php:1064
+#: wp-includes/interactivity-api/class-wp-interactivity-api.php:1065
 msgid "Loading page, please wait."
 msgstr "Et øjeblik, siden indlæses."
 
@@ -1377,7 +1403,7 @@ msgctxt "post type general name"
 msgid "Patterns"
 msgstr "Mønstre"
 
-#: wp-includes/media.php:2083 wp-includes/media.php:5829
+#: wp-includes/media.php:2087 wp-includes/media.php:5833
 msgid "An image should not be lazy-loaded and marked as high priority at the same time."
 msgstr "Et billede bør ikke lazy-loades og markeres som højt prioriteret på samme tid."
 
@@ -2031,12 +2057,12 @@ msgid "Logged in as %1$s. <a href=\"%2$s\">Edit your profile</a>. <a href=\"%3$s
 msgstr "Logget ind som %1$s. <a href=\"%2$s\">Rediger din profil</a>. <a href=\"%3$s\">Log ud?</a>"
 
 #. translators: %s: Digit to indicate multiple of sizing, eg. 2X-Large.
-#: wp-includes/class-wp-theme-json.php:4060
+#: wp-includes/class-wp-theme-json.php:4065
 msgid "%sX-Large"
 msgstr "%sX-Stor"
 
 #. translators: %s: Digit to indicate multiple of sizing, eg. 2X-Small.
-#: wp-includes/class-wp-theme-json.php:4023
+#: wp-includes/class-wp-theme-json.php:4028
 msgid "%sX-Small"
 msgstr "%sX-Lille"
 
@@ -2498,7 +2524,7 @@ msgstr "Kategorinavnet."
 msgid "Sorry, you are not allowed to view the registered block pattern categories."
 msgstr "Beklager, du har ikke tilladelse til at se de registrerede blokgruppe kategorier."
 
-#: wp-includes/media.php:4824 wp-admin/edit.php:181 wp-admin/post.php:322
+#: wp-includes/media.php:4828 wp-admin/edit.php:181 wp-admin/post.php:322
 #: wp-admin/upload.php:336
 msgid "Error in deleting the attachment."
 msgstr "Fejl under sletning af den vedhæftede fil."
@@ -3338,7 +3364,7 @@ msgstr "Skabeloner"
 msgid "<strong>Error:</strong> This email address is already registered. <a href=\"%s\">Log in</a> with this address or choose another one."
 msgstr "<strong>Fejl:</strong> Denne e-mail-adresse er allerede registreret. <a href=\"%s\">Log på</a> med denne adresse, eller vælg en anden."
 
-#: wp-includes/media.php:4813
+#: wp-includes/media.php:4817
 #: wp-admin/includes/class-wp-media-list-table.php:157
 msgctxt "media items"
 msgid "Unattached"
@@ -5373,7 +5399,7 @@ msgstr "Denne fil indlæses kun for bagudkompatibilitet med SimplePie 1.2.x. Ove
 msgid "&larr; Go to Tags"
 msgstr "&larr; Gå til Tags"
 
-#: wp-includes/media.php:4808
+#: wp-includes/media.php:4812
 msgid "&#8592; Go to library"
 msgstr "&#8592; Gå til biblioteket"
 
@@ -5945,11 +5971,11 @@ msgstr "Titlen skal være en tekststreng."
 msgid "Pattern name must be a string."
 msgstr "Mønsternavn skal være en tekststreng."
 
-#: wp-includes/media.php:4837
+#: wp-includes/media.php:4841
 msgid "Attachment details"
 msgstr "Detaljer for vedhæftning"
 
-#: wp-includes/media.php:4782 wp-includes/media.php:4804
+#: wp-includes/media.php:4786 wp-includes/media.php:4808
 #: wp-includes/js/dist/block-library.js:21106
 #: wp-includes/js/dist/block-library.js:53351
 msgid "Add media"
@@ -6686,7 +6712,7 @@ msgctxt "block keyword"
 msgid "links"
 msgstr "links"
 
-#: wp-includes/media.php:4884 wp-includes/js/dist/block-library.js:62784
+#: wp-includes/media.php:4888 wp-includes/js/dist/block-library.js:62784
 msgid "Select poster image"
 msgstr "Vælg plakatbillede"
 
@@ -6711,7 +6737,7 @@ msgid "Slug"
 msgstr "Korttitel"
 
 #. translators: %s: Digit to indicate multiple of sizing, eg. 2X-Small.
-#: wp-includes/class-wp-theme-json.php:4023
+#: wp-includes/class-wp-theme-json.php:4028
 #: wp-includes/js/dist/block-library.js:55604
 #: wp-includes/js/dist/components.js:59580
 msgid "Small"
@@ -6937,11 +6963,11 @@ msgstr "Liste over manglende billedstørrelser på det vedhæftede."
 msgid "Unknown email address. Check again or try your username."
 msgstr "Ukendt mailadresse. Kontroller igen eller prøv med dit brugernavn."
 
-#: wp-includes/media.php:4909
+#: wp-includes/media.php:4913
 msgid "Media list"
 msgstr "Medieliste"
 
-#: wp-includes/media.php:4908
+#: wp-includes/media.php:4912
 msgid "Filter media"
 msgstr "Filtrer medier"
 
@@ -7049,16 +7075,16 @@ msgstr "Ikke nok data til at oprette denne bruger."
 msgid "Sorry, marking a user as spam is only supported on Multisite."
 msgstr "Beklager, at markere en bruger som spam understøttes kun i Multisite."
 
-#: wp-includes/media.php:5443
+#: wp-includes/media.php:5447
 msgid "User&#8217;s media data."
 msgstr "Brugerens mediedata."
 
-#: wp-includes/media.php:4834
+#: wp-includes/media.php:4838
 msgid "No media items found. Try a different search."
 msgstr "Ingen medieelementer blev fundet. Prøv med en anden søgning."
 
 #. translators: %d: Number of attachments found in a search.
-#: wp-includes/media.php:4832
+#: wp-includes/media.php:4836
 msgid "Number of media items found: %d"
 msgstr "Antallet af medieelementer der er fundet: %d"
 
@@ -7358,7 +7384,7 @@ msgid "[%s] Login Details"
 msgstr "[%s] Login detaljer"
 
 #: wp-includes/media-template.php:584 wp-includes/media-template.php:747
-#: wp-includes/media.php:4821 wp-includes/js/dist/editor.js:25320
+#: wp-includes/media.php:4825 wp-includes/js/dist/editor.js:25320
 #: wp-admin/comment.php:139 wp-admin/edit-form-comment.php:242
 #: wp-admin/includes/class-wp-comments-list-table.php:383
 #: wp-admin/includes/class-wp-media-list-table.php:187
@@ -7369,7 +7395,7 @@ msgid "Move to Trash"
 msgstr "Flyt til papirkurv"
 
 #: wp-includes/media-template.php:582 wp-includes/media-template.php:745
-#: wp-includes/media.php:4822
+#: wp-includes/media.php:4826
 msgid "Restore from Trash"
 msgstr "Gendan fra papirkurv"
 
@@ -7430,7 +7456,7 @@ msgstr "[%s] E-mail ændret"
 msgid "A calendar of your site’s posts."
 msgstr "En kalender med dit websteds indlæg."
 
-#: wp-includes/media.php:4848
+#: wp-includes/media.php:4852
 msgid "Edit gallery"
 msgstr "Rediger galleri"
 
@@ -7831,7 +7857,7 @@ msgstr "Giv citeret tekst visuel vægt. \"In quoting others, we cite ourselves.\
 msgid "Pagination"
 msgstr "Sideinddeling"
 
-#: wp-includes/media.php:4860 wp-includes/js/dist/block-library.js:27413
+#: wp-includes/media.php:4864 wp-includes/js/dist/block-library.js:27413
 #: wp-includes/js/dist/block-library.js:27414
 msgid "Edit image"
 msgstr "Rediger billede"
@@ -7896,7 +7922,7 @@ msgstr "Kopieret!"
 msgid "Submit for Review"
 msgstr "Indsend til gennemsyn"
 
-#: wp-includes/media.php:4858 wp-includes/js/dist/block-library.js:21824
+#: wp-includes/media.php:4862 wp-includes/js/dist/block-library.js:21824
 msgid "Replace image"
 msgstr "Erstat billede"
 
@@ -8352,7 +8378,7 @@ msgstr "Bruger-ID"
 msgid "WordPress User"
 msgstr "WordPress bruger"
 
-#: wp-includes/media.php:5381
+#: wp-includes/media.php:5385
 msgid "WordPress Media"
 msgstr "WordPress medie"
 
@@ -8516,7 +8542,7 @@ msgstr "Begræns resultat-sæt til brugere som regnes for forfattere."
 msgid "Sorry, you are not allowed to query users by this parameter."
 msgstr "Beklager, men du har ikke tilladelse til at søge brugere ved hjælp af denne parameter."
 
-#: wp-includes/media.php:4814
+#: wp-includes/media.php:4818
 #: wp-admin/includes/class-wp-media-list-table.php:162
 msgctxt "media items"
 msgid "Mine"
@@ -9320,7 +9346,7 @@ msgid "Time to add some links! Click &#8220;%s&#8221; to start putting pages, ca
 msgstr "Tid til at tilføje nogle links! Klik &#8220;%s&#8221; for at begynde at lægge sider, kategorier og tilpassede links i din menu. Tilføj så mange ting som du vil."
 
 #: wp-includes/customize/class-wp-customize-media-control.php:254
-#: wp-includes/media.php:4863
+#: wp-includes/media.php:4867
 msgid "Choose image"
 msgstr "Vælg billede"
 
@@ -9666,7 +9692,7 @@ msgctxt "label for button in the audio widget"
 msgid "Add Audio"
 msgstr "Tilføj lydklip"
 
-#: wp-includes/media.php:4374 wp-admin/includes/media.php:3328
+#: wp-includes/media.php:4378 wp-admin/includes/media.php:3328
 msgid "(no author)"
 msgstr "(ingen forfatter)"
 
@@ -9950,7 +9976,7 @@ msgstr "Udvalgt billede"
 msgid "%1$s is deprecated. The callback from %2$s is used instead."
 msgstr "%1$s er forældet. Callback fra %2$s bruges i stedet."
 
-#: wp-includes/media.php:4818
+#: wp-includes/media.php:4822
 msgid ""
 "You are about to permanently delete these items from your site.\n"
 "This action cannot be undone.\n"
@@ -9960,7 +9986,7 @@ msgstr ""
 "Denne handling kan ikke fortrydes.\n"
 "'Annuller' for at stoppe, 'OK' for at slette."
 
-#: wp-includes/media.php:4817
+#: wp-includes/media.php:4821
 msgid ""
 "You are about to permanently delete this item from your site.\n"
 "This action cannot be undone.\n"
@@ -9971,7 +9997,7 @@ msgstr ""
 "'Annuller' for at stoppe, 'OK' for at slette."
 
 #. translators: 1: Suggested width number, 2: Suggested height number.
-#: wp-includes/media-template.php:307 wp-includes/media.php:4870
+#: wp-includes/media-template.php:307 wp-includes/media.php:4874
 msgid "Suggested image dimensions: %1$s by %2$s pixels."
 msgstr "Foreslåede billeddimensioner: %1$s x %2$s pixels."
 
@@ -11617,7 +11643,7 @@ msgstr "En by i samme tidszone som dig."
 msgid "Site title."
 msgstr "Webstedstitel."
 
-#: wp-includes/media.php:4830
+#: wp-includes/media.php:4834
 msgid "Search media items..."
 msgstr "Søg medieelementer..."
 
@@ -12181,7 +12207,7 @@ msgstr "Link markeret."
 msgid "%s is required to strip image meta."
 msgstr "%s er påkrævet for at fjerne metadata fra billede."
 
-#: wp-includes/media.php:4833
+#: wp-includes/media.php:4837
 msgid "No media items found."
 msgstr "Ingen mediefiler fundet."
 
@@ -12808,7 +12834,7 @@ msgid "Usernames can only contain lowercase letters (a-z) and numbers."
 msgstr "Brugernavne må kun bestå af små bogstaver (a-z) og tal."
 
 #. translators: %s: Playlist item title.
-#: wp-includes/media.php:2822 wp-includes/media.php:2843
+#: wp-includes/media.php:2826 wp-includes/media.php:2847
 msgctxt "playlist item title"
 msgid "&#8220;%s&#8221;"
 msgstr "&#8220;%s&#8221;"
@@ -13789,7 +13815,7 @@ msgstr ""
 "\n"
 "--Holdet @ SITE_NAME"
 
-#: wp-includes/media.php:4796
+#: wp-includes/media.php:4800
 msgid "Drag and drop to reorder media files."
 msgstr "Træk og slip for at omorganisere mediefiler."
 
@@ -13972,7 +13998,7 @@ msgstr "Kommentar: %s"
 msgid "URL: %s"
 msgstr "URL: %s"
 
-#: wp-includes/media.php:4815
+#: wp-includes/media.php:4819
 msgctxt "noun"
 msgid "Trash"
 msgstr "Papirkurv"
@@ -14185,7 +14211,7 @@ msgstr "Link"
 msgid "<strong>You have successfully updated WordPress!</strong> Please log back in to see what&#8217;s new."
 msgstr "<strong>Du har nu opdateret WordPress!</strong> Log venligst ind igen for at se hvad der er nyt."
 
-#: wp-includes/media.php:4819
+#: wp-includes/media.php:4823
 msgid ""
 "You are about to trash these items.\n"
 "  'Cancel' to stop, 'OK' to delete."
@@ -14198,7 +14224,7 @@ msgstr ""
 msgid "Press return or enter to open this panel"
 msgstr "Tryk på Return eller Enter for at åbne dette panel"
 
-#: wp-includes/media.php:4820
+#: wp-includes/media.php:4824
 msgid "Bulk select"
 msgstr "Vælg flere"
 
@@ -14217,17 +14243,17 @@ msgstr "(intet mærkat)"
 msgid "This site is no longer available."
 msgstr "Dette websted er ikke længere tilgængeligt."
 
-#: wp-includes/media.php:4828 wp-includes/media.php:4829
+#: wp-includes/media.php:4832 wp-includes/media.php:4833
 msgid "Search media"
 msgstr "Søg medier"
 
 #. translators: Hidden accessibility text.
-#: wp-includes/media.php:4827
+#: wp-includes/media.php:4831
 #: wp-admin/includes/class-wp-media-list-table.php:284
 msgid "Filter by type"
 msgstr "Filtrer efter type"
 
-#: wp-includes/class-wp-post-type.php:996 wp-includes/media.php:4826
+#: wp-includes/class-wp-post-type.php:996 wp-includes/media.php:4830
 msgid "Filter by date"
 msgstr "Filtrer efter dato"
 
@@ -14237,16 +14263,16 @@ msgstr "Filtrer efter dato"
 msgid "Bulk actions"
 msgstr "Bulk-handlinger"
 
-#: wp-includes/media.php:4810 wp-admin/includes/class-wp-list-table.php:770
+#: wp-includes/media.php:4814 wp-admin/includes/class-wp-list-table.php:770
 #: wp-admin/includes/media.php:2859
 msgid "All dates"
 msgstr "Alle datoer"
 
-#: wp-includes/media.php:3202
+#: wp-includes/media.php:3206
 msgid "Bitrate Mode"
 msgstr "Bitrate-tilstand"
 
-#: wp-includes/media.php:3201
+#: wp-includes/media.php:3205
 msgid "Bitrate"
 msgstr "Bitrate"
 
@@ -14379,57 +14405,57 @@ msgstr "<strong>Fejl:</strong> Cookies er blokeret eller understøttes ikke af d
 msgid "<strong>Error:</strong> Cookies are blocked due to unexpected output. For help, please see <a href=\"%1$s\">this documentation</a> or try the <a href=\"%2$s\">support forums</a>."
 msgstr "<strong>Fejl:</strong> Cookies er blokeret på grund af uventet output. For hjælp, se venligst <a href=\"%1$s\">denne dokumentation</a> eller prøv <a href=\"%2$s\">supportfora</a>."
 
-#: wp-includes/media.php:4895
+#: wp-includes/media.php:4899
 msgid "Add to Audio Playlist"
 msgstr "Tilføj til lydafspilningsliste"
 
-#: wp-includes/media.php:4894
+#: wp-includes/media.php:4898
 msgid "Add to audio playlist"
 msgstr "Tilføj til lydafspilningsliste"
 
-#: wp-includes/media.php:4893
+#: wp-includes/media.php:4897
 msgid "Update audio playlist"
 msgstr "Opdater lydafspilningsliste"
 
-#: wp-includes/media.php:4892
+#: wp-includes/media.php:4896
 msgid "Insert audio playlist"
 msgstr "Indsæt lydafspilningsliste"
 
-#: wp-includes/media.php:4891
+#: wp-includes/media.php:4895
 msgid "&#8592; Cancel audio playlist"
 msgstr "&#8592; Annuller lydafspilningsliste"
 
-#: wp-includes/media.php:4890
+#: wp-includes/media.php:4894
 msgid "Edit audio playlist"
 msgstr "Rediger lydafspilningsliste"
 
-#: wp-includes/media.php:4871
+#: wp-includes/media.php:4875
 msgid "There has been an error cropping your image."
 msgstr "Der opstod en fejl under beskæringen af dit billede."
 
-#: wp-includes/media.php:3199
+#: wp-includes/media.php:3203
 msgctxt "video or audio"
 msgid "Length"
 msgstr "Længde"
 
 #. translators: Hidden accessibility text.
 #: wp-includes/customize/class-wp-customize-date-time-control.php:164
-#: wp-includes/media.php:3198 wp-includes/js/dist/block-library.js:1798
+#: wp-includes/media.php:3202 wp-includes/js/dist/block-library.js:1798
 #: wp-includes/js/dist/components.js:57342 wp-admin/includes/template.php:856
 msgid "Year"
 msgstr "År"
 
-#: wp-includes/media.php:3197
+#: wp-includes/media.php:3201
 msgid "Genre"
 msgstr "Genre"
 
 #: wp-includes/media-template.php:531 wp-includes/media-template.php:779
-#: wp-includes/media.php:3193
+#: wp-includes/media.php:3197
 msgid "Album"
 msgstr "Album"
 
 #: wp-includes/media-template.php:530 wp-includes/media-template.php:778
-#: wp-includes/media.php:3192
+#: wp-includes/media.php:3196
 msgid "Artist"
 msgstr "Kunstner"
 
@@ -14514,7 +14540,7 @@ msgctxt "auto preload"
 msgid "Auto"
 msgstr "Automatisk"
 
-#: wp-includes/media.php:4868
+#: wp-includes/media.php:4872
 msgid "Cropping&hellip;"
 msgstr "Beskærer&hellip;"
 
@@ -14766,104 +14792,104 @@ msgstr "Forespørgslen %s skal have en pladsholder."
 msgid "Invalid menu ID."
 msgstr "Ugyldigt menu-ID."
 
-#: wp-includes/media.php:4905
+#: wp-includes/media.php:4909
 msgid "Add to video Playlist"
 msgstr "Tilføj til videoafspilningsliste"
 
-#: wp-includes/media.php:4904
+#: wp-includes/media.php:4908
 msgid "Add to video playlist"
 msgstr "Tilføj til videoafspilningsliste"
 
-#: wp-includes/media.php:4903
+#: wp-includes/media.php:4907
 msgid "Update video playlist"
 msgstr "Opdater videoafspilningsliste"
 
-#: wp-includes/media.php:4902
+#: wp-includes/media.php:4906
 msgid "Insert video playlist"
 msgstr "Indsæt videoafspilningsliste"
 
-#: wp-includes/media.php:4901
+#: wp-includes/media.php:4905
 msgid "&#8592; Cancel video playlist"
 msgstr "&#8592; Annuller videoafspilningsliste"
 
-#: wp-includes/media.php:4900
+#: wp-includes/media.php:4904
 msgid "Edit video playlist"
 msgstr "Rediger videoafspilningsliste"
 
-#: wp-includes/media.php:4899
+#: wp-includes/media.php:4903
 msgid "Create video playlist"
 msgstr "Opret videoafspilningsliste"
 
-#: wp-includes/media.php:4898
+#: wp-includes/media.php:4902
 msgid "Drag and drop to reorder videos."
 msgstr "Træk og slip for at omorganisere videoer."
 
-#: wp-includes/media.php:4889
+#: wp-includes/media.php:4893
 msgid "Create audio playlist"
 msgstr "Opret en lydafspilningsliste"
 
-#: wp-includes/media.php:4888
+#: wp-includes/media.php:4892
 msgid "Drag and drop to reorder tracks."
 msgstr "Træk og slip for at omorganisere spor."
 
-#: wp-includes/media.php:4885
+#: wp-includes/media.php:4889
 msgid "Add subtitles"
 msgstr "Tilføj undertekst"
 
-#: wp-includes/media.php:4882
+#: wp-includes/media.php:4886
 msgid "Add video source"
 msgstr "Tilføj videokilde"
 
-#: wp-includes/media.php:4881
+#: wp-includes/media.php:4885
 msgid "Replace video"
 msgstr "Erstat video"
 
-#: wp-includes/media.php:4880
+#: wp-includes/media.php:4884
 msgid "Video details"
 msgstr "Videodetaljer"
 
-#: wp-includes/media.php:4876
+#: wp-includes/media.php:4880
 msgid "Add audio source"
 msgstr "Tilføj lydkilde"
 
-#: wp-includes/media.php:4875
+#: wp-includes/media.php:4879
 msgid "Replace audio"
 msgstr "Erstat lyd"
 
-#: wp-includes/media.php:4874
+#: wp-includes/media.php:4878
 msgid "Audio details"
 msgstr "Lyddetaljer"
 
-#: wp-includes/media.php:4867
+#: wp-includes/media.php:4871
 msgid "Crop your image"
 msgstr "Beskær dit billede"
 
-#: wp-includes/media.php:4866
+#: wp-includes/media.php:4870
 msgid "Crop image"
 msgstr "Beskær billede"
 
-#: wp-includes/media.php:4865
+#: wp-includes/media.php:4869
 msgid "Skip cropping"
 msgstr "Drop beskæring"
 
-#: wp-includes/media.php:4864
+#: wp-includes/media.php:4868
 msgid "Select and crop"
 msgstr "Vælg og beskær"
 
-#: wp-includes/media.php:4859 wp-includes/media.php:4877
-#: wp-includes/media.php:4883
+#: wp-includes/media.php:4863 wp-includes/media.php:4881
+#: wp-includes/media.php:4887
 msgid "Cancel edit"
 msgstr "Fortryd redigering"
 
-#: wp-includes/media.php:4857
+#: wp-includes/media.php:4861
 msgid "Image details"
 msgstr "Billeddetaljer"
 
-#: wp-includes/media.php:4807
+#: wp-includes/media.php:4811
 msgid "Create a new video playlist"
 msgstr "Opret en ny videoafspilningsliste"
 
-#: wp-includes/media.php:4806
+#: wp-includes/media.php:4810
 msgid "Create a new playlist"
 msgstr "Opret en ny afspilningsliste"
 
@@ -14874,7 +14900,7 @@ msgstr "Opret en ny afspilningsliste"
 #: wp-includes/class-wp-customize-widgets.php:897
 #: wp-includes/customize/class-wp-customize-nav-menus-panel.php:75
 #: wp-includes/customize/class-wp-customize-themes-panel.php:73
-#: wp-includes/media.php:4789 wp-includes/js/dist/block-editor.js:46204
+#: wp-includes/media.php:4793 wp-includes/js/dist/block-editor.js:46204
 #: wp-includes/js/dist/block-editor.js:46242
 #: wp-includes/js/dist/block-library.js:35374
 #: wp-includes/js/dist/components.js:61863
@@ -15015,7 +15041,7 @@ msgstr "Forskel på store og små bogstaver"
 msgid "Find and replace"
 msgstr "Søg og erstat"
 
-#: wp-includes/media-template.php:1284 wp-includes/media.php:4787
+#: wp-includes/media-template.php:1284 wp-includes/media.php:4791
 #: wp-includes/js/dist/block-editor.js:23893
 #: wp-includes/js/dist/block-library.js:13707
 #: wp-includes/js/dist/block-library.js:46843
@@ -15589,14 +15615,14 @@ msgstr "Ugyldigt bruger-ID."
 msgid "Random Order"
 msgstr "Tilfældig rækkefølge"
 
-#: wp-includes/media.php:4840 wp-includes/js/dist/block-editor.js:63198
+#: wp-includes/media.php:4844 wp-includes/js/dist/block-editor.js:63198
 msgid "Insert from URL"
 msgstr "Indsæt fra URL"
 
 #. translators: This is a would-be plural string used in the media manager. If
 #. there is not a word you can use in your language to avoid issues with the
 #. lack of plural support here, turn it into "selected: %d" then translate it.
-#: wp-includes/media.php:4795
+#: wp-includes/media.php:4799
 msgid "%d selected"
 msgstr "%d valgt"
 
@@ -15605,7 +15631,7 @@ msgctxt "Links widget"
 msgid "Random"
 msgstr "Tilfældig"
 
-#: wp-includes/media-template.php:1533 wp-includes/media.php:4811
+#: wp-includes/media-template.php:1533 wp-includes/media.php:4815
 #: wp-admin/includes/ajax-actions.php:2258
 #: wp-admin/includes/ajax-actions.php:3929
 #: wp-admin/includes/class-wp-list-table.php:372
@@ -15613,7 +15639,7 @@ msgstr "Tilfældig"
 msgid "No items found."
 msgstr "Ingen emner fundet."
 
-#: wp-includes/media.php:4854
+#: wp-includes/media.php:4858
 msgid "Reverse order"
 msgstr "Omvendt rækkefølge"
 
@@ -15623,7 +15649,7 @@ msgid "Deselect"
 msgstr "Fravælg"
 
 #: wp-includes/media-template.php:587 wp-includes/media-template.php:750
-#: wp-includes/media.php:4823
+#: wp-includes/media.php:4827
 #: wp-admin/includes/class-wp-comments-list-table.php:381
 #: wp-admin/includes/class-wp-media-list-table.php:185
 #: wp-admin/includes/class-wp-media-list-table.php:190
@@ -15644,7 +15670,7 @@ msgstr "Afvis fejl"
 msgid "Uploading"
 msgstr "Uploader"
 
-#: wp-includes/media.php:4083
+#: wp-includes/media.php:4087
 msgid "No editor could be selected."
 msgstr "Editor kunne ikke vælges."
 
@@ -15706,7 +15732,7 @@ msgstr "Lyd"
 msgid "Uploaded to this post"
 msgstr "Uploadet til dette indlæg"
 
-#: wp-includes/media.php:4809
+#: wp-includes/media.php:4813
 #: wp-admin/includes/class-wp-media-list-table.php:134
 msgid "All media items"
 msgstr "Alle medier"
@@ -15742,9 +15768,9 @@ msgid "Attachment Details"
 msgstr "Detaljer for vedhæftning"
 
 #. translators: %s: Digit to indicate multiple of sizing, eg. 2X-Large.
-#: wp-includes/block-editor.php:173 wp-includes/class-wp-theme-json.php:4060
+#: wp-includes/block-editor.php:173 wp-includes/class-wp-theme-json.php:4065
 #: wp-includes/media-template.php:914 wp-includes/media-template.php:994
-#: wp-includes/media-template.php:1185 wp-includes/media.php:4422
+#: wp-includes/media-template.php:1185 wp-includes/media.php:4426
 #: wp-includes/js/dist/block-editor.js:8354
 #: wp-includes/js/dist/block-library.js:55610
 #: wp-includes/js/dist/components.js:59580
@@ -15753,11 +15779,11 @@ msgstr "Detaljer for vedhæftning"
 msgid "Large"
 msgstr "Stor"
 
-#: wp-includes/media.php:4849
+#: wp-includes/media.php:4853
 msgid "&#8592; Cancel gallery"
 msgstr "&#8592; Fortryd galleri"
 
-#: wp-includes/media.php:4800
+#: wp-includes/media.php:4804
 msgid "Upload images"
 msgstr "Upload billeder"
 
@@ -15773,11 +15799,11 @@ msgstr "Indstillinger for visning af vedhæftning"
 msgid "WordPress &rsaquo; Success"
 msgstr "WordPress &rsaquo; Succes"
 
-#: wp-includes/media.php:4799
+#: wp-includes/media.php:4803
 msgid "Upload files"
 msgstr "Upload filer"
 
-#: wp-includes/media.php:4850 wp-admin/includes/media.php:2690
+#: wp-includes/media.php:4854 wp-admin/includes/media.php:2690
 msgid "Insert gallery"
 msgstr "Indsæt galleri"
 
@@ -15787,11 +15813,11 @@ msgstr "Indsæt galleri"
 msgid "Drop files to upload"
 msgstr "Træk filer for at uploade"
 
-#: wp-includes/media.php:4847
+#: wp-includes/media.php:4851
 msgid "Create gallery"
 msgstr "Opret galleri"
 
-#: wp-includes/media.php:4803 wp-includes/js/dist/block-editor.js:63478
+#: wp-includes/media.php:4807 wp-includes/js/dist/block-editor.js:63478
 #: wp-admin/includes/media.php:21 wp-admin/upload.php:204
 #: wp-admin/upload.php:358
 msgid "Media Library"
@@ -15870,7 +15896,7 @@ msgstr "Side for vedhæftning"
 msgid "Link To"
 msgstr "Link til"
 
-#: wp-includes/media.php:4851
+#: wp-includes/media.php:4855
 msgid "Update gallery"
 msgstr "Opdater galleri"
 
@@ -15944,7 +15970,7 @@ msgstr "Kunne ikke indsætte termforhold i databasen."
 msgid "Clear"
 msgstr "Ryd"
 
-#: wp-includes/media.php:4852 wp-includes/media.php:4853
+#: wp-includes/media.php:4856 wp-includes/media.php:4857
 msgid "Add to gallery"
 msgstr "Tilføj til galleri"
 
@@ -15952,7 +15978,7 @@ msgstr "Tilføj til galleri"
 msgid "Insert into post"
 msgstr "Indsæt i indlæg"
 
-#: wp-includes/media.php:4805
+#: wp-includes/media.php:4809
 msgid "Create a new gallery"
 msgstr "Opret nyt galleri"
 
@@ -16173,7 +16199,7 @@ msgstr "Tilladte filer"
 #: wp-includes/customize/class-wp-customize-media-control.php:251
 #: wp-includes/customize/class-wp-customize-media-control.php:261
 #: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:175
-#: wp-includes/media-template.php:623 wp-includes/media.php:4788
+#: wp-includes/media-template.php:623 wp-includes/media.php:4792
 #: wp-includes/js/dist/block-editor.js:24416
 #: wp-includes/js/dist/block-editor.js:39255
 #: wp-includes/js/dist/block-library.js:62804
@@ -17002,6 +17028,10 @@ msgstr "Nogen har anmodet om at få adgangskoden nulstillet for den følgende ko
 #: wp-includes/post-formats.php:74 wp-includes/revision.php:714
 msgid "Invalid post."
 msgstr "Ugyldigt indlæg."
+
+#: wp-includes/admin-bar.php:420
+msgid "Manage Site"
+msgstr "Administrer websted"
 
 #: wp-includes/admin-bar.php:749
 msgid "Manage Comments"
@@ -18885,7 +18915,7 @@ msgstr "%1$s %2$s"
 
 #. translators: 1: Month name, 2: 4-digit year.
 #. translators: 1: Month, 2: Year.
-#: wp-includes/general-template.php:2087 wp-includes/media.php:4707
+#: wp-includes/general-template.php:2087 wp-includes/media.php:4711
 #: wp-admin/includes/class-wp-list-table.php:785
 msgid "%1$s %2$d"
 msgstr "%1$s %2$d"
@@ -19527,6 +19557,12 @@ msgstr "Sidetitel"
 msgid "Theme"
 msgstr "Tema"
 
+#: wp-includes/js/dist/patterns.js:1329
+#: wp-admin/includes/class-wp-ms-themes-list-table.php:469
+#: wp-admin/includes/class-wp-ms-themes-list-table.php:591
+msgid "Enable"
+msgstr "Aktivér"
+
 #: wp-includes/deprecated.php:2699 wp-admin/network/settings.php:346
 msgid "First Post"
 msgstr "Første indlæg"
@@ -19733,7 +19769,7 @@ msgstr "Hjælp"
 #. translators: displayed when a page has an empty title.
 #: wp-includes/blocks/latest-comments.php:31
 #: wp-includes/blocks/latest-posts.php:76 wp-includes/blocks/rss.php:37
-#: wp-includes/media.php:4380 wp-includes/script-loader.php:1244
+#: wp-includes/media.php:4384 wp-includes/script-loader.php:1244
 #: wp-includes/widgets/class-wp-widget-recent-posts.php:114
 #: wp-includes/js/dist/block-library.js:28733
 #: wp-includes/js/dist/block-library.js:28765
@@ -19764,7 +19800,7 @@ msgstr "Rediger medie"
 msgid "New Page"
 msgstr "Ny side"
 
-#: wp-includes/media.php:4784 wp-includes/js/dist/block-editor.js:65687
+#: wp-includes/media.php:4788 wp-includes/js/dist/block-editor.js:65687
 #: wp-includes/js/dist/block-library.js:62794
 #: wp-admin/includes/template.php:2062 wp-admin/nav-menus.php:1019
 #: wp-admin/plugin-editor.php:259 wp-admin/theme-editor.php:260
@@ -19861,7 +19897,7 @@ msgstr "Version"
 #: wp-includes/admin-bar.php:1194 wp-includes/admin-bar.php:1196
 #: wp-includes/blocks/search.php:27 wp-includes/blocks/search.php:28
 #: wp-includes/blocks/search.php:52 wp-includes/class-wp-editor.php:1908
-#: wp-includes/media.php:4783 wp-includes/js/dist/block-editor.js:45357
+#: wp-includes/media.php:4787 wp-includes/js/dist/block-editor.js:45357
 #: wp-includes/js/dist/block-editor.js:47165
 #: wp-includes/js/dist/block-editor.js:47655
 #: wp-includes/js/dist/block-editor.js:47872
@@ -19915,7 +19951,7 @@ msgstr "Tilføj"
 msgid "Add or remove tags"
 msgstr "Tilføj eller fjern tags"
 
-#: wp-includes/media.php:4786 wp-includes/script-loader.php:1242
+#: wp-includes/media.php:4790 wp-includes/script-loader.php:1242
 #: wp-login.php:731 wp-includes/js/dist/edit-site.js:15131
 #: wp-includes/js/dist/edit-widgets.js:3702 wp-admin/edit-form-comment.php:245
 #: wp-admin/edit-tag-form.php:296
@@ -19974,8 +20010,8 @@ msgstr "Handlinger"
 
 #. translators: Media tab title in the block inserter.
 #. translators: Default privacy policy heading.
-#: wp-includes/class-wp-editor.php:1238 wp-includes/media.php:4780
-#: wp-includes/media.php:5442 wp-includes/js/dist/block-editor.js:47503
+#: wp-includes/class-wp-editor.php:1238 wp-includes/media.php:4784
+#: wp-includes/media.php:5446 wp-includes/js/dist/block-editor.js:47503
 #: wp-includes/js/dist/block-editor.js:63404
 #: wp-includes/js/dist/block-library.js:53325
 #: wp-includes/js/dist/blocks.js:7824 wp-includes/js/dist/core-data.js:2807
@@ -20019,15 +20055,15 @@ msgstr "Størrelse"
 
 #: wp-includes/block-editor.php:174 wp-includes/media-template.php:915
 #: wp-includes/media-template.php:995 wp-includes/media-template.php:1186
-#: wp-includes/media.php:4423 wp-includes/js/dist/block-editor.js:8357
+#: wp-includes/media.php:4427 wp-includes/js/dist/block-editor.js:8357
 #: wp-admin/includes/class-custom-background.php:651
 #: wp-admin/includes/media.php:1206
 msgid "Full Size"
 msgstr "Fuld størrelse"
 
-#: wp-includes/block-editor.php:172 wp-includes/class-wp-theme-json.php:4042
+#: wp-includes/block-editor.php:172 wp-includes/class-wp-theme-json.php:4047
 #: wp-includes/media-template.php:913 wp-includes/media-template.php:993
-#: wp-includes/media-template.php:1184 wp-includes/media.php:4421
+#: wp-includes/media-template.php:1184 wp-includes/media.php:4425
 #: wp-includes/js/dist/block-editor.js:8351
 #: wp-includes/js/dist/components.js:59580
 #: wp-admin/includes/class-custom-background.php:649
@@ -20092,7 +20128,7 @@ msgstr "Filen &#8220;%s&#8221; findes ikke?"
 
 #: wp-includes/block-editor.php:171 wp-includes/media-template.php:912
 #: wp-includes/media-template.php:992 wp-includes/media-template.php:1183
-#: wp-includes/media.php:4420 wp-includes/js/dist/block-editor.js:8348
+#: wp-includes/media.php:4424 wp-includes/js/dist/block-editor.js:8348
 #: wp-admin/includes/class-custom-background.php:648
 #: wp-admin/includes/image-edit.php:310 wp-admin/includes/media.php:1203
 msgid "Thumbnail"
@@ -20201,7 +20237,7 @@ msgid "Content"
 msgstr "Indhold"
 
 #: wp-includes/class-wp-editor.php:1187 wp-includes/class-wp-editor.php:1938
-#: wp-includes/media.php:4785 wp-includes/script-loader.php:1288
+#: wp-includes/media.php:4789 wp-includes/script-loader.php:1288
 #: wp-includes/js/dist/block-editor.js:23834
 #: wp-includes/js/dist/block-editor.js:36203
 #: wp-includes/js/dist/block-editor.js:36414
@@ -20534,7 +20570,7 @@ msgid "Comments"
 msgstr "Kommentarer"
 
 #: wp-includes/class-wp-customize-widgets.php:801
-#: wp-includes/class-wp-editor.php:1395 wp-includes/media.php:4825
+#: wp-includes/class-wp-editor.php:1395 wp-includes/media.php:4829
 #: wp-includes/js/dist/block-editor.js:36209
 #: wp-includes/js/dist/block-editor.js:62701
 #: wp-includes/js/dist/block-editor.js:63022
@@ -20667,7 +20703,7 @@ msgstr "Kommentar"
 #: wp-includes/embed.php:1186 wp-includes/media-template.php:895
 #: wp-includes/media-template.php:1121 wp-includes/media-template.php:1244
 #: wp-includes/media-template.php:1318 wp-includes/media-template.php:1409
-#: wp-includes/media.php:4781 wp-includes/media.php:5435
+#: wp-includes/media.php:4785 wp-includes/media.php:5439
 #: wp-includes/sitemaps/class-wp-sitemaps-stylesheet.php:62
 #: wp-includes/sitemaps/class-wp-sitemaps-stylesheet.php:176
 #: wp-includes/widgets/class-wp-widget-media-image.php:113

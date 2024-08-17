@@ -4279,15 +4279,15 @@ msgstr "Dette plugin forårsagede en fejl og er sat på pause i genopretningstil
 msgid "Go to the Themes screen"
 msgstr "Gå til temasiden"
 
-#: wp-admin/includes/class-wp-debug-data.php:1734
+#: wp-admin/includes/class-wp-debug-data.php:1746
 msgid "Total size is not available. Some errors were encountered when determining the size of your installation."
 msgstr "Den samlede størrelse er ikke tilgængelig. Nogle fejl opstod da størrelsen af din installation skulle fastslås."
 
-#: wp-admin/includes/class-wp-debug-data.php:1683
+#: wp-admin/includes/class-wp-debug-data.php:1695
 msgid "The size cannot be calculated. The directory is not accessible. Usually caused by invalid permissions."
 msgstr "Størrelsen kan ikke beregnes. Mappen er ikke tilgængelig. Normalt forårsages dette af manglende adgang til mappen."
 
-#: wp-admin/includes/class-wp-debug-data.php:1690
+#: wp-admin/includes/class-wp-debug-data.php:1702
 msgid "The directory size calculation has timed out. Usually caused by a very large number of sub-directories and files."
 msgstr "Beregningen af mappestørrelser er har lavet timeout. Normalt forårsages dette af et meget stort antal undermapper og filer."
 
@@ -5000,7 +5000,7 @@ msgstr "ImageMagick-versionsnummer"
 #: wp-admin/includes/class-wp-debug-data.php:521
 #: wp-admin/includes/class-wp-debug-data.php:543
 #: wp-admin/includes/class-wp-debug-data.php:560
-#: wp-admin/includes/class-wp-debug-data.php:1718 wp-admin/includes/ms.php:803
+#: wp-admin/includes/class-wp-debug-data.php:1730 wp-admin/includes/ms.php:803
 msgid "Not available"
 msgstr "Ikke tilgængelig"
 
