@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 6.6.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2024-08-07 09:36:21+0000\n"
+"PO-Revision-Date: 2024-08-18 01:41:44+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -37,6 +37,10 @@ msgctxt "default GMT offset or timezone string"
 msgid "0"
 msgstr "Europe/Copenhagen"
 
+#: wp-admin/includes/class-wp-debug-data.php:1678
+msgid "The directory does not exist."
+msgstr "Den givne mappe findes ikke."
+
 #: wp-admin/update-core.php:1048
 msgid "<a href=\"https://developer.wordpress.org/advanced-administration/wordpress/common-errors/\">Common Errors</a>"
 msgstr "<a href=\"https://developer.wordpress.org/advanced-administration/wordpress/common-errors/\">Kendte fejl</a>"
@@ -52,6 +56,11 @@ msgstr "<a href=\"https://developer.wordpress.org/advanced-administration/plugin
 #: wp-admin/options.php:330
 msgid "https://developer.wordpress.org/plugins/settings/settings-api/"
 msgstr "https://developer.wordpress.org/plugins/settings/settings-api/"
+
+#. translators: 1: The option/setting, 2: Documentation URL.
+#: wp-admin/options.php:328
+msgid "The %1$s setting is unregistered. Unregistered settings are deprecated. See <a href=\"%2$s\">documentation on the Settings API</a>."
+msgstr "Indstillingen %1$s er ikke registreret. Ikke-registrerede indstillinger er udfaset. Se <a href=\"%2$s\">dokumentation om indstillings-API'en</a>."
 
 #: wp-admin/options-writing.php:228 wp-admin/options-writing.php:242
 msgid "https://developer.wordpress.org/advanced-administration/wordpress/update-services/"
@@ -94,9 +103,43 @@ msgstr "Ingen URL'er angivet."
 msgid "https://developer.wordpress.org/advanced-administration/server/file-permissions/"
 msgstr "https://developer.wordpress.org/advanced-administration/server/file-permissions/"
 
+#: wp-admin/includes/class-wp-upgrader.php:199
+msgid "Package not available."
+msgstr "Pakken er ikke tilgængelig."
+
+#: wp-admin/includes/class-wp-site-health.php:2775
+msgid "Autoloaded options"
+msgstr "Autoloaded indstillinger"
+
+#: wp-admin/includes/class-wp-site-health.php:2676
+msgid "More info about optimizing autoloaded options"
+msgstr "Mere info om optimering af autoloadede indstillinger"
+
 #: wp-admin/includes/class-wp-site-health.php:2675
 msgid "https://developer.wordpress.org/advanced-administration/performance/optimization/#autoloaded-options"
 msgstr "https://developer.wordpress.org/advanced-administration/performance/optimization/#autoloaded-options"
+
+#. translators: 1: Number of autoloaded options, 2: Autoloaded options size.
+#: wp-admin/includes/class-wp-site-health.php:2658
+msgid "Your site has %1$s autoloaded options (size: %2$s) in the options table, which could cause your site to be slow. You can review the options being autoloaded in your database and remove any options that are no longer needed by your site."
+msgstr "Dit websted har %1$s autoloaded indstillinger (størrelse: %2$s) i indstillingstabellen, hvilket kan gøre dit websted langsomt. Du kan gennemgå de indstillinger, der autoloades i din database, og fjerne eventuelle indstillinger, som ikke længere er nødvendige for dit websted."
+
+#: wp-admin/includes/class-wp-site-health.php:2655
+msgid "Autoloaded options could affect performance"
+msgstr "Autoloadede indstillinger kan påvirke ydeevnen"
+
+#. translators: 1: Number of autoloaded options, 2: Autoloaded options size.
+#: wp-admin/includes/class-wp-site-health.php:2633
+msgid "Your site has %1$s autoloaded options (size: %2$s) in the options table, which is acceptable."
+msgstr "Dit websted har %1$s autoloadede indstillinger (størrelse: %2$s) i indstillingstabellen, hvilket er acceptabelt."
+
+#: wp-admin/includes/class-wp-site-health.php:2625
+msgid "Autoloaded options are acceptable"
+msgstr "Autoloadede indstillinger er acceptable"
+
+#: wp-admin/includes/class-wp-site-health.php:2622
+msgid "Autoloaded options are configuration settings for plugins and themes that are automatically loaded with every page load in WordPress. Having too many autoloaded options can slow down your site."
+msgstr "Autoloadede indstillinger er konfigurationsindstillinger for plugins og temaer, der automatisk indlæses med hver sideindlæsning i WordPress. At have for mange autoloaded indstillinger kan gøre dit websted langsommere."
 
 #. translators: Localized Support reference.
 #: wp-admin/includes/class-wp-site-health.php:2510
@@ -118,6 +161,20 @@ msgstr "Placering af skrifttype-mappe"
 #: wp-admin/includes/class-wp-debug-data.php:382
 msgid "The fonts directory"
 msgstr "Mappen med skrifttyper"
+
+#: wp-admin/includes/class-wp-automatic-updater.php:1331
+msgid "The following plugins failed to update. If there was a fatal error in the update, the previously installed version has been restored."
+msgstr "Følgende plugins kunne ikke opdateres. Hvis der var en fatal fejl i opdateringen, er den tidligere installerede version blevet gendannet."
+
+#. translators: %s: The plugin's slug.
+#: wp-admin/includes/class-wp-automatic-updater.php:593
+msgid "The update for '%s' contained a fatal error. The previously installed version has been restored."
+msgstr "Opdateringen for '%s' indeholdt en fatal fejl. Den tidligere installerede version er blevet gendannet."
+
+#. translators: %s: The plugin's slug.
+#: wp-admin/includes/class-wp-automatic-updater.php:582
+msgid "The update for '%s' contained a fatal error. The previously installed version could not be restored."
+msgstr "Opdateringen for '%s' indeholdt en fatal fejl. Den tidligere installerede version kunne ikke gendannes."
 
 #: wp-admin/includes/class-plugin-installer-skin.php:302
 #: wp-admin/includes/class-plugin-installer-skin.php:308
@@ -151,13 +208,51 @@ msgstr "For et samlet overblik over alle de nye funktioner og forbedringer i Wor
 msgid "And much more"
 msgstr "Og meget mere"
 
+#: wp-admin/about.php:174
+msgid "55+ accessibility fixes and enhancements focus on foundational aspects of the WordPress experience, particularly the data views component powering the new site editing experience and areas like the Inserter that provide a key way of interacting with blocks and patterns."
+msgstr "55+ tilgængelighedsrettelser og forbedringer fokuserer på grundlæggende aspekter af WordPress-oplevelsen, især datavisningskomponenten, der driver den nye webstedsredigering og områder som \"indsætteren\", der giver en vigtig måde at interagere med blokke og blokgrupper på."
+
+#. translators: %1$s: code-formatted "WP_Theme_JSON", %2$s: code-formatted
+#. "data-wp-on-async", %%: escaped percent sign, leave as %%.
+#: wp-admin/about.php:159
+msgid "WordPress 6.6 includes important updates like removing redundant %1$s calls, disabling autoload for large options, eliminating unnecessary polyfill dependencies, lazy loading post embeds, introducing the %2$s directive, and a 33%% reduction in template loading time in the editor."
+msgstr "WordPress 6.6 inkluderer vigtige opdateringer som fjernelse af overflødige %1$s kald, deaktivering af autoload for store indstillinger, eliminering af unødvendige polyfill-afhængigheder, lazy loading af indlejrede indlæg, introduktion af %2$s direktivet, og en 33%% reduktion i skabelonindlæsningstid i editoren."
+
+#: wp-admin/about.php:136
+msgid "Allow specific pieces of content to be customized in each instance of a synced pattern while keeping a consistent style for all instances, simplifying future updates. Currently, you can set overrides for Heading, Paragraph, Button, and Image blocks."
+msgstr "Tillad specifikke indholdselementer at blive tilpasset i hver forekomst af en synkroniseret blokgruppe, mens en ensartet stil bevares for alle forekomster, hvilket forenkler fremtidige opdateringer. I øjeblikket kan du indstille tilsidesættelser for \"overskrift\"-, \"afsnit\"-, \"knap\"- og \"billede\"-blokke."
+
+#: wp-admin/about.php:136
+msgid "Add the ability to customize content in synced patterns."
+msgstr "Tilføj muligheden for at tilpasse indhold i synkroniserede blokgrupper."
+
+#: wp-admin/about.php:119
+msgid "Enjoy the ease of plugin auto-updates with the safety of rollbacks if anything goes wrong, improving your site&#8217;s security while minimizing potential downtime."
+msgstr "Nyd nemheden ved automatiske plugin-opdateringer med sikkerheden ved tilbagerulninger, hvis noget går galt, hvilket forbedrer dit websteds sikkerhed, mens potentiel nedetid minimeres."
+
 #: wp-admin/about.php:119
 msgid "Auto-update your plugins with peace of mind."
 msgstr "Opdater dine plugins automatisk med ro i sindet."
 
+#: wp-admin/about.php:118
+msgid "Rollbacks for plugin auto-updates"
+msgstr "Tilbagerulninger for automatiske plugin-opdateringer"
+
+#: wp-admin/about.php:112
+msgid "See all of your pages and a preview of any selected page before you edit via a new side-by-side layout in the Site Editor."
+msgstr "Se alle dine sider og en forhåndsvisning af enhver valgt side, før du redigerer via en ny side-om-side layout i \"webstedseditoren\"."
+
+#: wp-admin/about.php:112
+msgid "Simplify your workflow with a new layout built for pages."
+msgstr "Forenkle din arbejdsgang med et nyt layout bygget til sider."
+
 #: wp-admin/about.php:111
 msgid "Quick previews for pages"
 msgstr "Hurtig forhåndsvisning af sider"
+
+#: wp-admin/about.php:95
+msgid "Block theme authors can create unlimited individual color or font sets to offer more specific design options within the same theme. These sets provide more contained design possibilities, allowing for customization without changing the site&#8217;s broader styling, beyond color or typography settings."
+msgstr "Bloktema-forfattere kan oprette ubegrænsede individuelle farve- eller skrifttypesæt for at tilbyde mere specifikke designmuligheder inden for det samme tema. Disse sæt giver mere afgrænsede designmuligheder, hvilket tillader tilpasning uden at ændre webstedets bredere formgivning, ud over farve- eller typografiindstillinger."
 
 #: wp-admin/about.php:95
 msgid "Add more design options to any block theme."
@@ -166,6 +261,10 @@ msgstr "Tilføj flere designmuligheder til ethvert bloktema."
 #: wp-admin/about.php:94
 msgid "Color palettes & font sets"
 msgstr "Farvepaletter og skrifttypesæt"
+
+#: wp-admin/about.php:87
+msgid "Create and deploy beautiful and coherent design elements across your sites with WordPress 6.6. A new rollback option for auto-updating plugins gives you control, flexibility, and peace of mind."
+msgstr "Opret og implementer smukke og sammenhængende designelementer på dine websteder med WordPress 6.6. En ny tilbagerulningsmulighed for automatisk opdatering af plugins giver dig kontrol, fleksibilitet og ro i sindet."
 
 #: wp-admin/menu.php:209
 msgctxt "patterns menu item"
@@ -631,6 +730,16 @@ msgstr "Den midlertidige backupmappe til plugins og temaer er skrivbar"
 #: wp-admin/includes/class-wp-site-health.php:1839
 msgid "Could not determine available disk space for updates."
 msgstr "Kunne ikke finde ledig diskplads til opdateringer."
+
+#. translators: %s: Available disk space in MB or GB.
+#: wp-admin/includes/class-wp-site-health.php:1844
+msgid "Available disk space is critically low, less than %s available. Proceed with caution, updates may fail."
+msgstr "Tilgængelig diskplads er kritisk lav, mindre end %s tilgængelig. Fortsæt med forsigtighed, opdateringer kan mislykkes."
+
+#. translators: %s: Available disk space in MB or GB.
+#: wp-admin/includes/class-wp-site-health.php:1851
+msgid "Available disk space is low, less than %s available."
+msgstr "Tilgængelig diskplads er lav, mindre end %s tilgængelig."
 
 #. translators: %s: Available disk space in MB or GB.
 #: wp-admin/includes/class-wp-site-health.php:1831
@@ -1351,6 +1460,10 @@ msgstr "Vigtigt! Din version af WordPress (%1$s) vil ikke længere modtage sikke
 #: wp-admin/about.php:329
 msgid "Important! Your version of WordPress (%1$s) is no longer supported, you will not receive any security updates for your website. To keep your site secure, please <a href=\"%2$s\">update to the latest version of WordPress</a>."
 msgstr "Vigtig! Din version af WordPress (%1$s) understøttes ikke længere, du vil ikke modtage sikkerhedsopdateringer til dit websted. For at holde dit websted sikkert skal du <a href=\"%2$s\">opdatere til den nyeste version af WordPress</a>."
+
+#: wp-admin/about.php:234
+msgid "https://make.wordpress.org/core/wordpress-6-6-field-guide/"
+msgstr "https://make.wordpress.org/core/wordpress-6-6-field-guide/"
 
 #. translators: %s: Version number.
 #: wp-admin/about.php:203
@@ -3582,6 +3695,10 @@ msgstr "<a href=\"https://wordpress.org/documentation/article/tools-screen/\">Do
 #: wp-admin/options.php:386
 msgid "This page allows direct access to your site settings. You can break things here. Please be cautious!"
 msgstr "Denne side giver direkte adgang til dine websteds indstillinger. Du kan ødelægge ting her. Vær forsigtig!"
+
+#: wp-admin/edit-form-advanced.php:380
+msgid "<strong>Format</strong> &mdash; Post Formats designate how your theme will display a specific post. For example, you could have a <em>standard</em> blog post with a title and paragraphs, or a short <em>aside</em> that omits the title and contains a short text blurb. Your theme could enable all or some of 10 possible formats. <a href=\"https://developer.wordpress.org/advanced-administration/wordpress/post-formats/#supported-formats\">Learn more about each post format</a>."
+msgstr "<strong>Format</strong> &mdash; Indholdsformater angiver, hvordan dit tema vil vise et specifikt indhold. For eksempel kunne du have et <em>standard</em> blogindlæg med en titel og afsnit, eller en kort <em>aside</em>, der udelader titlen og indeholder en kort tekst. Dit tema kunne aktivere alle eller nogle af de 10 mulige formater. <a href=\"https://developer.wordpress.org/advanced-administration/wordpress/post-formats/#supported-formats\">Lær mere om hvert indholdsformat</a>."
 
 #: wp-admin/edit-form-advanced.php:337
 msgid "<a href=\"https://wordpress.org/documentation/article/pages-screen/\">Documentation on Editing Pages</a>"
@@ -7790,6 +7907,11 @@ msgstr "Hvis denne automatiske filoprettelse af en eller anden grund ikke virker
 #: wp-admin/options-media.php:143
 msgid "Default is %s"
 msgstr "Standard er %s"
+
+#. translators: 1: .po, 2: .mo, 3: .l10n.php
+#: wp-admin/includes/class-language-pack-upgrader.php:359
+msgid "The language pack is missing either the %1$s, %2$s, or %3$s files."
+msgstr "Sprogpakken mangler enten %1$s, %2$s eller %3$s filerne."
 
 #. translators: %s: style.css
 #: wp-admin/includes/class-theme-upgrader.php:613
@@ -12174,6 +12296,11 @@ msgstr "Dette skærmbillede giver dig mulighed for at redigere felter til metada
 msgid "Email or Username"
 msgstr "E-mail eller brugernavn"
 
+#: wp-admin/themes.php:235 wp-admin/network/site-themes.php:240
+#: wp-admin/network/themes.php:463
+msgid "Search installed themes"
+msgstr "Søg i installerede temaer"
+
 #. translators: %s: Link to documentation on child themes.
 #: wp-admin/update-core.php:665
 msgid "<strong>Please Note:</strong> Any customizations you have made to theme files will be lost. Please consider using <a href=\"%s\">child themes</a> for modifications."
@@ -12372,6 +12499,10 @@ msgstr "Hvis du vælger noget andet end Almindelig, vil din URL-sti med struktur
 #: wp-admin/widgets-form.php:54
 msgid "If you want to remove the widget but save its setting for possible future use, just drag it into the Inactive Widgets area. You can add them back anytime from there. This is especially helpful when you switch to a theme with fewer or different widget areas."
 msgstr "Hvis du ønsker at fjerne en widget, men gemme dens indstilling til eventuel senere brug, skal du blot trække den ind i Inaktive Widgets. Du kan når som helst tilføje dem igen derfra. Dette er især nyttigt, hvis du skifter til et tema med færre eller anderledes widget områder."
+
+#: wp-admin/users.php:36
+msgid "To add a new user for your site, click the Add New User button at the top of the screen or Add New User in the Users menu section."
+msgstr "For at tilføje en ny bruger til dit websted, skal du klikke på \"Tilføj ny\" knappen øverst på siden eller \"Tilføj ny\" i sektionen \"Brugere\"."
 
 #: wp-admin/options-media.php:20
 msgid "You can set maximum sizes for images inserted into your written content; you can also insert an image as Full Size."
@@ -12711,6 +12842,10 @@ msgstr "Du kan skjule/vise kolonner efter behov og bestemme, hvor mange indlæg 
 #: wp-admin/users.php:44
 msgid "You can customize the display of this screen in a number of ways:"
 msgstr "Du kan tilpasse visningen af dette skærmbillede på en række måder:"
+
+#: wp-admin/plugins.php:793
+msgid "Search installed plugins"
+msgstr "Søg i installerede plugins"
 
 #: wp-admin/nav-menus.php:832
 msgid "Your theme supports one menu. Select which menu you would like to use."
@@ -15462,6 +15597,10 @@ msgstr "Den uploadede fil kunne ikke flyttes til %s."
 msgid "Please select a file"
 msgstr "Vælg venligst en fil"
 
+#: wp-admin/includes/class-file-upload-upgrader.php:89
+msgid "Return to the Theme Installer"
+msgstr "Vend tilbage til temainstallation"
+
 #. translators: %s: Post title.
 #. translators: %s: Theme name.
 #: wp-admin/includes/class-wp-posts-list-table.php:1541
@@ -15473,6 +15612,10 @@ msgstr "Preview &#8220;%s&#8221;"
 #: wp-admin/includes/class-theme-upgrader.php:84
 msgid "Successfully installed the theme <strong>%1$s %2$s</strong>."
 msgstr "Installerede temaet <strong>%1$s %2$s</strong>."
+
+#: wp-admin/includes/class-file-upload-upgrader.php:80
+msgid "Return to the Plugin Installer"
+msgstr "Vend tilbage til plugininstallation"
 
 #. translators: 1: Plugin name, 2: Plugin version.
 #: wp-admin/includes/class-plugin-upgrader.php:86

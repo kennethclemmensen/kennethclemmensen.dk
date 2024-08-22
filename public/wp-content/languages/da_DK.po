@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 6.6.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2024-08-15 10:52:59+0000\n"
+"PO-Revision-Date: 2024-08-17 07:31:19+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -307,6 +307,226 @@ msgstr "Overskrivning"
 #: wp-admin/edit-form-comment.php:133
 msgid "Comment status"
 msgstr "Kommentarstatus"
+
+#: wp-includes/js/dist/editor.js:5535
+#: wp-admin/includes/edit-tag-messages.php:19
+msgid "Items deleted."
+msgstr "Emner slettet."
+
+#: wp-login.php:1335
+msgid "https://developer.wordpress.org/advanced-administration/wordpress/cookies/#enable-cookies-in-your-browser"
+msgstr "https://developer.wordpress.org/advanced-administration/wordpress/cookies/#enable-cookies-in-your-browser"
+
+#: wp-login.php:1324
+msgid "https://developer.wordpress.org/advanced-administration/wordpress/cookies/"
+msgstr "https://developer.wordpress.org/advanced-administration/wordpress/cookies/"
+
+#: wp-load.php:94 wp-admin/setup-config.php:200
+msgid "https://developer.wordpress.org/advanced-administration/wordpress/wp-config/"
+msgstr "https://developer.wordpress.org/advanced-administration/wordpress/wp-config/"
+
+#: wp-includes/theme.php:4235
+msgid "Custom spacing sizes if defined by the theme."
+msgstr "Tilpassede foruddefinerede afstande, hvis sådanne er defineret af temaet."
+
+#. translators: %s: Taxonomy name.
+#: wp-includes/taxonomy.php:726
+msgctxt "taxonomy template name"
+msgid "%s Archives"
+msgstr "%s Arkiver"
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-themes-controller.php:479
+msgid "The uri for the theme's template directory. If this is a child theme, this refers to the parent theme, otherwise this is the same as the theme's stylesheet directory."
+msgstr "URI'en for temaets skabelonmappe. Hvis dette er et undertema, henviser dette til hovedtemaet, ellers er det det samme som temaets stylesheet-mappe."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-themes-controller.php:468
+msgid "The uri for the theme's stylesheet directory."
+msgstr "URI for temaets stylesheet-mappe."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2362
+msgid "An array of the class names for the post container element."
+msgstr "En array af klassenavne for indholdselementets container."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:102
+msgid "Override the default excerpt length."
+msgstr "Erstat standardlængden for uddrag."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-post-types-controller.php:427
+msgid "The template_lock associated with the post type, or false if none."
+msgstr "Den template_lock som er forbundet med indholdstypen, eller false hvis ingen."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-post-types-controller.php:420
+msgid "The block template associated with the post type."
+msgstr "Blokskabelonen tilknyttet indholdstypen."
+
+#: wp-includes/rest-api.php:1012 wp-includes/rest-api.php:1043
+msgctxt "REST API resource link name"
+msgid "JSON"
+msgstr "JSON"
+
+#: wp-includes/post.php:369
+msgid "Template updated."
+msgstr "Skabelon opdateret."
+
+#: wp-includes/ms-load.php:500
+msgid "https://developer.wordpress.org/advanced-administration/debug/debug-network/"
+msgstr "https://developer.wordpress.org/advanced-administration/debug/debug-network/"
+
+#. translators: Localized tutorial, if one exists. W3C Web Accessibility
+#. Initiative link has list of existing translations.
+#: wp-includes/media-template.php:163
+#: wp-includes/js/dist/block-library.js:13480
+#: wp-includes/js/dist/block-library.js:26887
+#: wp-includes/js/dist/block-library.js:26952
+#: wp-includes/js/dist/block-library.js:32244 wp-admin/includes/media.php:3245
+msgid "https://www.w3.org/WAI/tutorials/images/decision-tree/"
+msgstr "https://www.w3.org/WAI/tutorials/images/decision-tree/"
+
+#. translators: 1: Path pointing to an Interactivity API state property, 2:
+#. Namespace for an Interactivity API store.
+#: wp-includes/interactivity-api/class-wp-interactivity-api.php:576
+msgid "Uncaught error executing a derived state callback with path \"%1$s\" and namespace \"%2$s\"."
+msgstr "Uopdaget fejl ved udførelse af et afledt tilstand tilbagekald med sti \"%1$s\" og navneområde \"%2$s\"."
+
+#. translators: %s: The directive value referenced.
+#: wp-includes/interactivity-api/class-wp-interactivity-api.php:536
+msgid "Namespace or reference path cannot be empty. Directive value referenced: %s"
+msgstr "Navneområde eller referencesti kan ikke være tom. Direktivværdi refereret: %s"
+
+#. translators: %1s: Namespace processed, %2s: The tag that caused the error;
+#. could be any HTML tag.
+#: wp-includes/interactivity-api/class-wp-interactivity-api.php:509
+msgid "Interactivity directives failed to process in \"%1$s\" due to a missing \"%2$s\" end tag."
+msgstr "Interaktivitetsdirektiver kunne ikke behandles i \"%1$s\" på grund af en manglende \"%2$s\" sluttag."
+
+#. translators: 1: SVG or MATH HTML tag, 2: Namespace of the interactive block.
+#: wp-includes/interactivity-api/class-wp-interactivity-api.php:406
+msgid "Interactivity directives were detected on an incompatible %1$s tag when processing \"%2$s\". These directives will be ignored in the server side render."
+msgstr "Interaktivitetsdirektiver blev opdaget på et inkompatibelt %1$s tag ved behandling af \"%2$s\". Disse direktiver vil blive ignoreret i server-side renderingen."
+
+#: wp-includes/interactivity-api/class-wp-interactivity-api.php:282
+msgid "The context can only be read during directive processing."
+msgstr "Konteksten kan kun læses under direktivbehandling."
+
+#: wp-includes/interactivity-api/class-wp-interactivity-api.php:138
+msgid "The namespace can only be omitted during directive processing."
+msgstr "Navneområdet kan kun udelades under direktivbehandling."
+
+#: wp-includes/interactivity-api/class-wp-interactivity-api.php:130
+#: wp-includes/interactivity-api/class-wp-interactivity-api.php:292
+msgid "The namespace should be a non-empty string."
+msgstr "Navneområdet skal være en ikke-tom tekststreng."
+
+#: wp-includes/interactivity-api/class-wp-interactivity-api.php:122
+msgid "The namespace is required when state data is passed."
+msgstr "Navneområdet er påkrævet, når tilstandsdata overføres."
+
+#. translators: 1: SVG or MATH HTML tag.
+#: wp-includes/interactivity-api/class-wp-interactivity-api-directives-processor.php:205
+msgid "Interactivity directives were detected inside an incompatible %1$s tag. These directives will be ignored in the server side render."
+msgstr "Interaktivitetsdirektiver blev opdaget inde i et inkompatibelt %1$s tag. Disse direktiver vil blive ignoreret i server-side renderingen."
+
+#. translators: Documentation explaining HTTPS and why it should be used.
+#: wp-includes/functions.php:8564
+msgid "https://developer.wordpress.org/advanced-administration/security/https/"
+msgstr "https://developer.wordpress.org/advanced-administration/security/https/"
+
+#. translators: Documentation explaining debugging in WordPress.
+#: wp-includes/functions.php:6001
+#: wp-admin/includes/class-wp-site-health.php:1378
+msgid "https://developer.wordpress.org/advanced-administration/debug/debug-wordpress/"
+msgstr "https://developer.wordpress.org/advanced-administration/debug/debug-wordpress/"
+
+#: wp-includes/embed.php:342
+msgctxt "oEmbed resource link name"
+msgid "oEmbed (XML)"
+msgstr "oEmbed (XML)"
+
+#: wp-includes/embed.php:339
+msgctxt "oEmbed resource link name"
+msgid "oEmbed (JSON)"
+msgstr "oEmbed (JSON)"
+
+#: wp-includes/deprecated.php:708
+msgctxt "Categories dropdown (show_option_none parameter)"
+msgid "None"
+msgstr "Ingen"
+
+#: wp-includes/customize/class-wp-customize-themes-section.php:127
+#: wp-includes/customize/class-wp-customize-themes-section.php:141
+msgid "Search themes"
+msgstr "Søg i temaer"
+
+#. translators: 1: Title of a menu item, 2: Type of a menu item, 3, Item index,
+#. 4, Total items, 5: Item parent, 6: Item depth.
+#: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:93
+msgid "Edit %1$s (%2$s, sub-item %3$d of %4$d under %5$s, level %6$s)"
+msgstr "Rediger %1$s (%2$s, underemne %3$d af %4$d under %5$s, niveau %6$s)"
+
+#. translators: 1: version string, 2: version string.
+#: wp-includes/class-wp-token-map.php:411
+msgid "Loaded version '%1$s' incompatible with expected version '%2$s'."
+msgstr "Indlæst version '%1$s' er inkompatibel med forventet version '%2$s'."
+
+#: wp-includes/class-wp-token-map.php:401
+msgid "Missing required inputs to pre-computed WP_Token_Map."
+msgstr "Manglende nødvendige input til forudberegnet WP_Token_Map."
+
+#. translators: 1: maximum byte length (a count)
+#: wp-includes/class-wp-token-map.php:300
+msgid "Token Map tokens and substitutions must all be shorter than %1$d bytes."
+msgstr "Token Map tokens og erstatninger skal alle være kortere end %1$d bytes."
+
+#. translators: %1$s: The filter name.
+#: wp-includes/class-wp-theme.php:2022
+msgid "The %1$s filter must return an integer value greater than 0."
+msgstr "Filtret %1$s skal returnere en heltalsværdi større end 0."
+
+#. translators: 1: Item name, 2: Item type, 3: Item index, 4: Total items, 5:
+#. Item parent, 6: Item depth.
+#: wp-includes/class-wp-customize-nav-menus.php:570 wp-admin/nav-menus.php:588
+msgid "Edit %1$s (%2$s, sub-item %3$d of %4$d under %5$s, level %6$d)"
+msgstr "Rediger %1$s (%2$s, underemne %3$d af %4$d under %5$s, niveau %6$d)"
+
+#. translators: 1: Item name, 2: Item type, 3: Item index, 4: Total items, 5:
+#. Item parent.
+#. translators: 1: Title of a menu item, 2: Type of a menu item, 3, Item index,
+#. 4, Total items, 5: Item parent.
+#: wp-includes/class-wp-customize-nav-menus.php:568
+#: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:88
+#: wp-admin/nav-menus.php:586
+msgid "Edit %1$s (%2$s, sub-item %3$d of %4$d under %5$s)"
+msgstr "Rediger %1$s (%2$s, underemne %3$d af %4$d under %5$s)"
+
+#. translators: 1: Item name, 2: Item type, 3: Item index, 4: Total items.
+#. translators: 1: Title of a menu item, 2: Type of a menu item. 3: Item index,
+#. 4: Total items.
+#: wp-includes/class-wp-customize-nav-menus.php:566
+#: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:83
+#: wp-admin/nav-menus.php:584
+msgid "Edit %1$s (%2$s, %3$d of %4$d)"
+msgstr "Rediger %1$s (%2$s, %3$d af %4$d)"
+
+#: wp-includes/class-wp-customize-manager.php:5703
+msgid "https://developer.wordpress.org/advanced-administration/wordpress/css/"
+msgstr "https://developer.wordpress.org/advanced-administration/wordpress/css/"
+
+#: wp-includes/class-wp-block-styles-registry.php:69
+msgid "Block name must be a string or array."
+msgstr "Bloknavn skal være en tekststreng eller en array."
+
+#. translators: 1: A URL to a post, 2: Hidden accessibility text: Post title
+#: wp-includes/blocks/latest-posts.php:161
+msgid "… <a class=\"wp-block-latest-posts__read-more\" href=\"%1$s\" rel=\"noopener noreferrer\">Read more<span class=\"screen-reader-text\">: %2$s</span></a>"
+msgstr "… <a class=\"wp-block-latest-posts__read-more\" href=\"%1$s\" rel=\"noopener noreferrer\">Læs mere<span class=\"screen-reader-text\">: %2$s</span></a>"
+
+#: wp-includes/block-supports/typography.php:552
+msgid "`boolean` type for second argument `$settings` is deprecated. Use `array()` instead."
+msgstr "`boolean` type for andet argument `$settings` er udfaset. Brug `array()` i stedet."
+
+#: wp-includes/block-supports/elements.php:128
+msgid "Use as a `pre_render_block` filter is deprecated. Use with `render_block_data` instead."
+msgstr "Brug af `pre_render_block` filter er udfaset. Brug i stedet `render_block_data`."
 
 #: wp-includes/blocks/footnotes/block.json
 msgctxt "block description"
@@ -3670,6 +3890,16 @@ msgstr "Pilleformet"
 msgctxt "block style label"
 msgid "Logos Only"
 msgstr "Kun logoer"
+
+#: wp-includes/blocks/social-links/block.json
+msgctxt "block description"
+msgid "Display icons linking to your social profiles or sites."
+msgstr "Vis ikoner, der henviser til dine sociale medier eller websteder."
+
+#: wp-includes/blocks/social-link/block.json
+msgctxt "block description"
+msgid "Display an icon linking to a social profile or site."
+msgstr "Vis et ikon, der linker til en profil på socialt medie eller et websted."
 
 #: wp-includes/blocks/site-title/block.json
 msgctxt "block title"
@@ -16363,6 +16593,11 @@ msgstr "&mdash; Vælg &mdash;"
 #: wp-admin/options-general.php:95
 msgid "Tagline"
 msgstr "Beskrivelse"
+
+#: wp-includes/js/dist/edit-site.js:33393 wp-includes/js/dist/editor.js:26344
+#: wp-admin/includes/file.php:32
+msgid "Posts Page"
+msgstr "Indlægsside"
 
 #: wp-includes/class-wp-customize-manager.php:5656
 #: wp-admin/options-reading.php:97
