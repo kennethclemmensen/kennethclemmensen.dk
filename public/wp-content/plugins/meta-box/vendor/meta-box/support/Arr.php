@@ -147,7 +147,7 @@ class Arr {
 
 	public static function to_depth( $input, $depth ) {
 		$current_depth = is_array( $input ) ? self::depth( $input ) : 0;
-		
+
 		if ( $depth < $current_depth ) {
 			while ( $current_depth > $depth ) {
 				$input = reset( $input );
@@ -182,14 +182,14 @@ class Arr {
 	public static function remove_first( &$array, $query ) {
 		$keys = explode( '.', $query );
 		$key  = array_shift( $keys );
-	
+
 		if ( count( $keys ) === 0 ) {
 			if ( is_array( $array ) && array_key_exists( $key, $array ) ) {
 				unset( $array[ $key ][0] );
 			}
 			return;
 		}
-	
+
 		if ( $key === '*' ) {
 			foreach ( $array as $k => $v ) {
 				if ( is_array( $array[ $k ] ) ) {
@@ -198,11 +198,11 @@ class Arr {
 			}
 			return;
 		}
-	
+
 		if ( $key === '' ) {
 			return;
 		}
-	
+
 		if ( is_array( $array[ $key ] ) ) {
 			self::remove_first( $array[ $key ], implode( '.', $keys ) );
 		}
