@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 6.7.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2024-12-09 12:10:08+0000\n"
+"PO-Revision-Date: 2024-12-16 06:04:26+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -286,10 +286,131 @@ msgstr "januar"
 msgid "Uncategorized"
 msgstr "Ikke-kategoriseret"
 
+#: wp-includes/blocks/tag-cloud/block.json
+msgctxt "block description"
+msgid "A cloud of popular keywords, each sized by how often it appears."
+msgstr "En sky af populære nøgleord, hvor hvert ords størrelse afhænger af, hvor ofte det vises."
+
+#: wp-includes/blocks/list/block.json
+msgctxt "block description"
+msgid "An organized collection of items displayed in a specific order."
+msgstr "En organiseret samling af elementer vist i en bestemt rækkefølge."
+
+#: wp-includes/blocks/list-item/block.json
+msgctxt "block description"
+msgid "An individual item within a list."
+msgstr "Et enkelt element i en liste."
+
 #: wp-includes/blocks/categories/block.json
 msgctxt "block keyword"
 msgid "categories"
 msgstr "kategorier"
+
+#: wp-includes/blocks/categories/block.json
+msgctxt "block description"
+msgid "Display a list of all terms of a given taxonomy."
+msgstr "Vis en liste over alle termer i en given taksonomi."
+
+#: wp-includes/blocks/categories/block.json
+msgctxt "block title"
+msgid "Terms List"
+msgstr "Termliste"
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-templates-controller.php:1178
+msgid "Plugin that registered the template."
+msgstr "Plugin, der registrerede skabelonen."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:3050
+msgid "Limit result set to items assigned one or more given formats."
+msgstr "Begræns svar til emner tildelt et eller flere givne formater."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2950
+msgid "How to interpret the search input."
+msgstr "Hvordan man fortolker søgeinputtet."
+
+#. translators: 1: rest_api_init, 2: string value of the route, 3: string value
+#. of the namespace.
+#: wp-includes/rest-api.php:86
+msgid "REST API routes must be registered on the %1$s action. Instead route '%2$s' with namespace '%3$s' was not registered on this action."
+msgstr "REST API-ruter skal registreres på %1$s-handlingen. I stedet blev ruten '%2$s' med navneområdet '%3$s' ikke registreret på denne handling."
+
+#. translators: 1: string value of the namespace, 2: string value of the route.
+#: wp-includes/rest-api.php:73
+msgid "Namespace must not start or end with a slash. Instead namespace '%1$s' for route '%2$s' seems to contain a slash."
+msgstr "Navneområdet må ikke starte eller slutte med en skråstreg. I stedet ser det ud til, at navneområdet '%1$s' for ruten '%2$s' indeholder en skråstreg."
+
+#. translators: 1: string value of the namespace, 2: string value of the route.
+#: wp-includes/rest-api.php:57
+msgid "Route must be specified. Instead within the namespace '%1$s', there seems to be an empty route '%2$s'."
+msgstr "Rute skal angives. I stedet ser der ud til at være en tom rute '%2$s' inden for navneområdet '%1$s'."
+
+#. translators: 1: string value of the namespace, 2: string value of the route.
+#: wp-includes/rest-api.php:45
+msgid "Routes must be namespaced with plugin or theme name and version. Instead there seems to be an empty namespace '%1$s' for route '%2$s'."
+msgstr "Ruter skal navngives med plugin- eller temnavn og version. I stedet ser der ud til at være et tomt navnerum '%1$s' for ruten '%2$s'."
+
+#: wp-includes/media-template.php:1556
+msgid "As an app icon and a browser icon."
+msgstr "Som en app-ikon og en browser-ikon."
+
+#: wp-includes/media-template.php:1555
+msgctxt "noun"
+msgid "Site Icon Preview"
+msgstr "Forhåndsvisning af webstedsikon"
+
+#: wp-includes/link-template.php:3387 wp-includes/link-template.php:3388
+msgid "Comments pagination"
+msgstr "Kommentarer pagination"
+
+#: wp-includes/link-template.php:2958 wp-includes/link-template.php:2959
+msgid "Posts pagination"
+msgstr "Indlægsinddeling"
+
+#. translators: 1: The text domain. 2: 'init'.
+#: wp-includes/l10n.php:1374
+msgid "Translation loading for the %1$s domain was triggered too early. This is usually an indicator for some code in the plugin or theme running too early. Translations should be loaded at the %2$s action or later."
+msgstr "Indlæsning af oversættelse for %1$s-domænet blev udløst for tidligt. Dette er normalt en indikator for, at noget kode i pluginet eller temaet kører for tidligt. Oversættelser bør indlæses ved %2$s-handlingen eller senere."
+
+#: wp-includes/interactivity-api/class-wp-interactivity-api.php:324
+msgid "The element can only be read during directive processing."
+msgstr "Elementet kan kun læses under direktivbehandling."
+
+#. translators: %s: Support forums URL.
+#: wp-includes/class-wp-fatal-error-handler.php:195
+msgid "There has been a critical error on this website. Please check your site admin email inbox for instructions. If you continue to have problems, please try the <a href=\"%s\">support forums</a>."
+msgstr "Der er opstået en kritisk fejl på dette websted. Tjek venligst din webstedsadministrators emailindbakke for instruktioner. Hvis du fortsat har problemer, kan du prøve <a href=\"%s\">supportforaene</a>."
+
+#. translators: %s: Template name.
+#: wp-includes/class-wp-block-templates-registry.php:227
+#: wp-includes/class-wp-block-templates-registry.php:231
+msgid "Template \"%s\" is not registered."
+msgstr "Skabelon \"%s\" er ikke registreret."
+
+#. translators: %s: Template name.
+#: wp-includes/class-wp-block-templates-registry.php:58
+msgid "Template \"%s\" is already registered."
+msgstr "Skabelon \"%s\" er allerede registreret."
+
+#: wp-includes/class-wp-block-templates-registry.php:54
+msgid "Template names must contain a namespace prefix. Example: my-plugin//my-custom-template"
+msgstr "Skabelonnavne skal indeholde et navneområdepræfiks. Eksempel: my-plugin//my-custom-template"
+
+#: wp-includes/class-wp-block-templates-registry.php:51
+msgid "Template names must not contain uppercase characters."
+msgstr "Skabelonnavne må ikke indeholde store bogstaver."
+
+#: wp-includes/class-wp-block-templates-registry.php:48
+msgid "Template names must be strings."
+msgstr "Skabelonnavne skal være tekststrenge."
+
+#: wp-includes/class-wp-block-metadata-registry.php:125
+msgid "The specified manifest file does not exist."
+msgstr "Den angivne manifestfil findes ikke."
+
+#: wp-includes/class-wp-block-metadata-registry.php:107
+#: wp-includes/class-wp-block-metadata-registry.php:116
+msgid "Block metadata collections can only be registered for a specific plugin. The provided path is neither a core path nor a valid plugin path."
+msgstr "Blokmetadata-samlinger kan kun registreres for et specifikt plugin. Den angivne sti er hverken en kerne-sti eller en gyldig plugin-sti."
 
 #: wp-includes/blocks/widget-group/block.json
 msgctxt "block title"
@@ -1056,6 +1177,12 @@ msgstr "Nogle nødvendige plugins mangler eller er inaktive."
 #: wp-includes/class-wp-duotone.php:674
 msgid "\"%1$s\" in %2$s %3$s is not a hex or rgb string."
 msgstr "\"%1$s\" i %2$s %3$s er ikke en hex- eller rgb-streng."
+
+#. translators: 1: pixel value for icon size. 2: pixel value for icon size.
+#: wp-includes/class-wp-customize-manager.php:5214
+#: wp-admin/options-general.php:216
+msgid "The Site Icon is what you see in browser tabs, bookmark bars, and within the WordPress mobile apps. It should be square and at least <code>%1$s by %2$s</code> pixels."
+msgstr "Webstedsikonet er det, du ser i browsertabs, bogmærkelinjer og inden for WordPress-mobilapps. Det skal være kvadratisk og mindst <code>%1$s gange %2$s</code> pixels."
 
 #. translators: %s: Block bindings source name.
 #: wp-includes/class-wp-block-bindings-registry.php:208
