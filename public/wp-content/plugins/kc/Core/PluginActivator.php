@@ -1,6 +1,7 @@
 <?php
 namespace KC\Core;
 
+use KC\Core\Feature;
 use KC\Core\Modules\IModule;
 use KC\Core\Translations\TranslationService;
 use KC\Core\Translations\TranslationString;
@@ -53,7 +54,7 @@ final readonly class PluginActivator {
 	 */
 	private function addPostThumbnailsSupport() : void {
 		add_action(Action::AFTER_SETUP_THEME, function() : void {
-			add_theme_support('post-thumbnails');
+			add_theme_support(Feature::PostThumbnails->value);
 		});
 	}
 

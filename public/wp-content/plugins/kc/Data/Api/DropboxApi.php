@@ -3,6 +3,7 @@ namespace KC\Data\Api;
 
 use KC\Core\Api\BaseApi;
 use KC\Core\Api\ContentType;
+use KC\Core\Api\HttpHeader;
 use KC\Core\Files\FileService;
 
 /**
@@ -23,7 +24,7 @@ final class DropboxApi extends BaseApi {
 	public function __construct(string $appKey, string $appSecret, string $redirectUri, string $code) {
 		$url = 'https://api.dropboxapi.com/oauth2/token';
 		$headers = [
-			'Content-Type: '.ContentType::FormUrlEncoded->value
+			HttpHeader::ContentType->value.': '.ContentType::FormUrlEncoded->value
 		];
 		$postFields = http_build_query([
 			'code' => $code,
@@ -45,9 +46,9 @@ final class DropboxApi extends BaseApi {
 	public function uploadFile(string $file, string $folder) : void {
 		$url = 'https://content.dropboxapi.com/2/files/upload';
 		$headers = [
-			'Authorization: Bearer '.$this->accessToken,
-			'Content-Type: '.ContentType::OctetStream->value,
-			'Dropbox-API-Arg: '.json_encode(['path' => '/'.$file])
+			HttpHeader::Authorization->value.': Bearer '.$this->accessToken,
+			HttpHeader::ContentType->value.': '.ContentType::OctetStream->value,
+			HttpHeader::DropboxApiArg->value.': '.json_encode(['path' => '/'.$file])
 		];
 		$fileService = new FileService();
 		$postFields = $fileService->getFileContent($folder.'/'.$file);
