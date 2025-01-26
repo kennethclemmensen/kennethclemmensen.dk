@@ -17,7 +17,7 @@ export default tseslint.config(
 			'prefer-const': 'warn',
 			'semi': ['warn', 'always'],
 			'quotes': ['warn', 'single'],
-			'no-console': 'warn',
+			'no-console': ['warn', { allow: ['error'] }],
 			'@typescript-eslint/naming-convention': ['warn', {
                 'selector': ['class', 'enum', 'typeAlias'],
                 'format': ['PascalCase'],
