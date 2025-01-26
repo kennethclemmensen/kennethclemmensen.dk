@@ -31,7 +31,7 @@ function less() {
     return src(pkg.config.styleLessFile)
         .pipe(lessPlugin())
         .on('error', (error) => {
-            console.log(error.toString());
+            console.error(error.toString());
             this.emit('end');
         })
         .pipe(cleanCssPlugin())
@@ -46,7 +46,7 @@ function runNpmWebpackJsCommand() {
     return src(pkg.config.appJsFile)
         .pipe(shellPlugin(pkg.config.npmWebpackJsCommand))
         .on('error', (error) => {
-            console.log(error.toString());
+            console.error(error.toString());
             this.emit('end');
         })
         .pipe(browserSyncPlugin.reload({
@@ -59,7 +59,7 @@ function runNpmWebpackCssCommand() {
     return src(pkg.config.cssCompiledFile)
         .pipe(shellPlugin(pkg.config.npmWebpackCssCommand))
         .on('error', (error) => {
-            console.log(error.toString());
+            console.error(error.toString());
             this.emit('end');
         })
         .pipe(browserSyncPlugin.reload({
@@ -72,7 +72,7 @@ function runNpmTscCommand() {
     return src('../../public/wp-content/themes/kennethclemmensen/ts/App.ts')
         .pipe(shellPlugin(pkg.config.npmTscCommand))
         .on('error', (error) => {
-            console.log(error.toString());
+            console.error(error.toString());
             this.emit('end');
         });
 }
@@ -82,7 +82,7 @@ function sass() {
     return src(pkg.config.styleScssFile)
         .pipe(sassPlugin())
         .on('error', (error) => {
-            console.log(error.toString());
+            console.error(error.toString());
             this.emit('end');
         })
         .pipe(cleanCssPlugin())
