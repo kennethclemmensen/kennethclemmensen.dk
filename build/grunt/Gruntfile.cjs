@@ -6,18 +6,18 @@ module.exports = function(grunt) {
         //Setup the browserSync task to synchronize browsers on different devices
         browserSync: {
             bsFiles: {
-                src: '<%= pkg.config.cssFiles %>'
+                src: '../../public/wp-content/themes/kennethclemmensen/css/*.css'
             },
             options: {
                 debugInfo: true,
                 files: [
-                    '<%= pkg.config.cssFiles %>',
-                    '<%= pkg.config.phpFiles %>',
-                    '<%= pkg.config.jsDistFiles %>'
+                    '../../public/wp-content/themes/kennethclemmensen/css/*.css',
+                    '../../public/wp-content/themes/kennethclemmensen/**/*.php',
+                    '../../public/wp-content/themes/kennethclemmensen/js/dist/*.js'
                 ],
                 logConnections: true,
                 notify: true,
-                proxy: '<%= pkg.config.testDomain %>',
+                proxy: 'kennethclemmensen.test',
                 watchTask: true
             }
         },
@@ -37,7 +37,7 @@ module.exports = function(grunt) {
                     outputStyle: 'compressed'
                 },
                 files: {
-                    '<%= pkg.config.cssCompiledFile %>': '<%= pkg.config.styleScssFile %>'
+                    '../../public/wp-content/themes/kennethclemmensen/css/compiled/style.css': '../../public/wp-content/themes/kennethclemmensen/sass/style.scss'
                 }
             }
         },
@@ -46,9 +46,9 @@ module.exports = function(grunt) {
             dynamic: {
                 files: [{
                     expand: true,
-                    cwd: '<%= pkg.config.uploadsFolder %>',
+                    cwd: '../../public/wp-content/uploads/',
                     src: ['**/*.{png,jpg,gif}'],
-                    dest: '<%= pkg.config.uploadsFolder %>'
+                    dest: '../../public/wp-content/uploads/'
                 }]
             }
         },
@@ -56,7 +56,7 @@ module.exports = function(grunt) {
         less: {
             development: {
                 files: {
-                    '<%= pkg.config.cssCompiledFile %>': '<%= pkg.config.styleLessFile %>'
+                    '../../public/wp-content/themes/kennethclemmensen/css/compiled/style.css': '../../public/wp-content/themes/kennethclemmensen/less/style.less'
                 },
                 options: {
                     compress: true,
@@ -67,13 +67,13 @@ module.exports = function(grunt) {
         //Use the grunt-shell plugin to run a npm command
         shell: {
             npm_run_tsc: {
-                command: '<%= pkg.config.npmTscCommand %>'
+                command: 'npm run tsc'
             },
             npm_run_webpack_js: {
-                command: '<%= pkg.config.npmWebpackJsCommand %>'
+                command: 'npm run webpack-js'
             },
             npm_run_webpack_css: {
-                command: '<%= pkg.config.npmWebpackCssCommand %>'
+                command: 'npm run webpack-css'
             }
         },
         //Setup the watch task to look for changes in files
@@ -82,19 +82,19 @@ module.exports = function(grunt) {
                 livereload: true
             },
             css: {
-                files: ['<%= pkg.config.cssCompiledFile %>'],
+                files: ['../../public/wp-content/themes/kennethclemmensen/css/compiled/style.css'],
                 tasks: ['shell:npm_run_webpack_css']
             },
             javascript: {
-                files: ['<%= pkg.config.jsCompiledFiles %>'],
+                files: ['../../public/wp-content/themes/kennethclemmensen/js/compiled/**/*.js'],
                 tasks: ['shell:npm_run_webpack_js']
             },
             less: {
-                files: ['<%= pkg.config.lessFiles %>'],
+                files: ['../../public/wp-content/themes/kennethclemmensen/less/**/*.less'],
                 tasks: ['less']
             },
             sass: {
-                files: ['<%= pkg.config.scssFiles %>'],
+                files: ['../../public/wp-content/themes/kennethclemmensen/sass/**/*.scss'],
                 tasks: ['dart-sass']
             }
         }
