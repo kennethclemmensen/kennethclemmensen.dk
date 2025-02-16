@@ -23,7 +23,6 @@
     "grunt": "^1.6.1",
     "grunt-browser-sync": "^2.2.0",
     "grunt-cli": "^1.5.0",
-    "grunt-concurrent": "^3.0.0",
     "grunt-contrib-imagemin": "^4.0.0",
     "grunt-contrib-less": "^3.0.0",
     "grunt-contrib-watch": "^1.1.0",
@@ -50,7 +49,7 @@
     "grunt-imagemin": "grunt imagemin --gruntfile build/grunt/Gruntfile.cjs",
     "gulp": "gulp -f build/gulp/gulpfile.js",
     "gulp-imagemin": "gulp imagemin -f build/gulp/gulpfile.js",
-    "tsc": "tsc -w",
+    "tsc": "tsc",
     "wdio": "wdio run ./tests/webdriverio/wdio.conf.ts",
     "webpack-css": "webpack --config build/webpack/webpack.css.js",
     "webpack-js": "webpack --config build/webpack/webpack.js.js"

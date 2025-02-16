@@ -1,33 +1,21 @@
 module.exports = function(grunt) {
 
     grunt.initConfig({
-        pkg: grunt.file.readJSON('../../package.json'),
-
         //Setup the browserSync task to synchronize browsers on different devices
         browserSync: {
             bsFiles: {
-                src: '../../public/wp-content/themes/kennethclemmensen/css/*.css'
-            },
-            options: {
-                debugInfo: true,
-                files: [
+                src: [
                     '../../public/wp-content/themes/kennethclemmensen/css/*.css',
                     '../../public/wp-content/themes/kennethclemmensen/**/*.php',
                     '../../public/wp-content/themes/kennethclemmensen/js/dist/*.js'
-                ],
+                ]
+            },
+            options: {
+                debugInfo: true,
                 logConnections: true,
                 notify: true,
                 proxy: 'kennethclemmensen.test',
                 watchTask: true
-            }
-        },
-        //Use the grunt-concurrent plugin to run multiple tasks at once
-        concurrent: {
-            target: {
-                tasks: ['shell:npm_run_tsc', 'watch'],
-                options: {
-                    logConcurrentOutput: true
-                }
             }
         },
         //Translate sass to css
@@ -96,13 +84,16 @@ module.exports = function(grunt) {
             sass: {
                 files: ['../../public/wp-content/themes/kennethclemmensen/sass/**/*.scss'],
                 tasks: ['dart-sass']
+            },
+            typescript: {
+                files: ['../../public/wp-content/themes/kennethclemmensen/ts/**/*.ts'],
+                tasks: ['shell:npm_run_tsc']
             }
         }
     });
 
     //Load all tasks
     grunt.loadNpmTasks('grunt-browser-sync');
-    grunt.loadNpmTasks('grunt-concurrent');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-watch');
@@ -110,5 +101,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-shell');
 
     //Register the default tasks
-    grunt.registerTask('default', ['browserSync', 'concurrent:target']);
+    grunt.registerTask('default', ['browserSync', 'watch']);
 };
