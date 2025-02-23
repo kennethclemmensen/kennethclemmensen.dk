@@ -1,6 +1,6 @@
 {
   "require-dev": {
-    "lucatume/wp-browser": "^4.4.1"
+    "lucatume/wp-browser": "^4.4.2"
   },
   "scripts": {
     "codecept": "codecept run"
