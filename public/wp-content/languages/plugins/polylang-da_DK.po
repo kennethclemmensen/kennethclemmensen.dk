@@ -2,14 +2,20 @@
 # This file is distributed under the same license as the Plugins - Polylang - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2024-03-18 10:27:30+0000\n"
+"PO-Revision-Date: 2025-03-11 12:15:44+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: GlotPress/4.0.0\n"
+"X-Generator: GlotPress/4.0.1\n"
 "Language: da_DK\n"
 "Project-Id-Version: Plugins - Polylang - Stable (latest release)\n"
+
+#. translators: %1$s placeholder is the language name, %2$s is the language
+#. code
+#: modules/site-health/admin-site-health.php:294
+msgid "Language: %1$s - %2$s"
+msgstr "Sprog: %1$s - %2$s"
 
 #: modules/machine-translation/settings-preview-machine-translation.php:40
 msgid "Allows linkage to DeepL Translate."
@@ -141,11 +147,6 @@ msgstr "Udefineret"
 msgid "Flag used in the language switcher: %s"
 msgstr "Flag der bruges i sprogomskifteren: %s"
 
-#. translators: placeholder is the language name
-#: modules/site-health/admin-site-health.php:294
-msgid "Language: %s"
-msgstr "Sprog: %s"
-
 #. translators: placeholder is the plugin name
 #: modules/site-health/admin-site-health.php:251
 msgid "%s options"
@@ -224,7 +225,7 @@ msgstr "Der er en fejl med licensnøglen."
 msgid "Please enter your license key:"
 msgid_plural "Please enter your license keys:"
 msgstr[0] "Indtast venligst licensnøglen:"
-msgstr[1] "Indtast venligst licensnøglerne:"
+msgstr[1] ""
 
 #: modules/wizard/view-wizard-step-licenses.php:18
 msgid "You are using plugins which require a license key."
@@ -666,8 +667,8 @@ msgstr "Modul"
 msgid "Save Changes"
 msgstr "Gem ændringerne"
 
-#: settings/settings-module.php:169 js/build/block-editor.js:80
-#: js/build/classic-editor.js:80
+#: settings/settings-module.php:169 js/build/block-editor.js:79
+#: js/build/classic-editor.js:79
 msgid "Cancel"
 msgstr "Annullér"
 
@@ -1842,8 +1843,8 @@ msgid "Uncategorized"
 msgstr "Ikke kategoriseret"
 
 #. translators: Hidden accessibility text.
-#: frontend/frontend-filters-search.php:116
-#: frontend/frontend-filters-search.php:118
+#: frontend/frontend-filters-search.php:122
+#: frontend/frontend-filters-search.php:124
 msgid "Search"
 msgstr "Søg"
 
@@ -2142,11 +2143,11 @@ msgstr "Om Polylang"
 msgid "The language was created, but the WordPress language file was not downloaded. Please install it manually."
 msgstr "Sproget var oprettet, men WordPress sprogfilen blev ikke downloadet. Du skal installere den manuelt."
 
-#: admin/admin-base.php:505 admin/admin-base.php:523
+#: admin/admin-base.php:502 admin/admin-base.php:520
 msgid "Filters content by language"
 msgstr "Filtrerer indhold efter sprog"
 
-#: admin/admin-base.php:496
+#: admin/admin-base.php:493
 msgid "Show all languages"
 msgstr "Vis alle sprog"
 
@@ -2200,7 +2201,7 @@ msgstr "Sprog tilføjet."
 msgid "Impossible to add the language."
 msgstr "Umuligt at tilføje sproget."
 
-#: include/filters-widgets-options.php:51 include/translated-post.php:188
+#: include/filters-widgets-options.php:51
 msgid "All languages"
 msgstr "Alle sprog"
 
@@ -2228,7 +2229,6 @@ msgstr "(ingen forælder)"
 #: admin/admin-classic-editor.php:75 admin/admin-nav-menu.php:72
 #: admin/admin-nav-menu.php:75 admin/admin-nav-menu.php:108
 #: admin/admin-notices.php:110 include/nav-menu.php:71
-#: include/translated-post.php:186
 #: modules/wizard/view-wizard-step-languages.php:28
 #: modules/wizard/wizard.php:498 settings/settings.php:127
 msgid "Languages"
@@ -2236,7 +2236,7 @@ msgstr "Sprog"
 
 #: admin/admin-classic-editor.php:127 admin/admin-filters-columns.php:234
 #: admin/admin-filters-media.php:62 admin/admin-filters-term.php:138
-#: admin/admin-filters-term.php:211 include/translated-post.php:187
+#: admin/admin-filters-term.php:211
 #: modules/wizard/view-wizard-step-languages.php:62
 msgid "Language"
 msgstr "Sprog"
