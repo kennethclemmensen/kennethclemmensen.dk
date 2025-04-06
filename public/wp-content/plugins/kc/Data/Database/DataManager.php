@@ -13,9 +13,10 @@ use KC\Core\Taxonomies\TaxonomyName;
 use \WP_Query;
 
 /**
- * The DataManager class contains functionality to manage data
+ * The DataManager class contains functionality to manage data.
+ * The class cannot be inherited.
  */
-final readonly class DataManager {
+final class DataManager {
 
 	private PostTypeService $postTypeService;
 	private SecurityService $securityService;

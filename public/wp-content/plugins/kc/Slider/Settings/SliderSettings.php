@@ -2,6 +2,7 @@
 namespace KC\Slider\Settings;
 
 use KC\Core\Action;
+use KC\Core\PluginService;
 use KC\Core\Images\ImageSize;
 use KC\Core\PostTypes\PostType;
 use KC\Core\Settings\BaseSettings;
@@ -10,7 +11,8 @@ use KC\Core\Translations\TranslationString;
 use KC\Core\Users\UserRole;
 
 /**
- * The SliderSettings class contains methods to handle the slider settings
+ * The SliderSettings class contains methods to handle the slider settings.
+ * The class cannot be inherited.
  */
 final class SliderSettings extends BaseSettings {
 
@@ -21,8 +23,9 @@ final class SliderSettings extends BaseSettings {
 	 * SliderSettings constructor
 	 * 
 	 * @param TranslationService $translationService the translation service
+	 * @param PluginService $pluginService the plugin service
 	 */
-	public function __construct(private readonly TranslationService $translationService) {
+	public function __construct(private readonly TranslationService $translationService, private readonly PluginService $pluginService) {
 		parent::__construct('kc-slides-settings', 'kc-slides-settings-options');
 		$prefix = 'slide_';
 		$this->slideWidth = $prefix.'width';
@@ -33,9 +36,9 @@ final class SliderSettings extends BaseSettings {
 	 * Create a settings page
 	 */
 	public function createSettingsPage() : void {
-		add_action(Action::ADMIN_MENU, function() : void {
+		$this->pluginService->addAction(Action::ADMIN_MENU, function() : void {
 			$title = $this->translationService->getTranslatedString(TranslationString::Settings);
-			add_submenu_page('edit.php?post_type='.PostType::Slides->value, $title, $title, UserRole::Administrator->value, $this->settingsPage, function() : void {
+			$this->addSubmenuPage(PostType::Slides->value, $title, UserRole::Administrator->value, $this->settingsPage, function() : void {
 				settings_errors();
 				?>
 				<form action="options.php" method="post">
@@ -56,7 +59,7 @@ final class SliderSettings extends BaseSettings {
 	 * Use the admin_init action to register the setting inputs
 	 */
 	private function registerSettingInputs() : void {
-		add_action(Action::ADMIN_INIT, function() : void {
+		$this->pluginService->addAction(Action::ADMIN_INIT, function() : void {
 			$sectionID = $this->settingsPage.'-section-slider';
 			$prefix = $this->settingsPage;
 			add_settings_section($sectionID, '', function() : void {}, $this->settingsPage);
@@ -74,7 +77,7 @@ final class SliderSettings extends BaseSettings {
 	 * Use the init action to add an image size
 	 */
 	private function addImageSize() : void {
-		add_action(Action::INIT, function() : void {
+		$this->pluginService->addAction(Action::INIT, function() : void {
 			$width = $this->getSlideWidth();
 			$height = $this->getSlideHeight();
 			add_image_size(ImageSize::Slides->value, $width, $height, true);

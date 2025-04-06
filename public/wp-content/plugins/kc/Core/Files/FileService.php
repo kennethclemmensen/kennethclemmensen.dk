@@ -2,9 +2,10 @@
 namespace KC\Core\Files;
 
 /**
- * The FileService class contains file methods
+ * The FileService class contains file methods.
+ * The class cannot be inherited.
  */
-final readonly class FileService {
+final class FileService {
 
 	/**
 	 * Get the content from a file

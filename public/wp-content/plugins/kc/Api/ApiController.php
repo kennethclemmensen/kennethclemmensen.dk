@@ -1,10 +1,11 @@
 <?php
 namespace KC\Api;
 
+use KC\Core\Filter;
+use KC\Core\PluginService;
 use KC\Core\Api\HttpHeader;
 use KC\Core\Api\HttpMethod;
 use KC\Core\Api\HttpService;
-use KC\Core\Filter;
 use KC\Core\Security\SecurityService;
 use KC\Data\Database\DataManager;
 use \WP_REST_Controller;
@@ -12,7 +13,8 @@ use \WP_REST_Request;
 use \WP_REST_Response;
 
 /**
- * The ApiController contains methods to register routes and handle requests and responses
+ * The ApiController contains methods to register routes and handle requests and responses.
+ * The class cannot be inherited.
  */
 final class ApiController extends WP_REST_Controller {
 
@@ -21,8 +23,9 @@ final class ApiController extends WP_REST_Controller {
 	 * 
 	 * @param DataManager $dataManager the data manager
 	 * @param SecurityService $securityService the security service
+	 * @param PluginService $pluginService the plugin service
 	 */
-	public function __construct(private readonly DataManager $dataManager, private readonly SecurityService $securityService) {
+	public function __construct(private readonly DataManager $dataManager, private readonly SecurityService $securityService, private readonly PluginService $pluginService) {
 		$this->namespace = 'kcapi/v1';
 		$this->addHeaders();
 	}
@@ -43,7 +46,7 @@ final class ApiController extends WP_REST_Controller {
 	 * Add headers to the http response
 	 */
 	private function addHeaders() : void {
-		add_filter(Filter::REST_PRE_SERVE_REQUEST, function() : void {
+		$this->pluginService->addFilter(Filter::REST_PRE_SERVE_REQUEST, function() : void {
 			$httpService = new HttpService();
 			$value = $this->securityService->escapeUrl(site_url());
 			$httpService->sendHttpHeader(HttpHeader::AccessControlAllowOrigin, $value);
@@ -87,9 +90,8 @@ final class ApiController extends WP_REST_Controller {
 	 * Register the slides route
 	 */
 	private function registerSlidesRoute() : void {
-		$this->registerRoute('/slides', HttpMethod::Get, function() : WP_REST_Response {
-			return new WP_REST_Response($this->dataManager->getSlides());
-		});
+		$callback = fn() : WP_REST_Response => new WP_REST_Response($this->dataManager->getSlides());
+		$this->registerRoute('/slides', HttpMethod::Get, $callback);
 	}
 
 	/**
@@ -97,9 +99,8 @@ final class ApiController extends WP_REST_Controller {
 	 */
 	private function registerGalleriesRoutes() : void {
 		$route = '/galleries';
-		$this->registerRoute($route, HttpMethod::Get, function() : WP_REST_Response {
-			return new WP_REST_Response($this->dataManager->getGalleries());
-		});
+		$callback = fn() : WP_REST_Response => new WP_REST_Response($this->dataManager->getGalleries());
+		$this->registerRoute($route, HttpMethod::Get, $callback);
 		$id = 'id';
 		$this->registerRoute($route.'/(?P<'.$id.'>[\S]+)', HttpMethod::Get, function(WP_REST_Request $request) use ($id) : WP_REST_Response {
 			$galleryId = $request->get_param($id);
@@ -111,9 +112,8 @@ final class ApiController extends WP_REST_Controller {
 	 * Register the shortcuts route
 	 */
 	private function registerShortcutsRoute() : void {
-		$this->registerRoute('/shortcuts', HttpMethod::Get, function() : WP_REST_Response {
-			return new WP_REST_Response($this->dataManager->getShortcuts());
-		});
+		$callback = fn() : WP_REST_Response => new WP_REST_Response($this->dataManager->getShortcuts());
+		$this->registerRoute('/shortcuts', HttpMethod::Get, $callback);
 	}
 
 	/**
@@ -125,24 +125,21 @@ final class ApiController extends WP_REST_Controller {
 	 * @param array $parameters the parameters
 	 */
 	private function registerRoute(string $route, HttpMethod $httpMethod, callable $callback, array $parameters = []) : void {
+		$permissionCallback = fn() : bool => $this->securityService->hasApiAccess();
 		$routeOptions = [
 			'methods' => [$httpMethod->value],
 			'callback' => $callback,
-			'permission_callback' => function() : bool {
-				return $this->securityService->hasApiAccess();
-			}
+			'permission_callback' => $permissionCallback
 		];
 		if(!empty($parameters)) {
 			$parameterOptions = [];
 			foreach($parameters as $parameter) {
+				$sanitizeCallback = fn(string $value) : string => $this->securityService->sanitizeString($value);
+				$validateCallback = fn(string $value) : bool => $this->securityService->isValid($value);
 				$parameterOptions[$parameter] = [
 					'required' => true,
-					'sanitize_callback' => function(string $value) : string {
-						return $this->securityService->sanitizeString($value);
-					},
-					'validate_callback' => function(string $value) : bool {
-						return $this->securityService->isValid($value);
-					}
+					'sanitize_callback' => $sanitizeCallback,
+					'validate_callback' => $validateCallback
 				];
 			}
 			$routeOptions['args'] = $parameterOptions;

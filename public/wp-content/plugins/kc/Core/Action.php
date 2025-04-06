@@ -4,9 +4,10 @@ namespace KC\Core;
 use KC\Core\PostTypes\PostType;
 
 /**
- * The Action class defines the actions
+ * The Action class defines the actions.
+ * The class cannot be inherited.
  */
-final readonly class Action {
+final class Action {
 
 	public const string ADMIN_ENQUEUE_SCRIPTS = 'admin_enqueue_scripts';
 

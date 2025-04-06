@@ -2,9 +2,10 @@
 namespace KC\Core\PostTypes;
 
 /**
- * The PostTypeService class contains post type methods
+ * The PostTypeService class contains post type methods.
+ * The class cannot be inherited.
  */
-final readonly class PostTypeService {
+final class PostTypeService {
 
 	/**
 	 * Get a field value from a post

@@ -7,7 +7,8 @@ use KC\Core\Api\HttpHeader;
 use KC\Core\Files\FileService;
 
 /**
- * The DropboxApi class contains functionality to communicate with the Dropbox Api
+ * The DropboxApi class contains functionality to communicate with the Dropbox Api.
+ * The class cannot be inherited.
  */
 final class DropboxApi extends BaseApi {
 

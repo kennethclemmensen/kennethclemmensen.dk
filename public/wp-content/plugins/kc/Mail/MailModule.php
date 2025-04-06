@@ -2,6 +2,7 @@
 namespace KC\Mail;
 
 use KC\Core\Action;
+use KC\Core\PluginService;
 use KC\Core\Mail\MailService;
 use KC\Core\Modules\IModule;
 use KC\Core\Security\SecurityService;
@@ -10,11 +11,13 @@ use KC\Mail\Settings\MailSettings;
 use PHPMailer\PHPMailer\PHPMailer;
 
 /**
- * The MailModule class contains functionality to set up the mail module
+ * The MailModule class contains functionality to set up the mail module.
+ * The class cannot be inherited.
  */
-final readonly class MailModule implements IModule {
+final class MailModule implements IModule {
 
 	private readonly MailSettings $mailSettings;
+	private readonly PluginService $pluginService;
 
 	/**
 	 * MailModule constructor.
@@ -23,7 +26,8 @@ final readonly class MailModule implements IModule {
 		$securityService = new SecurityService();
 		$translationService = new TranslationService();
 		$mailService = new MailService();
-		$this->mailSettings = new MailSettings($securityService, $translationService, $mailService);
+		$this->pluginService = new PluginService();
+		$this->mailSettings = new MailSettings($securityService, $translationService, $mailService, $this->pluginService);
 	}
 
 	/**
@@ -31,7 +35,7 @@ final readonly class MailModule implements IModule {
 	 */
 	public function setupModule() : void {
 		$this->mailSettings->createSettingsPage();
-		add_action(Action::PHPMAILER_INIT, function(PHPMailer $phpMailer) : void {
+		$this->pluginService->addAction(Action::PHPMAILER_INIT, function(PHPMailer $phpMailer) : void {
 			$phpMailer->isSMTP();
 			$phpMailer->Host = $this->mailSettings->getMailServer();
 			$phpMailer->SMTPSecure = $this->mailSettings->getMailEncryption();

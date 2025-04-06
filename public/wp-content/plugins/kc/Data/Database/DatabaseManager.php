@@ -2,7 +2,8 @@
 namespace KC\Data\Database;
 
 /**
- * The DatabaseManager class contains functionality to manage the database
+ * The DatabaseManager class contains functionality to manage the database.
+ * The class cannot be inherited.
  */
 final class DatabaseManager {
 

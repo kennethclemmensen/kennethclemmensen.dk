@@ -3,6 +3,7 @@ namespace KC\Mail\Settings;
 
 use KC\Core\Action;
 use KC\Core\Filter;
+use KC\Core\PluginService;
 use KC\Core\Mail\Encryption;
 use KC\Core\Mail\MailService;
 use KC\Core\Settings\BaseSettings;
@@ -12,7 +13,8 @@ use KC\Core\Translations\TranslationString;
 use KC\Core\Users\UserRole;
 
 /**
- * The MailSettings class contains methods to handle the mail settings
+ * The MailSettings class contains methods to handle the mail settings.
+ * The class cannot be inherited.
  */
 final class MailSettings extends BaseSettings {
 
@@ -28,6 +30,7 @@ final class MailSettings extends BaseSettings {
 	private readonly SecurityService $securityService;
 	private readonly TranslationService $translationService;
 	private readonly MailService $mailService;
+	private readonly PluginService $pluginService;
 
 	/**
 	 * MailSettings constructor
@@ -35,8 +38,9 @@ final class MailSettings extends BaseSettings {
 	 * @param SecurityService $securityService the security service
 	 * @param TranslationService $translationService the translation service
 	 * @param MailService $mailService the mail service
+	 * @param PluginService $pluginService the plugin service
 	 */
-	public function __construct(SecurityService $securityService, TranslationService $translationService, MailService $mailService) {
+	public function __construct(SecurityService $securityService, TranslationService $translationService, MailService $mailService, PluginService $pluginService) {
 		parent::__construct('kc-mail', 'kc-mail-options');
 		$prefix = 'mail_';
 		$this->mailServer = $prefix.'server';
@@ -51,6 +55,7 @@ final class MailSettings extends BaseSettings {
 		$this->securityService = $securityService;
 		$this->translationService = $translationService;
 		$this->mailService = $mailService;
+		$this->pluginService = $pluginService;
 		$this->registerSettingInputs();
 		$this->handleOptionsSaving();
 	}
@@ -59,9 +64,9 @@ final class MailSettings extends BaseSettings {
 	 * Create a settings page
 	 */
 	public function createSettingsPage() : void {
-		add_action(Action::ADMIN_MENU, function() : void {
+		$this->pluginService->addAction(Action::ADMIN_MENU, function() : void {
 			$title = $this->translationService->getTranslatedString(TranslationString::Mail);
-			add_management_page($title, $title, UserRole::Administrator->value, $this->settingsPage, function() : void {
+			$this->addManagementPage($title, UserRole::Administrator->value, $this->settingsPage, function() : void {
 				$tabs = [
 					'settings' => [
 						'title' => $this->translationService->getTranslatedString(TranslationString::Settings),
@@ -120,7 +125,7 @@ final class MailSettings extends BaseSettings {
 	 * Use the admin_init action to register the setting inputs
 	 */
 	private function registerSettingInputs() : void {
-		add_action(Action::ADMIN_INIT, function() : void {
+		$this->pluginService->addAction(Action::ADMIN_INIT, function() : void {
 			$sectionID = $this->settingsPage.'-section-mail';
 			$prefix = $this->settingsPage;
 			$server = $this->translationService->getTranslatedString(TranslationString::Server);
@@ -175,7 +180,7 @@ final class MailSettings extends BaseSettings {
 	 * Handle the options saving
 	 */
 	private function handleOptionsSaving() : void {
-		add_filter(Filter::getPreUpdateOptionFilter($this->settingsName), function(array $value) : array {
+		$this->pluginService->addFilter(Filter::getPreUpdateOptionFilter($this->settingsName), function(array $value) : array {
 			$key = $this->securityService->generateEncryptionKey($this->securityService->generatePassword());
 			$value[$this->encryptionPassword] = $this->convertToHexadecimal($key);
 			$nonce = $this->securityService->generateNonce();

@@ -2,9 +2,10 @@
 namespace KC\Core\Api;
 
 /**
- * The HttpService class contains http methods
+ * The HttpService class contains http methods.
+ * The class cannot be inherited.
  */
-final readonly class HttpService {
+final class HttpService {
 
 	/**
 	 * Send a http header

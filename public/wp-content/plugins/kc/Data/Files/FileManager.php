@@ -11,9 +11,10 @@ use \RecursiveIteratorIterator;
 use \ZipArchive;
 
 /**
- * The FileManager class contains functionality to manage files
+ * The FileManager class contains functionality to manage files.
+ * The class cannot be inherited.
  */
-final readonly class FileManager {
+final class FileManager {
 
 	/**
 	 * Create a file

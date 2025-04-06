@@ -3,6 +3,7 @@ namespace KC\File;
 
 use KC\Core\Action;
 use KC\Core\Filter;
+use KC\Core\PluginService;
 use KC\Core\Modules\IModule;
 use KC\Core\PostTypes\FieldName;
 use KC\Core\PostTypes\FieldType;
@@ -13,17 +14,20 @@ use KC\Core\Translations\TranslationService;
 use KC\Core\Translations\TranslationString;
 
 /**
- * The FileModule class contains functionality to handle files
+ * The FileModule class contains functionality to handle files.
+ * The class cannot be inherited.
  */
-final readonly class FileModule implements IModule {
+final class FileModule implements IModule {
 
-	private TranslationService $translationService;
+	private readonly TranslationService $translationService;
+	private readonly PluginService $pluginService;
 
 	/**
 	 * FileModule constructor
 	 */
 	public function __construct() {
 		$this->translationService = new TranslationService();
+		$this->pluginService = new PluginService();
 	}
 
 	/**
@@ -39,7 +43,7 @@ final readonly class FileModule implements IModule {
 	 * Register post types and taxonomies
 	 */
 	private function registerPostTypesAndTaxonomies() : void {
-		add_action(Action::INIT, function() : void {
+		$this->pluginService->addAction(Action::INIT, function() : void {
 			register_post_type(PostType::File->value, [
 				'labels' => [
 					'name' => $this->translationService->getTranslatedString(TranslationString::Files),
@@ -65,7 +69,7 @@ final readonly class FileModule implements IModule {
 	 * Add meta boxes to the custom post type file
 	 */
 	private function addMetaBoxes() : void {
-		add_filter(Filter::META_BOXES, function(array $metaBoxes) : array {
+		$this->pluginService->addFilter(Filter::META_BOXES, function(array $metaBoxes) : array {
 			$metaBoxes[] = [
 				'id' => 'file_informations',
 				'title' => $this->translationService->getTranslatedString(TranslationString::FileInformations),
@@ -110,7 +114,7 @@ final readonly class FileModule implements IModule {
 	 */
 	private function addMimeTypes() : void {
 		$priority = 1;
-		add_filter(Filter::MIMES, function(array $mimeTypes) : array {
+		$this->pluginService->addFilter(Filter::MIMES, function(array $mimeTypes) : array {
 			$mimeTypes['java'] = 'application/java';
 			return $mimeTypes;
 		}, $priority);

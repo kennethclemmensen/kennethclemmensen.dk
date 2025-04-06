@@ -96,4 +96,29 @@ abstract class BaseSettings {
 		</div>
 		<?php
 	}
+
+	/**
+	 * Add a management page
+	 * 
+	 * @param string $title the title of the management page
+	 * @param string $capability the capability required to access the management page
+	 * @param string $menuSlug the menu slug for the management page
+	 * @param callable $callback the callback function to display the management page
+	 */
+	protected function addManagementPage(string $title, string $capability, string $menuSlug, callable $callback) : void {
+		add_management_page($title, $title, $capability, $menuSlug, $callback);
+	}
+
+	/**
+	 * Add a submenu page
+	 * 
+	 * @param string $parentSlug the parent slug for the submenu page
+	 * @param string $title the title of the submenu page
+	 * @param string $capability the capability required to access the submenu page
+	 * @param string $menuSlug the menu slug for the submenu page
+	 * @param callable $callback the callback function to display the submenu page
+	 */
+	protected function addSubmenuPage(string $parentSlug, string $title, string $capability, string $menuSlug, callable $callback) : void {
+		add_submenu_page('edit.php?post_type='.$parentSlug, $title, $title, $capability, $menuSlug, $callback);
+	}
 }

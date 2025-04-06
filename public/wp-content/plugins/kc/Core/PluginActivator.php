@@ -2,14 +2,25 @@
 namespace KC\Core;
 
 use KC\Core\Feature;
+use KC\Core\PluginService;
 use KC\Core\Modules\IModule;
 use KC\Core\Translations\TranslationService;
 use KC\Core\Translations\TranslationString;
 
 /**
- * The PluginActivator class contains functionality to activate and run the plugin
+ * The PluginActivator class contains functionality to activate and run the plugin.
+ * The class cannot be inherited.
  */
-final readonly class PluginActivator {
+final class PluginActivator {
+
+	private readonly PluginService $pluginService;
+
+	/**
+	 * PluginActivator constructor
+	 */
+	public function __construct() {
+		$this->pluginService = new PluginService();
+	}
 
 	/**
 	 * Activate the plugin
@@ -53,7 +64,7 @@ final readonly class PluginActivator {
 	 * Add post thumbnails support
 	 */
 	private function addPostThumbnailsSupport() : void {
-		add_action(Action::AFTER_SETUP_THEME, function() : void {
+		$this->pluginService->addAction(Action::AFTER_SETUP_THEME, function() : void {
 			add_theme_support(Feature::PostThumbnails->value);
 		});
 	}
@@ -62,7 +73,7 @@ final readonly class PluginActivator {
 	 * Load the assets
 	 */
 	private function loadAssets() : void {
-		add_action(Action::ADMIN_ENQUEUE_SCRIPTS, function() : void {
+		$this->pluginService->addAction(Action::ADMIN_ENQUEUE_SCRIPTS, function() : void {
 			wp_enqueue_style('kc', plugin_dir_url(__FILE__).'../assets/css/style.css');
 		});
 	}

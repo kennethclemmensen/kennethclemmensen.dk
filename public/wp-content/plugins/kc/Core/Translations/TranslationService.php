@@ -2,9 +2,10 @@
 namespace KC\Core\Translations;
 
 /**
- * The TranslationService class contains translation methods
+ * The TranslationService class contains translation methods.
+ * The class cannot be inherited.
  */
-final readonly class TranslationService {
+final class TranslationService {
 
 	/**
 	 * Get a translated string

@@ -2,6 +2,7 @@
 namespace KC\Gallery\Settings;
 
 use KC\Core\Action;
+use KC\Core\PluginService;
 use KC\Core\Images\ImageService;
 use KC\Core\Images\ImageSize;
 use KC\Core\PostTypes\PostType;
@@ -14,13 +15,15 @@ use KC\Core\Users\UserRole;
 use KC\Data\Database\DataManager;
 
 /**
- * The GallerySettings class contains methods to handle the gallery settings
+ * The GallerySettings class contains methods to handle the gallery settings.
+ * The class cannot be inherited.
  */
 final class GallerySettings extends BaseSettings {
 
 	private readonly string $galleryImageWidth;
 	private readonly string $galleryImageHeight;
 	private readonly string $galleryParentPage;
+	private readonly PluginService $pluginService;
 
 	/**
 	 * GallerySettings constructor
@@ -33,15 +36,16 @@ final class GallerySettings extends BaseSettings {
 		$this->galleryImageWidth = $prefix.'image_width';
 		$this->galleryImageHeight = $prefix.'image_height';
 		$this->galleryParentPage = $prefix.'parent_page';
+		$this->pluginService = new PluginService();
 	}
 
 	/**
 	 * Create a settings page
 	 */
 	public function createSettingsPage() : void {
-		add_action(Action::ADMIN_MENU, function() : void {
+		$this->pluginService->addAction(Action::ADMIN_MENU, function() : void {
 			$title = $this->translationService->getTranslatedString(TranslationString::Settings);
-			add_submenu_page('edit.php?post_type='.PostType::Gallery->value, $title, $title, UserRole::Administrator->value, $this->settingsPage, function() : void {
+			$this->addSubmenuPage(PostType::Gallery->value, $title, UserRole::Administrator->value, $this->settingsPage, function() : void {
 				settings_errors();
 				?>
 				<form action="options.php" method="post">
@@ -71,7 +75,7 @@ final class GallerySettings extends BaseSettings {
 	 * Use the admin_init action to register the setting inputs
 	 */
 	private function registerSettingInputs() : void {
-		add_action(Action::ADMIN_INIT, function() : void {
+		$this->pluginService->addAction(Action::ADMIN_INIT, function() : void {
 			$sectionID = $this->settingsPage.'-section-gallery';
 			$prefix = $this->settingsPage.'galleryImage';
 			add_settings_section($sectionID, '', function() : void {}, $this->settingsPage);
@@ -102,7 +106,7 @@ final class GallerySettings extends BaseSettings {
 	 * Use the init action to add an image size
 	 */
 	private function addImageSize() : void {
-		add_action(Action::INIT, function() : void {
+		$this->pluginService->addAction(Action::INIT, function() : void {
 			$width = $this->getGalleryImageWidth();
 			$height = $this->getGalleryImageHeight();
 			add_image_size(ImageSize::GalleryImage->value, $width, $height, true);

@@ -4,9 +4,10 @@ namespace KC\Core\Images;
 use KC\Core\Security\SecurityService;
 
 /**
- * The ImageService class contains image methods
+ * The ImageService class contains image methods.
+ * The class cannot be inherited.
  */
-final readonly class ImageService {
+final class ImageService {
 
 	/**
 	 * Get an image url

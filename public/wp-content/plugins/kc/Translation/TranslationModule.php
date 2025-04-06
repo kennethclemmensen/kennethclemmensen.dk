@@ -2,17 +2,22 @@
 namespace KC\Translation;
 
 use KC\Core\Action;
+use KC\Core\PluginService;
 use KC\Core\Modules\IModule;
 
 /**
- * The TranslationModule class contains functionality to handle translations
+ * The TranslationModule class contains functionality to handle translations.
+ * The class cannot be inherited.
  */
-final readonly class TranslationModule implements IModule {
+final class TranslationModule implements IModule {
+
+	private readonly PluginService $pluginService;
 
 	/**
 	 * Setup the translation module
 	 */
 	public function setupModule() : void {
+		$this->pluginService = new PluginService();
 		$this->loadLanguages();
 	}
 
@@ -20,7 +25,7 @@ final readonly class TranslationModule implements IModule {
 	 * Load the languages
 	 */
 	private function loadLanguages() : void {
-		add_action(Action::PLUGINS_LOADED, function() : void {
+		$this->pluginService->addAction(Action::PLUGINS_LOADED, function() : void {
 			load_plugin_textdomain('kc', false, 'kc/languages/');
 		});
 	}

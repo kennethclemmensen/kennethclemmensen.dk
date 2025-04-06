@@ -2,9 +2,10 @@
 namespace KC\Core\Mail;
 
 /**
- * Provides functionality to handle mails
+ * Provides functionality to handle mails.
+ * The class cannot be inherited.
  */
-final readonly class MailService {
+final class MailService {
 
 	/**
 	 * Send a mail to a recipient with a subject and a message

@@ -2,6 +2,7 @@
 namespace KC\Shortcut;
 
 use KC\Core\Filter;
+use KC\Core\PluginService;
 use KC\Core\Modules\IModule;
 use KC\Core\PostTypes\FieldName;
 use KC\Core\PostTypes\FieldType;
@@ -10,9 +11,10 @@ use KC\Core\Translations\TranslationService;
 use KC\Core\Translations\TranslationString;
 
 /**
- * The ShortcutModule class contains functionality to handle shortcuts
+ * The ShortcutModule class contains functionality to handle shortcuts.
+ * The class cannot be inherited.
  */
-final readonly class ShortcutModule implements IModule {
+final class ShortcutModule implements IModule {
 
 	/**
 	 * Setup the shortcut module
@@ -25,7 +27,8 @@ final readonly class ShortcutModule implements IModule {
 	 * Add meta boxes to the page post type
 	 */
 	private function addMetaBoxes() : void {
-		add_filter(Filter::META_BOXES, function(array $metaBoxes) : array {
+		$pluginService = new PluginService();
+		$pluginService->addFilter(Filter::META_BOXES, function(array $metaBoxes) : array {
 			$translationService = new TranslationService();
 			$metaBoxes[] = [
 				'id' => 'shortcut_informations',

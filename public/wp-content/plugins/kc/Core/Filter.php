@@ -4,9 +4,10 @@ namespace KC\Core;
 use KC\Core\PostTypes\PostType;
 
 /**
- * The Filter class defines the filters
+ * The Filter class defines the filters.
+ * The class cannot be inherited.
  */
-final readonly class Filter {
+final class Filter {
 
 	public const string META_BOXES = 'rwmb_meta_boxes';
 

@@ -3,6 +3,7 @@ namespace KC\Gallery;
 
 use KC\Core\Action;
 use KC\Core\Filter;
+use KC\Core\PluginService;
 use KC\Core\Images\ImageService;
 use KC\Core\Images\ImageSize;
 use KC\Core\Modules\IModule;
@@ -20,16 +21,18 @@ use KC\Data\Database\DataManager;
 use KC\Gallery\Settings\GallerySettings;
 
 /**
- * The GalleryModule class contains functionality to handle galleries
+ * The GalleryModule class contains functionality to handle galleries.
+ * The class cannot be inherited.
  */
-final readonly class GalleryModule implements IModule {
+final class GalleryModule implements IModule {
 
-	private GallerySettings $gallerySettings;
-	private string $fieldParentPage;
-	private TranslationService $translationService;
-	private PostTypeService $postTypeService;
-	private ImageService $imageService;
-	private DataManager $dataManager;
+	private readonly GallerySettings $gallerySettings;
+	private readonly string $fieldParentPage;
+	private readonly TranslationService $translationService;
+	private readonly PostTypeService $postTypeService;
+	private readonly ImageService $imageService;
+	private readonly DataManager $dataManager;
+	private readonly PluginService $pluginService;
 
 	/**
 	 * Initialize a new instance of the GalleryModule class
@@ -41,6 +44,7 @@ final readonly class GalleryModule implements IModule {
 		$this->postTypeService = new PostTypeService();
 		$this->imageService = new ImageService();
 		$this->dataManager = new DataManager($this->postTypeService, new SecurityService(), $this->imageService);
+		$this->pluginService = new PluginService();
 	}
 
 	/**
@@ -58,7 +62,7 @@ final readonly class GalleryModule implements IModule {
 	 * Register the gallery and the image custom post types
 	 */
 	private function registerPostTypes() : void {
-		add_action(Action::INIT, function() : void {
+		$this->pluginService->addAction(Action::INIT, function() : void {
 			register_post_type(PostType::Gallery->value, [
 				'labels' => [
 					'name' => $this->translationService->getTranslatedString(TranslationString::Galleries),
@@ -92,7 +96,7 @@ final readonly class GalleryModule implements IModule {
 	 * Update the post_parent column in the database when saving a gallery
 	 */
 	private function updatePostParent() : void {
-		add_action(Action::getSavePostAction(PostType::Gallery), function(int $postID) : void {
+		$this->pluginService->addAction(Action::getSavePostAction(PostType::Gallery), function(int $postID) : void {
 			$this->postTypeService->setFieldValue($_REQUEST[$this->fieldParentPage], FieldName::ParentPage, $postID);
 			$parentPage = $this->postTypeService->getFieldValue(FieldName::ParentPage, $postID);
 			$dbManager = new DatabaseManager();
@@ -104,7 +108,7 @@ final readonly class GalleryModule implements IModule {
 	 * Add meta boxes to the gallery and the image custom post types
 	 */
 	private function addMetaBoxes() : void {
-		add_filter(Filter::META_BOXES, function(array $metaBoxes) : array {
+		$this->pluginService->addFilter(Filter::META_BOXES, function(array $metaBoxes) : array {
 			$metaBoxes[] = [
 				'id' => 'gallery_informations',
 				'title' => $this->translationService->getTranslatedString(TranslationString::GalleryInformations),
@@ -141,12 +145,12 @@ final readonly class GalleryModule implements IModule {
 	private function addAdminColumns() : void {
 		$columnGalleryKey = 'gallery';
 		$columnImageKey = 'image';
-		add_filter(Filter::getManagePostsColumnsFilter(PostType::Image), function(array $columns) use ($columnGalleryKey, $columnImageKey) : array {
+		$this->pluginService->addFilter(Filter::getManagePostsColumnsFilter(PostType::Image), function(array $columns) use ($columnGalleryKey, $columnImageKey) : array {
 			$columns[$columnGalleryKey] = $this->translationService->getTranslatedString(TranslationString::Gallery);
 			$columns[$columnImageKey] = $this->translationService->getTranslatedString(TranslationString::Image);
 			return $columns;
 		});
-		add_action(Action::getManagePostsCustomColumn(PostType::Image), function(string $columnName) use ($columnGalleryKey, $columnImageKey) : void {
+		$this->pluginService->addAction(Action::getManagePostsCustomColumn(PostType::Image), function(string $columnName) use ($columnGalleryKey, $columnImageKey) : void {
 			if($columnName === $columnGalleryKey) {
 				$galleryID = $this->postTypeService->getFieldValue(FieldName::ImageGallery, get_the_ID());
 				echo get_the_title($galleryID);

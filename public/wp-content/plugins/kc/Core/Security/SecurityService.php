@@ -2,9 +2,10 @@
 namespace KC\Core\Security;
 
 /**
- * The SecurityService class contains security methods
+ * The SecurityService class contains security methods.
+ * The class cannot be inherited.
  */
-final readonly class SecurityService {
+final class SecurityService {
 
 	/**
 	 * Escape an url

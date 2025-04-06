@@ -3,6 +3,7 @@ namespace KC\Backup\Settings;
 
 use KC\Core\Action;
 use KC\Core\Filter;
+use KC\Core\PluginService;
 use KC\Core\Security\SecurityService;
 use KC\Core\Settings\BaseSettings;
 use KC\Core\Translations\TranslationService;
@@ -13,7 +14,8 @@ use KC\Data\Database\DatabaseManager;
 use KC\Data\Files\FileManager;
 
 /**
- * The BackupSettings class contains methods to handle the backup settings
+ * The BackupSettings class contains methods to handle the backup settings.
+ * The class cannot be inherited.
  */
 final class BackupSettings extends BaseSettings {
 
@@ -33,8 +35,9 @@ final class BackupSettings extends BaseSettings {
 	 * @param FileManager $fileManager the file manager
 	 * @param SecurityService $securityService the security service
 	 * @param TranslationService $translationService the translation service
+	 * @param PluginService $pluginService the plugin service
 	 */
-	public function __construct(private readonly FileManager $fileManager, private readonly SecurityService $securityService, private readonly TranslationService $translationService) {
+	public function __construct(private readonly FileManager $fileManager, private readonly SecurityService $securityService, private readonly TranslationService $translationService, private readonly PluginService $pluginService) {
 		parent::__construct('kc-backup', '');
 		$this->dropboxSettingsPage = 'kc-backup-dropbox-settings';
 		$this->dropboxSettingsName = $this->dropboxSettingsPage.'-option-group';
@@ -54,9 +57,9 @@ final class BackupSettings extends BaseSettings {
 	 * Create a settings page
 	 */
 	public function createSettingsPage() : void {
-		add_action(Action::ADMIN_MENU, function() : void {
+		$this->pluginService->addAction(Action::ADMIN_MENU, function() : void {
 			$title = $this->translationService->getTranslatedString(TranslationString::Backup);
-			add_management_page($title, $title, UserRole::Administrator->value, $this->settingsPage, function() use ($title) : void {
+			$this->addManagementPage($title, UserRole::Administrator->value, $this->settingsPage, function() use ($title) : void {
 				$dropbox = $this->translationService->getTranslatedString(TranslationString::Dropbox);
 				$tabs = [
 					'backup' => [
@@ -175,7 +178,7 @@ final class BackupSettings extends BaseSettings {
 	 * Create the dropbox settings
 	 */
 	private function createDropboxSettings() : void {
-		add_action(Action::ADMIN_INIT, function() : void {
+		$this->pluginService->addAction(Action::ADMIN_INIT, function() : void {
 			$sectionId = $this->dropboxSettingsPage.'-section-dropbox';
 			$prefix = $this->dropboxSettingsPage;
 			$appKeyLabel = $this->translationService->getTranslatedString(TranslationString::AppKey);
@@ -205,7 +208,7 @@ final class BackupSettings extends BaseSettings {
 	 * Use the init action to handle the backups
 	 */
 	private function handleBackups() : void {
-		add_action(Action::INIT, function() : void {
+		$this->pluginService->addAction(Action::INIT, function() : void {
 			if(isset($_GET['download'])) {
 				$this->fileManager->downloadFile($_GET['download'], self::BACKUP_FOLDER);
 			} else if(isset($_GET['delete'])) {
@@ -222,7 +225,7 @@ final class BackupSettings extends BaseSettings {
 	 * Handle the options saving
 	 */
 	private function handleOptionsSaving() : void {
-		add_filter(Filter::getPreUpdateOptionFilter($this->dropboxSettingsName), function(array $value) : array {
+		$this->pluginService->addFilter(Filter::getPreUpdateOptionFilter($this->dropboxSettingsName), function(array $value) : array {
 			$key = $this->securityService->generateEncryptionKey($this->securityService->generatePassword());
 			$value[$this->encryptionPassword] = $this->convertToHexadecimal($key);
 			$nonce = $this->securityService->generateNonce();
