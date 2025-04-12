@@ -20,7 +20,7 @@
 	font-size: 0.8em;
 	&:not(:last-child)::after {
 		display: inline-block;
-		@extend .font-awesome-solid;
+		@include font-awesome-solid();
 		content: '\f105';
 		margin: 0 7px;
 	}
