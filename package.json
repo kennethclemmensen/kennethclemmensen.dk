@@ -37,8 +37,8 @@
     "gulp-shell": "^0.8.0",
     "terser-webpack-plugin": "^5.3.14",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.31.1",
-    "webpack": "^5.99.7",
+    "typescript-eslint": "^8.32.0",
+    "webpack": "^5.99.8",
     "webpack-cli": "^6.0.1",
     "webpack-merge": "^6.0.1",
     "webpack-merge-and-include-globally": "2.1.26"
