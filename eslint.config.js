@@ -1,7 +1,7 @@
 import eslint from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import onlyWarn from 'eslint-plugin-only-warn';
-import stylisticJs from '@stylistic/eslint-plugin-js';
+import stylistic from '@stylistic/eslint-plugin';
 
 export default tseslint.config(
 	eslint.configs.recommended,
@@ -9,7 +9,7 @@ export default tseslint.config(
 	{
 		plugins: {
 			onlyWarn,
-			'@stylistic/js': stylisticJs
+			'@stylistic': stylistic
 		},
 		rules: {
 			'no-undef': 'off',
@@ -28,7 +28,7 @@ export default tseslint.config(
                 'leadingUnderscore': 'forbid'
             }],
 			'@typescript-eslint/no-this-alias': 'off',
-			'@stylistic/js/padding-line-between-statements': ['warn',
+			'@stylistic/padding-line-between-statements': ['warn',
 				{ blankLine: 'always', prev: ['const', 'let'], next: 'if' }
 			]
 		}
