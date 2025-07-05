@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 6.8.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-06-08 05:07:12+0000\n"
+"PO-Revision-Date: 2025-07-03 14:32:36+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -503,11 +503,11 @@ msgstr "Værdien \"%s\" er ikke en gyldig spekulationsregler tilstand."
 
 #: wp-includes/class-wp-post-type.php:993
 msgid "Add Page"
-msgstr "TIlføj side"
+msgstr "Tilføj side"
 
 #: wp-includes/class-wp-post-type.php:993
 msgid "Add Post"
-msgstr "Opret indhold"
+msgstr "Tilføj indlæg"
 
 #. translators: There is a space after the colon.
 #: wp-includes/class-wp-phpmailer.php:88
