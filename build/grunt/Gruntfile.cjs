@@ -1,6 +1,15 @@
 module.exports = function(grunt) {
 
     grunt.initConfig({
+        browserify: {
+            all: {
+                src: '../../public/wp-content/themes/kennethclemmensen/ts/App.ts',
+                dest: '../../public/wp-content/themes/kennethclemmensen/js/dist/compiled.min.js',
+                options: {
+                    plugin: ['tsify']
+                }
+            }
+        },
         //Setup the browserSync task to synchronize browsers on different devices
         browserSync: {
             bsFiles: {
@@ -54,9 +63,6 @@ module.exports = function(grunt) {
         },
         //Use the grunt-shell plugin to run a npm command
         shell: {
-            npm_run_tsc: {
-                command: 'npm run tsc'
-            },
             npm_run_webpack_js: {
                 command: 'npm run webpack-js'
             },
@@ -87,12 +93,13 @@ module.exports = function(grunt) {
             },
             typescript: {
                 files: ['../../public/wp-content/themes/kennethclemmensen/ts/**/*.ts'],
-                tasks: ['shell:npm_run_tsc']
+                tasks: ['browserify']
             }
         }
     });
 
     //Load all tasks
+    grunt.loadNpmTasks('grunt-browserify');
     grunt.loadNpmTasks('grunt-browser-sync');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-contrib-less');
