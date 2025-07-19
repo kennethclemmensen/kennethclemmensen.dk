@@ -18,6 +18,7 @@
     "browser-sync": "^3.0.4",
     "copy-webpack-plugin": "^13.0.0",
     "css-loader": "^7.1.2",
+    "css-minimizer-webpack-plugin": "^7.0.2",
     "eslint": "^9.31.0",
     "eslint-plugin-only-warn": "^1.1.0",
     "grunt": "^1.6.1",
@@ -36,12 +37,16 @@
     "gulp-imagemin": "^9.1.0",
     "gulp-less": "^5.0.0",
     "gulp-shell": "^0.8.0",
+    "less-loader": "^12.3.0",
+    "mini-css-extract-plugin": "^2.9.2",
     "terser-webpack-plugin": "^5.3.14",
+    "ts-loader": "^9.5.2",
     "tsify": "^5.0.4",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.36.0",
     "webpack": "^5.100.1",
     "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.2",
     "webpack-merge": "^6.0.1",
     "webpack-merge-and-include-globally": "2.1.26"
   },
@@ -53,6 +58,8 @@
     "gulp-imagemin": "gulp imagemin -f build/gulp/gulpfile.js",
     "tsc": "tsc",
     "wdio": "wdio run ./tests/webdriverio/wdio.conf.ts",
+    "webpack": "webpack serve --open --config build/webpack/webpack.development.js --progress",
+    "webpack-build": "webpack --config build/webpack/webpack.production.js",
     "webpack-css": "webpack --config build/webpack/webpack.css.js",
     "webpack-js": "webpack --config build/webpack/webpack.js.js"
   }
