@@ -69,12 +69,14 @@ final readonly class ThemeActivator {
 	 */
 	private function addStylesAndScripts() : void {
 		add_action(Action::WpEnqueueScripts->value, function() : void {
-			$libraries = 'libraries';
+			$jsLibraries = 'js-libraries';
 			$compiled = 'compiled';
-			wp_enqueue_style('theme', get_template_directory_uri().'/css/style.min.css');
+			$cssLibraries = 'css-libraries';
+			wp_enqueue_style($cssLibraries, get_template_directory_uri().'/dist/libraries.css');
+			wp_enqueue_style('theme', get_template_directory_uri().'/dist/default.css', [$cssLibraries]);
 			wp_dequeue_style('wp-block-library');
-			wp_enqueue_script($libraries, get_template_directory_uri().'/js/dist/libraries.min.js', args: ['in_footer' => true]);
-			wp_enqueue_script($compiled, get_template_directory_uri().'/js/dist/compiled.min.js', [$libraries], args: ['in_footer' => true]);
+			wp_enqueue_script($jsLibraries, get_template_directory_uri().'/dist/libraries.js', args: ['in_footer' => true]);
+			wp_enqueue_script($compiled, get_template_directory_uri().'/dist/default.js', [$jsLibraries], args: ['in_footer' => true]);
 			wp_localize_script($compiled, 'httpHeaderValue', [
 				'nonce' => wp_create_nonce('wp_rest')
 			]);

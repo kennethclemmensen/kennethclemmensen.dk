@@ -1,6 +1,8 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import MergeIntoSingleFilePlugin from 'webpack-merge-and-include-globally';
+import CopyPlugin from 'copy-webpack-plugin';
 
 /**
  * The common configuration for Webpack to compile TypeScript and Less files.
@@ -46,10 +48,28 @@ export default {
         ]
     },
     /**
-     * Setup the MiniCssExtractPlugin to extract the css into a file.
-     * https://webpack.js.org/plugins/mini-css-extract-plugin
+     * Plugins to handle merging files, copying assets and extracting css.
+     * https://webpack.js.org/configuration/plugins/
      */
     plugins: [
+        new MergeIntoSingleFilePlugin({
+            files: [{
+                src: [
+                    'node_modules/vue/dist/vue.global.prod.js'
+                ],
+                dest: 'libraries.js'
+            }, {
+                src: [
+                    'node_modules/@fortawesome/fontawesome-free/css/all.min.css'
+                ],
+                dest: 'libraries.css'
+            }]
+        }),
+        new CopyPlugin({
+            patterns: [
+                { from: 'node_modules/@fortawesome/fontawesome-free/webfonts', to: '../webfonts' }
+            ]
+        }),
         new MiniCssExtractPlugin({
             filename: '[name].css'
         })
