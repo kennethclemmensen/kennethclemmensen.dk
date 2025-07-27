@@ -1,10 +1,11 @@
 module.exports = function(grunt) {
 
     grunt.initConfig({
+        //Setup the browserify task to bundle TypeScript files
         browserify: {
             all: {
                 src: '../../public/wp-content/themes/kennethclemmensen/ts/App.ts',
-                dest: '../../public/wp-content/themes/kennethclemmensen/js/dist/compiled.min.js',
+                dest: '../../public/wp-content/themes/kennethclemmensen/dist/default.js',
                 options: {
                     plugin: ['tsify']
                 }
@@ -14,9 +15,9 @@ module.exports = function(grunt) {
         browserSync: {
             bsFiles: {
                 src: [
-                    '../../public/wp-content/themes/kennethclemmensen/css/*.css',
+                    '../../public/wp-content/themes/kennethclemmensen/dist/*.css',
                     '../../public/wp-content/themes/kennethclemmensen/**/*.php',
-                    '../../public/wp-content/themes/kennethclemmensen/js/dist/*.js'
+                    '../../public/wp-content/themes/kennethclemmensen/dist/*.js'
                 ]
             },
             options: {
@@ -34,7 +35,7 @@ module.exports = function(grunt) {
                     outputStyle: 'compressed'
                 },
                 files: {
-                    '../../public/wp-content/themes/kennethclemmensen/css/compiled/style.css': '../../public/wp-content/themes/kennethclemmensen/sass/style.scss'
+                    '../../public/wp-content/themes/kennethclemmensen/dist/default.css': '../../public/wp-content/themes/kennethclemmensen/sass/style.scss'
                 }
             }
         },
@@ -53,7 +54,7 @@ module.exports = function(grunt) {
         less: {
             development: {
                 files: {
-                    '../../public/wp-content/themes/kennethclemmensen/css/compiled/style.css': '../../public/wp-content/themes/kennethclemmensen/less/style.less'
+                    '../../public/wp-content/themes/kennethclemmensen/dist/default.css': '../../public/wp-content/themes/kennethclemmensen/less/style.less'
                 },
                 options: {
                     compress: true,
@@ -61,27 +62,10 @@ module.exports = function(grunt) {
                 }
             }
         },
-        //Use the grunt-shell plugin to run a npm command
-        shell: {
-            npm_run_webpack_js: {
-                command: 'npm run webpack-js'
-            },
-            npm_run_webpack_css: {
-                command: 'npm run webpack-css'
-            }
-        },
         //Setup the watch task to look for changes in files
         watch: {
             options: {
                 livereload: true
-            },
-            css: {
-                files: ['../../public/wp-content/themes/kennethclemmensen/css/compiled/style.css'],
-                tasks: ['shell:npm_run_webpack_css']
-            },
-            javascript: {
-                files: ['../../public/wp-content/themes/kennethclemmensen/js/compiled/**/*.js'],
-                tasks: ['shell:npm_run_webpack_js']
             },
             less: {
                 files: ['../../public/wp-content/themes/kennethclemmensen/less/**/*.less'],
@@ -105,7 +89,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-dart-sass');
-    grunt.loadNpmTasks('grunt-shell');
 
     //Register the default tasks
     grunt.registerTask('default', ['browserSync', 'watch']);
