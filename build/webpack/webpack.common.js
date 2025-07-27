@@ -16,7 +16,8 @@ export default {
     entry: {
         default: [
             './public/wp-content/themes/kennethclemmensen/ts/App.ts',
-            './public/wp-content/themes/kennethclemmensen/less/style.less'
+            './public/wp-content/themes/kennethclemmensen/less/style.less',
+            './public/wp-content/themes/kennethclemmensen/sass/style.scss'
         ]
     },
     /**
@@ -43,6 +44,14 @@ export default {
                     MiniCssExtractPlugin.loader,
                     'css-loader',
                     'less-loader'
+                ]
+            },
+            {
+                test: /\.scss$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'sass-loader'
                 ]
             }
         ]

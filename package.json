@@ -39,6 +39,7 @@
     "gulp-shell": "^0.8.0",
     "less-loader": "^12.3.0",
     "mini-css-extract-plugin": "^2.9.2",
+    "sass-loader": "^16.0.5",
     "terser-webpack-plugin": "^5.3.14",
     "ts-loader": "^9.5.2",
     "tsify": "^5.0.4",
