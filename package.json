@@ -16,6 +16,7 @@
     "@wdio/mocha-framework": "^9.18.0",
     "@wdio/spec-reporter": "^9.18.0",
     "browser-sync": "^3.0.4",
+    "browserify": "^17.0.1",
     "copy-webpack-plugin": "^13.0.0",
     "css-loader": "^7.1.2",
     "css-minimizer-webpack-plugin": "^7.0.2",
@@ -35,7 +36,7 @@
     "gulp-dart-sass": "^1.1.0",
     "gulp-imagemin": "^9.1.0",
     "gulp-less": "^5.0.0",
-    "gulp-shell": "^0.8.0",
+    "gulp-rename": "^2.1.0",
     "less-loader": "^12.3.0",
     "mini-css-extract-plugin": "^2.9.2",
     "sass-loader": "^16.0.5",
@@ -44,6 +45,7 @@
     "tsify": "^5.0.4",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.38.0",
+    "vinyl-source-stream": "^2.0.0",
     "webpack": "^5.100.2",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.2",
@@ -56,11 +58,8 @@
     "grunt-imagemin": "grunt imagemin --gruntfile build/grunt/Gruntfile.cjs",
     "gulp": "gulp -f build/gulp/gulpfile.js",
     "gulp-imagemin": "gulp imagemin -f build/gulp/gulpfile.js",
-    "tsc": "tsc",
     "wdio": "wdio run ./tests/webdriverio/wdio.conf.ts",
     "webpack": "webpack serve --open --config build/webpack/webpack.development.js --progress",
-    "webpack-build": "webpack --config build/webpack/webpack.production.js",
-    "webpack-css": "webpack --config build/webpack/webpack.css.js",
-    "webpack-js": "webpack --config build/webpack/webpack.js.js"
+    "webpack-build": "webpack --config build/webpack/webpack.production.js"
   }
 }

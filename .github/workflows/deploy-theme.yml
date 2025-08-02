@@ -31,8 +31,6 @@ jobs:
         local-dir: public/wp-content/themes/kennethclemmensen/
         server-dir: public_html/wp-content/themes/kennethclemmensen/
         exclude: |
-          public/wp-content/themes/kennethclemmensen/css/compiled
-          public/wp-content/themes/kennethclemmensen/js/compiled
           public/wp-content/themes/kennethclemmensen/less
           public/wp-content/themes/kennethclemmensen/sass
           public/wp-content/themes/kennethclemmensen/ts
