@@ -55,7 +55,7 @@ export class FilesApp {
 						updateFileDownloads: (file: File): void => {
 							ajax({
 								url: '/wp-json/kcapi/v1/fileDownloads?fileid=' + file.id,
-								method: HttpMethod.Put,
+								method: HttpMethod.Patch,
 								responseType: ResponseType.Text,
 								headers: {
 									'X-WP-Nonce': httpHeaderValue.nonce

@@ -3,5 +3,5 @@
  */
 export enum HttpMethod {
 	Get = 'get',
-	Put = 'put'
+	Patch = 'patch'
 }

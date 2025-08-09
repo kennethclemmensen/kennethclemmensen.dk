@@ -80,7 +80,7 @@ final class ApiController extends WP_REST_Controller {
 	 */
 	private function registerFileDownloadCounterRoute() : void {
 		$fileId = 'fileid';
-		$this->registerRoute('/fileDownloads', HttpMethod::Put, function(WP_REST_Request $request) use ($fileId) : WP_REST_Response {
+		$this->registerRoute('/fileDownloads', HttpMethod::Patch, function(WP_REST_Request $request) use ($fileId) : WP_REST_Response {
 			$this->dataManager->updateFileDownloadCounter($request->get_param($fileId));
 			return new WP_REST_Response();
 		}, [$fileId]);
