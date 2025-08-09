@@ -1,36 +1,38 @@
+@use 'color.scss' as color;
+
 body {
-	font-family: 'Ubuntu', sans-serif;
-	font-size: 18px;
-	color: $color-white;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 18px;
+    color: color.$color-white;
 }
 
 h1 {
-	font-size: 2em;
-	line-height: 1.1em;
-	margin: 0 0 5px 0;
+    font-size: 2em;
+    line-height: 1.1em;
+    margin: 0 0 5px 0;
 }
 
 p {
-	font-size: 1em;
-	line-height: 1.5em;
-	margin: 0 0 15px 0;
+    font-size: 1em;
+    line-height: 1.5em;
+    margin: 0 0 15px 0;
 }
 
 a {
-	font-size: 1em;
-	line-height: 1.5em;
-	color: inherit;
-	text-decoration: underline;
-	&:hover, &:focus {
-		color: inherit;
-		text-decoration: none;
-	}
+    font-size: 1em;
+    line-height: 1.5em;
+    color: inherit;
+    text-decoration: underline;
+    &:hover, &:focus {
+        color: inherit;
+        text-decoration: none;
+    }
 }
 
 ul {
-	margin-left: 20px;
-	list-style-position: outside;
-	ul {
-		list-style-type: circle;
-	}
+    margin-left: 20px;
+    list-style-position: outside;
+    ul {
+        list-style-type: circle;
+    }
 }

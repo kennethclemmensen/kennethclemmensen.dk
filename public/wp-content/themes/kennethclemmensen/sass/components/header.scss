@@ -1,74 +1,79 @@
+@use '../color.scss' as color;
+@use '../media-query.scss' as mediaQuery;
+@use '../mixin.scss' as mixin;
+@use '../variable.scss' as variable;
+
 .header {
-	background: $color-blue--darker;
-	width: 100%;
-	height: $header-height;
-	padding: 0 15px;
-	border-bottom: 1px solid $color-gray;
-	position: fixed;
-	top: 0;
-	@media #{$tablet} {
-		height: $header-height-tablet;
-		padding: 0;
-		position: static;
-	}
+    background: color.$color-blue--darker;
+    width: 100%;
+    height: variable.$header-height;
+    padding: 0 15px;
+    border-bottom: 1px solid color.$color-gray;
+    position: fixed;
+    top: 0;
+    @media #{mediaQuery.$tablet} {
+        height: variable.$header-height-tablet;
+        padding: 0;
+        position: static;
+    }
 }
 
 .header__site-name {
-	display: inline-block;
-	margin-top: 18px;
-	font-size: 1.1em;
-	text-decoration: none;
-	@media #{$tablet} {
-		display: none;
-	}
+    display: inline-block;
+    margin-top: 18px;
+    font-size: 1.1em;
+    text-decoration: none;
+    @media #{mediaQuery.$tablet} {
+        display: none;
+    }
 }
 
 .header__mobile-menu-trigger {
-	width: 48px;
-	height: 44px;
-	padding: 4px 8px 8px 8px;
-	border: 1px solid $color-white;
-	@include border-radius(6px);
-	position: absolute;
-	top: 10px;
-	right: 10px;
-	@media #{$tablet} {
-		display: none;
-	}
-	&--active {
-		.header__icon {
-			background: transparent;
-			&::before, &::after {
-				margin-top: 0;
-			}
-			&::before {
-				@include rotate(45deg);
-			}
-			&::after {
-				@include rotate(-45deg);
-			}
-		}
-	}
+    width: 48px;
+    height: 44px;
+    padding: 4px 8px 8px 8px;
+    border: 1px solid color.$color-white;
+    @include mixin.border-radius(6px);
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    @media #{mediaQuery.$tablet} {
+        display: none;
+    }
+    &--active {
+        .header__icon {
+            background: transparent;
+            &::before, &::after {
+                margin-top: 0;
+            }
+            &::before {
+                @include mixin.rotate(45deg);
+            }
+            &::after {
+                @include mixin.rotate(-45deg);
+            }
+        }
+    }
 }
 
 .header__icon {
-	display: inline-block;
-	background: $color-white;
-	width: 30px;
-	height: 5px;
-	position: relative;
-	@include transition(background, .2s);
-	&::before, &::after {
-		display: block;
-		background: $color-white;
-		content: '';
-		width: inherit;
-		height: inherit;
-		margin-top: -10px;
-		position: absolute;
-		@include transition();
-	}
-	&::after {
-		margin-top: 10px;
-	}
+    display: inline-block;
+    background: color.$color-white;
+    width: 30px;
+    height: 5px;
+    position: relative;
+    @include mixin.transition(background, .2s);
+    &::before, &::after {
+        display: block;
+        background: color.$color-white;
+        content: '';
+        width: inherit;
+        height: inherit;
+        margin-top: -10px;
+        position: absolute;
+        @include mixin.transition();
+    }
+    &::after {
+        margin-top: 10px;
+    }
 }

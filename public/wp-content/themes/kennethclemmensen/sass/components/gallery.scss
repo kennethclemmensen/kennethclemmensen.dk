@@ -1,122 +1,125 @@
+@use '../color.scss' as color;
+@use '../mixin.scss' as mixin;
+
 .gallery-overlay {
-	display: none;
-	background: $color-black;
-	width: 100%;
-	height: 100%;
-	position: fixed;
-	top: 0;
-	z-index: 9999;
-	opacity: 0.8;
-	&--visible {
-		display: block;
-		@include animation(fade-in, 1.2s);
-	}
+    display: none;
+    background: color.$color-black;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 9999;
+    opacity: 0.8;
+    &--visible {
+        display: block;
+        @include mixin.animation(fade-in, 1.2s);
+    }
 }
 
 .gallery {
-	display: none;
-	position: absolute;
-	top: 50px;
-	left: 50%;
-	z-index: 10000;
-	opacity: 0.8;
-	@include translateX(-50%);
-	&--visible {
-		display: block;
-		@include animation(fade-in, 2.4s);
-	}
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    z-index: 10000;
+    opacity: 0.8;
+    @include mixin.translateX(-50%);
+    &--visible {
+        display: block;
+        @include mixin.animation(fade-in, 2.4s);
+    }
 }
 
 .gallery__image-container {
-	position: relative;
+    position: relative;
 }
 
 .gallery__navigation {
-	width: 100%;
-	height: 100%;
-	position: absolute;
+    width: 100%;
+    height: 100%;
+    position: absolute;
 }
 
 .gallery__navigation-link {
-	display: block;
-	width: 30%;
-	height: 100%;
-	position: absolute;
-	top: 0;
-	font-size: 2.8em;
-	text-decoration: none;
-	opacity: 0;
-	&:hover {
-		opacity: 1;
-		cursor: pointer;
-	}
-	&::before {
-		display: flex;
-		align-items: center;
-		width: 100%;
-		height: 100%;
-		@include font-awesome-solid();
-	}
-	&--previous {
-		padding-left: 30px;
-		left: 0;
-		&::before {
-			justify-content: left;
-			content: '\f053';
-		}
-	}
-	&--next {
-		padding-right: 30px;
-		right: 0;
-		&::before {
-			justify-content: right;
-			content: '\f054';
-		}
-	}
-	&--hidden {
-		display: none;
-	}
+    display: block;
+    width: 30%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    font-size: 2.8em;
+    text-decoration: none;
+    opacity: 0;
+    &:hover {
+        opacity: 1;
+        cursor: pointer;
+    }
+    &::before {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        @include mixin.font-awesome-solid();
+    }
+    &--previous {
+        padding-left: 30px;
+        left: 0;
+        &::before {
+            justify-content: left;
+            content: '\f053';
+        }
+    }
+    &--next {
+        padding-right: 30px;
+        right: 0;
+        &::before {
+            justify-content: right;
+            content: '\f054';
+        }
+    }
+    &--hidden {
+        display: none;
+    }
 }
 
 .gallery__image {
-	max-width: initial;
-	border: 5px solid $color-white;
-	@include border-radius(5px);
+    max-width: initial;
+    border: 5px solid color.$color-white;
+    @include mixin.border-radius(5px);
 }
 
 .gallery__image-info-container {
-	display: flex;
-	padding: 10px 5px 0 5px;
+    display: flex;
+    padding: 10px 5px 0 5px;
 }
 
 .gallery__text-container {
-	padding-right: 20px;
+    padding-right: 20px;
 }
 
 .gallery__info-text {
-	display: block;
-	margin-bottom: 7px;
-	font-size: 1em;
-	color: $color-white;
-	&--small {
-		margin-bottom: 0;
-		font-size: 0.7em;
-		color: $color-gray;
-	}
+    display: block;
+    margin-bottom: 7px;
+    font-size: 1em;
+    color: color.$color-white;
+    &--small {
+        margin-bottom: 0;
+        font-size: 0.7em;
+        color: color.$color-gray;
+    }
 }
 
 .gallery__close {
-	display: block;
-	width: 30px;
-	height: 30px;
-	position: absolute;
-	right: 0;
-	&::after {
-		display: inline-block;
-		@include font-awesome-solid();
-		content: '\f00d';
-		font-size: 2em;
-		color: $color-gray;
-		cursor: pointer;
-	}
+    display: block;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 0;
+    &::after {
+        display: inline-block;
+        @include mixin.font-awesome-solid();
+        content: '\f00d';
+        font-size: 2em;
+        color: color.$color-gray;
+        cursor: pointer;
+    }
 }

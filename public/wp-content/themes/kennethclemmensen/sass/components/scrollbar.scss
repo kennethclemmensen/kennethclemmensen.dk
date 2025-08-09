@@ -1,7 +1,9 @@
+@use '../color.scss' as color;
+
 ::-webkit-scrollbar {
-	width: 5px;
+    width: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
-	background: $color-gray--dark;
+    background: color.$color-gray--dark;
 }

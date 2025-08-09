@@ -1,42 +1,42 @@
 @mixin animation($animation, $duration) {
-	animation: $animation $duration;
+    animation: $animation $duration;
 }
 
 @mixin border-radius($value) {
-	border-radius: $value;
+    border-radius: $value;
 }
 
 @mixin border-radius2($topLeft, $topRight, $bottomRight, $bottomLeft) {
-	border-radius: $topLeft $topRight $bottomRight $bottomLeft;
+    border-radius: $topLeft $topRight $bottomRight $bottomLeft;
 }
 
 @mixin box-shadow($x, $y, $blur, $color) {
-	box-shadow: $x $y $blur $color;
+    box-shadow: $x $y $blur $color;
 }
 
 @mixin placeholder-color($color) {
-	&::placeholder {
-		color: $color;
-	}
+    &::placeholder {
+        color: $color;
+    }
 }
 
 @mixin rotate($value) {
-	transform: rotate($value);
+    transform: rotate($value);
 }
 
 @mixin text-shadow($x, $y, $blur, $color) {
-	text-shadow: $x $y $blur $color;
+    text-shadow: $x $y $blur $color;
 }
 
 @mixin transition($properties: all, $duration: .4s, $timing-function: ease, $delay: 0s) {
-	transition: $properties $duration $timing-function $delay;
+    transition: $properties $duration $timing-function $delay;
 }
 
 @mixin translateX($value) {
-	transform: translateX($value);
+    transform: translateX($value);
 }
 
 @mixin font-awesome-solid() {
-	font-family: 'Font Awesome 5 Free', sans-serif;
-	font-weight: 900;
+    font-family: 'Font Awesome 5 Free', sans-serif;
+    font-weight: 900;
 }

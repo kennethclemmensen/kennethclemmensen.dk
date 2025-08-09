@@ -1,21 +1,25 @@
+@use 'sass:color';
+@use '../color.scss' as c;
+@use '../mixin.scss' as mixin;
+
 input[type='search'] {
-	width: 250px;
-	height: 30px;
-	margin: 0 15px 15px 0;
-	border: 2px inset $color-gray;
-	color: $color-black;
-	@include placeholder-color($color-gray--dark);
+    width: 250px;
+    height: 30px;
+    margin: 0 15px 15px 0;
+    border: 2px inset c.$color-gray;
+    color: c.$color-black;
+    @include mixin.placeholder-color(c.$color-gray--dark);
 }
 
 input[type='submit'] {
-	background: $color-blue;
-	padding: 6px 15px;
-	border: 2px outset $color-gray;
-	@include border-radius(4px);
-	color: $color-white;
-	cursor: pointer;
-	@include transition();
-	&:hover {
-		background: darken($color-blue, 10%);
-	}
+    background: c.$color-blue;
+    padding: 6px 15px;
+    border: 2px outset c.$color-gray;
+    @include mixin.border-radius(4px);
+    color: c.$color-white;
+    cursor: pointer;
+    @include mixin.transition();
+    &:hover {
+        background: color.adjust(c.$color-blue, $lightness: -10%);
+    }
 }
