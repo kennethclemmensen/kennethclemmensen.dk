@@ -62,7 +62,7 @@ export class FilesApp {
 								}
 							}).pipe(
 								map((response: AjaxResponse<unknown>): void => {
-									if(response.status === HttpStatusCode.Ok) file.downloads++;
+									if(response.status === HttpStatusCode.NoContent) file.downloads++;
 								})
 							).subscribe();
 						}

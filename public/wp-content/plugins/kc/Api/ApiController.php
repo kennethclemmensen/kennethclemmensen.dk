@@ -6,6 +6,7 @@ use KC\Core\PluginService;
 use KC\Core\Api\HttpHeader;
 use KC\Core\Api\HttpMethod;
 use KC\Core\Api\HttpService;
+use KC\Core\Api\HttpStatusCode;
 use KC\Core\Security\SecurityService;
 use KC\Data\Database\DataManager;
 use \WP_REST_Controller;
@@ -60,7 +61,7 @@ final class ApiController extends WP_REST_Controller {
 		$title = 'title';
 		$this->registerRoute('/pages/(?P<'.$title.'>[\S]+)', HttpMethod::Get, function(WP_REST_Request $request) use ($title) : WP_REST_Response {
 			$pages = $this->dataManager->getPagesByTitle($request->get_param($title));
-			return new WP_REST_Response($pages);
+			return $this->createResponse($pages);
 		}, [$title]);
 	}
 
@@ -71,7 +72,7 @@ final class ApiController extends WP_REST_Controller {
 		$type = 'type';
 		$this->registerRoute('/files', HttpMethod::Get, function(WP_REST_Request $request) use ($type) : WP_REST_Response {
 			$fileTypes = explode(',', $request->get_param($type));
-			return new WP_REST_Response($this->dataManager->getFiles($fileTypes));
+			return $this->createResponse($this->dataManager->getFiles($fileTypes));
 		}, [$type]);
 	}
 
@@ -82,7 +83,7 @@ final class ApiController extends WP_REST_Controller {
 		$fileId = 'fileid';
 		$this->registerRoute('/fileDownloads', HttpMethod::Patch, function(WP_REST_Request $request) use ($fileId) : WP_REST_Response {
 			$this->dataManager->updateFileDownloadCounter($request->get_param($fileId));
-			return new WP_REST_Response();
+			return $this->createResponse(httpStatusCode: HttpStatusCode::NoContent);
 		}, [$fileId]);
 	}
 
@@ -90,7 +91,7 @@ final class ApiController extends WP_REST_Controller {
 	 * Register the slides route
 	 */
 	private function registerSlidesRoute() : void {
-		$callback = fn() : WP_REST_Response => new WP_REST_Response($this->dataManager->getSlides());
+		$callback = fn() : WP_REST_Response => $this->createResponse($this->dataManager->getSlides());
 		$this->registerRoute('/slides', HttpMethod::Get, $callback);
 	}
 
@@ -99,12 +100,12 @@ final class ApiController extends WP_REST_Controller {
 	 */
 	private function registerGalleriesRoutes() : void {
 		$route = '/galleries';
-		$callback = fn() : WP_REST_Response => new WP_REST_Response($this->dataManager->getGalleries());
+		$callback = fn() : WP_REST_Response => $this->createResponse($this->dataManager->getGalleries());
 		$this->registerRoute($route, HttpMethod::Get, $callback);
 		$id = 'id';
 		$this->registerRoute($route.'/(?P<'.$id.'>[\S]+)', HttpMethod::Get, function(WP_REST_Request $request) use ($id) : WP_REST_Response {
 			$galleryId = $request->get_param($id);
-			return new WP_REST_Response($this->dataManager->getImages($galleryId));
+			return $this->createResponse($this->dataManager->getImages($galleryId));
 		}, [$id]);
 	}
 
@@ -112,7 +113,7 @@ final class ApiController extends WP_REST_Controller {
 	 * Register the shortcuts route
 	 */
 	private function registerShortcutsRoute() : void {
-		$callback = fn() : WP_REST_Response => new WP_REST_Response($this->dataManager->getShortcuts());
+		$callback = fn() : WP_REST_Response => $this->createResponse($this->dataManager->getShortcuts());
 		$this->registerRoute('/shortcuts', HttpMethod::Get, $callback);
 	}
 
@@ -145,5 +146,16 @@ final class ApiController extends WP_REST_Controller {
 			$routeOptions['args'] = $parameterOptions;
 		}
 		register_rest_route($this->namespace, $route, $routeOptions);
+	}
+
+	/**
+	 * Create a response
+	 * 
+	 * @param array $data the data to include in the response
+	 * @param HttpStatusCode $httpStatusCode the http status code
+	 * @return WP_REST_Response the response
+	 */
+	private function createResponse(?array $data = null, HttpStatusCode $httpStatusCode = HttpStatusCode::OK) : WP_REST_Response {
+		return new WP_REST_Response($data, $httpStatusCode->value);
 	}
 }
