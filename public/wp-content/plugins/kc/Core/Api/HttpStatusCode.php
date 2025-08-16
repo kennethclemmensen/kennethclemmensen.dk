@@ -7,4 +7,5 @@ namespace KC\Core\Api;
 enum HttpStatusCode: int {
 	case OK = 200;
 	case NoContent = 204;
+	case NotFound = 404;
 }

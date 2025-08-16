@@ -265,6 +265,24 @@ final class DataManager {
 	}
 
 	/**
+	 * Check if a file exists
+	 *
+	 * @param int $fileId the id of the file
+	 * @return bool true if the file exists, false otherwise
+	 */
+	public function fileExists(int $fileId) : bool {
+		$args = [
+			'p' => $fileId,
+			'post_type' => [PostType::File->value]
+		];
+		$wpQuery = new WP_Query($args);
+		while($wpQuery->have_posts()) {
+			return true;
+		}
+		return false;
+	}
+
+	/**
 	 * Get the file url
 	 *
 	 * @param int $fileID the id of the file
