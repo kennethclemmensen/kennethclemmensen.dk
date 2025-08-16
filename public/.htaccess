@@ -117,8 +117,6 @@ RewriteRule \.(gif|jpe?g?|png)$ - [F,NC,L]
 #AIOWPS_PREVENT_IMAGE_HOTLINKS_END
 # END All In One WP Security
 
-AddType application/x-httpd-php83 .php
-
 # BEGIN WordPress
 # Direktiverne (linjer) mellem 'BEGIN WordPress' og 'END WordPress' er
 # dynamisk genereret og bør kun ændres via WordPress-filtre.
