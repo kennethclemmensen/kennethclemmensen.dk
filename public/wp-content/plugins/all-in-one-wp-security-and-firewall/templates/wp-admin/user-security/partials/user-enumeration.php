@@ -8,7 +8,6 @@
 			$aiowps_feature_mgr->output_feature_details_badge("disable-users-enumeration");
 			?>
 		</div>
-		<form action="" method="POST" id="aios-users-enumeration-form">
 			<div class="aio_blue_box">
 				<?php
 					/* translators: 1: Author example, 2: REST API prefix. */
@@ -26,9 +25,5 @@
 					</td>
 				</tr>
 			</table>
-			<div class="submit">
-				<input type="submit" class="button-primary" name="aiowpsec_save_users_enumeration" value="<?php esc_attr_e('Save settings', 'all-in-one-wp-security-and-firewall'); ?>">
-			</div>
-		</form>
 	</div>
 </div>
