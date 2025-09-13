@@ -1,14 +1,22 @@
 <?php
-require_once __DIR__.'/settings/BaseSettings.php';
-$directories = ['includes', 'settings', 'widgets'];
-foreach($directories as $directory) {
-	$directoryIterator = new RecursiveDirectoryIterator(__DIR__.'/'.$directory);
-	$recursiveIterator = new RecursiveIteratorIterator($directoryIterator);
-	$files = new RegexIterator($recursiveIterator, '/^.+\.php$/');
-	foreach($files as $file) {
-		require_once $file->getPathname();
-	}
-}
+require_once __DIR__.'/includes/Action.php';
+require_once __DIR__.'/includes/ApiClient.php';
+require_once __DIR__.'/includes/Filter.php';
+require_once __DIR__.'/includes/MobileMenuAnimation.php';
+require_once __DIR__.'/includes/MobileMenuWalker.php';
+require_once __DIR__.'/includes/Pagination.php';
+require_once __DIR__.'/includes/SliderAnimation.php';
+require_once __DIR__.'/includes/ThemeActivator.php';
+require_once __DIR__.'/includes/ThemeService.php';
+require_once __DIR__.'/includes/TranslationStrings.php';
+require_once __DIR__.'/includes/settings/BaseSettings.php';
+require_once __DIR__.'/includes/settings/ContactSettings.php';
+require_once __DIR__.'/includes/settings/GallerySettings.php';
+require_once __DIR__.'/includes/settings/MobileMenuSettings.php';
+require_once __DIR__.'/includes/settings/ScriptSettings.php';
+require_once __DIR__.'/includes/settings/SliderSettings.php';
+require_once __DIR__.'/includes/settings/ThemeSettings.php';
+require_once __DIR__.'/includes/widgets/IconWidget.php';
 $themeActivator = new ThemeActivator();
 $themeActivator->activate();
 $themeActivator->run();

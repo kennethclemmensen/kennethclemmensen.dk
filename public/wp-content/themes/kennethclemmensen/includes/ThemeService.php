@@ -55,14 +55,14 @@ final readonly class ThemeService {
 	 * Load the breadcrumb template
 	 */
 	public function loadBreadcrumbTemplate() : void {
-		get_template_part('template-parts/breadcrumb');
+		get_template_part('includes/template-parts/breadcrumb');
 	}
 
 	/**
 	 * Load the slider template
 	 */
 	public function loadSliderTemplate() : void {
-		get_template_part('template-parts/slider');
+		get_template_part('includes/template-parts/slider');
 	}
 
 	/**

@@ -95,7 +95,10 @@ final class IconWidget extends WP_Widget {
 	 * @return array the icons
 	 */
 	private function getIcons() : array {
-		$icons = file_get_contents(__DIR__.'/../json/icons.json');
-		return ($icons) ? json_decode($icons, true) : [];
+		return [
+			"fas fa-envelope" => "Envelope",
+			"fab fa-github" => "GitHub",
+			"fab fa-linkedin-in" => "LinkedIn"
+		];
 	}
 }
