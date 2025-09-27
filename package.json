@@ -54,6 +54,7 @@
   },
   "scripts": {
     "eslint": "eslint public/wp-content/themes/kennethclemmensen/ts/**/*.ts -c eslint.config.js",
+    "eslint-fix": "eslint public/wp-content/themes/kennethclemmensen/ts/**/*.ts -c eslint.config.js --fix",
     "grunt": "grunt --gruntfile build/grunt/Gruntfile.cjs",
     "grunt-imagemin": "grunt imagemin --gruntfile build/grunt/Gruntfile.cjs",
     "gulp": "gulp -f build/gulp/gulpfile.js",
