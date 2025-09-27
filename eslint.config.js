@@ -30,7 +30,17 @@ export default tseslint.config(
 			'@typescript-eslint/no-this-alias': 'off',
 			'@stylistic/padding-line-between-statements': ['warn',
 				{ blankLine: 'always', prev: ['const', 'let'], next: 'if' }
-			]
+			],
+			'@stylistic/type-annotation-spacing': ['warn', {
+				'before': true,
+				'after': true,
+				'overrides': {
+					'colon': {
+						'before': false,
+						'after': true
+					}
+				}
+			}]
 		}
 	}
 );

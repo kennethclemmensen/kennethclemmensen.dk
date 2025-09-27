@@ -90,7 +90,7 @@ export class Slider {
 	 * @param animation the animation
 	 * @return the start keyframes
 	 */
-	private getStartKeyframes(animation: SliderAnimation) : Keyframe[] {
+	private getStartKeyframes(animation: SliderAnimation): Keyframe[] {
 		let startKeyframes: Keyframe[] = [];
 
 		if(this.#sliderImage != null) {
@@ -124,7 +124,7 @@ export class Slider {
 	 * @param animation the animation
 	 * @return the end keyframes
 	 */
-	private getEndKeyframes(animation: SliderAnimation) : Keyframe[] {
+	private getEndKeyframes(animation: SliderAnimation): Keyframe[] {
 		let endKeyframes: Keyframe[] = [];
 		
 		if(this.#sliderImage) {
