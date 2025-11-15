@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 6.8.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-10-23 11:26:14+0000\n"
+"PO-Revision-Date: 2025-11-12 22:27:13+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10869,10 +10869,6 @@ msgstr "Forhåndsvisning og installering"
 msgid "Once you have generated a list of themes, you can preview and install any of them. Click on the thumbnail of the theme you are interested in previewing. It will open up in a full-screen Preview page to give you a better idea of how that theme will look."
 msgstr "Når du har genereret en liste over temaer, kan du forhåndsvise og installere et hvilket som helst af dem. Klik på miniaturebilledet af det tema, du er interesseret i at se. Det åbnes i fuld skærm, så du får en bedre idé om, hvordan temaet vil se ud."
 
-#: wp-admin/includes/media.php:3066
-msgid "You are using the browser&#8217;s built-in file uploader. The WordPress uploader includes multiple file selection and drag and drop capability. <a href=\"#\">Switch to the multi-file uploader</a>."
-msgstr "Du bruger browserens indbyggede fil-uploader. WordPress-uploaderen giver mulighed for at vælge flere filer, samt træk-og-slip funktionalitet. <a href=\"#\">Skift til multi-fil-uploaderen</a>."
-
 #: wp-admin/tools.php:50
 msgid "The Categories and Tags Converter link on this screen will take you to the Import screen, where that Converter is one of the plugins you can install. Once that plugin is installed, the Activate Plugin &amp; Run Importer link will take you to a screen where you can choose to convert tags into categories or vice versa."
 msgstr "Kategorier og tags konverteringslinket på dette skærmbillede vil føre dig til Importskærmbilledet, hvor konverteringsværktøjet er en af de plugins, du kan installere. Når først det plugin er installeret, vil Aktiver plugin &amp; kør importeringværktøjet linket føre dig til et skærmbillede, hvor du kan konvertere tags til kategorier og omvendt."
@@ -11752,6 +11748,10 @@ msgstr "Gå til Kontrolpanel &rarr; Forside"
 #: wp-admin/about.php:360
 msgid "Go to Dashboard &rarr; Updates"
 msgstr "Tilbage til Kontrolpanel &rarr; Opdateringer"
+
+#: wp-admin/includes/media.php:3066
+msgid "You are using the browser&#8217;s built-in file uploader. The WordPress uploader includes multiple file selection and drag and drop capability. <a href=\"#\">Switch to the multi-file uploader</a>."
+msgstr "Du bruger browserens indbyggede fil-uploader. WordPress-uploaderen giver mulighed for at vælge flere filer, samt træk-og-slip funktionalitet. <a href=\"#\">Skift til multi-fil-uploaderen</a>."
 
 #: wp-admin/user-edit.php:217
 msgid "Profile updated."
