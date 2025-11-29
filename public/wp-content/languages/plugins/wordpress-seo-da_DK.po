@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Yoast SEO &#8211; Advanced SEO with real-time guidance and built-in AI - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-11-04 09:51:45+0000\n"
+"PO-Revision-Date: 2025-11-18 09:29:47+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -698,7 +698,7 @@ msgstr "Fjerner afsnittet inkluderende sproganalyse fra metaboksen og deaktivere
 #: js/dist/classic-editor.js:459 js/dist/editor-modules.js:365
 #: js/dist/elementor.js:5 js/dist/externals-components.js:376
 #: js/dist/externals/aiFrontend.js:229 js/dist/general-page.js:27
-#: js/dist/general-page.js:48 js/dist/new-settings.js:17
+#: js/dist/general-page.js:65 js/dist/new-settings.js:17
 #: js/dist/new-settings.js:40
 msgid "Dismiss"
 msgstr "Ignorer"
@@ -873,8 +873,8 @@ msgstr "Indstillinger for crawl"
 msgid "You should finish the %1$sfirst time configuration%2$s to make sure your SEO data has been optimized and you’ve set the essential Yoast SEO settings for your site."
 msgstr "Du skal afslutte %1$sførstegangskonfiguration%2$s for at sikre, at dine SEO-data er optimeret, og du har indstillet de væsentlige Yoast SEO-indstillinger for dit websted."
 
-#: src/integrations/admin/first-time-configuration-integration.php:128
-#: js/dist/general-page.js:45
+#: src/integrations/admin/first-time-configuration-integration.php:139
+#: js/dist/general-page.js:61 js/dist/general-page.js:62
 msgid "First-time configuration"
 msgstr "Førstegangskonfiguration"
 
@@ -1154,7 +1154,7 @@ msgid "Link suggestions"
 msgstr "Linkforslag"
 
 #: admin/views/class-yoast-feature-toggles.php:116 js/dist/block-editor.js:227
-#: js/dist/block-editor.js:485 js/dist/classic-editor.js:210
+#: js/dist/block-editor.js:489 js/dist/classic-editor.js:210
 #: js/dist/elementor.js:32 js/dist/new-settings.js:29
 #: js/dist/new-settings.js:323
 msgid "Insights"
@@ -1250,7 +1250,7 @@ msgstr "Udtrykket blev ikke fundet."
 msgid "The post could not be found."
 msgstr "Indlægget blev ikke fundet."
 
-#: admin/class-yoast-form.php:1068 js/dist/general-page.js:42
+#: admin/class-yoast-form.php:1068 js/dist/general-page.js:52
 msgid "This feature has been disabled since subsites never send tracking data."
 msgstr "Denne funktion er deaktiveret, da underordnede websteder aldrig sender sporingsdata."
 
@@ -1324,7 +1324,7 @@ msgid "Activate your subscription"
 msgstr "Aktiver dit abonnement"
 
 #: src/presenters/admin/indexing-notification-presenter.php:59
-#: js/dist/general-page.js:38 js/dist/indexation.js:8
+#: js/dist/general-page.js:37 js/dist/indexation.js:8
 msgid "Start SEO data optimization"
 msgstr "Start SEO-dataoptimering"
 
@@ -1714,7 +1714,7 @@ msgstr "Vi har både gratis og premium onlinekurser, hvor du kan lære hvad du h
 msgid "Want to learn SEO from Team Yoast? Check out our %1$s!"
 msgstr "Vil du lære SEO af team Yoast? Så tag et kik på %1$s!"
 
-#: admin/metabox/class-metabox.php:424 js/dist/block-editor.js:510
+#: admin/metabox/class-metabox.php:424 js/dist/block-editor.js:514
 #: js/dist/elementor.js:473 js/dist/new-settings.js:24
 #: js/dist/new-settings.js:31 js/dist/new-settings.js:35
 #: js/dist/new-settings.js:65 js/dist/new-settings.js:265
@@ -1793,8 +1793,8 @@ msgstr "For at se dine nuværende crawl-fejl, %1$sså besøg venligst Google Sea
 msgid "Google has discontinued its Crawl Errors API. Therefore, any possible crawl errors you might have cannot be displayed here anymore. %1$sRead our statement on this for further information%2$s."
 msgstr "Google har afviklet deres crawl-fejl API. Derfor bliver mulige fejl ved gennemgang, som du måtte have, ikke vist her mere. %1$sLæs vores udtalelse om dette for yderligere information%2$s."
 
-#: src/integrations/admin/first-time-configuration-integration.php:480
-#: src/integrations/admin/first-time-configuration-integration.php:493
+#: src/integrations/admin/first-time-configuration-integration.php:497
+#: src/integrations/admin/first-time-configuration-integration.php:510
 #: js/dist/new-settings.js:335
 msgid "Organization"
 msgstr "Organisation"
@@ -1978,7 +1978,7 @@ msgstr "Deaktiver"
 msgid "%s is a required feature toggle argument."
 msgstr "%s er et obligatorisk argument til skift af funktion."
 
-#: admin/class-yoast-form.php:1064 js/dist/general-page.js:42
+#: admin/class-yoast-form.php:1064 js/dist/general-page.js:52
 msgid "This feature has been disabled by the network admin."
 msgstr "Denne funktion er deaktiveret af netværkets administrator."
 
@@ -2575,16 +2575,19 @@ msgstr "Markér vigtigste %1$s som 'hjørnestensindhold' for at forbedre din sid
 #: js/dist/externals/relatedKeyphraseSuggestions.js:3
 #: js/dist/externals/relatedKeyphraseSuggestions.js:7 js/dist/general-page.js:4
 #: js/dist/general-page.js:5 js/dist/general-page.js:13
-#: js/dist/general-page.js:26 js/dist/installation-success.js:5
-#: js/dist/integrations-page.js:3 js/dist/integrations-page.js:4
-#: js/dist/integrations-page.js:5 js/dist/integrations-page.js:6
-#: js/dist/integrations-page.js:7 js/dist/integrations-page.js:8
-#: js/dist/integrations-page.js:13 js/dist/integrations-page.js:18
-#: js/dist/integrations-page.js:19 js/dist/integrations-page.js:20
-#: js/dist/integrations-page.js:28 js/dist/introductions.js:3
-#: js/dist/introductions.js:7 js/dist/new-settings.js:4
-#: js/dist/new-settings.js:5 js/dist/new-settings.js:13 js/dist/plans.js:2
-#: js/dist/redirects.js:6 js/dist/support.js:4 js/dist/support.js:8
+#: js/dist/general-page.js:26 js/dist/general-page.js:40
+#: js/dist/general-page.js:46 js/dist/general-page.js:49
+#: js/dist/general-page.js:57 js/dist/general-page.js:61
+#: js/dist/installation-success.js:5 js/dist/integrations-page.js:3
+#: js/dist/integrations-page.js:4 js/dist/integrations-page.js:5
+#: js/dist/integrations-page.js:6 js/dist/integrations-page.js:7
+#: js/dist/integrations-page.js:8 js/dist/integrations-page.js:13
+#: js/dist/integrations-page.js:18 js/dist/integrations-page.js:19
+#: js/dist/integrations-page.js:20 js/dist/integrations-page.js:28
+#: js/dist/introductions.js:3 js/dist/introductions.js:7
+#: js/dist/new-settings.js:4 js/dist/new-settings.js:5
+#: js/dist/new-settings.js:13 js/dist/plans.js:2 js/dist/redirects.js:6
+#: js/dist/support.js:4 js/dist/support.js:8
 msgid "(Opens in a new browser tab)"
 msgstr "(Åbner i en ny browserfane)"
 
@@ -2664,7 +2667,7 @@ msgid "24/7 support"
 msgstr "24/7 support"
 
 #: admin/class-yoast-form.php:149 admin/class-yoast-form.php:154
-#: js/dist/general-page.js:38 js/dist/new-settings.js:13
+#: js/dist/general-page.js:37 js/dist/new-settings.js:13
 msgid "Save changes"
 msgstr "Gem ændringer"
 
@@ -2704,7 +2707,7 @@ msgstr "%1$s, skribent på %2$s"
 msgid "Export settings"
 msgstr "Eksporter indstillinger"
 
-#: inc/class-wpseo-replace-vars.php:1518 js/dist/general-page.js:38
+#: inc/class-wpseo-replace-vars.php:1518 js/dist/general-page.js:40
 msgid "Name"
 msgstr "Navn"
 
@@ -2875,7 +2878,7 @@ msgstr "Gør primær"
 
 #. translators: Hidden accessibility text; %s: number of notifications.
 #: admin/menu/class-admin-menu.php:118 inc/class-wpseo-admin-bar-menu.php:873
-#: js/dist/general-page.js:46
+#: js/dist/general-page.js:63
 msgid "%s notification"
 msgid_plural "%s notifications"
 msgstr[0] "%s notifikation"
@@ -2912,7 +2915,7 @@ msgstr "Deaktivér læsbarhedsanalyse"
 msgid "Needs improvement"
 msgstr "Behov for forbedringer"
 
-#: admin/menu/class-admin-menu.php:56 js/dist/general-page.js:45
+#: admin/menu/class-admin-menu.php:56 js/dist/general-page.js:62
 msgid "Dashboard"
 msgstr "Kontrolpanel"
 
@@ -3105,7 +3108,7 @@ msgstr "Team Yoast"
 
 #. Plugin Name of the plugin
 #: wp-seo.php admin/capabilities/class-capability-manager-integration.php:74
-#: src/presenters/meta-description-presenter.php:36 js/dist/block-editor.js:546
+#: src/presenters/meta-description-presenter.php:36 js/dist/block-editor.js:550
 msgid "Yoast SEO"
 msgstr "Yoast SEO"
 
@@ -3443,7 +3446,7 @@ msgstr "Optimer dine videoer for at vise dem i søgeresultater og derved få fle
 msgid "Permalink"
 msgstr "Permanente links"
 
-#: src/integrations/admin/first-time-configuration-integration.php:485
+#: src/integrations/admin/first-time-configuration-integration.php:502
 #: js/dist/new-settings.js:335
 msgid "Person"
 msgstr "Person"
@@ -3653,8 +3656,8 @@ msgid "Canonical URL"
 msgstr "Canonical URL"
 
 #: admin/class-bulk-editor-list-table.php:844
-#: js/dist/externals/dashboardFrontend.js:4 js/dist/general-page.js:37
-#: js/dist/general-page.js:45
+#: js/dist/externals/dashboardFrontend.js:4 js/dist/general-page.js:36
+#: js/dist/general-page.js:61
 msgid "Edit"
 msgstr "Rediger"
 
