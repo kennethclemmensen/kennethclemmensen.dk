@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Yoast SEO &#8211; Advanced SEO with real-time guidance and built-in AI - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-12-17 14:16:48+0000\n"
+"PO-Revision-Date: 2026-01-21 11:46:43+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,183 @@ msgstr ""
 "X-Generator: GlotPress/4.0.3\n"
 "Language: da_DK\n"
 "Project-Id-Version: Plugins - Yoast SEO &#8211; Advanced SEO with real-time guidance and built-in AI - Stable (latest release)\n"
+
+#. translators: %1$s expands to the post type name this task is about
+#: src/task-list/application/tasks/set-search-appearance-templates.php:133
+msgid "Generic titles and descriptions make your results unclear in search. Templates ensure every %1$s has a clear, click-worthy snippet automatically."
+msgstr "Generiske titler og beskrivelser gør dine resultater uklare i søgninger. Skabeloner sikrer hver %1$s automatisk har et klart og klikværdigt uddrag."
+
+#: src/task-list/application/tasks/set-search-appearance-templates.php:115
+msgid "Set search templates"
+msgstr "Opsæt søgeskabeloner"
+
+#: src/task-list/application/tasks/enable-llms-txt.php:107
+msgid "Without llms.txt, AI crawlers may not know how to treat your content. Publishing it helps communicate your preferences in a clearer way to AI tools."
+msgstr "Uden llms.txt, ved AI indexeringsrobotter måske ikke, hvordan de skal håndtere dit indhold. Ved at udgive filen hjælper du med at kommunikere dine præferencer på en tydeligere måde til AI-værktøjer."
+
+#: src/task-list/domain/exceptions/complete-llms-task-exception.php:16
+msgid "Failed to enable llms.txt option."
+msgstr "Kunne ikke aktivere llms.txt-muligheden."
+
+#: src/task-list/domain/exceptions/complete-hello-world-task-exception.php:16
+msgid "Failed to delete the Hello World post."
+msgstr "Kunne ikke slette indlægget Hej verden."
+
+#: src/task-list/application/tasks/set-search-appearance-templates.php:134
+msgid "Go to Search appearance, choose your post type, and set default title and meta description patterns."
+msgstr "Gå til søgeudseende, vælg din indlægstype og indstil standardudseende for titel og metabeskrivelse."
+
+#: src/presenters/admin/sidebar-presenter.php:77 js/dist/general-page.js:5
+#: js/dist/new-settings.js:5 js/dist/support.js:4
+msgid "Optimize your site faster, smarter, and with more confidence."
+msgstr "Optimer dit websted hurtigere, smartere og med mere selvtillid."
+
+#: src/presenters/admin/sidebar-presenter.php:77 js/dist/general-page.js:5
+#: js/dist/new-settings.js:5 js/dist/support.js:4
+msgid "Help ready-to-buy shoppers and search engines find your product."
+msgstr "Hjælp købsvillige kunder og søgemaskiner med at finde dit produkt."
+
+#: src/presenters/admin/sidebar-presenter.php:72 js/dist/general-page.js:5
+#: js/dist/new-settings.js:5 js/dist/support.js:4
+msgid "Spend less time on SEO tasks!"
+msgstr "Brug mindre tid på SEO-opgaver!"
+
+#: src/presenters/admin/sidebar-presenter.php:72 js/dist/general-page.js:5
+#: js/dist/new-settings.js:5 js/dist/support.js:4
+msgid "Grow your store's visibility!"
+msgstr "Få din butiks synlighed til at vokse!"
+
+#: src/task-list/application/tasks/create-new-content.php:107
+msgid "Create new content"
+msgstr "Opret nyt indhold"
+
+#: src/task-list/application/tasks/create-new-content.php:94
+msgid "Create new post"
+msgstr "Opret nyt indlæg"
+
+#. translators: %1$s expands to Yoast SEO
+#: src/task-list/application/tasks/complete-ftc.php:92
+msgid "Skipping setup limits how much %1$s can help you. Completing it makes sure the core settings are working in your favor."
+msgstr "Hvis du springer opsætningen over, er det begrænsetm hvor meget %1$s kan hjælpe dig. Ved at fuldføre sikrer du at de grundlæggende indstillinger arbejder til din fordel."
+
+#: src/task-list/application/tasks/complete-ftc.php:90
+msgid "Complete the First-time configuration"
+msgstr "Færdiggør førstegangskonfigurationen"
+
+#: src/presenters/admin/sidebar-presenter.php:115 js/dist/general-page.js:5
+#: js/dist/new-settings.js:5 js/dist/support.js:4
+msgid "Less friction. Faster publishing."
+msgstr "Mindre friktion. Hurtigere udgivelse."
+
+#: src/presenters/admin/sidebar-presenter.php:115 js/dist/general-page.js:5
+#: js/dist/new-settings.js:5 js/dist/support.js:4
+msgid "Less friction. Smarter optimization."
+msgstr "Mindre friktion. Smartere optimering."
+
+#: src/presenters/admin/sidebar-presenter.php:92 js/dist/ai-consent.js:2
+#: js/dist/ai-generator.js:2 js/dist/block-editor.js:18
+#: js/dist/classic-editor.js:1 js/dist/editor-modules.js:116
+#: js/dist/externals-components.js:127 js/dist/general-page.js:5
+#: js/dist/integrations-page.js:28 js/dist/new-settings.js:5
+#: js/dist/redirects.js:1 js/dist/support.js:4
+msgid "Optimize pages for multiple keywords with guidance"
+msgstr "Optimer sider med flere nøgleord under vejledning"
+
+#: src/presenters/admin/sidebar-presenter.php:91 js/dist/ai-consent.js:2
+#: js/dist/ai-generator.js:2 js/dist/block-editor.js:18
+#: js/dist/classic-editor.js:1 js/dist/editor-modules.js:116
+#: js/dist/externals-components.js:127 js/dist/general-page.js:5
+#: js/dist/integrations-page.js:28 js/dist/new-settings.js:5
+#: js/dist/redirects.js:1 js/dist/support.js:4
+msgid "Manage redirects with ease and without extra plugins"
+msgstr "Håndter nemt viderestillinger og uden ekstra plugins"
+
+#: src/presenters/admin/sidebar-presenter.php:90 js/dist/ai-consent.js:2
+#: js/dist/ai-generator.js:2 js/dist/block-editor.js:18
+#: js/dist/classic-editor.js:1 js/dist/editor-modules.js:116
+#: js/dist/externals-components.js:127 js/dist/general-page.js:5
+#: js/dist/integrations-page.js:28 js/dist/new-settings.js:5
+#: js/dist/redirects.js:1 js/dist/support.js:4
+msgid "Apply AI suggestions to improve content in 1 click"
+msgstr "Brug AI-forslag for at forbedre indholdet med et klik"
+
+#: src/presenters/admin/sidebar-presenter.php:89 js/dist/ai-consent.js:2
+#: js/dist/ai-generator.js:2 js/dist/block-editor.js:18
+#: js/dist/classic-editor.js:1 js/dist/editor-modules.js:116
+#: js/dist/externals-components.js:127 js/dist/general-page.js:5
+#: js/dist/integrations-page.js:28 js/dist/new-settings.js:5
+#: js/dist/redirects.js:1 js/dist/support.js:4
+msgid "Create optimized SEO titles & meta descriptions in seconds"
+msgstr "Opret optimerede SEO-titler & metabeskrivelser på et øjeblik"
+
+#: src/presenters/admin/sidebar-presenter.php:86 js/dist/ai-consent.js:2
+#: js/dist/ai-generator.js:2 js/dist/block-editor.js:18
+#: js/dist/classic-editor.js:1 js/dist/editor-modules.js:116
+#: js/dist/externals-components.js:127 js/dist/general-page.js:5
+#: js/dist/integrations-page.js:28 js/dist/new-settings.js:5
+#: js/dist/redirects.js:1 js/dist/support.js:4
+msgid "Receive clear SEO and readability guidance to optimize your products"
+msgstr "Modtag klar SEO- og læsbarhedsvejledning for at optimere dine produkter"
+
+#: src/presenters/admin/sidebar-presenter.php:85 js/dist/ai-consent.js:2
+#: js/dist/ai-generator.js:2 js/dist/block-editor.js:18
+#: js/dist/classic-editor.js:1 js/dist/editor-modules.js:116
+#: js/dist/externals-components.js:127 js/dist/general-page.js:5
+#: js/dist/integrations-page.js:28 js/dist/new-settings.js:5
+#: js/dist/redirects.js:1 js/dist/support.js:4
+msgid "Create optimized SEO titles & meta descriptions with AI"
+msgstr "Opret optimerede SEO-titler & metabeskrivelser med AI"
+
+#: src/presenters/admin/sidebar-presenter.php:84 js/dist/ai-consent.js:2
+#: js/dist/ai-generator.js:2 js/dist/block-editor.js:18
+#: js/dist/classic-editor.js:1 js/dist/editor-modules.js:116
+#: js/dist/externals-components.js:127 js/dist/general-page.js:5
+#: js/dist/integrations-page.js:28 js/dist/new-settings.js:5
+#: js/dist/redirects.js:1 js/dist/support.js:4
+msgid "Make sure search engines show the right version of your product page"
+msgstr "Sørg for at søgemaskinerne viser den rigtige version af din produktside"
+
+#: src/presenters/admin/sidebar-presenter.php:83 js/dist/ai-consent.js:2
+#: js/dist/ai-generator.js:2 js/dist/block-editor.js:18
+#: js/dist/classic-editor.js:1 js/dist/editor-modules.js:116
+#: js/dist/externals-components.js:127 js/dist/general-page.js:5
+#: js/dist/integrations-page.js:28 js/dist/new-settings.js:5
+#: js/dist/redirects.js:1 js/dist/support.js:4
+msgid "Add product details to help your listings stand out"
+msgstr "Tilføj produktdetaljer for at hjælpe med at fremhæve dine annoncer"
+
+#: src/task-list/application/tasks/enable-llms-txt.php:106
+msgid "Create an llms.txt file"
+msgstr "Opret en llms.txt-fil"
+
+#: src/task-list/application/tasks/enable-llms-txt.php:93
+msgid "Enable llms.txt"
+msgstr "Aktiver llms.txt"
+
+#: src/task-list/application/tasks/delete-hello-world.php:115
+msgid "Leaving placeholder content makes your site look unfinished and untrustworthy. Removing it keeps your site clean and professional for visitors and search engines."
+msgstr "Ved at have pladsholder-indhold på dit websted, kan det virke ufærdigt og utroværdigt. Ved at fjerne det vil dit websted holdes rent og professionelt for besøgende og søgemaskiner."
+
+#: src/task-list/application/tasks/delete-hello-world.php:114
+msgid "Remove the “Hello World” post"
+msgstr "Fjern indlægget \"Hej verden\"."
+
+#: src/task-list/application/tasks/delete-hello-world.php:101
+msgid "Delete for me"
+msgstr "Slet for mig"
+
+#: src/task-list/application/tasks/create-new-content.php:109
+msgid "Plan a topic, write your post, and use the SEO and Readability Analyses to refine it before publishing."
+msgstr "Planlæg et emne, skriv dit indlæg og brug SEO- og læsbarhedanalyser til at finpudse det før udgivelse."
+
+#: src/task-list/application/tasks/create-new-content.php:108
+msgid "Long gaps without new content slow down your traffic growth. Publishing regularly gives search engines and visitors a reason to return."
+msgstr "Lange ophold uden nyt indhold sløver væksten i trafikken. Ved at udgive regelmæssigt giver det søgemaskiner og besøgende en grund til at vende tilbage."
+
+#. translators: %1$s expands to "Yoast SEO".
+#: src/alerts/application/ping-other-admins/ping-other-admins-alert.php:174
+msgid "Looks like you’re new here. %1$s makes it easy to optimize your website for search engines. Want to keep your site healthy and easier to find? Sign up below to receive practical emails to get you started!"
+msgstr "Det ser ud til, at du er ny her. %1$s gør det nemt at optimere dit websted til søgemaskiner. Vil du holde dit websted sundt og nemmere at finde? Tilmeld dig praktiske nyhedsbreve for at komme i gang."
 
 #: src/task-list/application/tasks/complete-ftc.php:77
 #: js/dist/installation-success.js:3
@@ -230,7 +407,7 @@ msgstr "%s holder din llms.txt-fil opdateret. Det gør det lettere for LLM'er at
 msgid "Your llms.txt file is auto-generated by %s"
 msgstr "Din llms.txt-fil er automatisk genereret af %s"
 
-#: src/dashboard/user-interface/tracking/setup-steps-tracking-route.php:149
+#: src/dashboard/user-interface/tracking/setup-steps-tracking-route.php:142
 msgid "No valid parameters were passed."
 msgstr "Der blev ikke videregivet nogen gyldige parametre."
 
@@ -411,7 +588,7 @@ msgid "30% OFF"
 msgstr "30% RABAT"
 
 #: admin/views/class-yoast-feature-toggles.php:206 js/dist/new-settings.js:28
-#: js/dist/new-settings.js:322
+#: js/dist/new-settings.js:342
 msgid "AI title & description generator"
 msgstr "AI-titel og beskrivelsesgenerator"
 
@@ -468,7 +645,7 @@ msgid "Support"
 msgstr "Support"
 
 #: src/integrations/admin/crawl-settings-integration.php:163
-#: js/dist/new-settings.js:28 js/dist/new-settings.js:174
+#: js/dist/new-settings.js:28 js/dist/new-settings.js:184
 msgid "Prevent Google AdsBot from crawling"
 msgstr "Undgå, at Google AdsBot crawler"
 
@@ -655,7 +832,7 @@ msgstr "BLACK FRIDAY | 30% RABAT"
 #: admin/views/class-yoast-feature-toggles.php:210 js/dist/general-page.js:12
 #: js/dist/general-page.js:24 js/dist/integrations-page.js:3
 #: js/dist/integrations-page.js:6 js/dist/integrations-page.js:18
-#: js/dist/integrations-page.js:28 js/dist/new-settings.js:322
+#: js/dist/integrations-page.js:28 js/dist/new-settings.js:48
 #: js/dist/plans.js:3 js/dist/plans.js:7
 msgid "Learn more"
 msgstr "Lær mere"
@@ -678,7 +855,7 @@ msgid "%1$s attempted to load the class %2$s but it could not be found."
 msgstr "%1$s forsøgte at indlæse klassen %2$s men den kunne ikke findes."
 
 #: src/integrations/admin/crawl-settings-integration.php:189
-#: js/dist/new-settings.js:174
+#: js/dist/new-settings.js:184
 msgid "Remove unused resources"
 msgstr "Fjern ubrugte ressourcer"
 
@@ -695,7 +872,7 @@ msgid "The inclusive language analysis offers suggestions to write more inclusiv
 msgstr "Den inkluderende sproganalyse giver forslag til at skrive mere inkluderende tekster."
 
 #: admin/views/class-yoast-feature-toggles.php:91 js/dist/new-settings.js:28
-#: js/dist/new-settings.js:322
+#: js/dist/new-settings.js:342
 msgid "Inclusive language analysis"
 msgstr "Deaktiver inkluderende sproganalyse"
 
@@ -748,7 +925,7 @@ msgid "Permalink cleanup settings"
 msgstr "Indstillinger for permalink-oprydning"
 
 #: admin/views/class-yoast-feature-toggles.php:195 js/dist/new-settings.js:28
-#: js/dist/new-settings.js:326
+#: js/dist/new-settings.js:344
 msgid "IndexNow"
 msgstr "IndexNow"
 
@@ -757,17 +934,17 @@ msgid "Find out how IndexNow can help your site."
 msgstr "Find ud af, hvordan IndexNow kan hjælpe dit websted."
 
 #: src/integrations/admin/crawl-settings-integration.php:154
-#: js/dist/new-settings.js:28 js/dist/new-settings.js:175
+#: js/dist/new-settings.js:28 js/dist/new-settings.js:185
 msgid "Filter searches with emojis and other special characters"
 msgstr "Filtrer søgninger med emojis og andre specialtegn"
 
 #: src/integrations/admin/crawl-settings-integration.php:155
-#: js/dist/new-settings.js:28 js/dist/new-settings.js:175
+#: js/dist/new-settings.js:28 js/dist/new-settings.js:185
 msgid "Filter searches with common spam patterns"
 msgstr "Filtrer søgninger med almindelige spammønstre"
 
 #: src/integrations/admin/crawl-settings-integration.php:153
-#: js/dist/new-settings.js:28 js/dist/new-settings.js:175
+#: js/dist/new-settings.js:28 js/dist/new-settings.js:185
 msgid "Filter search terms"
 msgstr "Filtrer søgeord"
 
@@ -775,7 +952,7 @@ msgstr "Filtrer søgeord"
 msgid "Campaign tracking URL parameters"
 msgstr "Parametre for URL til kampagnesporing"
 
-#: admin/views/class-yoast-feature-toggles.php:198 js/dist/new-settings.js:326
+#: admin/views/class-yoast-feature-toggles.php:198 js/dist/new-settings.js:344
 msgid "Automatically ping search engines like Bing and Yandex whenever you publish, update or delete a post."
 msgstr "Ping automatisk søgemaskiner som Bing og Yandex, når du udgiver, opdaterer eller sletter et indlæg."
 
@@ -840,7 +1017,7 @@ msgid "Emoji scripts"
 msgstr "Emoji-scripts"
 
 #: src/integrations/admin/crawl-settings-integration.php:143
-#: js/dist/new-settings.js:28 js/dist/new-settings.js:174
+#: js/dist/new-settings.js:28 js/dist/new-settings.js:184
 msgid "Pingback HTTP header"
 msgstr "Pingback HTTP-header"
 
@@ -986,8 +1163,9 @@ msgstr "Blogindlæg"
 
 #. translators: %s: expands to 'Yoast SEO Premium'.
 #. translators: 1: Yoast WooCommerce SEO
+#. translators: %s: Yoast WooCommerce SEO
 #: src/integrations/admin/workouts-integration.php:315
-#: js/dist/integrations-page.js:11
+#: js/dist/integrations-page.js:11 js/dist/new-settings.js:45
 msgid "Activate %s"
 msgstr "Aktiver %s"
 
@@ -1162,13 +1340,13 @@ msgid "Find out how Insights can help you improve your content."
 msgstr "Find ud af, hvordan Indblik kan hjælpe dig med at forbedre dit indhold."
 
 #: admin/views/class-yoast-feature-toggles.php:125 js/dist/new-settings.js:28
-#: js/dist/new-settings.js:322
+#: js/dist/new-settings.js:342
 msgid "Link suggestions"
 msgstr "Linkforslag"
 
 #: admin/views/class-yoast-feature-toggles.php:116 js/dist/block-editor.js:226
 #: js/dist/block-editor.js:488 js/dist/classic-editor.js:209
-#: js/dist/new-settings.js:28 js/dist/new-settings.js:322
+#: js/dist/new-settings.js:28 js/dist/new-settings.js:342
 msgid "Insights"
 msgstr "Indsigter"
 
@@ -1243,7 +1421,7 @@ msgstr "Automatiske opdateringer deaktiveres på basis af denne indstilling for 
 #: src/presenters/admin/badge-presenter.php:87
 #: js/dist/externals-components.js:422 js/dist/externals/componentsNew.js:1039
 #: js/dist/integrations-page.js:3 js/dist/integrations-page.js:6
-#: js/dist/integrations-page.js:18 js/dist/new-settings.js:366
+#: js/dist/integrations-page.js:18 js/dist/new-settings.js:386
 msgid "New"
 msgstr "Tilføj"
 
@@ -1274,7 +1452,7 @@ msgstr "Vi bemærker, at du har installeret WPML. Hvis du vil sikre dig, at dine
 msgid "Because of a change in your category base setting, some of your SEO data needs to be reprocessed."
 msgstr "På grund af en ændring i kategoribasisindstillingen skal nogle af SEO-dataene genbehandles."
 
-#: admin/views/class-yoast-feature-toggles.php:189 js/dist/new-settings.js:322
+#: admin/views/class-yoast-feature-toggles.php:189 js/dist/new-settings.js:344
 msgid "This adds an author byline and reading time estimate to the article’s snippet when shared on Slack."
 msgstr "Dette føjer en forfatterkreditering og et læsetidsestimat til artiklens uddrag, når det deles på Slack."
 
@@ -1482,7 +1660,7 @@ msgstr "Webside"
 
 #: admin/views/class-yoast-feature-toggles.php:165
 #: admin/views/class-yoast-feature-toggles.php:166 js/dist/new-settings.js:28
-#: js/dist/new-settings.js:319
+#: js/dist/new-settings.js:341
 msgid "Usage tracking"
 msgstr "Brugersporing"
 
@@ -1730,8 +1908,8 @@ msgstr "Vil du lære SEO af team Yoast? Så tag et kik på %1$s!"
 
 #: admin/metabox/class-metabox.php:424 js/dist/block-editor.js:513
 #: js/dist/new-settings.js:23 js/dist/new-settings.js:30
-#: js/dist/new-settings.js:34 js/dist/new-settings.js:64
-#: js/dist/new-settings.js:264
+#: js/dist/new-settings.js:34 js/dist/new-settings.js:39
+#: js/dist/new-settings.js:74 js/dist/new-settings.js:274
 msgid "Schema"
 msgstr "Skema"
 
@@ -1809,7 +1987,7 @@ msgstr "Google har afviklet deres crawl-fejl API. Derfor bliver mulige fejl ved 
 
 #: src/integrations/admin/first-time-configuration-integration.php:497
 #: src/integrations/admin/first-time-configuration-integration.php:510
-#: js/dist/new-settings.js:334
+#: js/dist/new-settings.js:354
 msgid "Organization"
 msgstr "Organisation"
 
@@ -1824,7 +2002,7 @@ msgstr "Du har tidligere opsat dit websted til at repræsentere en person. Vi ha
 msgid "(if one exists)"
 msgstr "(hvis en findes)"
 
-#: src/generators/schema/article.php:141
+#: src/generators/schema/article.php:136
 msgid "Uncategorized"
 msgstr "Ikke kategoriseret"
 
@@ -2150,7 +2328,7 @@ msgid "Caption"
 msgstr "Billedtekst"
 
 #: inc/class-wpseo-replace-vars.php:1475 js/dist/externals-redux.js:1
-#: js/dist/new-settings.js:28 js/dist/new-settings.js:316
+#: js/dist/new-settings.js:28 js/dist/new-settings.js:338
 msgid "Tagline"
 msgstr "Tagline"
 
@@ -2447,7 +2625,7 @@ msgstr "SEO-analyse kommer med forslag til, hvordan du forbedrer din teksts SEO.
 msgid "Learn how the SEO analysis can help you rank."
 msgstr "Lær, hvordan SEO-analyse kan hjælpe dig med dine søgemaskineplaceringer."
 
-#: admin/views/class-yoast-feature-toggles.php:85 js/dist/new-settings.js:322
+#: admin/views/class-yoast-feature-toggles.php:85 js/dist/new-settings.js:342
 msgid "The readability analysis offers suggestions to improve the structure and style of your text."
 msgstr "Læsbarhedsanalysen kommer med forslag til, hvordan du kan forbedre din teksts struktur og stil."
 
@@ -2476,7 +2654,7 @@ msgstr "%s-integration"
 
 #: admin/views/class-yoast-feature-toggles.php:75
 #: js/dist/externals-components.js:402 js/dist/new-settings.js:28
-#: js/dist/new-settings.js:322
+#: js/dist/new-settings.js:342
 msgid "SEO analysis"
 msgstr "SEO-analyse"
 
@@ -2634,7 +2812,7 @@ msgid "Request method %1$s is not valid."
 msgstr "Forespørgselsmetoden %1$s er ikke gyldig."
 
 #: admin/views/class-yoast-feature-toggles.php:108 js/dist/new-settings.js:28
-#: js/dist/new-settings.js:322
+#: js/dist/new-settings.js:342
 msgid "Text link counter"
 msgstr "Tekstlinktæller"
 
@@ -2652,7 +2830,7 @@ msgstr "Læsbarheds-score"
 #: admin/filters/class-cornerstone-filter.php:87
 #: admin/views/class-yoast-feature-toggles.php:100
 #: js/dist/externals-components.js:20 js/dist/new-settings.js:28
-#: js/dist/new-settings.js:322
+#: js/dist/new-settings.js:342
 msgid "Cornerstone content"
 msgstr "Hjørnestensindhold"
 
@@ -2745,7 +2923,7 @@ msgid "The %1$s admin bar menu contains useful links to third-party tools for an
 msgstr "%1$s&#39;s menu i kontrolbjælken rummer en række nyttige links til tredjeparts-værktøjer, der kan analysere sider, og gør det let at se, om du har nye notifikationer."
 
 #: admin/views/class-yoast-feature-toggles.php:147 js/dist/new-settings.js:28
-#: js/dist/new-settings.js:322 js/dist/new-settings.js:324
+#: js/dist/new-settings.js:344 js/dist/new-settings.js:346
 msgid "Admin bar menu"
 msgstr "Kontrolbjælkemenu"
 
@@ -2758,10 +2936,10 @@ msgstr "Funktioner"
 #: js/dist/externals/searchMetadataPreviews.js:62 js/dist/new-settings.js:21
 #: js/dist/new-settings.js:25 js/dist/new-settings.js:28
 #: js/dist/new-settings.js:30 js/dist/new-settings.js:34
-#: js/dist/new-settings.js:61 js/dist/new-settings.js:75
-#: js/dist/new-settings.js:105 js/dist/new-settings.js:134
-#: js/dist/new-settings.js:199 js/dist/new-settings.js:216
-#: js/dist/new-settings.js:225 js/dist/new-settings.js:264
+#: js/dist/new-settings.js:71 js/dist/new-settings.js:85
+#: js/dist/new-settings.js:115 js/dist/new-settings.js:144
+#: js/dist/new-settings.js:209 js/dist/new-settings.js:226
+#: js/dist/new-settings.js:235 js/dist/new-settings.js:274
 msgid "SEO title"
 msgstr "SEO-titel"
 
@@ -2884,7 +3062,7 @@ msgstr "Læsbarhed"
 
 #: admin/views/class-yoast-feature-toggles.php:83
 #: js/dist/externals-components.js:394 js/dist/new-settings.js:28
-#: js/dist/new-settings.js:322
+#: js/dist/new-settings.js:342
 msgid "Readability analysis"
 msgstr "Læsbarhedsanalyse"
 
@@ -2984,8 +3162,8 @@ msgid "Keep"
 msgstr "Behold"
 
 #: admin/pages/network.php:20 admin/views/tabs/network/integrations.php:22
-#: src/integrations/admin/integrations-page.php:131
-#: js/dist/integrations-page.js:44
+#: src/integrations/admin/integrations-page.php:126
+#: js/dist/integrations-page.js:45
 msgid "Integrations"
 msgstr "Integrationer"
 
@@ -3176,7 +3354,7 @@ msgstr "Anerkendelse"
 msgid "Default settings"
 msgstr "Standardindstillinger"
 
-#: admin/views/tool-bulk-editor.php:113 js/dist/new-settings.js:266
+#: admin/views/tool-bulk-editor.php:113 js/dist/new-settings.js:276
 msgid "Description"
 msgstr "Beskrivelse"
 
@@ -3435,7 +3613,7 @@ msgid "Permalink"
 msgstr "Permanente links"
 
 #: src/integrations/admin/first-time-configuration-integration.php:502
-#: js/dist/new-settings.js:334
+#: js/dist/new-settings.js:354
 msgid "Person"
 msgstr "Person"
 
@@ -3678,11 +3856,11 @@ msgstr "Stort SEO problem: Du blokerer adgangen for robotter."
 #: js/dist/externals/replacementVariableEditor.js:27
 #: js/dist/externals/searchMetadataPreviews.js:62 js/dist/new-settings.js:21
 #: js/dist/new-settings.js:25 js/dist/new-settings.js:30
-#: js/dist/new-settings.js:34 js/dist/new-settings.js:61
-#: js/dist/new-settings.js:75 js/dist/new-settings.js:105
-#: js/dist/new-settings.js:134 js/dist/new-settings.js:199
-#: js/dist/new-settings.js:216 js/dist/new-settings.js:225
-#: js/dist/new-settings.js:264
+#: js/dist/new-settings.js:34 js/dist/new-settings.js:71
+#: js/dist/new-settings.js:85 js/dist/new-settings.js:115
+#: js/dist/new-settings.js:144 js/dist/new-settings.js:209
+#: js/dist/new-settings.js:226 js/dist/new-settings.js:235
+#: js/dist/new-settings.js:274
 msgid "Meta description"
 msgstr "Meta beskrivelse"
 
@@ -3701,8 +3879,8 @@ msgid "No Snippet"
 msgstr "Intet uddrag"
 
 #: admin/class-yoast-network-admin.php:43 src/config/schema-types.php:163
-#: src/integrations/settings-integration.php:633 js/dist/new-settings.js:12
-#: js/dist/new-settings.js:368
+#: src/integrations/settings-integration.php:645 js/dist/new-settings.js:12
+#: js/dist/new-settings.js:388
 msgid "None"
 msgstr "Ingen"
 
@@ -3754,7 +3932,7 @@ msgstr "SEO titel"
 msgid "Search Console"
 msgstr "Søgekonsol"
 
-#: admin/class-admin.php:224 src/integrations/settings-integration.php:369
+#: admin/class-admin.php:224 src/integrations/settings-integration.php:380
 #: src/presenters/meta-description-presenter.php:37 js/dist/how-to-block.js:11
 msgid "Settings"
 msgstr "Indstillinger"
@@ -3772,7 +3950,7 @@ msgstr "Indstillingerne er importeret succesfuldt."
 msgid "Social"
 msgstr "Social"
 
-#: admin/menu/class-admin-menu.php:96 js/dist/new-settings.js:322
+#: admin/menu/class-admin-menu.php:96 js/dist/new-settings.js:346
 msgid "Tools"
 msgstr "Værktøjer"
 
@@ -3843,7 +4021,7 @@ msgstr "Meta Robots Avanceret"
 
 #: admin/menu/class-network-admin-menu.php:56 admin/pages/network.php:18
 #: src/general/user-interface/general-page-integration.php:213
-#: js/dist/new-settings.js:366
+#: js/dist/new-settings.js:386
 msgid "General"
 msgstr "Generelt"
 
@@ -3853,7 +4031,7 @@ msgid "Post has an invalid Content Type: %s."
 msgstr "Indlæg har en ugyldig indholdstype: %s."
 
 #: admin/views/class-yoast-feature-toggles.php:136 js/dist/new-settings.js:28
-#: js/dist/new-settings.js:324 js/dist/new-settings.js:326
+#: js/dist/new-settings.js:342 js/dist/new-settings.js:344
 msgid "XML sitemaps"
 msgstr "XML-sitemaps"
 
