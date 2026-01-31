@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 6.9.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-11-18 15:47:02+0000\n"
+"PO-Revision-Date: 2026-01-29 07:47:58+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -285,6 +285,31 @@ msgstr "januar"
 #, gp-priority: high
 msgid "Uncategorized"
 msgstr "Ikke-kategoriseret"
+
+#. translators: %1$s is the feed URL, %2$s is the error message.
+#: wp-includes/feed.php:880
+msgid "Error fetching feed %1$s: %2$s"
+msgstr "Fejl ved hentning af feed %1$s: %2$s"
+
+#. translators: 1: Style handle, 2: List of missing dependency handles.
+#: wp-includes/class-wp-styles.php:509
+msgid "The style with the handle \"%1$s\" was enqueued with dependencies that are not registered: %2$s."
+msgstr "Stilen med håndtaget \"%1$s\" blev køet med afhængigheder, der ikke er registreret: %2$s."
+
+#. translators: 1: Script handle, 2: List of missing dependency handles.
+#: wp-includes/class-wp-scripts.php:1180
+msgid "The script with the handle \"%1$s\" was enqueued with dependencies that are not registered: %2$s."
+msgstr "Scriptet med håndtaget \"%1$s\" blev kørt med afhængigheder, der ikke er registreret: %2$s."
+
+#. translators: 1: Script module ID, 2: List of missing dependency IDs.
+#: wp-includes/class-wp-script-modules.php:743
+msgid "The script module with the ID \"%1$s\" was enqueued with dependencies that are not registered: %2$s."
+msgstr "Scriptmodulet med ID'et \"%1$s\" blev kørt med afhængigheder, der ikke er registreret: %2$s."
+
+#. translators: 1: Handle, 2: List of missing dependency handles.
+#: wp-includes/class-wp-dependencies.php:575
+msgid "The handle \"%1$s\" was enqueued with dependencies that are not registered: %2$s."
+msgstr "Håndtaget \"%1$s\" blev kørt med afhængigheder, der ikke er registreret: %2$s."
 
 #: wp-includes/blocks/terms-query/block.json
 msgctxt "block keyword"
@@ -669,19 +694,19 @@ msgid "Cannot supply a fetchpriority `%1$s` for script `%2$s` because it is an a
 msgstr "Kan ikke angive en fetchpriority `%1$s` for scriptet `%2$s`, fordi det er et alias (det mangler en `src`-værdi)."
 
 #. translators: %s: Invalid fetchpriority.
-#: wp-includes/class-wp-script-modules.php:214
+#: wp-includes/class-wp-script-modules.php:225
 msgid "Invalid fetchpriority: %s"
 msgstr "Ugyldig fetchpriority: %s"
 
 #. translators: 1: $fetchpriority, 2: $id
 #. translators: 1: $fetchpriority, 2: $handle
-#: wp-includes/class-wp-script-modules.php:150
+#: wp-includes/class-wp-script-modules.php:161
 #: wp-includes/class-wp-scripts.php:888
 msgid "Invalid fetchpriority `%1$s` defined for `%2$s` during script registration."
 msgstr "Ugyldig fetchpriority `%1$s` defineret for `%2$s` under scriptregistrering."
 
-#: wp-includes/class-wp-script-modules.php:113
-#: wp-includes/class-wp-script-modules.php:285
+#: wp-includes/class-wp-script-modules.php:124
+#: wp-includes/class-wp-script-modules.php:296
 msgid "Non-empty string required for id."
 msgstr "Ikke-tom tekststreng kræves for id."
 
@@ -698,7 +723,7 @@ msgstr "Det anbefales ikke at bruge en forenklet adresseparser. Installer PHP IM
 msgid "Server does not support SMTPUTF8 needed to send to Unicode addresses"
 msgstr "Serveren understøtter ikke SMTPUTF8, der er nødvendig for at sende til Unicode-adresser"
 
-#: wp-includes/class-wp-dependencies.php:296
+#: wp-includes/class-wp-dependencies.php:320
 msgid "IE conditional comments are ignored by all supported browsers."
 msgstr "IE-betingede kommentarer ignoreres af alle understøttede browsere."
 
@@ -2595,11 +2620,11 @@ msgstr "underemne"
 msgid "Some of the %1$s %2$s values are invalid"
 msgstr "Nogle af værdierne %1$s %2$s er ugyldige"
 
-#: wp-includes/class-wp-script-modules.php:135
+#: wp-includes/class-wp-script-modules.php:146
 msgid "Entries in dependencies array must be either strings or arrays with an id key."
 msgstr "Posterne i dependencies-arrayet skal enten være strenge eller arrays med en id-nøgle."
 
-#: wp-includes/class-wp-script-modules.php:122
+#: wp-includes/class-wp-script-modules.php:133
 msgid "Missing required id key in entry among dependencies array."
 msgstr "Mangler påkrævet id-nøgle i post blandt afhængighedsarray."
 
@@ -3531,19 +3556,19 @@ msgstr "Tjek venligst, at %s PHP ekstension er installeret og aktiveret."
 msgid "When using the %1$s constant, make sure to set these globals to an array: %2$s."
 msgstr "Når du bruger konstanten %1$s, skal du sørge for at sætte disse globaler til et array: %2$s."
 
-#: wp-includes/html-api/class-wp-html-tag-processor.php:4343
+#: wp-includes/html-api/class-wp-html-tag-processor.php:4345
 msgid "The query argument must be an array or a tag name."
 msgstr "Forespørgselsargumentet skal være et array eller et tagnavn."
 
-#: wp-includes/html-api/class-wp-html-tag-processor.php:3961
+#: wp-includes/html-api/class-wp-html-tag-processor.php:3963
 msgid "Invalid attribute name."
 msgstr "Ugyldigt egenskabsnavn."
 
-#: wp-includes/html-api/class-wp-html-tag-processor.php:2629
+#: wp-includes/html-api/class-wp-html-tag-processor.php:2631
 msgid "Too many calls to seek() - this can lead to performance issues."
 msgstr "For mange kald til seek() - dette kan føre til ydelsesproblemer."
 
-#: wp-includes/html-api/class-wp-html-tag-processor.php:2611
+#: wp-includes/html-api/class-wp-html-tag-processor.php:2613
 msgid "Unknown bookmark name."
 msgstr "Ukendt bogmærke."
 
@@ -7674,7 +7699,7 @@ msgstr "Dette tema virker ikke med din version af WordPress."
 #: wp-admin/includes/class-wp-plugins-list-table.php:1457
 #: wp-admin/includes/plugin.php:1153 wp-admin/includes/theme.php:928
 #: wp-admin/includes/theme.php:959 wp-admin/includes/theme.php:1005
-#: wp-admin/includes/theme.php:1028 wp-admin/includes/update-core.php:1152
+#: wp-admin/includes/theme.php:1028 wp-admin/includes/update-core.php:1153
 #: wp-admin/includes/update.php:786 wp-admin/includes/update.php:813
 #: wp-admin/install.php:248 wp-admin/theme-install.php:358
 #: wp-admin/theme-install.php:381 wp-admin/theme-install.php:563
@@ -7809,7 +7834,7 @@ msgstr "Websted"
 msgid "Crop"
 msgstr "Beskær"
 
-#: wp-includes/class-wp-script-modules.php:921 wp-includes/js/dist/a11y.js:89
+#: wp-includes/class-wp-script-modules.php:947 wp-includes/js/dist/a11y.js:89
 msgid "Notifications"
 msgstr "Notifikationer"
 
@@ -8737,7 +8762,7 @@ msgstr "Indlæggets status %1$s er ikke registreret, så det er nok ikke pålide
 
 #. translators: %s: Comment link.
 #: wp-includes/comment-template.php:1042 wp-admin/comment.php:219
-#: wp-admin/includes/class-wp-comments-list-table.php:959
+#: wp-admin/includes/class-wp-comments-list-table.php:960
 msgid "In reply to %s."
 msgstr "Som svar til %s."
 
@@ -9371,7 +9396,7 @@ msgstr "[%s] Login detaljer"
 #: wp-includes/media-template.php:584 wp-includes/media-template.php:751
 #: wp-includes/media.php:5015 wp-admin/comment.php:139
 #: wp-admin/edit-form-comment.php:242
-#: wp-admin/includes/class-wp-comments-list-table.php:391
+#: wp-admin/includes/class-wp-comments-list-table.php:392
 #: wp-admin/includes/class-wp-media-list-table.php:187
 #: wp-admin/includes/class-wp-posts-list-table.php:448
 #: wp-admin/includes/media.php:1746 wp-admin/includes/meta-boxes.php:367
@@ -14631,7 +14656,7 @@ msgstr "Missionen udført. Besked %s slettet."
 msgid "Posted title:"
 msgstr "Titel på det udgivne:"
 
-#: wp-mail.php:256 wp-admin/includes/plugin-install.php:660
+#: wp-mail.php:256 wp-admin/includes/plugin-install.php:658
 msgid "Author:"
 msgstr "Forfatter:"
 
@@ -15993,7 +16018,7 @@ msgid "Edit Selection"
 msgstr "Rediger valg"
 
 #: wp-includes/js/dist/editor.js:5777
-#: wp-admin/includes/class-wp-comments-list-table.php:823
+#: wp-admin/includes/class-wp-comments-list-table.php:824
 #: wp-admin/includes/class-wp-media-list-table.php:797
 #: wp-admin/includes/class-wp-posts-list-table.php:1529
 #: wp-admin/includes/dashboard.php:794
@@ -17530,7 +17555,7 @@ msgstr "JavaScript skal være aktiveret for at bruge denne funktion."
 #: wp-admin/edit-form-advanced.php:662 wp-admin/includes/ajax-actions.php:1643
 #: wp-admin/includes/ajax-actions.php:2892
 #: wp-admin/includes/ajax-actions.php:2895
-#: wp-admin/includes/class-wp-comments-list-table.php:1051
+#: wp-admin/includes/class-wp-comments-list-table.php:1052
 #: wp-admin/includes/class-wp-posts-list-table.php:1205
 #: wp-admin/includes/class-wp-privacy-requests-table.php:496
 #: wp-admin/includes/schema.php:438 wp-admin/options-general.php:522
@@ -17668,7 +17693,7 @@ msgstr "Fravælg"
 
 #: wp-includes/media-template.php:587 wp-includes/media-template.php:754
 #: wp-includes/media.php:5017 wp-includes/js/dist/editor.js:5938
-#: wp-admin/includes/class-wp-comments-list-table.php:389
+#: wp-admin/includes/class-wp-comments-list-table.php:390
 #: wp-admin/includes/class-wp-media-list-table.php:185
 #: wp-admin/includes/class-wp-media-list-table.php:190
 #: wp-admin/includes/class-wp-posts-list-table.php:446
@@ -21370,7 +21395,7 @@ msgstr "(Rediger)"
 #: wp-includes/class-walker-comment.php:353
 #: wp-includes/class-walker-comment.php:453 wp-admin/comment.php:232
 #: wp-admin/edit-form-advanced.php:166 wp-admin/edit-form-comment.php:146
-#: wp-admin/includes/class-wp-comments-list-table.php:1047
+#: wp-admin/includes/class-wp-comments-list-table.php:1048
 #: wp-admin/includes/class-wp-posts-list-table.php:1201
 #: wp-admin/includes/class-wp-privacy-requests-table.php:492
 #: wp-admin/includes/meta-boxes.php:232 wp-admin/includes/meta-boxes.php:438
@@ -22256,7 +22281,7 @@ msgstr "Pingback"
 #: wp-includes/js/dist/block-library.js:8880
 #: wp-includes/js/dist/block-library.js:9756
 #: wp-includes/js/dist/editor.js:29521
-#: wp-admin/includes/class-wp-comments-list-table.php:854
+#: wp-admin/includes/class-wp-comments-list-table.php:855
 #: wp-admin/includes/dashboard.php:768 wp-admin/js/edit-comments.js:373
 #: wp-admin/js/edit-comments.js:1015
 msgid "Reply"
@@ -22613,7 +22638,7 @@ msgstr "Udgiv"
 #: wp-includes/comment.php:3918 wp-includes/link-template.php:3333
 #: wp-includes/js/dist/edit-site.js:21020 wp-includes/js/dist/editor.js:6877
 #: wp-admin/edit-comments.php:199 wp-admin/edit-comments.php:260
-#: wp-admin/includes/class-wp-comments-list-table.php:512
+#: wp-admin/includes/class-wp-comments-list-table.php:513
 #: wp-admin/includes/class-wp-media-list-table.php:373
 #: wp-admin/includes/class-wp-media-list-table.php:375
 #: wp-admin/includes/class-wp-media-list-table.php:403
@@ -22679,7 +22704,7 @@ msgstr "Søgeresultater for &#8220;%s&#8221;"
 #: wp-admin/includes/class-wp-media-list-table.php:554
 #: wp-admin/includes/class-wp-plugin-install-list-table.php:710
 #: wp-admin/includes/class-wp-privacy-requests-table.php:487
-#: wp-admin/includes/plugin-install.php:665 wp-admin/includes/revision.php:254
+#: wp-admin/includes/plugin-install.php:663 wp-admin/includes/revision.php:254
 #: wp-admin/includes/revision.php:297
 msgid "%s ago"
 msgstr "%s siden"
@@ -22696,8 +22721,8 @@ msgid "View"
 msgstr "Vis"
 
 #: wp-includes/js/dist/editor.js:4982
-#: wp-admin/includes/class-wp-comments-list-table.php:383
-#: wp-admin/includes/class-wp-comments-list-table.php:805
+#: wp-admin/includes/class-wp-comments-list-table.php:384
+#: wp-admin/includes/class-wp-comments-list-table.php:806
 #: wp-admin/includes/class-wp-media-list-table.php:184
 #: wp-admin/includes/class-wp-media-list-table.php:789
 #: wp-admin/includes/class-wp-posts-list-table.php:438
@@ -22726,7 +22751,7 @@ msgstr "Genskab"
 #: wp-includes/js/dist/edit-site.js:43392 wp-includes/js/dist/editor.js:29575
 #: wp-admin/comment.php:251 wp-admin/edit-form-comment.php:159
 #: wp-admin/includes/class-walker-nav-menu-edit.php:187
-#: wp-admin/includes/class-wp-comments-list-table.php:832
+#: wp-admin/includes/class-wp-comments-list-table.php:833
 #: wp-admin/includes/class-wp-links-list-table.php:351
 #: wp-admin/includes/class-wp-media-list-table.php:778
 #: wp-admin/includes/class-wp-posts-list-table.php:440
@@ -22799,8 +22824,8 @@ msgstr "URL"
 #: wp-admin/comment.php:185 wp-admin/edit-form-comment.php:48
 #: wp-admin/includes/class-plugin-installer-skin.php:224
 #: wp-admin/includes/class-theme-installer-skin.php:257
-#: wp-admin/includes/class-wp-comments-list-table.php:480
-#: wp-admin/includes/class-wp-comments-list-table.php:554
+#: wp-admin/includes/class-wp-comments-list-table.php:481
+#: wp-admin/includes/class-wp-comments-list-table.php:555
 #: wp-admin/includes/class-wp-debug-data.php:1130
 #: wp-admin/includes/class-wp-debug-data.php:1250
 #: wp-admin/includes/class-wp-media-list-table.php:338
@@ -22833,7 +22858,7 @@ msgstr "Besøg websted"
 #. https://www.php.net/manual/en/datetime.format.php
 #: wp-includes/class-wp-editor.php:1823 wp-admin/comment.php:234
 #: wp-admin/includes/ajax-actions.php:2290
-#: wp-admin/includes/class-wp-comments-list-table.php:1049
+#: wp-admin/includes/class-wp-comments-list-table.php:1050
 #: wp-admin/includes/class-wp-media-list-table.php:556
 #: wp-admin/includes/class-wp-posts-list-table.php:1203
 #: wp-admin/includes/class-wp-privacy-requests-table.php:494
