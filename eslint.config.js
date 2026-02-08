@@ -1,6 +1,5 @@
 import eslint from '@eslint/js';
 import tseslint from 'typescript-eslint';
-import onlyWarn from 'eslint-plugin-only-warn';
 import stylistic from '@stylistic/eslint-plugin';
 import { defineConfig } from 'eslint/config';
 
@@ -9,7 +8,6 @@ export default defineConfig(
   	...tseslint.configs.strict,
 	{
 		plugins: {
-			onlyWarn,
 			'@stylistic': stylistic
 		},
 		rules: {
