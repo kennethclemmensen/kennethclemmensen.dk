@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Yoast SEO &#8211; Advanced SEO with real-time guidance and built-in AI - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-01-24 15:13:35+0000\n"
+"PO-Revision-Date: 2026-02-14 19:07:52+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,27 +12,27 @@ msgstr ""
 "Project-Id-Version: Plugins - Yoast SEO &#8211; Advanced SEO with real-time guidance and built-in AI - Stable (latest release)\n"
 
 #. translators: %1$s expands to the post type name this task is about
-#: src/task-list/application/tasks/set-search-appearance-templates.php:133
+#: src/task-list/application/tasks/set-search-appearance-templates.php:134
 msgid "Generic titles and descriptions make your results unclear in search. Templates ensure every %1$s has a clear, click-worthy snippet automatically."
 msgstr "Generiske titler og beskrivelser gør dine resultater uklare i søgninger. Skabeloner sikrer hver %1$s automatisk har et klart og klikværdigt uddrag."
 
-#: src/task-list/application/tasks/set-search-appearance-templates.php:115
+#: src/task-list/application/tasks/set-search-appearance-templates.php:116
 msgid "Set search templates"
 msgstr "Opsæt søgeskabeloner"
 
-#: src/task-list/application/tasks/enable-llms-txt.php:107
+#: src/task-list/application/tasks/enable-llms-txt.php:108
 msgid "Without llms.txt, AI crawlers may not know how to treat your content. Publishing it helps communicate your preferences in a clearer way to AI tools."
 msgstr "Uden llms.txt, ved AI indexeringsrobotter måske ikke, hvordan de skal håndtere dit indhold. Ved at udgive filen hjælper du med at kommunikere dine præferencer på en tydeligere måde til AI-værktøjer."
 
-#: src/task-list/domain/exceptions/complete-llms-task-exception.php:16
+#: src/task-list/domain/exceptions/complete-llms-task-exception.php:17
 msgid "Failed to enable llms.txt option."
 msgstr "Kunne ikke aktivere llms.txt-muligheden."
 
-#: src/task-list/domain/exceptions/complete-hello-world-task-exception.php:16
+#: src/task-list/domain/exceptions/complete-hello-world-task-exception.php:17
 msgid "Failed to delete the Hello World post."
 msgstr "Kunne ikke slette indlægget Hej verden."
 
-#: src/task-list/application/tasks/set-search-appearance-templates.php:134
+#: src/task-list/application/tasks/set-search-appearance-templates.php:135
 msgid "Go to Search appearance, choose your post type, and set default title and meta description patterns."
 msgstr "Gå til søgeudseende, vælg din indlægstype og indstil standardudseende for titel og metabeskrivelse."
 
@@ -56,20 +56,20 @@ msgstr "Brug mindre tid på SEO-opgaver!"
 msgid "Grow your store's visibility!"
 msgstr "Få din butiks synlighed til at vokse!"
 
-#: src/task-list/application/tasks/create-new-content.php:107
+#: src/task-list/application/tasks/create-new-content.php:108
 msgid "Create new content"
 msgstr "Opret nyt indhold"
 
-#: src/task-list/application/tasks/create-new-content.php:94
+#: src/task-list/application/tasks/create-new-content.php:95
 msgid "Create new post"
 msgstr "Opret nyt indlæg"
 
 #. translators: %1$s expands to Yoast SEO
-#: src/task-list/application/tasks/complete-ftc.php:92
+#: src/task-list/application/tasks/complete-ftc.php:93
 msgid "Skipping setup limits how much %1$s can help you. Completing it makes sure the core settings are working in your favor."
 msgstr "Hvis du springer opsætningen over, er det begrænsetm hvor meget %1$s kan hjælpe dig. Ved at fuldføre sikrer du at de grundlæggende indstillinger arbejder til din fordel."
 
-#: src/task-list/application/tasks/complete-ftc.php:90
+#: src/task-list/application/tasks/complete-ftc.php:91
 msgid "Complete the First-time configuration"
 msgstr "Færdiggør førstegangskonfigurationen"
 
@@ -155,40 +155,40 @@ msgstr "Sørg for at søgemaskinerne viser den rigtige version af din produktsid
 msgid "Add product details to help your listings stand out"
 msgstr "Tilføj produktdetaljer for at hjælpe med at fremhæve dine annoncer"
 
-#: src/task-list/application/tasks/enable-llms-txt.php:106
+#: src/task-list/application/tasks/enable-llms-txt.php:107
 msgid "Create an llms.txt file"
 msgstr "Opret en llms.txt-fil"
 
-#: src/task-list/application/tasks/enable-llms-txt.php:93
+#: src/task-list/application/tasks/enable-llms-txt.php:94
 msgid "Enable llms.txt"
 msgstr "Aktiver llms.txt"
 
-#: src/task-list/application/tasks/delete-hello-world.php:115
+#: src/task-list/application/tasks/delete-hello-world.php:116
 msgid "Leaving placeholder content makes your site look unfinished and untrustworthy. Removing it keeps your site clean and professional for visitors and search engines."
 msgstr "Ved at have pladsholder-indhold på dit websted, kan det virke ufærdigt og utroværdigt. Ved at fjerne det vil dit websted holdes rent og professionelt for besøgende og søgemaskiner."
 
-#: src/task-list/application/tasks/delete-hello-world.php:114
+#: src/task-list/application/tasks/delete-hello-world.php:115
 msgid "Remove the “Hello World” post"
 msgstr "Fjern indlægget \"Hej verden\"."
 
-#: src/task-list/application/tasks/delete-hello-world.php:101
+#: src/task-list/application/tasks/delete-hello-world.php:102
 msgid "Delete for me"
 msgstr "Slet for mig"
 
-#: src/task-list/application/tasks/create-new-content.php:109
+#: src/task-list/application/tasks/create-new-content.php:110
 msgid "Plan a topic, write your post, and use the SEO and Readability Analyses to refine it before publishing."
 msgstr "Planlæg et emne, skriv dit indlæg og brug SEO- og læsbarhedanalyser til at finpudse det før udgivelse."
 
-#: src/task-list/application/tasks/create-new-content.php:108
+#: src/task-list/application/tasks/create-new-content.php:109
 msgid "Long gaps without new content slow down your traffic growth. Publishing regularly gives search engines and visitors a reason to return."
 msgstr "Lange ophold uden nyt indhold sløver væksten i trafikken. Ved at udgive regelmæssigt giver det søgemaskiner og besøgende en grund til at vende tilbage."
 
 #. translators: %1$s expands to "Yoast SEO".
-#: src/alerts/application/ping-other-admins/ping-other-admins-alert.php:174
+#: src/alerts/application/ping-other-admins/ping-other-admins-alert.php:175
 msgid "Looks like you’re new here. %1$s makes it easy to optimize your website for search engines. Want to keep your site healthy and easier to find? Sign up below to receive practical emails to get you started!"
 msgstr "Det ser ud til, at du er ny her. %1$s gør det nemt at optimere dit websted til søgemaskiner. Vil du holde dit websted sundt og nemmere at finde? Tilmeld dig praktiske nyhedsbreve for at komme i gang."
 
-#: src/task-list/application/tasks/complete-ftc.php:77
+#: src/task-list/application/tasks/complete-ftc.php:78
 #: js/dist/installation-success.js:3
 msgid "Start configuration"
 msgstr "Start konfiguration"
@@ -213,26 +213,26 @@ msgstr "%s Viderestillinger"
 #. translators: %1$s expands to "SEO title" or "meta description", %2$s expands
 #. to an opening link tag, %3$s expands to an opening strong tag, %4$s expands
 #. to a closing strong tag, %5$s expands to a closing link tag.
-#: src/alerts/application/default-seo-data/default-seo-data-alert.php:191
+#: src/alerts/application/default-seo-data/default-seo-data-alert.php:192
 msgid "Your recent posts are using default %1$s, which can make them easy to overlook in search results. Update them for better visibility or %2$stry %3$sYoast AI Generate%4$s for free to do it faster.%5$s"
 msgstr "Dine seneste indlæg bruger standard %1$s, som kan gøre dem nemme at overse i søgeresultaterne. Opdater dem for bedre synlighed eller %2$sprøv %3$sYoast AI Generate%4$s gratis for at gøre det hurtigere.%5$s"
 
 #. translators: %1$s expands to "SEO title" or "meta description", %2$s expands
 #. to an opening link tag, %3$s expands to an opening strong tag, %4$s expands
 #. to a closing strong tag, %5$s expands to a closing link tag.
-#: src/alerts/application/default-seo-data/default-seo-data-alert.php:191
+#: src/alerts/application/default-seo-data/default-seo-data-alert.php:192
 msgid "Your recent posts are using default %1$s, which can make them easy to overlook in search results. Update them manually or %2$sfind out how %3$sYoast AI Generate%4$s can improve them for you.%5$s"
 msgstr "Dine seneste indlæg bruger standard %1$s, som kan gøre dem nemme at overse i søgeresultaterne. Opdater dem manuelt eller %2$sfind ud af hvordan %3$sYoast AI Generate%4$s kan forbedre dem for dig.%5$s"
 
-#: src/alerts/application/default-seo-data/default-seo-data-alert.php:181
+#: src/alerts/application/default-seo-data/default-seo-data-alert.php:182
 msgid "SEO titles"
 msgstr "SEO titler"
 
-#: src/alerts/application/default-seo-data/default-seo-data-alert.php:178
+#: src/alerts/application/default-seo-data/default-seo-data-alert.php:179
 msgid "SEO titles and meta descriptions"
 msgstr "SEO titler og metabeskrivelser"
 
-#: src/alerts/application/default-seo-data/default-seo-data-alert.php:184
+#: src/alerts/application/default-seo-data/default-seo-data-alert.php:185
 msgid "meta descriptions"
 msgstr "meta beskrivelser"
 
@@ -374,40 +374,40 @@ msgid "Plans"
 msgstr "Pakker"
 
 #: src/llms-txt/application/file/file-failure-notification-presenter.php:49
-#: src/llms-txt/user-interface/health-check/file-reports.php:86
+#: src/llms-txt/user-interface/health-check/file-reports.php:87
 msgid "You have activated the Yoast llms.txt feature, but we couldn't generate an llms.txt file, for unknown reasons."
 msgstr "Du har aktiveret Yoast llms.txt-funktionen, men vi kunne af ukendte årsager ikke generere en llms.txt-fil."
 
 #. translators: 1,3: expand to opening paragraph tag, 2,4: expand to opening
 #. paragraph tag.
-#: src/llms-txt/user-interface/health-check/file-reports.php:77
+#: src/llms-txt/user-interface/health-check/file-reports.php:78
 msgid "%1$sYou have activated the Yoast llms.txt feature, but we couldn't generate an llms.txt file.%2$s%3$sIt looks like there aren't sufficient permissions on the web server's filesystem.%4$s"
 msgstr "%1$sDu har aktiveret Yoast llms.txt-funktionen, men vi kunne ikke generere en llms.txt-fil.%2$s%3$sDet ser ud til, at der ikke er tilstrækkelige tilladelser på webserverens filsystem.%4$s"
 
 #. translators: 1,3,5: expand to opening paragraph tag, 2,4,6: expand to
 #. opening paragraph tag.
-#: src/llms-txt/user-interface/health-check/file-reports.php:64
+#: src/llms-txt/user-interface/health-check/file-reports.php:65
 msgid "%1$sYou have activated the Yoast llms.txt feature, but we couldn't generate an llms.txt file.%2$s%3$sIt looks like there is an llms.txt file already that wasn't created by Yoast, or the llms.txt file created by Yoast has been edited manually.%4$s%5$sWe don't want to overwrite this file's content, so if you want to let Yoast keep auto-generating the llms.txt file, you can manually delete the existing one. Otherwise, consider disabling the Yoast feature.%6$s"
 msgstr "%1$sDu har aktiveret Yoast llms.txt-funktionen, men vi kunne ikke generere en llms.txt-fil.%2$s%3$sDet ser ud til, at der allerede er en llms.txt-fil, der ikke blev oprettet af Yoast, eller at den llms.txt-filen oprettet af Yoast er blevet redigeret manuelt.%4$s%5$sVi ønsker ikke at overskrive denne fils indhold, så hvis du vil lade Yoast fortsætte med automatisk at generere llms.txt-filen, kan du manuelt slette den eksisterende. Ellers bør du overveje at deaktivere Yoast-funktionen.%6$s"
 
 #: src/llms-txt/application/file/file-failure-notification-presenter.php:55
-#: src/llms-txt/user-interface/health-check/file-reports.php:61
-#: src/llms-txt/user-interface/health-check/file-reports.php:74
-#: src/llms-txt/user-interface/health-check/file-reports.php:85
+#: src/llms-txt/user-interface/health-check/file-reports.php:62
+#: src/llms-txt/user-interface/health-check/file-reports.php:75
+#: src/llms-txt/user-interface/health-check/file-reports.php:86
 msgid "Your llms.txt file couldn't be auto-generated"
 msgstr "Din llms.txt-fil kunne ikke genereres automatisk"
 
 #. translators: %s: Yoast SEO.
-#: src/llms-txt/user-interface/health-check/file-reports.php:40
+#: src/llms-txt/user-interface/health-check/file-reports.php:41
 msgid "%s keeps your llms.txt file up-to-date. This helps LLMs access and provide your site's information more easily."
 msgstr "%s holder din llms.txt-fil opdateret. Det gør det lettere for LLM'er at få adgang til og levere oplysninger om dit websted."
 
 #. translators: %s: Yoast SEO.
-#: src/llms-txt/user-interface/health-check/file-reports.php:34
+#: src/llms-txt/user-interface/health-check/file-reports.php:35
 msgid "Your llms.txt file is auto-generated by %s"
 msgstr "Din llms.txt-fil er automatisk genereret af %s"
 
-#: src/dashboard/user-interface/tracking/setup-steps-tracking-route.php:142
+#: src/dashboard/user-interface/tracking/setup-steps-tracking-route.php:143
 msgid "No valid parameters were passed."
 msgstr "Der blev ikke videregivet nogen gyldige parametre."
 
@@ -424,7 +424,7 @@ msgid "Not analyzed"
 msgstr "Ikke analyseret"
 
 #. translators: %s: Yoast SEO.
-#: wp-seo-main.php:578
+#: wp-seo-main.php:568
 msgid "%s activation failed"
 msgstr "%s aktivering mislykkedes"
 
@@ -599,14 +599,14 @@ msgstr "Brug kraften i Yoast AI til automatisk at generere overbevisende titler 
 #. translators: %s expands to a unit of time (e.g. 1 day).
 #. translators: %1$s, %2$s and %3$s expand to units of time (e.g. 1 day).
 #: src/integrations/blocks/structured-data-blocks.php:178
-#: js/dist/how-to-block.js:10 js/dist/how-to-block.js:16
+#: js/dist/how-to-block.js:6 js/dist/how-to-block.js:12
 msgid "%1$s, %2$s and %3$s"
 msgstr "%1$s, %2$s og %3$s"
 
 #. translators: %s expands to a unit of time (e.g. 1 day).
 #. translators: %1$s and %2$s expand to units of time (e.g. 1 day).
 #: src/integrations/blocks/structured-data-blocks.php:172
-#: js/dist/how-to-block.js:9 js/dist/how-to-block.js:15
+#: js/dist/how-to-block.js:5 js/dist/how-to-block.js:11
 msgid "%1$s and %2$s"
 msgstr "%1$s og %2$s"
 
@@ -1749,7 +1749,7 @@ msgstr " Vi vurderer, at dette vil tage under et minut."
 msgid " We estimate this will take a couple of minutes."
 msgstr " Vi vurderer, at dette vil tage et par minutter."
 
-#: src/alerts/application/default-seo-data/default-seo-data-alert.php:187
+#: src/alerts/application/default-seo-data/default-seo-data-alert.php:188
 msgid "SEO data"
 msgstr "SEO data"
 
@@ -2187,7 +2187,7 @@ msgstr "Fokus søgefrase ikke angivet."
 msgid "Get %s"
 msgstr "Få %s"
 
-#: inc/options/class-wpseo-option-titles.php:949
+#: inc/options/class-wpseo-option-titles.php:948
 msgid "Colon"
 msgstr "Kolon"
 
@@ -2207,7 +2207,7 @@ msgstr[1] "Der er nye notifikationer."
 #. translators: %d expands to the number of days.
 #: src/integrations/blocks/structured-data-blocks.php:132
 #: js/dist/block-editor.js:83 js/dist/classic-editor.js:66
-#: js/dist/how-to-block.js:6 js/dist/how-to-block.js:12
+#: js/dist/how-to-block.js:2 js/dist/how-to-block.js:8
 #: js/dist/wincher-dashboard-widget.js:59
 msgid "%d day"
 msgid_plural "%d days"
@@ -2217,7 +2217,7 @@ msgstr[1] "%d dage"
 #. translators: %d expands to the number of minute/minutes.
 #. translators: %d expands to the number of minutes.
 #: src/integrations/blocks/structured-data-blocks.php:146
-#: js/dist/how-to-block.js:8 js/dist/how-to-block.js:14
+#: js/dist/how-to-block.js:4 js/dist/how-to-block.js:10
 msgid "%d minute"
 msgid_plural "%d minutes"
 msgstr[0] "%d minut"
@@ -2226,7 +2226,7 @@ msgstr[1] "%d minutter"
 #. translators: %d expands to the number of hour/hours.
 #. translators: %d expands to the number of hours.
 #: src/integrations/blocks/structured-data-blocks.php:139
-#: js/dist/how-to-block.js:7 js/dist/how-to-block.js:13
+#: js/dist/how-to-block.js:3 js/dist/how-to-block.js:9
 msgid "%d hour"
 msgid_plural "%d hours"
 msgstr[0] "%d time"
@@ -2247,7 +2247,7 @@ msgid "Check links to this URL"
 msgstr "Tjek links til denne webadresse"
 
 #: src/integrations/blocks/structured-data-blocks.php:197
-#: js/dist/how-to-block.js:5 js/dist/how-to-block.js:16
+#: js/dist/how-to-block.js:1 js/dist/how-to-block.js:12
 msgid "Time needed:"
 msgstr "Tidsforbrug:"
 
@@ -2933,7 +2933,7 @@ msgstr "Funktioner"
 
 #: admin/metabox/class-metabox.php:172
 #: js/dist/externals/replacementVariableEditor.js:27
-#: js/dist/externals/searchMetadataPreviews.js:62 js/dist/new-settings.js:21
+#: js/dist/externals/searchMetadataPreviews.js:39 js/dist/new-settings.js:21
 #: js/dist/new-settings.js:25 js/dist/new-settings.js:28
 #: js/dist/new-settings.js:30 js/dist/new-settings.js:34
 #: js/dist/new-settings.js:71 js/dist/new-settings.js:85
@@ -2943,55 +2943,55 @@ msgstr "Funktioner"
 msgid "SEO title"
 msgstr "SEO-titel"
 
-#: inc/options/class-wpseo-option-titles.php:989
+#: inc/options/class-wpseo-option-titles.php:988
 msgid "Greater than sign"
 msgstr "Større end-tegn"
 
-#: inc/options/class-wpseo-option-titles.php:985
+#: inc/options/class-wpseo-option-titles.php:984
 msgid "Less than sign"
 msgstr "Mindre end-tegn"
 
-#: inc/options/class-wpseo-option-titles.php:981
+#: inc/options/class-wpseo-option-titles.php:980
 msgid "Right angle quotation mark"
 msgstr "Højre dobbel citations-vinkel"
 
-#: inc/options/class-wpseo-option-titles.php:977
+#: inc/options/class-wpseo-option-titles.php:976
 msgid "Left angle quotation mark"
 msgstr "Venstre dobbel citations-vinkel"
 
-#: inc/options/class-wpseo-option-titles.php:973
+#: inc/options/class-wpseo-option-titles.php:972
 msgid "Small tilde"
 msgstr "Lille tilde"
 
-#: inc/options/class-wpseo-option-titles.php:969
+#: inc/options/class-wpseo-option-titles.php:968
 msgid "Vertical bar"
 msgstr "Lodret streg"
 
-#: inc/options/class-wpseo-option-titles.php:965
+#: inc/options/class-wpseo-option-titles.php:964
 msgid "Low asterisk"
 msgstr "Lav asterisk"
 
-#: inc/options/class-wpseo-option-titles.php:961
+#: inc/options/class-wpseo-option-titles.php:960
 msgid "Asterisk"
 msgstr "Asterisk"
 
-#: inc/options/class-wpseo-option-titles.php:957
+#: inc/options/class-wpseo-option-titles.php:956
 msgid "Bullet"
 msgstr "Punkttegn"
 
-#: inc/options/class-wpseo-option-titles.php:953
+#: inc/options/class-wpseo-option-titles.php:952
 msgid "Middle dot"
 msgstr "Midterste prik"
 
-#: inc/options/class-wpseo-option-titles.php:945
+#: inc/options/class-wpseo-option-titles.php:944
 msgid "Em dash"
 msgstr "Em-tankestreg"
 
-#: inc/options/class-wpseo-option-titles.php:941
+#: inc/options/class-wpseo-option-titles.php:940
 msgid "En dash"
 msgstr "En-tankestreg"
 
-#: inc/options/class-wpseo-option-titles.php:937
+#: inc/options/class-wpseo-option-titles.php:936
 msgid "Dash"
 msgstr "Tankestreg"
 
@@ -3295,7 +3295,7 @@ msgstr "%1$s er ikke et gyldigt valg for, hvem der skal have adgang til %2$s-ind
 #. translators: %1$s expands to Yoast SEO, %2$s / %3$s: links to the
 #. installation manual in the Readme for the Yoast SEO code repository on
 #. GitHub
-#: wp-seo-main.php:538
+#: wp-seo-main.php:528
 msgid "The %1$s plugin installation is incomplete. Please refer to %2$sinstallation instructions%3$s."
 msgstr "Installationen af pluginnet %1$s er ikke færdiggjort. Se venligst %2$sinstallationsvejledningen%3$s."
 
@@ -3324,7 +3324,7 @@ msgstr "Den første rigtige alt-i-en SEO-løsning for WordPress, inklusiv analys
 msgid "The post %1$s appeared first on %2$s."
 msgstr "Indlægget %1$s blev først udgivet på %2$s."
 
-#: wp-seo-main.php:514
+#: wp-seo-main.php:504
 msgid "The Standard PHP Library (SPL) extension seem to be unavailable. Please ask your web host to enable it."
 msgstr "Udvidelsen Standard PHP Library (SPL) ser ikke ud til at være tilgængelig. Bed din webhost om at aktivere den."
 
@@ -3854,7 +3854,7 @@ msgstr "Stort SEO problem: Du blokerer adgangen for robotter."
 
 #: admin/metabox/class-metabox.php:173
 #: js/dist/externals/replacementVariableEditor.js:27
-#: js/dist/externals/searchMetadataPreviews.js:62 js/dist/new-settings.js:21
+#: js/dist/externals/searchMetadataPreviews.js:39 js/dist/new-settings.js:21
 #: js/dist/new-settings.js:25 js/dist/new-settings.js:30
 #: js/dist/new-settings.js:34 js/dist/new-settings.js:71
 #: js/dist/new-settings.js:85 js/dist/new-settings.js:115
@@ -3933,7 +3933,7 @@ msgid "Search Console"
 msgstr "Søgekonsol"
 
 #: admin/class-admin.php:224 src/integrations/settings-integration.php:380
-#: src/presenters/meta-description-presenter.php:37 js/dist/how-to-block.js:11
+#: src/presenters/meta-description-presenter.php:37 js/dist/how-to-block.js:7
 msgid "Settings"
 msgstr "Indstillinger"
 
