@@ -39,7 +39,13 @@ export default defineConfig(
 						'after': true
 					}
 				}
-			}]
+			}],
+			'@typescript-eslint/no-explicit-any': 'warn',
+			'@typescript-eslint/no-import-type-side-effects': 'warn',
+			'@typescript-eslint/no-invalid-this': 'warn',
+			'@typescript-eslint/no-misused-new': 'warn',
+			'@typescript-eslint/no-non-null-assertion': 'warn',
+			'@typescript-eslint/no-unnecessary-parameter-property-assignment': 'warn'
 		}
 	}
 );
