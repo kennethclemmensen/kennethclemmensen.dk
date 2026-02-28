@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Yoast SEO &#8211; Advanced SEO with real-time guidance and built-in AI - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-02-14 19:07:52+0000\n"
+"PO-Revision-Date: 2026-02-23 08:22:51+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1493,15 +1493,15 @@ msgstr "Udvidet Slack-deling"
 msgid "Because of a change in your tag base setting, some of your SEO data needs to be reprocessed."
 msgstr "På grund af en ændring i kodebasisindstillingen skal nogle af SEO-dataene genbehandles."
 
-#. translators: %1$s expands to Yoast SEO
-#: admin/views/tabs/network/integrations.php:27
-msgid "This tab allows you to selectively disable %1$s integrations with third-party products for all sites in the network. By default all integrations are enabled, which allows site admins to choose for themselves if they want to toggle an integration on or off for their site. When you disable an integration here, site admins will not be able to use that integration at all."
-msgstr "Under denne fane kan du selektivt deaktivere %1$s integrationer med tredjepartsprodukter for alle websteder i netværket. Som standard er alle integrationer aktiveret, hvilket gør det muligt for webstedsadministratorer selv at vælge, om de vil slå en integration til eller fra for deres websted. Når du deaktiverer en integration her, kan webstedsadministratorer slet ikke bruge denne integration."
-
 #. translators: %s: 'Semrush'
 #: admin/views/class-yoast-integration-toggles.php:71
 msgid "The %s integration offers suggestions and insights for keywords related to the entered focus keyphrase."
 msgstr "Den %s integration giver forslag og indsigt i nøgleord relateret til den indtastede fokusnøgleordsfrase."
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/views/tabs/network/integrations.php:27
+msgid "This tab allows you to selectively disable %1$s integrations with third-party products for all sites in the network. By default all integrations are enabled, which allows site admins to choose for themselves if they want to toggle an integration on or off for their site. When you disable an integration here, site admins will not be able to use that integration at all."
+msgstr "Under denne fane kan du selektivt deaktivere %1$s integrationer med tredjepartsprodukter for alle websteder i netværket. Som standard er alle integrationer aktiveret, hvilket gør det muligt for webstedsadministratorer selv at vælge, om de vil slå en integration til eller fra for deres websted. Når du deaktiverer en integration her, kan webstedsadministratorer slet ikke bruge denne integration."
 
 #: src/presenters/admin/indexing-error-presenter.php:64
 msgid "Oops, something has gone wrong and we couldn't complete the optimization of your SEO data. Please click the button again to re-start the process. "
@@ -3803,10 +3803,6 @@ msgid_plural "Trash <span class=\"count\">(%s)</span>"
 msgstr[0] "Papirkurv <span class=\"count\">(%s)</span>"
 msgstr[1] "Papirkurv <span class=\"count\">(%s)</span>"
 
-#: src/services/health-check/default-tagline-runner.php:32
-msgid "Just another WordPress site"
-msgstr "Endnu et Wordpress-websted"
-
 #: admin/class-bulk-editor-list-table.php:1045
 msgid "Action"
 msgstr "Handling"
@@ -4039,3 +4035,7 @@ msgstr "XML-sitemaps"
 #: admin/metabox/class-metabox.php:203
 msgid "The canonical URL that this page should point to. Leave empty to default to permalink. %1$sCross domain canonical%2$s supported too."
 msgstr "Den kanoniske webadresse, som denne side skal pege på. Efterlad den tom, hvis permanent link skal bruges som standard. %1$sKanoniske adresser på tværs af domæner%2$s understøttes også."
+
+#: src/services/health-check/default-tagline-runner.php:32
+msgid "Just another WordPress site"
+msgstr "Endnu et WordPress-websted"
