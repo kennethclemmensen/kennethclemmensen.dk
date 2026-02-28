@@ -6,7 +6,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^7.2.0",
     "rxjs": "^7.8.2",
-    "vue": "^3.5.28"
+    "vue": "^3.5.29"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
@@ -20,7 +20,7 @@
     "copy-webpack-plugin": "^13.0.1",
     "css-loader": "^7.1.4",
     "css-minimizer-webpack-plugin": "^7.0.4",
-    "eslint": "^10.0.1",
+    "eslint": "^10.0.2",
     "grunt": "^1.6.1",
     "grunt-browser-sync": "^2.2.0",
     "grunt-browserify": "^6.0.0",
@@ -43,9 +43,9 @@
     "ts-loader": "^9.5.4",
     "tsify": "^5.0.4",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.56.0",
+    "typescript-eslint": "^8.56.1",
     "vinyl-source-stream": "^2.0.0",
-    "webpack": "^5.105.2",
+    "webpack": "^5.105.3",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.3",
     "webpack-merge": "^6.0.1",
