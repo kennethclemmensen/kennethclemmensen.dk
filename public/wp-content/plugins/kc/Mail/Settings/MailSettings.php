@@ -246,7 +246,7 @@ final class MailSettings extends BaseSettings {
 	 * @return int the mail port
 	 */
 	public function getMailPort() : ?int {
-		if($this->settings[$this->mailPort] !== '') {
+		if(isset($this->settings[$this->mailPort]) && $this->settings[$this->mailPort] !== '') {
 			return $this->settings[$this->mailPort];
 		} else {
 			return null;
