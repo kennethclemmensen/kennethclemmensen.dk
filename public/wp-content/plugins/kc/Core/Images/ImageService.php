@@ -18,6 +18,7 @@ final class ImageService {
 	 */
 	public function getImageUrl(int $imageID, ImageSize $size = ImageSize::PostThumbnail) : string {
 		$securityService = new SecurityService();
-		return $securityService->escapeUrl(get_the_post_thumbnail_url($imageID, $size->value));
+		$url = get_the_post_thumbnail_url($imageID, $size->value);
+		return $securityService->escapeUrl($url);
 	}
 }

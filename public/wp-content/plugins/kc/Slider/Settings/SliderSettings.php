@@ -28,8 +28,8 @@ final class SliderSettings extends BaseSettings {
 	public function __construct(private readonly TranslationService $translationService, private readonly PluginService $pluginService) {
 		parent::__construct('kc-slides-settings', 'kc-slides-settings-options');
 		$prefix = 'slide_';
-		$this->slideWidth = $prefix.'width';
-		$this->slideHeight = $prefix.'height';
+		$this->slideWidth = "{$prefix}width";
+		$this->slideHeight = "{$prefix}height";
 	}
 
 	/**
@@ -60,15 +60,21 @@ final class SliderSettings extends BaseSettings {
 	 */
 	private function registerSettingInputs() : void {
 		$this->pluginService->addAction(Action::ADMIN_INIT, function() : void {
-			$sectionID = $this->settingsPage.'-section-slider';
+			$sectionID = "{$this->settingsPage}-section-slider";
 			$prefix = $this->settingsPage;
-			add_settings_section($sectionID, '', function() : void {}, $this->settingsPage);
-			add_settings_field($prefix.'slideWidth', $this->translationService->getTranslatedString(TranslationString::ImageWidth), function() : void {
-				echo '<input type="number" name="'.$this->settingsName.'['.$this->slideWidth.']" value="'.$this->getSlideWidth().'" min="1">';
-			}, $this->settingsPage, $sectionID);
-			add_settings_field($prefix.'slideHeight', $this->translationService->getTranslatedString(TranslationString::ImageHeight), function() : void {
-				echo '<input type="number" name="'.$this->settingsName.'['.$this->slideHeight.']" value="'.$this->getSlideHeight().'" min="1">';
-			}, $this->settingsPage, $sectionID);
+			$this->addSettingsSection($sectionID, $this->settingsPage);
+			$this->addSettingsField("{$prefix}slideWidth", $this->translationService->getTranslatedString(TranslationString::ImageWidth), $this->settingsPage, $sectionID, [
+				'type' => 'number',
+				'name' => "{$this->settingsName}[{$this->slideWidth}]",
+				'value' => $this->getSlideWidth(),
+				'min' => '1'
+			]);
+			$this->addSettingsField("{$prefix}slideHeight", $this->translationService->getTranslatedString(TranslationString::ImageHeight), $this->settingsPage, $sectionID, [
+				'type' => 'number',
+				'name' => "{$this->settingsName}[{$this->slideHeight}]",
+				'value' => $this->getSlideHeight(),
+				'min' => '1'
+			]);
 			$this->registerSetting($this->settingsName);
 		});
 	}

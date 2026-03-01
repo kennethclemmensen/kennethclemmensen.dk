@@ -33,9 +33,9 @@ final class GallerySettings extends BaseSettings {
 	public function __construct(private readonly TranslationService $translationService) {
 		parent::__construct('kc-gallery-settings', 'kc-gallery-settings-options');
 		$prefix = 'gallery_';
-		$this->galleryImageWidth = $prefix.'image_width';
-		$this->galleryImageHeight = $prefix.'image_height';
-		$this->galleryParentPage = $prefix.'parent_page';
+		$this->galleryImageWidth = "{$prefix}image_width";
+		$this->galleryImageHeight = "{$prefix}image_height";
+		$this->galleryParentPage = "{$prefix}parent_page";
 		$this->pluginService = new PluginService();
 	}
 
@@ -76,28 +76,29 @@ final class GallerySettings extends BaseSettings {
 	 */
 	private function registerSettingInputs() : void {
 		$this->pluginService->addAction(Action::ADMIN_INIT, function() : void {
-			$sectionID = $this->settingsPage.'-section-gallery';
-			$prefix = $this->settingsPage.'galleryImage';
-			add_settings_section($sectionID, '', function() : void {}, $this->settingsPage);
-			add_settings_field($prefix.'Width', $this->translationService->getTranslatedString(TranslationString::ImageWidth), function() : void {
-				echo '<input type="number" name="'.$this->settingsName.'['.$this->galleryImageWidth.']" value="'.$this->getGalleryImageWidth().'" min="1">';
-			}, $this->settingsPage, $sectionID);
-			add_settings_field($prefix.'Height', $this->translationService->getTranslatedString(TranslationString::ImageHeight), function() : void {
-				echo '<input type="number" name="'.$this->settingsName.'['.$this->galleryImageHeight.']" value="'.$this->getGalleryImageHeight().'" min="1">';
-			}, $this->settingsPage, $sectionID);
-			add_settings_field($this->settingsPage.'parentPage', $this->translationService->getTranslatedString(TranslationString::ParentPage), function() : void {
-				?>
-				<select name="<?php echo $this->settingsName.'['.$this->galleryParentPage.']'; ?>">
-					<?php
-					$dataManager = new DataManager(new PostTypeService(), new SecurityService(), new ImageService());
-					$pages = $dataManager->getPages();
-					foreach($pages as $key => $value) {
-						echo '<option value="'.$key.'" '.selected($this->getParentPagePath(), $key).'>'.$value.'</option>';
-					}
-					?>
-				</select>
-				<?php
-			}, $this->settingsPage, $sectionID);
+			$sectionID = "{$this->settingsPage}-section-gallery";
+			$prefix = "{$this->settingsPage}galleryImage";
+			$this->addSettingsSection($sectionID, $this->settingsPage);
+			$this->addSettingsField("{$prefix}Width", $this->translationService->getTranslatedString(TranslationString::ImageWidth), $this->settingsPage, $sectionID, [
+				'type' => 'number',
+				'name' => "{$this->settingsName}[{$this->galleryImageWidth}]",
+				'value' => $this->getGalleryImageWidth(),
+				'min' => '1'
+			]);
+			$this->addSettingsField("{$prefix}Height", $this->translationService->getTranslatedString(TranslationString::ImageHeight), $this->settingsPage, $sectionID, [
+				'type' => 'number',
+				'name' => "{$this->settingsName}[{$this->galleryImageHeight}]",
+				'value' => $this->getGalleryImageHeight(),
+				'min' => '1'
+			]);
+			$dataManager = new DataManager(new PostTypeService(), new SecurityService(), new ImageService());
+			$pages = $dataManager->getPages();
+			$this->addSettingsField("{$this->settingsPage}parentPage", $this->translationService->getTranslatedString(TranslationString::ParentPage), $this->settingsPage, $sectionID, [
+				'type' => 'select',
+				'name' => "{$this->settingsName}[{$this->galleryParentPage}]",
+				'options' => $pages,
+				'selected' => $this->getParentPagePath()
+			]);
 			$this->registerSetting($this->settingsName);
 		});
 	}

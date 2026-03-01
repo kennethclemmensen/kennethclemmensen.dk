@@ -26,7 +26,7 @@ final class DatabaseManager {
 	public function getDatabaseStructure() : string {
 		global $wpdb;
 		$structure = '';
-		$tables = $wpdb->get_results('SHOW TABLES LIKE "'.$wpdb->prefix.'%";', ARRAY_N);
+		$tables = $wpdb->get_results("SHOW TABLES LIKE '{$wpdb->prefix}%';", ARRAY_N);
 		foreach($tables as $table) {
 			$structure .= $this->getTableStructure($table[0]);
 		}
@@ -41,10 +41,10 @@ final class DatabaseManager {
 	 */
 	private function getTableStructure(string $tableName) : string {
 		global $wpdb;
-		$createTable = $wpdb->get_row('SHOW CREATE TABLE '.$tableName.';', ARRAY_N);
-		$structure = 'DROP TABLE IF EXISTS `'.$tableName.'`;'.PHP_EOL;
-		$structure .= $createTable[1].';'.PHP_EOL;
-		$structure .= 'LOCK TABLES `'.$tableName.'` WRITE;'.PHP_EOL;
+		$createTable = $wpdb->get_row("SHOW CREATE TABLE {$tableName};", ARRAY_N);
+		$structure = "DROP TABLE IF EXISTS `{$tableName}`;".PHP_EOL;
+		$structure .= "{$createTable[1]};".PHP_EOL;
+		$structure .= "LOCK TABLES `{$tableName}` WRITE;".PHP_EOL;
 		$structure .= $this->getTableContent($tableName);
 		$structure .= 'UNLOCK TABLES;'.PHP_EOL.PHP_EOL;
 		return $structure;
@@ -59,18 +59,18 @@ final class DatabaseManager {
 	private function getTableContent(string $tableName) : string {
 		global $wpdb;
 		$content = '';
-		$tableRows = $wpdb->get_results('SELECT * FROM '.$tableName.';', ARRAY_N);
-		$count = count($tableRows);
+		$tableRows = $wpdb->get_results("SELECT * FROM {$tableName};", ARRAY_N);
+		$count = \count($tableRows);
 		if($count > 0) {
-			$content .= 'INSERT INTO `'.$tableName.'` VALUES ';
+			$content .= "INSERT INTO `{$tableName}` VALUES ";
 			foreach($tableRows as $key => $tableRow) {
 				$values = '(';
-				$c = count($tableRow);
+				$c = \count($tableRow);
 				foreach($tableRow as $k => $data) {
 					$values .= ($data === null) ? 'NULL' : "'".addslashes($data)."'";
 					if($k !== $c - 1) $values .= ',';
 				}
-				$content .= $values.')';
+				$content .= "{$values})";
 				if($key !== $count - 1) $content .= ',';
 			}
 			$content .= ';'.PHP_EOL;

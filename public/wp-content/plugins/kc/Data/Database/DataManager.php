@@ -101,7 +101,9 @@ final class DataManager {
 		$wpQuery = new WP_Query($args);
 		while($wpQuery->have_posts()) {
 			$wpQuery->the_post();
-			$slides[] = ['image' => $this->imageService->getImageUrl(get_the_ID(), ImageSize::Slides)];
+			$slides[] = [
+				'image' => $this->imageService->getImageUrl(get_the_ID(), ImageSize::Slides)
+			];
 		}
 		return $slides;
 	}
@@ -157,8 +159,8 @@ final class DataManager {
 				'url' => $this->imageService->getImageUrl($id, ImageSize::Large),
 				'thumbnail' => $this->imageService->getImageUrl($id, ImageSize::Thumbnail),
 				'gallery' => $galleryId,
-				'width' => $imageInfo[1].'px',
-				'height' => $imageInfo[2].'px'
+				'width' => "{$imageInfo[1]}px",
+				'height' => "{$imageInfo[2]}px"
 			];
 		}
 		return $images;
@@ -331,6 +333,6 @@ final class DataManager {
 	 * @return string the string without the last character
 	 */
 	private function removeLastCharacter(string $str) : string {
-		return (strlen($str) <= 1) ? $str : substr_replace($str, '', -1);
+		return (\strlen($str) <= 1) ? $str : substr_replace($str, '', -1);
 	}
 }

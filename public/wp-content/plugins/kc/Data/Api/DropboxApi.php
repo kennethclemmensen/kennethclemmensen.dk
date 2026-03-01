@@ -47,12 +47,12 @@ final class DropboxApi extends BaseApi {
 	public function uploadFile(string $file, string $folder) : void {
 		$url = 'https://content.dropboxapi.com/2/files/upload';
 		$headers = [
-			HttpHeader::Authorization->value => 'Bearer '.$this->accessToken,
+			HttpHeader::Authorization->value => "Bearer {$this->accessToken}",
 			HttpHeader::ContentType->value => ContentType::OctetStream->value,
-			HttpHeader::DropboxApiArg->value => json_encode(['path' => '/'.$file])
+			HttpHeader::DropboxApiArg->value => json_encode(['path' => "/{$file}"])
 		];
 		$fileService = new FileService();
-		$postFields = $fileService->getFileContent($folder.'/'.$file);
+		$postFields = $fileService->getFileContent("{$folder}/{$file}");
 		$this->createPostRequest($url, $headers, $postFields);
 	}
 }

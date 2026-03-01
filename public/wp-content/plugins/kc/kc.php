@@ -10,7 +10,7 @@ Requires PHP: 8.5
 Domain Path: /languages
 */
 namespace KC;
-if(!defined('ABSPATH')) wp_die();
+if(!\defined('ABSPATH')) wp_die();
 require_once 'Core/Api/BaseApi.php';
 require_once 'Core/Api/Responses/Response.php';
 require_once 'Core/Modules/IModule.php';

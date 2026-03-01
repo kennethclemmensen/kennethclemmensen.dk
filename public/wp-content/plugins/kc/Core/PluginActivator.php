@@ -55,9 +55,8 @@ final class PluginActivator {
 	 * @return array the modules
 	 */
 	private function getModules() : array {
-		return array_filter(get_declared_classes(), function(string $className) : bool {
-			return in_array(IModule::class, class_implements($className));
-		});
+		$callback = fn(string $className) : bool => \in_array(IModule::class, class_implements($className));
+		return array_filter(get_declared_classes(), $callback);
 	}
 
 	/**

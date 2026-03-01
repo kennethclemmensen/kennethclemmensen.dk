@@ -35,7 +35,7 @@ class BaseApi {
 	private function createHttpHeaders(array $headers) : array {
 		$httpHeaders = [];
 		foreach($headers as $key => $header) {
-			$httpHeaders[] = $key.': '.$header;
+			$httpHeaders[] = "{$key}: {$header}";
 		}
 		return $httpHeaders;
 	}

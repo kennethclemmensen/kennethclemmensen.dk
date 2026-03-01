@@ -22,7 +22,7 @@ final class Filter {
 	 * @return string the manage posts columns filter for the post type
 	 */
 	public static function getManagePostsColumnsFilter(PostType $postType) : string {
-		return 'manage_'.$postType->value.'_posts_columns';
+		return "manage_{$postType->value}_posts_columns";
 	}
 
 	/**
@@ -32,6 +32,6 @@ final class Filter {
 	 * @return string the pre_update_option filter
 	 */
 	public static function getPreUpdateOptionFilter(string $option) : string {
-		return 'pre_update_option_'.$option;
+		return "pre_update_option_{$option}";
 	}
 }

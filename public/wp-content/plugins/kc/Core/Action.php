@@ -32,7 +32,7 @@ final class Action {
 	 * @return string the save post action for the post type
 	 */
 	public static function getSavePostAction(PostType $postType) : string {
-		return 'save_post_'.$postType->value;
+		return "save_post_{$postType->value}";
 	}
 
 	/**
@@ -42,6 +42,6 @@ final class Action {
 	 * @return string the manage posts custom column action for the post type
 	 */
 	public static function getManagePostsCustomColumn(PostType $postType) : string {
-		return 'manage_'.$postType->value.'_posts_custom_column';
+		return "manage_{$postType->value}_posts_custom_column";
 	}
 }

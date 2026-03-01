@@ -133,7 +133,7 @@ final class ApiController extends WP_REST_Controller {
 	 * @param array $parameters the parameters
 	 */
 	private function registerRoute(string $route, HttpMethod $httpMethod, callable $callback, array $parameters = []) : void {
-		$permissionCallback = fn() : bool => $this->securityService->hasApiAccess();
+		$permissionCallback = $this->securityService->hasApiAccess(...);
 		$routeOptions = [
 			'methods' => [$httpMethod->value],
 			'callback' => $callback,
@@ -142,8 +142,8 @@ final class ApiController extends WP_REST_Controller {
 		if(!empty($parameters)) {
 			$parameterOptions = [];
 			foreach($parameters as $parameter) {
-				$sanitizeCallback = fn(string $value) : string => $this->securityService->sanitizeString($value);
-				$validateCallback = fn(string $value) : bool => $this->securityService->isValid($value);
+				$sanitizeCallback = $this->securityService->sanitizeString(...);
+				$validateCallback = $this->securityService->isValid(...);
 				$parameterOptions[$parameter] = [
 					'required' => true,
 					'sanitize_callback' => $sanitizeCallback,

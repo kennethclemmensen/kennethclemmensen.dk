@@ -40,14 +40,14 @@ final class BackupSettings extends BaseSettings {
 	public function __construct(private readonly FileManager $fileManager, private readonly SecurityService $securityService, private readonly TranslationService $translationService, private readonly PluginService $pluginService) {
 		parent::__construct('kc-backup', '');
 		$this->dropboxSettingsPage = 'kc-backup-dropbox-settings';
-		$this->dropboxSettingsName = $this->dropboxSettingsPage.'-option-group';
+		$this->dropboxSettingsName = "{$this->dropboxSettingsPage}-option-group";
 		$this->dropboxSettings = get_option($this->dropboxSettingsName);
 		$prefix = 'dropbox_';
-		$this->appKey = $prefix.'app_key';
-		$this->appSecret = $prefix.'app_secret';
-		$this->redirectUri = $prefix.'redirect_uri';
-		$this->encryptionPassword = $prefix.'encryption_password';
-		$this->nonce = $prefix.'nonce';
+		$this->appKey = "{$prefix}app_key";
+		$this->appSecret = "{$prefix}app_secret";
+		$this->redirectUri = "{$prefix}redirect_uri";
+		$this->encryptionPassword = "{$prefix}encryption_password";
+		$this->nonce = "{$prefix}nonce";
 		$this->handleBackups();
 		$this->createDropboxSettings();
 		$this->handleOptionsSaving();
@@ -126,13 +126,13 @@ final class BackupSettings extends BaseSettings {
 										$appKey = $this->getAppKey();
 										$redirectUrl = $this->getRedirectUri();
 										foreach($backups as $backup) {
-											$dropboxLink = 'https://www.dropbox.com/oauth2/authorize?client_id='.$appKey;
-											$dropboxLink .= '&redirect_uri='.$redirectUrl.'&response_type=code&state='.$backup;
+											$dropboxLink = "https://www.dropbox.com/oauth2/authorize?client_id={$appKey}";
+											$dropboxLink .= "&redirect_uri={$redirectUrl}&response_type=code&state={$backup}";
 										?>
 										<tr>
 											<td><?php echo $backup; ?></td>
 											<td>
-												<a href="<?php echo $requestUri.'&download='.$backup; ?>">
+												<a href="<?php echo "{$requestUri}&download={$backup}"; ?>">
 													<?php echo $download; ?>
 												</a>
 											</td>
@@ -140,7 +140,7 @@ final class BackupSettings extends BaseSettings {
 												<a href="<?php echo $dropboxLink; ?>"><?php echo $upload; ?></a>
 											</td>
 											<td>
-												<a href="<?php echo $requestUri.'&delete='.$backup; ?>">
+												<a href="<?php echo "{$requestUri}&delete={$backup}"; ?>">
 													<?php echo $delete; ?>
 												</a>
 											</td>
@@ -179,27 +179,35 @@ final class BackupSettings extends BaseSettings {
 	 */
 	private function createDropboxSettings() : void {
 		$this->pluginService->addAction(Action::ADMIN_INIT, function() : void {
-			$sectionId = $this->dropboxSettingsPage.'-section-dropbox';
+			$sectionId = "{$this->dropboxSettingsPage}-section-dropbox";
 			$prefix = $this->dropboxSettingsPage;
 			$appKeyLabel = $this->translationService->getTranslatedString(TranslationString::AppKey);
 			$appSecretLabel = $this->translationService->getTranslatedString(TranslationString::AppSecret);
 			$redirectUriLabel = $this->translationService->getTranslatedString(TranslationString::RedirectUri);
-			add_settings_section($sectionId, '', function() : void {}, $this->dropboxSettingsPage);
-			add_settings_field($prefix.'app-key', $appKeyLabel, function() : void {
-				echo '<input type="text" name="'.$this->dropboxSettingsName.'['.$this->appKey.']" value="'.$this->getAppKey().'">';
-			}, $this->dropboxSettingsPage, $sectionId);
-			add_settings_field($prefix.'app-secret', $appSecretLabel, function() : void {
-				echo '<input type="text" name="'.$this->dropboxSettingsName.'['.$this->appSecret.']" value="'.$this->getAppSecret().'">';
-			}, $this->dropboxSettingsPage, $sectionId);
-			add_settings_field($prefix.'redirect-uri', $redirectUriLabel, function() : void {
-				echo '<input type="url" name="'.$this->dropboxSettingsName.'['.$this->redirectUri.']" value="'.$this->getRedirectUri().'">';
-			}, $this->dropboxSettingsPage, $sectionId);
-			add_settings_field($prefix.'encryption-password', '', function() : void {
-				echo '<input type="hidden" name="'.$this->dropboxSettingsName.'['.$this->encryptionPassword.']">';
-			}, $this->dropboxSettingsPage, $sectionId);
-			add_settings_field($prefix.'nonce', '', function() : void {
-				echo '<input type="hidden" name="'.$this->dropboxSettingsName.'['.$this->nonce.']">';
-			}, $this->dropboxSettingsPage, $sectionId);
+			$this->addSettingsSection($sectionId, $this->dropboxSettingsPage);
+			$this->addSettingsField("{$prefix}app-key", $appKeyLabel, $this->dropboxSettingsPage, $sectionId, [
+				'type' => 'text',
+				'name' => "{$this->dropboxSettingsName}[{$this->appKey}]",
+				'value' => $this->getAppKey()
+			]);
+			$this->addSettingsField("{$prefix}app-secret", $appSecretLabel, $this->dropboxSettingsPage, $sectionId, [
+				'type' => 'text',
+				'name' => "{$this->dropboxSettingsName}[{$this->appSecret}]",
+				'value' => $this->getAppSecret()
+			]);
+			$this->addSettingsField("{$prefix}redirect-uri", $redirectUriLabel, $this->dropboxSettingsPage, $sectionId, [
+				'type' => 'url',
+				'name' => "{$this->dropboxSettingsName}[{$this->redirectUri}]",
+				'value' => $this->getRedirectUri()
+			]);
+			$this->addSettingsField("{$prefix}encryption-password", '', $this->dropboxSettingsPage, $sectionId, [
+				'type' => 'hidden',
+				'name' => "{$this->dropboxSettingsName}[{$this->encryptionPassword}]"
+			]);
+			$this->addSettingsField("{$prefix}nonce", '', $this->dropboxSettingsPage, $sectionId, [
+				'type' => 'hidden',
+				'name' => "{$this->dropboxSettingsName}[{$this->nonce}]"
+			]);
 			$this->registerSetting($this->dropboxSettingsName);
 		});
 	}

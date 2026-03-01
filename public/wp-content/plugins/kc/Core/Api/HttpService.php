@@ -14,6 +14,6 @@ final class HttpService {
 	 * @param mixed $value the value of the header
 	 */
 	public function sendHttpHeader(HttpHeader $header, string | int $value) : void {
-		header($header->value.':'.$value);
+		header("{$header->value}:{$value}");
 	}
 }

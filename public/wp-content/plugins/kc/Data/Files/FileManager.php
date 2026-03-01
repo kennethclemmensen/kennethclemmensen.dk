@@ -28,7 +28,7 @@ final class FileManager {
 		$path = '';
 		try {
 			$this->appendSlash($folder);
-			$path .= $folder.$fileName;
+			$path .= "{$folder}{$fileName}";
 		} catch(EmptyStringException) {
 			$path .= $fileName;
 		}
@@ -49,7 +49,7 @@ final class FileManager {
 		$path = '';
 		try {
 			$this->appendSlash($destinationFolder);
-			$path .= $destinationFolder.$fileName;
+			$path .= "{$destinationFolder}{$fileName}";
 		} catch(EmptyStringException) {
 			$path .= $fileName;
 		}
@@ -59,7 +59,7 @@ final class FileManager {
 		foreach($files as $file) {
 			if(!$file->isDir()) {
 				$filePath = $file->getRealPath();
-				$entryName = substr($filePath, strlen($sourceFolder) + 1);
+				$entryName = substr($filePath, \strlen($sourceFolder) + 1);
 				$zip->addFile($filePath, $entryName);
 			}
 		}
@@ -95,7 +95,7 @@ final class FileManager {
 		$file = '';
 		try {
 			$this->appendSlash($folder);
-			$file .= $folder.$fileName;
+			$file .= "{$folder}{$fileName}";
 		} catch(EmptyStringException) {
 			$file .= $fileName;
 		}
@@ -122,7 +122,7 @@ final class FileManager {
 		$path = '';
 		try {
 			$this->appendSlash($folder);
-			$path .= $folder.$fileName;
+			$path .= "{$folder}{$fileName}";
 		} catch(EmptyStringException) {
 			$path .= $fileName;
 		}
@@ -135,7 +135,9 @@ final class FileManager {
 	 * @param string $folder the folder to create
 	 */
 	private function createFolder(string $folder) : void {
-		if(!file_exists($folder)) mkdir($folder);
+		if(!file_exists($folder)) {
+			mkdir($folder);
+		}
 	}
 
 	/**
@@ -145,7 +147,9 @@ final class FileManager {
 	 * @throws EmptyStringException if string is empty
 	 */
 	private function appendSlash(string &$string) : void {
-		if($string === '') throw new EmptyStringException();
+		if($string === '') {
+			throw new EmptyStringException();
+		}
 		$string .= '/';
 	}
 }

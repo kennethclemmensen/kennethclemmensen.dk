@@ -74,7 +74,10 @@ final class SliderModule implements IModule {
 		});
 		$this->pluginService->addAction(Action::getManagePostsCustomColumn(PostType::Slides), function(string $columnName) use ($imageColumnKey) : void {
 			$imageService = new ImageService();
-			if($columnName === $imageColumnKey) echo '<img src="'.$imageService->getImageUrl(get_the_ID()).'" alt="'.get_the_title().'" style="height: 60px">';
+			if($columnName === $imageColumnKey) {
+				$src = $imageService->getImageUrl(get_the_ID());
+				echo "<img src='{$src}' alt='".get_the_title()."' style='height: 60px'>";
+			}
 		});
 	}
 }

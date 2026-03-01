@@ -70,9 +70,16 @@ final class GalleryModule implements IModule {
 				],
 				'public' => true,
 				'has_archive' => true,
-				'supports' => [PostTypeFeature::Title->value, PostTypeFeature::Editor->value, PostTypeFeature::Thumbnail->value],
+				'supports' => [
+					PostTypeFeature::Title->value,
+					PostTypeFeature::Editor->value,
+					PostTypeFeature::Thumbnail->value
+				],
 				'menu_icon' => Icon::Gallery->value,
-				'rewrite' => ['slug' => $this->gallerySettings->getParentPagePath(), 'with_front' => false]
+				'rewrite' => [
+					'slug' => $this->gallerySettings->getParentPagePath(),
+					'with_front' => false
+				]
 			]);
 			register_post_type(PostType::Image->value, [
 				'labels' => [
@@ -81,7 +88,10 @@ final class GalleryModule implements IModule {
 				],
 				'public' => false,
 				'has_archive' => false,
-				'supports' => [PostTypeFeature::Title->value, PostTypeFeature::Thumbnail->value],
+				'supports' => [
+					PostTypeFeature::Title->value,
+					PostTypeFeature::Thumbnail->value
+				],
 				'menu_icon' => Icon::Image->value,
 				'publicly_queryable' => true,
 				'show_ui' => true,
