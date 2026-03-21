@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Yoast SEO &#8211; Advanced SEO with real-time guidance and built-in AI - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-03-04 07:43:48+0000\n"
+"PO-Revision-Date: 2026-03-18 13:24:08+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,11 +10,6 @@ msgstr ""
 "X-Generator: GlotPress/4.0.3\n"
 "Language: da_DK\n"
 "Project-Id-Version: Plugins - Yoast SEO &#8211; Advanced SEO with real-time guidance and built-in AI - Stable (latest release)\n"
-
-#. translators: %1$s expands to the post type name this task is about
-#: src/task-list/application/tasks/set-search-appearance-templates.php:134
-msgid "Generic titles and descriptions make your results unclear in search. Templates ensure every %1$s has a clear, click-worthy snippet automatically."
-msgstr "Generiske titler og beskrivelser gør dine resultater uklare i søgninger. Skabeloner sikrer hver %1$s automatisk har et klart og klikværdigt uddrag."
 
 #: src/task-list/application/tasks/set-search-appearance-templates.php:116
 msgid "Set search templates"
@@ -27,14 +22,6 @@ msgstr "Kunne ikke aktivere llms.txt-muligheden."
 #: src/task-list/domain/exceptions/complete-hello-world-task-exception.php:17
 msgid "Failed to delete the Hello World post."
 msgstr "Kunne ikke slette indlægget Hej verden."
-
-#: src/task-list/application/tasks/set-search-appearance-templates.php:135
-msgid "Go to Search appearance, choose your post type, and set default title and meta description patterns."
-msgstr "Gå til søgeudseende, vælg din indlægstype og indstil standardudseende for titel og metabeskrivelse."
-
-#: src/task-list/application/tasks/enable-llms-txt.php:108
-msgid "Without llms.txt, AI crawlers may not know how to treat your content. Publishing it helps communicate your preferences in a clearer way to AI tools."
-msgstr "Uden llms.txt, ved AI indexeringsrobotter måske ikke, hvordan de skal håndtere dit indhold. Ved at udgive filen hjælper du med at kommunikere dine præferencer tydeligere til AI-værktøjer."
 
 #: src/presenters/admin/sidebar-presenter.php:77 js/dist/general-page.js:5
 #: js/dist/new-settings.js:5 js/dist/support.js:4
@@ -146,41 +133,28 @@ msgstr "Sørg for at søgemaskinerne viser den rigtige version af din produktsid
 msgid "Add product details to help your listings stand out"
 msgstr "Tilføj produktdetaljer for at hjælpe med at fremhæve dine annoncer"
 
-#: src/task-list/application/tasks/enable-llms-txt.php:107
+#: src/task-list/application/tasks/enable-llms-txt.php:108
 msgid "Create an llms.txt file"
 msgstr "Opret en llms.txt-fil"
 
-#: src/task-list/application/tasks/enable-llms-txt.php:94
+#: src/task-list/application/tasks/enable-llms-txt.php:95
 msgid "Enable llms.txt"
 msgstr "Aktiver llms.txt"
 
-#: src/task-list/application/tasks/delete-hello-world.php:116
+#: src/task-list/application/tasks/delete-hello-world.php:117
 msgid "Leaving placeholder content makes your site look unfinished and untrustworthy. Removing it keeps your site clean and professional for visitors and search engines."
 msgstr "Ved at have pladsholder-indhold på dit websted, kan det virke ufærdigt og utroværdigt. Ved at fjerne det vil dit websted holdes rent og professionelt for besøgende og søgemaskiner."
 
-#: src/task-list/application/tasks/delete-hello-world.php:115
+#: src/task-list/application/tasks/delete-hello-world.php:116
 msgid "Remove the “Hello World” post"
 msgstr "Fjern indlægget \"Hej verden\"."
 
-#: src/task-list/application/tasks/delete-hello-world.php:102
+#: src/task-list/application/tasks/delete-hello-world.php:103
 msgid "Delete for me"
 msgstr "Slet for mig"
 
-#: src/task-list/application/tasks/create-new-content.php:110
-msgid "Plan a topic, write your post, and use the SEO and Readability Analyses to refine it before publishing."
-msgstr "Planlæg et emne, skriv dit indlæg og brug SEO- og læsbarhedanalyser til at finpudse det før udgivelse."
-
-#: src/task-list/application/tasks/create-new-content.php:109
-msgid "Long gaps without new content slow down your traffic growth. Publishing regularly gives search engines and visitors a reason to return."
-msgstr "Lange ophold uden nyt indhold sløver væksten i trafikken. Ved at udgive regelmæssigt giver det søgemaskiner og besøgende en grund til at vende tilbage."
-
-#. translators: %1$s expands to Yoast SEO
-#: src/task-list/application/tasks/complete-ftc.php:93
-msgid "Skipping setup limits how much %1$s can help you. Completing it makes sure the core settings are working in your favor."
-msgstr "Uden opsætningen, er hjælpen fra %1$s begrænset. Ved at gennemføre sikrer du at de grundlæggende indstillinger arbejder til din fordel."
-
 #: src/task-list/application/tasks/complete-ftc.php:91
-msgid "Complete the First-time configuration"
+msgid "Complete the first time configuration"
 msgstr "Færdiggør førstegangsopsætning"
 
 #. translators: %1$s expands to "Yoast SEO".
@@ -848,6 +822,11 @@ msgstr "Omdiriger smukke webadresser til søgesider til råformat"
 msgid "These are expert features, so make sure you know what you're doing before removing the parameters. %1$sRead more about how your site can be affected%2$s."
 msgstr "Dette er ekspertfunktioner, så sørg for at vide, hvad du laver, før du fjerner parametrene. %1$sLæs mere om, hvordan dit websted kan blive påvirket%2$s."
 
+#: src/task-list/application/tasks/child-tasks/improve-content-readability-child.php:32
+#: src/task-list/application/tasks/child-tasks/improve-content-seo-child.php:32
+msgid "Open editor"
+msgstr "Åbn kontrolpanel"
+
 #. translators: %1$s expands to Yoast SEO, %2$s expands to the name of the
 #. class that could not be found.
 #: src/loader.php:258
@@ -1493,15 +1472,15 @@ msgstr "Udvidet Slack-deling"
 msgid "Because of a change in your tag base setting, some of your SEO data needs to be reprocessed."
 msgstr "På grund af en ændring i kodebasisindstillingen skal nogle af SEO-dataene genbehandles."
 
-#. translators: %s: 'Semrush'
-#: admin/views/class-yoast-integration-toggles.php:67
-msgid "The %s integration offers suggestions and insights for keywords related to the entered focus keyphrase."
-msgstr "Den %s integration giver forslag og indsigt i nøgleord relateret til den indtastede fokusnøgleordsfrase."
-
 #. translators: %1$s expands to Yoast SEO
 #: admin/views/tabs/network/integrations.php:27
 msgid "This tab allows you to selectively disable %1$s integrations with third-party products for all sites in the network. By default all integrations are enabled, which allows site admins to choose for themselves if they want to toggle an integration on or off for their site. When you disable an integration here, site admins will not be able to use that integration at all."
 msgstr "Under denne fane kan du selektivt deaktivere %1$s integrationer med tredjepartsprodukter for alle websteder i netværket. Som standard er alle integrationer aktiveret, hvilket gør det muligt for webstedsadministratorer selv at vælge, om de vil slå en integration til eller fra for deres websted. Når du deaktiverer en integration her, kan webstedsadministratorer slet ikke bruge denne integration."
+
+#. translators: %s: 'Semrush'
+#: admin/views/class-yoast-integration-toggles.php:67
+msgid "The %s integration offers suggestions and insights for keywords related to the entered focus keyphrase."
+msgstr "Den %s integration giver forslag og indsigt i nøgleord relateret til den indtastede fokusnøgleordsfrase."
 
 #: src/presenters/admin/indexing-error-presenter.php:64
 msgid "Oops, something has gone wrong and we couldn't complete the optimization of your SEO data. Please click the button again to re-start the process. "
@@ -2653,6 +2632,7 @@ msgid "%s integration"
 msgstr "%s-integration"
 
 #: admin/views/class-yoast-feature-toggles.php:71
+#: src/task-list/application/tasks/child-tasks/improve-content-seo-child.php:59
 #: js/dist/externals-components.js:402 js/dist/new-settings.js:28
 #: js/dist/new-settings.js:342
 msgid "SEO analysis"
@@ -3058,6 +3038,7 @@ msgstr[1] "%s notifikationer"
 
 #: admin/metabox/class-metabox-section-readability.php:30
 #: inc/class-wpseo-admin-bar-menu.php:252
+#: src/task-list/application/tasks/child-tasks/improve-content-readability-child.php:59
 msgid "Readability"
 msgstr "Læsbarhed"
 
@@ -3078,6 +3059,8 @@ msgstr "Deaktivér læsbarhedsanalyse"
 #: admin/statistics/class-statistics-service.php:217
 #: inc/class-wpseo-rank.php:140 inc/class-wpseo-rank.php:176
 #: inc/class-wpseo-rank.php:208 inc/class-wpseo-rank.php:240
+#: src/task-list/application/tasks/child-tasks/improve-content-readability-child.php:47
+#: src/task-list/application/tasks/child-tasks/improve-content-seo-child.php:47
 #: js/dist/block-editor.js:475 js/dist/editor-modules.js:115
 #: js/dist/editor-modules.js:368 js/dist/externals-components.js:122
 #: js/dist/externals/analysis.js:15 js/dist/externals/dashboardFrontend.js:4
@@ -3239,6 +3222,8 @@ msgstr "Facebook Debugger"
 #: admin/statistics/class-statistics-service.php:227
 #: inc/class-wpseo-rank.php:142 inc/class-wpseo-rank.php:186
 #: inc/class-wpseo-rank.php:218 inc/class-wpseo-rank.php:250
+#: src/task-list/application/tasks/child-tasks/improve-content-readability-child.php:45
+#: src/task-list/application/tasks/child-tasks/improve-content-seo-child.php:45
 #: js/dist/block-editor.js:475 js/dist/editor-modules.js:115
 #: js/dist/editor-modules.js:368 js/dist/externals-components.js:122
 #: js/dist/externals/analysis.js:15 js/dist/externals/dashboardFrontend.js:4
@@ -3752,10 +3737,12 @@ msgstr "Meta Desc."
 
 #: admin/statistics/class-statistics-service.php:222
 #: inc/class-wpseo-rank.php:141 inc/class-wpseo-rank.php:181
-#: inc/class-wpseo-rank.php:213 js/dist/block-editor.js:475
-#: js/dist/editor-modules.js:115 js/dist/editor-modules.js:368
-#: js/dist/externals-components.js:122 js/dist/externals/analysis.js:15
-#: js/dist/externals/dashboardFrontend.js:4
+#: inc/class-wpseo-rank.php:213
+#: src/task-list/application/tasks/child-tasks/improve-content-readability-child.php:46
+#: src/task-list/application/tasks/child-tasks/improve-content-seo-child.php:46
+#: js/dist/block-editor.js:475 js/dist/editor-modules.js:115
+#: js/dist/editor-modules.js:368 js/dist/externals-components.js:122
+#: js/dist/externals/analysis.js:15 js/dist/externals/dashboardFrontend.js:4
 #: js/dist/frontend-inspector-resources.js:1
 msgid "OK"
 msgstr "OK"
