@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 6.9.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-03-06 10:11:50+0000\n"
+"PO-Revision-Date: 2026-03-28 03:13:47+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -286,6 +286,15 @@ msgstr "januar"
 msgid "Uncategorized"
 msgstr "Ikke-kategoriseret"
 
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:566
+msgid "Sorry, you are not allowed to create notes for this post."
+msgstr "Beklager, du har ikke tilladelse til at oprette noter til dette indlæg."
+
+#. translators: %s: The directive, e.g. data-wp-on--click.
+#: wp-includes/interactivity-api/class-wp-interactivity-api.php:1041
+msgid "Binding event handler attributes is not supported. Please use \"%s\" instead."
+msgstr "Binding af begivenhedshåndterer-egenskaber understøttes ikke. Brug venligst \"%s\" i stedet."
+
 #. translators: %1$s is the feed URL, %2$s is the error message.
 #: wp-includes/feed.php:880
 msgid "Error fetching feed %1$s: %2$s"
@@ -516,7 +525,7 @@ msgid "User error triggered:"
 msgstr "Brugerfejl udløst:"
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:153
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:594
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:602
 msgid "Sorry, this post type does not support notes."
 msgstr "Beklager, denne indholdstype understøtter ikke noter."
 
@@ -5573,7 +5582,7 @@ msgctxt "Block pattern category"
 msgid "Media"
 msgstr "Medier"
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1575
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1583
 msgid "The date the comment was published, as GMT."
 msgstr "Datoen kommentaren blev udgivet, i GMT-tid."
 
@@ -5602,23 +5611,23 @@ msgstr "GUID for indlægget, som det findes i databasen."
 msgid "The date the post was published, in the site's timezone."
 msgstr "Datoen, indlægget blev udgivet, i webstedets tidszone."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1588
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1596
 msgid "The ID for the parent of the comment."
 msgstr "ID for kommentarens overordnede element."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1569
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1577
 msgid "The date the comment was published, in the site's timezone."
 msgstr "Datoen, kommentaren blev udgivet, i webstedets tidszone."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1561
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1569
 msgid "HTML content for the comment, transformed for display."
 msgstr "HTML indhold for kommentar, tilpasset til visning."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1556
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1564
 msgid "Content for the comment, as it exists in the database."
 msgstr "Indhold for kommentaren, som det findes i databasen."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1547
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1555
 msgid "The content for the comment."
 msgstr "Kommentarens indhold."
 
@@ -6673,20 +6682,20 @@ msgstr "Blokgruppens ID."
 msgid "Sorry, you are not allowed to browse the local block pattern directory."
 msgstr "Beklager, men du har ikke rettigheder til at gennemse det lokale blokgruppe-bibliotek."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1729
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1737
 msgid "Sort collection by comment attribute."
 msgstr "Sorter samling efter kommentar-egenskab."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1608
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1616
 msgid "Type of the comment."
 msgstr "Typen af kommentar."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1581
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1589
 msgid "URL to the comment."
 msgstr "URL til kommentaren."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:74
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1498
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1506
 msgid "Unique identifier for the comment."
 msgstr "Entydig identifikator for kommentar."
 
@@ -12189,11 +12198,11 @@ msgstr "Alle egenskaber brugt af denne indholdstype."
 msgid "An alphanumeric identifier for the status."
 msgstr "En alfanumerisk identifikator for denne status."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1690
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1698
 msgid "Limit response to comments published before a given ISO8601 compliant date."
 msgstr "Begræns svar til kommentarer udgivet før en given ISO8601-kompatibel dato."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1661
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1669
 msgid "Limit response to comments published after a given ISO8601 compliant date."
 msgstr "Begræns svar til kommentarer udgivet efter en given ISO8601-kompatibel dato."
 
@@ -12365,7 +12374,7 @@ msgstr "[%1$s] Aktiver %2$s"
 msgid "RSS Error:"
 msgstr "RSS-fejl:"
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:655
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:663
 msgid "Cannot create a comment with that type."
 msgstr "En kommentar kan ikke oprettes med denne type."
 
@@ -12379,8 +12388,8 @@ msgstr "Ugyldig korttitel."
 msgid "Invalid email address."
 msgstr "Ugyldig e-mailadresse."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:679
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:938
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:687
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:946
 msgid "Invalid comment content."
 msgstr "Ugyldigt kommentarindhold."
 
@@ -12455,7 +12464,7 @@ msgctxt "Theme starter content"
 msgid "Calendar"
 msgstr "Kalender"
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:897
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:905
 msgid "Sorry, you are not allowed to change the comment type."
 msgstr "Du har desværre ikke tilladelse til at ændre kommentartypen."
 
@@ -12475,7 +12484,7 @@ msgid "Sorry, you are not allowed to filter users by role."
 msgstr "Du har desværre ikke tilladelse til at filtrere brugere efter rolle."
 
 #: wp-includes/class-wp-xmlrpc-server.php:3760
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1019
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1027
 msgid "Sorry, you are not allowed to delete this comment."
 msgstr "Du har desværre ikke tilladelse til at slette denne kommentar."
 
@@ -12487,26 +12496,26 @@ msgstr "Beklager, men du har ikke rettigheder til at se menuelementer."
 msgid "Sorry, you are not allowed to view revisions of this post."
 msgstr "Du har desværre ikke tilladelse til at vise revisioner af dette indlæg."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:602
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:610
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:618
 msgid "Sorry, you are not allowed to create a comment on this post."
 msgstr "Du har desværre ikke tilladelse til at oprette en kommentar til dette indlæg."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:576
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:586
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:584
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:594
 msgid "Sorry, you are not allowed to create this comment without a post."
 msgstr "Du har desværre ikke tilladelse til at oprette denne kommentar uden et indlæg."
 
 #. translators: %s: Request parameter.
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:547
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:557
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:568
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:576
 msgid "Sorry, you are not allowed to edit '%s' for comments."
 msgstr "Beklager, men du har ikke rettigheder til at redigere '%s' for kommentarer."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:138
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:463
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:618
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:626
 msgid "Sorry, you are not allowed to read the post for this comment."
 msgstr "Beklager, men du har ikke ret til at læse indlægget for denne kommentar."
 
@@ -12782,7 +12791,7 @@ msgid "The post does not support trashing. Set '%s' to delete."
 msgstr "Dette indlæg understøtter ikke papirkurven. Sæt '%s' for at slette."
 
 #. translators: %s: force=true
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1072
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1080
 msgid "The comment does not support trashing. Set '%s' to delete."
 msgstr "Kommentaren understøtter ikke papirkurven. Sæt '%s' for at slette."
 
@@ -12798,8 +12807,8 @@ msgstr "Ugyldig JSON body sendt."
 msgid "Limit result set to posts assigned one or more statuses."
 msgstr "Begræns svaret til indlæg tildelt en eller flere statusser."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:733
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:951
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:741
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:959
 msgid "Comment field exceeds maximum length allowed."
 msgstr "Kommentarfeltet overskrider den tilladte længde."
 
@@ -13035,7 +13044,7 @@ msgstr "Begræns svaret til alle elementer, bortset fra dem med en specifik over
 msgid "Limit result set to items with particular parent IDs."
 msgstr "Begræns svar til elementer med en bestemt overordnet ID."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1714
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1722
 #: wp-includes/rest-api/endpoints/class-wp-rest-pattern-directory-controller.php:337
 #: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2995
 #: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:844
@@ -13221,7 +13230,7 @@ msgstr "Forkert adgangskode for indlæg."
 msgid "You need to define a search term to order by relevance."
 msgstr "Du skal definere en søgeterm, hvis du vil sortere efter relevans."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1787
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1795
 #: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:108
 msgid "The password for the post if it is password protected."
 msgstr "Adgangskode for indlægget, hvis det er adgangskodebeskyttet."
@@ -13306,23 +13315,23 @@ msgstr "Nuværende side i samlingen."
 msgid "Method '%s' not implemented. Must be overridden in subclass."
 msgstr "Metode '%s' er ikke implementeret. Skal overstyres i subclass."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1780
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1788
 msgid "Limit result set to comments assigned a specific type. Requires authorization."
 msgstr "Begræns svaret til kommentarer tildelt en bestemt type. Kræver godkendelse."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1772
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1780
 msgid "Limit result set to comments assigned a specific status. Requires authorization."
 msgstr "Begræns svaret til kommentarer med en bestemt status. Kræver godkendelse."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1763
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1771
 msgid "Limit result set to comments assigned to specific post IDs."
 msgstr "Begræns svaret til kommentarer med bestemte indlægs-ID'er."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1754
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1762
 msgid "Ensure result set excludes specific parent IDs."
 msgstr "Vær sikker på at svaret ekskludere specifikke overordnede ID'er."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1745
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1753
 msgid "Limit result set to comments of specific parent IDs."
 msgstr "Begræns svaret til kommentarer fra specifikke overordnede ID'er."
 
@@ -13331,7 +13340,7 @@ msgstr "Begræns svaret til kommentarer fra specifikke overordnede ID'er."
 msgid "Sort collection by object attribute."
 msgstr "Sorter samling efter enhedsattribut."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1719
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1727
 #: wp-includes/rest-api/endpoints/class-wp-rest-menu-items-controller.php:959
 #: wp-includes/rest-api/endpoints/class-wp-rest-pattern-directory-controller.php:342
 #: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:3000
@@ -13341,7 +13350,7 @@ msgstr "Sorter samling efter enhedsattribut."
 msgid "Order sort attribute ascending or descending."
 msgstr "Rækkefølge for sorteringsattribut stigende eller faldende."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1705
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1713
 #: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2973
 #: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:835
 #: wp-includes/rest-api/endpoints/class-wp-rest-search-controller.php:348
@@ -13350,7 +13359,7 @@ msgstr "Rækkefølge for sorteringsattribut stigende eller faldende."
 msgid "Limit result set to specific IDs."
 msgstr "Begræns svaret til specifikke ID'er."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1696
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1704
 #: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2964
 #: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:826
 #: wp-includes/rest-api/endpoints/class-wp-rest-search-controller.php:339
@@ -13363,15 +13372,15 @@ msgstr "Sørg for at svaret ekskluderer specifikke ID'er."
 msgid "Limit response to posts published before a given ISO8601 compliant date."
 msgstr "Begræns svar til indlæg udgivet før en given ISO8601-kompatibel dato."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1684
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1692
 msgid "Limit result set to that from a specific author email. Requires authorization."
 msgstr "Begræns svaret til det fra en specifik forfatters e-mail. Kræver godkendelse."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1675
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1683
 msgid "Ensure result set excludes comments assigned to specific user IDs. Requires authorization."
 msgstr "Sørg for at svaret ekskluderer kommentarer tildelt specifikke brugeres ID. Kræver godkendelse."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1667
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1675
 msgid "Limit result set to comments assigned to specific user IDs. Requires authorization."
 msgstr "Begræns svaret til kommentarer tildelt specifikke bruger ID'er. Kræver godkendelse."
 
@@ -13379,21 +13388,21 @@ msgstr "Begræns svaret til kommentarer tildelt specifikke bruger ID'er. Kræver
 msgid "Limit response to posts published after a given ISO8601 compliant date."
 msgstr "Begræns svar til indlæg udgivet efter en given ISO8601 kompatibel dato."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1633
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1641
 msgid "Avatar URLs for the comment author."
 msgstr "Avatar URL'er for kommentarens forfatter."
 
 #. translators: %d: Avatar image size in pixels.
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1625
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1633
 #: wp-includes/rest-api/endpoints/class-wp-rest-users-controller.php:1539
 msgid "Avatar URL with image size of %d pixels."
 msgstr "Avatar URL med en billedstørrelse på %d pixel."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1600
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1608
 msgid "State of the comment."
 msgstr "Kommentarens tilstand."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1594
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1602
 msgid "The ID of the associated post object."
 msgstr "ID på det tilknyttede indlægs element."
 
@@ -13421,27 +13430,27 @@ msgstr "Indlæggets indhold, som det findes i databasen."
 msgid "The content for the post."
 msgstr "Indlæggets indhold."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1539
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1547
 msgid "User agent for the comment author."
 msgstr "Brugeragent for kommentarens forfatter."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1533
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1541
 msgid "URL for the comment author."
 msgstr "URL for kommentarens forfatter."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1525
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1533
 msgid "Display name for the comment author."
 msgstr "Vist navn for kommentarens forfatter."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1519
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1527
 msgid "IP address for the comment author."
 msgstr "IP-adresse for kommentarens forfatter."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1509
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1517
 msgid "Email address for the comment author."
 msgstr "E-mailadresse for kommentarens forfatter."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1504
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1512
 msgid "The ID of the user object, if author was a user."
 msgstr "ID for brugerobjektet, hvis forfatter var en bruger."
 
@@ -13450,35 +13459,35 @@ msgstr "ID for brugerobjektet, hvis forfatter var en bruger."
 msgid "Unique identifier for the object."
 msgstr "Unik identifikator for objektet."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1421
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1429
 msgid "Invalid comment author ID."
 msgstr "Ugyldig ID for kommentarforfatter."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1093
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1101
 msgid "The comment cannot be deleted."
 msgstr "Kommentaren kan ikke slettes."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1080
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1088
 msgid "The comment has already been trashed."
 msgstr "Kommentaren er allerede smidt ud."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:961
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:969
 msgid "Updating comment failed."
 msgstr "Opdatering af kommentar mislykkedes."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:927
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:935
 msgid "Updating comment status failed."
 msgstr "Opdatering af kommentarstatus mislykkedes."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:790
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:798
 msgid "Creating comment failed."
 msgstr "Oprettelse af kommentar mislykkedes."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:709
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:717
 msgid "Creating a comment requires valid author name and email values."
 msgstr "Oprettelse af kommentar kræver gyldige forfatternavn- og e-mail-værdier."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:646
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:654
 msgid "Cannot create existing comment."
 msgstr "Kan ikke oprette eksisterende kommentar."
 
@@ -18215,7 +18224,7 @@ msgstr "Skift billede"
 msgid "Remove image"
 msgstr "Fjern billede"
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:870
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:878
 #: wp-admin/comment.php:84
 msgid "Sorry, you are not allowed to edit this comment."
 msgstr "Du har desværre ikke tilladelse til at redigere denne kommentar."
@@ -19795,7 +19804,7 @@ msgstr "Kommentarforfatteren skal udfylde navn og e-mail."
 #: wp-includes/class-wp-xmlrpc-server.php:6877 wp-includes/comment.php:2624
 #: wp-includes/post.php:4556 wp-includes/post.php:5243
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:417
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:914
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:922
 #: wp-includes/rest-api/endpoints/class-wp-rest-menu-items-controller.php:445
 #: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:553
 #: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:205
@@ -21469,7 +21478,7 @@ msgid "&laquo; Previous Page"
 msgstr "&laquo; Forrige side"
 
 #: wp-includes/class-wp-xmlrpc-server.php:3957 wp-includes/comment.php:3681
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:626
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:634
 msgid "Sorry, comments are closed for this item."
 msgstr "Beklager, der er lukket for kommentarer til dette indlæg."
 
@@ -22220,7 +22229,7 @@ msgstr "Annuller fortryd"
 #: wp-includes/js/dist/editor.js:7202 wp-includes/js/dist/editor.js:7227
 #: wp-includes/js/dist/editor.js:17556 wp-includes/js/dist/editor.js:20158
 #: wp-admin/includes/class-wp-posts-list-table.php:1783
-#: wp-admin/includes/file.php:2559 wp-admin/install.php:136
+#: wp-admin/includes/file.php:2564 wp-admin/install.php:136
 #: wp-admin/install.php:454 wp-admin/options-writing.php:172
 #: wp-admin/setup-config.php:239 wp-admin/user-new.php:593
 msgid "Password"
@@ -22228,7 +22237,7 @@ msgstr "Adgangskode"
 
 #: wp-login.php:1170 wp-admin/includes/class-wp-users-list-table.php:373
 #: wp-admin/includes/class-wp-users-list-table.php:396
-#: wp-admin/includes/file.php:2558 wp-admin/install.php:117
+#: wp-admin/includes/file.php:2563 wp-admin/install.php:117
 #: wp-admin/install.php:450 wp-admin/setup-config.php:234
 #: wp-admin/user-edit.php:445 wp-admin/user-new.php:543
 #: wp-admin/includes/class-wp-ms-users-list-table.php:193
@@ -22347,7 +22356,7 @@ msgstr "Indhold"
 #: wp-admin/includes/class-wp-posts-list-table.php:2118
 #: wp-admin/includes/class-wp-terms-list-table.php:730
 #: wp-admin/includes/dashboard.php:206 wp-admin/includes/dashboard.php:1405
-#: wp-admin/includes/file.php:2660 wp-admin/includes/media.php:1743
+#: wp-admin/includes/file.php:2665 wp-admin/includes/media.php:1743
 #: wp-admin/includes/media.php:2290 wp-admin/includes/meta-boxes.php:166
 #: wp-admin/includes/meta-boxes.php:224 wp-admin/includes/template.php:512
 #: wp-admin/includes/template.php:765 wp-admin/includes/template.php:895
