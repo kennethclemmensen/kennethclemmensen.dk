@@ -6,7 +6,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^7.2.0",
     "rxjs": "^7.8.2",
-    "vue": "^3.5.33"
+    "vue": "^3.5.34"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
@@ -38,12 +38,12 @@
     "gulp-rename": "^2.1.0",
     "less-loader": "^12.3.2",
     "mini-css-extract-plugin": "^2.10.2",
-    "sass-loader": "^16.0.7",
+    "sass-loader": "^16.0.8",
     "terser-webpack-plugin": "^5.5.0",
     "ts-loader": "^9.5.7",
     "tsify": "^5.0.4",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.59.1",
+    "typescript-eslint": "^8.59.2",
     "vinyl-source-stream": "^2.0.0",
     "webpack": "^5.106.2",
     "webpack-cli": "^7.0.2",
