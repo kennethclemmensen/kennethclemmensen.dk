@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 7.0.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-05-20 05:57:03+0000\n"
+"PO-Revision-Date: 2026-05-28 13:56:30+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -4092,7 +4092,7 @@ msgstr "Vis et billede, der repræsenterer dette websted. Opdater denne blok, og
 #: wp-includes/blocks/post-title/block.json
 msgctxt "block title"
 msgid "Title"
-msgstr "Overskrift"
+msgstr "Titel"
 
 #: wp-includes/blocks/post-excerpt/block.json
 msgctxt "block title"
@@ -11037,7 +11037,7 @@ msgstr "Diskussion"
 #: wp-includes/js/dist/editor.js:48916 wp-includes/js/dist/editor.js:49055
 #: wp-admin/edit-form-advanced.php:538 wp-admin/edit-form-blocks.php:269
 msgid "Add title"
-msgstr "Tilføj overskrift"
+msgstr "Tilføj titel"
 
 #: wp-includes/js/dist/editor.js:47785 wp-admin/includes/meta-boxes.php:174
 msgid "Visibility:"
