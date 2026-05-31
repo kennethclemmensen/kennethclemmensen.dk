@@ -20,6 +20,13 @@ jobs:
     - name: Get latest code
       uses: actions/checkout@v6.0.2
 
+    # Delete old workflow runs and keep only the 3 most recent ones to avoid cluttering the Actions tab
+    - name: Delete old workflow runs
+      run: |
+        gh run list --workflow deploy-plugin.yml --json databaseId --jq '.[3:] | .[].databaseId' | xargs -r gh run delete
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
     - name: Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.4.0
       with:
