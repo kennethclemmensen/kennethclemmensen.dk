@@ -67,7 +67,7 @@ trait AIOWPSecurity_User_Security_Commands_Trait {
 						$username_is_admin = false;
 					}
 					// Now let's change the username
-					$result = $wpdb->query($wpdb->prepare("UPDATE `" . $wpdb->users . "` SET user_login = '" . esc_sql($new_username) . "' WHERE user_login=%s", "admin")); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- pcp check ingore this
+					$result = $wpdb->query($wpdb->prepare("UPDATE `" . $wpdb->users . "` SET user_login = '" . esc_sql($new_username) . "' WHERE user_login=%s", "admin")); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- pcp check ignore this
 					if (false === $result) {
 						// There was an error updating the users table
 						$user_update_error = __('The database update operation of the user account failed.', 'all-in-one-wp-security-and-firewall');
@@ -79,9 +79,9 @@ trait AIOWPSecurity_User_Security_Commands_Trait {
 
 					// multisite considerations
 					if (is_multisite()) { // process sitemeta if we're in a multi-site situation
-						$oldAdmins = $wpdb->get_var("SELECT meta_value FROM `" . $wpdb->sitemeta . "` WHERE meta_key = 'site_admins'"); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- pcp check ingore this
+						$oldAdmins = $wpdb->get_var("SELECT meta_value FROM `" . $wpdb->sitemeta . "` WHERE meta_key = 'site_admins'"); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- pcp check ignore this
 						$newAdmins = str_replace('5:"admin"', strlen($new_username) . ':"' . esc_sql($new_username) . '"', $oldAdmins);
-						$wpdb->query("UPDATE `" . $wpdb->sitemeta . "` SET meta_value = '" . esc_sql($newAdmins) . "' WHERE meta_key = 'site_admins'"); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- pcp check ingore this
+						$wpdb->query("UPDATE `" . $wpdb->sitemeta . "` SET meta_value = '" . esc_sql($newAdmins) . "' WHERE meta_key = 'site_admins'"); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- pcp check ignore this
 					}
 
 					// If user is logged in with username "admin" then log user out and send to login page so they can login again

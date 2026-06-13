@@ -22,6 +22,7 @@ class AIOWPSecurity_Cronjob_Handler {
 		add_action('aiowps_send_lockout_email', array($this, 'send_lockout_email'));
 		add_action('aios_update_googlebot_ip_ranges', array($this, 'aios_update_googlebot_ip_ranges'));
 		add_action('aios_update_bingbot_ip_ranges', array($this, 'aios_update_bingbot_ip_ranges'));
+		add_action('aiowps_perform_fcd_scan_tasks', array($this, 'aiowps_scheduled_fcd_scan_handler'));
 	}
 
 	/**
@@ -89,6 +90,7 @@ class AIOWPSecurity_Cronjob_Handler {
 		do_action('aios_perform_update_antibot_keys');
 		do_action('aios_update_googlebot_ip_ranges');
 		do_action('aios_update_bingbot_ip_ranges');
+		do_action('aiowps_clean_up_old_tasks');
 	}
 
 	/**
@@ -177,5 +179,38 @@ class AIOWPSecurity_Cronjob_Handler {
 		}
 
 		$aiowps_firewall_config->set_value('aiowps_bingbot_ip_ranges', $validated_ip_list_array);
+	}
+
+	/**
+	 * This function is called via the following filter 'aiowps_perform_fcd_scan_tasks' and will start the file scan
+	 *
+	 * @return void
+	 */
+	public function aiowps_scheduled_fcd_scan_handler() {
+		global $aio_wp_security;
+		$task_manager = AIOWPSecurity_Task_Manager::get_instance();
+
+		if ('1' != $aio_wp_security->configs->get_value('aiowps_enable_automated_fcd_scan') || $task_manager->fetch_active_task('file_scan')) return;
+
+		$aio_wp_security->debug_logger->log_debug_cron(__METHOD__ . " - Scheduled fcd_scan is enabled. Checking now to see if scan needs to be done...");
+
+		$current_time = time();
+		$next_fcd_scan_time = AIOWPSecurity_File_Scanner::get_next_scheduled_scan();
+
+		if ($next_fcd_scan_time <= $current_time) {
+			$task_name = 'aiowps_file_scan_' . $task_manager->generate_unique_task_name();
+			$task = AIOWPSecurity_File_Scan_Task::create_task('file_scan', $task_name, array('anonymous_user_allowed' => true));
+
+			if (!$task) {
+				$aio_wp_security->debug_logger->log_debug(__METHOD__ . ' - Scheduled filescan operation failed.', 4);
+				return;
+			}
+
+			if (!wp_next_scheduled('aiowps_process_file_scan_tasks')) {
+				wp_schedule_single_event(time() + 3, 'aiowps_process_file_scan_tasks');
+			}
+
+			$aio_wp_security->configs->set_value('aiowps_last_fcd_scan_time', $current_time, true);
+		}
 	}
 }

@@ -681,27 +681,18 @@ class AIOWPSecurity_Utility {
 	}
 
 	/**
-	 * Add backquotes to tables and db-names in SQL queries. Taken from phpMyAdmin.
+	 * Quotes an identifier for use in an SQL statement. Escapes any quotes found inside the identifier.
 	 *
-	 * @param  string $a_name - the table name
-	 * @return string - the quoted table name
+	 * Does the same as the wpdb method added in WordPress 6.2 for %i in prepare: https://developer.wordpress.org/reference/classes/wpdb/quote_identifier/
+	 *
+	 * @param string $identifier
+	 *
+	 * @return string
 	 */
-	public static function backquote($a_name) {
-		if (!empty($a_name) && '*' != $a_name) {
-			if (is_array($a_name)) {
-				$result = array();
-				foreach ($a_name as $key => $val) {
-					$result[$key] = '`'.$val.'`';
-				}
-				return $result;
-			} else {
-				return '`'.$a_name.'`';
-			}
-		} else {
-			return $a_name;
-		}
+	public static function quote_identifier($identifier) {
+		return '`' . str_replace('`', '``', $identifier) . '`';
 	}
-	
+
 	/**
 	 * Replace the first, and only the first, instance within a string
 	 *
@@ -1154,7 +1145,7 @@ class AIOWPSecurity_Utility {
 	public static function is_memberpress_plugin_active() {
 		return is_plugin_active('memberpress/memberpress.php');
 	}
-	 
+
 	/**
 	 * Retrieves and returns current WP general settings date time format.
 	 *
@@ -1612,7 +1603,7 @@ class AIOWPSecurity_Utility {
 		$rest_route = !empty($_GET['rest_route']) ? sanitize_text_field(stripslashes($_GET['rest_route'])) : '';
 		// If route is not found in query parameter, extract from REQUEST_URI
 		if (empty($rest_route)) {
-			$request_uri = !empty($_SERVER['REQUEST_URI']) ? urldecode($_SERVER['REQUEST_URI']) : '';
+			$request_uri = !empty($_SERVER['REQUEST_URI']) ? sanitize_text_field(urldecode($_SERVER['REQUEST_URI'])) : '';
 			$parsed_url = parse_url(trim($request_uri, '/'));
 			$path = isset($parsed_url['path']) ? $parsed_url['path'] : '';
 			if (false !== strpos($path, rest_get_url_prefix())) {
@@ -1636,8 +1627,8 @@ class AIOWPSecurity_Utility {
 		$rest_server = rest_get_server();
 		$namespaces = $rest_server->get_namespaces();
 		$rest_route_namespaces = array();
-		foreach ($namespaces as $namesapce) {
-			$rest_route_namespaces[] = explode('/', $namesapce)[0]; // Namespace 'wc' only to consider instead 'wc/v1', 'wc/v2', 'wc/v3', 'wc/store'
+		foreach ($namespaces as $namespace) {
+			$rest_route_namespaces[] = explode('/', $namespace)[0]; // Namespace 'wc' only to consider instead 'wc/v1', 'wc/v2', 'wc/v3', 'wc/store'
 		}
 		$route_namespaces = array_unique($rest_route_namespaces);
 		sort($route_namespaces);

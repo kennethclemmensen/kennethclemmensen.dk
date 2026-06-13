@@ -481,25 +481,56 @@ class AIOWPSecurity_Dashboard_Menu extends AIOWPSecurity_Admin_Menu {
 	}
 	
 	/**
+	 * Gets last x days login details
+	 *
+	 * @global $wpdb
+	 * @param int $days Number of days
+	 *
+	 * @return array
+	 */
+	public static function get_login_data_lastx_days($days) {
+		global $wpdb;
+		$days_before_time = strtotime('-'.$days.' days', time());
+		$audit_log_table = AIOWPSEC_TBL_AUDIT_LOG;
+		if (is_super_admin()) {
+			// phpcs:ignore WordPress.DB.DirectDatabaseQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- $audit_log_table is a plugin-defined constant
+			$login_data_lastx_days = $wpdb->get_results($wpdb->prepare("SELECT id,created FROM $audit_log_table WHERE event_type = %s and created > %d", array('successful_login', $days_before_time)), ARRAY_A);
+		} else {
+			// phpcs:ignore WordPress.DB.DirectDatabaseQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- $audit_log_table is a plugin-defined constant
+			$login_data_lastx_days = $wpdb->get_results($wpdb->prepare("SELECT id,created FROM $audit_log_table WHERE event_type = %s and created > %d and site_id = %d", array('successful_login', $days_before_time, get_current_blog_id())), ARRAY_A);
+		}
+		return $login_data_lastx_days;
+	}
+	
+	/**
+	 * Gets last 5 login record details
+	 *
+	 * @global $wpdb
+	 * @param int $records Number of records
+	 *
+	 * @return array
+	 */
+	public static function get_login_lastx_records($records) {
+		global $wpdb;
+		$audit_log_table = AIOWPSEC_TBL_AUDIT_LOG;
+		if (is_super_admin()) {
+			// phpcs:ignore WordPress.DB.DirectDatabaseQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- $audit_log_table is a plugin-defined constant
+			$login_lastx_records = $wpdb->get_results($wpdb->prepare("SELECT * FROM $audit_log_table WHERE event_type = %s ORDER BY created DESC LIMIT %d", array('successful_login', $records)), ARRAY_A);
+		} else {
+			// phpcs:ignore WordPress.DB.DirectDatabaseQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- $audit_log_table is a plugin-defined constant
+			$login_lastx_records = $wpdb->get_results($wpdb->prepare("SELECT * FROM $audit_log_table WHERE event_type = %s and site_id = %d ORDER BY created DESC LIMIT %d", array('successful_login', get_current_blog_id(), $records)), ARRAY_A);
+		}
+		return $login_lastx_records;
+	}
+	
+	/**
 	 * This outputs the latest logins dashboard widget
 	 *
 	 * @return void
 	 */
 	public function widget_last_5_logins() {
-		global $wpdb;
-		$audit_log_table = AIOWPSEC_TBL_AUDIT_LOG;
-		$where_sql = (is_super_admin()) ? '' : ' and site_id = '.get_current_blog_id().' ';
-		
 		$last_days = 7;
-		$days_before_time = strtotime('-'.$last_days.' days', time());
-
-		// phpcs:ignore WordPress.DB.DirectDatabaseQuery -- PCP warning. Direct query necessary.
-		$login_data_lastx_days = $wpdb->get_results(
-			// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- pcp Warning. Ignore.
-			$wpdb->prepare("SELECT id,created FROM $audit_log_table WHERE event_type = %s $where_sql and created > %s", 'successful_login', $days_before_time),
-			ARRAY_A
-		); // Get the last x days records
-		
+		$login_data_lastx_days = self::get_login_data_lastx_days($last_days); // Get the last x days login records
 		if (!empty($login_data_lastx_days)) {
 			$chart_data = array();
 			$chart_data['columns'] = array(__('Date', 'all-in-one-wp-security-and-firewall'), __('Logins', 'all-in-one-wp-security-and-firewall'));
@@ -508,24 +539,18 @@ class AIOWPSecurity_Dashboard_Menu extends AIOWPSecurity_Admin_Menu {
 			$chart_data['id'] = 'logins_last_'.$last_days.'days';
 			$this->dashboard_widget_chart($chart_data, 'bar');
 		}
-
-		// phpcs:ignore WordPress.DB.DirectDatabaseQuery -- PCP Error. Ignore.
-		$data = $wpdb->get_results(
-			// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- PCP error. Ignore.
-			$wpdb->prepare("SELECT * FROM $audit_log_table WHERE event_type = %s ORDER BY created DESC LIMIT %d", 'successful_login', 5),
-			ARRAY_A
-		); //Get the last 5 records
-
-		if (null == $data) {
+		
+		$records = 5;
+		$login_lastx_records = self::get_login_lastx_records($records); //Get the last 5 login records
+		if (null == $login_lastx_records) {
 			echo '<p>' . esc_html__('No data found.', 'all-in-one-wp-security-and-firewall') . '</p>';
 		} else {
 			$login_summary_table_data = array();
-			//$login_summary_table_data['title'] = __('Last 5 login summary:', 'all-in-one-wp-security-and-firewall');
 			$login_summary_table_data['columns'] = array(__('User', 'all-in-one-wp-security-and-firewall'), __('Date', 'all-in-one-wp-security-and-firewall'), 'IP');
-			foreach ($data as $entry) {
+			foreach ($login_lastx_records as $entry) {
 				$login_summary_table_data['data'][] = array($entry['username'], gmdate('Y-m-d H:i:s', $entry['created']), $entry['ip']);
 			}
-			$login_summary_table_data = apply_filters('aios_last5_logins_summary', $login_summary_table_data, $data);
+			$login_summary_table_data = apply_filters('aios_last5_logins_summary', $login_summary_table_data, $login_lastx_records);
 			$this->dashboard_widget($login_summary_table_data);
 			
 			// View all login logs

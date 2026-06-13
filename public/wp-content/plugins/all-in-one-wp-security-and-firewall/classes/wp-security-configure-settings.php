@@ -220,9 +220,11 @@ class AIOWPSecurity_Configure_Settings {
 	/**
 	 * Add config settings.
 	 *
+	 * @param boolean $is_activating - Plugin activation add_option_values called
+	 *
 	 * @return Void
 	 */
-	public static function add_option_values() {
+	public static function add_option_values($is_activating = false) {
 
 		global $aio_wp_security;
 
@@ -448,7 +450,7 @@ class AIOWPSecurity_Configure_Settings {
 			$aio_wp_security->configs->save_config();
 		}
 
-		if (is_main_site()) {
+		if (is_main_site() && $is_activating) {
 			AIOWPSecurity_Utility_Htaccess::write_to_htaccess(false);
 		}
 
@@ -523,7 +525,15 @@ class AIOWPSecurity_Configure_Settings {
 		/* translators: %s: Dashboard link. */
 		$email_msg = __('Our basic firewall rules have been upgraded and to prevent any unexpected site issues we have disabled the features.', 'all-in-one-wp-security-and-firewall') . "\n\n" . __('You can enable the features again by logging into your WordPress dashboard.', 'all-in-one-wp-security-and-firewall') . "\n\n" .sprintf(__('Go to dashboard: %s', 'all-in-one-wp-security-and-firewall'), $dashboard_link) . "\n\n" . __('Once logged in you will see a notification where you can decide on which course of action you wish to take.', 'all-in-one-wp-security-and-firewall') . "\n";
 		$email = get_bloginfo('admin_email');
-		if (false === wp_mail($email, $subject, $email_msg)) {
+		$mail_data = array(
+			'to' => $email,
+			'subject' => $subject,
+			'message' => $email_msg
+		);
+
+		$mail_sent = AIOWPSecurity_Reporting::notification($mail_data);
+
+		if (false === $mail_sent) {
 			$aio_wp_security->debug_logger->log_debug("Basic firewall rules notification email failed to send to " . $email, 4);
 		}
 	}
@@ -541,7 +551,14 @@ class AIOWPSecurity_Configure_Settings {
 		/* translators: %s: Dashboard link */
 		$email_msg = __('The blacklist manager feature has been updated and to prevent any unexpected site lockouts we have disabled the feature.', 'all-in-one-wp-security-and-firewall') . "\n\n" . __('You can enable the feature again by logging into your WordPress dashboard.', 'all-in-one-wp-security-and-firewall') . "\n\n" .sprintf(__('Go to dashboard: %s', 'all-in-one-wp-security-and-firewall'), $dashboard_link) . "\n\n" . __('Once logged in before turning the blacklist manger on please double check your settings to ensure you have not entered your own details.', 'all-in-one-wp-security-and-firewall') . "\n";
 		$email = get_bloginfo('admin_email');
-		$mail_sent = wp_mail($email, $subject, $email_msg);
+		$mail_data = array(
+			'to' => $email,
+			'subject' => $subject,
+			'message' => $email_msg
+		);
+
+		$mail_sent = AIOWPSecurity_Reporting::notification($mail_data);
+
 		if (false === $mail_sent) {
 			$aio_wp_security->debug_logger->log_debug("Blacklist IP manager disabled notification email failed to send to " . $email, 4);
 		}

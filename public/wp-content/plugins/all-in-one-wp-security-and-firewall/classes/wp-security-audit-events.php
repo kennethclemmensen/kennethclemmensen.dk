@@ -131,6 +131,7 @@ class AIOWPSecurity_Audit_Events {
 			'rule_active' => __('Rule active', 'all-in-one-wp-security-and-firewall'),
 			'rule_not_active' => __('Rule not active', 'all-in-one-wp-security-and-firewall'),
 			'password_reset' => __('Password reset', 'all-in-one-wp-security-and-firewall'),
+			'wpcli_command' => __('TFA CLI command', 'all-in-one-wp-security-and-firewall'),
 		);
 	}
 
@@ -648,6 +649,22 @@ class AIOWPSecurity_Audit_Events {
 			)
 		);
 		do_action('aiowps_record_event', 'successful_logout', $details, 'info', $username);
+	}
+	
+	/**
+	 * Adds a WP CLI command event to the audit log
+	 *
+	 * @param string $command - the executed command for WP CLI
+	 *
+	 * @return void
+	 */
+	public static function event_wpcli_command($command) {
+		$details = array(
+			'wpcli_command' => array(
+				'command' => $command,
+			)
+		);
+		do_action('aiowps_record_event', 'wpcli_command', $details, 'info');
 	}
 
 	/**

@@ -407,8 +407,16 @@ function retrieve_password() {
 	*/
 	$message = apply_filters('retrieve_password_message', $message, $key, $user_login, $user_data);
 
-	if ($message && !wp_mail($user_email, wp_specialchars_decode($title), $message))
-		wp_die(esc_html__('The email could not be sent.') . "<br />\n" . esc_html__('Possible reason: your host may have disabled the mail() function.'));
+	$mail_data = array(
+		'to' => $user_email,
+		'subject' => wp_specialchars_decode($title),
+		'message' => $message,
+	);
+
+	$send_mail = AIOWPSecurity_Reporting::notification($mail_data);
+
+	if ($message && !$send_mail)
+		wp_die(esc_html__('The email could not be sent.', 'all-in-one-wp-security-and-firewall') . "<br />\n" . esc_html__('Possible reason: your host may have disabled the mail() function.', 'all-in-one-wp-security-and-firewall'));
 
 	return true;
 }

@@ -359,7 +359,7 @@ trait AIOWPSecurity_Settings_Commands_Trait {
 
 					//Just in case user submits partial config settings
 					//Run add_option_values to make sure any missing config items are at least set to default
-					AIOWPSecurity_Configure_Settings::add_option_values();
+					AIOWPSecurity_Configure_Settings::add_option_values(false);
 
 					$res = true;
 

@@ -335,7 +335,7 @@ class AIOWPSecurity_General_Init_Tasks {
 
 		// for enforcing strong passwords
 		if ('1' == $aio_wp_security->configs->get_value('aiowps_enforce_strong_password')) {
-			wp_register_script('remove-weak-pw', AIO_WP_SECURITY_URL.'/js/remove-weak-pw.js', array('jquery'), AIO_WP_SECURITY_VERSION, true);
+			wp_register_script('remove-weak-pw', AIO_WP_SECURITY_URL.'/js/remove-weak-pw.js', array(), AIO_WP_SECURITY_VERSION, true);
 			wp_enqueue_script('remove-weak-pw');
 		}
 		

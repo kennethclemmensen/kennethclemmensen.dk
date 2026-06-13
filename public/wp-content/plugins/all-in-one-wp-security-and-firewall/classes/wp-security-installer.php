@@ -23,9 +23,11 @@ class AIOWPSecurity_Installer {
 	/**
 	 * Run installer function.
 	 *
+	 * @param boolean $is_activating - Plugin activation run_installer called
+	 *
 	 * @return void
 	 */
-	public static function run_installer() {
+	public static function run_installer($is_activating = false) {
 		global $wpdb;
 		if (function_exists('is_multisite') && is_multisite() && is_main_site()) {
 			// check if it is a network activation - if so, run the activation function for each blog id
@@ -35,7 +37,7 @@ class AIOWPSecurity_Installer {
 				AIOWPSecurity_Installer::create_db_tables();
 				AIOWPSecurity_Installer::migrate_db_tables();
 				AIOWPSecurity_Installer::check_tasks();
-				AIOWPSecurity_Configure_Settings::add_option_values();
+				AIOWPSecurity_Configure_Settings::add_option_values($is_activating);
 				AIOWPSecurity_Configure_Settings::update_aiowpsec_db_version();
 				restore_current_blog();
 			}
@@ -43,7 +45,7 @@ class AIOWPSecurity_Installer {
 			AIOWPSecurity_Installer::create_db_tables();
 			AIOWPSecurity_Installer::migrate_db_tables();
 			AIOWPSecurity_Installer::check_tasks();
-			AIOWPSecurity_Configure_Settings::add_option_values();
+			AIOWPSecurity_Configure_Settings::add_option_values($is_activating);
 			AIOWPSecurity_Configure_Settings::update_aiowpsec_db_version();
 		}
 
@@ -315,7 +317,7 @@ class AIOWPSecurity_Installer {
 	}
 
 	/**
-	 * This function will update the table datetime column to timestamp with backward compability
+	 * This function will update the table datetime column to timestamp with backward compatibility
 	 *
 	 * @return void
 	 */
@@ -440,7 +442,7 @@ class AIOWPSecurity_Installer {
 		if ('apache' == $server_type || 'litespeed' == $server_type) {
 			$file = $aiowps_dir . '/.htaccess';
 			if (!file_exists($file)) {
-				//Create an .htacces file
+				//Create an .htaccess file
 				//Write some rules which will only allow people originating from wp admin page to download the DB backup
 				$rules = '';
 				$rules .= 'order deny,allow' . PHP_EOL;

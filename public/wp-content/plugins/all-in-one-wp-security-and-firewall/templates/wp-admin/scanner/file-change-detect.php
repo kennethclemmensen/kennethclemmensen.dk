@@ -53,10 +53,12 @@
 	</div>
 	<div class="aiowps_scan_btn_wrapper">
 		<button id="aiowps_manual_fcd_scan" type="button" class="button button-primary button-large button-hero"><?php esc_html_e('Scan now', 'all-in-one-wp-security-and-firewall'); ?></button>
+		<p id="aiowps_manual_fcd_scan_spinner" style="display:none;"><span class="aiowps_spinner spinner visible"></span><?php esc_html_e('Processing...', 'all-in-one-wp-security-and-firewall'); ?></p>
+		<p><?php echo '<a href="#" id="aiowps_cancel_fcd_scan" style="display: none; color: red;" data-message="'.esc_attr__('Are you sure you want to stop the file scan?', 'all-in-one-wp-security-and-firewall').'">' . esc_html__('Cancel scan', 'all-in-one-wp-security-and-firewall') . '</a>'; ?></p>
 		<p><?php echo esc_html__('or schedule regular file scans below.', 'all-in-one-wp-security-and-firewall');?></p>
 	</div>
 	<div id="aiowps_activejobs_table">
-		
+		<p id="aiowps_activejobs_spinner" style="display:none;"><span class="aiowps_spinner spinner visible"></span><?php esc_html_e('Processing...', 'all-in-one-wp-security-and-firewall'); ?></p>
 	</div>
 	<div id="aiowps_previous_scan_wrapper">
 	</div>

@@ -8,11 +8,13 @@ if (!class_exists('AIO_WP_Security')) {
 
 	class AIO_WP_Security {
 
-		public $version = '5.4.7';
+		public $version = '5.4.9';
 
 		public $db_version = '2.1.4';
 
 		public $firewall_version = '1.0.10';
+
+		public $htaccess_version = '1.0.0';
 
 		public $plugin_url;
 
@@ -39,8 +41,6 @@ if (!class_exists('AIO_WP_Security')) {
 
 		public $captcha_obj;
 
-		public $scan_obj;
-				
 		public $cleanup_obj;
 
 		public $sender_obj;
@@ -134,6 +134,7 @@ if (!class_exists('AIO_WP_Security')) {
 			define('AIO_WP_SECURITY_DB_VERSION', $this->db_version);
 			define('AIO_WP_SECURITY_FIREWALL_VERSION', $this->firewall_version);
 			define('AIO_WP_SECURITY_PLUGIN_SLUG', plugin_basename(__FILE__));
+			define('AIO_WP_SECURITY_HTACCESS_VERSION', $this->htaccess_version);
 			define('AIOWPSEC_WP_HOME_URL', home_url());
 			define('AIOWPSEC_WP_SITE_URL', site_url());
 			define('AIOWPSEC_WP_URL', AIOWPSEC_WP_SITE_URL); // for backwards compatibility
@@ -225,12 +226,16 @@ if (!class_exists('AIO_WP_Security')) {
 			include_once(AIO_WP_SECURITY_PATH.'/classes/wp-security-general-init-tasks.php');
 			include_once(AIO_WP_SECURITY_PATH.'/classes/wp-security-wp-loaded-tasks.php');
 			include_once(AIO_WP_SECURITY_PATH.'/classes/wp-security-task-manager.php');
+			include_once(AIO_WP_SECURITY_PATH.'/classes/wp-security-heartbeat.php');
+			include_once(AIO_WP_SECURITY_PATH.'/classes/wp-security-task-manager.php');
 
 			include_once(AIO_WP_SECURITY_PATH.'/classes/wp-security-user-login.php');
 			include_once(AIO_WP_SECURITY_PATH.'/classes/wp-security-user-registration.php');
 			include_once(AIO_WP_SECURITY_PATH.'/classes/wp-security-captcha.php');
 			include_once(AIO_WP_SECURITY_PATH.'/classes/wp-security-cleanup.php');
-			include_once(AIO_WP_SECURITY_PATH.'/classes/wp-security-file-scan.php');
+			include_once(AIO_WP_SECURITY_PATH.'/classes/wp-security-file-scanner.php');
+			include_once(AIO_WP_SECURITY_PATH.'/classes/tasks/wp-security-file-scan-task.php');
+			include_once(AIO_WP_SECURITY_PATH.'/classes/wp-security-checksums.php');
 			include_once(AIO_WP_SECURITY_PATH.'/classes/wp-security-comment.php');
 			include_once(AIO_WP_SECURITY_PATH.'/classes/wp-security-cronjob-handler.php');
 			include_once(AIO_WP_SECURITY_PATH.'/classes/grade-system/wp-security-feature-item.php');
@@ -274,6 +279,7 @@ if (!class_exists('AIO_WP_Security')) {
 			$this->debug_logger = new AIOWPSecurity_Logger($debug_enabled);
 
 			$this->load_ajax_handler();
+			AIOWPSecurity_Heartbeat::get_instance();
 		}
 
 		/**
@@ -300,7 +306,7 @@ if (!class_exists('AIO_WP_Security')) {
 
 			$is_first_activation = (false === get_option('aiowpsec_db_version')); // Needs to be set before run_installer().
 
-			AIOWPSecurity_Installer::run_installer();
+			AIOWPSecurity_Installer::run_installer(true);
 			AIOWPSecurity_Installer::set_cron_tasks_upon_activation();
 
 			if ($is_first_activation && self::onboarding_wizard_requirements_met()) {
@@ -413,7 +419,18 @@ if (!class_exists('AIO_WP_Security')) {
 		public function firewall_upgrade_handler() {
 			if (get_option('aiowpsec_firewall_version') != AIO_WP_SECURITY_FIREWALL_VERSION) {
 				AIOWPSecurity_Configure_Settings::set_firewall_configs();
+			}
+		}
+
+		/**
+		 * Upgrades the .htaccess file
+		 *
+		 * @return void.
+		 */
+		public function htaccess_upgrade_handler() {
+			if (AIOWPSecurity_Utility::allow_to_write_to_htaccess() && get_option('aiowpsec_htaccess_version') != AIO_WP_SECURITY_HTACCESS_VERSION) {
 				AIOWPSecurity_Utility_Htaccess::write_to_htaccess(false);
+				update_option('aiowpsec_htaccess_version', AIO_WP_SECURITY_HTACCESS_VERSION);
 			}
 		}
 		
@@ -443,8 +460,7 @@ if (!class_exists('AIO_WP_Security')) {
 
 			if (get_option('aiowpsec_db_version') != AIO_WP_SECURITY_DB_VERSION) {
 				require_once(AIO_WP_SECURITY_PATH.'/classes/wp-security-installer.php');
-				AIOWPSecurity_Installer::run_installer();
-				AIOWPSecurity_Utility_Htaccess::write_to_htaccess(false);
+				AIOWPSecurity_Installer::run_installer(false);
 
 				/**
 				 * Update our config file's header if needed.
@@ -482,6 +498,7 @@ if (!class_exists('AIO_WP_Security')) {
 			$this->db_upgrade_handler();
 			$this->firewall_upgrade_handler();
 			$this->maybe_migrate_http_auth_password();
+			$this->htaccess_upgrade_handler();
 			if (is_admin()) {
 				//Do plugins_loaded operations for admin side
 				$this->admin_init = new AIOWPSecurity_Admin_Init();
@@ -515,7 +532,6 @@ if (!class_exists('AIO_WP_Security')) {
 			$this->user_login_obj = new AIOWPSecurity_User_Login();//Do the user login operation tasks
 			$this->user_registration_obj = new AIOWPSecurity_User_Registration();//Do the user login operation tasks
 			$this->captcha_obj = new AIOWPSecurity_Captcha(); // Do the CAPTCHA tasks
-			$this->scan_obj = new AIOWPSecurity_Scan();//Object to handle scan tasks
 			$this->cleanup_obj = new AIOWPSecurity_Cleanup(); // Object to handle cleanup tasks
 			$this->sender_obj = new AIOWPSecurity_Sender_Service();//Object to handle sending emails
 			$this->debug_obj =new AIOWPSecurity_Debug();//Object to handle debug tasks
@@ -526,6 +542,8 @@ if (!class_exists('AIO_WP_Security')) {
 			add_action('admin_init', array($this, 'do_action_force_logout_check'));
 			// For front side force log out.
 			add_action('template_redirect', array($this, 'do_action_force_logout_check'));
+
+			add_filter('udrpc_action', array($this, 'validate_udrpc_format'), 0);
 
 			new AIOWPSecurity_General_Init_Tasks();
 			new AIOWPSecurity_Comment();
@@ -692,6 +710,15 @@ if (!class_exists('AIO_WP_Security')) {
 		 */
 		public function do_action_force_logout_check() {
 			do_action('aiowps_force_logout_check');
+		}
+
+		/**
+		 * This function will die if a invalid UDRPC action is passed
+		 *
+		 * @return void
+		 */
+		public function validate_udrpc_format() {
+			if ($_POST['format'] < 2) die('Not permitted.');
 		}
 
 		/**

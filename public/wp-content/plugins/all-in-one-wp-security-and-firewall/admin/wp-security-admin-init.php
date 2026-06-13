@@ -340,7 +340,18 @@ class AIOWPSecurity_Admin_Init {
 		wp_enqueue_script('chartjs-gauge', AIO_WP_SECURITY_URL . '/includes/chartjs/chartjs-gauge.min.js', array(), AIO_WP_SECURITY_VERSION, true);
 		wp_register_script('jquery-blockui', AIO_WP_SECURITY_URL.'/includes/blockui/jquery.blockUI.js', array('jquery'), AIO_WP_SECURITY_VERSION, true);
 		wp_enqueue_script('jquery-blockui');
-		wp_register_script('aiowpsec-admin-js', AIO_WP_SECURITY_URL. '/js/wp-security-admin-script.js', array('jquery'), AIO_WP_SECURITY_VERSION, true);
+		wp_register_script('aiowpsec-heartbeat-js', AIO_WP_SECURITY_URL. '/js/heartbeat.js', array('jquery'), AIO_WP_SECURITY_VERSION, true);
+		wp_enqueue_script('aiowpsec-heartbeat-js');
+		wp_localize_script('aiowpsec-heartbeat-js',
+			'aios_heartbeat_ajax',
+			array(
+				'ajaxurl' => admin_url('admin-ajax.php'),
+				'nonce' => wp_create_nonce('heartbeat-nonce'),
+				'aios_nonce' => wp_create_nonce(AIOWPSecurity_Heartbeat::NONCE_ACTION),
+				'interval' => AIOWPSecurity_Ajax::HEARTBEAT_INTERVAL
+			)
+		);
+		wp_register_script('aiowpsec-admin-js', AIO_WP_SECURITY_URL. '/js/wp-security-admin-script.js', array('jquery', 'aiowpsec-heartbeat-js'), AIO_WP_SECURITY_VERSION, true);
 		wp_enqueue_script('aiowpsec-admin-js');
 		wp_localize_script('aiowpsec-admin-js',
 			'aios_data',
@@ -378,6 +389,12 @@ class AIOWPSecurity_Admin_Init {
 				'downgrading_firewall' => __('Downgrading firewall...', 'all-in-one-wp-security-and-firewall'),
 				'maintenance_mode_enabled' => __('Maintenance mode is currently enabled.', 'all-in-one-wp-security-and-firewall') . ' ' . __('Remember to disable it when you are done.', 'all-in-one-wp-security-and-firewall'),
 				'maintenance_mode_disabled' => __('Maintenance mode is currently disabled.', 'all-in-one-wp-security-and-firewall'),
+				'scan_now' => __('Scan Now', 'all-in-one-wp-security-and-firewall'),
+				'scan_result_initial' => __('This is your first file change detection scan.', 'all-in-one-wp-security-and-firewall') . ' ' . __('The details from this scan will be used for future scans.', 'all-in-one-wp-security-and-firewall'),
+				'scan_result_no_changes' => __('The scan is complete - There were no file changes detected.', 'all-in-one-wp-security-and-firewall'),
+				'scan_result_changes' => __('The scan has detected that there was a change in your website\'s files.', 'all-in-one-wp-security-and-firewall'),
+				'scan_result_view_link' => __('View the file scan results', 'all-in-one-wp-security-and-firewall'),
+				'scan_result_view_last_link' => __('View last file scan results', 'all-in-one-wp-security-and-firewall'),
 			)
 		);
 		wp_register_script('aiowpsec-pw-tool-js', AIO_WP_SECURITY_URL. '/js/password-strength-tool.js', array('jquery', 'zxcvbn-async'), AIO_WP_SECURITY_VERSION, true); // We will enqueue this in the user acct menu class

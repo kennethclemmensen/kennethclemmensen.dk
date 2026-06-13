@@ -72,10 +72,10 @@ trait AIOWPSecurity_Tools_Commands_Trait {
 			return $this->handle_response(false, $message);
 		} else {
 			if (!empty($data['aiowps_custom_rules'])) {
-				// Sanitize textarea shoud not be used as <filesMatch "\.(js|css|html)$"> etc rules gets removed.
+				// Sanitize textarea should not be used as <filesMatch "\.(js|css|html)$"> etc rules gets removed.
 				// Escape textarea should not be used the & becomes &amp;.
 				// Here stripslashes as old version 5.3.0 not required, AIOWPSecurity_Ajax::set_data applies wp_unslash for ajax data.
-				// So the .htacces rule having index\.php backslashes removed if used stripslashes below.
+				// So the .htaccess rule having index\.php backslashes removed if used stripslashes below.
 				$options['aiowps_custom_rules'] = $data['aiowps_custom_rules'];
 			} else {
 				$options['aiowps_custom_rules'] = ''; //Clear the custom rules config value
