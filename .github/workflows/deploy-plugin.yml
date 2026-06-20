@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Get latest code
-      uses: actions/checkout@v6.0.3
+      uses: actions/checkout@v7.0.0
 
     # Delete old workflow runs and keep only the 3 most recent ones to avoid cluttering the Actions tab
     - name: Delete old workflow runs
