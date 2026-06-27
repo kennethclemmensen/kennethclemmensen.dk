@@ -5,8 +5,13 @@ import { defineConfig } from 'eslint/config';
 
 export default defineConfig(
 	eslint.configs.recommended,
-  	...tseslint.configs.strict,
+  	...tseslint.configs.strictTypeChecked,
 	{
+		languageOptions: {
+			parserOptions: {
+				projectService: true
+			}
+		},
 		plugins: {
 			'@stylistic': stylistic
 		},
@@ -45,7 +50,16 @@ export default defineConfig(
 			'@typescript-eslint/no-invalid-this': 'warn',
 			'@typescript-eslint/no-misused-new': 'warn',
 			'@typescript-eslint/no-non-null-assertion': 'warn',
-			'@typescript-eslint/no-unnecessary-parameter-property-assignment': 'warn'
+			'@typescript-eslint/no-unnecessary-parameter-property-assignment': 'warn',
+			'@typescript-eslint/prefer-readonly': 'warn',
+			'@typescript-eslint/restrict-plus-operands': 'off',
+			'@typescript-eslint/restrict-template-expressions': 'off',
+			'@typescript-eslint/no-unsafe-assignment': 'off',
+			'@typescript-eslint/no-unsafe-member-access': 'off',
+			'@typescript-eslint/no-unsafe-call': 'off',
+			'@typescript-eslint/no-unsafe-argument': 'off',
+			'@typescript-eslint/no-unsafe-enum-comparison': 'off',
+			'@typescript-eslint/no-floating-promises': 'off'
 		}
 	}
 );
