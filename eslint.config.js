@@ -59,7 +59,13 @@ export default defineConfig(
 			'@typescript-eslint/no-unsafe-call': 'off',
 			'@typescript-eslint/no-unsafe-argument': 'off',
 			'@typescript-eslint/no-unsafe-enum-comparison': 'off',
-			'@typescript-eslint/no-floating-promises': 'off'
+			'@typescript-eslint/no-floating-promises': 'off',
+			'@stylistic/space-before-function-paren': ['warn', {
+				'anonymous': 'never',
+				'named': 'never',
+				'asyncArrow': 'never',
+				'catch': 'never'
+			}]
 		}
 	}
 );
