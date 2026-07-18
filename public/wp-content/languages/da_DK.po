@@ -336,10 +336,6 @@ msgstr "Akismet Anti-spam"
 msgid "Connector \"%s\" plugin is_active must be callable."
 msgstr "Connector-pluginet \"%s\" is_active skal kunne kaldes."
 
-#: wp-includes/collaboration/class-wp-http-polling-sync-server.php:269
-msgid "Request body is too large."
-msgstr "Anmodningsindholdet er for stort."
-
 #. translators: %s: wp_ai_client_default_request_timeout
 #: wp-includes/ai-client/class-wp-ai-client-prompt-builder.php:210
 msgid "The %s filter must return a non-negative number."
@@ -608,31 +604,6 @@ msgstr "Tekstgenerering med Claude."
 #: wp-includes/connectors.php:196
 msgid "Provider logo path must be located within the plugins or must-use plugins directory."
 msgstr "Udbyderlogoets sti skal være placeret inden for plugins- eller must-use plugins-biblioteket."
-
-#: wp-includes/collaboration/class-wp-http-polling-sync-server.php:553
-msgid "Failed to store sync update."
-msgstr "Kunne ikke gemme synkroniseringsopdatering."
-
-#: wp-includes/collaboration/class-wp-http-polling-sync-server.php:527
-msgid "Invalid sync update type."
-msgstr "Ugyldig synkroniseringsopdateringstype."
-
-#: wp-includes/collaboration/class-wp-http-polling-sync-server.php:493
-msgid "Failed to remove updates during compaction."
-msgstr "Kunne ikke fjerne opdateringer under komprimering."
-
-#. translators: %s: The room name encodes the current entity being synced.
-#: wp-includes/collaboration/class-wp-http-polling-sync-server.php:242
-msgid "You do not have permission to sync this entity: %s."
-msgstr "Du har ikke tilladelse til at synkronisere denne enhed: %s."
-
-#: wp-includes/collaboration/class-wp-http-polling-sync-server.php:224
-msgid "Client ID is already in use by another user."
-msgstr "Kunde-ID er allerede i brug af en anden bruger."
-
-#: wp-includes/collaboration/class-wp-http-polling-sync-server.php:206
-msgid "You do not have permission to perform this action"
-msgstr "Du har ikke tilladelse til at udføre denne handling"
 
 #: wp-includes/class-wp-xmlrpc-server.php:275
 msgid "Invalid arguments passed to this XML-RPC method. Requires two integers."
@@ -2478,7 +2449,7 @@ msgstr "Om man skal ignorere sticky-indlæg eller ej."
 msgid "The web server cannot generate responsive image sizes for this image. Convert it to JPEG or PNG before uploading."
 msgstr "Webserveren kan ikke generere responsive billedstørrelser for dette billede. Konverter det til JPEG eller PNG, før du overfører det."
 
-#: wp-includes/rest-api.php:449
+#: wp-includes/rest-api.php:458
 msgid "The REST route parameter must be a string."
 msgstr "REST-ruteparameteren skal være en tekststreng."
 
@@ -3056,7 +3027,7 @@ msgstr "Den template_lock som er forbundet med indholdstypen, eller false hvis i
 msgid "The block template associated with the post type."
 msgstr "Blokskabelonen tilknyttet indholdstypen."
 
-#: wp-includes/rest-api.php:1060 wp-includes/rest-api.php:1091
+#: wp-includes/rest-api.php:1069 wp-includes/rest-api.php:1100
 msgctxt "REST API resource link name"
 msgid "JSON"
 msgstr "JSON"
@@ -3231,7 +3202,7 @@ msgctxt "block description"
 msgid "Reuse this design across your site."
 msgstr "Genbrug dette design på hele din hjemmeside."
 
-#: wp-includes/js/dist/editor.js:67144 wp-admin/about.php:180
+#: wp-includes/js/dist/editor.js:67144 wp-admin/about.php:200
 msgid "Accessibility"
 msgstr "Tilgængelighed"
 
@@ -7818,7 +7789,7 @@ msgstr "ID for autogem."
 msgid "Unique identifier for the attachment."
 msgstr "Entydig identifikator for vedhæftning."
 
-#: wp-includes/rest-api.php:1149
+#: wp-includes/rest-api.php:1158
 msgid "Cookie check failed"
 msgstr "Cookie-tjek mislykkedes"
 
@@ -8283,12 +8254,12 @@ msgid "It looks like the response did not come from this site."
 msgstr "Det ser ud til svaret ikke kom fra dette websted."
 
 #. translators: 1: Parameter, 2: List of valid values.
-#: wp-includes/rest-api.php:2115
+#: wp-includes/rest-api.php:2124
 msgid "%1$s is not one of %2$l."
 msgstr "%1$s er ikke en af %2$l."
 
 #. translators: 1: Parameter, 2: Valid values.
-#: wp-includes/rest-api.php:2111
+#: wp-includes/rest-api.php:2120
 msgid "%1$s is not %2$s."
 msgstr "%1$s er ikke %2$s."
 
@@ -8586,51 +8557,51 @@ msgid "Used as:"
 msgstr "Brugt som:"
 
 #. translators: 1: Parameter, 2: Multiplier.
-#: wp-includes/rest-api.php:2566
+#: wp-includes/rest-api.php:2575
 msgid "%1$s must be a multiple of %2$s."
 msgstr "%1$s skal være et multiplum af %2$s."
 
 #. translators: 1: Parameter, 2: Number.
-#: wp-includes/rest-api.php:2457
+#: wp-includes/rest-api.php:2466
 msgid "%1$s must contain at most %2$s property."
 msgid_plural "%1$s must contain at most %2$s properties."
 msgstr[0] "%1$s skal højst indeholde %2$s egenskab."
 msgstr[1] "%1$s skal højst indeholde %2$s egenskaber."
 
 #. translators: 1: Parameter, 2: Number.
-#: wp-includes/rest-api.php:2441
+#: wp-includes/rest-api.php:2450
 msgid "%1$s must contain at least %2$s property."
 msgid_plural "%1$s must contain at least %2$s properties."
 msgstr[0] "%1$s skal mindst indeholde %2$s egenskab."
 msgstr[1] "%1$s skal mindst indeholde %2$s egenskaber."
 
 #. translators: %s: Parameter.
-#: wp-includes/rest-api.php:2037
+#: wp-includes/rest-api.php:2046
 msgid "%s matches more than one of the expected formats."
 msgstr "%s passer til mere end et af de forventede formater."
 
 #. translators: 1: Parameter, 2: Schema titles.
-#: wp-includes/rest-api.php:2029
+#: wp-includes/rest-api.php:2038
 msgid "%1$s matches %2$l, but should match only one."
 msgstr "%1$s passer til %2$l, men bør kun passe til et."
 
 #. translators: %s: Parameter.
-#: wp-includes/rest-api.php:1933
+#: wp-includes/rest-api.php:1942
 msgid "%s does not match any of the expected formats."
 msgstr "%s passer ikke til nogen af de forventede formater."
 
 #. translators: 1: Parameter, 2: Schema titles.
-#: wp-includes/rest-api.php:1929
+#: wp-includes/rest-api.php:1938
 msgid "%1$s is not a valid %2$l."
 msgstr "%1$s er ikke valid %2$l."
 
 #. translators: 1: Parameter, 2: Reason.
-#: wp-includes/rest-api.php:1862
+#: wp-includes/rest-api.php:1871
 msgid "%1$s does not match the expected format. Reason: %2$s"
 msgstr "%1$s passer ikke til det forventede format. Årsag: %2$s"
 
 #. translators: 1: Parameter, 2: Schema title, 3: Reason.
-#: wp-includes/rest-api.php:1854
+#: wp-includes/rest-api.php:1863
 msgid "%1$s is not a valid %2$s. Reason: %3$s"
 msgstr "%1$s er ikke valid %2$s. Årsag: %3$s"
 
@@ -8717,15 +8688,15 @@ msgstr "Version af block API."
 msgid "Invalid parameters."
 msgstr "Ugyldige parametre."
 
-#: wp-includes/rest-api/class-wp-rest-server.php:1772
+#: wp-includes/rest-api/class-wp-rest-server.php:1779
 msgid "The requested route does not support batch requests."
 msgstr "Ruten der forespørges understøtter ikke batch forespørgsler."
 
-#: wp-includes/rest-api/class-wp-rest-server.php:1716
+#: wp-includes/rest-api/class-wp-rest-server.php:1722
 msgid "Could not parse the path."
 msgstr "Kunne ikke parse stien."
 
-#: wp-includes/rest-api/class-wp-rest-server.php:1103
+#: wp-includes/rest-api/class-wp-rest-server.php:1109
 msgid "The handler for the route is invalid."
 msgstr "Behandleren for ruten er ikke gyldig."
 
@@ -8794,7 +8765,7 @@ msgstr "Dette tema virker ikke med din version af WordPress."
 #: wp-admin/includes/class-wp-plugins-list-table.php:1474
 #: wp-admin/includes/plugin.php:1153 wp-admin/includes/theme.php:924
 #: wp-admin/includes/theme.php:955 wp-admin/includes/theme.php:1001
-#: wp-admin/includes/theme.php:1024 wp-admin/includes/update-core.php:1202
+#: wp-admin/includes/theme.php:1024 wp-admin/includes/update-core.php:1207
 #: wp-admin/includes/update.php:786 wp-admin/includes/update.php:813
 #: wp-admin/install.php:248 wp-admin/theme-install.php:358
 #: wp-admin/theme-install.php:381 wp-admin/theme-install.php:563
@@ -9120,73 +9091,73 @@ msgid "File URL:"
 msgstr "Fil-URL:"
 
 #. translators: %s: The name of a JSON field expecting a valid UUID.
-#: wp-includes/rest-api.php:2303
+#: wp-includes/rest-api.php:2312
 msgid "%s is not a valid UUID."
 msgstr "%s er en ugyldig UUID."
 
-#: wp-includes/rest-api.php:2279
+#: wp-includes/rest-api.php:2288
 msgid "Invalid hex color."
 msgstr "Ugyldig HEX-farve."
 
 #. translators: 1: Parameter, 2: Pattern.
-#: wp-includes/rest-api.php:2727
+#: wp-includes/rest-api.php:2736
 msgid "%1$s does not match pattern %2$s."
 msgstr "%1$s matcher ikke blokgruppe %2$s."
 
 #. translators: 1: Parameter, 2: Number of characters.
-#: wp-includes/rest-api.php:2712
+#: wp-includes/rest-api.php:2721
 msgid "%1$s must be at most %2$s character long."
 msgid_plural "%1$s must be at most %2$s characters long."
 msgstr[0] "%1$s må højst være %2$s tegn."
 msgstr[1] "%1$s må højst være %2$s tegn."
 
 #. translators: 1: Parameter, 2: Number of characters.
-#: wp-includes/rest-api.php:2696
+#: wp-includes/rest-api.php:2705
 msgid "%1$s must be at least %2$s character long."
 msgid_plural "%1$s must be at least %2$s characters long."
 msgstr[0] "%1$s skal mindst være %2$s tegn."
 msgstr[1] "%1$s skal mindst være %2$s tegn."
 
 #. translators: 1: Property of an object, 2: Parameter.
-#: wp-includes/rest-api.php:2384 wp-includes/rest-api.php:2394
+#: wp-includes/rest-api.php:2393 wp-includes/rest-api.php:2403
 msgid "%1$s is a required property of %2$s."
 msgstr "%1$s er en påkrævet egenskab af %2$s."
 
 #. translators: %s: Parameter.
-#: wp-includes/rest-api.php:2536 wp-includes/rest-api.php:2839
+#: wp-includes/rest-api.php:2545 wp-includes/rest-api.php:2848
 msgid "%s has duplicate items."
 msgstr "%s har dublerede elementer."
 
 #. translators: 1: Parameter, 2: Number.
-#: wp-includes/rest-api.php:2523
+#: wp-includes/rest-api.php:2532
 msgid "%1$s must contain at most %2$s item."
 msgid_plural "%1$s must contain at most %2$s items."
 msgstr[0] "%1$s skal højst indeholde %2$s element."
 msgstr[1] "%1$s skal højst indeholde %2$s elementer."
 
 #. translators: 1: Parameter, 2: Number.
-#: wp-includes/rest-api.php:2507
+#: wp-includes/rest-api.php:2516
 msgid "%1$s must contain at least %2$s item."
 msgid_plural "%1$s must contain at least %2$s items."
 msgstr[0] "%1$s skal indeholde mindst %2$s element."
 msgstr[1] "%1$s skal indeholde mindst %2$s elementer."
 
 #. translators: 1: Parameter, 2: The list of allowed types.
-#: wp-includes/rest-api.php:2226 wp-includes/rest-api.php:2823
+#: wp-includes/rest-api.php:2235 wp-includes/rest-api.php:2832
 msgid "The \"type\" schema keyword for %1$s can only be one of the built-in types: %2$l."
 msgstr "Schema nøgleordet \"type\" for %1$s kan kun være en af de indbyggede typer: %2$l."
 
 #. translators: %s: Parameter.
-#: wp-includes/rest-api.php:2204 wp-includes/rest-api.php:2806
+#: wp-includes/rest-api.php:2213 wp-includes/rest-api.php:2815
 msgid "The \"type\" schema keyword for %s is required."
 msgstr "\"Type\" schema nøgleord for %s er påkrævet."
 
-#: wp-includes/rest-api.php:1785
+#: wp-includes/rest-api.php:1794
 msgid "Cannot stabilize objects. Convert the object to an array first."
 msgstr "Kan ikke stabilisere objekterne. Konverter objektet til et array først."
 
 #. translators: 1: Parameter, 2: List of allowed types.
-#: wp-includes/rest-api.php:1723
+#: wp-includes/rest-api.php:1732
 msgid "The \"type\" schema keyword for %1$s can only contain the built-in types: %2$l."
 msgstr "Schema \"type\" nøgleordet for %1$s kan kun indeholde de indbyggede typer: %2$l."
 
@@ -9203,7 +9174,7 @@ msgstr "Schema \"type\" nøgleordet for %1$s kan kun indeholde de indbyggede typ
 #. translators: 1: Theme name. 2: Theme slug.
 #: wp-includes/block-template-utils.php:740
 #: wp-includes/block-template-utils.php:819
-#: wp-includes/block-template-utils.php:992 wp-includes/rest-api.php:773
+#: wp-includes/block-template-utils.php:992 wp-includes/rest-api.php:782
 #: wp-includes/js/dist/block-library.js:38187
 #: wp-admin/includes/class-wp-debug-data.php:1177
 #: wp-admin/includes/class-wp-debug-data.php:1196
@@ -11760,7 +11731,7 @@ msgid "Installed"
 msgstr "Installeret"
 
 #. translators: %s: Property of an object.
-#: wp-includes/rest-api.php:2423
+#: wp-includes/rest-api.php:2432
 msgid "%1$s is not a valid property of Object."
 msgstr "%1$s er ikke en gyldig egenskab af Object."
 
@@ -13039,22 +13010,22 @@ msgid "Displays an audio player."
 msgstr "Viser en lydafspiller."
 
 #. translators: 1: Parameter, 2: Maximum number.
-#: wp-includes/rest-api.php:2601
+#: wp-includes/rest-api.php:2610
 msgid "%1$s must be less than or equal to %2$d"
 msgstr "%1$s skal være mindre end eller lig med %2$d"
 
 #. translators: 1: Parameter, 2: Maximum number.
-#: wp-includes/rest-api.php:2593
+#: wp-includes/rest-api.php:2602
 msgid "%1$s must be less than %2$d"
 msgstr "%1$s skal være mindre end %2$d"
 
 #. translators: 1: Parameter, 2: Minimum number.
-#: wp-includes/rest-api.php:2583
+#: wp-includes/rest-api.php:2592
 msgid "%1$s must be greater than or equal to %2$d"
 msgstr "%1$s skal være lig med eller større end %2$d"
 
 #. translators: 1: Parameter, 2: Minimum number.
-#: wp-includes/rest-api.php:2575
+#: wp-includes/rest-api.php:2584
 msgid "%1$s must be greater than %2$d"
 msgstr "%1$s skal være større end %2$d"
 
@@ -13493,7 +13464,7 @@ msgstr "En kommentar kan ikke oprettes med denne type."
 msgid "Invalid slug."
 msgstr "Ugyldig korttitel."
 
-#: wp-includes/rest-api.php:2291
+#: wp-includes/rest-api.php:2300
 #: wp-includes/rest-api/endpoints/class-wp-rest-users-controller.php:780
 #: wp-includes/user.php:4780 wp-admin/network/site-new.php:100
 msgid "Invalid email address."
@@ -13504,7 +13475,7 @@ msgstr "Ugyldig e-mailadresse."
 msgid "Invalid comment content."
 msgstr "Ugyldigt kommentarindhold."
 
-#: wp-includes/rest-api/class-wp-rest-server.php:361
+#: wp-includes/rest-api/class-wp-rest-server.php:367
 msgid "Invalid JSONP callback function."
 msgstr "Ugyldig JSONP callback funktion."
 
@@ -13512,7 +13483,7 @@ msgstr "Ugyldig JSONP callback funktion."
 msgid "Invalid page template."
 msgstr "Ugyldig sideskabelon."
 
-#: wp-includes/post.php:4680 wp-includes/rest-api.php:2285
+#: wp-includes/post.php:4680 wp-includes/rest-api.php:2294
 #: wp-includes/script-loader.php:1366 wp-admin/includes/post.php:189
 msgid "Invalid date."
 msgstr "Ugyldig dato."
@@ -13954,36 +13925,36 @@ msgid "Homepage"
 msgstr "Forside"
 
 #. translators: 1: Parameter, 2: Minimum number, 3: Maximum number.
-#: wp-includes/rest-api.php:2658
+#: wp-includes/rest-api.php:2667
 msgid "%1$s must be between %2$d (inclusive) and %3$d (inclusive)"
 msgstr "%1$s skal være mellem %2$d (inklusiv) og %3$d (inklusiv)"
 
 #. translators: 1: Parameter, 2: Minimum number, 3: Maximum number.
-#: wp-includes/rest-api.php:2628
+#: wp-includes/rest-api.php:2637
 msgid "%1$s must be between %2$d (exclusive) and %3$d (inclusive)"
 msgstr "%1$s skal være mellem %2$d (eksklusiv) og %3$d (inklusive)"
 
 #. translators: 1: Parameter, 2: Minimum number, 3: Maximum number.
-#: wp-includes/rest-api.php:2643
+#: wp-includes/rest-api.php:2652
 msgid "%1$s must be between %2$d (inclusive) and %3$d (exclusive)"
 msgstr "%1$s skal være mellem %2$d (inklusiv) og %3$d (eksklusiv)"
 
 #. translators: 1: Parameter, 2: Minimum number, 3: Maximum number.
-#: wp-includes/rest-api.php:2613
+#: wp-includes/rest-api.php:2622
 msgid "%1$s must be between %2$d (exclusive) and %3$d (exclusive)"
 msgstr "%1$s skal være mellem %2$d (eksklusiv) og %3$d (eksklusiv)"
 
 #. translators: %s: IP address.
-#: wp-includes/rest-api.php:2297
+#: wp-includes/rest-api.php:2306
 msgid "%s is not a valid IP address."
 msgstr "%s er ikke en gyldig IP-adresse."
 
 #. translators: 1: Parameter, 2: List of types.
 #. translators: 1: Parameter, 2: Type name.
-#: wp-includes/rest-api.php:2214 wp-includes/rest-api.php:2326
-#: wp-includes/rest-api.php:2348 wp-includes/rest-api.php:2371
-#: wp-includes/rest-api.php:2486 wp-includes/rest-api.php:2557
-#: wp-includes/rest-api.php:2686 wp-includes/rest-api.php:2754
+#: wp-includes/rest-api.php:2223 wp-includes/rest-api.php:2335
+#: wp-includes/rest-api.php:2357 wp-includes/rest-api.php:2380
+#: wp-includes/rest-api.php:2495 wp-includes/rest-api.php:2566
+#: wp-includes/rest-api.php:2695 wp-includes/rest-api.php:2763
 msgid "%1$s is not of type %2$s."
 msgstr "%1$s er ikke af typen %2$s."
 
@@ -14675,7 +14646,7 @@ msgid "Sorry, you are not allowed to upload media on this site."
 msgstr "Beklager, men du har ikke rettigheder til at uploade medier til dette websted."
 
 #. translators: %s: rest_authentication_errors
-#: wp-includes/rest-api/class-wp-rest-server.php:349
+#: wp-includes/rest-api/class-wp-rest-server.php:355
 msgid "The REST API can no longer be completely disabled, the %s filter can be used to restrict access to the API, instead."
 msgstr "REST API'et kan ikke længere fuldstændig deaktiveres, i stedet kan filteret %s bruges til at begrænse adgang til API'et."
 
@@ -15274,7 +15245,7 @@ msgctxt "password strength"
 msgid "Password strength unknown"
 msgstr "Adgangskodestyrke ukendt"
 
-#: wp-includes/rest-api/class-wp-rest-server.php:1261
+#: wp-includes/rest-api/class-wp-rest-server.php:1267
 #: wp-includes/script-loader.php:843 wp-admin/js/tags.js:78
 msgid "Sorry, you are not allowed to do that."
 msgstr "Du har desværre ikke tilladelse til at gøre dette."
@@ -15880,34 +15851,34 @@ msgstr "Ugyldigt navn på shortcode: Navnet er tomt."
 #. message.
 #. translators: Developer debugging message. 1: PHP function name, 2: WordPress
 #. version number, 3: Explanatory message.
-#: wp-includes/rest-api.php:744 wp-includes/rest-api.php:769
+#: wp-includes/rest-api.php:753 wp-includes/rest-api.php:778
 msgid "%1$s (since %2$s; %3$s)"
 msgstr "%1$s (siden %2$s; %3$s)"
 
 #. translators: 1: Function name, 2: WordPress version number.
-#: wp-includes/rest-api.php:723 wp-includes/rest-api.php:747
+#: wp-includes/rest-api.php:732 wp-includes/rest-api.php:756
 msgid "%1$s (since %2$s; no alternative available)"
 msgstr "%1$s (siden %2$s; intet alternativ)"
 
 #. translators: 1: Function name, 2: WordPress version number, 3: New function
 #. name.
-#: wp-includes/rest-api.php:720
+#: wp-includes/rest-api.php:729
 msgid "%1$s (since %2$s; use %3$s instead)"
 msgstr "%1$s (siden %2$s; brug %3$s i stedet)"
 
-#: wp-includes/rest-api/class-wp-rest-server.php:1516
+#: wp-includes/rest-api/class-wp-rest-server.php:1522
 msgid "The specified namespace could not be found."
 msgstr "Det specificerede navneområde kunne ikke findes."
 
-#: wp-includes/rest-api/class-wp-rest-server.php:1215
+#: wp-includes/rest-api/class-wp-rest-server.php:1221
 msgid "No route was found matching the URL and request method."
 msgstr "Ingen rute blev fundet der matchede URL og anmodningen."
 
-#: wp-includes/rest-api/class-wp-rest-server.php:1851
+#: wp-includes/rest-api/class-wp-rest-server.php:1858
 msgid "The handler for the route is invalid"
 msgstr "Firmaet for ruten er ugyldig"
 
-#: wp-includes/rest-api/class-wp-rest-server.php:356
+#: wp-includes/rest-api/class-wp-rest-server.php:362
 msgid "JSONP support is disabled on this site."
 msgstr "JSONP-understøttelse er deaktiveret på dette websted."
 
