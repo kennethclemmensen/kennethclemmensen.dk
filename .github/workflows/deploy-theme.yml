@@ -3,7 +3,7 @@ name: deploy-theme
 on:
   # Triggers the workflow on the push event but only for the master branch
   push:
-    branches: [ master ]
+    branches: [main]
     paths:
       - 'public/wp-content/themes/kennethclemmensen/**'
 
