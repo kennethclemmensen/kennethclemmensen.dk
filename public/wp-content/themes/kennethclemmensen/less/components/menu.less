@@ -1,12 +1,12 @@
 nav.menu {
 	display: none;
-	@media @tablet {
+	@media @{tablet} {
 		display: block;
 		width: @page-width-tablet;
 		margin: 0 auto;
 		padding: 0 15px;
 	}
-	@media @desktop {
+	@media @{dekstop} {
 		width: @page-width-desktop;
 		padding: 16px 0 0 0;
 	}
@@ -22,7 +22,7 @@ nav.menu {
 		li {
 			padding: 14px 10px 0 10px;
 			.transition(background, 0.3s, ease-out);
-			@media @desktop {
+			@media @{dekstop} {
 				width: 90px;
 				height: 32px;
 				padding: 2px 0 0 0;
