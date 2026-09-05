@@ -1,5 +1,5 @@
 # Set the base image
-FROM mysql:9.7.1
+FROM mysql:26.7.0
 
 # Copy dump.sql to the directory
 ARG DIRECTORY=/docker-entrypoint-initdb.d
