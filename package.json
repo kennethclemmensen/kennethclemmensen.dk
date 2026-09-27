@@ -38,6 +38,7 @@
     "gulp-rename": "^2.1.0",
     "less-loader": "^13.0.0",
     "mini-css-extract-plugin": "^2.10.2",
+    "oxlint": "^1.85.0",
     "sass-loader": "^17.0.1",
     "terser-webpack-plugin": "^5.6.1",
     "ts-loader": "^9.6.2",
@@ -58,6 +59,8 @@
     "grunt-imagemin": "grunt imagemin --gruntfile build/grunt/Gruntfile.cjs",
     "gulp": "gulp -f build/gulp/gulpfile.js",
     "gulp-imagemin": "gulp imagemin -f build/gulp/gulpfile.js",
+    "oxlint": "oxlint",
+    "oxlint-fix": "oxlint --fix",
     "wdio": "wdio run ./tests/webdriverio/wdio.conf.ts",
     "webpack": "webpack serve --open --config build/webpack/webpack.development.js --progress",
     "webpack-build": "webpack --config build/webpack/webpack.production.js"

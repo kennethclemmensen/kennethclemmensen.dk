@@ -13,6 +13,7 @@ These technologies includes:
 * [HTML](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
 * [LESS](http://lesscss.org/)
 * [NodeJS](https://nodejs.org/en/)/[NPM](https://npmjs.com/)
+* [OXLint](https://oxc.rs/docs/guide/usage/linter)
 * [PHP](http://php.net/)
 * [RxJS](https://rxjs.dev/)
 * [SASS](https://sass-lang.com/)
