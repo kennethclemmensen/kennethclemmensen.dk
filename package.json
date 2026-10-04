@@ -9,7 +9,6 @@
     "vue": "^3.5.43"
   },
   "devDependencies": {
-    "@eslint/js": "^10.0.1",
     "@stylistic/eslint-plugin": "^5.10.0",
     "@wdio/cli": "^9.32.0",
     "@wdio/local-runner": "^9.32.0",
@@ -53,14 +52,14 @@
     "webpack-merge-and-include-globally": "2.1.26"
   },
   "scripts": {
-    "eslint": "eslint",
-    "eslint-fix": "eslint --fix",
+    "eslint": "eslint -c eslint.config.js",
+    "eslint-fix": "eslint -c eslint.config.js --fix",
     "grunt": "grunt --gruntfile build/grunt/Gruntfile.cjs",
     "grunt-imagemin": "grunt imagemin --gruntfile build/grunt/Gruntfile.cjs",
     "gulp": "gulp -f build/gulp/gulpfile.js",
     "gulp-imagemin": "gulp imagemin -f build/gulp/gulpfile.js",
-    "oxlint": "oxlint",
-    "oxlint-fix": "oxlint --fix",
+    "oxlint": "oxlint -c .oxlintrc.json",
+    "oxlint-fix": "oxlint -c .oxlintrc.json --fix",
     "wdio": "wdio run ./tests/webdriverio/wdio.conf.ts",
     "webpack": "webpack serve --open --config build/webpack/webpack.development.js --progress",
     "webpack-build": "webpack --config build/webpack/webpack.production.js"

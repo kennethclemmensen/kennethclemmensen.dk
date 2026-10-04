@@ -1,4 +1,3 @@
-import eslint from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import stylistic from '@stylistic/eslint-plugin';
 import { defineConfig, globalIgnores } from 'eslint/config';
@@ -12,7 +11,6 @@ export default defineConfig([
 	]),
 	{
 		extends: [
-			eslint.configs.recommended,
 			tseslint.configs.recommended
 		],
 		files: [
@@ -52,29 +50,10 @@ export default defineConfig([
                 'format': ['camelCase'],
                 'leadingUnderscore': 'forbid'
             }],
-			'@typescript-eslint/no-explicit-any': 'warn',
-			'@typescript-eslint/no-floating-promises': 'off',
-			'@typescript-eslint/no-import-type-side-effects': 'warn',
-			'@typescript-eslint/no-invalid-this': 'warn',
-			'@typescript-eslint/no-misused-new': 'warn',
-			'@typescript-eslint/no-non-null-assertion': 'warn',
 			'@typescript-eslint/no-this-alias': 'off',
-			'@typescript-eslint/no-unnecessary-parameter-property-assignment': 'warn',
-			'@typescript-eslint/no-unsafe-argument': 'off',
-			'@typescript-eslint/no-unsafe-assignment': 'off',
-			'@typescript-eslint/no-unsafe-call': 'off',
-			'@typescript-eslint/no-unsafe-enum-comparison': 'off',
-			'@typescript-eslint/no-unsafe-member-access': 'off',
-			'@typescript-eslint/restrict-plus-operands': 'off',
-			'@typescript-eslint/restrict-template-expressions': 'off',
-			'no-console': ['warn', {
-				allow: ['error']
-			}],
-			'no-undef': 'off',
-			'no-unused-vars': 'off',
 			'prefer-const': 'warn',
-			'semi': ['warn', 'always'],
-			'quotes': ['warn', 'single']
+			'quotes': ['warn', 'single'],
+			'semi': ['warn', 'always']
 		}
 	}
 ]);
