@@ -8,6 +8,7 @@ img {
 
 video {
     width: 100%;
+	height: auto;
     border: 2px solid color.$color-gray;
     @media #{mediaQuery.$horizontal-mobile} {
         width: 450px;
