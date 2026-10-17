@@ -29,7 +29,7 @@ define('DB_USER', 'TestUser');
 define('DB_PASSWORD', 'TestUserForLocalhost');
 
 /** MySQL hostname */
-define('DB_HOST', 'localhost'); //Docker: host.docker.internal
+define('DB_HOST', 'localhost');
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8mb4');
