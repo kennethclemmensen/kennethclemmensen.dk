@@ -17,6 +17,7 @@ final class GallerySettingsTest extends WPTestCase {
 		$kcFolder = __DIR__.'/../../../../../../../public/wp-content/plugins/kc';
 		require_once $kcFolder.'/Core/Settings/BaseSettings.php';
 		require_once $kcFolder.'/Gallery/Settings/GallerySettings.php';
+		require_once $kcFolder.'/Core/PluginService.php';
     }
 
 	/**
