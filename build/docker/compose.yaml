@@ -6,7 +6,7 @@ services:
       context: ../..
       dockerfile_inline: |
         # Set the base image
-        FROM php:8.5.12-apache
+        FROM php:8.6.0-apache
 
         # Setup the mysqli php extension and enable mod_rewrite
         RUN docker-php-ext-install mysqli \
